@@ -44,9 +44,8 @@ Official references: [remote MCP tools](https://developers.openai.com/api/docs/g
 ## Gemini
 
 Gemini CLI accepts the bundled `gemini-extension.json` or a direct HTTP MCP
-configuration. In the Gemini API, remote MCP is documented for the Deep
-Research agent; generic Gemini model support varies. Keep the allowlist fixed
-to the reviewed read-only surface:
+configuration. Google also supports remote MCP servers in Antigravity and the
+Gemini Agents API. Keep the allowlist fixed to the reviewed read-only surface:
 
 ```js
 const tools = [{
@@ -57,7 +56,8 @@ const tools = [{
 }];
 ```
 
-Official references: [Gemini Deep Research MCP servers](https://ai.google.dev/gemini-api/docs/deep-research#mcp-servers),
+Official references: [Gemini Antigravity MCP servers](https://ai.google.dev/gemini-api/docs/antigravity-agent),
+[Gemini Agents API](https://ai.google.dev/api/agents),
 [Gemini CLI MCP servers](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md).
 
 ## Claude
@@ -67,15 +67,21 @@ In an individual Claude account, open **Customize > Connectors**, choose
 workspaces require an owner to add the URL under **Organization settings > Connectors**.
 Enable only the three published tools for conversations that need shopping data.
 
-Official reference: [Claude custom connectors](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp).
+Anthropic's public Connectors Directory uses a separate submission portal in
+organization settings. Submission requires a Team or Enterprise organization
+and an Owner, Primary Owner, or delegated Directory role. An individual account
+can connect and test BestPrice, but cannot submit it to the directory.
+
+Official references: [Claude custom connectors](https://claude.com/docs/connectors/building),
+[Connectors Directory submission](https://claude.com/docs/connectors/building/submission).
 
 ## Grok
 
 Open `grok.com/connectors`, choose **New Connector > Custom**, and enter the
-BestPrice endpoint. Grok discovers the tool schemas from the server. The xAI API
-can also use the endpoint as a remote MCP tool.
+BestPrice endpoint. Grok discovers the tool schemas from the server. Grok CLI
+can add the same remote server, and the xAI Responses API can call it directly.
 
-Official references: [Grok custom MCP connectors](https://docs.x.ai/grok/connectors),
+Official references: [Grok MCP servers](https://docs.x.ai/build/features/mcp-servers),
 [xAI remote MCP tools](https://docs.x.ai/developers/tools/remote-mcp).
 
 ## Qwen
@@ -105,9 +111,9 @@ Official references: [Qwen Code MCP](https://github.com/QwenLM/qwen-code/blob/ma
 
 ## DeepSeek
 
-DeepSeek's public Chat Completions API currently accepts function tools, not a
-remote MCP server declaration. The official DeepSeek Harness provides the MCP
-bridge instead. Add one plugin instance to `cordis.yml`:
+DeepSeek's public Chat Completions API accepts function tools, while its
+Responses API currently ignores tools declared as `mcp`. The official DeepSeek
+Harness provides the MCP bridge instead. Add one plugin instance to `cordis.yml`:
 
 ```yaml
 - id: mcp-bestprice
@@ -127,6 +133,7 @@ the `mcp__bestprice__*` namespace. This connects DeepSeek-powered Harness agents
 it does not imply that the consumer chat at deepseek.com imports public MCPs.
 
 Official references: [DeepSeek Harness MCP client](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md),
+[DeepSeek Responses API](https://api-docs.deepseek.com/guides/responses_api/),
 [DeepSeek API tool calls](https://api-docs.deepseek.com/guides/tool_calls).
 
 ## Z.ai and GLM

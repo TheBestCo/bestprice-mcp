@@ -35,7 +35,7 @@ passes; add it only in a later plugin version after that rollout.
 
 ## Official Registry publication
 
-- `gr.bestprice/mcp@1.3.0` was published to the official MCP Registry on
+- `gr.bestprice/mcp@1.4.0` was published to the official MCP Registry on
   2026-08-26 and is marked `active` and `latest`.
 - The live registry record declares `https://www.bestprice.gr/mcp` as the
   website and `https://mcp.bestprice.gr/mcp` as its Streamable HTTP endpoint.
@@ -44,8 +44,9 @@ passes; add it only in a later plugin version after that rollout.
   published under the same permanent namespace.
 - The post-publication production canary passed 25/25 checks for website and
   protocol discovery, modern and legacy MCP paths, the three read-only tools,
-  clean public product and merchant identities, policy boundaries, signed
-  landing behavior, and New Relic attribution with zero charged events.
+  clean public product and merchant identities, the ad-free offer contract,
+  policy boundaries, signed landing behavior, and New Relic attribution with
+  zero charged events.
 
 Registry record:
 `https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp`
