@@ -1,0 +1,10 @@
+- id: mcp-bestprice
+  name: '@deepseek-ai/dsh-mcp-client'
+  config:
+    serverName: bestprice
+    transport: streamable-http
+    url: https://mcp.bestprice.gr/mcp
+    headers:
+      X-MCP-Client-Name: DeepSeek Harness
+    toolCallTimeoutMs: 30000
+    failOnStartupError: true

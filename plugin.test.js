@@ -53,7 +53,7 @@ describe('BestPrice Shopping plugin bundle', () => {
   });
 
   it('documents the same bounded connection for every supported provider', () => {
-    for (const provider of ['OpenAI', 'Gemini', 'Claude', 'Grok', 'Qwen', 'Z.ai and GLM']) {
+    for (const provider of ['OpenAI', 'Gemini', 'Claude', 'Grok', 'Qwen', 'DeepSeek', 'Z.ai and GLM']) {
       assert.match(providerSetup, new RegExp(`## ${provider.replace('.', '\\.')}`, 'u'));
     }
     assert.match(providerSetup, /https:\/\/mcp\.bestprice\.gr\/mcp/u);

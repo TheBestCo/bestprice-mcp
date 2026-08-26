@@ -25,8 +25,9 @@ passes; add it only in a later plugin version after that rollout.
 - `.mcp.json` declares one production Streamable HTTP endpoint.
 - `server.json` is the validated, provider-neutral manifest prepared for the
   official MCP Registry.
-- `PROVIDER_SETUP.md` keeps OpenAI, Gemini, Claude, and Grok connection steps
-  pinned to the same public endpoint and read-only tool allowlist.
+- `PROVIDER_SETUP.md` keeps OpenAI, Gemini, Claude, Grok, Qwen, DeepSeek, and
+  Z.ai/GLM connection steps pinned to the same public endpoint and read-only
+  tool allowlist.
 - `test-cases.json` contains five positive and four negative review cases for
   the three tools published in the initial pilot.
 - Repository tests pin the endpoint, read-only surface, prompts, and case inventory.

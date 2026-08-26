@@ -85,7 +85,7 @@ The public BestPrice extension can also be installed in Qwen Code. Its manifest
 keeps the imported tools restricted to the reviewed read-only surface:
 
 ```sh
-qwen extensions install TheBestCo/bestprice-mcp
+qwen extensions install https://github.com/TheBestCo/bestprice-mcp --consent
 ```
 
 Alibaba Cloud Model Studio's Responses API currently documents remote MCP over
@@ -96,6 +96,32 @@ silently placing a protocol proxy in the shopping path.
 Official references: [Qwen Code MCP](https://github.com/QwenLM/qwen-code/blob/main/docs/users/features/mcp.md),
 [Qwen Code extensions](https://github.com/QwenLM/qwen-code/blob/main/docs/users/extension/introduction.md),
 [Model Studio MCP](https://www.alibabacloud.com/help/en/model-studio/mcp).
+
+## DeepSeek
+
+DeepSeek's public Chat Completions API currently accepts function tools, not a
+remote MCP server declaration. The official DeepSeek Harness provides the MCP
+bridge instead. Add one plugin instance to `cordis.yml`:
+
+```yaml
+- id: mcp-bestprice
+  name: '@deepseek-ai/dsh-mcp-client'
+  config:
+    serverName: bestprice
+    transport: streamable-http
+    url: https://mcp.bestprice.gr/mcp
+    headers:
+      X-MCP-Client-Name: DeepSeek Harness
+    toolCallTimeoutMs: 30000
+    failOnStartupError: true
+```
+
+The bridge discovers the same three tools and exposes them to the model under
+the `mcp__bestprice__*` namespace. This connects DeepSeek-powered Harness agents;
+it does not imply that the consumer chat at deepseek.com imports public MCPs.
+
+Official references: [DeepSeek Harness MCP client](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md),
+[DeepSeek API tool calls](https://api-docs.deepseek.com/guides/tool_calls).
 
 ## Z.ai and GLM
 

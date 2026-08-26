@@ -18,7 +18,7 @@ gemini extensions install https://github.com/TheBestCo/bestprice-mcp
 ## Install for Qwen Code
 
 ```sh
-qwen extensions install TheBestCo/bestprice-mcp
+qwen extensions install https://github.com/TheBestCo/bestprice-mcp --consent
 ```
 
 Or add only the remote server:
@@ -28,17 +28,19 @@ qwen mcp add --scope user --transport http bestprice-shopping \
   https://mcp.bestprice.gr/mcp
 ```
 
-## Use with Z.ai and GLM
+## Use with DeepSeek, Z.ai and GLM
 
-Z.ai's general API supports third-party Streamable HTTP MCP servers. A complete
-Python example is available at [`examples/zai-glm.py`](examples/zai-glm.py).
-It needs a Z.ai API key, but the BestPrice server itself needs no credentials.
+DeepSeek Harness can connect through its official MCP bridge; see
+[`examples/deepseek-harness.yml`](examples/deepseek-harness.yml). Z.ai's general
+API supports third-party Streamable HTTP MCP servers; a complete Python example
+is available at [`examples/zai-glm.py`](examples/zai-glm.py). Provider access
+needs the relevant provider account or API key. BestPrice itself needs neither.
 
 ## Other clients
 
 See [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md) for OpenAI, ChatGPT, Claude, Grok,
-Gemini, Qwen, Z.ai and GLM connection examples. Every integration points to the
-same endpoint and imports only the three published read-only tools.
+Gemini, DeepSeek, Qwen, Z.ai and GLM connection examples. Every integration
+points to the same endpoint and imports only the three published read-only tools.
 
 ## A safe first test
 
