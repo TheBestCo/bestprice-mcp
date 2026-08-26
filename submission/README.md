@@ -25,25 +25,27 @@ passes; add it only in a later plugin version after that rollout.
 - `.mcp.json` declares one production Streamable HTTP endpoint.
 - `server.json` is the validated, provider-neutral manifest prepared for the
   official MCP Registry.
-- `PROVIDER_SETUP.md` keeps OpenAI, Gemini, Claude, Grok, Qwen, DeepSeek, and
-  Z.ai/GLM connection steps pinned to the same public endpoint and read-only
-  tool allowlist.
+- `PROVIDER_SETUP.md` keeps OpenAI, Gemini, Claude, Grok, Qwen, DeepSeek,
+  Z.ai/GLM, GitHub Copilot, VS Code, Cursor, and Microsoft Copilot Studio
+  connection steps pinned to the same public endpoint and read-only tool
+  allowlist.
 - `test-cases.json` contains five positive and four negative review cases for
-  the three tools published in the initial pilot.
+  the three published tools.
 - Repository tests pin the endpoint, read-only surface, prompts, and case inventory.
 
 ## Official Registry publication
 
-- `gr.bestprice/mcp@1.2.0` was published to the official MCP Registry on
+- `gr.bestprice/mcp@1.3.0` was published to the official MCP Registry on
   2026-08-26 and is marked `active` and `latest`.
 - The live registry record declares `https://www.bestprice.gr/mcp` as the
   website and `https://mcp.bestprice.gr/mcp` as its Streamable HTTP endpoint.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
   `bestprice.gr` apex. Keep that proof in DNS so future versions can be
   published under the same permanent namespace.
-- The post-publication production canary passed 19/19 checks for protocol
-  discovery, the three read-only tools, policy boundaries, and signed landing
-  behavior.
+- The post-publication production canary passed 25/25 checks for website and
+  protocol discovery, modern and legacy MCP paths, the three read-only tools,
+  clean public product and merchant identities, policy boundaries, signed
+  landing behavior, and New Relic attribution with zero charged events.
 
 Registry record:
 `https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp`
