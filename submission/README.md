@@ -35,7 +35,7 @@ passes; add it only in a later plugin version after that rollout.
 
 ## Official Registry publication
 
-- `gr.bestprice/mcp@1.4.0` was published to the official MCP Registry on
+- `gr.bestprice/mcp@1.5.0` was published to the official MCP Registry on
   2026-08-26 and is marked `active` and `latest`.
 - The live registry record declares `https://www.bestprice.gr/mcp` as the
   website and `https://mcp.bestprice.gr/mcp` as its Streamable HTTP endpoint.
