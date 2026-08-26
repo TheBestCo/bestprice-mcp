@@ -1,7 +1,9 @@
 # BestPrice Shopping submission checklist
 
-The repository bundle is intentionally MCP-only: it contains no app manifest,
-embedded UI, write capability, hook, skill, or marketplace entry.
+The repository bundle is intentionally MCP-only: it contains no embedded UI,
+write capability, hook, or skill. It includes provider-specific connection
+metadata plus a vendor-neutral Agent Plugin manifest for clients and
+marketplaces that implement that open format.
 
 ## Canonical identity
 
@@ -23,6 +25,8 @@ passes; add it only in a later plugin version after that rollout.
 
 - `.codex-plugin/plugin.json` validates with the repository-pinned plugin validator.
 - `.mcp.json` declares one production Streamable HTTP endpoint.
+- `plugin.json` and `mcp.json` conform to Agent Plugins 1.0 and declare the
+  same public Streamable HTTP endpoint without credentials or write tools.
 - `server.json` is the validated, provider-neutral manifest prepared for the
   official MCP Registry.
 - `PROVIDER_SETUP.md` keeps OpenAI, Gemini, Claude, Grok, Qwen, DeepSeek,

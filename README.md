@@ -35,6 +35,14 @@ qwen mcp add --scope user --transport http bestprice-shopping \
   https://mcp.bestprice.gr/mcp
 ```
 
+## Portable Agent Plugin
+
+This repository also follows the vendor-neutral
+[Agent Plugins 1.0 specification](https://agent-plugins.org/specification).
+Clients that support Agent Plugins can load the root `plugin.json` and
+`mcp.json`; the package connects only to the same public, read-only Streamable
+HTTP endpoint.
+
 ## Use with DeepSeek, Z.ai and GLM
 
 DeepSeek Harness can connect through its official MCP bridge; see

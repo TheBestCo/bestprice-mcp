@@ -8,6 +8,8 @@ const readJson = relativePath =>
 
 const manifest = readJson('./.codex-plugin/plugin.json');
 const mcp = readJson('./.mcp.json');
+const portablePlugin = readJson('./plugin.json');
+const portableMcp = readJson('./mcp.json');
 const registry = readJson('./server.json');
 const geminiExtension = readJson('./gemini-extension.json');
 const qwenExtension = readJson('./qwen-extension.json');
@@ -16,13 +18,38 @@ const cases = readJson('./submission/test-cases.json');
 const providerSetup = readFileSync(new URL('./PROVIDER_SETUP.md', import.meta.url), 'utf8');
 
 describe('BestPrice Shopping plugin bundle', () => {
-  it('is an MCP-only, read-only plugin with no app or marketplace surface', () => {
+  it('is an MCP-only, read-only Codex plugin with no app surface', () => {
     assert.equal(manifest.name, 'bestprice-shopping');
     assert.equal(manifest.mcpServers, './.mcp.json');
     assert.deepEqual(manifest.interface.capabilities, ['Read']);
     assert.equal('apps' in manifest, false);
     assert.equal('skills' in manifest, false);
     assert.equal('hooks' in manifest, false);
+  });
+
+  it('ships a provider-neutral Agent Plugin package', () => {
+    assert.deepEqual(portablePlugin, {
+      $schema: 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
+      name: 'bestprice-shopping',
+      version: '1.0.1',
+      description: 'Read-only product search, offer comparison, and price history from BestPrice.gr.',
+      author: {
+        name: 'BestPrice',
+        url: 'https://www.bestprice.gr/',
+      },
+      homepage: 'https://www.bestprice.gr/mcp',
+      repository: 'https://github.com/TheBestCo/bestprice-mcp',
+      keywords: ['shopping', 'price-comparison', 'greece', 'mcp'],
+    });
+    assert.deepEqual(portableMcp, {
+      $schema: 'https://agent-plugins.org/schemas/1.0.0/mcp.schema.json',
+      mcpServers: {
+        'bestprice-shopping': {
+          type: 'streamable-http',
+          url: 'https://mcp.bestprice.gr/mcp',
+        },
+      },
+    });
   });
 
   it('targets only the production HTTPS Streamable HTTP endpoint', () => {
