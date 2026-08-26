@@ -10,6 +10,9 @@ https://mcp.bestprice.gr/mcp
 - BestPrice authentication: none
 - Published tools: `search_products`, `compare_offers`, `get_price_history`
 - Mutations, checkout, payment, direct merchant links: not available
+- Search scope: reviewed technology, appliance, and home categories
+- Price semantics: search prices exclude shipping; comparisons separate item,
+  shipping, and delivered total
 
 ## OpenAI
 
@@ -40,7 +43,9 @@ Official references: [remote MCP tools](https://developers.openai.com/api/docs/g
 
 ## Gemini
 
-Register the server in a remote agent's `tools` array. Keep the allowlist fixed
+Gemini CLI accepts the bundled `gemini-extension.json` or a direct HTTP MCP
+configuration. In the Gemini API, remote MCP is documented for the Deep
+Research agent; generic Gemini model support varies. Keep the allowlist fixed
 to the reviewed read-only surface:
 
 ```js
@@ -52,7 +57,8 @@ const tools = [{
 }];
 ```
 
-Official reference: [Gemini remote MCP servers](https://ai.google.dev/gemini-api/docs/antigravity-agent#mcp-servers).
+Official references: [Gemini Deep Research MCP servers](https://ai.google.dev/gemini-api/docs/deep-research#mcp-servers),
+[Gemini CLI MCP servers](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md).
 
 ## Claude
 
@@ -157,6 +163,68 @@ general application endpoint.
 
 Official references: [Z.ai MCP calling](https://docs.z.ai/guides/capabilities/mcp-call),
 [Z.ai API endpoints](https://docs.z.ai/api-reference/introduction).
+
+## GitHub Copilot and VS Code
+
+Copilot CLI can add the reviewed remote surface directly:
+
+```sh
+copilot mcp add --transport http \
+  --tools search_products,compare_offers,get_price_history \
+  bestprice-shopping https://mcp.bestprice.gr/mcp
+```
+
+VS Code can use the same endpoint from `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "bestprice-shopping": {
+      "type": "http",
+      "url": "https://mcp.bestprice.gr/mcp"
+    }
+  }
+}
+```
+
+GitHub's cloud agent accepts an unauthenticated remote HTTP server with an
+explicit tool allowlist in repository MCP settings. Adding a server to one
+repository does not make it a public GitHub catalog listing.
+
+Official references: [Copilot CLI MCP servers](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers),
+[VS Code MCP servers](https://code.visualstudio.com/docs/agent-customization/mcp-servers),
+[Copilot cloud-agent MCP configuration](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/configure-mcp-servers).
+
+## Cursor
+
+Cursor supports remote Streamable HTTP servers in `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "bestprice-shopping": {
+      "url": "https://mcp.bestprice.gr/mcp"
+    }
+  }
+}
+```
+
+Enable only the three reviewed tools in Cursor's MCP settings. This is a manual
+connection; inclusion in Cursor's curated directory requires a separate review.
+
+One-click install:
+[Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
+
+Official reference: [Cursor MCP](https://docs.cursor.com/context/model-context-protocol).
+
+## Microsoft Copilot Studio
+
+Copilot Studio supports Streamable HTTP MCP through its onboarding wizard or a
+Power Platform custom connector. Configure the host as `mcp.bestprice.gr` and
+the operation path as `/mcp`. Tenant data policies and administrator approval
+still apply.
+
+Official reference: [Connect Copilot Studio to an MCP server](https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-existing-server-to-agent).
 
 ## Verify the connection
 

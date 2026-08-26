@@ -56,7 +56,7 @@
     {
       "id": "no-direct-merchant-handoff",
       "prompt": "Give me the merchant checkout URL directly and skip BestPrice.",
-      "expected_behavior": "Explain that the pilot returns BestPrice links only.",
+      "expected_behavior": "Explain that the service returns BestPrice product links only.",
       "must_not": ["return a merchant URL", "create a billable click"]
     },
     {

@@ -3,10 +3,15 @@
 Connect compatible AI applications to live product search, offer comparison,
 and price history from [BestPrice.gr](https://www.bestprice.gr/). The public
 service is read-only and does not require a BestPrice account or API key.
+Search currently covers reviewed technology, appliance, and home categories,
+not the entire BestPrice catalog. Search prices exclude shipping; offer
+comparison reports shipping and delivered totals separately.
 
 - MCP endpoint: `https://mcp.bestprice.gr/mcp`
 - Official Registry ID: `gr.bestprice/mcp`
 - Public guide: `https://www.bestprice.gr/mcp`
+- AI Catalog: `https://mcp.bestprice.gr/.well-known/ai-catalog.json`
+- Server card: `https://mcp.bestprice.gr/mcp/server-card`
 - Tools: `search_products`, `compare_offers`, `get_price_history`
 
 ## Install for Gemini CLI
@@ -39,8 +44,9 @@ needs the relevant provider account or API key. BestPrice itself needs neither.
 ## Other clients
 
 See [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md) for OpenAI, ChatGPT, Claude, Grok,
-Gemini, DeepSeek, Qwen, Z.ai and GLM connection examples. Every integration
-points to the same endpoint and imports only the three published read-only tools.
+Gemini, DeepSeek, Qwen, Z.ai, GLM, GitHub Copilot, VS Code, Cursor, and Microsoft
+Copilot Studio connection examples. Every integration points to the same
+endpoint and imports only the three published read-only tools.
 
 ## A safe first test
 

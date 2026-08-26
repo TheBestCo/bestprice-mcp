@@ -40,7 +40,7 @@ describe('BestPrice Shopping plugin bundle', () => {
     assert.equal(registry.$schema, 'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json');
     assert.equal(registry.name, 'gr.bestprice/mcp');
     assert.equal(registry.title, 'BestPrice Shopping');
-    assert.equal(registry.version, '1.2.0');
+    assert.equal(registry.version, '1.3.0');
     assert.equal(registry.websiteUrl, 'https://www.bestprice.gr/mcp');
     assert.deepEqual(registry.remotes, [
       {
@@ -53,7 +53,18 @@ describe('BestPrice Shopping plugin bundle', () => {
   });
 
   it('documents the same bounded connection for every supported provider', () => {
-    for (const provider of ['OpenAI', 'Gemini', 'Claude', 'Grok', 'Qwen', 'DeepSeek', 'Z.ai and GLM']) {
+    for (const provider of [
+      'OpenAI',
+      'Gemini',
+      'Claude',
+      'Grok',
+      'Qwen',
+      'DeepSeek',
+      'Z.ai and GLM',
+      'GitHub Copilot and VS Code',
+      'Cursor',
+      'Microsoft Copilot Studio',
+    ]) {
       assert.match(providerSetup, new RegExp(`## ${provider.replace('.', '\\.')}`, 'u'));
     }
     assert.match(providerSetup, /https:\/\/mcp\.bestprice\.gr\/mcp/u);
