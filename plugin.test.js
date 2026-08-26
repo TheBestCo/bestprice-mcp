@@ -1,0 +1,114 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { describe, it } from 'node:test';
+
+const readJson = relativePath =>
+  // eslint-disable-next-line no-restricted-syntax -- immutable submission fixtures, not executable modules
+  JSON.parse(readFileSync(new URL(relativePath, import.meta.url), 'utf8'));
+
+const manifest = readJson('./.codex-plugin/plugin.json');
+const mcp = readJson('./.mcp.json');
+const registry = readJson('./server.json');
+const geminiExtension = readJson('./gemini-extension.json');
+const qwenExtension = readJson('./qwen-extension.json');
+const cases = readJson('./submission/test-cases.json');
+// eslint-disable-next-line no-restricted-syntax -- immutable human-facing setup fixture
+const providerSetup = readFileSync(new URL('./PROVIDER_SETUP.md', import.meta.url), 'utf8');
+
+describe('BestPrice Shopping plugin bundle', () => {
+  it('is an MCP-only, read-only plugin with no app or marketplace surface', () => {
+    assert.equal(manifest.name, 'bestprice-shopping');
+    assert.equal(manifest.mcpServers, './.mcp.json');
+    assert.deepEqual(manifest.interface.capabilities, ['Read']);
+    assert.equal('apps' in manifest, false);
+    assert.equal('skills' in manifest, false);
+    assert.equal('hooks' in manifest, false);
+  });
+
+  it('targets only the production HTTPS Streamable HTTP endpoint', () => {
+    assert.deepEqual(mcp, {
+      mcpServers: {
+        'bestprice-shopping': {
+          type: 'http',
+          url: 'https://mcp.bestprice.gr/mcp',
+        },
+      },
+    });
+  });
+
+  it('ships a provider-neutral official MCP Registry manifest', () => {
+    assert.equal(registry.$schema, 'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json');
+    assert.equal(registry.name, 'gr.bestprice/mcp');
+    assert.equal(registry.title, 'BestPrice Shopping');
+    assert.equal(registry.version, '1.2.0');
+    assert.equal(registry.websiteUrl, 'https://www.bestprice.gr/mcp');
+    assert.deepEqual(registry.remotes, [
+      {
+        type: 'streamable-http',
+        url: 'https://mcp.bestprice.gr/mcp',
+      },
+    ]);
+    assert.equal(registry.icons[0].src, 'https://www.bestprice.gr/images/logo.svg');
+    assert.ok(registry.description.length <= 100);
+  });
+
+  it('documents the same bounded connection for every supported provider', () => {
+    for (const provider of ['OpenAI', 'Gemini', 'Claude', 'Grok', 'Qwen', 'Z.ai and GLM']) {
+      assert.match(providerSetup, new RegExp(`## ${provider.replace('.', '\\.')}`, 'u'));
+    }
+    assert.match(providerSetup, /https:\/\/mcp\.bestprice\.gr\/mcp/u);
+    assert.match(providerSetup, /search_products.*compare_offers.*get_price_history/u);
+    assert.doesNotMatch(providerSetup, /API[_ -]?KEY.*BestPrice/iu);
+  });
+
+  it('ships bounded Gemini and Qwen extension manifests', () => {
+    const expectedServer = clientName => ({
+      httpUrl: 'https://mcp.bestprice.gr/mcp',
+      headers: { 'X-MCP-Client-Name': clientName },
+      includeTools: ['search_products', 'compare_offers', 'get_price_history'],
+      timeout: 30000,
+    });
+    assert.deepEqual(geminiExtension.mcpServers['bestprice-shopping'], expectedServer('Gemini CLI'));
+    assert.deepEqual(qwenExtension.mcpServers['bestprice-shopping'], expectedServer('Qwen Code'));
+    assert.equal(geminiExtension.contextFileName, 'GEMINI.md');
+    assert.equal(qwenExtension.contextFileName, 'QWEN.md');
+    assert.equal('trust' in expectedServer('Qwen Code'), false);
+  });
+
+  it('keeps starter prompts within platform presentation limits', () => {
+    const prompts = manifest.interface.defaultPrompt;
+    assert.ok(prompts.length >= 1 && prompts.length <= 3);
+    for (const prompt of prompts) assert.ok(prompt.length <= 128, prompt);
+  });
+
+  it('declares the canonical public legal pages required for submission', () => {
+    assert.equal(manifest.interface.privacyPolicyURL, 'https://www.bestprice.gr/policies/privacy');
+    assert.equal(manifest.interface.termsOfServiceURL, 'https://www.bestprice.gr/policies/terms');
+  });
+
+  it('provides at least five positive and three negative review cases', () => {
+    assert.ok(cases.positive.length >= 5);
+    assert.ok(cases.negative.length >= 3);
+    const ids = [...cases.positive, ...cases.negative].map(testCase => testCase.id);
+    assert.equal(new Set(ids).size, ids.length);
+  });
+
+  it('uses only valid public grouped-product IDs in submission prompts', () => {
+    const productIds = JSON.stringify(cases.positive).match(/bp_[0-9]+/gu) ?? [];
+    assert.ok(productIds.length > 0);
+    for (const productId of productIds) {
+      assert.match(productId, /^bp_[0-9]{10}$/u);
+      const numeric = Number(productId.slice(3));
+      assert.ok(numeric > 2_147_483_648 && numeric <= 4_294_967_295, productId);
+    }
+  });
+
+  it('covers every published tool and critical commercial refusal', () => {
+    const tools = new Set(cases.positive.flatMap(testCase => testCase.expected_tools));
+    assert.deepEqual([...tools].sort(), ['compare_offers', 'get_price_history', 'search_products']);
+    const negativeText = JSON.stringify(cases.negative).toLowerCase();
+    assert.match(negativeText, /checkout/);
+    assert.match(negativeText, /merchant url/);
+    assert.match(negativeText, /prompt-injection|embedded instructions/);
+  });
+});
