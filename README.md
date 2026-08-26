@@ -10,7 +10,7 @@ comparison reports shipping and delivered totals separately.
 - MCP endpoint: `https://mcp.bestprice.gr/mcp`
 - Official Registry ID: `gr.bestprice/mcp`
 - Public guide: `https://www.bestprice.gr/mcp`
-- AI Catalog: `https://mcp.bestprice.gr/.well-known/ai-catalog.json`
+- AI Catalog: `https://www.bestprice.gr/.well-known/ai-catalog.json`
 - Server card: `https://mcp.bestprice.gr/mcp/server-card`
 - Tools: `search_products`, `compare_offers`, `get_price_history`
 
