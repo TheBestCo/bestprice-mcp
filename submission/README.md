@@ -42,21 +42,40 @@ passes; add it only in a later plugin version after that rollout.
 
 ## Official Registry publication
 
-- `gr.bestprice/mcp@1.5.0` was published to the official MCP Registry on
-  2026-08-26 and is marked `active` and `latest`.
+- `gr.bestprice/mcp@1.5.1` was published to the official MCP Registry on
+  2026-08-27. The public Registry API lists every release from `1.2.0` through
+  `1.5.1` under the verified `gr.bestprice/mcp` identity.
 - The live registry record declares `https://www.bestprice.gr/mcp` as the
   website and `https://mcp.bestprice.gr/mcp` as its Streamable HTTP endpoint.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
   `bestprice.gr` apex. Keep that proof in DNS so future versions can be
   published under the same permanent namespace.
-- The post-publication production canary passed 25/25 checks for website and
-  protocol discovery, modern and legacy MCP paths, the three read-only tools,
-  clean public product and merchant identities, the ad-free offer contract,
-  policy boundaries, signed landing behavior, and New Relic attribution with
-  zero charged events.
+- The current post-publication production canary passed 29/29 checks for
+  website and protocol discovery, modern and legacy MCP paths, the three
+  read-only tools, clean public product and merchant identities, the ad-free
+  offer contract, policy boundaries, MCP Apps UI, and signed landing behavior.
+  It followed no merchant redirect and invoked no checkout tool.
 
 Registry record:
 `https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp`
+
+## Downstream discovery status
+
+Checked on 2026-08-27:
+
+- Glama indexes the public GitHub repository and endpoint at
+  `https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp`.
+- MCP Toplist has ingested the official Registry record at
+  `https://mcptoplist.com/server/gr.bestprice%2Fmcp`.
+- Smithery exposes `bestprice/shopping`, but its release UI still marks a URL
+  publication as failed even though Smithery's own tool client can enumerate
+  all three tools. The reproducible platform issue is tracked at
+  `https://github.com/arcadeai-labs/smithery-cli/issues/808`.
+- PulseMCP has paused direct submissions and says official Registry entries
+  will be ingested when submissions resume.
+- The WebMCP Registry has indexed all twelve browser tools for
+  `www.bestprice.gr`; its DNS ownership check remains the only registry action
+  not yet confirmed.
 
 ## Remaining provider review actions
 
