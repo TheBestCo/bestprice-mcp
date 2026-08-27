@@ -54,11 +54,13 @@ passes; add it only in a later plugin version after that rollout.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
   `bestprice.gr` apex. Keep that proof in DNS so future versions can be
   published under the same permanent namespace.
-- The current post-publication production canary passed 29/29 checks for
+- Four consecutive post-publication production canaries passed 30/30 checks
+  each for
   website and protocol discovery, modern and legacy MCP paths, the three
   read-only tools, clean public product and merchant identities, the ad-free
   offer contract, policy boundaries, MCP Apps UI, and signed landing behavior.
-  It followed no merchant redirect and invoked no checkout tool.
+  Across all 120 checks they followed no merchant redirect, invoked no checkout
+  tool, and needed no rate-limit retry.
 
 Registry record:
 `https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp`
@@ -69,6 +71,8 @@ Checked on 2026-08-27:
 
 - Glama indexes the public GitHub repository and endpoint at
   `https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp`.
+- MCP Repository indexes the public package at
+  `https://mcprepository.com/thebestco/bestprice-mcp`.
 - MCP Toplist has ingested the official Registry record at
   `https://mcptoplist.com/server/gr.bestprice%2Fmcp`.
 - Smithery exposes `bestprice/shopping`, but its release UI still marks a URL
@@ -86,14 +90,25 @@ Checked on 2026-08-27:
   2026-08-27.
 - PulseMCP has paused direct submissions and says official Registry entries
   will be ingested when submissions resume.
-- The WebMCP Registry has indexed all twelve browser tools for
-  `www.bestprice.gr` and verified domain ownership on 2026-08-27.
-- WebMCP.com independently detects all twelve tools from the production site
-  and classifies the surface as Commerce.
-- WebMCP Directory accepted the domain but its scanner currently reports no
-  surface even though Chrome runtime tests prove the page registers 1 home,
-  7 listing, and 6 product-page tools. Do not alter the working runtime to
-  satisfy that third-party scanner.
+- The WebMCP Registry verified domain ownership on 2026-08-27. Its public index
+  still shows the preceding twelve-tool manifest; the live manifest now has
+  thirteen tools, and the registry refresh endpoint requires an account API key.
+- WebMCP.com independently classifies the surface as Commerce. Its public index
+  also still shows the preceding twelve-tool manifest; requesting a refresh
+  requires an email address.
+- The live `/.well-known/webmcp.json` validates successfully with
+  `webmcpreg@latest` and declares thirteen unique tools. The registry publisher
+  currently returns `Application not found` from its own submission API, so a
+  fresh publication cannot be completed until that service is repaired.
+- Chrome runtime tests prove the page registers 1 home, 8 listing, and 6
+  product-page tools. WebMCP Directory does not yet list BestPrice and requires
+  an email address plus an interactive Turnstile challenge to submit it.
+- AgentReady indexed `https://www.bestprice.gr` successfully on 2026-08-27 and
+  made its agent-readiness record queryable. The optional account-bound claim
+  link is `https://www.agentready.it.com/claim?id=87474b1d-029a-4057-abde-158e5c3d0685`.
+- The MCP Index ingests the official MCP Registry nightly, so the verified
+  `gr.bestprice/mcp` publication is eligible without a separate package or
+  protocol fork.
 - AgenticSkills currently has no configured submission review queue, so its
   form cannot accept any listing. MCP Server Space requires authorization of
   an unverified, low-adoption GitHub OAuth app; it was deliberately not
