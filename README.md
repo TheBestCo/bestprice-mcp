@@ -1,5 +1,7 @@
 # BestPrice MCP
 
+![BestPrice MCP: products, offers and price history for AI assistants](https://www.bestprice.gr/extra/mcpLanding/assets/bestprice-mcp-share.png)
+
 Connect compatible AI applications to live product search, offer comparison,
 and price history from [BestPrice.gr](https://www.bestprice.gr/). The public
 service is read-only and does not require a BestPrice account or API key.
@@ -17,6 +19,17 @@ comparison reports shipping and delivered totals separately.
 - Legacy AI Catalog: `https://www.bestprice.gr/.well-known/ai-catalog.json`
 - Server card: `https://mcp.bestprice.gr/mcp/server-card`
 - Tools: `search_products`, `compare_offers`, `get_price_history`
+
+## Discovery
+
+- [Official MCP Registry record](https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp)
+- [WebMCP Registry](https://webmcp-registry.dev/domain/www.bestprice.gr)
+- [webmcp.com live tool index](https://webmcp.com/sites/bestprice.gr)
+- Community indexes: [Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp),
+  [MCP Repository](https://mcprepository.com/thebestco/bestprice-mcp),
+  [MCP Toplist](https://mcptoplist.com/server/gr.bestprice%2Fmcp),
+  [The MCP Index](https://themcpindex.com/servers/gr-bestprice-mcp), and
+  [AgentNDX](https://agentndx.ai/server/bestprice-mcp/)
 
 ## Browser-native WebMCP
 
