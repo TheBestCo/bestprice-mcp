@@ -1,5 +1,7 @@
 # BestPrice MCP
 
+[![Test public MCP package](https://github.com/TheBestCo/bestprice-mcp/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/TheBestCo/bestprice-mcp/actions/workflows/test.yml)
+
 ![BestPrice MCP: products, offers and price history for AI assistants](https://www.bestprice.gr/extra/mcpLanding/assets/bestprice-mcp-share.png)
 
 Connect compatible AI applications to live product search, offer comparison,
