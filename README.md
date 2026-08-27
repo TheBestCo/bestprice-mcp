@@ -70,6 +70,9 @@ Gemini, DeepSeek, Qwen, Z.ai, GLM, GitHub Copilot, VS Code, Cursor, and Microsof
 Copilot Studio connection examples. Every integration points to the same
 endpoint and imports only the three published read-only tools.
 
+[Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
+opens Claude's reviewed custom-connector flow with the public endpoint filled in.
+
 ## A safe first test
 
 1. Ask: `Βρες μου Sony WH-1000XM5 έως 300 ευρώ.`

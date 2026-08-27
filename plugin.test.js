@@ -143,6 +143,8 @@ describe('BestPrice Shopping plugin bundle', () => {
       type: 'http',
       url: 'https://mcp.bestprice.gr/mcp',
     });
+    assert.match(readme, /https:\/\/claude\.ai\/customize\/connectors\?/u);
+    assert.match(readme, /connectorUrl=https%3A%2F%2Fmcp\.bestprice\.gr%2Fmcp/u);
   });
 
   it('keeps the Claude Directory handoff factual and human-gated', () => {

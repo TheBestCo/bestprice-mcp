@@ -62,6 +62,9 @@ Official references: [Gemini Antigravity MCP servers](https://ai.google.dev/gemi
 
 ## Claude
 
+[Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp),
+then review and add the prefilled public endpoint.
+
 In an individual Claude account, open **Customize > Connectors**, choose
 **Add custom connector**, and enter the BestPrice endpoint. Team and Enterprise
 workspaces require an owner to add the URL under **Organization settings > Connectors**.
