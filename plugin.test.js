@@ -16,6 +16,9 @@ const qwenExtension = readJson('./qwen-extension.json');
 const cases = readJson('./submission/test-cases.json');
 // eslint-disable-next-line no-restricted-syntax -- immutable human-facing setup fixture
 const providerSetup = readFileSync(new URL('./PROVIDER_SETUP.md', import.meta.url), 'utf8');
+const readme = readFileSync(new URL('./README.md', import.meta.url), 'utf8');
+const security = readFileSync(new URL('./SECURITY.md', import.meta.url), 'utf8');
+const claudeSubmission = readFileSync(new URL('./submission/claude-directory.md', import.meta.url), 'utf8');
 
 describe('BestPrice Shopping plugin bundle', () => {
   it('is an MCP-only, read-only Codex plugin with no app surface', () => {
@@ -126,6 +129,33 @@ describe('BestPrice Shopping plugin bundle', () => {
   it('declares the canonical public legal pages required for submission', () => {
     assert.equal(manifest.interface.privacyPolicyURL, 'https://www.bestprice.gr/policies/privacy');
     assert.equal(manifest.interface.termsOfServiceURL, 'https://www.bestprice.gr/policies/terms');
+  });
+
+  it('publishes support, security, and a reviewable VS Code install link', () => {
+    assert.match(readme, /https:\/\/www\.bestprice\.gr\/contact/u);
+    assert.match(security, /feedback@bestprice\.gr/u);
+    assert.match(security, /https:\/\/www\.bestprice\.gr\/\.well-known\/security\.txt/u);
+
+    const encodedConfig = readme.match(/vscode:mcp\/install\?([^\)]+)/u)?.[1];
+    assert.ok(encodedConfig);
+    assert.deepEqual(JSON.parse(decodeURIComponent(encodedConfig)), {
+      name: 'bestprice-shopping',
+      type: 'http',
+      url: 'https://mcp.bestprice.gr/mcp',
+    });
+  });
+
+  it('keeps the Claude Directory handoff factual and human-gated', () => {
+    assert.match(claudeSubmission, /https:\/\/mcp\.bestprice\.gr\/mcp/u);
+    assert.match(claudeSubmission, /Allowed link origin \| `https:\/\/www\.bestprice\.gr`/u);
+    assert.match(claudeSubmission, /readOnlyHint: true/u);
+    assert.match(claudeSubmission, /does not replace the policy attestations/u);
+    assert.match(claudeSubmission, /authorized BestPrice owner/u);
+    for (const name of ['search-products', 'compare-offers', 'price-history']) {
+      const screenshot = readFileSync(new URL(`./submission/claude-${name}.png`, import.meta.url));
+      assert.equal(screenshot.subarray(1, 4).toString('ascii'), 'PNG');
+      assert.ok(screenshot.readUInt32BE(16) >= 1000, `${name} screenshot must be at least 1000px wide`);
+    }
   });
 
   it('provides at least five positive and three negative review cases', () => {

@@ -10,6 +10,8 @@ comparison reports shipping and delivered totals separately.
 - MCP endpoint: `https://mcp.bestprice.gr/mcp`
 - Official Registry ID: `gr.bestprice/mcp`
 - Public guide: `https://www.bestprice.gr/mcp`
+- Support: `https://www.bestprice.gr/contact`
+- Security reports: [`SECURITY.md`](SECURITY.md)
 - ARD discovery: `https://www.bestprice.gr/.well-known/ard.json`
 - WebMCP inventory: `https://www.bestprice.gr/.well-known/webmcp.json`
 - Legacy AI Catalog: `https://www.bestprice.gr/.well-known/ai-catalog.json`
@@ -34,6 +36,13 @@ Or add only the remote server:
 qwen mcp add --scope user --transport http bestprice-shopping \
   https://mcp.bestprice.gr/mcp
 ```
+
+## Install in VS Code
+
+[Add BestPrice Shopping to VS Code](vscode:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
+
+VS Code shows the server configuration for review before installing it. The
+same configuration can be added manually from [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md).
 
 ## Portable Agent Plugin
 

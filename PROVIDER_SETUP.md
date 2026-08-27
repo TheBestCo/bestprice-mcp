@@ -206,12 +206,18 @@ VS Code can use the same endpoint from `.vscode/mcp.json`:
 }
 ```
 
+One-click install:
+[Add BestPrice Shopping to VS Code](vscode:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
+
+VS Code displays the decoded server configuration for review before adding it.
+
 GitHub's cloud agent accepts an unauthenticated remote HTTP server with an
 explicit tool allowlist in repository MCP settings. Adding a server to one
 repository does not make it a public GitHub catalog listing.
 
 Official references: [Copilot CLI MCP servers](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers),
 [VS Code MCP servers](https://code.visualstudio.com/docs/agent-customization/mcp-servers),
+[VS Code MCP install links](https://code.visualstudio.com/api/extension-guides/ai/mcp#create-an-mcp-installation-url),
 [Copilot cloud-agent MCP configuration](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/configure-mcp-servers).
 
 ## Cursor
