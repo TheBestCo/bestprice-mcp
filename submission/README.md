@@ -35,6 +35,9 @@ passes; add it only in a later plugin version after that rollout.
   allowlist.
 - `test-cases.json` contains five positive and four negative review cases for
   the three published tools.
+- `claude-directory.md` contains the copy-ready Claude Directory field map,
+  data-handling notes, three response-only screenshots generated from live MCP
+  results, and the human-only submission gates.
 - Repository tests pin the endpoint, read-only surface, prompts, and case inventory.
 
 ## Official Registry publication
@@ -66,6 +69,9 @@ Registry record:
   `bestprice-mcp-logo-1024.png`; no substitute or AI-generated logo is used.
 - Run every submission case against production and attach the sanitized outcomes
   emitted by `scripts/agent-commerce-submission-canary.mjs`.
+- In a Claude Team or Enterprise organization, use `claude-directory.md` to
+  complete the saved Directory draft and attach 3–5 response-only MCP Apps
+  screenshots. An authorized owner must accept the directory terms.
 
 ## Future Registry versions
 
