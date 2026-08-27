@@ -181,6 +181,51 @@ For a webmcp.com resource suggestion, use `https://www.bestprice.gr/mcp` and:
 > specifications and price history. The implementation is live, read-only and
 > open source.
 
+## Additional free directories
+
+Checked or submitted on 2026-08-27:
+
+- MCP Market: already live at `https://mcpmarket.com/server/bestprice`.
+- MyMCPTools: free submission accepted for review; stated review window is
+  24–48 hours.
+- ClawTools: free submission accepted as project `11139559`; status is
+  `waiting approval`.
+- Kiprio: repository and contact submitted for the next weekly refresh. The
+  form cleared without issuing a durable receipt.
+- MCP Server Hub: name, repository, category, and Streamable HTTP
+  configuration submitted. The form cleared without issuing a durable receipt.
+- WebMCP List: site, public URL, description, email, and one representative
+  tool submitted. The form reset but issued no durable receipt; its category
+  control had no available options, matching the directory's empty public
+  category index at submission time.
+- IndexMCP: form completion failed server-side with `Could not find the
+  'category' column of 'submissions' in the schema cache`.
+- MCPServe: `https://mcpserve.com/submit` returned `ERR_EMPTY_RESPONSE`.
+- MCPCMD: the listing form is valid but its reCAPTCHA-protected submission did
+  not produce a confirmation. Do not claim a pending listing without a receipt.
+- ClaudeRules and MCPInstall: each free route requires a new third-party OAuth
+  grant. Do not authorize either application without a separate account-owner
+  decision.
+- DReview: requires creating a password-based account. Credential creation is
+  intentionally left to the account owner.
+- ClaudePluginHub: Cloudflare presented an interactive browser challenge.
+  Complete it manually before attempting its listing form.
+
+## Programme and challenge status
+
+- Chrome Built-in AI Early Preview Program: submitted successfully on
+  2026-08-27 using the BestPrice production WebMCP implementation as the live
+  use case.
+- The WebMCP Challenge on Devpost: account authorization and challenge
+  registration are complete. Project creation stops at Devpost's interactive
+  image CAPTCHA. The project also requires the prepared sub-three-minute demo
+  to be uploaded publicly to YouTube before final submission.
+- GitHub social preview and YouTube media upload remain pending because the
+  browser bridge still returns `Not allowed` from `fileChooser.setFiles` even
+  after Chrome file-URL access was enabled. Restart Chrome after changing the
+  extension permission, then retry with the assets listed in
+  `challenge-form-copy.md`.
+
 ## Deliberately skipped
 
 - MCP Find requires a package name and creates a pull request. BestPrice is a

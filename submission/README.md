@@ -100,16 +100,35 @@ Checked on 2026-08-27:
   review on 2026-08-27.
 - FutureTools accepted the public launch page for editorial review on
   2026-08-27.
+- MCP Market already indexes the repository at
+  `https://mcpmarket.com/server/bestprice`. Its public page identifies the
+  official GitHub organization, the read-only surface, and the search,
+  delivered-price comparison, and price-history use cases.
+- MyMCPTools accepted a free submission for review on 2026-08-27 and reports a
+  24–48 hour review window.
+- ClawTools accepted the free listing as project `11139559` on 2026-08-27 and
+  currently marks it `waiting approval`.
+- Kiprio's free repository submission form was completed with the public GitHub
+  URL on 2026-08-27 for its next weekly refresh. MCP Server Hub's free form was
+  also completed and cleared; neither service issued a durable receipt, so
+  neither is counted as confirmed until it appears publicly or acknowledges the
+  submission.
+- MCP Server Finder and Developers Digest received the canonical listing by
+  email on 2026-08-27. Developers Digest's documented public issue repository
+  currently returns 404, so email was the only working no-pull-request route.
+- MCPub accepted the public endpoint and reports it registered. AllMCPs
+  publishes the listing at `https://allmcps.com/mcp/bestprice-shopping`.
+- IndexMCP could not accept the completed form because its production backend
+  returned `Could not find the 'category' column of 'submissions' in the schema
+  cache`. Retry only after the directory repairs that schema.
 - PulseMCP has paused direct submissions and says official Registry entries
   will be ingested when submissions resume.
-- The WebMCP Registry verified domain ownership on 2026-08-27. Its public index
-  still shows the preceding twelve-tool manifest; the live manifest now has
-  thirteen tools. The authenticated add-or-update form is ready for a final
-  refresh that adds `open_visible_product` and corrects the navigation-tool
-  classifications without removing the existing contracts.
+- The WebMCP Registry verified domain ownership and refreshed the listing on
+  2026-08-27. Its public index now shows all thirteen tools, including
+  `open_visible_product`.
 - WebMCP.com independently classifies the surface as Commerce. Its public index
-  also still shows the preceding twelve-tool manifest; requesting a refresh
-  requires an email address.
+  still shows the preceding twelve-tool manifest; a refresh has been requested
+  with the public BestPrice contact address.
 - The separate manifest registry at `https://webmcpregistry.org` accepts the
   exact `/.well-known/webmcp.json` schema BestPrice publishes. Its origin-only
   submission is ready, as are the free review forms at
@@ -121,6 +140,17 @@ Checked on 2026-08-27:
 - Chrome runtime tests prove the page registers 1 home, 8 listing, and 6
   product-page tools. WebMCP Directory does not yet list BestPrice and requires
   an email address plus an interactive Turnstile challenge to submit it.
+- Chrome accepted BestPrice's Built-in AI Early Preview Program application on
+  2026-08-27. The application identifies the production WebMCP surface, its
+  thirteen tools, its current origin-trial posture, and the need for stable
+  cross-browser, mobile, lifecycle, discovery, permission, and privacy tooling.
+- Devpost registration for The WebMCP Challenge is complete. Creating the
+  public project is blocked only by Devpost's interactive image CAPTCHA and the
+  required public YouTube upload; neither should be automated or bypassed.
+- Truespar has ingested the official `gr.bestprice/mcp` Registry record. Its
+  02:33 UTC catalog snapshot still labels the endpoint `dead`, while a direct
+  production `tools/list` returned HTTP 200 at 14:04 UTC. Allow the next daily
+  liveness pass to reconcile the stale result before escalating.
 - AgentReady indexed `https://www.bestprice.gr` successfully on 2026-08-27 and
   made its agent-readiness record queryable. The optional account-bound claim
   link is `https://www.agentready.it.com/claim?id=87474b1d-029a-4057-abde-158e5c3d0685`.
@@ -151,10 +181,10 @@ Checked on 2026-08-27:
 - `/mcp` is included in `pages/sitemap/misc.inc`, advertised by the public
   sitemap index, and present in the live compressed misc sitemap. No separate or
   duplicate MCP sitemap is needed.
-- The remaining compatible free directory payloads are prepared in
-  `directory-listings.md`. MCP Server Finder currently returns zero results for
-  BestPrice; AllMCPs, FindMCP.app, MCPub, and the Developers Digest issue route
-  also have no BestPrice listing as of 2026-08-27.
+- The remaining compatible free directory payloads and the results of each
+  attempted route are recorded in `directory-listings.md`. FindMCP.app's
+  submission API currently returns HTTP 500. Paid-only, reciprocal-badge,
+  pull-request, broken, and unverified-OAuth routes remain deliberately skipped.
 
 ## Remaining provider review actions
 
