@@ -132,6 +132,18 @@ The bridge discovers the same three tools and exposes them to the model under
 the `mcp__bestprice__*` namespace. This connects DeepSeek-powered Harness agents;
 it does not imply that the consumer chat at deepseek.com imports public MCPs.
 
+For an isolated one-shot check, use the bundled patch layer:
+
+```sh
+dsh --profile headless --patch examples/deepseek-harness.patch.yml \
+  "Use BestPrice to find Sony WH-1000XM5 in Greece."
+```
+
+This exact path has been exercised against the production server with the
+official `@deepseek-ai/dsh` 0.1.1-rc.2 release. It returned the live grouped
+product, item price, and a signed BestPrice landing URL through
+`mcp__bestprice__search_products`.
+
 Official references: [DeepSeek Harness MCP client](https://github.com/deepseek-ai/deepseek-harness/blob/master/packages/mcp/mcp-client/README.md),
 [DeepSeek Responses API](https://api-docs.deepseek.com/guides/responses_api/),
 [DeepSeek API tool calls](https://api-docs.deepseek.com/guides/tool_calls).

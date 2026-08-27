@@ -47,10 +47,12 @@ HTTP endpoint. Cursor users can also install it from the
 ## Use with DeepSeek, Z.ai and GLM
 
 DeepSeek Harness can connect through its official MCP bridge; see
-[`examples/deepseek-harness.yml`](examples/deepseek-harness.yml). Z.ai's general
-API supports third-party Streamable HTTP MCP servers; a complete Python example
-is available at [`examples/zai-glm.py`](examples/zai-glm.py). Provider access
-needs the relevant provider account or API key. BestPrice itself needs neither.
+[`examples/deepseek-harness.yml`](examples/deepseek-harness.yml), or run the
+ready-to-use [`examples/deepseek-harness.patch.yml`](examples/deepseek-harness.patch.yml)
+with `dsh --profile headless --patch`. Z.ai's general API supports third-party
+Streamable HTTP MCP servers; a complete Python example is available at
+[`examples/zai-glm.py`](examples/zai-glm.py). Provider access needs the relevant
+provider account or API key. BestPrice itself needs neither.
 
 ## Other clients
 
