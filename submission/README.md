@@ -69,13 +69,25 @@ Checked on 2026-08-27:
   `https://mcptoplist.com/server/gr.bestprice%2Fmcp`.
 - Smithery exposes `bestprice/shopping`, but its release UI still marks a URL
   publication as failed even though Smithery's own tool client can enumerate
-  all three tools. The reproducible platform issue is tracked at
+  all three tools. A fresh publication with release ID
+  `204c3f7d-bac2-4bac-8623-a35418669cd4` reproduced the platform error on
+  Smithery CLI 4.11.1. The reproducible issue is tracked at
   `https://github.com/arcadeai-labs/smithery-cli/issues/808`.
+- MCP.Directory has already accepted the repository and reports it queued for
+  review at `https://mcp.directory/submit`.
+- APIs.io accepted the MCP/API listing for review under reference `5fea127f`.
 - PulseMCP has paused direct submissions and says official Registry entries
   will be ingested when submissions resume.
 - The WebMCP Registry has indexed all twelve browser tools for
-  `www.bestprice.gr`; its DNS ownership check remains the only registry action
-  not yet confirmed.
+  `www.bestprice.gr` and verified domain ownership on 2026-08-27.
+- WebMCP Directory accepted the domain but its scanner currently reports no
+  surface even though Chrome runtime tests prove the page registers 1 home,
+  7 listing, and 6 product-page tools. Do not alter the working runtime to
+  satisfy that third-party scanner.
+- BestPrice publishes both the AI Catalog predecessor document and the current
+  ARD document. `/.well-known/ard.json`, the `rel="ard"` HTML link, and the
+  `Agentmap` robots directive expose directly addressable capabilities and five
+  representative queries for semantic discovery.
 
 ## Remaining provider review actions
 
