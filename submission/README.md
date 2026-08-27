@@ -42,6 +42,8 @@ passes; add it only in a later plugin version after that rollout.
   results, and the human-only submission gates.
 - `perplexity-connector.md` contains the copy-ready individual and organization
   connector fields plus an end-to-end acceptance check.
+- `distribution-kit.md` contains channel-specific launch copy, measurable links,
+  a short Greek press note, and a deliberately staged release sequence.
 - Repository tests pin the endpoint, read-only surface, prompts, and case inventory.
 
 ## Official Registry publication
