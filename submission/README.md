@@ -54,12 +54,12 @@ passes; add it only in a later plugin version after that rollout.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
   `bestprice.gr` apex. Keep that proof in DNS so future versions can be
   published under the same permanent namespace.
-- Six consecutive post-publication production canaries passed 30/30 checks
+- Seven consecutive post-publication production canaries passed 30/30 checks
   each for
   website and protocol discovery, modern and legacy MCP paths, the three
   read-only tools, clean public product and merchant identities, the ad-free
   offer contract, policy boundaries, MCP Apps UI, and signed landing behavior.
-  Across all 180 checks they followed no merchant redirect, invoked no checkout
+  Across all 210 checks they followed no merchant redirect, invoked no checkout
   tool, and needed no rate-limit retry.
 - The deterministic routing evaluator passes all 100 Greek shopping prompts,
   covering exact models, variants, budgets, feature constraints, ambiguous
@@ -100,10 +100,16 @@ Checked on 2026-08-27:
   will be ingested when submissions resume.
 - The WebMCP Registry verified domain ownership on 2026-08-27. Its public index
   still shows the preceding twelve-tool manifest; the live manifest now has
-  thirteen tools, and the registry refresh endpoint requires an account API key.
+  thirteen tools. The authenticated add-or-update form is ready for a final
+  refresh that adds `open_visible_product` and corrects the navigation-tool
+  classifications without removing the existing contracts.
 - WebMCP.com independently classifies the surface as Commerce. Its public index
   also still shows the preceding twelve-tool manifest; requesting a refresh
   requires an email address.
+- The separate manifest registry at `https://webmcpregistry.org` accepts the
+  exact `/.well-known/webmcp.json` schema BestPrice publishes. Its origin-only
+  submission is ready, as are the free review forms at
+  `https://webmcpdirectory.com/submit` and `https://webmcplist.com`.
 - The live `/.well-known/webmcp.json` validates successfully with
   `webmcpreg@latest` and declares thirteen unique tools. The registry publisher
   currently returns `Application not found` from its own submission API, so a
@@ -135,6 +141,9 @@ Checked on 2026-08-27:
   ARD document. `/.well-known/ard.json`, the `rel="ard"` HTML link, and the
   `Agentmap` robots directive expose directly addressable capabilities and five
   representative queries for semantic discovery.
+- BestPrice pages also publish `rel="describedby"` to `/llms.txt`. Production
+  verification covers the MCP explainer, a product page, and a search request
+  after its canonical listing redirect.
 
 ## Remaining provider review actions
 
