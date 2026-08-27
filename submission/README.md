@@ -106,9 +106,12 @@ Checked on 2026-08-27:
 - AgentReady indexed `https://www.bestprice.gr` successfully on 2026-08-27 and
   made its agent-readiness record queryable. The optional account-bound claim
   link is `https://www.agentready.it.com/claim?id=87474b1d-029a-4057-abde-158e5c3d0685`.
-- The MCP Index ingests the official MCP Registry nightly, so the verified
-  `gr.bestprice/mcp` publication is eligible without a separate package or
-  protocol fork.
+- The MCP Index has already ingested the official Registry record at
+  `https://themcpindex.com/servers/gr-bestprice-mcp`; it is synced and awaiting
+  the directory's next verification pass.
+- BestPrice submitted the refreshed public guide and four machine-readable
+  discovery URLs to IndexNow on 2026-08-27; the aggregator accepted all five
+  URLs with HTTP 200.
 - AgenticSkills currently has no configured submission review queue, so its
   form cannot accept any listing. MCP Server Space requires authorization of
   an unverified, low-adoption GitHub OAuth app; it was deliberately not
