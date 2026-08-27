@@ -61,6 +61,14 @@ passes; add it only in a later plugin version after that rollout.
   offer contract, policy boundaries, MCP Apps UI, and signed landing behavior.
   Across all 150 checks they followed no merchant redirect, invoked no checkout
   tool, and needed no rate-limit retry.
+- The deterministic routing evaluator passes all 100 Greek shopping prompts,
+  covering exact models, variants, budgets, feature constraints, ambiguous
+  searches, stock, location-sensitive offers, merchant quality, unknown
+  shipping, price history, and the deliberately unpublished basket route.
+  Its separate adversarial suite passes all 18 malformed-input, bulk-dump,
+  direct-checkout, direct-merchant-URL, and prompt-injection cases. These are
+  local contract and policy checks, not a substitute for human evaluation of
+  live shopping answers.
 
 Registry record:
 `https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp`
@@ -109,6 +117,11 @@ Checked on 2026-08-27:
 - The MCP Index has already ingested the official Registry record at
   `https://themcpindex.com/servers/gr-bestprice-mcp`; it is synced and awaiting
   the directory's next verification pass.
+- AgentNDX indexes the endpoint as an active, free, unauthenticated Streamable
+  HTTP server at `https://agentndx.ai/server/bestprice-mcp/`. Its automated
+  listing has the correct endpoint, repository, homepage, tool names, and
+  provider setup command; the directory has not yet verified publisher
+  ownership.
 - BestPrice submitted the refreshed public guide and four machine-readable
   discovery URLs to IndexNow on 2026-08-27; the aggregator accepted all five
   URLs with HTTP 200.
