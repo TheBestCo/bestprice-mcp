@@ -1,9 +1,11 @@
 # BestPrice Shopping submission checklist
 
-The repository bundle is intentionally MCP-only: it contains no embedded UI,
-write capability, hook, or skill. It includes provider-specific connection
-metadata plus a vendor-neutral Agent Plugin manifest for clients and
-marketplaces that implement that open format.
+The repository contains two separate read-only integration surfaces: the
+remote MCP connection bundle and the browser-native WebMCP challenge layer.
+It has no checkout capability, hook, or account credential. Provider-specific
+connection metadata and a vendor-neutral Agent Plugin manifest point to the
+remote service; `webmcp/` contains the Apache-2.0 page-tool source, evaluator,
+and tests.
 
 ## Canonical identity
 

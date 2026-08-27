@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>BestPrice WebMCP evaluator</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <img src="../../assets/bestprice-logo.svg" alt="BestPrice.gr" />
+      <div>
+        <strong>WebMCP evaluator</strong>
+        <span>Deterministic local fixture. No account, checkout, or external request.</span>
+      </div>
+      <output id="runtime-status" class="status">Connecting…</output>
+    </header>
+
+    <main>
+      <section class="shop" aria-labelledby="shop-title">
+        <nav class="views" aria-label="Fixture page">
+          <button type="button" data-view="home">Home</button>
+          <button type="button" data-view="listing">Listing</button>
+          <button type="button" data-view="product">Product</button>
+        </nav>
+        <div id="shop-content"></div>
+      </section>
+
+      <aside class="inspector" aria-labelledby="inspector-title">
+        <div class="inspector__header">
+          <div>
+            <p class="eyebrow">Open-tab tools</p>
+            <h1 id="inspector-title">What the agent can use here</h1>
+          </div>
+          <span id="runtime-mode" class="mode"></span>
+        </div>
+        <p class="lede">
+          The tool set follows the page. Run a safe sample call below, or open this fixture in a browser with WebMCP support.
+        </p>
+        <div id="tool-list" class="tool-list"></div>
+        <section class="result" aria-live="polite">
+          <span>Latest result</span>
+          <pre id="tool-result">Choose a tool to inspect its structured result.</pre>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      Production: <a href="https://www.bestprice.gr/" rel="noreferrer">bestprice.gr</a>
+      <span>·</span>
+      Public guide: <a href="https://www.bestprice.gr/mcp" rel="noreferrer">bestprice.gr/mcp</a>
+    </footer>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

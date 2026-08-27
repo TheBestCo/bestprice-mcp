@@ -18,6 +18,14 @@ comparison reports shipping and delivered totals separately.
 - Server card: `https://mcp.bestprice.gr/mcp/server-card`
 - Tools: `search_products`, `compare_offers`, `get_price_history`
 
+## Browser-native WebMCP
+
+BestPrice pages also expose 13 contextual WebMCP tools to compatible browsers.
+They cover the visible search, filter, sort, product, offer, specification, and
+price-history journey while leaving the merchant choice to the shopper. The
+Apache-2.0 source, deterministic evaluator, tests, and architecture are in
+[`webmcp/`](webmcp/).
+
 ## Install for Gemini CLI
 
 ```sh
