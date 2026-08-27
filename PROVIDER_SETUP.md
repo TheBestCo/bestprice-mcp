@@ -216,8 +216,10 @@ Cursor supports remote Streamable HTTP servers in `.cursor/mcp.json`:
 }
 ```
 
-Enable only the three reviewed tools in Cursor's MCP settings. This is a manual
-connection; inclusion in Cursor's curated directory requires a separate review.
+Enable only the three reviewed tools in Cursor's MCP settings. The same
+configuration is published in the
+[BestPrice Shopping community listing](https://cursor.directory/plugins/bestprice-shopping),
+with directory verification requested.
 
 One-click install:
 [Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)

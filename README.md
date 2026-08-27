@@ -41,7 +41,8 @@ This repository also follows the vendor-neutral
 [Agent Plugins 1.0 specification](https://agent-plugins.org/specification).
 Clients that support Agent Plugins can load the root `plugin.json` and
 `mcp.json`; the package connects only to the same public, read-only Streamable
-HTTP endpoint.
+HTTP endpoint. Cursor users can also install it from the
+[BestPrice Shopping community listing](https://cursor.directory/plugins/bestprice-shopping).
 
 ## Use with DeepSeek, Z.ai and GLM
 
