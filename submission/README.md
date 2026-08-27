@@ -76,14 +76,26 @@ Checked on 2026-08-27:
 - MCP.Directory has already accepted the repository and reports it queued for
   review at `https://mcp.directory/submit`.
 - APIs.io accepted the MCP/API listing for review under reference `5fea127f`.
+- MCPServers.org accepted the public endpoint and repository for editorial
+  review on 2026-08-27.
+- FutureTools accepted the public launch page for editorial review on
+  2026-08-27.
 - PulseMCP has paused direct submissions and says official Registry entries
   will be ingested when submissions resume.
 - The WebMCP Registry has indexed all twelve browser tools for
   `www.bestprice.gr` and verified domain ownership on 2026-08-27.
+- WebMCP.com independently detects all twelve tools from the production site
+  and classifies the surface as Commerce.
 - WebMCP Directory accepted the domain but its scanner currently reports no
   surface even though Chrome runtime tests prove the page registers 1 home,
   7 listing, and 6 product-page tools. Do not alter the working runtime to
   satisfy that third-party scanner.
+- AgenticSkills currently has no configured submission review queue, so its
+  form cannot accept any listing. MCP Server Space requires authorization of
+  an unverified, low-adoption GitHub OAuth app; it was deliberately not
+  authorized. Stork requires either a paid listing or a reciprocal production
+  badge, and mcp.so requires a paid listing; neither is justified for this
+  pilot.
 - BestPrice publishes both the AI Catalog predecessor document and the current
   ARD document. `/.well-known/ard.json`, the `rel="ard"` HTML link, and the
   `Agentmap` robots directive expose directly addressable capabilities and five
