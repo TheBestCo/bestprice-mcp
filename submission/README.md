@@ -44,6 +44,8 @@ passes; add it only in a later plugin version after that rollout.
   connector fields plus an end-to-end acceptance check.
 - `distribution-kit.md` contains channel-specific launch copy, measurable links,
   a short Greek press note, and a deliberately staged release sequence.
+- `directory-listings.md` keeps one canonical field map for the remaining free
+  MCP and WebMCP directories, including a no-pull-request route where available.
 - Repository tests pin the endpoint, read-only surface, prompts, and case inventory.
 
 ## Official Registry publication
@@ -146,6 +148,13 @@ Checked on 2026-08-27:
 - BestPrice pages also publish `rel="describedby"` to `/llms.txt`. Production
   verification covers the MCP explainer, a product page, and a search request
   after its canonical listing redirect.
+- `/mcp` is included in `pages/sitemap/misc.inc`, advertised by the public
+  sitemap index, and present in the live compressed misc sitemap. No separate or
+  duplicate MCP sitemap is needed.
+- The remaining compatible free directory payloads are prepared in
+  `directory-listings.md`. MCP Server Finder currently returns zero results for
+  BestPrice; AllMCPs, FindMCP.app, MCPub, and the Developers Digest issue route
+  also have no BestPrice listing as of 2026-08-27.
 
 ## Remaining provider review actions
 

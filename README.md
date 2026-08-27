@@ -65,14 +65,21 @@ qwen mcp add --scope user --transport http bestprice-shopping \
 VS Code shows the server configuration for review before installing it. The
 same configuration can be added manually from [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md).
 
+## Install in Cursor
+
+[Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
+
+Cursor shows the decoded remote-server configuration before adding it. The
+same endpoint is also available through the
+[BestPrice Shopping community listing](https://cursor.directory/plugins/bestprice-shopping).
+
 ## Portable Agent Plugin
 
 This repository also follows the vendor-neutral
 [Agent Plugins 1.0 specification](https://agent-plugins.org/specification).
 Clients that support Agent Plugins can load the root `plugin.json` and
 `mcp.json`; the package connects only to the same public, read-only Streamable
-HTTP endpoint. Cursor users can also install it from the
-[BestPrice Shopping community listing](https://cursor.directory/plugins/bestprice-shopping).
+HTTP endpoint.
 
 ## Use with DeepSeek, Z.ai and GLM
 

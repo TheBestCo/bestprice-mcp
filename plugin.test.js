@@ -133,7 +133,7 @@ describe('BestPrice Shopping plugin bundle', () => {
     assert.equal(manifest.interface.termsOfServiceURL, 'https://www.bestprice.gr/policies/terms');
   });
 
-  it('publishes support, security, and a reviewable VS Code install link', () => {
+  it('publishes support, security, and reviewable editor install links', () => {
     assert.match(readme, /https:\/\/www\.bestprice\.gr\/contact/u);
     assert.match(security, /feedback@bestprice\.gr/u);
     assert.match(security, /https:\/\/www\.bestprice\.gr\/\.well-known\/security\.txt/u);
@@ -145,6 +145,15 @@ describe('BestPrice Shopping plugin bundle', () => {
       type: 'http',
       url: 'https://mcp.bestprice.gr/mcp',
     });
+
+    const cursorConfig = new URL(
+      readme.match(/https:\/\/cursor\.com\/install-mcp\?[^)]+/u)?.[0],
+    );
+    assert.equal(cursorConfig.searchParams.get('name'), 'bestprice-shopping');
+    assert.deepEqual(
+      JSON.parse(Buffer.from(cursorConfig.searchParams.get('config'), 'base64').toString('utf8')),
+      { url: 'https://mcp.bestprice.gr/mcp' },
+    );
     assert.match(readme, /https:\/\/claude\.ai\/customize\/connectors\?/u);
     assert.match(readme, /connectorUrl=https%3A%2F%2Fmcp\.bestprice\.gr%2Fmcp/u);
   });
