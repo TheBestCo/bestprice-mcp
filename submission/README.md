@@ -144,9 +144,16 @@ Checked on 2026-08-27:
   2026-08-27. The application identifies the production WebMCP surface, its
   thirteen tools, its current origin-trial posture, and the need for stable
   cross-browser, mobile, lifecycle, discovery, permission, and privacy tooling.
-- Devpost registration for The WebMCP Challenge is complete. Creating the
-  public project is blocked only by Devpost's interactive image CAPTCHA and the
-  required public YouTube upload; neither should be automated or bypassed.
+- The Devpost project for The WebMCP Challenge is complete at
+  `https://devpost.com/software/bestprice-shop-with-the-page-not-around-it`.
+  It includes the public demo, source repository, gallery artwork, implementation
+  story, exact production testing steps, and an honest distinction between the
+  existing BestPrice MCP service and the browser-native WebMCP work built for
+  the challenge. Final submission is awaiting only the account owner's explicit
+  acceptance of Devpost's Official Rules and Terms of Service.
+- The public demo is available at `https://youtu.be/guJ836IGfNA`, and the
+  GitHub repository now uses the branded BestPrice MCP artwork as its social
+  preview image.
 - Truespar has ingested the official `gr.bestprice/mcp` Registry record. Its
   02:33 UTC catalog snapshot still labels the endpoint `dead`, while a direct
   production `tools/list` returned HTTP 200 at 14:04 UTC. Allow the next daily

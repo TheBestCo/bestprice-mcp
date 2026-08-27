@@ -216,15 +216,17 @@ Checked or submitted on 2026-08-27:
 - Chrome Built-in AI Early Preview Program: submitted successfully on
   2026-08-27 using the BestPrice production WebMCP implementation as the live
   use case.
-- The WebMCP Challenge on Devpost: account authorization and challenge
-  registration are complete. Project creation stops at Devpost's interactive
-  image CAPTCHA. The project also requires the prepared sub-three-minute demo
-  to be uploaded publicly to YouTube before final submission.
-- GitHub social preview and YouTube media upload remain pending because the
-  browser bridge still returns `Not allowed` from `fileChooser.setFiles` even
-  after Chrome file-URL access was enabled. Restart Chrome after changing the
-  extension permission, then retry with the assets listed in
-  `challenge-form-copy.md`.
+- The WebMCP Challenge on Devpost: project `1156703` is complete and publicly
+  previewable at
+  `https://devpost.com/software/bestprice-shop-with-the-page-not-around-it`.
+  The story, production testing instructions, source link, Built With tags,
+  organization details, thumbnail, gallery artwork, and public demo have all
+  been saved. Final submission is waiting only for the account owner to accept
+  the challenge's Official Rules and Devpost Terms of Service.
+- The public demo is live at `https://youtu.be/guJ836IGfNA`.
+- The GitHub repository social preview uses the production BestPrice MCP share
+  image from `extra/mcpLanding/assets/bestprice-mcp-share.png` in the
+  `bestprice.gr` repository.
 
 ## Deliberately skipped
 
