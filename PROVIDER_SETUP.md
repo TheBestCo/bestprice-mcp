@@ -70,6 +70,10 @@ In an individual Claude account, open **Customize > Connectors**, choose
 workspaces require an owner to add the URL under **Organization settings > Connectors**.
 Enable only the three published tools for conversations that need shopping data.
 
+Claude may identify the connection as `claude-ai`, `Anthropic`, or
+`claude-code`. BestPrice uses that unauthenticated label only for aggregate
+telemetry and never for access control.
+
 Anthropic's public Connectors Directory uses a separate submission portal in
 organization settings. Submission requires a Team or Enterprise organization
 and an Owner, Primary Owner, or delegated Directory role. An individual account
@@ -77,6 +81,31 @@ can connect and test BestPrice, but cannot submit it to the directory.
 
 Official references: [Claude custom connectors](https://claude.com/docs/connectors/building),
 [Connectors Directory submission](https://claude.com/docs/connectors/building/submission).
+
+## Perplexity
+
+Open **Account Settings > Connectors**, choose **+ Custom connector**, then
+select **Remote**. Enter:
+
+- Name: `BestPrice Shopping`
+- MCP server URL: `https://mcp.bestprice.gr/mcp`
+- Authentication: `None`
+- Transport: `Streamable HTTP`
+- Description: `Read-only product search, offer comparison, and price history for Greece.`
+- Icon: `submission/bestprice-mcp-logo-1024.png`
+
+The square icon is 35 KB, below Perplexity's 128 KB limit. After adding the
+connector, open its card to enable it and select it as a source in a new
+conversation. Organization administrators can add and share the same remote
+connector for their workspace.
+
+Perplexity's current documentation describes individual and organization-managed
+custom remote connectors. It does not describe a public third-party connector
+directory submission. Connecting BestPrice therefore does not imply a public
+Perplexity listing or endorsement.
+
+Official references: [Perplexity custom remote connectors](https://www.perplexity.ai/help-center/es/articles/13915507-anadir-conectores-remotos-personalizados),
+[Perplexity account settings](https://www.perplexity.ai/help-center/en/articles/10352993-account-settings).
 
 ## Grok
 

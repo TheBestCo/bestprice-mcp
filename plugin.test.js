@@ -19,6 +19,7 @@ const providerSetup = readFileSync(new URL('./PROVIDER_SETUP.md', import.meta.ur
 const readme = readFileSync(new URL('./README.md', import.meta.url), 'utf8');
 const security = readFileSync(new URL('./SECURITY.md', import.meta.url), 'utf8');
 const claudeSubmission = readFileSync(new URL('./submission/claude-directory.md', import.meta.url), 'utf8');
+const perplexitySubmission = readFileSync(new URL('./submission/perplexity-connector.md', import.meta.url), 'utf8');
 
 describe('BestPrice Shopping plugin bundle', () => {
   it('is an MCP-only, read-only Codex plugin with no app surface', () => {
@@ -91,6 +92,7 @@ describe('BestPrice Shopping plugin bundle', () => {
       'OpenAI',
       'Gemini',
       'Claude',
+      'Perplexity',
       'Grok',
       'Qwen',
       'DeepSeek',
@@ -158,6 +160,14 @@ describe('BestPrice Shopping plugin bundle', () => {
       assert.equal(screenshot.subarray(1, 4).toString('ascii'), 'PNG');
       assert.ok(screenshot.readUInt32BE(16) >= 1000, `${name} screenshot must be at least 1000px wide`);
     }
+  });
+
+  it('keeps the Perplexity connector handoff bounded and honest', () => {
+    assert.match(perplexitySubmission, /https:\/\/mcp\.bestprice\.gr\/mcp/u);
+    assert.match(perplexitySubmission, /Authentication \| None/u);
+    assert.match(perplexitySubmission, /Transport \| Streamable HTTP/u);
+    assert.match(perplexitySubmission, /does not currently document a public\s+third-party directory/u);
+    assert.ok(readFileSync(new URL('./submission/bestprice-mcp-logo-1024.png', import.meta.url)).length < 128 * 1024);
   });
 
   it('provides at least five positive and three negative review cases', () => {

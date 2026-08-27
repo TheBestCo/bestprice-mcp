@@ -29,15 +29,17 @@ passes; add it only in a later plugin version after that rollout.
   same public Streamable HTTP endpoint without credentials or write tools.
 - `server.json` is the validated, provider-neutral manifest prepared for the
   official MCP Registry.
-- `PROVIDER_SETUP.md` keeps OpenAI, Gemini, Claude, Grok, Qwen, DeepSeek,
-  Z.ai/GLM, GitHub Copilot, VS Code, Cursor, and Microsoft Copilot Studio
-  connection steps pinned to the same public endpoint and read-only tool
+- `PROVIDER_SETUP.md` keeps OpenAI, Gemini, Claude, Perplexity, Grok, Qwen,
+  DeepSeek, Z.ai/GLM, GitHub Copilot, VS Code, Cursor, and Microsoft Copilot
+  Studio connection steps pinned to the same public endpoint and read-only tool
   allowlist.
 - `test-cases.json` contains five positive and four negative review cases for
   the three published tools.
 - `claude-directory.md` contains the copy-ready Claude Directory field map,
   data-handling notes, three response-only screenshots generated from live MCP
   results, and the human-only submission gates.
+- `perplexity-connector.md` contains the copy-ready individual and organization
+  connector fields plus an end-to-end acceptance check.
 - Repository tests pin the endpoint, read-only surface, prompts, and case inventory.
 
 ## Official Registry publication
@@ -115,6 +117,10 @@ Checked on 2026-08-27:
 - In a Claude Team or Enterprise organization, use `claude-directory.md` to
   complete the saved Directory draft and attach 3–5 response-only MCP Apps
   screenshots. An authorized owner must accept the directory terms.
+- Add and verify the remote Perplexity connector from an eligible account or
+  organization after the production origin allowlist includes Perplexity's
+  exact hosted origins. Perplexity currently documents no public directory
+  submission for third-party custom connectors.
 
 ## Future Registry versions
 

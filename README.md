@@ -63,12 +63,21 @@ Streamable HTTP MCP servers; a complete Python example is available at
 [`examples/zai-glm.py`](examples/zai-glm.py). Provider access needs the relevant
 provider account or API key. BestPrice itself needs neither.
 
+## Use with Claude and Perplexity
+
+Both services can add the production endpoint as a custom remote connector.
+BestPrice requires no account, OAuth flow, or API key. Claude also has a
+separate public Connectors Directory review; Perplexity currently documents
+individual and organization-managed connectors. Exact setup values are in
+[`PROVIDER_SETUP.md`](PROVIDER_SETUP.md).
+
 ## Other clients
 
-See [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md) for OpenAI, ChatGPT, Claude, Grok,
-Gemini, DeepSeek, Qwen, Z.ai, GLM, GitHub Copilot, VS Code, Cursor, and Microsoft
-Copilot Studio connection examples. Every integration points to the same
-endpoint and imports only the three published read-only tools.
+See [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md) for OpenAI, ChatGPT, Claude,
+Perplexity, Grok, Gemini, DeepSeek, Qwen, Z.ai, GLM, GitHub Copilot, VS Code,
+Cursor, and Microsoft Copilot Studio connection examples. Every integration
+points to the same endpoint and imports only the three published read-only
+tools.
 
 [Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
 opens Claude's reviewed custom-connector flow with the public endpoint filled in.
