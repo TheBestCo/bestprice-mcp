@@ -54,12 +54,12 @@ passes; add it only in a later plugin version after that rollout.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
   `bestprice.gr` apex. Keep that proof in DNS so future versions can be
   published under the same permanent namespace.
-- Five consecutive post-publication production canaries passed 30/30 checks
+- Six consecutive post-publication production canaries passed 30/30 checks
   each for
   website and protocol discovery, modern and legacy MCP paths, the three
   read-only tools, clean public product and merchant identities, the ad-free
   offer contract, policy boundaries, MCP Apps UI, and signed landing behavior.
-  Across all 150 checks they followed no merchant redirect, invoked no checkout
+  Across all 180 checks they followed no merchant redirect, invoked no checkout
   tool, and needed no rate-limit retry.
 - The deterministic routing evaluator passes all 100 Greek shopping prompts,
   covering exact models, variants, budgets, feature constraints, ambiguous
