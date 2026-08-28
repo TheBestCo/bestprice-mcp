@@ -50,9 +50,9 @@ passes; add it only in a later plugin version after that rollout.
 
 ## Official Registry publication
 
-- `gr.bestprice/mcp@1.5.1` was published to the official MCP Registry on
-  2026-08-27. The public Registry API lists every release from `1.2.0` through
-  `1.5.1` under the verified `gr.bestprice/mcp` identity.
+- `gr.bestprice/mcp@1.6.0` was published to the official MCP Registry on
+  2026-08-28. The public Registry API lists every release from `1.2.0` through
+  `1.6.0` under the verified `gr.bestprice/mcp` identity.
 - The live registry record declares `https://www.bestprice.gr/mcp` as the
   website and `https://mcp.bestprice.gr/mcp` as its Streamable HTTP endpoint.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
