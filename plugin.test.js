@@ -71,7 +71,7 @@ describe('BestPrice Shopping plugin bundle', () => {
     assert.equal(registry.$schema, 'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json');
     assert.equal(registry.name, 'gr.bestprice/mcp');
     assert.equal(registry.title, 'BestPrice Shopping');
-    assert.equal(registry.version, '1.6.0');
+    assert.equal(registry.version, '1.6.1');
     assert.deepEqual(registry.repository, {
       url: 'https://github.com/TheBestCo/bestprice-mcp',
       source: 'github',
