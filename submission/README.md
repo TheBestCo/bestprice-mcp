@@ -50,21 +50,21 @@ passes; add it only in a later plugin version after that rollout.
 
 ## Official Registry publication
 
-- `gr.bestprice/mcp@1.6.0` was published to the official MCP Registry on
+- `gr.bestprice/mcp@1.6.1` was published to the official MCP Registry on
   2026-08-28. The public Registry API lists every release from `1.2.0` through
-  `1.6.0` under the verified `gr.bestprice/mcp` identity.
+  `1.6.1` under the verified `gr.bestprice/mcp` identity.
 - The live registry record declares `https://www.bestprice.gr/mcp` as the
   website and `https://mcp.bestprice.gr/mcp` as its Streamable HTTP endpoint.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
   `bestprice.gr` apex. Keep that proof in DNS so future versions can be
   published under the same permanent namespace.
-- Seven consecutive post-publication production canaries passed 30/30 checks
-  each for
-  website and protocol discovery, modern and legacy MCP paths, the three
-  read-only tools, clean public product and merchant identities, the ad-free
-  offer contract, policy boundaries, MCP Apps UI, and signed landing behavior.
-  Across all 210 checks they followed no merchant redirect, invoked no checkout
-  tool, and needed no rate-limit retry.
+- The expanded `1.6.1` production canary passed 46/46 checks for cross-host
+  discovery parity, browser connector CORS, modern and legacy MCP paths, the
+  three read-only tools, clean public product and merchant identities, mixed
+  physical/digital catalog boundaries, MCP Apps UI, and signed landing
+  behavior. It followed no merchant redirect, invoked no checkout tool, needed
+  no rate-limit retry, and verified the resulting telemetry. Seven earlier
+  `1.6.0` canaries also passed 30/30 checks each.
 - The deterministic routing evaluator passes all 100 Greek shopping prompts,
   covering exact models, variants, budgets, feature constraints, ambiguous
   searches, stock, location-sensitive offers, merchant quality, unknown
