@@ -10,7 +10,8 @@ https://mcp.bestprice.gr/mcp
 - BestPrice authentication: none
 - Published tools: `search_products`, `compare_offers`, `get_price_history`
 - Mutations, checkout, payment, direct merchant links: not available
-- Search scope: reviewed technology, appliance, and home categories
+- Search scope: safe physical products across the main BestPrice catalog;
+  digital products, services, and prohibited or age-restricted categories are excluded
 - Price semantics: search prices exclude shipping; comparisons separate item,
   shipping, and delivered total
 

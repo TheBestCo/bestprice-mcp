@@ -27,8 +27,9 @@ Suggested tagline:
 Suggested description:
 
 > BestPrice Shopping gives Claude read-only access to product search, current
-> offer comparison, and price history for selected technology, appliance, and
-> home categories in the Greek market. Search prices exclude shipping;
+> offer comparison, and price history for safe physical products across the
+> main BestPrice catalog in Greece. Digital products, services, and prohibited
+> or age-restricted categories are excluded. Search prices exclude shipping;
 > comparisons show item price, shipping, and delivered total separately.
 
 ## Inventory
