@@ -7,6 +7,8 @@
 Connect compatible AI applications to live product search, offer comparison,
 and price history from [BestPrice.gr](https://www.bestprice.gr/). The public
 service is read-only and does not require a BestPrice account or API key.
+BestPrice helps shoppers make the right shopping decision; MCP makes the same
+comparison data available wherever a compatible AI-assisted decision begins.
 Search covers safe physical products across the main BestPrice catalog. Digital
 products, services, and prohibited or age-restricted categories are excluded.
 Search prices exclude shipping; offer comparison reports shipping and delivered
