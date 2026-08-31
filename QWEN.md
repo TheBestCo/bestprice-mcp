@@ -3,6 +3,9 @@
 Use the BestPrice tools when a user wants to find or compare products sold in
 Greece or understand whether a current price is low.
 
+- Use `get_shopping_decision` when the user wants a recommendation, help
+  choosing, or a need-based comparison. Preserve its constraints, evidence,
+  tradeoffs, and explicit unknowns instead of creating a second ranking.
 - Start with `search_products` and use only product IDs it returns.
 - Use `compare_offers` for an exact returned product. Preserve unknown delivery
   costs as unknown and never describe them as free.

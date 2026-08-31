@@ -4,8 +4,9 @@
 
 ![BestPrice MCP: products, offers and price history for AI assistants](https://www.bestprice.gr/extra/mcpLanding/assets/bestprice-mcp-share.png)
 
-Connect compatible AI applications to live product search, offer comparison,
-and price history from [BestPrice.gr](https://www.bestprice.gr/). The public
+Connect compatible AI applications to the BestPrice Shopping Brain, live
+product search, offer comparison, and price history from
+[BestPrice.gr](https://www.bestprice.gr/). The public
 service is read-only and does not require a BestPrice account or API key.
 BestPrice helps shoppers make the right shopping decision; MCP makes the same
 comparison data available wherever a compatible AI-assisted decision begins.
@@ -23,7 +24,9 @@ totals separately.
 - WebMCP inventory: `https://www.bestprice.gr/.well-known/webmcp.json`
 - Legacy AI Catalog: `https://www.bestprice.gr/.well-known/ai-catalog.json`
 - Server card: `https://mcp.bestprice.gr/mcp/server-card`
-- Tools: `search_products`, `compare_offers`, `get_price_history`
+- Server version: `1.8.0`
+- Tools: `get_shopping_decision`, `search_products`, `compare_offers`,
+  `get_price_history`
 
 ## Discovery
 
@@ -123,7 +126,7 @@ the endpoint.
 See [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md) for OpenAI, ChatGPT, Claude,
 Perplexity, Grok, Gemini, DeepSeek, Qwen, Z.ai, GLM, GitHub Copilot, VS Code,
 Cursor, and Microsoft Copilot Studio connection examples. Every integration
-points to the same endpoint and imports only the three published read-only
+points to the same endpoint and imports only the four published read-only
 tools.
 
 [Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
@@ -131,9 +134,10 @@ opens Claude's custom-connector flow with the public endpoint filled in.
 
 ## A safe first test
 
-1. Ask: `Βρες μου Sony WH-1000XM5 έως 300 ευρώ.`
-2. Pass a returned `product_id` to `compare_offers` with postal code `10558`.
-3. Pass the same `product_id` to `get_price_history` for 180 days.
+1. Ask `get_shopping_decision`: `Θέλω κινητό έως 500 ευρώ με NFC και 5G υποχρεωτικά.`
+2. Or ask `search_products`: `Βρες μου Sony WH-1000XM5 έως 300 ευρώ.`
+3. Pass a returned `product_id` to `compare_offers` with postal code `10558`.
+4. Pass the same `product_id` to `get_price_history` for 180 days.
 
 Clients should never invent a product ID, treat unknown delivery as free, make
 a purchase, or expose a direct merchant URL.

@@ -26,8 +26,9 @@ ProductHunt ?utm_source=producthunt&utm_medium=launch&utm_campaign=bestprice_mcp
 
 Today we are opening a small experiment from BestPrice.
 
-AI assistants can now use BestPrice to search for products, compare delivered
-prices and check price history through a public MCP connection. We have also
+AI assistants can now use the same Shopping Brain as BestPrice Ask to make a
+bounded product decision, search for products, compare delivered prices and
+check price history through a public MCP connection. We have also
 added WebMCP tools to the shopping page itself, so a compatible browser
 assistant can work with the products, filters and offers a person is already
 looking at.
@@ -47,8 +48,8 @@ https://www.bestprice.gr/mcp
 We have opened BestPrice to shopping assistants through MCP, and added WebMCP
 tools to the page itself.
 
-Search, delivered-price comparison and price history. Read-only, Greece-first,
-and the shopper still chooses the shop.
+Shopping decisions, search, delivered-price comparison and price history.
+Read-only, Greece-first, and the shopper still chooses the shop.
 
 Live now: https://www.bestprice.gr/mcp
 Source: https://github.com/TheBestCo/bestprice-mcp
@@ -62,8 +63,9 @@ Show HN: BestPrice MCP and WebMCP for product search and offer comparison
 ### Body
 
 We have released a public, read-only MCP server for BestPrice, a Greek price
-comparison service. It exposes three tools: product search, offer comparison by
-delivered price, and price history.
+comparison service. It exposes four tools: a bounded evidence-backed shopping
+decision, product search, offer comparison by delivered price, and price
+history.
 
 We also ship 13 contextual WebMCP tools on the website. The available tools
 follow the open page: search on the homepage, visible products and filters on a
@@ -88,9 +90,9 @@ We shipped a public MCP plus 13 page-level WebMCP tools for Greek shopping
 
 ### Body
 
-BestPrice now has a public Streamable HTTP MCP endpoint for product search,
-offer comparison and price history. It requires no BestPrice account or API
-key.
+BestPrice now has a public Streamable HTTP MCP endpoint for bounded shopping
+decisions, product search, offer comparison and price history. It requires no
+BestPrice account or API key.
 
 The website also registers contextual WebMCP tools. A listing exposes only the
 products, filters and sorting choices actually visible there. A product page

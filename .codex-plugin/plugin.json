@@ -1,7 +1,7 @@
 {
   "name": "bestprice-shopping",
-  "version": "1.0.0",
-  "description": "Read-only BestPrice product search, offer comparison, and price history.",
+  "version": "1.1.0",
+  "description": "Read-only BestPrice shopping decisions, product search, offers, and price history.",
   "author": {
     "name": "BestPrice",
     "url": "https://www.bestprice.gr/"
@@ -11,8 +11,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "BestPrice Shopping",
-    "shortDescription": "Compare products, offers, and price history on BestPrice.",
-    "longDescription": "Search canonical products, compare current offers and shipping semantics, and inspect compact price history. Results are read-only and link back to BestPrice, never directly to a merchant.",
+    "shortDescription": "Get a shopping decision, then compare products, offers, and price history.",
+    "longDescription": "Use the same bounded Shopping Brain as BestPrice Ask for an evidence-backed product decision, or search canonical products, compare current offers and shipping semantics, and inspect compact price history. Results are read-only and link back to BestPrice, never directly to a merchant.",
     "developerName": "BestPrice",
     "category": "Shopping",
     "capabilities": ["Read"],
@@ -20,9 +20,9 @@
     "privacyPolicyURL": "https://www.bestprice.gr/policies/privacy",
     "termsOfServiceURL": "https://www.bestprice.gr/policies/terms",
     "defaultPrompt": [
+      "Choose the best phone under €500 for photos, with NFC and 5G required.",
       "Find a highly rated 55-inch OLED TV under €1,000.",
-      "Compare current offers for this exact product, including delivery.",
-      "Check whether this product's current price is genuinely low."
+      "Compare current offers for this exact product, including delivery."
     ]
   }
 }

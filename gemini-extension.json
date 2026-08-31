@@ -1,12 +1,12 @@
 {
   "name": "bestprice-shopping",
-  "version": "1.0.1",
-  "description": "Search products, compare offers, and check price history on BestPrice.gr.",
+  "version": "1.1.0",
+  "description": "Get shopping decisions, search products, compare offers, and check price history on BestPrice.gr.",
   "mcpServers": {
     "bestprice-shopping": {
       "httpUrl": "https://mcp.bestprice.gr/mcp",
       "headers": {"X-MCP-Client-Name": "Gemini CLI"},
-      "includeTools": ["search_products", "compare_offers", "get_price_history"],
+      "includeTools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
       "timeout": 30000
     }
   },

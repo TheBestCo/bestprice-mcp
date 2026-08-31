@@ -14,16 +14,24 @@ const registry = readJson('./server.json');
 const geminiExtension = readJson('./gemini-extension.json');
 const qwenExtension = readJson('./qwen-extension.json');
 const cases = readJson('./submission/test-cases.json');
+const EXPECTED_TOOLS = [
+  'get_shopping_decision',
+  'search_products',
+  'compare_offers',
+  'get_price_history',
+];
 // eslint-disable-next-line no-restricted-syntax -- immutable human-facing setup fixture
 const providerSetup = readFileSync(new URL('./PROVIDER_SETUP.md', import.meta.url), 'utf8');
 const readme = readFileSync(new URL('./README.md', import.meta.url), 'utf8');
 const security = readFileSync(new URL('./SECURITY.md', import.meta.url), 'utf8');
 const claudeSubmission = readFileSync(new URL('./submission/claude-directory.md', import.meta.url), 'utf8');
 const perplexitySubmission = readFileSync(new URL('./submission/perplexity-connector.md', import.meta.url), 'utf8');
+const openaiSubmission = readFileSync(new URL('./submission/openai-universal-plugin.md', import.meta.url), 'utf8');
 
 describe('BestPrice Shopping plugin bundle', () => {
   it('is an MCP-only, read-only Codex plugin with no app surface', () => {
     assert.equal(manifest.name, 'bestprice-shopping');
+    assert.equal(manifest.version, '1.1.0');
     assert.equal(manifest.mcpServers, './.mcp.json');
     assert.deepEqual(manifest.interface.capabilities, ['Read']);
     assert.equal('apps' in manifest, false);
@@ -35,8 +43,8 @@ describe('BestPrice Shopping plugin bundle', () => {
     assert.deepEqual(portablePlugin, {
       $schema: 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
       name: 'bestprice-shopping',
-      version: '1.0.1',
-      description: 'Read-only product search, offer comparison, and price history from BestPrice.gr.',
+      version: '1.1.0',
+      description: 'Read-only shopping decisions, product search, offers, and price history from BestPrice.gr.',
       author: {
         name: 'BestPrice',
         url: 'https://www.bestprice.gr/',
@@ -71,7 +79,7 @@ describe('BestPrice Shopping plugin bundle', () => {
     assert.equal(registry.$schema, 'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json');
     assert.equal(registry.name, 'gr.bestprice/mcp');
     assert.equal(registry.title, 'BestPrice Shopping');
-    assert.equal(registry.version, '1.6.1');
+    assert.equal(registry.version, '1.8.0');
     assert.deepEqual(registry.repository, {
       url: 'https://github.com/TheBestCo/bestprice-mcp',
       source: 'github',
@@ -104,7 +112,10 @@ describe('BestPrice Shopping plugin bundle', () => {
       assert.match(providerSetup, new RegExp(`## ${provider.replace('.', '\\.')}`, 'u'));
     }
     assert.match(providerSetup, /https:\/\/mcp\.bestprice\.gr\/mcp/u);
-    assert.match(providerSetup, /search_products.*compare_offers.*get_price_history/u);
+    for (const tool of EXPECTED_TOOLS) {
+      assert.match(providerSetup, new RegExp(tool, 'u'));
+      assert.match(readme, new RegExp(tool, 'u'));
+    }
     assert.doesNotMatch(providerSetup, /API[_ -]?KEY.*BestPrice/iu);
   });
 
@@ -112,7 +123,7 @@ describe('BestPrice Shopping plugin bundle', () => {
     const expectedServer = clientName => ({
       httpUrl: 'https://mcp.bestprice.gr/mcp',
       headers: { 'X-MCP-Client-Name': clientName },
-      includeTools: ['search_products', 'compare_offers', 'get_price_history'],
+      includeTools: EXPECTED_TOOLS,
       timeout: 30000,
     });
     assert.deepEqual(geminiExtension.mcpServers['bestprice-shopping'], expectedServer('Gemini CLI'));
@@ -171,6 +182,14 @@ describe('BestPrice Shopping plugin bundle', () => {
     }
   });
 
+  it('keeps the OpenAI universal-plugin handoff current and human-gated', () => {
+    assert.match(openaiSubmission, /https:\/\/mcp\.bestprice\.gr\/mcp/u);
+    assert.match(openaiSubmission, /MCP-only/u);
+    assert.match(openaiSubmission, /Apps Management/u);
+    assert.match(openaiSubmission, /authorized BestPrice submitter/u);
+    for (const tool of EXPECTED_TOOLS) assert.match(openaiSubmission, new RegExp(tool, 'u'));
+  });
+
   it('keeps the Perplexity connector handoff bounded and honest', () => {
     assert.match(perplexitySubmission, /https:\/\/mcp\.bestprice\.gr\/mcp/u);
     assert.match(perplexitySubmission, /Authentication \| None/u);
@@ -179,9 +198,9 @@ describe('BestPrice Shopping plugin bundle', () => {
     assert.ok(readFileSync(new URL('./submission/bestprice-mcp-logo-1024.png', import.meta.url)).length < 128 * 1024);
   });
 
-  it('provides at least five positive and three negative review cases', () => {
-    assert.ok(cases.positive.length >= 5);
-    assert.ok(cases.negative.length >= 3);
+  it('provides at least seven positive and four negative review cases', () => {
+    assert.ok(cases.positive.length >= 7);
+    assert.ok(cases.negative.length >= 4);
     const ids = [...cases.positive, ...cases.negative].map(testCase => testCase.id);
     assert.equal(new Set(ids).size, ids.length);
   });
@@ -198,7 +217,7 @@ describe('BestPrice Shopping plugin bundle', () => {
 
   it('covers every published tool and critical commercial refusal', () => {
     const tools = new Set(cases.positive.flatMap(testCase => testCase.expected_tools));
-    assert.deepEqual([...tools].sort(), ['compare_offers', 'get_price_history', 'search_products']);
+    assert.deepEqual([...tools].sort(), [...EXPECTED_TOOLS].sort());
     const negativeText = JSON.stringify(cases.negative).toLowerCase();
     assert.match(negativeText, /checkout/);
     assert.match(negativeText, /merchant url/);
