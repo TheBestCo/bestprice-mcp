@@ -18,10 +18,10 @@ The registry name is the required reverse-DNS identifier for the verified
 protocol endpoint are declared separately in `server.json` so clients do not
 mistake the HTML explainer for the JSON-RPC transport.
 
-The initial submission covers search, offer comparison, and price history.
-Basket optimization is implemented server-side but deliberately absent from the
-published MCP allowlist and these review cases until its production latency gate
-passes; add it only in a later plugin version after that rollout.
+The current public server adds the shared Shopping Brain as a fourth read-only
+tool alongside search, offer comparison, and price history. Basket optimization
+remains deliberately absent from the published MCP allowlist and these review
+cases; add it only in a later plugin version after a separate production gate.
 
 ## Automated evidence
 
@@ -35,8 +35,10 @@ passes; add it only in a later plugin version after that rollout.
   DeepSeek, Z.ai/GLM, GitHub Copilot, VS Code, Cursor, and Microsoft Copilot
   Studio connection steps pinned to the same public endpoint and read-only tool
   allowlist.
-- `test-cases.json` contains five positive and four negative review cases for
-  the three published tools.
+- `test-cases.json` contains seven positive and four negative review cases for
+  the four published tools.
+- `openai-universal-plugin.md` contains the current MCP-only universal-directory
+  field map, exact production gate, and human-only submission step.
 - `claude-directory.md` contains the copy-ready Claude Directory field map,
   data-handling notes, three response-only screenshots generated from live MCP
   results, and the human-only submission gates.
@@ -53,6 +55,10 @@ passes; add it only in a later plugin version after that rollout.
 - `gr.bestprice/mcp@1.6.1` was published to the official MCP Registry on
   2026-08-28. The public Registry API lists every release from `1.2.0` through
   `1.6.1` under the verified `gr.bestprice/mcp` identity.
+- `server.json` now prepares the separately gated `1.8.0` registry release,
+  matching the live four-tool server. Do not claim that registry version as
+  published until the production canary passes and the registry workflow
+  completes successfully.
 - The live registry record declares `https://www.bestprice.gr/mcp` as the
   website and `https://mcp.bestprice.gr/mcp` as its Streamable HTTP endpoint.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
@@ -89,7 +95,7 @@ Checked on 2026-08-27:
   `https://mcptoplist.com/server/gr.bestprice%2Fmcp`.
 - Smithery exposes `bestprice/shopping`, but its release UI still marks a URL
   publication as failed even though Smithery's own tool client can enumerate
-  all three tools. A fresh publication with release ID
+  all three tools that were published at the time. A fresh publication with release ID
   `204c3f7d-bac2-4bac-8623-a35418669cd4` reproduced the platform error on
   Smithery CLI 4.11.1. The reproducible issue is tracked at
   `https://github.com/arcadeai-labs/smithery-cli/issues/808`.
@@ -204,6 +210,9 @@ Checked on 2026-08-27:
   `bestprice-mcp-logo-1024.png`; no substitute or AI-generated logo is used.
 - Run every submission case against production and attach the sanitized outcomes
   emitted by `scripts/agent-commerce-submission-canary.mjs`.
+- Use `openai-universal-plugin.md` for the OpenAI draft only after its exact
+  four-tool, signed-attribution, privacy, and deployed-revision gate passes. An
+  authorized BestPrice submitter must make the portal attestations.
 - In a Claude Team or Enterprise organization, use `claude-directory.md` to
   complete the saved Directory draft and attach 3–5 response-only MCP Apps
   screenshots. An authorized owner must accept the directory terms.

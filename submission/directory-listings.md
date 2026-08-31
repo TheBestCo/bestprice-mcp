@@ -23,12 +23,13 @@ partnership, or describe the service as covering the whole BestPrice catalog.
 
 Short description:
 
-> Read-only product search, delivered-price offer comparison, and price
-> history for the Greek market.
+> Read-only shopping decisions, product search, delivered-price offer
+> comparison, and price history for the Greek market.
 
 Long description:
 
-> BestPrice Shopping gives compatible AI assistants three read-only tools for
+> BestPrice Shopping gives compatible AI assistants four read-only tools: an
+> evidence-backed shopping decision from the same Brain as BestPrice Ask,
 > reviewed product search, current offer comparison by delivered total, and
 > price history in Greece. It uses a public Streamable HTTP endpoint with no
 > BestPrice account or API key. It cannot check out, modify a basket, select a
@@ -64,7 +65,7 @@ Hello,
 Please consider BestPrice Shopping for the MCP Server Finder directory.
 
 Server name: BestPrice Shopping
-Description: Read-only product search, delivered-price offer comparison, and price history for the Greek market.
+Description: Read-only shopping decisions, product search, delivered-price offer comparison, and price history for the Greek market.
 Official Registry ID: gr.bestprice/mcp
 Endpoint: https://mcp.bestprice.gr/mcp
 Repository: https://github.com/TheBestCo/bestprice-mcp
@@ -147,7 +148,7 @@ https://github.com/TheBestCo/bestprice-mcp
 
 ## Description
 
-Read-only product search, delivered-price offer comparison, and price history for the Greek market.
+Read-only shopping decisions, product search, delivered-price offer comparison, and price history for the Greek market.
 
 ## Install command
 

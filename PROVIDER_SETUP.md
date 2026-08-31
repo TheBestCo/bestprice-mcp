@@ -8,7 +8,8 @@ https://mcp.bestprice.gr/mcp
 
 - Transport: Streamable HTTP over HTTPS
 - BestPrice authentication: none
-- Published tools: `search_products`, `compare_offers`, `get_price_history`
+- Published tools: `get_shopping_decision`, `search_products`,
+  `compare_offers`, `get_price_history`
 - Mutations, checkout, payment, direct merchant links: not available
 - Search scope: safe physical products across the main BestPrice catalog;
   digital products, services, and prohibited or age-restricted categories are excluded
@@ -17,7 +18,7 @@ https://mcp.bestprice.gr/mcp
 
 ## OpenAI
 
-Use the endpoint as a remote MCP tool in the Responses API. Because the three
+Use the endpoint as a remote MCP tool in the Responses API. Because the four
 published tools are read-only, the integration can skip per-call approval while
 still restricting the imported tool inventory:
 
@@ -28,10 +29,10 @@ const response = await client.responses.create({
   tools: [{
     type: 'mcp',
     server_label: 'bestprice',
-    server_description: 'Read-only product search, offer comparison, and price history for Greece.',
+    server_description: 'Read-only shopping decisions, product search, offers, and price history for Greece.',
     server_url: 'https://mcp.bestprice.gr/mcp',
     require_approval: 'never',
-    allowed_tools: ['search_products', 'compare_offers', 'get_price_history'],
+    allowed_tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'],
   }],
 });
 ```
@@ -53,7 +54,7 @@ const tools = [{
   type: 'mcp_server',
   name: 'bestprice',
   url: 'https://mcp.bestprice.gr/mcp',
-  allowed_tools: ['search_products', 'compare_offers', 'get_price_history'],
+  allowed_tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'],
 }];
 ```
 
@@ -106,7 +107,7 @@ select **Remote**. Enter:
 - MCP server URL: `https://mcp.bestprice.gr/mcp`
 - Authentication: `None`
 - Transport: `Streamable HTTP`
-- Description: `Read-only product search, offer comparison, and price history for Greece.`
+- Description: `Read-only shopping decisions, product search, offers, and price history for Greece.`
 - Icon: `submission/bestprice-mcp-logo-1024.png`
 
 The square icon is 35 KB, below Perplexity's 128 KB limit. After adding the
@@ -175,7 +176,7 @@ Harness provides the MCP bridge instead. Add one plugin instance to `cordis.yml`
     failOnStartupError: true
 ```
 
-The bridge discovers the same three tools and exposes them to the model under
+The bridge discovers the same four tools and exposes them to the model under
 the `mcp__bestprice__*` namespace. This connects DeepSeek-powered Harness agents;
 it does not imply that the consumer chat at deepseek.com imports public MCPs.
 
@@ -197,7 +198,7 @@ Official references: [DeepSeek Harness MCP client](https://github.com/deepseek-a
 
 ## Z.ai and GLM
 
-Z.ai's general Chat Completions API can discover and call the three BestPrice
+Z.ai's general Chat Completions API can discover and call the four BestPrice
 tools directly through Streamable HTTP:
 
 ```python
@@ -214,7 +215,7 @@ response = client.chat.completions.create(
             "server_label": "bestprice",
             "server_url": "https://mcp.bestprice.gr/mcp",
             "transport_type": "streamable-http",
-            "allowed_tools": ["search_products", "compare_offers", "get_price_history"],
+            "allowed_tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
             "headers": {"X-MCP-Client-Name": "Z.AI GLM"},
         },
     }],
@@ -236,7 +237,7 @@ Copilot CLI can add the reviewed remote surface directly:
 
 ```sh
 copilot mcp add --transport http \
-  --tools search_products,compare_offers,get_price_history \
+  --tools get_shopping_decision,search_products,compare_offers,get_price_history \
   bestprice-shopping https://mcp.bestprice.gr/mcp
 ```
 
@@ -258,3 +259,30 @@ One-click install:
 
 VS Code displays the decoded server configuration for review before adding it.
 
+## Cursor
+
+Use the reviewable one-click installer:
+
+[Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
+
+Cursor displays the decoded remote-server configuration before adding it. The
+same endpoint can be entered manually under **Settings > Tools & MCP**. Verify
+that Cursor discovers the four reviewed read-only tools before relying on the
+connection.
+
+## Microsoft Copilot Studio
+
+Copilot Studio supports existing Streamable HTTP MCP servers through its MCP
+onboarding wizard. On the agent's **Tools** page, choose **Add a tool > New tool
+> Model Context Protocol**, then enter:
+
+- Server name: `BestPrice Shopping`
+- Server description: `Read-only shopping decisions, product search, offers, and price history for Greece.`
+- Server URL: `https://mcp.bestprice.gr/mcp`
+- Authentication: `None`
+
+Create the connection, add it to the agent, enable generative orchestration,
+and verify the discovered inventory before publishing the agent. Connecting an
+external server does not imply Microsoft review or endorsement.
+
+Official reference: [connect an existing MCP server](https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-existing-server-to-agent).

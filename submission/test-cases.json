@@ -18,6 +18,26 @@
       "assertions": ["The budget and required feature are applied.", "The answer does not invent unsupported features."]
     },
     {
+      "id": "need-based-shopping-decision",
+      "prompt": "Θέλω κινητό έως 500 ευρώ με NFC και 5G υποχρεωτικά. Διάλεξε το καλύτερο και εξήγησε τα στοιχεία σου.",
+      "expected_tools": ["get_shopping_decision"],
+      "assertions": [
+        "The recommendation uses the shared BestPrice Shopping Brain.",
+        "Mandatory features are recommended only when supported by typed catalog evidence.",
+        "The result states its bounded retrieval scope and preserves explicit unknowns.",
+        "Every returned product has a signed decision_id and a BestPrice URL, never a merchant URL."
+      ]
+    },
+    {
+      "id": "contradictory-price-bounds",
+      "prompt": "Θέλω laptop με ελάχιστη τιμή 800 ευρώ και μέγιστη τιμή 500 ευρώ.",
+      "expected_tools": ["get_shopping_decision"],
+      "assertions": [
+        "The result asks for clarification instead of silently changing either bound.",
+        "No product is recommended and catalog retrieval remains at zero calls."
+      ]
+    },
+    {
       "id": "delivered-offer-comparison",
       "prompt": "Compare offers for product bp_2162499899 delivered to 71202, excluding merchants below rating 4.",
       "expected_tools": ["compare_offers"],

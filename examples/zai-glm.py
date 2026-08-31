@@ -22,6 +22,7 @@ response = client.chat.completions.create(
                 "server_url": "https://mcp.bestprice.gr/mcp",
                 "transport_type": "streamable-http",
                 "allowed_tools": [
+                    "get_shopping_decision",
                     "search_products",
                     "compare_offers",
                     "get_price_history",
