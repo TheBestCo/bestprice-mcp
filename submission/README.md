@@ -52,13 +52,16 @@ cases; add it only in a later plugin version after a separate production gate.
 
 ## Official Registry publication
 
-- `gr.bestprice/mcp@1.6.1` was published to the official MCP Registry on
-  2026-08-28. The public Registry API lists every release from `1.2.0` through
-  `1.6.1` under the verified `gr.bestprice/mcp` identity.
-- `server.json` now prepares the separately gated `1.8.0` registry release,
-  matching the live four-tool server. Do not claim that registry version as
-  published until the production canary passes and the registry workflow
-  completes successfully.
+- `gr.bestprice/mcp@1.8.0` was published to the official MCP Registry on
+  2026-08-31. The public Registry API lists every release from `1.2.0` through
+  `1.8.0` under the verified `gr.bestprice/mcp` identity.
+- The signed [publication workflow](https://github.com/TheBestCo/bestprice-mcp/actions/runs/33388845278)
+  passed the package contract suite and the official `mcp-publisher` validator
+  before publishing `server.json` from main commit `8b6ed0f`.
+- Registry `1.8.0` matches the live server metadata and its four read-only
+  tools, including the shared `get_shopping_decision` Brain surface. Publishing
+  the Registry record does not substitute for the separately recorded
+  exact-deployed-revision production canary or directory review.
 - The live registry record declares `https://www.bestprice.gr/mcp` as the
   website and `https://mcp.bestprice.gr/mcp` as its Streamable HTTP endpoint.
 - Publisher ownership is verified through the public Ed25519 TXT proof at the
