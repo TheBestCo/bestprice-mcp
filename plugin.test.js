@@ -27,6 +27,7 @@ const security = readFileSync(new URL('./SECURITY.md', import.meta.url), 'utf8')
 const claudeSubmission = readFileSync(new URL('./submission/claude-directory.md', import.meta.url), 'utf8');
 const perplexitySubmission = readFileSync(new URL('./submission/perplexity-connector.md', import.meta.url), 'utf8');
 const openaiSubmission = readFileSync(new URL('./submission/openai-universal-plugin.md', import.meta.url), 'utf8');
+const releaseEvidence = readFileSync(new URL('./submission/README.md', import.meta.url), 'utf8');
 
 describe('BestPrice Shopping plugin bundle', () => {
   it('is an MCP-only, read-only Codex plugin with no app surface', () => {
@@ -93,6 +94,13 @@ describe('BestPrice Shopping plugin bundle', () => {
     ]);
     assert.equal(registry.icons[0].src, 'https://www.bestprice.gr/images/logo.svg');
     assert.ok(registry.description.length <= 100);
+  });
+
+  it('records the published Registry release without weakening the production gate', () => {
+    assert.match(releaseEvidence, /gr\.bestprice\/mcp@1\.8\.0/u);
+    assert.match(releaseEvidence, /actions\/runs\/33388845278/u);
+    assert.match(releaseEvidence, /exact-deployed-revision production canary/u);
+    assert.doesNotMatch(releaseEvidence, /prepares the separately gated `1\.8\.0` registry release/u);
   });
 
   it('documents the same bounded connection for every supported provider', () => {
