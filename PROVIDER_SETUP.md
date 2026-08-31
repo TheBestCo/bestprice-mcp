@@ -66,10 +66,23 @@ Official references: [Gemini Antigravity MCP servers](https://ai.google.dev/gemi
 [Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp),
 then review and add the prefilled public endpoint.
 
+For Claude Code, add and verify the same remote server from a terminal:
+
+```sh
+claude mcp add --transport http bestprice-shopping \
+  https://mcp.bestprice.gr/mcp
+claude mcp get bestprice-shopping
+```
+
+The repository's [`.mcp.json`](.mcp.json) contains the equivalent
+project-scoped configuration. Claude discovers the live tool inventory from
+the endpoint; do not hard-code a stale local allowlist.
+
 In an individual Claude account, open **Customize > Connectors**, choose
 **Add custom connector**, and enter the BestPrice endpoint. Team and Enterprise
 workspaces require an owner to add the URL under **Organization settings > Connectors**.
-Enable only the three published tools for conversations that need shopping data.
+Custom connectors are separate from Anthropic's reviewed public Connectors
+Directory; an individual account can still add and use this public endpoint.
 
 Claude may identify the connection as `claude-ai`, `Anthropic`, or
 `claude-code`. BestPrice uses that unauthenticated label only for aggregate
@@ -80,7 +93,8 @@ organization settings. Submission requires a Team or Enterprise organization
 and an Owner, Primary Owner, or delegated Directory role. An individual account
 can connect and test BestPrice, but cannot submit it to the directory.
 
-Official references: [Claude custom connectors](https://claude.com/docs/connectors/building),
+Official references: [Claude custom connectors](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp),
+[Claude Code MCP](https://docs.anthropic.com/en/docs/claude-code/mcp),
 [Connectors Directory submission](https://claude.com/docs/connectors/building/submission).
 
 ## Perplexity
@@ -244,55 +258,3 @@ One-click install:
 
 VS Code displays the decoded server configuration for review before adding it.
 
-GitHub's cloud agent accepts an unauthenticated remote HTTP server with an
-explicit tool allowlist in repository MCP settings. Adding a server to one
-repository does not make it a public GitHub catalog listing.
-
-Official references: [Copilot CLI MCP servers](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers),
-[VS Code MCP servers](https://code.visualstudio.com/docs/agent-customization/mcp-servers),
-[VS Code MCP install links](https://code.visualstudio.com/api/extension-guides/ai/mcp#create-an-mcp-installation-url),
-[Copilot cloud-agent MCP configuration](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/configure-mcp-servers).
-
-## Cursor
-
-Cursor supports remote Streamable HTTP servers in `.cursor/mcp.json`:
-
-```json
-{
-  "mcpServers": {
-    "bestprice-shopping": {
-      "url": "https://mcp.bestprice.gr/mcp"
-    }
-  }
-}
-```
-
-Enable only the three reviewed tools in Cursor's MCP settings. The same
-configuration is published in the
-[BestPrice Shopping community listing](https://cursor.directory/plugins/bestprice-shopping),
-with directory verification requested.
-
-One-click install:
-[Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
-
-Official reference: [Cursor MCP](https://docs.cursor.com/context/model-context-protocol).
-
-## Microsoft Copilot Studio
-
-Copilot Studio supports Streamable HTTP MCP through its onboarding wizard or a
-Power Platform custom connector. Configure the host as `mcp.bestprice.gr` and
-the operation path as `/mcp`. Tenant data policies and administrator approval
-still apply.
-
-Official reference: [Connect Copilot Studio to an MCP server](https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-existing-server-to-agent).
-
-## Verify the connection
-
-Ask the client to list the server tools, then try these in order:
-
-1. `Βρες μου Sony WH-1000XM5 έως 300 ευρώ.`
-2. Use the returned `product_id` to compare offers for postal code `10558`.
-3. Use the same `product_id` to inspect 180 days of price history.
-
-The client should never invent a `product_id`, treat unknown shipping as free,
-or expose a direct merchant URL.
