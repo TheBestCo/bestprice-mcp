@@ -95,9 +95,9 @@ Checked on 2026-08-27:
   `https://mcptoplist.com/server/gr.bestprice%2Fmcp`.
 - Smithery exposes `bestprice/shopping`, but its release UI still marks a URL
   publication as failed even though Smithery's own tool client can enumerate
-  all three tools that were published at the time. A fresh publication with release ID
-  `204c3f7d-bac2-4bac-8623-a35418669cd4` reproduced the platform error on
-  Smithery CLI 4.11.1. The reproducible issue is tracked at
+  all three tools that were published at the time. A fresh publication with
+  release ID `204c3f7d-bac2-4bac-8623-a35418669cd4` reproduced the platform
+  error on Smithery CLI 4.11.1. The reproducible issue is tracked at
   `https://github.com/arcadeai-labs/smithery-cli/issues/808`.
 - MCP.Directory has already accepted the repository and reports it queued for
   review at `https://mcp.directory/submit`.
