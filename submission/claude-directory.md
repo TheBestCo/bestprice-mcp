@@ -65,7 +65,7 @@ All four tools publish a human-readable title plus `readOnlyHint: true`,
 
 ## Reviewer paths
 
-Use the five positive and four negative cases in [`test-cases.json`](test-cases.json).
+Use the seven positive and four negative cases in [`test-cases.json`](test-cases.json).
 The first four reviewer prompts should be:
 
 1. `Θέλω κινητό έως 500 ευρώ με NFC και 5G υποχρεωτικά. Διάλεξε το καλύτερο.`
