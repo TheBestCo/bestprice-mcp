@@ -104,6 +104,20 @@ separate public Connectors Directory review; Perplexity currently documents
 individual and organization-managed connectors. Exact setup values are in
 [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md).
 
+## Install in Claude Code
+
+Claude Code can add the public remote server directly:
+
+```sh
+claude mcp add --transport http bestprice-shopping \
+  https://mcp.bestprice.gr/mcp
+claude mcp get bestprice-shopping
+```
+
+The included [`.mcp.json`](.mcp.json) provides the equivalent project-scoped
+configuration. Claude Code discovers the live read-only tool inventory from
+the endpoint.
+
 ## Other clients
 
 See [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md) for OpenAI, ChatGPT, Claude,
@@ -113,7 +127,7 @@ points to the same endpoint and imports only the three published read-only
 tools.
 
 [Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
-opens Claude's reviewed custom-connector flow with the public endpoint filled in.
+opens Claude's custom-connector flow with the public endpoint filled in.
 
 ## A safe first test
 
