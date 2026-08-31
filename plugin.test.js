@@ -198,9 +198,9 @@ describe('BestPrice Shopping plugin bundle', () => {
     assert.ok(readFileSync(new URL('./submission/bestprice-mcp-logo-1024.png', import.meta.url)).length < 128 * 1024);
   });
 
-  it('provides at least five positive and three negative review cases', () => {
-    assert.ok(cases.positive.length >= 5);
-    assert.ok(cases.negative.length >= 3);
+  it('provides at least seven positive and four negative review cases', () => {
+    assert.ok(cases.positive.length >= 7);
+    assert.ok(cases.negative.length >= 4);
     const ids = [...cases.positive, ...cases.negative].map(testCase => testCase.id);
     assert.equal(new Set(ids).size, ids.length);
   });
