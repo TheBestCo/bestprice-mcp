@@ -75,6 +75,12 @@ same configuration can be added manually from [`PROVIDER_SETUP.md`](PROVIDER_SET
 
 ## Install in Cursor
 
+### Via Cursor Marketplace (Recommended)
+
+Once published, install BestPrice Shopping directly from the [Cursor Marketplace](https://cursor.com/marketplace) with one click. No configuration needed.
+
+### Manual Installation
+
 [Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
 
 Cursor shows the decoded remote-server configuration before adding it. The
