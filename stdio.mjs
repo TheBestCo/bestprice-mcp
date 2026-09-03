@@ -133,13 +133,14 @@ function createServer() {
  * Main entry point
  */
 async function main() {
+  // Log startup immediately before any async operations
+  console.error('BestPrice MCP stdio forwarder started');
+  console.error(`Forwarding to: ${REMOTE_ENDPOINT}`);
+  
   const server = createServer();
   const transport = new StdioServerTransport();
   
   await server.connect(transport);
-  
-  console.error('BestPrice MCP stdio forwarder started');
-  console.error(`Forwarding to: ${REMOTE_ENDPOINT}`);
 }
 
 main().catch((error) => {
