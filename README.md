@@ -1,6 +1,7 @@
 # BestPrice MCP
 
 [![Test public MCP package](https://github.com/TheBestCo/bestprice-mcp/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/TheBestCo/bestprice-mcp/actions/workflows/test.yml)
+[![TheBestCo/bestprice-mcp MCP server](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp/badges/score.svg)](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp)
 
 ![BestPrice MCP: products, offers and price history for AI assistants](https://www.bestprice.gr/extra/mcpLanding/assets/bestprice-mcp-share.png)
 
