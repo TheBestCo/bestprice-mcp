@@ -40,6 +40,8 @@ totals separately.
   [The MCP Index](https://themcpindex.com/servers/gr-bestprice-mcp), and
   [AgentNDX](https://agentndx.ai/server/bestprice-mcp/)
 
+The included `Dockerfile` runs a local stdio MCP process that forwards requests to the public `https://mcp.bestprice.gr/mcp` endpoint, enabling Glama build scoring without external package dependencies.
+
 ## Browser-native WebMCP
 
 BestPrice pages also expose 13 contextual WebMCP tools to compatible browsers.
