@@ -4,6 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test plugin.test.js webmcp/test/webmcp.test.js"
+    "test": "node --test plugin.test.js webmcp/test/webmcp.test.js stdio.test.mjs",
+    "stdio": "node stdio.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
   }
 }
