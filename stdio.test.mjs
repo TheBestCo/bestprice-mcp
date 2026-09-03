@@ -32,20 +32,49 @@ function spawnStdioProcess() {
  */
 function waitForStartup(process, timeoutMs = 3000) {
   return new Promise((resolve, reject) => {
+    let stderrBuffer = '';
+    let stdoutBuffer = '';
+    
     const timeout = setTimeout(() => {
-      reject(new Error('Timeout waiting for startup message'));
+      cleanup();
+      reject(new Error(`Timeout waiting for startup message. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`));
     }, timeoutMs);
+
+    const cleanup = () => {
+      clearTimeout(timeout);
+      process.stderr.off('data', onStderr);
+      process.stdout.off('data', onStdout);
+      process.off('exit', onExit);
+      process.off('error', onError);
+    };
 
     const onStderr = (data) => {
       const message = data.toString();
+      stderrBuffer += message;
       if (message.includes('BestPrice MCP stdio forwarder started')) {
-        clearTimeout(timeout);
-        process.stderr.off('data', onStderr);
+        cleanup();
         resolve();
       }
     };
 
+    const onStdout = (data) => {
+      stdoutBuffer += data.toString();
+    };
+
+    const onExit = (code, signal) => {
+      cleanup();
+      reject(new Error(`Process exited (code: ${code}, signal: ${signal}) before startup. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`));
+    };
+
+    const onError = (error) => {
+      cleanup();
+      reject(new Error(`Process error before startup: ${error.message}. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`));
+    };
+
     process.stderr.on('data', onStderr);
+    process.stdout.on('data', onStdout);
+    process.on('exit', onExit);
+    process.on('error', onError);
   });
 }
 
