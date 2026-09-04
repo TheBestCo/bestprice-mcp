@@ -42,6 +42,8 @@ npm test
   same contracts without a framework.
 - [`test/webmcp.test.js`](test/webmcp.test.js) pins the full journey and key
   safety boundaries.
+- [`evals/`](evals/) contains the versioned 43-case Greek natural-language
+  dataset and the separate deterministic and browser-agent evaluation criteria.
 
 ## Production surface
 
