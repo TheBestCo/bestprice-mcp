@@ -28,6 +28,7 @@ const claudeSubmission = readFileSync(new URL('./submission/claude-directory.md'
 const perplexitySubmission = readFileSync(new URL('./submission/perplexity-connector.md', import.meta.url), 'utf8');
 const openaiSubmission = readFileSync(new URL('./submission/openai-universal-plugin.md', import.meta.url), 'utf8');
 const releaseEvidence = readFileSync(new URL('./submission/README.md', import.meta.url), 'utf8');
+const geminiRegistration = readFileSync(new URL('./submission/gemini-registration.md', import.meta.url), 'utf8');
 
 describe('BestPrice Shopping plugin bundle', () => {
   it('is an MCP-only, read-only Codex plugin with no app surface', () => {
@@ -204,6 +205,14 @@ describe('BestPrice Shopping plugin bundle', () => {
     assert.match(perplexitySubmission, /Transport \| Streamable HTTP/u);
     assert.match(perplexitySubmission, /does not currently document a public\s+third-party directory/u);
     assert.ok(readFileSync(new URL('./submission/bestprice-mcp-logo-1024.png', import.meta.url)).length < 128 * 1024);
+  });
+
+  it('keeps the Google Gemini registration handoff bounded and factual', () => {
+    assert.match(geminiRegistration, /https:\/\/mcp\.bestprice\.gr\/mcp/u);
+    assert.match(geminiRegistration, /gemini mcp add/u);
+    assert.match(geminiRegistration, /search_products.*compare_offers.*get_price_history/u);
+    assert.match(geminiRegistration, /deep-research-preview-04-2026/u);
+    assert.match(geminiRegistration, /Interactions API/u);
   });
 
   it('provides at least seven positive and four negative review cases', () => {
