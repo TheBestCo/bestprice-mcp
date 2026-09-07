@@ -6,24 +6,32 @@ on:
 permissions:
   contents: read
 
+env:
+  MCP_PUBLISHER_VERSION: v1.8.1
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Requires the `mcp-registry` environment; configure required reviewers on it in the
+    # repository settings so a publish to the bestprice.gr namespace needs approval.
+    environment: mcp-registry
     steps:
-      - name: Check out the connector metadata
-        uses: actions/checkout@v7
-
-      - name: Test the connector package
-        run: npm test
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm test
 
       - name: Install the official MCP publisher
         run: |
           curl --fail --location --silent --show-error \
-            "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" \
+            "https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" \
             | tar xz mcp-publisher
 
-      - name: Validate server metadata
-        run: ./mcp-publisher validate server.json
+      - run: ./mcp-publisher validate server.json
 
       - name: Authenticate the BestPrice namespace
         env:
@@ -34,5 +42,4 @@ jobs:
             --domain bestprice.gr \
             --private-key "$MCP_REGISTRY_PRIVATE_KEY"
 
-      - name: Publish server metadata
-        run: ./mcp-publisher publish server.json
+      - run: ./mcp-publisher publish server.json

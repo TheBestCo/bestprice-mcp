@@ -34,10 +34,12 @@ function waitForStartup(process, timeoutMs = 3000) {
   return new Promise((resolve, reject) => {
     let stderrBuffer = '';
     let stdoutBuffer = '';
-    
+
     const timeout = setTimeout(() => {
       cleanup();
-      reject(new Error(`Timeout waiting for startup message. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`));
+      reject(
+        new Error(`Timeout waiting for startup message. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`),
+      );
     }, timeoutMs);
 
     const cleanup = () => {
@@ -48,7 +50,7 @@ function waitForStartup(process, timeoutMs = 3000) {
       process.off('error', onError);
     };
 
-    const onStderr = (data) => {
+    const onStderr = data => {
       const message = data.toString();
       stderrBuffer += message;
       if (message.includes('BestPrice MCP stdio forwarder started')) {
@@ -57,18 +59,26 @@ function waitForStartup(process, timeoutMs = 3000) {
       }
     };
 
-    const onStdout = (data) => {
+    const onStdout = data => {
       stdoutBuffer += data.toString();
     };
 
     const onExit = (code, signal) => {
       cleanup();
-      reject(new Error(`Process exited (code: ${code}, signal: ${signal}) before startup. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`));
+      reject(
+        new Error(
+          `Process exited (code: ${code}, signal: ${signal}) before startup. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`,
+        ),
+      );
     };
 
-    const onError = (error) => {
+    const onError = error => {
       cleanup();
-      reject(new Error(`Process error before startup: ${error.message}. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`));
+      reject(
+        new Error(
+          `Process error before startup: ${error.message}. stderr: ${stderrBuffer}, stdout: ${stdoutBuffer}`,
+        ),
+      );
     };
 
     process.stderr.on('data', onStderr);
@@ -81,7 +91,7 @@ function waitForStartup(process, timeoutMs = 3000) {
 describe('BestPrice MCP stdio forwarder', () => {
   it('starts and logs startup message immediately', async () => {
     const process = spawnStdioProcess();
-    
+
     try {
       // Wait for startup message (must appear before any network activity)
       await waitForStartup(process, 3000);
@@ -89,7 +99,7 @@ describe('BestPrice MCP stdio forwarder', () => {
     } finally {
       // Clean up: kill process and wait for exit
       process.kill('SIGTERM');
-      await new Promise((resolve) => {
+      await new Promise(resolve => {
         const exitTimeout = setTimeout(() => {
           process.kill('SIGKILL');
           resolve();
@@ -104,23 +114,23 @@ describe('BestPrice MCP stdio forwarder', () => {
 
   it('handles MCP protocol errors gracefully without crashing', async () => {
     const process = spawnStdioProcess();
-    
+
     try {
       // Wait for startup
       await waitForStartup(process, 3000);
-      
+
       // Send invalid JSON to test error handling
       process.stdin.write('invalid json\n');
-      
+
       // Give it a moment to process
       await new Promise(resolve => setTimeout(resolve, 500));
-      
+
       // Process should still be running
       assert.ok(!process.killed, 'process should handle invalid input without crashing');
     } finally {
       // Clean up
       process.kill('SIGTERM');
-      await new Promise((resolve) => {
+      await new Promise(resolve => {
         const exitTimeout = setTimeout(() => {
           process.kill('SIGKILL');
           resolve();

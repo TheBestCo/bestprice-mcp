@@ -26,7 +26,12 @@ describe('public BestPrice WebMCP layer', () => {
         }
       }
     }
-    assert.equal(createTools({ page: 'listing', execute: () => ({ ok: true }) }).find(tool => tool.name === 'open_visible_product').annotations.readOnlyHint, false);
+    assert.equal(
+      createTools({ page: 'listing', execute: () => ({ ok: true }) }).find(
+        tool => tool.name === 'open_visible_product',
+      ).annotations.readOnlyHint,
+      false,
+    );
   });
 
   it('fails a partial registration closed and aborts every registered tool', async () => {
@@ -39,7 +44,9 @@ describe('public BestPrice WebMCP layer', () => {
     };
     const states = [];
     const registration = createRegistration({ modelContext, onState: state => states.push(state) });
-    const result = await registration.register(createTools({ page: 'listing', execute: () => ({ ok: true }) }));
+    const result = await registration.register(
+      createTools({ page: 'listing', execute: () => ({ ok: true }) }),
+    );
 
     assert.deepEqual(result, { status: 'degraded', registered: 0 });
     assert.equal(signals.length, 8);
@@ -50,7 +57,11 @@ describe('public BestPrice WebMCP layer', () => {
   it('supports the complete search, listing, product, offer, and history journey', async () => {
     const adapter = createDemoAdapter();
     let tools = createTools({ page: 'home', execute: adapter.execute });
-    assert.deepEqual(await tools[0].execute({ query: 'phone' }), { ok: true, action: 'started_product_search', query: 'phone' });
+    assert.deepEqual(await tools[0].execute({ query: 'phone' }), {
+      ok: true,
+      action: 'started_product_search',
+      query: 'phone',
+    });
     assert.equal(adapter.snapshot().page, 'listing');
 
     tools = createTools({ page: 'listing', execute: adapter.execute });
@@ -60,7 +71,10 @@ describe('public BestPrice WebMCP layer', () => {
     assert.ok(JSON.stringify(listing).length <= 1500);
     assert.ok(listing.products.every(product => product.bestprice_url.endsWith('?bpref=mcp')));
     const productId = listing.products[0].product_id;
-    assert.equal((await tools.find(tool => tool.name === 'open_visible_product').execute({ product_id: productId })).ok, true);
+    assert.equal(
+      (await tools.find(tool => tool.name === 'open_visible_product').execute({ product_id: productId })).ok,
+      true,
+    );
     assert.equal(adapter.snapshot().page, 'product');
 
     tools = createTools({ page: 'product', execute: adapter.execute });
@@ -78,6 +92,9 @@ describe('public BestPrice WebMCP layer', () => {
     const adapter = createDemoAdapter();
     await adapter.execute('search_bestprice', { query: 'phone' });
     const result = await adapter.execute('open_visible_product', { product_id: '9999999999' });
-    assert.deepEqual(result, { ok: false, error: 'Product 9999999999 is not currently visible on this page.' });
+    assert.deepEqual(result, {
+      ok: false,
+      error: 'Product 9999999999 is not currently visible on this page.',
+    });
   });
 });

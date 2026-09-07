@@ -4,7 +4,6 @@ const TIMED_OUT = Symbol('timed_out');
 
 export function createRegistration({ modelContext, onState = () => {}, timeoutMs = DEFAULT_TIMEOUT_MS }) {
   let controller;
-  let active;
   let cancel;
   let generation = 0;
 
@@ -14,7 +13,6 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
     controller?.abort();
     cancel = undefined;
     controller = undefined;
-    active = undefined;
     onState({ status: 'unavailable', registered: 0 });
   };
 
@@ -31,8 +29,10 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
 
     const registrations = Promise.allSettled(
       tools.map(tool =>
-        Promise.resolve().then(() => modelContext.registerTool(tool, { signal: registrationController.signal }))
-      )
+        Promise.resolve().then(() =>
+          modelContext.registerTool(tool, { signal: registrationController.signal }),
+        ),
+      ),
     );
     let timer;
     const timeout = new Promise(resolve => {
@@ -49,7 +49,6 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
 
       if (results === TIMED_OUT) {
         registrationController.abort();
-        active = undefined;
         controller = undefined;
         cancel = undefined;
         onState({ status: 'degraded', registered: 0 });
@@ -62,14 +61,10 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
       const state = { status: ready ? 'ready' : 'degraded', registered: ready ? registered : 0 };
       onState(state);
       cancel = undefined;
-      if (!ready) {
-        active = undefined;
-        controller = undefined;
-      }
+      if (!ready) controller = undefined;
       return state;
     });
 
-    active = pending;
     return pending;
   };
 

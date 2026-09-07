@@ -15,7 +15,10 @@
       "id": "budget-feature-search",
       "prompt": "Βρες ρομποτική σκούπα με σταθμό αυτοεκκένωσης έως 600 ευρώ.",
       "expected_tools": ["search_products"],
-      "assertions": ["The budget and required feature are applied.", "The answer does not invent unsupported features."]
+      "assertions": [
+        "The budget and required feature are applied.",
+        "The answer does not invent unsupported features."
+      ]
     },
     {
       "id": "need-based-shopping-decision",

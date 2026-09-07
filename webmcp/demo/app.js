@@ -29,7 +29,11 @@ const samples = snapshot => ({
   show_price_history: {},
 });
 
-const escapeHtml = value => String(value).replace(/[&<>"']/gu, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+const escapeHtml = value =>
+  String(value).replace(
+    /[&<>"']/gu,
+    character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character],
+  );
 const money = value => new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR' }).format(value);
 
 const renderShop = snapshot => {
@@ -41,16 +45,32 @@ const renderShop = snapshot => {
     shop.querySelector('form').addEventListener('submit', async event => {
       event.preventDefault();
       const tool = currentTools.find(candidate => candidate.name === 'search_bestprice');
-      result.textContent = JSON.stringify(await tool.execute({ query: new FormData(event.currentTarget).get('query') }), null, 2);
+      result.textContent = JSON.stringify(
+        await tool.execute({ query: new FormData(event.currentTarget).get('query') }),
+        null,
+        2,
+      );
     });
     return;
   }
   if (snapshot.page === 'listing') {
     const brands = ['Apple', 'Samsung', 'Google'];
     shop.innerHTML = `<div class="listing-head"><div><p class="eyebrow">Fixture listing</p><h2>${escapeHtml(snapshot.query || 'Phones')}</h2></div><strong>${snapshot.products.length} products</strong></div><div class="chips">${brands.map(brand => `<button class="chip ${snapshot.brand === brand ? 'active' : ''}" data-brand="${brand}">${brand}</button>`).join('')}<button class="chip" data-sort>Sort: ${escapeHtml(snapshot.sort)}</button></div><div class="products">${snapshot.products.map(product => `<article class="product-row"><div><h3>${escapeHtml(product.title)}</h3><p>${product.merchant_count} stores · rating ${product.rating}/5</p></div><div><div class="price">from ${money(product.current_min_price_eur)}</div><button class="primary" data-product="${product.product_id}">Open</button></div></article>`).join('') || '<p>No fixture products match this filter.</p>'}</div>`;
-    shop.querySelectorAll('[data-brand]').forEach(button => button.addEventListener('click', () => adapter.execute('apply_listing_filter', { filter: 'Κατασκευαστής', value: button.dataset.brand })));
-    shop.querySelector('[data-sort]').addEventListener('click', () => adapter.execute('apply_listing_sort', { sort: snapshot.sort === 'Φθηνότερα' ? 'Δημοφιλέστερα' : 'Φθηνότερα' }));
-    shop.querySelectorAll('[data-product]').forEach(button => button.addEventListener('click', () => adapter.execute('open_visible_product', { product_id: button.dataset.product })));
+    for (const button of shop.querySelectorAll('[data-brand]')) {
+      button.addEventListener('click', () =>
+        adapter.execute('apply_listing_filter', { filter: 'Κατασκευαστής', value: button.dataset.brand }),
+      );
+    }
+    shop.querySelector('[data-sort]').addEventListener('click', () =>
+      adapter.execute('apply_listing_sort', {
+        sort: snapshot.sort === 'Φθηνότερα' ? 'Δημοφιλέστερα' : 'Φθηνότερα',
+      }),
+    );
+    for (const button of shop.querySelectorAll('[data-product]')) {
+      button.addEventListener('click', () =>
+        adapter.execute('open_visible_product', { product_id: button.dataset.product }),
+      );
+    }
     return;
   }
   const product = snapshot.product;
@@ -59,12 +79,19 @@ const renderShop = snapshot => {
 
 const renderTools = snapshot => {
   const toolSamples = samples(snapshot);
-  toolList.innerHTML = currentTools.map(tool => `<div class="tool"><div><code>${tool.name}</code><small>${escapeHtml(tool.title)}</small></div><button type="button" data-tool="${tool.name}">Run</button></div>`).join('');
-  toolList.querySelectorAll('[data-tool]').forEach(button => button.addEventListener('click', async () => {
-    const tool = currentTools.find(candidate => candidate.name === button.dataset.tool);
-    const payload = await tool.execute(toolSamples[tool.name]);
-    result.textContent = JSON.stringify(payload, null, 2);
-  }));
+  toolList.innerHTML = currentTools
+    .map(
+      tool =>
+        `<div class="tool"><div><code>${tool.name}</code><small>${escapeHtml(tool.title)}</small></div><button type="button" data-tool="${tool.name}">Run</button></div>`,
+    )
+    .join('');
+  for (const button of toolList.querySelectorAll('[data-tool]')) {
+    button.addEventListener('click', async () => {
+      const tool = currentTools.find(candidate => candidate.name === button.dataset.tool);
+      const payload = await tool.execute(toolSamples[tool.name]);
+      result.textContent = JSON.stringify(payload, null, 2);
+    });
+  }
 };
 
 const registration = createRegistration({
@@ -91,6 +118,8 @@ const scheduleRefresh = () => {
 };
 
 const adapter = createDemoAdapter(scheduleRefresh);
-document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => adapter.setPage(button.dataset.view)));
+for (const button of document.querySelectorAll('[data-view]')) {
+  button.addEventListener('click', () => adapter.setPage(button.dataset.view));
+}
 mode.textContent = nativeContext ? 'Native WebMCP' : 'Local inspector';
 await refresh();

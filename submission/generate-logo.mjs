@@ -9,10 +9,7 @@ const directory = path.dirname(fileURLToPath(import.meta.url));
 const source = path.resolve(directory, '../assets/bestprice-logo.svg');
 const output = path.join(directory, 'bestprice-mcp-logo-1024.png');
 
-const mark = await sharp(source)
-  .resize({ width: 592, height: 384, fit: 'contain' })
-  .png()
-  .toBuffer();
+const mark = await sharp(source).resize({ width: 592, height: 384, fit: 'contain' }).png().toBuffer();
 
 await sharp({
   create: {

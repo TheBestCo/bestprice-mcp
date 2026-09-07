@@ -1,2 +1,21 @@
+# Dependencies
 node_modules/
+
+# Test and build output
+coverage/
+dist/
+*.log
+*.tgz
+
+# Local tooling state
+.claude/settings.local.json
+mcp-publisher
+
+# Environment and secrets
+.env
+.env.*
+
+# Editors and OS
 .DS_Store
+.idea/
+.vscode/

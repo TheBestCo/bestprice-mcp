@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * BestPrice MCP stdio forwarder
- * 
+ *
  * This local stdio MCP server forwards all MCP protocol requests to the public
  * BestPrice MCP endpoint at https://mcp.bestprice.gr/mcp via Streamable HTTP.
- * 
+ *
  * It speaks MCP stdio on stdin/stdout and translates requests to HTTP POST calls
  * with SSE response handling. This allows Glama to build and run a local process
  * without depending on the mcp-remote package.
@@ -12,10 +12,7 @@
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import {
-  CallToolRequestSchema,
-  ListToolsRequestSchema,
-} from '@modelcontextprotocol/sdk/types.js';
+import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 
 const REMOTE_ENDPOINT = 'https://mcp.bestprice.gr/mcp';
 
@@ -37,7 +34,7 @@ async function forwardRequest(method, params = {}) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Accept': 'application/json, text/event-stream',
+      Accept: 'application/json, text/event-stream',
     },
     body: JSON.stringify(body),
   });
@@ -47,13 +44,13 @@ async function forwardRequest(method, params = {}) {
   }
 
   const contentType = response.headers.get('content-type') || '';
-  
+
   if (contentType.includes('text/event-stream')) {
     // Handle SSE response
     const text = await response.text();
     const lines = text.split('\n');
     let data = '';
-    
+
     for (const line of lines) {
       if (line.startsWith('data: ')) {
         data += line.slice(6);
@@ -66,7 +63,7 @@ async function forwardRequest(method, params = {}) {
         data = '';
       }
     }
-    
+
     // If we have remaining data, parse it
     if (data) {
       const parsed = JSON.parse(data);
@@ -74,7 +71,7 @@ async function forwardRequest(method, params = {}) {
         return parsed.result;
       }
     }
-    
+
     throw new Error('No valid result in SSE response');
   } else {
     // Handle JSON response
@@ -99,7 +96,7 @@ function createServer() {
       capabilities: {
         tools: {},
       },
-    }
+    },
   );
 
   // Forward initialize request to get real server info
@@ -113,7 +110,7 @@ function createServer() {
     }
   });
 
-  server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  server.setRequestHandler(CallToolRequestSchema, async request => {
     try {
       const result = await forwardRequest('tools/call', {
         name: request.params.name,
@@ -136,14 +133,14 @@ async function main() {
   // Log startup immediately before any async operations
   console.error('BestPrice MCP stdio forwarder started');
   console.error(`Forwarding to: ${REMOTE_ENDPOINT}`);
-  
+
   const server = createServer();
   const transport = new StdioServerTransport();
-  
+
   await server.connect(transport);
 }
 
-main().catch((error) => {
+main().catch(error => {
   console.error('Fatal error:', error);
   process.exit(1);
 });
