@@ -1,0 +1,256 @@
+{
+  "schemaVersion": "1.1",
+  "caseProfile": "school_laptop_600_verified_ram",
+  "deployment": {
+    "scope": "mcp_gateway",
+    "revision": "c92245f03ffce1bb6779e24b281be63c37eba045",
+    "responses": 35,
+    "stable": true
+  },
+  "generatedAt": "2026-09-07T09:32:46.659Z",
+  "endpoint": "https://mcp.bestprice.gr/mcp",
+  "status": "passed",
+  "summary": {
+    "passed": 47,
+    "failed": 0,
+    "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
+    "checkoutTools": 0,
+    "merchantRedirectsFollowed": 0,
+    "rateLimitRetries": 0
+  },
+  "checks": [
+    {
+      "name": "health",
+      "passed": true,
+      "latencyMs": 37
+    },
+    {
+      "name": "streamable_http_event_channel",
+      "passed": true,
+      "latencyMs": 11
+    },
+    {
+      "name": "browser_connector_cors_preflight",
+      "passed": true
+    },
+    {
+      "name": "legacy_http_discovery",
+      "passed": true,
+      "latencyMs": 54
+    },
+    {
+      "name": "cross_host_legacy_card_parity",
+      "passed": true
+    },
+    {
+      "name": "modern_http_discovery",
+      "passed": true,
+      "latencyMs": 10
+    },
+    {
+      "name": "ai_catalog_discovery",
+      "passed": true,
+      "latencyMs": 26
+    },
+    {
+      "name": "cross_host_ai_catalog_parity",
+      "passed": true
+    },
+    {
+      "name": "ard_discovery",
+      "passed": true,
+      "latencyMs": 27
+    },
+    {
+      "name": "cross_host_ard_parity",
+      "passed": true
+    },
+    {
+      "name": "apis_json_discovery",
+      "passed": true,
+      "latencyMs": 30
+    },
+    {
+      "name": "registry_manifest_discovery",
+      "passed": true,
+      "latencyMs": 29
+    },
+    {
+      "name": "webmcp_manifest_discovery",
+      "passed": true,
+      "latencyMs": 22
+    },
+    {
+      "name": "cross_host_webmcp_parity",
+      "passed": true
+    },
+    {
+      "name": "initialize",
+      "passed": true,
+      "latencyMs": 29
+    },
+    {
+      "name": "modern_protocol_discovery",
+      "passed": true,
+      "protocolVersion": "2026-07-28",
+      "latencyMs": 24
+    },
+    {
+      "name": "modern_tool_inventory",
+      "passed": true,
+      "toolCount": 4
+    },
+    {
+      "name": "modern_tool_call",
+      "passed": true,
+      "resultCount": 2,
+      "latencyMs": 79
+    },
+    {
+      "name": "modern_header_body_mismatch_rejected",
+      "passed": true
+    },
+    {
+      "name": "tool_inventory_and_annotations",
+      "passed": true,
+      "toolCount": 4
+    },
+    {
+      "name": "mcp_apps_ui",
+      "passed": true,
+      "bytes": 48610
+    },
+    {
+      "name": "claude_mcp_apps_ui_domain",
+      "passed": true
+    },
+    {
+      "name": "mcp_server_card_resource",
+      "passed": true
+    },
+    {
+      "name": "shared_shopping_brain",
+      "passed": true,
+      "latencyMs": 3798,
+      "decisionVersion": "bestprice_decision_v1",
+      "returnedProducts": 3,
+      "evidenceClaims": 283
+    },
+    {
+      "name": "positive_exact_model_search",
+      "passed": true,
+      "resultCount": 5,
+      "productId": "bp_2157591869",
+      "latencyMs": 112
+    },
+    {
+      "name": "positive_budget_discovery",
+      "passed": true,
+      "resultCount": 5,
+      "latencyMs": 283
+    },
+    {
+      "name": "positive_contextual_search",
+      "passed": true,
+      "searchMode": "broadened_category",
+      "resultCount": 5,
+      "latencyMs": 142
+    },
+    {
+      "name": "positive_expanded_physical_scope",
+      "passed": true,
+      "resultCount": 3,
+      "latencyMs": 455
+    },
+    {
+      "name": "positive_delivered_offer_comparison",
+      "passed": true,
+      "resultCount": 10,
+      "latencyMs": 166
+    },
+    {
+      "name": "positive_merchant_quality_comparison",
+      "passed": true,
+      "resultCount": 10,
+      "latencyMs": 58
+    },
+    {
+      "name": "positive_observed_price_history",
+      "passed": true,
+      "classification": "typical_price",
+      "latencyMs": 45
+    },
+    {
+      "name": "negative_invalid_product_identity",
+      "passed": true
+    },
+    {
+      "name": "negative_prohibited_tobacco_scope",
+      "passed": true,
+      "resultCount": 0
+    },
+    {
+      "name": "negative_prohibited_adult_scope",
+      "passed": true,
+      "resultCount": 0
+    },
+    {
+      "name": "negative_prohibited_digital_scope",
+      "passed": true,
+      "resultCount": 0
+    },
+    {
+      "name": "negative_prohibited_gift_card_scope",
+      "passed": true,
+      "resultCount": 0
+    },
+    {
+      "name": "negative_prohibited_alcohol_scope",
+      "passed": true,
+      "resultCount": 0
+    },
+    {
+      "name": "negative_mixed_digital_search_bp_2157315082",
+      "passed": true
+    },
+    {
+      "name": "negative_mixed_digital_search_bp_2163636328",
+      "passed": true
+    },
+    {
+      "name": "negative_mixed_digital_search_bp_2154329660",
+      "passed": true
+    },
+    {
+      "name": "negative_direct_product_scope_bp_2157315082",
+      "passed": true
+    },
+    {
+      "name": "negative_direct_product_scope_bp_2163636328",
+      "passed": true
+    },
+    {
+      "name": "negative_direct_product_scope_bp_2154329660",
+      "passed": true
+    },
+    {
+      "name": "negative_digital_history_scope",
+      "passed": true
+    },
+    {
+      "name": "negative_catalog_dump_bound",
+      "passed": true
+    },
+    {
+      "name": "negative_unpublished_write_or_basket_surface",
+      "passed": true
+    },
+    {
+      "name": "signed_bestprice_landing",
+      "passed": true,
+      "status": 303,
+      "merchantRedirectFollowed": false
+    }
+  ],
+  "privacy": "Signed URLs, cookies, merchant destinations, prompts, and internal request/trace/session identifiers are omitted."
+}

@@ -157,6 +157,10 @@ Two versions appear in this repository on purpose:
 
 `CHANGELOG.md` tracks the package version.
 
+Timestamped hosted-service checks are recorded separately. The
+[7 September Shopping Brain v12 verification](docs/releases/2026-09-07-brain-v12.md)
+includes its exact gateway revision, sanitized canary results, and scope limits.
+
 ## Security
 
 Report vulnerabilities privately as described in [`SECURITY.md`](SECURITY.md).

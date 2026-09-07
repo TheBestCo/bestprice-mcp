@@ -7,6 +7,11 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+### Added
+
+- Timestamped Shopping Brain v12 production verification with the full serving revision,
+  sanitized canary results, and explicit limits on what was tested.
+
 ## [1.2.0] - 2026-09-07
 
 ### Changed
