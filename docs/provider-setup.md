@@ -75,7 +75,7 @@ claude mcp add --transport http bestprice-shopping \
 claude mcp get bestprice-shopping
 ```
 
-The repository's [`.mcp.json`](.mcp.json) contains the equivalent
+The repository's [`.mcp.json`](../.mcp.json) contains the equivalent
 project-scoped configuration. Claude discovers the live tool inventory from
 the endpoint; do not hard-code a stale local allowlist.
 
@@ -108,7 +108,7 @@ select **Remote**. Enter:
 - Authentication: `None`
 - Transport: `Streamable HTTP`
 - Description: `Read-only shopping decisions, product search, offers, and price history for Greece.`
-- Icon: `submission/bestprice-mcp-logo-1024.png`
+- Icon: [`assets/bestprice-mcp-logo-1024.png`](../assets/bestprice-mcp-logo-1024.png)
 
 The square icon is 35 KB, below Perplexity's 128 KB limit. After adding the
 connector, open its card to enable it and select it as a source in a new

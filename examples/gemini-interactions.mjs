@@ -28,7 +28,7 @@ export function buildInteractionsPayload(input = DEFAULT_PROMPT) {
         allowed_tools: [
           {
             mode: 'auto',
-            tools: ['search_products', 'compare_offers', 'get_price_history'],
+            tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'],
           },
         ],
       },
@@ -68,7 +68,7 @@ async function run() {
   validatePayloadEnvelope(payload);
 
   if (verifyOnly) {
-    console.log('✓ Google Gemini Interactions API payload envelope validated successfully:');
+    console.log('Google Gemini Interactions API payload envelope validated:');
     console.log(JSON.stringify(payload, null, 2));
     return;
   }

@@ -40,8 +40,9 @@ npm test
   adapter.
 - [`demo/app.js`](demo/app.js) renders the human-visible page and exercises the
   same contracts without a framework.
-- [`test/webmcp.test.js`](test/webmcp.test.js) pins the full journey and key
-  safety boundaries.
+- [`test/webmcp.test.js`](test/webmcp.test.js) pins the contracts, the fail-closed
+  runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
+  validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned 43-case Greek natural-language
   dataset and the separate deterministic and browser-agent evaluation criteria.
 
