@@ -1,3 +1,23 @@
+/**
+ * Deterministic fixture adapter behind the WebMCP demo.
+ *
+ * Holds a tiny three-phone catalog and the page state (home, listing, product), and implements every
+ * contract in contracts.js against it. Nothing here talks to the network.
+ */
+
+/** Labels the real BestPrice listing renders; the demo UI imports them so buttons and tools cannot drift. */
+export const SORT_OPTIONS = Object.freeze(['Δημοφιλέστερα', 'Φθηνότερα']);
+export const BRAND_FILTER = 'Κατασκευαστής';
+export const PAGES = Object.freeze(['home', 'listing', 'product']);
+export const PRODUCT_CATEGORY = 'Κινητά τηλέφωνα';
+
+/** Non-billable BestPrice landing for a product; only a later merchant choice can create a commercial click. */
+export const productUrl = productId => `https://www.bestprice.gr/item/${productId}/product.html?bpref=mcp`;
+
+/** Default result sizes stay below the schema maxima so untouched calls return compact payloads. */
+const DEFAULT_LIMITS = { get_visible_products: 6, compare_page_offers: 4, get_product_specifications: 12 };
+const MAX_LIMITS = { get_visible_products: 8, compare_page_offers: 4, get_product_specifications: 16 };
+
 const PRODUCTS = [
   {
     product_id: '2159919913',
@@ -106,14 +126,34 @@ const clean = value =>
     .replace(/[\u0000-\u001f\u007f]/gu, ' ')
     .trim();
 const normalize = value => clean(value).normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
-const unexpected = (args, allowed) => Object.keys(args ?? {}).find(key => !allowed.includes(key));
+const fail = error => ({ ok: false, error });
+const brands = () => [...new Set(PRODUCTS.map(product => product.brand))];
 
+/** Returns an error result when `args` carries a key outside `allowed`, otherwise null. */
+const rejectUnexpected = (args, allowed) => {
+  const bad = Object.keys(args).find(key => !allowed.includes(key));
+  return bad ? fail(`Unexpected argument: ${bad}.`) : null;
+};
+
+/** Resolves the `limit` argument for `tool`, returning `{ limit }` or an error result. */
+const readLimit = (args, tool) => {
+  const limit = args.limit ?? DEFAULT_LIMITS[tool];
+  const max = MAX_LIMITS[tool];
+  if (!Number.isInteger(limit) || limit < 1 || limit > max) {
+    return { error: fail(`limit must be a whole number from 1 to ${max}.`) };
+  }
+  return { limit };
+};
+
+/**
+ * @param {(snapshot: object) => void} [onChange] called after every state change with the new snapshot.
+ */
 export function createDemoAdapter(onChange = () => {}) {
   const state = {
     page: 'home',
     query: '',
     brand: null,
-    sort: 'Δημοφιλέστερα',
+    sort: SORT_OPTIONS[0],
     activeProductId: PRODUCTS[0].product_id,
     historyVisible: false,
   };
@@ -134,191 +174,197 @@ export function createDemoAdapter(onChange = () => {}) {
   };
   const activeProduct = () =>
     PRODUCTS.find(product => product.product_id === state.activeProductId) ?? PRODUCTS[0];
-  const changed = () => onChange(snapshot());
   const snapshot = () => ({ ...state, products: visibleProducts(), product: activeProduct() });
+  const changed = () => onChange(snapshot());
+
   const setPage = page => {
-    if (!['home', 'listing', 'product'].includes(page)) throw new TypeError(`Unknown page: ${page}`);
+    if (!PAGES.includes(page)) throw new TypeError(`Unknown page: ${page}`);
     state.page = page;
     changed();
   };
 
+  /** One handler per contract; each receives already-validated-as-object `args`. */
+  const handlers = {
+    search_bestprice(args) {
+      const query = clean(args.query);
+      if (query.length < 2 || query.length > 120) return fail('query must contain 2 to 120 characters.');
+      state.query = query;
+      state.brand = null;
+      state.page = 'listing';
+      changed();
+      return { ok: true, action: 'started_product_search', query };
+    },
+
+    get_visible_products(args) {
+      const { limit, error } = readLimit(args, 'get_visible_products');
+      if (error) return error;
+      const products = visibleProducts()
+        .slice(0, limit)
+        .map(({ offers, history, specifications, ...product }) => ({
+          ...product,
+          bestprice_url: productUrl(product.product_id),
+        }));
+      return { ok: true, source: 'BestPrice listing page', returned: products.length, products };
+    },
+
+    open_visible_product(args) {
+      const productId = clean(args.product_id);
+      const product = visibleProducts().find(row => row.product_id === productId);
+      if (!product) return fail(`Product ${productId} is not currently visible on this page.`);
+      state.activeProductId = product.product_id;
+      state.page = 'product';
+      changed();
+      return {
+        ok: true,
+        action: 'opened_visible_product',
+        product_id: product.product_id,
+        title: product.title,
+      };
+    },
+
+    get_listing_filters() {
+      return {
+        ok: true,
+        source: 'BestPrice listing filters',
+        filters: [
+          {
+            key: 'brand',
+            name: BRAND_FILTER,
+            selected_values: state.brand ? [state.brand] : [],
+            available_values: brands().filter(brand => brand !== state.brand),
+          },
+        ],
+      };
+    },
+
+    apply_listing_filter(args) {
+      const filter = normalize(args.filter);
+      if (filter !== normalize(BRAND_FILTER) && filter !== 'brand') {
+        return fail(`Only the visible '${BRAND_FILTER}' filter is available on this page.`);
+      }
+      const brand = brands().find(value => normalize(value) === normalize(args.value));
+      if (!brand) return fail(`The visible value '${clean(args.value)}' was not found.`);
+      state.brand = brand;
+      changed();
+      return { ok: true, action: 'applied_filter', filter: BRAND_FILTER, value: brand };
+    },
+
+    clear_listing_filters() {
+      state.brand = null;
+      changed();
+      return { ok: true, action: 'cleared_listing_filters' };
+    },
+
+    get_listing_sort_options() {
+      return {
+        ok: true,
+        source: 'BestPrice listing sorting',
+        sorting: SORT_OPTIONS.map(value => ({ name: value, selected: value === state.sort })),
+      };
+    },
+
+    apply_listing_sort(args) {
+      const sort = SORT_OPTIONS.find(value => normalize(value) === normalize(args.sort));
+      if (!sort) return fail(`The sorting option '${clean(args.sort)}' was not found.`);
+      state.sort = sort;
+      changed();
+      return { ok: true, action: 'applied_sorting', sort };
+    },
+
+    get_page_product() {
+      const product = activeProduct();
+      const { offers, history, specifications, brand, merchant_count, ...facts } = product;
+      return {
+        ok: true,
+        source: 'BestPrice item page',
+        ...facts,
+        category: PRODUCT_CATEGORY,
+        offer_count: merchant_count,
+        bestprice_url: productUrl(product.product_id),
+      };
+    },
+
+    compare_page_offers(args) {
+      const { limit, error } = readLimit(args, 'compare_page_offers');
+      if (error) return error;
+      const product = activeProduct();
+      return {
+        ok: true,
+        source: 'BestPrice item page',
+        product_id: product.product_id,
+        compared: Math.min(limit, product.offers.length),
+        offers: product.offers.slice(0, limit),
+        note: 'Unknown shipping remains unknown. The shopper chooses the merchant.',
+      };
+    },
+
+    get_product_specifications(args) {
+      const { limit, error } = readLimit(args, 'get_product_specifications');
+      if (error) return error;
+      const product = activeProduct();
+      const section = normalize(args.section ?? 'all');
+      const rows = product.specifications
+        .filter(row => section === 'all' || normalize(row.section).includes(section))
+        .slice(0, limit);
+      if (!rows.length) return fail(`No specifications matched '${clean(args.section)}'.`);
+      return {
+        ok: true,
+        source: 'BestPrice product specifications',
+        product_id: product.product_id,
+        returned: rows.length,
+        specifications: rows,
+      };
+    },
+
+    summarize_price_history() {
+      const product = activeProduct();
+      const first = product.history[0];
+      const current = product.current_min_price_eur;
+      const changePct = Math.round(((current - first) / first) * 1000) / 10;
+      const direction = changePct < -1 ? 'down' : changePct > 1 ? 'up' : 'stable';
+      return {
+        ok: true,
+        source: 'BestPrice price history',
+        product_id: product.product_id,
+        observations: product.history.length,
+        current_min_price_eur: current,
+        historical_low_eur: Math.min(...product.history),
+        historical_high_eur: Math.max(...product.history),
+        change_from_first_pct: changePct,
+        direction_from_first: direction,
+      };
+    },
+
+    show_price_history() {
+      state.historyVisible = true;
+      changed();
+      return { ok: true, action: 'opened_price_history', product_id: activeProduct().product_id };
+    },
+  };
+
+  /** Argument names each tool accepts; anything else is rejected before the handler runs. */
+  const ACCEPTED_ARGS = {
+    search_bestprice: ['query'],
+    get_visible_products: ['limit'],
+    open_visible_product: ['product_id'],
+    get_listing_filters: [],
+    apply_listing_filter: ['filter', 'value'],
+    clear_listing_filters: [],
+    get_listing_sort_options: [],
+    apply_listing_sort: ['sort'],
+    get_page_product: [],
+    compare_page_offers: ['limit'],
+    get_product_specifications: ['section', 'limit'],
+    summarize_price_history: [],
+    show_price_history: [],
+  };
+
   const execute = async (name, args = {}) => {
     if (!args || typeof args !== 'object' || Array.isArray(args))
-      return { ok: false, error: 'Arguments must be a JSON object.' };
-    let bad;
-    switch (name) {
-      case 'search_bestprice': {
-        bad = unexpected(args, ['query']);
-        const query = clean(args.query);
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        if (query.length < 2 || query.length > 120)
-          return { ok: false, error: 'query must contain 2 to 120 characters.' };
-        state.query = query;
-        state.brand = null;
-        state.page = 'listing';
-        changed();
-        return { ok: true, action: 'started_product_search', query };
-      }
-      case 'get_visible_products': {
-        bad = unexpected(args, ['limit']);
-        const limit = args.limit ?? 6;
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        if (!Number.isInteger(limit) || limit < 1 || limit > 8)
-          return { ok: false, error: 'limit must be a whole number from 1 to 8.' };
-        const products = visibleProducts()
-          .slice(0, limit)
-          .map(({ offers, history, specifications, ...product }) => ({
-            ...product,
-            bestprice_url: `https://www.bestprice.gr/item/${product.product_id}/product.html?bpref=mcp`,
-          }));
-        return { ok: true, source: 'BestPrice listing page', returned: products.length, products };
-      }
-      case 'open_visible_product': {
-        bad = unexpected(args, ['product_id']);
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        const product = visibleProducts().find(row => row.product_id === clean(args.product_id));
-        if (!product)
-          return {
-            ok: false,
-            error: `Product ${clean(args.product_id)} is not currently visible on this page.`,
-          };
-        state.activeProductId = product.product_id;
-        state.page = 'product';
-        changed();
-        return {
-          ok: true,
-          action: 'opened_visible_product',
-          product_id: product.product_id,
-          title: product.title,
-        };
-      }
-      case 'get_listing_filters':
-        return {
-          ok: true,
-          source: 'BestPrice listing filters',
-          filters: [
-            {
-              key: 'brand',
-              name: 'Κατασκευαστής',
-              selected_values: state.brand ? [state.brand] : [],
-              available_values: [...new Set(PRODUCTS.map(product => product.brand))].filter(
-                brand => brand !== state.brand,
-              ),
-            },
-          ],
-        };
-      case 'apply_listing_filter': {
-        bad = unexpected(args, ['filter', 'value']);
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        if (normalize(args.filter) !== 'κατασκευαστης' && normalize(args.filter) !== 'brand')
-          return { ok: false, error: 'Only the visible Κατασκευαστής filter is available in this fixture.' };
-        const brand = [...new Set(PRODUCTS.map(product => product.brand))].find(
-          value => normalize(value) === normalize(args.value),
-        );
-        if (!brand) return { ok: false, error: `The visible value '${clean(args.value)}' was not found.` };
-        state.brand = brand;
-        changed();
-        return { ok: true, action: 'applied_filter', filter: 'Κατασκευαστής', value: brand };
-      }
-      case 'clear_listing_filters':
-        state.brand = null;
-        changed();
-        return { ok: true, action: 'cleared_listing_filters' };
-      case 'get_listing_sort_options':
-        return {
-          ok: true,
-          source: 'BestPrice listing sorting',
-          sorting: ['Δημοφιλέστερα', 'Φθηνότερα'].map(value => ({
-            name: value,
-            selected: value === state.sort,
-          })),
-        };
-      case 'apply_listing_sort': {
-        bad = unexpected(args, ['sort']);
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        const sort = ['Δημοφιλέστερα', 'Φθηνότερα'].find(value => normalize(value) === normalize(args.sort));
-        if (!sort) return { ok: false, error: `The sorting option '${clean(args.sort)}' was not found.` };
-        state.sort = sort;
-        changed();
-        return { ok: true, action: 'applied_sorting', sort };
-      }
-      case 'get_page_product': {
-        bad = unexpected(args, []);
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        const product = activeProduct();
-        const { offers, history, specifications, brand, merchant_count, ...facts } = product;
-        return {
-          ok: true,
-          source: 'BestPrice item page',
-          ...facts,
-          category: 'Κινητά τηλέφωνα',
-          offer_count: merchant_count,
-          bestprice_url: `https://www.bestprice.gr/item/${product.product_id}/product.html?bpref=mcp`,
-        };
-      }
-      case 'compare_page_offers': {
-        bad = unexpected(args, ['limit']);
-        const limit = args.limit ?? 4;
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        if (!Number.isInteger(limit) || limit < 1 || limit > 4)
-          return { ok: false, error: 'limit must be a whole number from 1 to 4.' };
-        const product = activeProduct();
-        return {
-          ok: true,
-          source: 'BestPrice item page',
-          product_id: product.product_id,
-          compared: Math.min(limit, product.offers.length),
-          offers: product.offers.slice(0, limit),
-          note: 'Unknown shipping remains unknown. The shopper chooses the merchant.',
-        };
-      }
-      case 'get_product_specifications': {
-        bad = unexpected(args, ['section', 'limit']);
-        const limit = args.limit ?? 12;
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        if (!Number.isInteger(limit) || limit < 1 || limit > 16)
-          return { ok: false, error: 'limit must be a whole number from 1 to 16.' };
-        const product = activeProduct();
-        const section = normalize(args.section ?? 'all');
-        const rows = product.specifications
-          .filter(row => section === 'all' || normalize(row.section).includes(section))
-          .slice(0, limit);
-        return rows.length
-          ? {
-              ok: true,
-              source: 'BestPrice product specifications',
-              product_id: product.product_id,
-              returned: rows.length,
-              specifications: rows,
-            }
-          : { ok: false, error: `No specifications matched '${clean(args.section)}'.` };
-      }
-      case 'summarize_price_history': {
-        bad = unexpected(args, []);
-        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
-        const product = activeProduct();
-        const first = product.history[0];
-        const current = product.current_min_price_eur;
-        const change = Math.round(((current - first) / first) * 1000) / 10;
-        return {
-          ok: true,
-          source: 'BestPrice price history',
-          product_id: product.product_id,
-          observations: product.history.length,
-          current_min_price_eur: current,
-          historical_low_eur: Math.min(...product.history),
-          historical_high_eur: Math.max(...product.history),
-          change_from_first_pct: change,
-          direction_from_first: change < -1 ? 'down' : change > 1 ? 'up' : 'stable',
-        };
-      }
-      case 'show_price_history':
-        state.historyVisible = true;
-        changed();
-        return { ok: true, action: 'opened_price_history', product_id: activeProduct().product_id };
-      default:
-        return { ok: false, error: `Unknown tool: ${clean(name)}.` };
-    }
+      return fail('Arguments must be a JSON object.');
+    const handler = Object.hasOwn(handlers, name) ? handlers[name] : undefined;
+    if (!handler) return fail(`Unknown tool: ${clean(name)}.`);
+    return rejectUnexpected(args, ACCEPTED_ARGS[name]) ?? handler(args);
   };
 
   return { execute, setPage, snapshot };
