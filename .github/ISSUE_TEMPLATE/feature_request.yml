@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an improvement to the manifests, bridge, WebMCP layer, or docs.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Requests about the hosted tools themselves (new tools, new fields, catalog scope) are welcome here too;
+        they are routed to the service team, and the answer may be that the change ships server-side without a repository change.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is hard or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What would you like to see, and for which client or surface?
+    validations:
+      required: true

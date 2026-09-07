@@ -1,156 +1,172 @@
 # BestPrice MCP
 
-[![Test public MCP package](https://github.com/TheBestCo/bestprice-mcp/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/TheBestCo/bestprice-mcp/actions/workflows/test.yml)
-[![TheBestCo/bestprice-mcp MCP server](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp/badges/score.svg)](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp)
+[![CI](https://github.com/TheBestCo/bestprice-mcp/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/TheBestCo/bestprice-mcp/actions/workflows/test.yml)
+[![Glama score](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp/badges/score.svg)](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+
+The official [Model Context Protocol](https://modelcontextprotocol.io/) server for
+[BestPrice.gr](https://www.bestprice.gr/), Greece's price-comparison service. It gives AI
+assistants read-only access to shopping decisions, live product search, offer comparison,
+and price history. No account or API key is needed.
 
 ![BestPrice MCP: products, offers and price history for AI assistants](https://www.bestprice.gr/extra/mcpLanding/assets/bestprice-mcp-share.png)
 
-Connect compatible AI applications to the BestPrice Shopping Brain, live
-product search, offer comparison, and price history from
-[BestPrice.gr](https://www.bestprice.gr/). The public
-service is read-only and does not require a BestPrice account or API key.
-BestPrice helps shoppers make the right shopping decision; MCP makes the same
-comparison data available wherever a compatible AI-assisted decision begins.
-Search covers safe physical products across the main BestPrice catalog. Digital
-products, services, and prohibited or age-restricted categories are excluded.
-Search prices exclude shipping; offer comparison reports shipping and delivered
-totals separately.
+```text
+https://mcp.bestprice.gr/mcp
+```
 
-- MCP endpoint: `https://mcp.bestprice.gr/mcp`
+- Transport: Streamable HTTP over HTTPS, no authentication
 - Official Registry ID: `gr.bestprice/mcp`
-- Public guide: `https://www.bestprice.gr/mcp`
-- Support: `https://www.bestprice.gr/contact`
-- Security reports: [`SECURITY.md`](SECURITY.md)
-- ARD discovery: `https://www.bestprice.gr/.well-known/ard.json`
-- WebMCP inventory: `https://www.bestprice.gr/.well-known/webmcp.json`
-- Legacy AI Catalog: `https://www.bestprice.gr/.well-known/ai-catalog.json`
-- Server card: `https://mcp.bestprice.gr/mcp/server-card`
-- Server / MCP Registry version: `1.8.0`
-- Installable plugin bundle version: `1.1.0` (independent release track)
-- Tools: `get_shopping_decision`, `search_products`, `compare_offers`,
-  `get_price_history`
+- Server version: `1.8.0`
+- Public guide: <https://www.bestprice.gr/mcp>
+- Support: <https://www.bestprice.gr/contact>
 
-## Discovery
+This repository holds everything that lives outside the hosted service: the install
+manifests for each AI client, a local stdio bridge for hosts that cannot speak HTTP, and
+the browser-native WebMCP layer. The server itself is not in this repository.
 
-- [Official MCP Registry record](https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp)
-- [WebMCP Registry](https://webmcp-registry.dev/domain/www.bestprice.gr)
-- [webmcp.com live tool index](https://webmcp.com/sites/bestprice.gr)
-- Community indexes: [Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp),
-  [MCP Repository](https://mcprepository.com/thebestco/bestprice-mcp),
-  [MCP Toplist](https://mcptoplist.com/server/gr.bestprice%2Fmcp),
-  [The MCP Index](https://themcpindex.com/servers/gr-bestprice-mcp), and
-  [AgentNDX](https://agentndx.ai/server/bestprice-mcp/)
+## Tools
 
-The included `Dockerfile` runs a local stdio MCP process that forwards requests to the public `https://mcp.bestprice.gr/mcp` endpoint, enabling Glama build scoring without external package dependencies.
+| Tool | What it does | Key arguments |
+| --- | --- | --- |
+| `get_shopping_decision` | Runs the BestPrice Shopping Brain: an evidence-backed recommendation, need-based comparison, or read-only basket plan with reasons, tradeoffs, and unknowns. | Natural-language need, optional budget and five-digit Greek postcode |
+| `search_products` | Finds canonical products in the catalog. Returns product IDs and the catalog minimum price before shipping. | `query`, optional `limit` |
+| `compare_offers` | Compares current merchant offers for one exact product, separating item price, shipping, and delivered total. | `product_id` from a previous result, optional `postal_code` |
+| `get_price_history` | Summarises how a product's price moved over time. | `product_id`, `days` |
 
-## Browser-native WebMCP
+All four tools are read-only. They never place orders, create alerts, or read account
+data. Results link to a BestPrice product page, never directly to a merchant. Unknown
+shipping is reported as unknown, not as free. Search covers safe physical products;
+digital goods, services, and age-restricted categories are excluded.
 
-BestPrice pages also expose 13 contextual WebMCP tools to compatible browsers.
-They cover the visible search, filter, sort, product, offer, specification, and
-price-history journey while leaving the merchant choice to the shopper. The
-Apache-2.0 source, deterministic evaluator, tests, and architecture are in
-[`webmcp/`](webmcp/).
+## Quick start
 
-## Install for Gemini CLI
+Every client below connects to the same endpoint. Detailed, provider-specific
+instructions including OpenAI, Grok, GitHub Copilot, and Microsoft Copilot Studio are in
+[`docs/provider-setup.md`](docs/provider-setup.md).
+
+### Claude
+
+[Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
+opens the custom-connector flow with the endpoint prefilled. For Claude Code:
 
 ```sh
-gemini extensions install https://github.com/TheBestCo/bestprice-mcp
+claude mcp add --transport http bestprice-shopping https://mcp.bestprice.gr/mcp
 ```
 
-## Install for Qwen Code
+The bundled [`.mcp.json`](.mcp.json) is the equivalent project-scoped configuration.
 
-```sh
-qwen extensions install https://github.com/TheBestCo/bestprice-mcp --consent
-```
+### Cursor
 
-Or add only the remote server:
+[Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
+shows the decoded configuration before adding it. The [`.cursor-plugin/`](.cursor-plugin/)
+directory holds the marketplace plugin and an agent skill.
 
-```sh
-qwen mcp add --scope user --transport http bestprice-shopping \
-  https://mcp.bestprice.gr/mcp
-```
-
-## Install in VS Code
+### VS Code
 
 [Add BestPrice Shopping to VS Code](vscode:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
 
-VS Code shows the server configuration for review before installing it. The
-same configuration can be added manually from [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md).
-
-## Install in Cursor
-
-### Via Cursor Marketplace (Recommended)
-
-Once published, install BestPrice Shopping directly from the [Cursor Marketplace](https://cursor.com/marketplace) with one click. No configuration needed.
-
-### Manual Installation
-
-[Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
-
-Cursor shows the decoded remote-server configuration before adding it. The
-same endpoint is also available through the
-[BestPrice Shopping community listing](https://cursor.directory/plugins/bestprice-shopping).
-
-## Portable Agent Plugin
-
-This repository also follows the vendor-neutral
-[Agent Plugins 1.0 specification](https://agent-plugins.org/specification).
-Clients that support Agent Plugins can load the root `plugin.json` and
-`mcp.json`; the package connects only to the same public, read-only Streamable
-HTTP endpoint.
-
-## Use with DeepSeek, Z.ai and GLM
-
-DeepSeek Harness can connect through its official MCP bridge; see
-[`examples/deepseek-harness.yml`](examples/deepseek-harness.yml), or run the
-ready-to-use [`examples/deepseek-harness.patch.yml`](examples/deepseek-harness.patch.yml)
-with `dsh --profile headless --patch`. Z.ai's general API supports third-party
-Streamable HTTP MCP servers; a complete Python example is available at
-[`examples/zai-glm.py`](examples/zai-glm.py). Provider access needs the relevant
-provider account or API key. BestPrice itself needs neither.
-
-## Use with Claude and Perplexity
-
-Both services can add the production endpoint as a custom remote connector.
-BestPrice requires no account, OAuth flow, or API key. Claude also has a
-separate public Connectors Directory review; Perplexity currently documents
-individual and organization-managed connectors. Exact setup values are in
-[`PROVIDER_SETUP.md`](PROVIDER_SETUP.md).
-
-## Install in Claude Code
-
-Claude Code can add the public remote server directly:
+### Gemini CLI and Qwen Code
 
 ```sh
-claude mcp add --transport http bestprice-shopping \
-  https://mcp.bestprice.gr/mcp
-claude mcp get bestprice-shopping
+gemini extensions install https://github.com/TheBestCo/bestprice-mcp
+qwen extensions install https://github.com/TheBestCo/bestprice-mcp --consent
 ```
 
-The included [`.mcp.json`](.mcp.json) provides the equivalent project-scoped
-configuration. Claude Code discovers the live read-only tool inventory from
-the endpoint.
+Both extensions restrict the imported tools to the four listed above.
 
-## Other clients
+### Codex and other Agent Plugin hosts
 
-See [`PROVIDER_SETUP.md`](PROVIDER_SETUP.md) for OpenAI, ChatGPT, Claude,
-Perplexity, Grok, Gemini, DeepSeek, Qwen, Z.ai, GLM, GitHub Copilot, VS Code,
-Cursor, and Microsoft Copilot Studio connection examples. Every integration
-points to the same endpoint and imports only the four published read-only
-tools.
+The root [`plugin.json`](plugin.json) and [`mcp.json`](mcp.json) follow the
+[Agent Plugins 1.0 specification](https://agent-plugins.org/specification);
+[`.codex-plugin/`](.codex-plugin/) carries the Codex-specific manifest.
 
-[Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
-opens Claude's custom-connector flow with the public endpoint filled in.
+### Gemini API, DeepSeek, Z.ai
 
-## A safe first test
+Runnable examples live in [`examples/`](examples/): the Gemini Interactions API and Genkit,
+a DeepSeek Harness plugin entry, and a Z.ai GLM call. Each needs the provider's own API key.
+BestPrice needs none.
 
-1. Ask `get_shopping_decision`: `Θέλω κινητό έως 500 ευρώ με NFC και 5G υποχρεωτικά.`
-2. Or ask `search_products`: `Βρες μου Sony WH-1000XM5 έως 300 ευρώ.`
+### Any other MCP client
+
+Add a Streamable HTTP server at `https://mcp.bestprice.gr/mcp`. If the host only supports
+stdio servers, use the bridge in this repository:
+
+```sh
+git clone https://github.com/TheBestCo/bestprice-mcp.git && cd bestprice-mcp
+npm ci
+node stdio.mjs
+```
+
+The bridge forwards everything to the public endpoint and accepts two environment
+variables: `BESTPRICE_MCP_URL` (default: the public endpoint) and
+`BESTPRICE_MCP_TIMEOUT_MS` (default: 60000). A `Dockerfile` builds the same bridge for
+[Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp) and similar hosts.
+
+## A safe first conversation
+
+1. Ask for a decision: `Θέλω κινητό έως 500 ευρώ με NFC και 5G υποχρεωτικά.`
+   (I want a phone up to 500 euros, NFC and 5G required.)
+2. Or search: `Find Sony WH-1000XM5 under 300 euros.`
 3. Pass a returned `product_id` to `compare_offers` with postal code `10558`.
 4. Pass the same `product_id` to `get_price_history` for 180 days.
 
-Clients should never invent a product ID, treat unknown delivery as free, make
-a purchase, or expose a direct merchant URL.
+Queries work in Greek or English. Catalog data and merchant names come back in Greek.
 
-Privacy: [bestprice.gr/policies/privacy](https://www.bestprice.gr/policies/privacy)  
-Terms: [bestprice.gr/policies/terms](https://www.bestprice.gr/policies/terms)
+| Search | Compare offers | Price history |
+| --- | --- | --- |
+| ![search_products in Claude](docs/images/claude-search-products.png) | ![compare_offers in Claude](docs/images/claude-compare-offers.png) | ![get_price_history in Claude](docs/images/claude-price-history.png) |
+
+## Browser-native WebMCP
+
+BestPrice pages also register 13 contextual WebMCP tools in compatible browsers, covering the
+visible search, filter, sort, product, offer, specification, and price-history journey while
+leaving the merchant choice to the shopper. The contracts, fail-closed runtime, deterministic
+evaluator, and the 43-case natural-language dataset are in [`webmcp/`](webmcp/).
+
+## Discovery
+
+- [Official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp)
+- Agent discovery: [`ard.json`](https://www.bestprice.gr/.well-known/ard.json),
+  [`webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json),
+  [server card](https://mcp.bestprice.gr/mcp/server-card)
+- Community indexes: [Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp),
+  [WebMCP Registry](https://webmcp-registry.dev/domain/www.bestprice.gr),
+  [webmcp.com](https://webmcp.com/sites/bestprice.gr),
+  [cursor.directory](https://cursor.directory/plugins/bestprice-shopping)
+
+## Development
+
+```sh
+npm ci
+npm run check   # Biome lint and format
+npm test        # node --test: bridge, WebMCP, manifests, dataset
+```
+
+Tests need no network: the bridge is exercised against an in-process fake remote. Node 20
+or newer is required; `.nvmrc` pins 22.
+
+## Versioning
+
+Two versions appear in this repository on purpose:
+
+- **Package version** in `package.json` and every plugin or extension manifest. It changes
+  when this repository's manifests, bridge, or WebMCP layer change, and is tagged `vX.Y.Z`.
+- **Server version** in `server.json` and the line near the top of this README. It is the
+  version the hosted service reports and is published to the official MCP Registry.
+
+`CHANGELOG.md` tracks the package version.
+
+## Security
+
+Report vulnerabilities privately as described in [`SECURITY.md`](SECURITY.md).
+
+## Contributing
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md). Issues and pull requests are welcome.
+
+## License
+
+Apache License 2.0. Copyright The Best Company S.A. See [`LICENSE`](LICENSE).
+
+Privacy: <https://www.bestprice.gr/policies/privacy> · Terms: <https://www.bestprice.gr/policies/terms>

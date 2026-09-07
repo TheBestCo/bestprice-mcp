@@ -3,7 +3,6 @@
 This is the canonical home of
 [`natural-language-cases.v1.json`](natural-language-cases.v1.json): 43 Greek shopper
 prompts covering the 13 contextual tools in [`../src/contracts.js`](../src/contracts.js).
-The dataset moved here byte-for-byte from the backend repository on 2026-09-05.
 All v1 `runs` arrays are empty. Publishing the dataset does not mean its agent
 evaluations have passed.
 
@@ -25,8 +24,8 @@ Do not turn examples into assertions about changing catalog prices or availabili
 1. **Deterministic tool isolation.** Serve the repository locally with
    `python3 -m http.server 4173`, open `/webmcp/demo/`, and exercise the case's tool
    behavior through the demo evaluator. All applicable deterministic checks must
-   pass. The existing `node --test webmcp/test/webmcp.test.js` suite checks the tool
-   implementation; its four tests are not 43 natural-language agent evaluations.
+   pass. The `npm test` suite checks the tool implementation and this dataset's shape;
+   unit tests are not natural-language agent evaluations.
 2. **Agent selection in a browser.** On production BestPrice pages, use a compatible
    browser agent with Chrome's WebMCP tooling or Model Context Tool Inspector. Feed
    the case's `prompt_el`, record the actual tool sequence and arguments, and evaluate
