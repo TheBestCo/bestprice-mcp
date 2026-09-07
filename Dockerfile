@@ -2,7 +2,7 @@
 # Forwards MCP over stdin/stdout to the public Streamable HTTP endpoint (see src/bridge.js).
 # Glama builds from this file; BESTPRICE_MCP_URL and BESTPRICE_MCP_TIMEOUT_MS are optional overrides.
 
-FROM node:22.23.2-alpine
+FROM node:26.8.1-alpine
 
 LABEL org.opencontainers.image.title="BestPrice MCP stdio bridge" \
       org.opencontainers.image.source="https://github.com/TheBestCo/bestprice-mcp" \
