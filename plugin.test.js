@@ -31,6 +31,14 @@ const releaseEvidence = readFileSync(new URL('./submission/README.md', import.me
 const geminiRegistration = readFileSync(new URL('./submission/gemini-registration.md', import.meta.url), 'utf8');
 
 describe('BestPrice Shopping plugin bundle', () => {
+  it('keeps the installable manifests on one bundle version independently of the remote service', () => {
+    const bundle = readJson('./package.json');
+    for (const file of ['.codex-plugin/plugin.json', '.cursor-plugin/plugin.json', 'plugin.json', 'gemini-extension.json', 'qwen-extension.json']) {
+      assert.equal(readJson('./' + file).version, bundle.version, file);
+    }
+    assert.equal(registry.version, '1.8.0');
+  });
+
   it('is an MCP-only, read-only Codex plugin with no app surface', () => {
     assert.equal(manifest.name, 'bestprice-shopping');
     assert.equal(manifest.version, '1.1.0');

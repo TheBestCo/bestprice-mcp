@@ -25,7 +25,8 @@ totals separately.
 - WebMCP inventory: `https://www.bestprice.gr/.well-known/webmcp.json`
 - Legacy AI Catalog: `https://www.bestprice.gr/.well-known/ai-catalog.json`
 - Server card: `https://mcp.bestprice.gr/mcp/server-card`
-- Server version: `1.8.0`
+- Server / MCP Registry version: `1.8.0`
+- Installable plugin bundle version: `1.1.0` (independent release track)
 - Tools: `get_shopping_decision`, `search_products`, `compare_offers`,
   `get_price_history`
 

@@ -1,7 +1,9 @@
 # OpenAI universal plugin submission handoff
 
-This is the copy-ready, human-gated handoff for submitting BestPrice Shopping
-to OpenAI's universal plugin directory. OpenAI accepts an MCP-only plugin and
+Status updated **7 September 2026**: the owner reports that BestPrice Shopping
+has been submitted to OpenAI. The organization-private portal status has not
+been independently verified. Maintain the existing submission; do not create
+a duplicate. This handoff supplies the review and update material. OpenAI accepts an MCP-only plugin and
 does not require custom UI. BestPrice's optional MCP Apps resource remains a
 portable enhancement; every tool must stay useful from `structuredContent`
 without it.
@@ -48,7 +50,7 @@ Long description:
 ## Reviewed inventory
 
 - `get_shopping_decision`: one bounded, evidence-backed recommendation,
-  comparison, clarification, or honest no-match from the same Shopping Brain as
+  comparison, basket plan, clarification, or honest no-match from the same Shopping Brain as
   BestPrice Ask.
 - `search_products`: up to eight grouped physical products from a bounded
   catalog search.
@@ -74,7 +76,8 @@ mandatory attributes.
 
 ## Exact pre-submission gate
 
-Submit only after one uninterrupted production run proves all of the following:
+Before updating the existing submission, retain one uninterrupted production
+run that proves all of the following:
 
 1. `initialize` reports `bestprice-agent-commerce` version `1.8.0`.
 2. `tools/list` returns exactly the four reviewed tools above, with the expected
@@ -89,17 +92,28 @@ Submit only after one uninterrupted production run proves all of the following:
    history, or cross-user data leaks into public output or telemetry evidence.
 6. The MCP Apps resource loads in a compatible host, but the same result remains
    complete when UI rendering is unavailable.
-7. The server manifest, provider allowlists, public guide, repository README,
-   and reviewer cases all name version `1.8.0` and the same four tools.
+7. The server and MCP Registry manifest agree on service version `1.8.0`.
+   Package manifests agree with `package.json` on bundle version `1.1.0`.
+   Provider allowlists, public guide, README and reviewer cases agree on the
+   endpoint and the same four tools. Bundle and service versions are independent.
 
-Record the exact deployed revision, UTC timestamps, sanitized results, and any
-failed attempts. A public page version string is not deployment proof.
+Record the full `X-BestPrice-Revision` from every MCP response, the matching
+`/healthz` revision, UTC timestamps, sanitized results, and failed attempts.
+A missing or changing revision fails the release gate. This identifies the MCP
+gateway; retain separate backend rollout evidence when the Brain runs in a
+separate process. A public page version string is not deployment proof.
 
-## Human-only finish
+| Version track | Current version | Custody |
+| --- | --- | --- |
+| Installable plugin bundle | `1.1.0` | `package.json`, Codex, Cursor, portable, Gemini and Qwen manifests |
+| Remote service / MCP Registry | `1.8.0` | `initialize.serverInfo.version` and `server.json` |
+| Shopping evidence | Negotiated in each result | Versioned historical readers; never inferred from either package number |
 
-An authorized BestPrice submitter with OpenAI organization plugin-submission
-write access (currently labelled **Apps Management**) must create the draft,
-review the scanned tool metadata, provide the listing fields and test cases,
-make the company and policy attestations, and press Submit. Submit the MCP
-server as a new MCP-backed plugin even if a custom connector already exists.
-This repository and canary do not replace those human attestations.
+## Existing submission maintenance
+
+The owner-reported submission is the current status; in-review, approved and
+published are not independently confirmed here. An authorized BestPrice submitter with
+organization plugin-submission access (Apps Management: Write) should use the existing record for any
+requested rescan, reviewer evidence or listing update. Keep policy and company
+attestations with the authorized representative. Repository edits and a passing
+canary do not change the private portal state or publish a plugin.
