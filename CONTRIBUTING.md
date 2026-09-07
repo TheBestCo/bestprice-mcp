@@ -62,10 +62,12 @@ It is published to the official MCP Registry by the manual
 ## Releasing the package
 
 1. Bump the package version in the six files above and move the **Unreleased** section of
-   `CHANGELOG.md` under the new version with today's date.
+   `CHANGELOG.md` under the new version with today's date. The test suite fails if the
+   changelog section is missing.
 2. Open a pull request; CI must be green.
-3. After merging, tag the merge commit `vX.Y.Z` and push the tag. Clients that install from
-   the repository URL pick up `main`; the tag is for the changelog and the Docker image.
+3. Merge. The `release` workflow tags the merge commit `vX.Y.Z` and creates the GitHub Release
+   with that changelog section as the notes. Clients that install from the repository URL pick
+   up `main`; the tag is for the changelog and the Docker image.
 
 ## Directory listings
 

@@ -1,0 +1,82 @@
+name: Release
+
+# Tags and releases every package version that reaches main. The GitHub Release body is the
+# matching section of CHANGELOG.md, so a missing section fails the release instead of
+# shipping empty notes.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Tag and GitHub Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - id: tag
+        name: Check whether the tag exists
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null; then
+            echo "v$VERSION already exists; nothing to release"
+            echo "created=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "created=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.tag.outputs.created == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - if: steps.tag.outputs.created == 'true'
+        run: npm ci
+      - if: steps.tag.outputs.created == 'true'
+        run: npm run check
+      - if: steps.tag.outputs.created == 'true'
+        run: npm test
+
+      - if: steps.tag.outputs.created == 'true'
+        name: Extract the changelog section
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          awk -v version="$VERSION" '
+            index($0, "## [" version "]") == 1 { keep = 1; next }
+            /^## \[/ { keep = 0 }
+            keep
+          ' CHANGELOG.md > "$RUNNER_TEMP/notes.md"
+          if ! grep -q '[^[:space:]]' "$RUNNER_TEMP/notes.md"; then
+            echo "CHANGELOG.md has no '## [$VERSION]' section" >&2
+            exit 1
+          fi
+          cat "$RUNNER_TEMP/notes.md"
+
+      - if: steps.tag.outputs.created == 'true'
+        name: Create the tag and the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "v$VERSION" \
+            --target "$GITHUB_SHA" \
+            --title "BestPrice MCP extension $VERSION" \
+            --notes-file "$RUNNER_TEMP/notes.md" \
+            --latest

@@ -231,7 +231,8 @@ describe('public documents', () => {
     assert.match(changelog, /## \[Unreleased\]/u);
     assert.match(
       changelog,
-      new RegExp(`## \\[${pkg.version.replaceAll('.', '\\.')}\\]|## \\[Unreleased\\]`, 'u'),
+      new RegExp(`^## \\[${pkg.version.replaceAll('.', '\\.')}\\] - \\d{4}-\\d{2}-\\d{2}$`, 'mu'),
+      'the release workflow publishes this section as the release notes',
     );
   });
 });
