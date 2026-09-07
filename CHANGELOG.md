@@ -7,6 +7,8 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-09-07
+
 ### Changed
 
 - The stdio entry point is now a full MCP bridge built on the official SDK client. It forwards
@@ -69,7 +71,8 @@ in `server.json`; see the Versioning section of the README.
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/TheBestCo/bestprice-mcp/releases/tag/v1.0.0
