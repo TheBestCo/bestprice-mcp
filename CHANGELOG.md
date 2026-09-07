@@ -11,6 +11,8 @@ in `server.json`; see the Versioning section of the README.
 
 - Timestamped Shopping Brain v12 production verification with the full serving revision,
   sanitized canary results, and explicit limits on what was tested.
+- A release workflow tags every package version that reaches `main` and creates the GitHub
+  Release from the matching changelog section.
 
 ## [1.2.0] - 2026-09-07
 
