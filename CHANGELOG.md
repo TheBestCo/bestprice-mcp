@@ -31,6 +31,8 @@ in `server.json`; see the Versioning section of the README.
 - The 43-case WebMCP natural-language evaluation dataset.
 - Biome lint and format, `.editorconfig`, `.nvmrc`, `.dockerignore`, Dependabot, a Node 20/22 CI
   matrix, and `npm run test:coverage`.
+- Four Shopping Brain review cases in the fixture: typed OIS evidence, optional feature groups,
+  a conversational size correction, and a high-price verdict.
 - Bridge tests against an in-process fake remote and child-process tests for the entry point.
 - Tests for the WebMCP runtime timeout, cancellation, and teardown paths, the demo adapter's
   validation branches, and the shape of the natural-language evaluation dataset.
