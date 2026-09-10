@@ -6,12 +6,12 @@ import { createDemoAdapter } from '../src/demo-adapter.js';
 import { createRegistration } from '../src/runtime.js';
 
 describe('public BestPrice WebMCP layer', () => {
-  it('publishes 13 unique contextual tools with explicit safety annotations', () => {
+  it('publishes 14 unique contextual tools with explicit safety annotations', () => {
     const allNames = new Set(Object.values(PAGE_TOOL_NAMES).flat());
-    assert.equal(allNames.size, 13);
+    assert.equal(allNames.size, 14);
     assert.deepEqual(PAGE_TOOL_NAMES.home, ['search_bestprice']);
     assert.equal(PAGE_TOOL_NAMES.listing.length, 8);
-    assert.equal(PAGE_TOOL_NAMES.product.length, 6);
+    assert.equal(PAGE_TOOL_NAMES.product.length, 7);
 
     for (const page of Object.keys(PAGE_TOOL_NAMES)) {
       const tools = createTools({ page, execute: () => ({ ok: true }) });
@@ -27,6 +27,12 @@ describe('public BestPrice WebMCP layer', () => {
       }
     }
     assert.equal(createTools({ page: 'listing', execute: () => ({ ok: true }) }).find(tool => tool.name === 'open_visible_product').annotations.readOnlyHint, false);
+    /* The one item-page action verb: it moves the shopper's own tab to an offer
+     * the page already shows and never hands out a merchant link. */
+    const showOffer = createTools({ page: 'product', execute: () => ({ ok: true }) }).find(tool => tool.name === 'show_offer');
+    assert.equal(showOffer.annotations.readOnlyHint, false);
+    assert.equal(showOffer.inputSchema.additionalProperties, false);
+    assert.deepEqual(Object.keys(showOffer.inputSchema.properties).sort(), ['merchant_id', 'merchant_name']);
   });
 
   it('fails a partial registration closed and aborts every registered tool', async () => {
@@ -72,6 +78,38 @@ describe('public BestPrice WebMCP layer', () => {
     const history = await tools.find(tool => tool.name === 'summarize_price_history').execute({});
     assert.equal(history.ok, true);
     assert.equal(history.product_id, productId);
+
+    /* The action verb focuses only an offer compare_page_offers already returned,
+     * and hands back no merchant URL. */
+    const focused = await tools.find(tool => tool.name === 'show_offer').execute({ merchant_name: offers.offers[0].merchant });
+    assert.equal(focused.ok, true);
+    assert.equal(focused.action, 'focused_offer');
+    assert.equal(focused.offer.merchant, offers.offers[0].merchant);
+    assert.ok(!('merchant_url' in focused.offer));
+    assert.equal(adapter.snapshot().focusedOffer, offers.offers[0].merchant);
+  });
+
+  it('refuses to focus an offer the page does not show', async () => {
+    const adapter = createDemoAdapter();
+    adapter.setPage('product');
+
+    assert.deepEqual(await adapter.execute('show_offer', {}), {
+      ok: false,
+      error: 'Provide merchant_id or merchant_name from compare_page_offers.',
+    });
+    assert.deepEqual(await adapter.execute('show_offer', { merchant_name: 'Invented Merchant' }), {
+      ok: false,
+      error: 'That merchant is not currently shown on this page.',
+    });
+    assert.deepEqual(await adapter.execute('show_offer', { merchant_id: 'not-a-number' }), {
+      ok: false,
+      error: 'merchant_id must be the numeric id shown on this page.',
+    });
+    assert.deepEqual(await adapter.execute('show_offer', { merchant_name: 'Gadgetway', merchant_url: 'https://x' }), {
+      ok: false,
+      error: 'Unexpected argument: merchant_url.',
+    });
+    assert.equal(adapter.snapshot().focusedOffer ?? null, null);
   });
 
   it('refuses to open a hidden or invented listing product', async () => {

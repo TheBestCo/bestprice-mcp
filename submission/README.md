@@ -146,8 +146,10 @@ Checked on 2026-08-27:
   `webmcpreg@latest` and declares thirteen unique tools. The registry publisher
   currently returns `Application not found` from its own submission API, so a
   fresh publication cannot be completed until that service is repaired.
-- Chrome runtime tests prove the page registers 1 home, 8 listing, and 6
-  product-page tools. WebMCP Directory does not yet list BestPrice and requires
+- Chrome runtime tests prove the page registers 1 home, 8 listing, and 7
+  product-page tools (2026-09-10: the item page gained the `show_offer` action
+  verb, taking the surface to 14 tools). The live manifest still declares the
+  preceding 13 until the hand-run `Deploy_BP` publishes the site build. WebMCP Directory does not yet list BestPrice and requires
   an email address plus an interactive Turnstile challenge to submit it.
 - Chrome accepted BestPrice's Built-in AI Early Preview Program application on
   2026-08-27. The application identifies the production WebMCP surface, its

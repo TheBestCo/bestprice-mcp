@@ -67,9 +67,10 @@ comparison service. It exposes four tools: a bounded evidence-backed shopping
 decision, product search, offer comparison by delivered price, and price
 history.
 
-We also ship 13 contextual WebMCP tools on the website. The available tools
-follow the open page: search on the homepage, visible products and filters on a
-listing, then offers, specifications and price history on a product page.
+We also ship contextual WebMCP tools on the website — 13 live today, 14 in the
+current source. The available tools follow the open page: search on the
+homepage, visible products and filters on a listing, then offers,
+specifications, price history and one visible-offer action on a product page.
 
 The main constraint was making the surface useful without letting an agent
 silently choose a merchant. There is no checkout, basket mutation or direct
@@ -167,7 +168,7 @@ and answer technical questions.
 Suggest `https://www.bestprice.gr/mcp` as a live commerce implementation with
 this note:
 
-> BestPrice exposes 13 contextual WebMCP tools across product search, visible
+> BestPrice exposes contextual WebMCP tools across product search, visible
 > listing filters and sorting, product details, delivered-price comparison,
 > specifications and price history. The implementation is live, read-only and
 > open source.

@@ -44,9 +44,11 @@ The included `Dockerfile` runs a local stdio MCP process that forwards requests 
 
 ## Browser-native WebMCP
 
-BestPrice pages also expose 13 contextual WebMCP tools to compatible browsers.
-They cover the visible search, filter, sort, product, offer, specification, and
-price-history journey while leaving the merchant choice to the shopper. The
+BestPrice pages also expose contextual WebMCP tools to compatible browsers: 13
+live today, 14 in this source (`show_offer`, the item-page action verb, is
+awaiting the site deploy). They cover the visible search, filter, sort, product,
+offer, specification, and price-history journey while leaving the merchant
+choice to the shopper. The
 Apache-2.0 source, deterministic evaluator, tests, and architecture are in
 [`webmcp/`](webmcp/).
 

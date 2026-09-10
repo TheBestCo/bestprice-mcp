@@ -27,7 +27,8 @@ challenge work is the browser-native layer. During the challenge window we:
 
 1. shipped actual `document.modelContext.registerTool` implementations across
    home, listing, hub, and product pages;
-2. expanded the surface to 13 contextual tools;
+2. expanded the surface to 14 contextual tools (13 live, the item-page
+   `show_offer` action awaiting the site deploy);
 3. added safe filter, sorting, product-opening, offer-comparison,
    specification, and price-history actions;
 4. added first-party attribution and operational telemetry;

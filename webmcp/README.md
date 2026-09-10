@@ -4,7 +4,8 @@ BestPrice adds page-local WebMCP tools to the shopping journey at
 [`www.bestprice.gr`](https://www.bestprice.gr/). A compatible agent can search,
 inspect the products and controls that are actually on the open page, apply a
 visible filter or sorting option, open a returned product, compare rendered
-offers, read specifications, and inspect price history.
+offers, read specifications, inspect price history, and move the shopper's own
+tab to one offer the page already shows.
 
 The shopper stays on BestPrice and keeps the final choice. There is no checkout
 tool, no background account access, and no direct merchant URL in a tool result.
@@ -32,7 +33,7 @@ npm test
 
 ## Source map
 
-- [`src/contracts.js`](src/contracts.js) contains the 13 contextual tool
+- [`src/contracts.js`](src/contracts.js) contains the 14 contextual tool
   contracts, schemas, and safety annotations.
 - [`src/runtime.js`](src/runtime.js) owns cancellation, timeout, contextual
   re-registration, and fail-closed rollback.
@@ -51,8 +52,13 @@ Production registers only the tools relevant to the open page:
 | --- | ---: |
 | Home | 1 |
 | Search, category, or hub listing | 8 |
-| Product page | 6 |
-| Unique contracts | 13 |
+| Product page | 7 |
+| Unique contracts | 14 |
+
+The seventh product-page entry, `show_offer`, is an action verb: it scrolls to
+one rendered offer and marks it for the shopper, and it returns no merchant
+link. It ships with the site build that follows the next hand-run `Deploy_BP`;
+the live manifest still reports 13 until then.
 
 The machine-readable production inventory is available at
 [`/.well-known/webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json).

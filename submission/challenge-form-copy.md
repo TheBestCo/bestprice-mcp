@@ -63,7 +63,7 @@ The implementation uses `document.modelContext.registerTool` and manages the
 tool lifecycle as the page changes. It validates arguments in executable code,
 uses only same-origin URLs and visible page state, ignores hidden and decoy
 elements, caps individual outputs, rolls back partial registrations, and keeps
-telemetry failures away from tool results. The source package includes the 13
+telemetry failures away from tool results. The source package includes the 14
 tool contracts, a local inspector, a deterministic evaluator, and tests under
 Apache License 2.0.
 

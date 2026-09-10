@@ -60,6 +60,14 @@ const definitions = [
   }],
   ['summarize_price_history', 'Price history summary', 'Summarize the visible product price history.', READ_ONLY, EMPTY_SCHEMA],
   ['show_price_history', 'Show this product price history', 'Open or focus the price-history chart on this page.', NAVIGATION, EMPTY_SCHEMA],
+  ['show_offer', 'Show an offer for this product', 'Scroll the page to one merchant offer it already shows and mark it for the shopper.', NAVIGATION, {
+    type: 'object',
+    properties: {
+      merchant_id: { type: 'string', pattern: '^\\d{1,20}$', description: 'Numeric merchant id the page exposes.' },
+      merchant_name: { type: 'string', minLength: 2, maxLength: 68, description: 'Merchant name as compare_page_offers returned it.' },
+    },
+    additionalProperties: false,
+  }],
 ];
 
 export const PAGE_TOOL_NAMES = Object.freeze({

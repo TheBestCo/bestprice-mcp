@@ -168,7 +168,7 @@ This route uses an issue, not a pull request.
 ## WebMCP refreshes
 
 The live manifest is `https://www.bestprice.gr/.well-known/webmcp.json` and has
-13 tools.
+13 tools; the pending site deploy raises it to 14 (item-page `show_offer`).
 
 - WebMCP Registry update: `https://webmcp-registry.dev/submit?domain=www.bestprice.gr`
 - webmcp.com site refresh: `https://webmcp.com/submit`
@@ -177,7 +177,7 @@ The live manifest is `https://www.bestprice.gr/.well-known/webmcp.json` and has
 
 For a webmcp.com resource suggestion, use `https://www.bestprice.gr/mcp` and:
 
-> BestPrice exposes 13 contextual WebMCP tools across product search, visible
+> BestPrice exposes contextual WebMCP tools across product search, visible
 > listing filters and sorting, product details, delivered-price comparison,
 > specifications and price history. The implementation is live, read-only and
 > open source.

@@ -184,6 +184,28 @@ export function createDemoAdapter(onChange = () => {}) {
         state.historyVisible = true;
         changed();
         return { ok: true, action: 'opened_price_history', product_id: activeProduct().product_id };
+      case 'show_offer': {
+        bad = unexpected(args, ['merchant_id', 'merchant_name']);
+        if (bad) return { ok: false, error: `Unexpected argument: ${bad}.` };
+        const wantedId = clean(args.merchant_id);
+        const wantedName = clean(args.merchant_name);
+        if (!wantedId && !wantedName) {
+          return { ok: false, error: 'Provide merchant_id or merchant_name from compare_page_offers.' };
+        }
+        if (wantedId && !/^\d{1,20}$/u.test(wantedId)) {
+          return { ok: false, error: 'merchant_id must be the numeric id shown on this page.' };
+        }
+        /* Demo offers carry no ids — the item page's compare_page_offers output
+         * does not expose them either, so the name is the addressable key. */
+        const product = activeProduct();
+        const offer = wantedId
+          ? undefined
+          : product.offers.find(candidate => normalize(candidate.merchant) === normalize(wantedName));
+        if (!offer) return { ok: false, error: 'That merchant is not currently shown on this page.' };
+        state.focusedOffer = offer.merchant;
+        changed();
+        return { ok: true, action: 'focused_offer', offer };
+      }
       default:
         return { ok: false, error: `Unknown tool: ${clean(name)}.` };
     }

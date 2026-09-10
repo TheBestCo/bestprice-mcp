@@ -1,5 +1,13 @@
 # Recorded demo script: 1 minute 33 seconds
 
+> **Recorded artifact — kept verbatim.** The uploaded video speaks the
+> thirteen-tool / six-product-tool surface below. On 2026-09-10 the item page
+> gained a seventh tool (`show_offer`, an action verb that scrolls to one offer
+> the page already shows and never returns a merchant link), so the live surface
+> is now fourteen tools. This script is deliberately not rewritten: it documents
+> what the published video actually says. Re-record, and update the counts here,
+> only if a new video is produced.
+
 No music. Use the real BestPrice logo and live BestPrice pages. Keep third-party
 merchant marks secondary to the page journey.
 
