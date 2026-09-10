@@ -41,8 +41,12 @@ npm test
   adapter.
 - [`demo/app.js`](demo/app.js) renders the human-visible page and exercises the
   same contracts without a framework.
-- [`test/webmcp.test.js`](test/webmcp.test.js) pins the full journey and key
-  safety boundaries.
+- [`test/webmcp.test.js`](test/webmcp.test.js) pins the contracts, the fail-closed
+  runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
+  validates the dataset below against the contracts.
+- [`evals/`](evals/) contains the versioned Greek natural-language dataset
+  (v1: 43 cases, frozen; v2: 47 cases, current) and the separate deterministic
+  and browser-agent evaluation criteria.
 
 ## Production surface
 
@@ -81,6 +85,8 @@ self-contained evaluator for it.
 - Shipping that is not known remains `null`; it is never described as free.
 - Offer results have no merchant click-through URL. The shopper chooses on the
   BestPrice page.
+- The one offer action marks a rendered row only; it never opens a merchant
+  page and never returns a merchant URL.
 - Partial or timed-out registration aborts the whole contextual tool set.
 - Tool measurement is isolated from execution and cannot break a result.
 

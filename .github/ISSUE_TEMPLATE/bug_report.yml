@@ -1,0 +1,33 @@
+name: Bug report
+description: Something in this repository (manifests, stdio bridge, WebMCP layer, docs) is wrong.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For a suspected security issue, do not open an issue. Follow [SECURITY.md](../blob/main/SECURITY.md) instead.
+        For questions about a result the hosted service returned, include the request ID the tool reported.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Client manifest or install instructions
+        - stdio bridge (stdio.mjs / Docker)
+        - WebMCP contracts, runtime, or demo
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you saw. Paste exact error text.
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Client and version (for example Claude Code 2.x, Gemini CLI 0.x, Node 22.x, browser).

@@ -1,3 +1,5 @@
+# Patch-layer form of deepseek-harness.yml for one-shot runs:
+#   dsh --profile headless --patch examples/deepseek-harness.patch.yml "..."
 - insert:
     - id: mcp-bestprice
       name: '@deepseek-ai/dsh-mcp-client'

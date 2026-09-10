@@ -9,7 +9,7 @@
  *   node examples/gemini-interactions.mjs [--verify-envelope] ["Optional custom shopping prompt"]
  */
 
-import { argv, env, exitCode } from 'node:process';
+import { argv, env } from 'node:process';
 
 const DEFAULT_PROMPT =
   'Βρες τιμές για Sony WH-1000XM5 στην Ελλάδα και σύγκρινε διαθέσιμες προσφορές και ιστορικό τιμής.';
@@ -28,7 +28,7 @@ export function buildInteractionsPayload(input = DEFAULT_PROMPT) {
         allowed_tools: [
           {
             mode: 'auto',
-            tools: ['search_products', 'compare_offers', 'get_price_history'],
+            tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'],
           },
         ],
       },
@@ -44,12 +44,16 @@ export function validatePayloadEnvelope(payload) {
     throw new Error('Payload input must be a non-empty string');
   }
   const tool = payload.tools?.[0];
-  if (!tool || tool.type !== 'mcp_server' || tool.url !== 'https://mcp.bestprice.gr/mcp') {
+  if (tool?.type !== 'mcp_server' || tool.url !== 'https://mcp.bestprice.gr/mcp') {
     throw new Error('Tools must declare remote mcp_server pointing to https://mcp.bestprice.gr/mcp');
   }
   const allowed = tool.allowed_tools?.[0]?.tools;
   const expected = ['search_products', 'compare_offers', 'get_price_history'];
-  if (!Array.isArray(allowed) || allowed.length !== expected.length || !expected.every(t => allowed.includes(t))) {
+  if (
+    !Array.isArray(allowed) ||
+    allowed.length !== expected.length ||
+    !expected.every(t => allowed.includes(t))
+  ) {
     throw new Error(`Allowed tools must match exactly [${expected.join(', ')}]`);
   }
   return true;
@@ -64,7 +68,7 @@ async function run() {
   validatePayloadEnvelope(payload);
 
   if (verifyOnly) {
-    console.log('✓ Google Gemini Interactions API payload envelope validated successfully:');
+    console.log('Google Gemini Interactions API payload envelope validated:');
     console.log(JSON.stringify(payload, null, 2));
     return;
   }
@@ -96,14 +100,14 @@ async function run() {
     const data = await started.json();
     if (!started.ok || !data?.id) {
       console.error(`Gemini request failed (${started.status}):`, data?.error?.message || data);
-      exitCode = 1;
+      process.exitCode = 1;
       return;
     }
 
     console.log(`Interaction accepted. ID: ${data.id}`);
   } catch (err) {
     console.error('Network or API error communicating with Gemini:', err.message);
-    exitCode = 1;
+    process.exitCode = 1;
   }
 }
 

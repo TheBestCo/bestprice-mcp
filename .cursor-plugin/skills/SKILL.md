@@ -33,7 +33,7 @@ Trigger these tools when the user:
 - "Find me the best noise-canceling headphones for travel"
 - "What's a good 55-inch TV for gaming under €1000?"
 
-**Important:** Always ask for Greek text input if the user provides requirements in English. BestPrice works best with Greek queries.
+**Important:** Pass the user's requirements through as written, in Greek or English. Do not rewrite them.
 
 ### 2. `search_products`
 **Purpose:** Search for specific products by name, model, or brand.
@@ -76,7 +76,7 @@ Trigger these tools when the user:
 
 ## Best Practices
 
-1. **Language:** BestPrice works best with Greek text. If user provides requirements in English, acknowledge and explain that Greek queries will yield better results.
+1. **Language:** Queries may be in Greek or English. The catalog and merchant data are Greek, so results and labels come back in Greek.
 
 2. **Workflow:** Follow this natural flow:
    ```
@@ -118,3 +118,4 @@ Trigger these tools when the user:
 - Privacy Policy: https://www.bestprice.gr/policies/privacy
 - Terms: https://www.bestprice.gr/policies/terms
 - Contact: https://www.bestprice.gr/contact
+- Source: https://github.com/TheBestCo/bestprice-mcp
