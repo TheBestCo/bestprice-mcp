@@ -61,8 +61,9 @@ Production registers only the tools relevant to the open page:
 
 The seventh product-page entry, `show_offer`, is an action verb: it scrolls to
 one rendered offer and marks it for the shopper, and it returns no merchant
-link. It ships with the site build that follows the next hand-run `Deploy_BP`;
-the live manifest still reports 13 until then.
+link. It is live: the production manifests on `www.bestprice.gr` and
+`mcp.bestprice.gr` both report version 1.5 with 14 tools (verified 2026-09-11),
+and the origin-trial facade publishes version 1.5 with the tool allow-listed.
 
 The machine-readable production inventory is available at
 [`/.well-known/webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json).

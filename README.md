@@ -119,11 +119,10 @@ Queries work in Greek or English. Catalog data and merchant names come back in G
 
 ## Browser-native WebMCP
 
-BestPrice pages also register contextual WebMCP tools in compatible browsers: 13 live today, 14 in
-this source, covering the visible search, filter, sort, product, offer, specification, price-history,
-and one visible-offer action while leaving the merchant choice to the shopper. The contracts,
-fail-closed runtime, deterministic evaluator, and the 47-case natural-language dataset are in
-[`webmcp/`](webmcp/).
+BestPrice pages register 14 contextual WebMCP tools in compatible browsers, covering the visible
+search, filter, sort, product, offer, specification, price-history, and one visible-offer action while
+leaving the merchant choice to the shopper. The contracts, fail-closed runtime, deterministic
+evaluator, and the 47-case natural-language dataset are in [`webmcp/`](webmcp/).
 
 ## Discovery
 

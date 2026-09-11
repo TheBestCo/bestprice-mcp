@@ -11,8 +11,9 @@ in `server.json`; see the Versioning section of the README.
 
 - The item page's seventh WebMCP tool, `show_offer`: it scrolls the shopper's own tab to one
   offer the page already renders, marks it for four seconds, and never returns or opens a
-  merchant URL. The publishable surface is now 14 contextual contracts, and the
-  natural-language dataset gains a 47-case v2 that carries every frozen v1 case unchanged.
+  merchant URL. The surface is now 14 contextual contracts, live on production since
+  2026-09-11, and the natural-language dataset gains a 47-case v2 that carries every frozen
+  v1 case unchanged.
 
 - Timestamped Shopping Brain v12 production verification with the full serving revision,
   sanitized canary results, and explicit limits on what was tested.
