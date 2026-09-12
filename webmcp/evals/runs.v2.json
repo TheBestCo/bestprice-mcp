@@ -2,8 +2,9 @@
   "dataset": "webmcp-natural-language-runs",
   "datasetVersion": "2.0.0",
   "casesRef": "natural-language-cases.v2.json",
-  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision it was observed against, and an evidence artifact. A record is never edited in place: a re-run appends. Nothing in this file is a substitute for the case's pass criterion.",
+  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision it was observed against, and an evidence artifact. A record is never edited in place: a re-run appends. Nothing in this file is a substitute for the case's pass criterion. A copy of a record is not additional evidence; a deleted record is a change.",
   "requiredFields": [
+    "runId",
     "caseId",
     "datasetVersion",
     "agent",
@@ -14,6 +15,20 @@
     "outcome",
     "evidence"
   ],
-  "outcomes": ["passed", "failed", "refused", "blocked"],
-  "runs": []
+  "outcomes": [
+    "passed",
+    "failed",
+    "refused",
+    "blocked"
+  ],
+  "runs": [],
+  "rules": [
+    "caseId must exist in the referenced dataset version",
+    "datasetVersion must equal the referenced dataset version",
+    "implementationRevision must be a full 40-character revision",
+    "date must be a real calendar date",
+    "evidence must be a path under artifacts/ with no traversal",
+    "runId must be unique; the store is append-only, so removing a record is a reportable change",
+    "outcome is a semantic result (passed/failed/refused/blocked), separate from whether the host ran at all"
+  ]
 }

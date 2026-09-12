@@ -107,11 +107,12 @@ describe('natural-language evaluation dataset', () => {
      * current dataset, and the validator itself is exercised both ways so an
      * empty file cannot hide a broken check. */
     const evidence = readEvidence(2);
-    const knownCaseIds = new Set(v2.cases.map(item => item.id));
-    assert.deepEqual(validateEvidenceFile(evidence, knownCaseIds), []);
+    const context = { caseIds: new Set(v2.cases.map(item => item.id)), datasetVersion: '2.0.0' };
+    assert.deepEqual(validateEvidenceFile(evidence, context), []);
     assert.equal(evidence.casesRef, 'natural-language-cases.v2.json');
 
     const usable = {
+      runId: 'run-2026-09-12-product-011-1',
       caseId: 'product-011',
       datasetVersion: '2.0.0',
       agent: 'Model Context Tool Inspector',
@@ -122,14 +123,30 @@ describe('natural-language evaluation dataset', () => {
       outcome: 'passed',
       evidence: 'artifacts/product-011-run1.json',
     };
-    assert.equal(validateRunRecord(usable, knownCaseIds), null);
-    assert.match(validateRunRecord({ ...usable, caseId: 'product-999' }, knownCaseIds), /unknown case id/u);
-    assert.match(validateRunRecord({ ...usable, outcome: 'maybe' }, knownCaseIds), /outcome/u);
-    assert.match(validateRunRecord({ ...usable, date: '12/09/2026' }, knownCaseIds), /YYYY-MM-DD/u);
-    assert.match(validateRunRecord({ ...usable, evidence: '' }, knownCaseIds), /evidence/u);
-    assert.deepEqual(validateEvidenceFile({ runs: [usable, { caseId: 'nope' }] }, knownCaseIds), [
-      'runs[1]: datasetVersion must be a non-empty string',
+    assert.equal(validateRunRecord(usable, context), null);
+    for (const [broken, message] of [
+      [{ caseId: 'product-999' }, /unknown case id/u],
+      [{ datasetVersion: '1.0.0' }, /datasetVersion must be 2\.0\.0/u],
+      [{ implementationRevision: 'a1b2c3d' }, /40-character revision/u],
+      [{ date: '12/09/2026' }, /real calendar date/u],
+      [{ date: '2026-02-30' }, /real calendar date/u],
+      [{ outcome: 'maybe' }, /outcome/u],
+      [{ outcome: '' }, /outcome must be a non-empty string/u],
+      [{ evidence: '../../etc/passwd' }, /under artifacts/u],
+      [{ evidence: 'artifacts/../secret' }, /under artifacts/u],
+    ]) {
+      assert.match(validateRunRecord({ ...usable, ...broken }, context), message, JSON.stringify(broken));
+    }
+
+    /* Copying a pass must not create a second record, and deleting one must be
+       visible to whoever compares against the previous store. */
+    assert.deepEqual(validateEvidenceFile({ datasetVersion: '2.0.0', runs: [usable, usable] }, context), [
+      `runs[1]: duplicate runId ${usable.runId}`,
     ]);
+    assert.deepEqual(
+      validateEvidenceFile({ datasetVersion: '2.0.0', runs: [] }, { ...context, previousRunIds: [usable.runId] }),
+      [`run ${usable.runId} was removed; evidence is append-only`]
+    );
   });
 
   it('covers the item-page action verb on the product page', () => {
