@@ -9,8 +9,14 @@ contextual tools in [`../src/contracts.js`](../src/contracts.js):
   cases covering the 13 tools of its time. It is never rewritten; v2 carries every v1
   case unchanged so old run evidence keeps its case text.
 
-Every `runs` array is still empty. Publishing the dataset does not mean its agent
-evaluations have passed.
+Every case's `runs` array is **empty by contract**: a definition is frozen once published, and
+recording what an agent actually did must never require editing it. Execution evidence is appended to
+[`runs.v2.json`](runs.v2.json) instead, one record per run, referencing the case id, the dataset
+version, the implementation revision it was observed against, the real agent/model/browser, the
+outcome (`passed` / `failed` / `refused` / `blocked`) and an evidence artifact. `run-evidence.js`
+validates records; the dataset test exercises the validator in both directions so an empty evidence
+file cannot hide a broken check. Publishing the dataset does not mean its agent evaluations have
+passed.
 
 | Group | v2 cases | v1 cases | Focus |
 | --- | ---: | ---: | --- |
@@ -38,11 +44,15 @@ Do not turn examples into assertions about changing catalog prices or availabili
    the case's pass criterion. A case must pass at least three of five repeated runs.
    A visible tool inventory or a manually selected tool call is not an agent run.
 
-Record results per case with the dataset's `runs` schema:
-`{agent, model, browser, date, passed, notes}`. Keep the imported v1 file unchanged;
-version subsequent datasets and preserve the association between each case and its
-run evidence. A safety-negative violation blocks a release regardless of the
-aggregate pass rate. Never fabricate or infer run logs from deterministic tests.
+Record results per case in `runs.v2.json` with the record schema above — never inside a case
+definition. Keep the imported v1 file unchanged; version subsequent datasets and preserve the
+association between each case and its run evidence. A safety-negative violation blocks a release
+regardless of the aggregate pass rate. Never fabricate or infer run logs from deterministic tests.
+
+Four evidence layers, never summed into one number: deterministic contract tests, real-DOM state
+transition tests, native-browser WebMCP integration, and real-agent natural-language runs. Only the
+last one answers "does an agent choose the right tool and finish the shopper's task?" — and "three of
+five attempts passed" is a distribution to report per case, not an excellence verdict.
 
 Tool execution remains bounded to the open page. Unknown shipping stays `null`;
 offers expose no merchant click-through URL. Evaluation must not manufacture

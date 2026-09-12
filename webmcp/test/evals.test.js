@@ -3,11 +3,22 @@ import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
 
 import { PAGE_TOOL_NAMES, TOOL_NAMES } from '../src/contracts.js';
+import { validateEvidenceFile, validateRunRecord } from '../evals/run-evidence.js';
 
 const read = version =>
   JSON.parse(
     readFileSync(new URL(`../evals/natural-language-cases.v${version}.json`, import.meta.url), 'utf8'),
   );
+const readEvidence = version =>
+  JSON.parse(readFileSync(new URL(`../evals/runs.v${version}.json`, import.meta.url), 'utf8'));
+
+/* A definition is what the case *is*; `runs` is where evidence used to be
+ * crammed. Definitions are compared without it, so recording a real run can
+ * never require editing a published case. */
+const definitionOf = item => {
+  const { runs, ...definition } = item;
+  return definition;
+};
 
 /* 1.0.0 is frozen: its cases and empty run logs stay exactly as imported.
  * 2.0.0 is the current dataset and carries every 1.0.0 case unchanged. */
@@ -72,13 +83,53 @@ describe('natural-language evaluation dataset', () => {
     });
   }
 
-  it('carries every 1.0.0 case into 2.0.0 unchanged instead of rewriting evidence', () => {
+  it('carries every 1.0.0 definition into 2.0.0 unchanged', () => {
     const byId = new Map(v2.cases.map(item => [item.id, item]));
     for (const item of v1.cases) {
-      assert.deepEqual(byId.get(item.id), item, `${item.id} drifted between dataset versions`);
+      assert.deepEqual(
+        definitionOf(byId.get(item.id)),
+        definitionOf(item),
+        `${item.id} drifted between dataset versions`
+      );
     }
     assert.equal(v2.sourceContracts.includes('14 contextual tools'), true);
     assert.equal(v1.sourceContracts.includes('13 contextual tools'), true);
+  });
+
+  it('keeps execution evidence out of the frozen definitions', () => {
+    for (const dataset of [v1, v2]) {
+      for (const item of dataset.cases) {
+        assert.deepEqual(item.runs, [], `${item.id} carries evidence inside a frozen definition`);
+      }
+    }
+
+    /* The evidence store is where a real run goes. It is validated against the
+     * current dataset, and the validator itself is exercised both ways so an
+     * empty file cannot hide a broken check. */
+    const evidence = readEvidence(2);
+    const knownCaseIds = new Set(v2.cases.map(item => item.id));
+    assert.deepEqual(validateEvidenceFile(evidence, knownCaseIds), []);
+    assert.equal(evidence.casesRef, 'natural-language-cases.v2.json');
+
+    const usable = {
+      caseId: 'product-011',
+      datasetVersion: '2.0.0',
+      agent: 'Model Context Tool Inspector',
+      model: 'example-agent-1',
+      browser: 'Chromium 144',
+      implementationRevision: 'a'.repeat(40),
+      date: '2026-09-12',
+      outcome: 'passed',
+      evidence: 'artifacts/product-011-run1.json',
+    };
+    assert.equal(validateRunRecord(usable, knownCaseIds), null);
+    assert.match(validateRunRecord({ ...usable, caseId: 'product-999' }, knownCaseIds), /unknown case id/u);
+    assert.match(validateRunRecord({ ...usable, outcome: 'maybe' }, knownCaseIds), /outcome/u);
+    assert.match(validateRunRecord({ ...usable, date: '12/09/2026' }, knownCaseIds), /YYYY-MM-DD/u);
+    assert.match(validateRunRecord({ ...usable, evidence: '' }, knownCaseIds), /evidence/u);
+    assert.deepEqual(validateEvidenceFile({ runs: [usable, { caseId: 'nope' }] }, knownCaseIds), [
+      'runs[1]: datasetVersion must be a non-empty string',
+    ]);
   });
 
   it('covers the item-page action verb on the product page', () => {
