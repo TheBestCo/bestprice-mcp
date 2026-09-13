@@ -103,7 +103,8 @@ const EVIDENCE_PATH = /^artifacts\/[A-Za-z0-9._/-]{1,180}$/u;
 const TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/u;
 
 /* A host that is not a browser, or a run that no agent drove, says so in its own identity fields. */
-const NON_NATIVE_MARKERS = /in-?memory|node\.?js|jsdom|simulat|deterministic|test[\s_-]?driver|fixture/i;
+const NON_NATIVE_MARKERS =
+  /in-?memory|node\.?js|jsdom|simulat|deterministic|test[\s_-]?driver|fixture|stub|mock|fake|dummy|placeholder|smoke/i;
 
 /* Native evidence names a real browser engine, and the version that rendered the page. */
 const NATIVE_BROWSER = /^(Chromium|Chrome|Google Chrome|Microsoft Edge|Firefox|Safari)\b.*\d/u;

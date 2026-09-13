@@ -139,6 +139,40 @@ frozen case files are compared against it — the working tree is never its own 
 or rewriting published evidence fails CI. Artifacts are committed bytes and are excluded from
 formatting: rewriting them would break the recorded digest.
 
+## Running a native case (real browser, real agent)
+
+`webmcp/evals/native-run.mjs` runs the frozen cases against a real browser through the browser's own
+WebMCP implementation. It simulates neither half and refuses when either is missing:
+
+```bash
+node webmcp/evals/native-run.mjs \
+  --agent-command '<command that turns a case prompt into one tool call>' \
+  --browser-command 'node /Users/gp/www/bestprice.gr/tools/scripts/webmcp-native-runner.mjs' \
+  --agent-name 'Model Context Tool Inspector' --agent-model '<the model you actually used>' \
+  --product-url 'https://www.bestprice.gr/item/<id>/<slug>.html'   # needed by the 17 item cases
+```
+
+* **agent** — reads `{caseId, prompt_el, prompt_en, url, tools, allowed_args, criteria}` on stdin and
+  answers `{"tool": …, "arguments": …}`. The tool list is what the page *actually registered*, read
+  from `document.modelContext.getTools()`, so the agent chooses from the real surface.
+* **browser** — reads `{url, calls}` and executes each call with
+  `document.modelContext.executeTool(tool, JSON.stringify(arguments))`, answering with the tool's own
+  payload plus the browser identity. The reference implementation lives with the storefront, where a
+  browser is already a dependency: `bestprice.gr/tools/scripts/webmcp-native-runner.mjs`.
+
+Each case is judged mechanically against its frozen definition (`expected_tools`,
+`required_result_properties`, refusal-only cases), appended to `runs.v2.json`, and given an artifact
+under `artifacts/`. `--dry-run` judges and prints without writing. Then:
+
+```bash
+node webmcp/evals/run-evidence.js --strict     # must print Release Ready: YES
+```
+
+A run driven by a stub or simulated planner is **rejected by the gate** rather than recorded: the
+agent and model names are part of the evidence, and naming a stand-in as if it were an agent is the
+one thing this ledger exists to prevent. Verified both ways — a real-browser run with a stub agent
+executes correctly and then fails validation on its own name.
+
 Four evidence layers, never summed into one number: deterministic contract tests, real-DOM state
 transition tests, native-browser WebMCP integration, and real-agent natural-language runs. Only the
 last one answers "does an agent choose the right tool and finish the shopper's task?" — and "three of

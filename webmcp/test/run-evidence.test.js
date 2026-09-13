@@ -252,6 +252,13 @@ describe('native evidence modality', () => {
       [{ agent: 'Test' }, /must name the real tool or host/u],
       [{ agent: 'unknown' }, /must name the real tool or host/u],
       [{ model: 'deterministic-v2' }, /model "deterministic-v2" declares a non-native execution modality/u],
+      /* A harness that drives a real browser but asks a stub to pick the tool is not a real agent
+       * run either: the name is the only thing that says who chose, so it has to be honest. */
+      [{ agent: 'Smoke Harness' }, /declares a non-native execution modality/u],
+      [{ agent: 'stub-planner' }, /declares a non-native execution modality/u],
+      [{ model: 'mock-agent-1' }, /declares a non-native execution modality/u],
+      [{ agent: 'Fake Inspector' }, /declares a non-native execution modality/u],
+      [{ agent: 'placeholder-agent' }, /declares a non-native execution modality/u],
       [{ browser: 'Chromium' }, /must name a real browser engine and its version/u],
       [{ browser: 'Headless' }, /must name a real browser engine and its version/u],
       [{ browser: 'Playwright 1.50' }, /must name a real browser engine and its version/u],
