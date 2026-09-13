@@ -352,11 +352,16 @@ describe('native evidence modality', () => {
     assert.match(ignoreRules, /^\*$/mu, 'the demo store must ignore every byte it holds');
     assert.match(ignoreRules, /^!\.gitignore$/mu, 'the directory itself must survive the ignore');
 
-    /* No deterministic bytes in the native store, whatever ran before. */
+    /* No deterministic bytes in the native store, whatever ran before. Native runs are
+     * named `run-*` as well, so the check compares the two stores by name instead of
+     * assuming the native one is empty. */
+    const demoNames = new Set(
+      existsSync(DEMO_ROOT) ? readdirSync(DEMO_ROOT).filter(name => name.startsWith('run-')) : [],
+    );
     const nativeRuns = existsSync(DEFAULT_ARTIFACT_ROOT)
-      ? readdirSync(DEFAULT_ARTIFACT_ROOT).filter(name => name.startsWith('run-'))
+      ? readdirSync(DEFAULT_ARTIFACT_ROOT).filter(name => name.startsWith('run-') && demoNames.has(name))
       : [];
-    assert.deepEqual(nativeRuns, [], 'the native artifact store must not hold a deterministic run');
+    assert.deepEqual(nativeRuns, [], 'a deterministic run must never appear in the native artifact store');
 
     /* A demo artifact that exists on disk is not evidence: citing it as `artifacts/…` finds
      * nothing in the native store, and citing it as `demo/…` is not a native evidence path. */

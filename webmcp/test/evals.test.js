@@ -184,7 +184,17 @@ describe('natural-language evaluation dataset', () => {
     const context = evidenceContext();
     assert.deepEqual(validateEvidenceFile(evidence, context), []);
     assert.equal(evidence.casesRef, 'natural-language-cases.v2.json');
-    assert.deepEqual(evidence.runs, [], 'no run may be published until a real browser run is recorded');
+    /* Every published run is native evidence. This asserted an empty ledger until the first
+     * real browser run was recorded; the invariant was never emptiness, it is that nothing
+     * non-native is ever published here. */
+    for (const [index, record] of evidence.runs.entries()) {
+      assert.equal(record.evidenceLayer, 'native', `runs[${index}] must declare native evidence`);
+      assert.match(
+        record.browser,
+        /^(Chromium|Chrome|Google Chrome|Microsoft Edge|Firefox|Safari)\b.*\d/u,
+        `runs[${index}] must name a real browser engine`,
+      );
+    }
     assert.equal(evidence.requiredFields.includes('evidenceLayer'), true);
 
     /* The per-record fixtures below exercise shape, so they run against the dataset only: the
@@ -531,8 +541,11 @@ describe('evaluation harness and test driver', () => {
         JSON.stringify(target),
       );
     }
+    /* The store holds real native runs now, so "untouched" is not emptiness: every byte
+     * in it is cited by a native ledger record, and a refused demo run adds none. */
+    const cited = new Set(readEvidence(2).runs.map(record => record.evidence.split('/').pop()));
     assert.deepEqual(
-      readdirSync(DEFAULT_ARTIFACT_ROOT).filter(name => name.startsWith('run-')),
+      readdirSync(DEFAULT_ARTIFACT_ROOT).filter(name => name.startsWith('run-') && !cited.has(name)),
       [],
       'a refused demo run must leave the native artifact store untouched',
     );
