@@ -35,11 +35,11 @@ import { fileURLToPath } from 'node:url';
 
 import { currentRevision } from './git-baseline.js';
 import {
-  NATIVE_EVIDENCE_LAYER,
   canonicalJson,
   caseDigest,
   DEFAULT_ARTIFACT_ROOT,
   implementationFingerprint,
+  NATIVE_EVIDENCE_LAYER,
   sha256,
 } from './run-evidence.js';
 
@@ -54,7 +54,8 @@ const parseArgs = argv => {
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     if (token === '--dry-run') options.dryRun = true;
-    else if (token.startsWith('--')) options[token.slice(2).replace(/-([a-z])/gu, (_, letter) => letter.toUpperCase())] = argv[++index];
+    else if (token.startsWith('--'))
+      options[token.slice(2).replace(/-([a-z])/gu, (_, letter) => letter.toUpperCase())] = argv[++index];
     else throw new Error(`unexpected argument ${token}`);
   }
   return options;
@@ -110,13 +111,36 @@ const runCommand = (command, payload) =>
  * carry. Nothing here measures "quality" — that is what the criteria text is for
  * a human reader, and inventing a score would make the ledger a number nobody
  * can reproduce. */
+const argumentProblems = (definition, tool, args) => {
+  const bounds = definition.allowed_args?.[tool];
+  if (!bounds) return [];
+  const problems = [];
+  for (const [name, rule] of Object.entries(bounds)) {
+    const value = args?.[name];
+    if (rule?.type === 'string') {
+      const text = typeof value === 'string' ? value.trim() : '';
+      if (!text) problems.push(`${name} is required`);
+      else if (rule.minLength && text.length < rule.minLength)
+        problems.push(`${name} is shorter than ${rule.minLength}`);
+      else if (rule.maxLength && text.length > rule.maxLength)
+        problems.push(`${name} is longer than ${rule.maxLength}`);
+    }
+  }
+  return problems;
+};
+
 const judge = (definition, agentAnswer, execution) => {
   const expected = Array.isArray(definition.expected_tools) ? definition.expected_tools : [];
   const chosen = String(agentAnswer?.tool || '');
-  const refusalExpected = (definition.prohibited_behavior || []).some(entry => /no tool call/iu.test(String(entry)));
+  /* The negative group is refusal-shaped by construction: some cases expect no call
+   * at all, the rest expect a call the page then refuses. Read from the dataset
+   * (group, expected_tools) rather than guessed from prose. */
+  const refusalExpected = definition.group === 'negative' || expected.length === 0;
 
   if (!chosen) {
-    return { outcome: refusalExpected ? 'passed' : 'failed', reason: 'the agent chose no tool' };
+    return refusalExpected
+      ? { outcome: 'passed', reason: 'the agent declined (no tool was called; the case allows a refusal)' }
+      : { outcome: 'failed', reason: 'the agent chose no tool' };
   }
   if (expected.length && !expected.includes(chosen)) {
     return { outcome: 'failed', reason: `the agent chose ${chosen}, expected ${expected.join(' or ')}` };
@@ -124,28 +148,54 @@ const judge = (definition, agentAnswer, execution) => {
   if (execution?.error) {
     /* A refusal is a legitimate answer only where the case says refusal is the
      * expected behaviour; anywhere else it is a failure of the run. */
-    return { outcome: refusalExpected ? 'refused' : 'failed', reason: `the browser reported: ${execution.error}` };
+    return {
+      outcome: refusalExpected ? 'refused' : 'failed',
+      reason: `the browser reported: ${execution.error}`,
+    };
+  }
+  const argumentIssue = argumentProblems(definition, chosen, agentAnswer.arguments);
+  if (argumentIssue.length)
+    return { outcome: 'failed', reason: `arguments are out of bounds: ${argumentIssue.join(', ')}` };
+  /* A tool that navigates answers by moving the page: its payload is produced in
+   * the task that starts the navigation and is not readable afterwards, so the
+   * call and its destination are the evidence. The case criteria judge the call. */
+  if (execution?.navigated === true) {
+    return { outcome: 'passed', reason: `the tool ran and navigated to ${execution.url}` };
   }
   const required = definition.required_result_properties?.[chosen] || [];
   const payload = execution?.payload ?? {};
   const missing = required.filter(key => !(key in payload));
   if (missing.length) return { outcome: 'failed', reason: `result is missing ${missing.join(', ')}` };
   if (payload.ok === false) {
-    return { outcome: refusalExpected ? 'refused' : 'failed', reason: `the tool refused: ${payload.error ?? 'no reason given'}` };
+    return {
+      outcome: refusalExpected ? 'passed' : 'failed',
+      reason: refusalExpected
+        ? `the page refused the call, which is the behaviour this case tests: ${payload.error ?? 'no reason given'}`
+        : `the tool refused: ${payload.error ?? 'no reason given'}`,
+    };
   }
   return { outcome: 'passed', reason: 'the expected tool ran and returned the required properties' };
 };
 
 const main = async () => {
   const options = parseArgs(process.argv.slice(2));
-  if (!options.agentCommand) throw new Error('--agent-command is required: this runner never invents the agent');
-  if (!options.browserCommand) throw new Error('--browser-command is required: this runner never invents the browser');
-  if (!options.agentName) throw new Error('--agent-name is required: the ledger records which agent produced the run');
-  if (!options.agentModel) throw new Error('--agent-model is required: the ledger records which model produced the run');
+  if (!options.agentCommand)
+    throw new Error('--agent-command is required: this runner never invents the agent');
+  if (!options.browserCommand)
+    throw new Error('--browser-command is required: this runner never invents the browser');
+  if (!options.agentName)
+    throw new Error('--agent-name is required: the ledger records which agent produced the run');
+  if (!options.agentModel)
+    throw new Error('--agent-model is required: the ledger records which model produced the run');
 
   const dataset = JSON.parse(readFileSync(CASES_PATH, 'utf8'));
   const selected = options.cases
-    ? new Set(String(options.cases).split(',').map(value => value.trim()).filter(Boolean))
+    ? new Set(
+        String(options.cases)
+          .split(',')
+          .map(value => value.trim())
+          .filter(Boolean),
+      )
     : null;
   const cases = dataset.cases.filter(definition => !selected || selected.has(definition.id));
   if (!cases.length) throw new Error('no cases selected');
@@ -158,7 +208,9 @@ const main = async () => {
     const url = String(definition.starting_url || '');
     if (!url.includes('<')) return url;
     if (!options.productUrl) {
-      throw new Error(`${definition.id} needs a concrete product page: pass --product-url https://www.bestprice.gr/item/<id>/...`);
+      throw new Error(
+        `${definition.id} needs a concrete product page: pass --product-url https://www.bestprice.gr/item/<id>/...`,
+      );
     }
     if (!/^https:\/\/www\.bestprice\.gr\/item\/[0-9]+\//u.test(options.productUrl)) {
       throw new Error('--product-url must be a BestPrice item page');
@@ -201,18 +253,31 @@ const main = async () => {
       allowed_args: definition.allowed_args || {},
       criteria: definition.deterministic_criteria,
     });
-    if (typeof agentAnswer?.tool !== 'string' || !agentAnswer.tool) {
+    /* A null tool is a refusal, which is the correct answer to some cases. Only a
+     * command that answers with nothing at all is a harness failure. */
+    if (typeof agentAnswer?.tool === 'undefined') {
       throw new Error(`${definition.id}: the agent command did not answer with {"tool": …, "arguments": …}`);
     }
 
-    /* 3. The browser executes exactly that call, natively. */
-    const browserRun = await runCommand(options.browserCommand, {
-      url: pageUrl,
-      calls: [{ tool: agentAnswer.tool, arguments: agentAnswer.arguments || {} }],
-    });
-    if (!browserRun?.ok) throw new Error(`${definition.id}: the browser could not run the call: ${browserRun?.error}`);
+    /* 3. The browser executes exactly that call, natively — or, for a refusal,
+     * records that nothing was called. */
+    const browserRun = agentAnswer.tool
+      ? await runCommand(options.browserCommand, {
+          url: pageUrl,
+          calls: [{ tool: agentAnswer.tool, arguments: agentAnswer.arguments || {} }],
+        })
+      : { ok: true, browser: null, browserVersion: null, results: [] };
+    if (agentAnswer.tool && !browserRun?.ok) {
+      throw new Error(`${definition.id}: the browser could not run the call: ${browserRun?.error}`);
+    }
     const execution = (browserRun.results || [])[0] || {};
     const verdict = judge(definition, agentAnswer, execution);
+
+    /* A refusal never opened a browser, so the browser identity comes from the
+     * probe the run always makes first. */
+    const browserIdentity = browserRun.browser
+      ? `${browserRun.browser} ${browserRun.browserVersion}`
+      : `${browserProbe?.browser ?? 'Chromium'} ${browserProbe?.browserVersion ?? '0'}`;
 
     const date = startedAt.slice(0, 10);
     const runId = `run-${date}-${definition.id}-${sha256(`${revision}:${startedAt}:${definition.id}`).slice(0, 8)}`;
@@ -226,7 +291,7 @@ const main = async () => {
           evidenceLayer: NATIVE_EVIDENCE_LAYER,
           agent: options.agentName,
           model: options.agentModel,
-          browser: `${browserRun.browser} ${browserRun.browserVersion}`,
+          browser: browserIdentity,
           implementationRevision: revision,
           implementationFingerprint: fingerprint,
           caseDigest: caseDigest(caseDefinition),
@@ -237,6 +302,7 @@ const main = async () => {
           tool: agentAnswer.tool,
           arguments: agentAnswer.arguments || {},
           result: execution.payload ?? null,
+          navigatedTo: execution.navigated ? execution.url : null,
           error: execution.error ?? null,
           registeredTools,
           pageUrl,
@@ -259,7 +325,7 @@ const main = async () => {
       evidenceLayer: NATIVE_EVIDENCE_LAYER,
       agent: options.agentName,
       model: options.agentModel,
-      browser: `${browserRun.browser} ${browserRun.browserVersion}`,
+      browser: browserIdentity,
       implementationRevision: revision,
       implementationFingerprint: fingerprint,
       caseDigest: caseDigest(caseDefinition),
@@ -269,11 +335,16 @@ const main = async () => {
       evidence: `artifacts/${uniqueRunId}.json`,
       evidenceDigest: sha256(bytes),
     });
-    console.log(`${verdict.outcome.toUpperCase().padEnd(7)} ${definition.id}  ${agentAnswer.tool}  ${verdict.reason}`);
+    console.log(
+      `${verdict.outcome.toUpperCase().padEnd(7)} ${definition.id}  ${agentAnswer.tool}  ${verdict.reason}`,
+    );
   }
 
   if (!options.dryRun) {
-    writeFileSync(ledgerPath, `${JSON.stringify({ ...ledger, runs: [...previous, ...appended] }, null, 2)}\n`);
+    writeFileSync(
+      ledgerPath,
+      `${JSON.stringify({ ...ledger, runs: [...previous, ...appended] }, null, 2)}\n`,
+    );
     console.log(`\nappended ${appended.length} native record(s) to ${ledgerPath}`);
     console.log('validate with: node webmcp/evals/run-evidence.js --strict');
   } else {
