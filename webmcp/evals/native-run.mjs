@@ -4,25 +4,35 @@
  * The demo driver simulates both halves (a deterministic planner and an
  * in-memory adapter). This runner simulates neither:
  *
- *   agent   — an operator-supplied command that receives the case prompt and the
- *             tool list the page actually registered, and answers with one tool
- *             call
- *   browser — an operator-supplied command that executes that call in a real
- *             browser through the browser's own WebMCP implementation
+ *   agent   — an operator-supplied command that receives the task prompt, the current
+ *             page and the tool list the page actually registered, and answers with one
+ *             tool call OR a terminal answer/refusal
+ *   browser — an operator-supplied command that executes a call in a real browser through
+ *             the browser's own WebMCP implementation
  *             (`document.modelContext.executeTool`), e.g.
  *             `node /Users/gp/www/bestprice.gr/tools/scripts/webmcp-native-runner.mjs`
  *
- * Neither half is inferred here. If either command is missing, the browser
- * reports a non-browser identity, or the agent does not answer with a call, the
- * run refuses — it never falls back to a simulation, because a native record
- * that was partly inferred is exactly the evidence this project forbids.
+ * Neither half is inferred here. If either command is missing, the browser reports a
+ * non-browser identity, or the agent does not answer with a call or a terminal, the run
+ * refuses — it never falls back to a simulation, because a native record that was partly
+ * inferred is exactly the evidence this project forbids. An infrastructure failure (the
+ * browser could not be probed, the agent command failed) is recorded as `blocked`, not
+ * dressed up as a model failure and not silently dropped.
+ *
+ * Grading is done by `journey.js`, on ONE transcript:
+ *
+ * - a case that requires an ordered chain of tools plus a final answer is graded as a
+ *   journey, so a first-step-only trace is `blocked` — the defect round 4 found in the
+ *   committed multi-001 evidence, where one `search_bestprice` call was labelled `passed`;
+ * - navigation is a transition, not a verdict: it is recorded and the loop continues;
+ * - a terminal (`answer`, `refusal` or `clarification`) is required for any pass.
  *
  * Usage:
  *   node webmcp/evals/native-run.mjs \
  *     --agent-command 'my-agent-cli --json' \
  *     --browser-command 'node /Users/gp/www/bestprice.gr/tools/scripts/webmcp-native-runner.mjs' \
  *     --agent-name 'Model Context Tool Inspector' --agent-model 'gpt-5.2' \
- *     [--cases home-001,item-003] [--dry-run]
+ *     [--language el] [--max-steps 8] [--cases home-001,multi-001] [--dry-run]
  *
  * A real run appends to runs.v2.json and writes artifacts/, so
  * `node webmcp/evals/run-evidence.js --strict` validates it like any other
@@ -34,12 +44,15 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { currentRevision } from './git-baseline.js';
+import { gradeJourney } from './journey.js';
+import { browserFamily, cohortKey, releaseScope } from './release-policy.js';
 import {
   canonicalJson,
   caseDigest,
   DEFAULT_ARTIFACT_ROOT,
   implementationFingerprint,
   NATIVE_EVIDENCE_LAYER,
+  RUN_LANGUAGES,
   sha256,
 } from './run-evidence.js';
 
@@ -48,15 +61,26 @@ const NATIVE_LEDGER_PATH = join(EVAL_DIR, 'runs.v2.json');
 const CASES_PATH = join(EVAL_DIR, 'natural-language-cases.v2.json');
 const DATASET_VERSION = '2.0.0';
 const SHELL_TIMEOUT_MS = 180_000;
+/* A journey budget, not a target: a case that needs more is `blocked` with that reason, and the
+ * budget is reported in the artifact. Without a bound, a two-command loop can spin forever. */
+const DEFAULT_MAX_STEPS = 8;
 
+/* Accepts both `--flag value` and `--flag=value`: a command that contains spaces is only safely
+ * quotable in the second form, and the usage above writes it that way. */
 const parseArgs = argv => {
-  const options = { dryRun: false, cases: null };
+  const options = { dryRun: false, cases: null, language: 'el', maxSteps: DEFAULT_MAX_STEPS };
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
-    if (token === '--dry-run') options.dryRun = true;
-    else if (token.startsWith('--'))
-      options[token.slice(2).replace(/-([a-z])/gu, (_, letter) => letter.toUpperCase())] = argv[++index];
-    else throw new Error(`unexpected argument ${token}`);
+    if (token === '--dry-run') {
+      options.dryRun = true;
+      continue;
+    }
+    if (!token.startsWith('--')) throw new Error(`unexpected argument ${token}`);
+    const separator = token.indexOf('=');
+    const name = separator === -1 ? token.slice(2) : token.slice(2, separator);
+    const inline = separator === -1 ? undefined : token.slice(separator + 1);
+    const key = name.replace(/-([a-z])/gu, (_, letter) => letter.toUpperCase());
+    options[key] = inline ?? argv[++index];
   }
   return options;
 };
@@ -106,75 +130,34 @@ const runCommand = (command, payload) =>
     child.stdin.end(`${JSON.stringify(payload)}\n`);
   });
 
-/* Judging is deliberately narrow and mechanical: the case says which tools may be
- * called, the argument bounds, and which properties a successful result must
- * carry. Nothing here measures "quality" — that is what the criteria text is for
- * a human reader, and inventing a score would make the ledger a number nobody
- * can reproduce. */
-const argumentProblems = (definition, tool, args) => {
-  const bounds = definition.allowed_args?.[tool];
-  if (!bounds) return [];
-  const problems = [];
-  for (const [name, rule] of Object.entries(bounds)) {
-    const value = args?.[name];
-    if (rule?.type === 'string') {
-      const text = typeof value === 'string' ? value.trim() : '';
-      if (!text) problems.push(`${name} is required`);
-      else if (rule.minLength && text.length < rule.minLength)
-        problems.push(`${name} is shorter than ${rule.minLength}`);
-      else if (rule.maxLength && text.length > rule.maxLength)
-        problems.push(`${name} is longer than ${rule.maxLength}`);
+/* Judging is deliberately narrow and mechanical, and it lives in `journey.js` so every layer grades
+ * the same way. Nothing here introduces a second opinion: the runner only collects the transcript. */
+
+/** The case's required result properties that no successful step returned. */
+const requiredPropertyGaps = (definition, steps) => {
+  const missing = [];
+  for (const [tool, properties] of Object.entries(definition.required_result_properties ?? {})) {
+    const step = steps.find(entry => entry.tool === tool && entry.result && entry.error === null);
+    if (!step) {
+      missing.push(`${tool} ran and returned a result`);
+      continue;
+    }
+    for (const property of properties) {
+      if (!(property in step.result)) missing.push(`${tool}.${property}`);
     }
   }
-  return problems;
+  return missing;
 };
 
-const judge = (definition, agentAnswer, execution) => {
-  const expected = Array.isArray(definition.expected_tools) ? definition.expected_tools : [];
-  const chosen = String(agentAnswer?.tool || '');
-  /* The negative group is refusal-shaped by construction: some cases expect no call
-   * at all, the rest expect a call the page then refuses. Read from the dataset
-   * (group, expected_tools) rather than guessed from prose. */
-  const refusalExpected = definition.group === 'negative' || expected.length === 0;
-
-  if (!chosen) {
-    return refusalExpected
-      ? { outcome: 'passed', reason: 'the agent declined (no tool was called; the case allows a refusal)' }
-      : { outcome: 'failed', reason: 'the agent chose no tool' };
-  }
-  if (expected.length && !expected.includes(chosen)) {
-    return { outcome: 'failed', reason: `the agent chose ${chosen}, expected ${expected.join(' or ')}` };
-  }
-  if (execution?.error) {
-    /* A refusal is a legitimate answer only where the case says refusal is the
-     * expected behaviour; anywhere else it is a failure of the run. */
-    return {
-      outcome: refusalExpected ? 'refused' : 'failed',
-      reason: `the browser reported: ${execution.error}`,
-    };
-  }
-  const argumentIssue = argumentProblems(definition, chosen, agentAnswer.arguments);
-  if (argumentIssue.length)
-    return { outcome: 'failed', reason: `arguments are out of bounds: ${argumentIssue.join(', ')}` };
-  /* A tool that navigates answers by moving the page: its payload is produced in
-   * the task that starts the navigation and is not readable afterwards, so the
-   * call and its destination are the evidence. The case criteria judge the call. */
-  if (execution?.navigated === true) {
-    return { outcome: 'passed', reason: `the tool ran and navigated to ${execution.url}` };
-  }
-  const required = definition.required_result_properties?.[chosen] || [];
-  const payload = execution?.payload ?? {};
-  const missing = required.filter(key => !(key in payload));
-  if (missing.length) return { outcome: 'failed', reason: `result is missing ${missing.join(', ')}` };
-  if (payload.ok === false) {
-    return {
-      outcome: refusalExpected ? 'passed' : 'failed',
-      reason: refusalExpected
-        ? `the page refused the call, which is the behaviour this case tests: ${payload.error ?? 'no reason given'}`
-        : `the tool refused: ${payload.error ?? 'no reason given'}`,
-    };
-  }
-  return { outcome: 'passed', reason: 'the expected tool ran and returned the required properties' };
+/** The terminal an agent answer declares, or null when it declares none. */
+const readAnswerTerminal = answer => {
+  const terminal =
+    answer?.terminal ?? (typeof answer?.answer === 'string' ? { type: 'answer', text: answer.answer } : null);
+  if (!terminal || typeof terminal !== 'object') return null;
+  const type = terminal.type ?? 'answer';
+  const text = typeof terminal.text === 'string' ? terminal.text : '';
+  if (!['answer', 'refusal', 'clarification'].includes(type) || text.trim() === '') return null;
+  return { type, text: text.trim() };
 };
 
 const main = async () => {
@@ -187,6 +170,12 @@ const main = async () => {
     throw new Error('--agent-name is required: the ledger records which agent produced the run');
   if (!options.agentModel)
     throw new Error('--agent-model is required: the ledger records which model produced the run');
+  if (!RUN_LANGUAGES.includes(options.language))
+    throw new Error(
+      `--language must be one of ${RUN_LANGUAGES.join(', ')}: a run in one language is not evidence about another`,
+    );
+  const maxSteps = Number.parseInt(options.maxSteps, 10);
+  if (!Number.isInteger(maxSteps) || maxSteps < 1) throw new Error('--max-steps must be a positive integer');
 
   const dataset = JSON.parse(readFileSync(CASES_PATH, 'utf8'));
   const selected = options.cases
@@ -234,53 +223,127 @@ const main = async () => {
     delete caseDefinition.runs;
 
     /* 1. The browser registers the tools the page actually exposes. */
-    const pageUrl = resolveUrl(definition);
-    const browserProbe = await runCommand(options.browserCommand, {
-      url: pageUrl,
-      calls: [],
-    }).catch(() => null);
+    let pageUrl = resolveUrl(definition);
+    let browserProbe = null;
+    let blockedReason = null;
+    try {
+      browserProbe = await runCommand(options.browserCommand, { url: pageUrl, calls: [] });
+    } catch (error) {
+      /* An infrastructure failure is not a model verdict: record it as `blocked` with the reason,
+       * so a broken harness is never reported as a shopper-facing failure (or as a pass). */
+      blockedReason = `the browser could not be probed: ${error.message}`;
+    }
     const registeredTools = Array.isArray(browserProbe?.tools)
       ? browserProbe.tools
       : (definition.expected_tools || []).map(name => ({ name }));
 
-    /* 2. The agent chooses one call from the prompt and the registered tools. */
-    const agentAnswer = await runCommand(options.agentCommand, {
-      caseId: definition.id,
-      prompt_el: definition.prompt_el,
-      prompt_en: definition.prompt_en,
-      url: pageUrl,
-      tools: registeredTools,
-      allowed_args: definition.allowed_args || {},
-      criteria: definition.deterministic_criteria,
-    });
-    /* A null tool is a refusal, which is the correct answer to some cases. Only a
-     * command that answers with nothing at all is a harness failure. */
-    if (typeof agentAnswer?.tool === 'undefined') {
-      throw new Error(`${definition.id}: the agent command did not answer with {"tool": …, "arguments": …}`);
+    /* 2. The agent drives the task: one call per turn until it answers, refuses or asks. Each turn
+     * gets the task once, the current page, the real tool list and the transcript so far. */
+    const steps = [];
+    let terminal = null;
+    let agentAnswer = null;
+    if (!blockedReason) {
+      for (let step = 1; step <= maxSteps; step += 1) {
+        try {
+          agentAnswer = await runCommand(options.agentCommand, {
+            caseId: definition.id,
+            step,
+            prompt_el: definition.prompt_el,
+            prompt_en: definition.prompt_en,
+            url: pageUrl,
+            tools: registeredTools,
+            allowed_args: definition.allowed_args || {},
+            transcript: steps.map(entry => ({
+              step: entry.step,
+              tool: entry.tool,
+              arguments: entry.arguments,
+              result: entry.result,
+            })),
+          });
+        } catch (error) {
+          blockedReason = `the agent command failed at step ${step}: ${error.message}`;
+          break;
+        }
+        if (typeof agentAnswer?.tool === 'undefined') {
+          blockedReason = 'the agent command did not answer with {"tool": …, "arguments": …} or a terminal';
+          break;
+        }
+
+        terminal = readAnswerTerminal(agentAnswer);
+        if (!agentAnswer.tool) {
+          /* No tool this turn: the agent ended the task, which is where the terminal comes from. */
+          if (!terminal) {
+            blockedReason = 'the agent ended the task without a terminal answer, refusal or clarification';
+          }
+          break;
+        }
+
+        let browserRun;
+        try {
+          browserRun = await runCommand(options.browserCommand, {
+            url: pageUrl,
+            calls: [{ tool: agentAnswer.tool, arguments: agentAnswer.arguments || {} }],
+          });
+        } catch (error) {
+          blockedReason = `the browser could not run ${agentAnswer.tool}: ${error.message}`;
+          break;
+        }
+        if (!browserRun?.ok) {
+          blockedReason = `the browser could not run ${agentAnswer.tool}: ${browserRun?.error ?? 'no reason given'}`;
+          break;
+        }
+        const execution = (browserRun.results || [])[0] || {};
+        steps.push({
+          step,
+          pageUrl,
+          tool: agentAnswer.tool,
+          arguments: agentAnswer.arguments || {},
+          result: execution.payload ?? null,
+          navigatedTo: execution.navigated ? execution.url : null,
+          error: execution.error ?? null,
+        });
+        /* A navigation is a transition: the loop continues against the destination the browser
+         * reports, and the destination is recorded on the step. */
+        if (execution.navigated && typeof execution.url === 'string' && execution.url !== '') {
+          pageUrl = execution.url;
+        }
+        if (terminal) break;
+      }
+    }
+    if (!terminal && !blockedReason) {
+      blockedReason = `the journey did not finish within ${maxSteps} steps`;
     }
 
-    /* 3. The browser executes exactly that call, natively — or, for a refusal,
-     * records that nothing was called. */
-    const browserRun = agentAnswer.tool
-      ? await runCommand(options.browserCommand, {
-          url: pageUrl,
-          calls: [{ tool: agentAnswer.tool, arguments: agentAnswer.arguments || {} }],
-        })
-      : { ok: true, browser: null, browserVersion: null, results: [] };
-    if (agentAnswer.tool && !browserRun?.ok) {
-      throw new Error(`${definition.id}: the browser could not run the call: ${browserRun?.error}`);
-    }
-    const execution = (browserRun.results || [])[0] || {};
-    const verdict = judge(definition, agentAnswer, execution);
+    /* 3. One transcript, one verdict — from the same grader every other layer uses. The case's
+     * required result properties are checked here, on the transcript, because a journey that ran the
+     * right tools and returned nothing usable did not answer the shopper. */
+    const missingProperties = requiredPropertyGaps(definition, steps);
+    const graded = blockedReason
+      ? { outcome: 'blocked', reason: blockedReason, sequence: null, complete: false, terminal: null }
+      : gradeJourney(definition, { steps, terminal });
+    const verdict =
+      graded.outcome === 'passed' && missingProperties.length > 0
+        ? {
+            ...graded,
+            outcome: 'failed',
+            complete: false,
+            reason: `the result is missing ${missingProperties.join(', ')}`,
+          }
+        : graded;
 
-    /* A refusal never opened a browser, so the browser identity comes from the
-     * probe the run always makes first. */
-    const browserIdentity = browserRun.browser
-      ? `${browserRun.browser} ${browserRun.browserVersion}`
-      : `${browserProbe?.browser ?? 'Chromium'} ${browserProbe?.browserVersion ?? '0'}`;
+    /* A refusal never opened a browser page, so the browser identity comes from the probe the run
+     * always makes first. */
+    const browserIdentity = browserProbe?.browser
+      ? `${browserProbe.browser} ${browserProbe.browserVersion ?? '0'}`
+      : 'Chromium 0';
 
     const date = startedAt.slice(0, 10);
     const runId = `run-${date}-${definition.id}-${sha256(`${revision}:${startedAt}:${definition.id}`).slice(0, 8)}`;
+    const cohort = cohortKey(releaseScope({ revision, fingerprint, datasetVersion: DATASET_VERSION }), {
+      language: options.language,
+      model: options.agentModel,
+      browser: browserFamily(browserIdentity),
+    });
     const artifact = {
       artifactVersion: 1,
       executions: [
@@ -292,20 +355,25 @@ const main = async () => {
           agent: options.agentName,
           model: options.agentModel,
           browser: browserIdentity,
+          language: options.language,
           implementationRevision: revision,
           implementationFingerprint: fingerprint,
           caseDigest: caseDigest(caseDefinition),
           startedAt,
           date,
           outcome: verdict.outcome,
-          prompt: definition.prompt_en || definition.prompt_el,
-          tool: agentAnswer.tool,
-          arguments: agentAnswer.arguments || {},
-          result: execution.payload ?? null,
-          navigatedTo: execution.navigated ? execution.url : null,
-          error: execution.error ?? null,
+          prompt: options.language === 'en' ? definition.prompt_en : definition.prompt_el,
+          /* The whole transcript, not the first call: a journey verdict has to be reproducible from
+           * the artifact, including the steps that were not taken. */
+          steps,
+          terminal: verdict.terminal ?? terminal,
+          expectedTools: definition.expected_tools ?? [],
+          sequenceMode: definition.sequence_mode ?? null,
+          sequence: verdict.sequence ?? null,
+          maxSteps,
           registeredTools,
-          pageUrl,
+          pageUrl: resolveUrl(definition),
+          reason: verdict.reason,
         },
       ],
     };
@@ -326,6 +394,8 @@ const main = async () => {
       agent: options.agentName,
       model: options.agentModel,
       browser: browserIdentity,
+      language: options.language,
+      cohort,
       implementationRevision: revision,
       implementationFingerprint: fingerprint,
       caseDigest: caseDigest(caseDefinition),
@@ -336,7 +406,7 @@ const main = async () => {
       evidenceDigest: sha256(bytes),
     });
     console.log(
-      `${verdict.outcome.toUpperCase().padEnd(7)} ${definition.id}  ${agentAnswer.tool}  ${verdict.reason}`,
+      `${verdict.outcome.toUpperCase().padEnd(7)} ${definition.id}  ${steps.map(entry => entry.tool).join(' → ') || '(no tool)'}  ${verdict.reason}`,
     );
   }
 

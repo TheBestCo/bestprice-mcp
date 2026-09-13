@@ -43,13 +43,69 @@ Do not turn examples into assertions about changing catalog prices or availabili
 2. **Agent selection in a browser.** On production BestPrice pages, use a compatible
    browser agent with Chrome's WebMCP tooling or Model Context Tool Inspector. Feed
    the case's `prompt_el`, record the actual tool sequence and arguments, and evaluate
-   the case's pass criterion. A case must pass at least three of five repeated runs.
-   A visible tool inventory or a manually selected tool call is not an agent run.
+   the case's pass criterion. A visible tool inventory or a manually selected tool call is
+   not an agent run.
 
 Record results per case in `runs.v2.json` with the record schema above — never inside a case
 definition. Keep the imported v1 file unchanged; version subsequent datasets and preserve the
-association between each case and its run evidence. A safety-negative violation blocks a release
-regardless of the aggregate pass rate. Never fabricate or infer run logs from deterministic tests.
+association between each case and its run evidence. Never fabricate or infer run logs from
+deterministic tests.
+
+## What a verdict means
+
+`journey.js` is the one grader every layer uses (the deterministic driver, `native-run.mjs` and the
+ledger adjudicator), so a case cannot mean one thing in a scripted run and another in the ledger:
+
+- A case with `sequence_mode: 'ordered'` and more than one expected tool is a **journey**: every
+  expected tool must be observed **in order**, and the run must record a **terminal** — an answer, a
+  refusal or a clarifying question. A first-step-only trace is `blocked`, never `passed`; that is the
+  defect found in the committed `multi-001` evidence, where one `search_bestprice` call was graded
+  `passed` against a four-step task.
+- Navigation is a **transition**, not a verdict. A call that navigates is recorded with its
+  destination and the run continues; the destination is never a pass by itself.
+- A refusal-expected case (the `negative` group, `expected_tools: []`, or a case the dataset lists)
+  ends in `refused` when the page refuses, and `failed` when the page allows what it should not.
+- `blocked` is an **incompleteness** — an unfinished journey or an interrupted harness — and is
+  reported separately from a failure and from a safety violation.
+
+### The release predicate
+
+There is exactly one target rule, in `release-policy.js`, and both of its thresholds are always
+applied:
+
+```
+verified runs >= minimumSamples (default 5)   AND   passes / verified runs >= targetPassRate (default 0.6)
+```
+
+`3/5` meets a 60% target and fails a 95% target; `3/100` fails a 60% target. The rule this replaces —
+`totalRuns >= 5 ? passed >= 3 : …` — accepted 3/100 and ignored a configured fraction once five runs
+existed. Three of five is a minimum *experiment* rule, not an excellence claim.
+
+- **A cohort is the unit.** A pass is evidence about the implementation revision, browser family,
+  model and language it was observed on. A run recorded against a different revision does not approve
+  the current one: it stays visible in the report (`releasePolicy.outOfCohort`) and is not counted.
+- **Blocked runs are excluded from the fraction** and counted separately; a safety violation is never
+  averaged away and blocks the release outright.
+- **History stays visible.** `casesSummary[].historical` is what the ledger published, `historicalCorrected`
+  re-scores it through the corrections below, and `totalRuns` counts every record.
+
+### Corrections are appended, never edited
+
+The ledger is append-only in the literal sense, and that includes its own mistakes. A published
+verdict that the current grader re-adjudicates differently gets a **correction record** — a new
+`corrections[]` entry that references the run and the artifact it corrects — while the original record
+and the original artifact bytes stay exactly as published:
+
+```bash
+node webmcp/evals/corrections.js --run=run-2026-09-13-multi-001-16be8cfc
+```
+
+A correction is not an execution: it carries no `evidenceLayer`, `agent`, `model` or `browser`, it
+adds no run to any count, it can never promote a published non-pass to `passed`, and once appended it
+is as immutable as a run (a later correction supersedes an earlier one by naming it in `supersedes`).
+The two `multi-001` records that round 4 found graded `passed` on a first-step-only trace are
+corrected to `blocked`, with the reason recorded; both original records and both original artifacts are
+byte-for-byte unchanged, and `webmcp/test/journey.test.js` asserts that.
 
 ## What counts as native evidence
 
@@ -99,6 +155,8 @@ enforces all four, and `npm test` runs the same check on the checked-in ledger:
 | `evidence` / `evidenceDigest` | a committed file under `webmcp/evals/artifacts/` and the sha256 of its exact bytes |
 | `agent` / `model` / `browser` | the real tool/host, model and versioned browser engine that ran; `browser` must match `/^(Chromium\|Chrome\|Google Chrome\|Microsoft Edge\|Firefox\|Safari)\b.*\d/u` |
 | `runId` | unique in the ledger; a copy of a record is not a second run |
+| `language` | optional: the prompt language the run was observed in (`el`/`en`). A run in one language is not evidence about another, so it scopes the release cohort |
+| `cohort` | optional: the sha256-derived cohort key of `(revision, fingerprint, dataset, language, model, browser family)` a record was recorded under. A correction or an audit compares against this when it is present |
 
 The artifact is a JSON file with `artifactVersion: 1` and an `executions` array. Each execution
 repeats the record's identity fields (including `evidenceLayer`), so the file itself says which runs
@@ -161,8 +219,13 @@ node webmcp/evals/native-run.mjs \
   browser is already a dependency: `bestprice.gr/tools/scripts/webmcp-native-runner.mjs`.
 
 Each case is judged mechanically against its frozen definition (`expected_tools`,
-`required_result_properties`, refusal-only cases), appended to `runs.v2.json`, and given an artifact
-under `artifacts/`. `--dry-run` judges and prints without writing. Then:
+`required_result_properties`, refusal-only cases) by `journey.js`, **on one transcript**: the agent is
+asked for one call per turn until it records a terminal, the page is re-probed each turn so a
+navigation is followed, and the whole transcript is graded once (a `--max-steps` budget bounds the
+loop, and exceeding it is `blocked` with that reason). Infrastructure failures — a browser that cannot
+be probed, an agent command that exits non-zero — are recorded as `blocked`, not as model failures.
+The artifact holds every step, the terminal, the expected chain and the reason. `--dry-run` judges and
+prints without writing. Then:
 
 ```bash
 node webmcp/evals/run-evidence.js --strict     # must print Release Ready: YES
@@ -175,8 +238,23 @@ executes correctly and then fails validation on its own name.
 
 Four evidence layers, never summed into one number: deterministic contract tests, real-DOM state
 transition tests, native-browser WebMCP integration, and real-agent natural-language runs. Only the
-last one answers "does an agent choose the right tool and finish the shopper's task?" — and "three of
-five attempts passed" is a distribution to report per case, not an excellence verdict.
+last one answers "does an agent choose the right tool and finish the shopper's task?" — and a pass
+fraction over a bounded cohort is a distribution to report per case, not an excellence verdict.
+
+## Contract parity with the storefront
+
+The published surface (`webmcp/src/contracts.js`) and the page that actually registers the tools must
+describe the same **fields**. `webmcp/test/contract-parity.test.js` compares every tool's
+`inputSchema` against the storefront source of truth field by field — names, types and bounds, in both
+directions — using `webmcp/src/contract-parity.js`, which reads the storefront files from the sibling
+`bestprice.gr` checkout (override with `BESTPRICE_STOREFRONT_ROOT`).
+
+The comparison always runs against the committed snapshot
+`webmcp/test/fixtures/storefront-tools.v1.json`, so it cannot silently skip when the sibling checkout
+is absent, and it re-extracts the live files when they are present, so the snapshot cannot silently
+drift. When the storefront changes its surface the digest check fails: re-extract, review the fixture,
+and decide whether the published contract changes with it. Names, counts and version strings are not
+parity — `show_offer`'s missing `offer_ref` passed all three of those checks.
 
 Tool execution remains bounded to the open page. Unknown shipping stays `null`;
 offers expose no merchant click-through URL. Evaluation must not manufacture

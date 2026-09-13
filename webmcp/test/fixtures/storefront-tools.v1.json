@@ -1,0 +1,181 @@
+{
+  "fixtureVersion": 1,
+  "what": "The tool surface the BestPrice.gr storefront registers, extracted from the source of truth in the bestprice.gr repository.",
+  "sourceOfTruth": "bestprice.gr",
+  "extractedFrom": [
+    {
+      "path": "pages/item/webmcp/tools.js",
+      "sha256": "e3e3c06c4462167a40e4a13f38bbbb03e1132affc18d546e04ed64c72f9ff898"
+    },
+    {
+      "path": "js/modules/webmcp/search-tool.js",
+      "sha256": "6a603462b446dc7b34f5684127c05a59fa2fe6010ca4a24dd0f5597bafc32b09"
+    }
+  ],
+  "extraction": "webmcp/src/contract-parity.js extractToolDefinitions (object literals carrying name + inputSchema, module-scope schema constants resolved)",
+  "definitionsDigest": "5a4916578db4574b91f0e5902659506594bb888d803aec81819d15c8a95bf86a",
+  "tools": [
+    "get_page_product",
+    "compare_page_offers",
+    "get_product_specifications",
+    "summarize_price_history",
+    "show_offer",
+    "show_price_history",
+    "search_bestprice"
+  ],
+  "surface": {
+    "get_page_product": {
+      "title": "Product details on this page",
+      "description": "Return the product, current minimum price, rating, and offer count shown on this BestPrice item page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "compare_page_offers": {
+      "title": "Compare offers on this page",
+      "description": "Compare up to four currently rendered offers by item price, shipping, delivered price, availability, and merchant rating. Every returned offer carries an offer_ref for show_offer; unpriced_rows reports how many rendered rows of that store could not be priced.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4,
+            "description": "Number of lowest-delivered-price offers to return, from 1 to 4."
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "get_product_specifications": {
+      "title": "Product specifications",
+      "description": "Return structured specifications for the product on this BestPrice item page, optionally focused on one specification section.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "section": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 48,
+            "description": "Use all or a section name shown on this product, such as \u039f\u03b8\u03cc\u03bd\u03b7, \u0399\u03c3\u03c7\u03cd\u03c2, or \u0394\u03b9\u03b1\u03c3\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16,
+            "description": "Maximum number of specification facts to return, from 1 to 16."
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "summarize_price_history": {
+      "title": "Price history summary",
+      "description": "Return the current, lowest, and highest recorded prices plus recent and overall price direction for this BestPrice product.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "show_offer": {
+      "title": "Show an offer for this product",
+      "description": "Scroll this BestPrice item page to one merchant offer it already shows and mark it for the shopper. Use the offer_ref returned by compare_page_offers; merchant_id or merchant_name also work when they identify exactly one shown offer. It never opens a merchant page and never exposes a merchant URL.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "offer_ref": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 40,
+            "description": "Page-local offer reference from compare_page_offers. Exact, and the only selector that can separate two stores with the same displayed name. A reference names one quote: it is refused once the page state, the merchant, the variant or any price or shipping amount changes; read the offers again."
+          },
+          "merchant_id": {
+            "type": "string",
+            "pattern": "^\\d{1,20}$",
+            "description": "Numeric merchant id from compare_page_offers, when the page exposes one."
+          },
+          "merchant_name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 68,
+            "description": "Merchant name exactly as compare_page_offers returned it."
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "show_price_history": {
+      "title": "Show this product price history",
+      "description": "Open or focus the price-history chart for the product currently shown on the BestPrice item page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "search_bestprice": {
+      "title": "Search BestPrice products",
+      "description": "Start a BestPrice product search and navigate this browser tab to the results.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 120,
+            "description": "Product, brand, model, or shopping need to search for."
+          }
+        },
+        "required": ["query"],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "artifactVersion": 1,
+  "correctionOf": "run-2026-09-13-multi-001-1212da22",
+  "originalArtifact": "artifacts/run-2026-09-13-multi-001-1212da22.json",
+  "originalArtifactDigest": "926823f865cc556729c4b48c29e43615d2282a14f9e69a8a20d0ca980b8a2e3e",
+  "corrections": [
+    {
+      "correctionId": "correction-8872691de6a93f57",
+      "runId": "run-2026-09-13-multi-001-1212da22",
+      "caseId": "multi-001",
+      "originalOutcome": "passed",
+      "correctedOutcome": "blocked",
+      "reason": "the trace has no terminal answer or refusal, so the journey is unfinished (1 of 4 expected tool calls observed)",
+      "sequence": "partial",
+      "steps": 1,
+      "expectedSteps": 4,
+      "terminal": null,
+      "grader": "journey-grader",
+      "graderVersion": 1,
+      "correctedAt": "2026-09-13T16:04:37.000Z"
+    }
+  ]
+}

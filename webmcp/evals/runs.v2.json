@@ -2,7 +2,7 @@
   "dataset": "webmcp-natural-language-runs",
   "datasetVersion": "2.0.0",
   "casesRef": "natural-language-cases.v2.json",
-  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision and manifest fingerprint it was observed against, an instant, and an artifact committed under artifacts/. Every record must declare evidenceLayer \"native\", and a record whose agent, model or browser names an in-memory, simulated or deterministic host is rejected: a green deterministic suite is not an agent run. A record is never edited in place: a corrected result is a new record, and deleting or rewriting a published one is a reportable change. Each change is checked against the copy the merged branch already published at the merge base, so the working tree cannot be its own baseline. Nothing in this file is a substitute for the case's pass criterion. A copy of a record is not additional evidence.",
+  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision and manifest fingerprint it was observed against, an instant, and an artifact committed under artifacts/. Every record must declare evidenceLayer \"native\", and a record whose agent, model or browser names an in-memory, simulated or deterministic host is rejected: a green deterministic suite is not an agent run. A record is never edited in place: a corrected result is a new record, and deleting or rewriting a published one is a reportable change. Each change is checked against the copy the merged branch already published at the merge base, so the working tree cannot be its own baseline. Nothing in this file is a substitute for the case's pass criterion. A copy of a record is not additional evidence. Corrections are appended, never edited: a correction is a new record that references the run and artifact it corrects, the original record and the original artifact bytes stay exactly as published, and a later correction supersedes an earlier one by naming it.",
   "requiredFields": [
     "runId",
     "caseId",
@@ -1641,6 +1641,56 @@
     "both frozen case files (v1 and v2) are compared against the trusted merge-base copy, so a published definition cannot be rewritten",
     "outcome is a semantic result (passed/failed/refused/blocked), separate from whether the host ran at all",
     "evidenceLayer must be \"native\": only an execution driven by a real agent in a real browser engine belongs in this ledger. Deterministic, in-memory, simulated or fixture-driven runs are not evidence, are rejected here, and are quarantined under webmcp/evals/demo/",
-    "agent, model and browser must name a real host, model and browser engine with a version; a record naming an in-memory adapter, Node.js, jsdom, a simulation, a deterministic driver, a test driver or a fixture is rejected as non-native rather than accepted on shape"
+    "agent, model and browser must name a real host, model and browser engine with a version; a record naming an in-memory adapter, Node.js, jsdom, a simulation, a deterministic driver, a test driver or a fixture is rejected as non-native rather than accepted on shape",
+    "a correction is an appended record, never an edit: the original run record and the original artifact bytes are untouched, and the correction cites both",
+    "a correction must reference a runId that already exists in this ledger, and must restate that run’s original outcome and original artifact digest",
+    "a correction is not an execution: it carries no evidenceLayer, agent, model or browser, and it counts towards no sample floor and no pass fraction",
+    "a later correction supersedes an earlier one by naming it in `supersedes`; corrections are never edited or deleted either"
+  ],
+  "corrections": [
+    {
+      "correctionId": "correction-93b3b741b222d4f2",
+      "runId": "run-2026-09-13-multi-001-16be8cfc",
+      "caseId": "multi-001",
+      "originalOutcome": "passed",
+      "correctedOutcome": "blocked",
+      "reason": "the trace has no terminal answer or refusal, so the journey is unfinished (1 of 4 expected tool calls observed)",
+      "sequence": "partial",
+      "steps": "1",
+      "expectedSteps": "4",
+      "terminal": null,
+      "grader": "journey-grader",
+      "graderVersion": "1",
+      "correctedAt": "2026-09-13T16:04:37.000Z",
+      "date": "2026-09-13",
+      "implementationRevision": "89a5a83213406aaa31dd4749d1c45c7cadbad28c",
+      "evidence": "artifacts/run-2026-09-13-multi-001-16be8cfc.correction.json",
+      "artifact": "artifacts/run-2026-09-13-multi-001-16be8cfc.correction.json",
+      "artifactDigest": "802b409207186089925bab54e17b8b046428c1a8d34f1f05e0c69edd88bcd6ce",
+      "originalArtifact": "artifacts/run-2026-09-13-multi-001-16be8cfc.json",
+      "originalArtifactDigest": "3745314b8b874ba557a40410c4ef46157b810622d7b5d237196da0965bd3d2e4"
+    },
+    {
+      "correctionId": "correction-8872691de6a93f57",
+      "runId": "run-2026-09-13-multi-001-1212da22",
+      "caseId": "multi-001",
+      "originalOutcome": "passed",
+      "correctedOutcome": "blocked",
+      "reason": "the trace has no terminal answer or refusal, so the journey is unfinished (1 of 4 expected tool calls observed)",
+      "sequence": "partial",
+      "steps": "1",
+      "expectedSteps": "4",
+      "terminal": null,
+      "grader": "journey-grader",
+      "graderVersion": "1",
+      "correctedAt": "2026-09-13T16:04:37.000Z",
+      "date": "2026-09-13",
+      "implementationRevision": "89a5a83213406aaa31dd4749d1c45c7cadbad28c",
+      "evidence": "artifacts/run-2026-09-13-multi-001-1212da22.correction.json",
+      "artifact": "artifacts/run-2026-09-13-multi-001-1212da22.correction.json",
+      "artifactDigest": "0f7bb96dea4b61bf24e09d1d4db09682470d8f54c3f57e61cbfa1999af92a514",
+      "originalArtifact": "artifacts/run-2026-09-13-multi-001-1212da22.json",
+      "originalArtifactDigest": "926823f865cc556729c4b48c29e43615d2282a14f9e69a8a20d0ca980b8a2e3e"
+    }
   ]
 }

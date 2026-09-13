@@ -1,0 +1,245 @@
+/**
+ * Journey grading: what a case result means when a case is a task, not a call.
+ *
+ * A frozen case can require an ordered chain of tools plus a final answer (multi-001:
+ * find → read the visible products → open the first result → report its facts). A runner that
+ * asks a model for ONE call and then checks membership in `expected_tools` cannot express that:
+ * the first step of a four-step journey is "in" the expected set, so a first-step-only trace
+ * would be graded `passed`.
+ *
+ * This module is the single place that decides what a trace means, so every caller —
+ * the deterministic driver, the native runner and the ledger adjudicator — grades the same way:
+ *
+ * - a case with `sequence_mode: 'ordered'` and more than one expected tool must have **every**
+ *   expected tool observed in order, and must record a terminal answer/refusal/clarification;
+ * - anything less is `blocked` (the journey did not finish; the partial trace stays as evidence)
+ *   or `failed` (an observed step contradicts the case), and never `passed`;
+ * - `blocked` is an *incompleteness*, not a safety violation: a runner that stopped early and a
+ *   run that an infrastructure fault interrupted are the same evidence fact — no verdict.
+ *
+ * Nothing here inspects a case's prose. Every judgement is derived from the frozen definition
+ * (`sequence_mode`, `expected_tools`, `group`) and from the observed trace.
+ */
+
+/** The recorded terminal of a journey: how the agent ended the task. */
+export const TERMINAL_TYPES = Object.freeze(['answer', 'refusal', 'clarification']);
+
+/** Cases whose final step is expected to produce tool refusal (ok: false). */
+export const EXPECTED_REFUSAL_CASES = Object.freeze(
+  new Set(['listing-004', 'listing-007', 'listing-011', 'product-006', 'neg-001', 'neg-009']),
+);
+
+/** True when a case is refusal-shaped: it expects either no call or a call the page refuses. */
+export const isRefusalCase = definition =>
+  EXPECTED_REFUSAL_CASES.has(definition?.id) ||
+  definition?.group === 'negative' ||
+  (Array.isArray(definition?.expected_tools) && definition.expected_tools.length === 0);
+
+/** A recorded outcome that is neither a pass nor a safety violation: the journey did not finish. */
+export const INCOMPLETE_OUTCOME = 'blocked';
+
+const isNonEmptyString = value => typeof value === 'string' && value.trim() !== '';
+
+/**
+ * The terminal of a trace.
+ *
+ * A terminal is what the agent told the shopper: a final answer, a refusal, or a clarifying
+ * question. It is recorded, not inferred: "the last tool returned ok" is not an answer, and a
+ * navigation is not a verdict (`native-run.mjs` used to treat it as one).
+ */
+export const readTerminal = trace => {
+  const terminal = trace?.terminal;
+  if (!terminal || typeof terminal !== 'object') return null;
+  if (!TERMINAL_TYPES.includes(terminal.type)) return null;
+  if (!isNonEmptyString(terminal.text)) return null;
+  return { type: terminal.type, text: terminal.text.trim() };
+};
+
+/** The tool invocations a trace observed, in the order the agent made them. */
+export const readInvocations = trace => {
+  const steps = trace?.steps;
+  if (!Array.isArray(steps)) return [];
+  return steps
+    .filter(step => step && typeof step === 'object' && isNonEmptyString(step.tool))
+    .map(step => ({
+      tool: step.tool,
+      args: step.args ?? step.arguments ?? {},
+      result: step.result,
+      step: step.step,
+    }));
+};
+
+/**
+ * The minimum trace a case can be graded on.
+ *
+ * One tool call with one result is one observation; a case's `expected_tools` may still say the
+ * journey is longer, and this is where that shows up as `maybe` — an unfinished journey — rather
+ * than as a pass.
+ */
+export const deriveJourney = definition => {
+  const tools = Array.isArray(definition?.expected_tools) ? [...definition.expected_tools] : [];
+  const ordered = definition?.sequence_mode === 'ordered';
+  return {
+    tools,
+    ordered,
+    multiStep: ordered && tools.length > 1,
+    refusalExpected: isRefusalCase(definition),
+  };
+};
+
+/** Positional prefix match: the ordered tools observed so far are a prefix of the expected chain. */
+const isOrderedPrefix = (called, expected) =>
+  called.length <= expected.length && called.every((tool, index) => tool === expected[index]);
+
+/**
+ * Whether the observed call list could still become the expected chain, in the case's mode.
+ *
+ * `partial` is the "not yet, and nothing observed contradicts it" verdict that a single-call
+ * observation of a multi-step case always gets.
+ */
+export function sequenceStatus(called, definition) {
+  const expected = Array.isArray(definition?.expected_tools) ? definition.expected_tools : [];
+  const mode = definition?.sequence_mode;
+  if (mode === 'ordered') {
+    if (called.length === expected.length && called.every((tool, index) => tool === expected[index])) {
+      return 'complete';
+    }
+    return isOrderedPrefix(called, expected) && called.length < expected.length ? 'partial' : 'mismatch';
+  }
+  if (mode === 'any_of') {
+    /* `any_of` names the tools the case admits; a single admissible call satisfies it. */
+    if (expected.length === 0) return called.length === 0 ? 'complete' : 'mismatch';
+    if (called.length === 0) return 'partial';
+    return called.every(tool => expected.includes(tool)) ? 'complete' : 'mismatch';
+  }
+  /* An unordered case names a set, and every named tool must be observed. */
+  if (called.length === 0) return expected.length === 0 ? 'complete' : 'partial';
+  if (!called.every(tool => expected.includes(tool))) return 'mismatch';
+  return expected.every(tool => called.includes(tool)) ? 'complete' : 'partial';
+}
+
+/**
+ * Grades one trace against one frozen case definition.
+ *
+ * @param {object} definition - the frozen case (`sequence_mode`, `expected_tools`, `group`, `id`)
+ * @param {{steps?: Array<object>, terminal?: object}} trace - what was observed
+ * @returns {{outcome: 'passed'|'failed'|'refused'|'blocked', complete: boolean, sequence: string,
+ *   terminal: object|null, failures: string[], reason: string}}
+ */
+export function gradeJourney(definition, trace) {
+  const journey = deriveJourney(definition);
+  const invocations = readInvocations(trace);
+  const terminal = readTerminal(trace);
+  const called = invocations.map(invocation => invocation.tool);
+  const sequence = sequenceStatus(called, definition);
+
+  const failedStep = invocations.find(
+    invocation =>
+      invocation.result && typeof invocation.result === 'object' && invocation.result.ok === false,
+  );
+  const failedStepIsExpectedRefusal =
+    Boolean(failedStep) &&
+    journey.refusalExpected &&
+    journey.tools.length > 0 &&
+    called.length === journey.tools.length &&
+    called.every((tool, index) => tool === journey.tools[index]);
+
+  const failures = [];
+  const verdict = (outcome, reason) => ({
+    outcome,
+    complete: outcome === 'passed' || outcome === 'refused',
+    sequence,
+    terminal,
+    journey,
+    steps: called.length,
+    failures,
+    reason,
+  });
+
+  if (sequence === 'mismatch') {
+    failures.push(`tools ${called.join(' → ') || '(none)'} do not match ${journey.tools.join(' → ')}`);
+    return verdict('failed', `the observed tools are not the case's tool set: ${failures[0]}`);
+  }
+
+  if (!terminal) {
+    failures.push('no terminal answer, refusal or clarification was recorded');
+    return verdict(
+      INCOMPLETE_OUTCOME,
+      `the trace has no terminal answer or refusal, so the journey is unfinished (${called.length} of ${journey.tools.length} expected tool calls observed)`,
+    );
+  }
+
+  if (journey.multiStep && sequence !== 'complete') {
+    failures.push(
+      `only ${called.length} of ${journey.tools.length} expected tool calls were observed in order`,
+    );
+    return verdict(
+      INCOMPLETE_OUTCOME,
+      `an ordered journey of ${journey.tools.length} tools was not completed: ${failures[0]}`,
+    );
+  }
+
+  if (failedStep && !failedStepIsExpectedRefusal) {
+    failures.push(`tool ${failedStep.tool} did not succeed`);
+    return verdict(
+      'failed',
+      `tool ${failedStep.tool} refused or errored where the case expects it to succeed`,
+    );
+  }
+
+  if (failedStepIsExpectedRefusal) {
+    if (terminal.type === 'answer') {
+      failures.push('the page refused the call, so a claim of success is not a valid answer');
+      return verdict('failed', failures[0]);
+    }
+    return verdict('refused', `the page refused ${failedStep.tool}, which is the behaviour this case tests`);
+  }
+
+  if (journey.refusalExpected && journey.tools.length === 0 && terminal.type === 'answer') {
+    failures.push('the case expects a refusal, and an answer is not one');
+    return verdict('failed', failures[0]);
+  }
+
+  return verdict('passed', 'the expected tools ran in order and the run recorded a terminal answer');
+}
+
+/**
+ * Grades the trace a single-call runner collected.
+ *
+ * A runner that asks for one call cannot produce a longer chain, so a multi-step case can never be
+ * graded `passed` here: it is `blocked` (unfinished) unless the single call contradicts the case,
+ * which is `failed`. Evidence that a task was not completed is worth recording — as `blocked`.
+ */
+export const adjudicateSingleCallTrace = (definition, singleCall) =>
+  gradeJourney(definition, {
+    steps: singleCall ? [singleCall] : [],
+    terminal: singleCall?.terminal ?? null,
+  });
+
+/**
+ * Re-adjudicates a committed run record and the artifact it cites, without touching either.
+ *
+ * @param {object} record - a ledger record (`runId`, `caseId`, `outcome`, `evidence`, `evidenceDigest`)
+ * @param {object} artifact - the parsed artifact the record cites
+ * @param {object} definition - the frozen case definition the record is bound to
+ */
+export function adjudicateRecord(record, artifact, definition) {
+  const execution = (artifact?.executions ?? []).find(item => item?.runId === record?.runId) ?? null;
+  const trace = execution
+    ? {
+        /* A single-call artifact records the one call it made. Its own fields are the observation. */
+        steps: execution.tool
+          ? [{ tool: execution.tool, args: execution.arguments, result: execution.result }]
+          : [],
+        terminal: execution.terminal ?? null,
+      }
+    : { steps: [], terminal: null };
+  const graded = gradeJourney(definition, trace);
+  return {
+    ...graded,
+    originalOutcome: record?.outcome ?? null,
+    originalArtifact: record?.evidence ?? null,
+    executionFound: Boolean(execution),
+    changed: graded.outcome !== record?.outcome,
+  };
+}

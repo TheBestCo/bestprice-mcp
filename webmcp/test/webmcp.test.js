@@ -54,7 +54,16 @@ describe('contracts', () => {
     const showOffer = productTools.get('show_offer');
     assert.equal(showOffer.annotations.readOnlyHint, false);
     assert.equal(showOffer.annotations.openWorldHint, false);
-    assert.deepEqual(Object.keys(showOffer.inputSchema.properties).sort(), ['merchant_id', 'merchant_name']);
+    /* The item page has returned an `offer_ref` since the action verb landed and tells the agent to
+     * prefer it; the published contract has to advertise the same selector set, or a reference the
+     * page calls exact is invalid here. Parity with the storefront is asserted field by field in
+     * `contract-parity.test.js`. */
+    assert.deepEqual(Object.keys(showOffer.inputSchema.properties).sort(), [
+      'merchant_id',
+      'merchant_name',
+      'offer_ref',
+    ]);
+    assert.equal(showOffer.inputSchema.additionalProperties, false);
     assert.equal(productTools.get('show_price_history').annotations.readOnlyHint, false);
   });
 

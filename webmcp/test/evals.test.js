@@ -16,6 +16,14 @@ import { fileURLToPath } from 'node:url';
 import { createDeterministicAgent, DEMO_LEDGER_PATH, DEMO_ROOT, runEvaluation } from '../evals/driver.js';
 import { currentRevision, readTrustedBaseline } from '../evals/git-baseline.js';
 import {
+  buildScopeSigner,
+  cohortKey,
+  DEFAULT_MINIMUM_SAMPLES,
+  DEFAULT_TARGET_PASS_RATE,
+  passesTargetRule,
+  releaseScope,
+} from '../evals/release-policy.js';
+import {
   auditRunEvidence,
   caseDigestIndex,
   compareFrozenCases,
@@ -90,6 +98,8 @@ const checkedOutImplementation = () => {
   assert.match(revision ?? '', /^[0-9a-f]{40}$/u, 'the checked-out revision must be readable');
   return { revision, fingerprint: implementationFingerprint() };
 };
+
+const IMPLEMENTATION = checkedOutImplementation();
 
 const evidenceContext = () => ({
   caseIds: new Set(v2.cases.map(item => item.id)),
@@ -328,8 +338,14 @@ describe('evaluation harness and test driver', () => {
     const negativeGroup = await runEvaluation({ mode: 'demo', runs: 1, dryRun: true, filter: 'negative' });
     assert.equal(negativeGroup.casesCount, 9);
     assert.equal(negativeGroup.totalTrials, 9);
-    assert.equal(negativeGroup.passedTrials, 9);
+    /* Every negative case ends in one of the two honest verdicts: the safe call completed, or the
+     * page refused it. Neither may be `blocked` (an unfinished journey) or `failed` (a violation). */
+    assert.equal(negativeGroup.refusedTrials, 2, 'neg-001 and neg-009 are refusal-expected journeys');
+    assert.equal(negativeGroup.passedTrials, 7);
+    assert.equal(negativeGroup.passedTrials + negativeGroup.refusedTrials, 9);
     assert.equal(negativeGroup.failedTrials, 0);
+    assert.equal(negativeGroup.blockedTrials, 0);
+    assert.equal(negativeGroup.safetyViolations, 0);
 
     await assert.rejects(
       () => runEvaluation({ mode: 'browser' }),
@@ -343,7 +359,7 @@ describe('evaluation harness and test driver', () => {
     );
   });
 
-  it('calculates pass rate across repeated trials and enforces the >= 3/5 criterion', () => {
+  it('calculates pass rate across repeated trials and applies the minimum sample floor', () => {
     const testCases = {
       dataset: 'webmcp-natural-language-cases',
       datasetVersion: '2.0.0',
@@ -353,6 +369,8 @@ describe('evaluation harness and test driver', () => {
       ],
     };
 
+    /* The sample names the implementation actually checked out: a pass is evidence about the
+     * revision it was observed on, so a cohort is only "covered" when the runs name it. */
     const makeRun = (caseId, runIndex, outcome) => ({
       runId: `run-2026-09-13-${caseId}-${runIndex}`,
       caseId,
@@ -361,8 +379,9 @@ describe('evaluation harness and test driver', () => {
       agent: 'Model Context Tool Inspector',
       model: 'example-agent-1',
       browser: 'Chromium 144',
-      implementationRevision: 'a'.repeat(40),
-      implementationFingerprint: 'b'.repeat(64),
+      language: 'el',
+      implementationRevision: IMPLEMENTATION.revision,
+      implementationFingerprint: IMPLEMENTATION.fingerprint,
       caseDigest: 'c'.repeat(64),
       startedAt: `2026-09-13T10:0${runIndex}:00.000Z`,
       date: '2026-09-13',
@@ -393,14 +412,23 @@ describe('evaluation harness and test driver', () => {
       runs: [...passRuns, ...failRuns],
     };
 
-    const audit = auditRunEvidence(testLedger, testCases, { artifactRoot: null });
+    const audit = auditRunEvidence(testLedger, testCases, {
+      artifactRoot: null,
+      scopeField: releaseScope({
+        revision: IMPLEMENTATION.revision,
+        fingerprint: IMPLEMENTATION.fingerprint,
+        datasetVersion: '2.0.0',
+      }),
+    });
     const passSummary = audit.casesSummary.find(c => c.id === 'case-pass-target');
     const failSummary = audit.casesSummary.find(c => c.id === 'case-fail-target');
 
-    assert.equal(passSummary.meetsTarget, true, '3/5 passes must meet target');
+    assert.equal(passSummary.meetsTarget, true, '3/5 passes must meet a 60% target');
     assert.equal(passSummary.passRate, 0.6);
-    assert.equal(failSummary.meetsTarget, false, '2/5 passes must fail target');
+    assert.equal(passSummary.scoredRuns, 5);
+    assert.equal(failSummary.meetsTarget, false, '2/5 passes must fail a 60% target');
     assert.equal(failSummary.passRate, 0.4);
+    assert.match(failSummary.targetReasons.join(' '), /below the 60\.0% target/u);
 
     const strictAudit = auditRunEvidence(testLedger, testCases, { artifactRoot: null, strict: true });
     assert.equal(strictAudit.allCasesMet, false);
@@ -544,8 +572,13 @@ describe('evaluation harness and test driver', () => {
     /* The store holds real native runs now, so "untouched" is not emptiness: every byte
      * in it is cited by a native ledger record, and a refused demo run adds none. */
     const cited = new Set(readEvidence(2).runs.map(record => record.evidence.split('/').pop()));
+    /* Correction artifacts are adjudications of runs, not runs: they are named after one and are
+     * never citable as execution evidence. */
+    const corrections = new Set(readEvidence(2).runs.map(record => `${record.runId}.correction.json`));
     assert.deepEqual(
-      readdirSync(DEFAULT_ARTIFACT_ROOT).filter(name => name.startsWith('run-') && !cited.has(name)),
+      readdirSync(DEFAULT_ARTIFACT_ROOT).filter(
+        name => name.startsWith('run-') && !cited.has(name) && !corrections.has(name),
+      ),
       [],
       'a refused demo run must leave the native artifact store untouched',
     );
@@ -625,7 +658,7 @@ describe('evaluation harness and test driver', () => {
     }
   });
 
-  it('enforces 5 runs per case minimum under strict mode', () => {
+  it('applies the 5-run sample floor in every mode, not only under strict', () => {
     const testCases = {
       dataset: 'webmcp-natural-language-cases',
       datasetVersion: '2.0.0',
@@ -643,8 +676,8 @@ describe('evaluation harness and test driver', () => {
           agent: 'Model Context Tool Inspector',
           model: 'example-agent-1',
           browser: 'Chromium 144',
-          implementationRevision: 'a'.repeat(40),
-          implementationFingerprint: 'b'.repeat(64),
+          implementationRevision: IMPLEMENTATION.revision,
+          implementationFingerprint: IMPLEMENTATION.fingerprint,
           caseDigest: 'c'.repeat(64),
           startedAt: '2026-09-13T10:00:00.000Z',
           date: '2026-09-13',
@@ -655,24 +688,166 @@ describe('evaluation harness and test driver', () => {
       ],
     };
 
+    /* The floor is part of the predicate, not of a reporting mode: one perfect run is a perfect
+     * run and still not a sample. The old rule said the opposite outside `--strict`. */
     const nonStrictAudit = auditRunEvidence(singleRunLedger, testCases, {
       artifactRoot: null,
       strict: false,
     });
     assert.equal(
       nonStrictAudit.casesSummary[0].meetsTarget,
-      true,
-      '1/1 passes can meet target in non-strict mode',
+      false,
+      '1/1 passes must not meet a 5-sample floor, strict or not',
     );
+    assert.equal(nonStrictAudit.casesSummary[0].passRate, 1);
+    assert.match(nonStrictAudit.casesSummary[0].targetReasons.join(' '), /only 1 verified run/u);
+    /* Not strict: the shortfall is reported and is not, by itself, a release failure. */
+    assert.equal(nonStrictAudit.allCasesMet, false);
 
     const strictAudit = auditRunEvidence(singleRunLedger, testCases, { artifactRoot: null, strict: true });
-    assert.equal(
-      strictAudit.casesSummary[0].meetsTarget,
-      false,
-      '1/1 passes must not meet target under strict mode',
-    );
+    assert.equal(strictAudit.casesSummary[0].meetsTarget, false);
     assert.equal(strictAudit.allCasesMet, false);
     assert.equal(strictAudit.releaseReady, false);
     assert.equal(strictAudit.exitCode, 1);
+  });
+
+  it('applies the sample floor and the pass fraction together, configurably', () => {
+    const target = (passed, verified, options) => passesTargetRule({ passed, verified, ...options });
+
+    /* The counterexample the audit found: three passes out of one hundred satisfied
+     * `totalRuns >= 5 ? passed >= 3 : …`. Under an explicit fraction it is 3%, not a pass. */
+    assert.equal(target(3, 100), false, '3/100 must fail the default 60% target');
+    assert.equal(target(3, 5), true, '3/5 meets the default 60% target');
+    /* ... and a configured 95% target is applied rather than ignored once five runs exist. */
+    assert.equal(target(3, 5, { targetPassRate: 0.95 }), false, '3/5 must fail a 95% target');
+    assert.equal(target(5, 5, { targetPassRate: 0.95 }), true, '5/5 meets a 95% target');
+    assert.equal(target(19, 20, { targetPassRate: 0.95 }), true, '19/20 meets a 95% target');
+    assert.equal(target(18, 20, { targetPassRate: 0.95 }), false, '18/20 fails a 95% target');
+    /* Both thresholds are configurable and both are always applied. */
+    assert.equal(target(3, 3, { minimumSamples: 3 }), true, 'a configured floor of 3 admits 3/3');
+    assert.equal(target(1, 3, { minimumSamples: 0 }), false, 'the fraction still applies below the floor');
+    assert.equal(target(3, 100, { minimumSamples: 3, targetPassRate: 0.6 }), false);
+    assert.equal(target(0, 0), false, 'no runs is never a pass');
+    assert.equal(target(5, 5, { targetPassRate: 0 }), true, 'a 0% target still needs the floor');
+    assert.equal(
+      target(0, 5, { targetPassRate: 0 }),
+      true,
+      'zero passes meets a 0% target with a full sample',
+    );
+    assert.equal(target(1, 1, { minimumSamples: 1, targetPassRate: 1 }), true);
+    for (const broken of [
+      { passed: 6, verified: 5 },
+      { passed: -1, verified: 5 },
+      { passed: 1.5, verified: 5 },
+      { passed: 3, verified: 5, targetPassRate: 1.5 },
+      { passed: 3, verified: 5, minimumSamples: 2.5 },
+    ]) {
+      assert.equal(target(broken.passed, broken.verified, broken), false, JSON.stringify(broken));
+    }
+    assert.equal(DEFAULT_MINIMUM_SAMPLES, 5);
+    assert.equal(DEFAULT_TARGET_PASS_RATE, 0.6);
+  });
+
+  it('scopes readiness to a cohort of revision, browser family, model and language', () => {
+    const revision = IMPLEMENTATION.revision;
+    const scope = releaseScope({
+      revision,
+      fingerprint: IMPLEMENTATION.fingerprint,
+      datasetVersion: '2.0.0',
+    });
+    const runsAt = (overrides = {}) => {
+      const run = {
+        runId: `run-${overrides.runId ?? '1'}`,
+        caseId: 'home-001',
+        datasetVersion: '2.0.0',
+        evidenceLayer: 'native',
+        agent: 'Model Context Tool Inspector',
+        model: 'example-agent-1',
+        browser: 'Chromium 144',
+        language: 'el',
+        implementationRevision: revision,
+        implementationFingerprint: IMPLEMENTATION.fingerprint,
+        caseDigest: 'c'.repeat(64),
+        startedAt: '2026-09-13T10:00:00.000Z',
+        date: '2026-09-13',
+        outcome: 'passed',
+        evidence: `artifacts/${overrides.runId ?? '1'}.json`,
+        evidenceDigest: 'd'.repeat(64),
+      };
+      return { ...run, ...overrides };
+    };
+    /* `browserFamily` is what the cohort is keyed on, so a version bump is not a new cohort. */
+    const dimensions = { language: 'el', model: 'example-agent-1', browser: 'Chromium 152.0.7977.90' };
+
+    /* Four passes at the checked-out revision, one against a different implementation. */
+    const runs = [
+      runsAt({ runId: 'a' }),
+      runsAt({ runId: 'b' }),
+      runsAt({ runId: 'c' }),
+      runsAt({ runId: 'd' }),
+      runsAt({ runId: 'old', implementationRevision: 'a'.repeat(40) }),
+    ];
+    const signer = buildScopeSigner(runs, scope, { ...dimensions });
+    assert.equal(signer.scope.implementationRevision, revision);
+    assert.equal(signer.cohort.language, 'el');
+    assert.equal(signer.cohort.model, 'example-agent-1');
+    assert.equal(signer.cohort.browser, 'chromium');
+    assert.equal(signer.runs.length, 4, 'the run at another revision is not in this cohort');
+    assert.equal(signer.rejected.length, 1);
+    assert.match(signer.rejected[0].reason, /observed against implementation revision a{40}/u);
+
+    /* A run recorded under a different model, language or browser family is a different cohort, and
+     * is reported rather than counted. */
+    const cohortOnly = runs.slice(0, 4);
+    assert.equal(buildScopeSigner(cohortOnly, scope, { ...dimensions }).runs.length, 4);
+    for (const [field, value] of [
+      ['model', 'other-model'],
+      ['language', 'en'],
+      ['browser', 'Firefox 143'],
+    ]) {
+      const mixed = [...cohortOnly, runsAt({ runId: 'other', [field]: value })];
+      const mixedSigner = buildScopeSigner(mixed, scope, { ...dimensions });
+      assert.equal(mixedSigner.runs.length, 4, `${field} must scope the cohort`);
+      assert.equal(mixedSigner.rejected.length, 1, `${field} must be reported as out of cohort`);
+      assert.equal(mixedSigner.rejected[0].runId, 'other', `${field} must name the excluded run`);
+    }
+
+    /* Changing the implementation creates an uncovered cohort until it is tested: the pass
+     * recorded against the old revision is retained in the report and approves nothing. */
+    const moved = buildScopeSigner(runs, scope, {
+      ...dimensions,
+      scopeKeys: [
+        {
+          implementationRevision: 'b'.repeat(40),
+          implementationFingerprint: IMPLEMENTATION.fingerprint,
+          datasetVersion: '2.0.0',
+        },
+      ],
+    });
+    assert.equal(moved.scope.implementationRevision, 'b'.repeat(40));
+    assert.equal(moved.runs.length, 0, 'an untested revision is uncovered');
+    assert.equal(moved.rejected.length, 5, 'history stays visible');
+
+    /* A record that declares a cohort key is taken at its word: a record recorded under a
+     * different model/language/browser combination must not slip into this cohort just because its
+     * revision matches. Only a declared key that equals the cohort's is counted. */
+    const declared = { ...runsAt({ runId: 'declared' }), cohort: 'f'.repeat(16) };
+    const declaredSigner = buildScopeSigner([...cohortOnly, declared], scope, { ...dimensions });
+    assert.equal(declaredSigner.runs.length, 4, 'a mismatched declared cohort must be excluded');
+    assert.equal(declaredSigner.rejected.length, 1);
+    assert.equal(declaredSigner.rejected[0].runId, 'declared');
+    const matching = { ...runsAt({ runId: 'matching' }), cohort: declaredSigner.cohort.cohortKey };
+    assert.equal(
+      buildScopeSigner([...cohortOnly, matching], scope, { ...dimensions }).runs.length,
+      5,
+      'a declared cohort that matches is counted',
+    );
+
+    /* The cohort key is a function of the reference scope and the dimensions, nothing else. */
+    const keyOf = extra => cohortKey(scope, { ...dimensions, ...extra });
+    assert.equal(keyOf({}), cohortKey(scope, { ...dimensions }));
+    assert.notEqual(keyOf({}), keyOf({ model: 'other-model' }));
+    assert.notEqual(keyOf({}), keyOf({ language: 'en' }));
+    assert.notEqual(keyOf({}), cohortKey({ ...scope, implementationRevision: 'a'.repeat(40) }, dimensions));
   });
 });

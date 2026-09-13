@@ -136,13 +136,20 @@ const DEFINITIONS = [
   {
     name: 'show_offer',
     title: 'Show an offer for this product',
-    description: 'Scroll this item page to one merchant offer it already shows and mark it for the shopper.',
+    description:
+      'Scroll this item page to one merchant offer it already shows and mark it for the shopper. Use the offer_ref from compare_page_offers; merchant_id or merchant_name also work when they identify exactly one shown offer.',
     annotations: NAVIGATION,
     inputSchema: objectSchema({
+      /* The page-local reference compare_page_offers returns, and the only selector that can separate
+       * two stores with the same displayed name. The storefront's item page has advertised it since
+       * the action verb landed; this contract — and every consumer of it — declared only the merchant
+       * selectors, so a reference the page itself called exact was invalid here. Parity is asserted
+       * field by field in `webmcp/test/contract-parity.test.js`. */
+      offer_ref: textSchema(40, 'Page-local offer reference from compare_page_offers.', 8),
       merchant_id: {
         type: 'string',
         pattern: '^\\d{1,20}$',
-        description: 'Numeric merchant id from compare_page_offers.',
+        description: 'Numeric merchant id from compare_page_offers, when the page exposes one.',
       },
       merchant_name: textSchema(68, 'Merchant name exactly as compare_page_offers returned it.', 2),
     }),
