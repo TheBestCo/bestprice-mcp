@@ -1,0 +1,8 @@
+# Deterministic demo runs are quarantined here: they are not native evidence.
+#
+# `driver.js --mode=demo` (and every other non-native mode) writes its artifacts and its
+# `runs.demo.json` ledger into this directory. No byte in here may ever be committed, cited by a
+# record in `runs.v2.json`, or counted as a native-browser run — the directory is kept so the
+# quarantine location exists and is obvious, while its contents stay untracked.
+*
+!.gitignore

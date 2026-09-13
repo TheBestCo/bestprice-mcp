@@ -40,7 +40,10 @@
     "lint": "biome check .",
     "format": "biome format --write .",
     "check": "biome ci .",
-    "stdio": "node stdio.mjs"
+    "stdio": "node stdio.mjs",
+    "eval:run": "node webmcp/evals/driver.js",
+    "eval:validate": "node webmcp/evals/run-evidence.js",
+    "eval:check": "node webmcp/evals/run-evidence.js --strict"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0"

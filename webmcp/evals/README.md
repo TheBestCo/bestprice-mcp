@@ -13,10 +13,10 @@ Every case's `runs` array is **empty by contract**: a definition is frozen once 
 recording what an agent actually did must never require editing it. Execution evidence is appended to
 [`runs.v2.json`](runs.v2.json) instead, one record per run, referencing the case id, the dataset
 version, the implementation revision it was observed against, the real agent/model/browser, the
-outcome (`passed` / `failed` / `refused` / `blocked`) and an evidence artifact. `run-evidence.js`
-validates records; the dataset test exercises the validator in both directions so an empty evidence
-file cannot hide a broken check. Publishing the dataset does not mean its agent evaluations have
-passed.
+execution modality (`evidenceLayer: "native"`), the outcome (`passed` / `failed` / `refused` /
+`blocked`) and an evidence artifact. `run-evidence.js` validates records; the dataset test exercises
+the validator in both directions so an empty evidence file cannot hide a broken check. Publishing the
+dataset does not mean its agent evaluations have passed.
 
 | Group | v2 cases | v1 cases | Focus |
 | --- | ---: | ---: | --- |
@@ -37,7 +37,9 @@ Do not turn examples into assertions about changing catalog prices or availabili
    `python3 -m http.server 4173`, open `/webmcp/demo/`, and exercise the case's tool
    behavior through the demo evaluator. All applicable deterministic checks must
    pass. The `npm test` suite checks the tool implementation and this dataset's shape;
-   unit tests are not natural-language agent evaluations.
+   unit tests are not natural-language agent evaluations. Anything this layer records
+   (for example `node webmcp/evals/driver.js --mode=demo --record`) lands in the
+   quarantined `webmcp/evals/demo/` store, never in `artifacts/` or `runs.v2.json`.
 2. **Agent selection in a browser.** On production BestPrice pages, use a compatible
    browser agent with Chrome's WebMCP tooling or Model Context Tool Inspector. Feed
    the case's `prompt_el`, record the actual tool sequence and arguments, and evaluate
@@ -49,6 +51,39 @@ definition. Keep the imported v1 file unchanged; version subsequent datasets and
 association between each case and its run evidence. A safety-negative violation blocks a release
 regardless of the aggregate pass rate. Never fabricate or infer run logs from deterministic tests.
 
+## What counts as native evidence
+
+A record in `runs.v2.json` is **native evidence** only when a real agent drove a real browser engine
+on a real page. That is not a matter of opinion, so it is a required field and a rejection:
+
+- `evidenceLayer` must be exactly `"native"`. It is in the ledger's `requiredFields`, and a record
+  that omits it or declares anything else (`"demo"`, `"deterministic"`, `"in-memory"`, …) is rejected
+  before any other check can accept it.
+- `browser` must name a real browser engine **and its version** — `Chromium 144`, `Google Chrome
+  141`, `Microsoft Edge 140`, `Firefox 143`, `Safari 18`. A host that names an in-memory adapter,
+  Node.js, jsdom, a simulation or a fixture (`/in-?memory|node\.?js|jsdom|simulat|deterministic|test
+  driver|fixture/i`) is not a browser and cannot appear in the ledger.
+- `agent` must name the real tool or host that ran the agent (for example `Model Context Tool
+  Inspector`), and `model` the model that chose the tools. Placeholders such as `Test Driver` are
+  rejected, and so is any `agent`/`model`/`browser` value that declares a deterministic execution.
+- Everything else in [How a record is checked](#how-a-record-is-checked) still has to hold: a real
+  commit and manifest fingerprint, the frozen case digest, a committed artifact whose bytes hash to
+  `evidenceDigest`, and an execution the artifact identifies separately.
+
+`driver.js --mode=demo` (and every other non-native mode) produces the opposite of that: a scripted
+adapter under Node with no browser and no model. Such runs are **quarantined**, never validated as
+evidence, and never committed:
+
+- they declare `evidenceLayer: "demo"` and write to `webmcp/evals/demo/` (artifacts plus a
+  `runs.demo.json` ledger); that directory is git-ignored, so a `git add -A` cannot stage them;
+- the driver refuses to write to `artifacts/` or `runs.v2.json` in a non-native mode even when
+  pointed there explicitly;
+- `run-evidence.js` rejects them on modality with a message naming the layer, and `--strict` prints
+  the modality tally (`Evidence Modality: NOT NATIVE`) and blocks the release.
+
+A green deterministic suite is a signal about the tools. It is never evidence about agent behaviour,
+and it must never be promoted into `webmcp/evals/artifacts/`.
+
 ## How a record is checked
 
 A record is evidence only if it can be tied to a specific execution, a specific case text and a
@@ -57,14 +92,17 @@ enforces all four, and `npm test` runs the same check on the checked-in ledger:
 
 | Field | What it is bound to |
 | --- | --- |
+| `evidenceLayer` | the execution modality: `native` and nothing else. A deterministic, in-memory, simulated or fixture-driven run is not evidence and is rejected here |
 | `caseDigest` | sha256 of the case's frozen definition in the referenced dataset (its empty `runs` excluded) |
 | `implementationRevision` / `implementationFingerprint` | the revision the run names, and the sha256 manifest of `webmcp/src/contracts.js` + `webmcp/src/runtime.js`; a record naming the revision currently checked out must carry that revision's manifest |
 | `startedAt` / `date` | the instant of the execution (ISO-8601 UTC) and its calendar day |
 | `evidence` / `evidenceDigest` | a committed file under `webmcp/evals/artifacts/` and the sha256 of its exact bytes |
+| `agent` / `model` / `browser` | the real tool/host, model and versioned browser engine that ran; `browser` must match `/^(Chromium\|Chrome\|Google Chrome\|Microsoft Edge\|Firefox\|Safari)\b.*\d/u` |
 | `runId` | unique in the ledger; a copy of a record is not a second run |
 
 The artifact is a JSON file with `artifactVersion: 1` and an `executions` array. Each execution
-repeats the record's identity fields, so the file itself says which runs it evidences:
+repeats the record's identity fields (including `evidenceLayer`), so the file itself says which runs
+it evidences:
 
 ```json
 {
@@ -74,6 +112,7 @@ repeats the record's identity fields, so the file itself says which runs it evid
       "runId": "run-2026-09-12-product-011-1",
       "caseId": "product-011",
       "datasetVersion": "2.0.0",
+      "evidenceLayer": "native",
       "agent": "Model Context Tool Inspector",
       "model": "example-agent-1",
       "browser": "Chromium 144",

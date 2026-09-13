@@ -2,11 +2,12 @@
   "dataset": "webmcp-natural-language-runs",
   "datasetVersion": "2.0.0",
   "casesRef": "natural-language-cases.v2.json",
-  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision and manifest fingerprint it was observed against, an instant, and an artifact committed under artifacts/. A record is never edited in place: a corrected result is a new record, and deleting or rewriting a published one is a reportable change. Each change is checked against the copy the merged branch already published at the merge base, so the working tree cannot be its own baseline. Nothing in this file is a substitute for the case's pass criterion. A copy of a record is not additional evidence.",
+  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision and manifest fingerprint it was observed against, an instant, and an artifact committed under artifacts/. Every record must declare evidenceLayer \"native\", and a record whose agent, model or browser names an in-memory, simulated or deterministic host is rejected: a green deterministic suite is not an agent run. A record is never edited in place: a corrected result is a new record, and deleting or rewriting a published one is a reportable change. Each change is checked against the copy the merged branch already published at the merge base, so the working tree cannot be its own baseline. Nothing in this file is a substitute for the case's pass criterion. A copy of a record is not additional evidence.",
   "requiredFields": [
     "runId",
     "caseId",
     "datasetVersion",
+    "evidenceLayer",
     "agent",
     "model",
     "browser",
@@ -39,6 +40,8 @@
     "one artifact may evidence several runs only when it identifies each execution separately; the same execution under a new runId is not a second run",
     "runId must be unique; the store is append-only, so removing, reordering or editing a published record is a reportable change",
     "both frozen case files (v1 and v2) are compared against the trusted merge-base copy, so a published definition cannot be rewritten",
-    "outcome is a semantic result (passed/failed/refused/blocked), separate from whether the host ran at all"
+    "outcome is a semantic result (passed/failed/refused/blocked), separate from whether the host ran at all",
+    "evidenceLayer must be \"native\": only an execution driven by a real agent in a real browser engine belongs in this ledger. Deterministic, in-memory, simulated or fixture-driven runs are not evidence, are rejected here, and are quarantined under webmcp/evals/demo/",
+    "agent, model and browser must name a real host, model and browser engine with a version; a record naming an in-memory adapter, Node.js, jsdom, a simulation, a deterministic driver, a test driver or a fixture is rejected as non-native rather than accepted on shape"
   ]
 }
