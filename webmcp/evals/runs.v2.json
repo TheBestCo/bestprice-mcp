@@ -2,7 +2,7 @@
   "dataset": "webmcp-natural-language-runs",
   "datasetVersion": "2.0.0",
   "casesRef": "natural-language-cases.v2.json",
-  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision it was observed against, and an evidence artifact. A record is never edited in place: a re-run appends. Nothing in this file is a substitute for the case's pass criterion. A copy of a record is not additional evidence; a deleted record is a change.",
+  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision and manifest fingerprint it was observed against, an instant, and an artifact committed under artifacts/. A record is never edited in place: a corrected result is a new record, and deleting or rewriting a published one is a reportable change. Each change is checked against the copy the merged branch already published at the merge base, so the working tree cannot be its own baseline. Nothing in this file is a substitute for the case's pass criterion. A copy of a record is not additional evidence.",
   "requiredFields": [
     "runId",
     "caseId",
@@ -11,9 +11,13 @@
     "model",
     "browser",
     "implementationRevision",
+    "implementationFingerprint",
+    "caseDigest",
+    "startedAt",
     "date",
     "outcome",
-    "evidence"
+    "evidence",
+    "evidenceDigest"
   ],
   "outcomes": [
     "passed",
@@ -26,9 +30,15 @@
     "caseId must exist in the referenced dataset version",
     "datasetVersion must equal the referenced dataset version",
     "implementationRevision must be a full 40-character revision",
-    "date must be a real calendar date",
-    "evidence must be a path under artifacts/ with no traversal",
-    "runId must be unique; the store is append-only, so removing a record is a reportable change",
+    "implementationFingerprint must be the sha256 manifest of webmcp/src/contracts.js + webmcp/src/runtime.js, and the artifact must declare the same fingerprint",
+    "caseDigest must be the sha256 of the case's frozen definition in the referenced dataset, with the definition's empty runs array excluded",
+    "startedAt must be an ISO-8601 UTC instant; date must be a real calendar day",
+    "evidence must be a path under artifacts/ with no traversal, resolving inside webmcp/evals/artifacts",
+    "evidenceDigest must be the sha256 of the referenced artifact file's bytes",
+    "the artifact must exist on disk, declare artifactVersion 1, and list an execution whose runId and identity fields match this record",
+    "one artifact may evidence several runs only when it identifies each execution separately; the same execution under a new runId is not a second run",
+    "runId must be unique; the store is append-only, so removing, reordering or editing a published record is a reportable change",
+    "both frozen case files (v1 and v2) are compared against the trusted merge-base copy, so a published definition cannot be rewritten",
     "outcome is a semantic result (passed/failed/refused/blocked), separate from whether the host ran at all"
   ]
 }

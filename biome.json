@@ -6,7 +6,14 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!package-lock.json", "!webmcp/evals/*.json", "!assets", "!docs/images"]
+    "includes": [
+      "**",
+      "!package-lock.json",
+      "!webmcp/evals/*.json",
+      "!webmcp/evals/artifacts",
+      "!assets",
+      "!docs/images"
+    ]
   },
   "formatter": {
     "enabled": true,
