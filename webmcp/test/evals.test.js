@@ -1,9 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
-
-import { PAGE_TOOL_NAMES, TOOL_NAMES } from '../src/contracts.js';
 import { validateEvidenceFile, validateRunRecord } from '../evals/run-evidence.js';
+import { PAGE_TOOL_NAMES, TOOL_NAMES } from '../src/contracts.js';
 
 const read = version =>
   JSON.parse(
@@ -89,7 +88,7 @@ describe('natural-language evaluation dataset', () => {
       assert.deepEqual(
         definitionOf(byId.get(item.id)),
         definitionOf(item),
-        `${item.id} drifted between dataset versions`
+        `${item.id} drifted between dataset versions`,
       );
     }
     assert.equal(v2.sourceContracts.includes('14 contextual tools'), true);
@@ -144,8 +143,11 @@ describe('natural-language evaluation dataset', () => {
       `runs[1]: duplicate runId ${usable.runId}`,
     ]);
     assert.deepEqual(
-      validateEvidenceFile({ datasetVersion: '2.0.0', runs: [] }, { ...context, previousRunIds: [usable.runId] }),
-      [`run ${usable.runId} was removed; evidence is append-only`]
+      validateEvidenceFile(
+        { datasetVersion: '2.0.0', runs: [] },
+        { ...context, previousRunIds: [usable.runId] },
+      ),
+      [`run ${usable.runId} was removed; evidence is append-only`],
     );
   });
 
