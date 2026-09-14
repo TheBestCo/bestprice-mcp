@@ -28,8 +28,8 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-
 import { currentRevision, readTrustedBaseline } from './git-baseline.js';
+import { gradeJourney } from './journey.js';
 import {
   BLOCKED_OUTCOME,
   buildScopeSigner,
@@ -803,6 +803,17 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     }
   };
 
+  const verifiedRefusal = (run, definition) => {
+    if (effectiveOutcome(run) !== 'refused' || !artifactRoot || !run.evidence) return false;
+    try {
+      const artifact = JSON.parse(readFileSync(resolveEvidencePath(artifactRoot, run.evidence), 'utf8'));
+      const execution = artifact.executions?.find(entry => entry.runId === run.runId);
+      return gradeJourney(definition, execution).outcome === 'refused';
+    } catch {
+      return false;
+    }
+  };
+
   const casesSummary = [];
   const blockedRuns = [];
   const correctedRuns = [];
@@ -839,7 +850,7 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
       .filter(run => scopeSigner.runs.includes(run))
       /* A corrected verdict is the verdict: a pass the ledger itself has re-adjudicated as
        * incomplete must not count towards a target, or the correction would decide nothing. */
-      .map(run => ({ ...run, outcome: effectiveOutcome(run) }));
+      .map(run => ({ ...run, outcome: effectiveOutcome(run), correct: verifiedRefusal(run, caseDef) }));
     const verdict = caseTargetVerdict(cohortRuns, { minimumSamples, targetPassRate });
 
     const caseViolations = [];
@@ -868,6 +879,8 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
       refused: verdict.refused,
       blocked: verdict.blocked,
       scoredRuns: verdict.scored,
+      correct: verdict.correct,
+      completionRate: verdict.completionRate,
       passRate: verdict.passRate,
       meetsTarget: verdict.meetsTarget,
       targetReasons: verdict.reasons,

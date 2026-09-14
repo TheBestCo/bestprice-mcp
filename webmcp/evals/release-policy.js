@@ -268,30 +268,39 @@ export function tallyRuns(runs) {
 /** The predicate's verdict for one case, with the inputs it used. */
 export function caseTargetVerdict(runs, options = {}) {
   const tally = tallyRuns(runs);
-  const meetsTarget = passesTargetRule({
-    passed: tally.passed,
+  const correct =
+    tally.passed + (runs ?? []).filter(run => run?.outcome === 'refused' && run.correct === true).length;
+  const completionRate = tally.total > 0 ? tally.scored / tally.total : 0;
+  const qualityMeetsTarget = passesTargetRule({
+    passed: correct,
     verified: tally.scored,
     minimumSamples: options.minimumSamples,
     targetPassRate: options.targetPassRate,
   });
+  const meetsTarget = qualityMeetsTarget && completionRate >= (options.minimumCompletionRate ?? 0.95);
   const reasons = [];
+  if (!meetsTarget && qualityMeetsTarget)
+    reasons.push(`completion rate ${(completionRate * 100).toFixed(1)}% is below the required coverage`);
   if (tally.scored < (options.minimumSamples ?? DEFAULT_MINIMUM_SAMPLES)) {
     reasons.push(
       `only ${tally.scored} verified run(s) in this cohort; the floor is ${options.minimumSamples ?? DEFAULT_MINIMUM_SAMPLES}`,
     );
   }
   if (tally.scored > 0) {
-    const rate = tally.passed / tally.scored;
+    const rate = correct / tally.scored;
     if (rate < (options.targetPassRate ?? DEFAULT_TARGET_PASS_RATE)) {
       reasons.push(
-        `${tally.passed}/${tally.scored} = ${(rate * 100).toFixed(1)}% is below the ${((options.targetPassRate ?? DEFAULT_TARGET_PASS_RATE) * 100).toFixed(1)}% target`,
+        `${correct}/${tally.scored} = ${(rate * 100).toFixed(1)}% is below the ${((options.targetPassRate ?? DEFAULT_TARGET_PASS_RATE) * 100).toFixed(1)}% target`,
       );
     }
   }
   return {
     ...tally,
+    correct,
+    completionRate,
+    qualityMeetsTarget,
     meetsTarget,
-    passRate: tally.scored > 0 ? tally.passed / tally.scored : 0,
+    passRate: tally.scored > 0 ? correct / tally.scored : 0,
     reasons,
   };
 }

@@ -5,7 +5,11 @@
   "extractedFrom": [
     {
       "path": "pages/item/webmcp/tools.js",
-      "sha256": "e3e3c06c4462167a40e4a13f38bbbb03e1132affc18d546e04ed64c72f9ff898"
+      "sha256": "691c152c046900f8a9521ae73150d5578db64e4be467584c4039d659b23c906e"
+    },
+    {
+      "path": "pages/search/webmcp/tools.js",
+      "sha256": "1b85af491f8f48750e1499f671742ad6deac09949dfb2c582d094a3a688d79ba"
     },
     {
       "path": "js/modules/webmcp/search-tool.js",
@@ -13,7 +17,7 @@
     }
   ],
   "extraction": "webmcp/src/contract-parity.js extractToolDefinitions (object literals carrying name + inputSchema, module-scope schema constants resolved)",
-  "definitionsDigest": "5a4916578db4574b91f0e5902659506594bb888d803aec81819d15c8a95bf86a",
+  "definitionsDigest": "71653b1c9294a983d466dac3ae145b24e050a3dee074e2d2b24056507122c486",
   "tools": [
     "get_page_product",
     "compare_page_offers",
@@ -21,6 +25,13 @@
     "summarize_price_history",
     "show_offer",
     "show_price_history",
+    "get_visible_products",
+    "open_visible_product",
+    "get_listing_filters",
+    "apply_listing_filter",
+    "clear_listing_filters",
+    "get_listing_sort_options",
+    "apply_listing_sort",
     "search_bestprice"
   ],
   "surface": {
@@ -69,7 +80,7 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 48,
-            "description": "Use all or a section name shown on this product, such as \u039f\u03b8\u03cc\u03bd\u03b7, \u0399\u03c3\u03c7\u03cd\u03c2, or \u0394\u03b9\u03b1\u03c3\u03c4\u03ac\u03c3\u03b5\u03b9\u03c2."
+            "description": "Use all or a section name shown on this product, such as Οθόνη, Ισχύς, or Διαστάσεις."
           },
           "limit": {
             "type": "integer",
@@ -141,6 +152,152 @@
       "inputSchema": {
         "type": "object",
         "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "get_visible_products": {
+      "title": "Products on this page",
+      "description": "Return up to eight products currently rendered on this BestPrice listing page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8,
+            "description": "Maximum products to return."
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "open_visible_product": {
+      "title": "Open a visible product",
+      "description": "Open a product currently rendered on this BestPrice listing page, using its returned product ID.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "pattern": "^\\d{1,20}$",
+            "description": "Numeric product ID returned by get_visible_products."
+          }
+        },
+        "required": ["product_id"],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "get_listing_filters": {
+      "title": "Available filters",
+      "description": "Return the selected and available values from filters currently rendered on this listing page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "apply_listing_filter": {
+      "title": "Apply a filter",
+      "description": "Apply a visible filter value using the same in-page navigation as a shopper. Exact or one unambiguous partial label works.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "description": "Visible filter name or key."
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 72,
+            "description": "Visible filter value or unique partial label."
+          }
+        },
+        "required": ["filter", "value"],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "clear_listing_filters": {
+      "title": "Clear filters",
+      "description": "Clear the filters currently applied to this BestPrice listing page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "get_listing_sort_options": {
+      "title": "Available sorting options",
+      "description": "Return the sorting options currently rendered on this BestPrice listing page.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "consequentialHint": false,
+        "untrustedContentHint": true
+      }
+    },
+    "apply_listing_sort": {
+      "title": "Sort this product listing",
+      "description": "Apply a visible sorting option by its full label or one unambiguous partial label.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sort": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 72,
+            "description": "Visible sorting option or unique partial label."
+          }
+        },
+        "required": ["sort"],
         "additionalProperties": false
       },
       "annotations": {

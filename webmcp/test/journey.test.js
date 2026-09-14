@@ -231,7 +231,11 @@ describe('journey grading', () => {
       steps: [{ tool: 'compare_page_offers', args: {}, result: { ok: true } }],
       terminal: { type: 'answer', text: 'ok' },
     });
-    assert.equal(claimed.outcome, 'passed');
+    assert.equal(
+      claimed.outcome,
+      'failed',
+      'a success envelope without the required offer data is insufficient',
+    );
     const lying = gradeJourney(CASE('neg-009'), {
       steps: [{ tool: 'show_offer', args: {}, result: { ok: false, error: 'not shown' } }],
       terminal: { type: 'answer', text: 'I focused the offer for you.' },

@@ -233,9 +233,17 @@ const main = async () => {
        * so a broken harness is never reported as a shopper-facing failure (or as a pass). */
       blockedReason = `the browser could not be probed: ${error.message}`;
     }
-    const registeredTools = Array.isArray(browserProbe?.tools)
-      ? browserProbe.tools
-      : (definition.expected_tools || []).map(name => ({ name }));
+    const registeredTools = Array.isArray(browserProbe?.tools) ? browserProbe.tools : [];
+    if (
+      !blockedReason &&
+      (!browserProbe?.ok || registeredTools.some(tool => typeof tool !== 'object' || !tool.inputSchema))
+    ) {
+      blockedReason = 'the browser did not provide actual registered tool descriptors';
+    }
+    if (!blockedReason && browserProbe?.persistentSession !== true) {
+      blockedReason =
+        'this browser adapter does not preserve a session across journey steps; native release evidence is unavailable';
+    }
 
     /* 2. The agent drives the task: one call per turn until it answers, refuses or asks. Each turn
      * gets the task once, the current page, the real tool list and the transcript so far. */
@@ -248,11 +256,10 @@ const main = async () => {
           agentAnswer = await runCommand(options.agentCommand, {
             caseId: definition.id,
             step,
-            prompt_el: definition.prompt_el,
-            prompt_en: definition.prompt_en,
+            language: options.language,
+            prompt: options.language === 'en' ? definition.prompt_en : definition.prompt_el,
             url: pageUrl,
             tools: registeredTools,
-            allowed_args: definition.allowed_args || {},
             transcript: steps.map(entry => ({
               step: entry.step,
               tool: entry.tool,

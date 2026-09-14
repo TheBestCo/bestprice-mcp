@@ -33,6 +33,7 @@ import { canonicalJson, sha256 } from '../evals/run-evidence.js';
 /** Where the storefront keeps the item-page tools and the shared search tool. */
 export const STOREFRONT_FILES = Object.freeze([
   'pages/item/webmcp/tools.js',
+  'pages/search/webmcp/tools.js',
   'js/modules/webmcp/search-tool.js',
 ]);
 

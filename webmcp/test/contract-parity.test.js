@@ -50,6 +50,13 @@ const STOREFRONT_TOOLS = Object.freeze([
   'summarize_price_history',
   'show_offer',
   'show_price_history',
+  'get_visible_products',
+  'open_visible_product',
+  'get_listing_filters',
+  'apply_listing_filter',
+  'clear_listing_filters',
+  'get_listing_sort_options',
+  'apply_listing_sort',
   'search_bestprice',
 ]);
 
