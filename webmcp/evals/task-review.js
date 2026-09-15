@@ -2,9 +2,18 @@ import { gradeJourney, readTerminal } from './journey.js';
 import { canonicalJson, sha256 } from './run-evidence.js';
 
 // Structural success is not semantic correctness. Independent review is bound
-// to exact observations AND the frozen task, never to an actor's self-score.
+// to exact observations AND the frozen task, never to an actor's self-score —
+// and to the served build those observations came from, so a review of one
+// storefront release cannot be carried over to another (audit pass 8, F08).
 export const reviewDigest = (definition, execution) =>
-  sha256(canonicalJson({ definition, steps: execution?.steps ?? [], terminal: readTerminal(execution) }));
+  sha256(
+    canonicalJson({
+      definition,
+      steps: execution?.steps ?? [],
+      terminal: readTerminal(execution),
+      served: execution?.servedImplementation?.digest ?? null,
+    }),
+  );
 export function qualifyTask(definition, execution, review) {
   const structural = gradeJourney(definition, execution);
   if (!['passed', 'refused'].includes(structural.outcome))

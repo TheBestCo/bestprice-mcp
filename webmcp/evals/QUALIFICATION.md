@@ -50,7 +50,8 @@ Structural success is insufficient. Each passing/refused release run requires
 an independent review supplied separately through --task-reviews=<JSON path>.
 The JSON is keyed by run ID. Each review contains:
 
-- digest: reviewDigest(frozenDefinition, execution) from task-review.js
+- digest: reviewDigest(frozenDefinition, execution) from task-review.js; it covers the
+  task, the recorded steps, the terminal and the served-implementation receipt
 - reviewer: an identified reviewer other than the actor
 - taskSatisfied: true only if the shopper's actual constraints were satisfied
 - grounded: true only if every material claim is supported by the recorded results

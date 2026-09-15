@@ -219,6 +219,24 @@ describe('release gate: one served implementation', () => {
       false,
     );
   });
+  it('does not carry a review over to a different served build', () => {
+    const { ledger, reviews } = ledgerWith(Array(5).fill(receipt), 'review');
+    const moved = Object.fromEntries(
+      Object.entries(reviews).map(([runId, review]) => [
+        runId,
+        {
+          ...review,
+          digest: reviewDigest(definition, {
+            steps: [{ tool: 'read', arguments: {}, result: { ok: true, price: 12 } }],
+            terminal: { type: 'answer', text: '12 euros' },
+            servedImplementation: other,
+          }),
+        },
+      ]),
+    );
+    assert.equal(audit({ ledger, reviews }).releaseReady, true);
+    assert.equal(audit({ ledger, reviews: moved }).releaseReady, false);
+  });
   it('is not ready when the pinned build is not the one exercised', () => {
     assert.equal(
       audit(ledgerWith(Array(5).fill(receipt), 'unpinned'), { servedDigest: other.digest }).releaseReady,
