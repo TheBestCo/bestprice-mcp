@@ -89,3 +89,24 @@ Historical cohorts remain visible but cannot authorize the current revision.
 Sample, pass-rate, completion, safety and independent-review requirements apply
 to releaseReady regardless of non-strict report validation. Strict mode exits
 unsuccessfully when releaseReady is false.
+
+## Dataset 2.0.0 is stale against contract 1.6
+
+Measured 2026-09-15 with one native pass on revision `71c9f88` (headless Chrome
+152, `deepseek-chat`, storefront release `ffbac3883c`): 47 journeys, 13 passed,
+29 failed, 1 refused, 4 blocked. Every run carried a complete served receipt and
+none had a policy intervention. The pass was not appended to the ledger,
+because two thirds of its failures describe the frozen cases rather than the
+tools:
+
+- 3 failures are arguments the published contract accepts and the frozen
+  `allowed_args` predate: `show_offer.offer_ref` (contract 1.5) and
+  `get_product_specifications.limit`. `fact` (1.6) is absent too.
+- 26 failures are an exact ordered tool list failing a journey that added one
+  read-only call (for example `get_page_product` before `compare_page_offers`,
+  or `get_visible_products` after `search_bestprice`).
+
+Frozen cases cannot be edited, so release evidence needs a dataset 3.0.0 whose
+`allowed_args` are generated from `src/contracts.js` rather than copied, and an
+owner decision on whether extra read-only calls around the required sequence
+are a failure. Until then, native passes on 2.0.0 measure the dataset.
