@@ -42,7 +42,7 @@ import { spawn } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
+import { browserSession } from './browser-session.js';
 import { currentRevision } from './git-baseline.js';
 import { gradeJourney } from './journey.js';
 import { browserFamily, cohortKey, releaseScope } from './release-policy.js';
@@ -113,7 +113,7 @@ const runCommand = (command, payload) =>
     child.on('close', code => {
       clearTimeout(timer);
       if (code !== 0) {
-        reject(new Error(`${command} exited ${code}: ${stderr.trim().slice(0, 200) || 'no stderr'}`));
+        reject(new Error(`${command} exited ${code}: ${stderr.trim().slice(-600) || 'no stderr'}`));
         return;
       }
       const text = stdout.trim();
@@ -218,6 +218,7 @@ const main = async () => {
   const appended = [];
 
   for (const definition of cases) {
+    const session = browserSession(options.browserCommand);
     const startedAt = new Date().toISOString();
     const caseDefinition = { ...definition };
     delete caseDefinition.runs;
@@ -227,13 +228,13 @@ const main = async () => {
     let browserProbe = null;
     let blockedReason = null;
     try {
-      browserProbe = await runCommand(options.browserCommand, { url: pageUrl, calls: [] });
+      browserProbe = await session.request({ url: pageUrl, calls: [] });
     } catch (error) {
       /* An infrastructure failure is not a model verdict: record it as `blocked` with the reason,
        * so a broken harness is never reported as a shopper-facing failure (or as a pass). */
       blockedReason = `the browser could not be probed: ${error.message}`;
     }
-    const registeredTools = Array.isArray(browserProbe?.tools) ? browserProbe.tools : [];
+    let registeredTools = Array.isArray(browserProbe?.tools) ? browserProbe.tools : [];
     if (
       !blockedReason &&
       (!browserProbe?.ok || registeredTools.some(tool => typeof tool !== 'object' || !tool.inputSchema))
@@ -271,12 +272,12 @@ const main = async () => {
           blockedReason = `the agent command failed at step ${step}: ${error.message}`;
           break;
         }
-        if (typeof agentAnswer?.tool === 'undefined') {
+        terminal = readAnswerTerminal(agentAnswer);
+        if (typeof agentAnswer?.tool === 'undefined' && !terminal) {
           blockedReason = 'the agent command did not answer with {"tool": …, "arguments": …} or a terminal';
           break;
         }
 
-        terminal = readAnswerTerminal(agentAnswer);
         if (!agentAnswer.tool) {
           /* No tool this turn: the agent ended the task, which is where the terminal comes from. */
           if (!terminal) {
@@ -287,7 +288,7 @@ const main = async () => {
 
         let browserRun;
         try {
-          browserRun = await runCommand(options.browserCommand, {
+          browserRun = await session.request({
             url: pageUrl,
             calls: [{ tool: agentAnswer.tool, arguments: agentAnswer.arguments || {} }],
           });
@@ -299,6 +300,11 @@ const main = async () => {
           blockedReason = `the browser could not run ${agentAnswer.tool}: ${browserRun?.error ?? 'no reason given'}`;
           break;
         }
+        if (browserRun.sessionId !== browserProbe.sessionId || !browserRun.persistentSession) {
+          blockedReason = 'browser session identity changed during the journey';
+          break;
+        }
+        registeredTools = Array.isArray(browserRun.tools) ? browserRun.tools : [];
         const execution = (browserRun.results || [])[0] || {};
         steps.push({
           step,
@@ -320,6 +326,7 @@ const main = async () => {
     if (!terminal && !blockedReason) {
       blockedReason = `the journey did not finish within ${maxSteps} steps`;
     }
+    session.close();
 
     /* 3. One transcript, one verdict — from the same grader every other layer uses. The case's
      * required result properties are checked here, on the transcript, because a journey that ran the
@@ -385,6 +392,7 @@ const main = async () => {
       ],
     };
     const bytes = canonicalJson(artifact);
+    if (options.printArtifacts) console.log(bytes);
     if (!options.dryRun) {
       mkdirSync(artifactRoot, { recursive: true });
       writeFileSync(join(artifactRoot, `${runId}.json`), bytes);

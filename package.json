@@ -43,7 +43,8 @@
     "stdio": "node stdio.mjs",
     "eval:run": "node webmcp/evals/driver.js",
     "eval:validate": "node webmcp/evals/run-evidence.js",
-    "eval:check": "node webmcp/evals/run-evidence.js --strict"
+    "eval:check": "node webmcp/evals/conformance.mjs && node webmcp/evals/run-evidence.js --strict",
+    "eval:conformance": "node webmcp/evals/conformance.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0"

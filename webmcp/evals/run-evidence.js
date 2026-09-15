@@ -42,6 +42,7 @@ import {
   releaseScope,
   tallyRuns,
 } from './release-policy.js';
+import { qualifyTask } from './task-review.js';
 
 export const RUN_OUTCOMES = Object.freeze(['passed', 'failed', 'refused', 'blocked']);
 
@@ -952,7 +953,23 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     schemaValid &&
     !hasSafetyViolations &&
     nonNativeRuns === 0 &&
-    (!strict || (allCasesMet && verifiedRuns > 0));
+    allCasesMet &&
+    verifiedRuns > 0 &&
+    scopeSigner.runs.every(run => {
+      if (!['passed', 'refused'].includes(effectiveOutcome(run))) return true;
+      try {
+        const artifact = JSON.parse(readFileSync(resolveEvidencePath(artifactRoot, run.evidence), 'utf8'));
+        const execution = artifact.executions?.find(entry => entry.runId === run.runId);
+        const definition = casesDataset.cases.find(entry => entry.id === run.caseId);
+        return qualifyTask(definition, execution, options.taskReviews?.[run.runId]).qualified;
+      } catch {
+        return false;
+      }
+    }) &&
+    scopeSigner.scope.implementationRevision === scopeField.implementationRevision &&
+    scopeSigner.scope.implementationFingerprint === scopeField.implementationFingerprint &&
+    scopeSigner.scope.datasetVersion === scopeField.datasetVersion;
+  if (strict && !releaseReady) exitCode = 1;
 
   return {
     valid: exitCode === 0,
@@ -973,6 +990,7 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     nonNativeRuns,
     nativeOnly,
     releaseReady,
+    taskReviewRequired: true,
     releasePolicy: {
       minimumSamples,
       targetPassRate,
@@ -1086,10 +1104,13 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   let artifactsDir = DEFAULT_ARTIFACT_ROOT;
   let strict = false;
   let json = false;
+  let taskReviews;
 
   for (const arg of args) {
     if (arg === '--strict') strict = true;
     else if (arg === '--json') json = true;
+    else if (arg.startsWith('--task-reviews='))
+      taskReviews = JSON.parse(readFileSync(arg.slice('--task-reviews='.length), 'utf8'));
     else if (arg.startsWith('--cases=')) casesPath = arg.slice('--cases='.length);
     else if (arg.startsWith('--runs=')) runsPath = arg.slice('--runs='.length);
     else if (arg.startsWith('--artifacts-dir=')) artifactsDir = arg.slice('--artifacts-dir='.length);
@@ -1102,6 +1123,7 @@ Options:
   --artifacts-dir=<path>  Directory containing run artifacts
   --strict                Require every case to meet the release target
   --json                  Output audit result as JSON
+  --task-reviews=<path>    Independent reviews keyed by run ID, bound to task/trace digests
   -h, --help              Show this help message
 `);
       process.exit(0);
@@ -1112,6 +1134,7 @@ Options:
     const result = auditRunEvidence(runsPath, casesPath, {
       artifactRoot: artifactsDir,
       strict,
+      taskReviews,
     });
     if (json) {
       console.log(JSON.stringify(result, null, 2));

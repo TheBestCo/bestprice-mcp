@@ -275,9 +275,11 @@ export function adjudicateRecord(record, artifact, definition) {
   const trace = execution
     ? {
         /* A single-call artifact records the one call it made. Its own fields are the observation. */
-        steps: execution.tool
-          ? [{ tool: execution.tool, args: execution.arguments, result: execution.result }]
-          : [],
+        steps: Array.isArray(execution.steps)
+          ? execution.steps
+          : execution.tool
+            ? [{ tool: execution.tool, args: execution.arguments, result: execution.result }]
+            : [],
         terminal: execution.terminal ?? null,
       }
     : { steps: [], terminal: null };
