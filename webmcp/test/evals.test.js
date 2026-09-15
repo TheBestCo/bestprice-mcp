@@ -566,6 +566,7 @@ describe('evaluation harness and test driver', () => {
     for (const target of [
       { artifactsDir: DEFAULT_ARTIFACT_ROOT },
       { runsFile: fileURLToPath(new URL('../evals/runs.v2.json', import.meta.url)) },
+      { runsFile: fileURLToPath(new URL('../evals/runs.v3.json', import.meta.url)) },
     ]) {
       await assert.rejects(
         () => runEvaluation({ mode: 'demo', runs: 1, record: true, ...target }),
@@ -575,10 +576,11 @@ describe('evaluation harness and test driver', () => {
     }
     /* The store holds real native runs now, so "untouched" is not emptiness: every byte
      * in it is cited by a native ledger record, and a refused demo run adds none. */
-    const cited = new Set(readEvidence(2).runs.map(record => record.evidence.split('/').pop()));
+    const published = [...readEvidence(2).runs, ...readEvidence(3).runs];
+    const cited = new Set(published.map(record => record.evidence.split('/').pop()));
     /* Correction artifacts are adjudications of runs, not runs: they are named after one and are
      * never citable as execution evidence. */
-    const corrections = new Set(readEvidence(2).runs.map(record => `${record.runId}.correction.json`));
+    const corrections = new Set(published.map(record => `${record.runId}.correction.json`));
     assert.deepEqual(
       readdirSync(DEFAULT_ARTIFACT_ROOT).filter(
         name => name.startsWith('run-') && !cited.has(name) && !corrections.has(name),
