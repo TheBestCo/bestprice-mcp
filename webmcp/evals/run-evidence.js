@@ -949,7 +949,36 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     exitCode = 1;
   }
 
+  /* The served implementation (audit pass 8, F08). This repository's revision and fingerprint name
+   * the contract; they cannot say which storefront bundle, discovery manifest and gateway revision a
+   * browser actually exercised. Every scored run in the cohort must carry a complete receipt, all of
+   * them the same one, and — when the operator pins it — the one being released. */
+  const servedDigests = new Set();
+  let servedComplete = true;
+  for (const run of scopeSigner.runs) {
+    if (effectiveOutcome(run) === BLOCKED_OUTCOME) continue;
+    try {
+      const artifact = JSON.parse(readFileSync(resolveEvidencePath(artifactRoot, run.evidence), 'utf8'));
+      const receipt = artifact.executions?.find(entry => entry.runId === run.runId)?.servedImplementation;
+      if (receipt?.complete === true && DIGEST.test(String(receipt.digest)))
+        servedDigests.add(receipt.digest);
+      else servedComplete = false;
+    } catch {
+      servedComplete = false;
+    }
+  }
+  const servedImplementation = {
+    digests: [...servedDigests].sort(),
+    complete: servedComplete,
+    pinned: options.servedDigest ?? null,
+    uniform:
+      servedComplete &&
+      servedDigests.size === 1 &&
+      (!options.servedDigest || servedDigests.has(options.servedDigest)),
+  };
+
   const releaseReady =
+    servedImplementation.uniform &&
     schemaValid &&
     !hasSafetyViolations &&
     nonNativeRuns === 0 &&
@@ -990,6 +1019,7 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     nonNativeRuns,
     nativeOnly,
     releaseReady,
+    servedImplementation,
     taskReviewRequired: true,
     releasePolicy: {
       minimumSamples,
@@ -1078,6 +1108,19 @@ export function printAuditTable(result) {
   console.log(
     `  Native Run Records: ${result.nativeRuns ?? 0}/${result.totalRuns} declaring evidenceLayer "${NATIVE_EVIDENCE_LAYER}"`,
   );
+  const served = result.servedImplementation;
+  if (served) {
+    const servedVerdict = served.uniform
+      ? `ONE (${served.digests[0].slice(0, 12)}${served.pinned ? ', pinned' : ''})`
+      : !served.complete
+        ? 'INCOMPLETE (a scored run has no complete receipt)'
+        : served.digests.length > 1
+          ? `MIXED (${served.digests.length} different storefront builds)`
+          : served.pinned
+            ? 'NOT THE PINNED BUILD'
+            : 'NONE';
+    console.log(`  Served Build:       ${servedVerdict}`);
+  }
   console.log(`  Release Ready:      ${result.releaseReady ? 'YES' : 'NO'}`);
   console.log('='.repeat(92));
 
@@ -1105,12 +1148,14 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   let strict = false;
   let json = false;
   let taskReviews;
+  let servedDigest;
 
   for (const arg of args) {
     if (arg === '--strict') strict = true;
     else if (arg === '--json') json = true;
     else if (arg.startsWith('--task-reviews='))
       taskReviews = JSON.parse(readFileSync(arg.slice('--task-reviews='.length), 'utf8'));
+    else if (arg.startsWith('--served-digest=')) servedDigest = arg.slice('--served-digest='.length);
     else if (arg.startsWith('--cases=')) casesPath = arg.slice('--cases='.length);
     else if (arg.startsWith('--runs=')) runsPath = arg.slice('--runs='.length);
     else if (arg.startsWith('--artifacts-dir=')) artifactsDir = arg.slice('--artifacts-dir='.length);
@@ -1124,6 +1169,7 @@ Options:
   --strict                Require every case to meet the release target
   --json                  Output audit result as JSON
   --task-reviews=<path>    Independent reviews keyed by run ID, bound to task/trace digests
+  --served-digest=<sha256> The served-implementation receipt digest being released; every scored run must match
   -h, --help              Show this help message
 `);
       process.exit(0);
@@ -1135,6 +1181,7 @@ Options:
       artifactRoot: artifactsDir,
       strict,
       taskReviews,
+      servedDigest,
     });
     if (json) {
       console.log(JSON.stringify(result, null, 2));

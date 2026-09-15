@@ -44,7 +44,8 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { browserSession } from './browser-session.js';
 import { currentRevision } from './git-baseline.js';
-import { gradeJourney } from './journey.js';
+import { blockedNavigationAttempt, gradeJourney } from './journey.js';
+import { adoptStartUrl, policyEvidence, servedReceipt, stepEvidence } from './native-evidence.js';
 import { browserFamily, cohortKey, releaseScope } from './release-policy.js';
 import {
   canonicalJson,
@@ -224,7 +225,9 @@ const main = async () => {
     delete caseDefinition.runs;
 
     /* 1. The browser registers the tools the page actually exposes. */
-    let pageUrl = resolveUrl(definition);
+    const requestedUrl = resolveUrl(definition);
+    let pageUrl = requestedUrl;
+    let documentId = null;
     let browserProbe = null;
     let blockedReason = null;
     try {
@@ -245,6 +248,25 @@ const main = async () => {
       blockedReason =
         'this browser adapter does not preserve a session across journey steps; native release evidence is unavailable';
     }
+    /* The browser may have landed on the canonical URL of the requested page. The run continues from
+     * where the browser is — the peer refuses any other URL — as long as it is still that page. */
+    if (!blockedReason) {
+      const adopted = adoptStartUrl(requestedUrl, browserProbe.url);
+      if (!adopted) blockedReason = 'the browser landed on a page other than the case start page';
+      else pageUrl = adopted;
+    }
+    if (!blockedReason) {
+      documentId = typeof browserProbe.documentId === 'string' ? browserProbe.documentId : null;
+      if (!documentId) {
+        blockedReason =
+          'this browser adapter does not report document identity, so a reload cannot be told from a read';
+      }
+    }
+    const startUrl = pageUrl;
+    /* The release every later reply reports; a deploy that lands mid-journey makes the receipt
+     * incomplete rather than silently describing half the run. */
+    const releasesSeen = [];
+    const browserPolicy = policyEvidence(browserProbe?.policy);
 
     /* 2. The agent drives the task: one call per turn until it answers, refuses or asks. Each turn
      * gets the task once, the current page, the real tool list and the transcript so far. */
@@ -290,6 +312,7 @@ const main = async () => {
         try {
           browserRun = await session.request({
             url: pageUrl,
+            documentId,
             calls: [{ tool: agentAnswer.tool, arguments: agentAnswer.arguments || {} }],
           });
         } catch (error) {
@@ -305,28 +328,41 @@ const main = async () => {
           break;
         }
         registeredTools = Array.isArray(browserRun.tools) ? browserRun.tools : [];
-        const execution = (browserRun.results || [])[0] || {};
+        const evidence = stepEvidence((browserRun.results || [])[0]);
+        /* One request carries one call, so an intervention the peer recorded outside the invocation
+         * window still happened while this call was being served. */
+        const requestPolicy = policyEvidence(browserRun.policy);
         steps.push({
           step,
           pageUrl,
+          documentId,
           tool: agentAnswer.tool,
           arguments: agentAnswer.arguments || {},
-          result: execution.payload ?? null,
-          navigatedTo: execution.navigated ? execution.url : null,
-          error: execution.error ?? null,
+          ...evidence,
+          policy: [...evidence.policy, ...requestPolicy].slice(0, 8),
         });
-        /* A navigation is a transition: the loop continues against the destination the browser
-         * reports, and the destination is recorded on the step. */
-        if (execution.navigated && typeof execution.url === 'string' && execution.url !== '') {
-          pageUrl = execution.url;
+        browserPolicy.push(...requestPolicy);
+        releasesSeen.push(browserRun.served?.storefrontRelease ?? null);
+        /* The next call runs against the page and document the browser reports now — after a
+         * navigation, a same-URL reload or a same-document route change alike. */
+        const nextUrl = adoptStartUrl(browserRun.url, browserRun.url);
+        if (
+          !nextUrl ||
+          new URL(nextUrl).origin !== new URL(startUrl).origin ||
+          typeof browserRun.documentId !== 'string'
+        ) {
+          blockedReason = 'the browser did not report its current page and document';
+          break;
         }
+        pageUrl = nextUrl;
+        documentId = browserRun.documentId;
         if (terminal) break;
       }
     }
     if (!terminal && !blockedReason) {
       blockedReason = `the journey did not finish within ${maxSteps} steps`;
     }
-    session.close();
+    await session.close();
 
     /* 3. One transcript, one verdict — from the same grader every other layer uses. The case's
      * required result properties are checked here, on the transcript, because a journey that ran the
@@ -386,7 +422,19 @@ const main = async () => {
           sequence: verdict.sequence ?? null,
           maxSteps,
           registeredTools,
-          pageUrl: resolveUrl(definition),
+          pageUrl: requestedUrl,
+          startUrl,
+          /* What the storefront served during this run. The release gate requires every counted run
+           * to carry one complete receipt with one digest; see run-evidence.js. */
+          servedImplementation: servedReceipt(browserProbe?.served, { releasesSeen }),
+          browserHost: browserProbe?.host && typeof browserProbe.host === 'object' ? browserProbe.host : null,
+          browserPolicy: browserPolicy.slice(0, 16),
+          ...(steps.some(blockedNavigationAttempt)
+            ? {
+                safetyViolation: true,
+                violationReason: 'a tool attempted a navigation the browser policy blocked',
+              }
+            : {}),
           reason: verdict.reason,
         },
       ],

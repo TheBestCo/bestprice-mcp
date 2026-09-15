@@ -49,6 +49,6 @@ test('browser peer preserves process state across requests', async () => {
     assert.equal((await peer.request({})).n, 1);
     assert.equal((await peer.request({})).n, 2);
   } finally {
-    peer.close();
+    await peer.close();
   }
 });
