@@ -106,7 +106,12 @@ tools:
   read-only call (for example `get_page_product` before `compare_page_offers`,
   or `get_visible_products` after `search_bestprice`).
 
-Frozen cases cannot be edited, so release evidence needs a dataset 3.0.0 whose
-`allowed_args` are generated from `src/contracts.js` rather than copied, and an
-owner decision on whether extra read-only calls around the required sequence
-are a failure. Until then, native passes on 2.0.0 measure the dataset.
+Frozen cases cannot be edited, so dataset 3.0.0 replaces them for new evidence
+(`dataset-v3.js`, `natural-language-cases.v3.json`, `runs.v3.json`). Its
+`allowed_args` are generated from `src/contracts.js`, the five prose starting
+pages are real URLs, and — the owner's decision of 2026-09-15 — extra calls to
+read-only tools are admitted: each case lists them in `extra_calls_allowed`, the
+grader sets them aside before matching the chain, their arguments are still
+checked, and any extra action is still a mismatch. 2.0.0 grades as before.
+`native-run.mjs` and `run-evidence.js` default to 3.0.0; `--dataset=v2` and
+`--cases`/`--runs` reach the frozen set.

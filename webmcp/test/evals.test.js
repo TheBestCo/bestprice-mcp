@@ -284,13 +284,17 @@ describe('natural-language evaluation dataset', () => {
     ]);
   });
 
-  it('keeps both frozen case files identical to the copy the merged branch published', () => {
+  it('keeps every frozen case file identical to the copy the merged branch published', () => {
     for (const [version, dataset] of [
       [1, v1],
       [2, v2],
+      [3, read(3)],
     ]) {
       const relative = casesPath(version);
       const baseline = readTrustedBaseline(relative);
+      /* A dataset is frozen from the commit that publishes it; before that there is no copy to hold
+       * it to, and its derivation test is the guard. */
+      if (version === 3 && !baseline?.text) continue;
       assert.ok(baseline?.text, `${relative} must exist at the trusted baseline`);
       assert.deepEqual(compareFrozenCases(dataset, JSON.parse(baseline.text), `v${version}`), []);
     }

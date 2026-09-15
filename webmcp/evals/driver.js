@@ -45,6 +45,10 @@ const EVALS_ROOT = fileURLToPath(new URL('./', import.meta.url));
 
 /** The native evidence ledger: real browser runs only. */
 export const NATIVE_LEDGER_PATH = fileURLToPath(new URL('./runs.v2.json', import.meta.url));
+export const NATIVE_LEDGER_PATHS = Object.freeze([
+  NATIVE_LEDGER_PATH,
+  fileURLToPath(new URL('./runs.v3.json', import.meta.url)),
+]);
 
 /** Deterministic runs are quarantined here, beside the ledger they must never enter. */
 export const DEMO_ROOT = fileURLToPath(new URL('./demo/', import.meta.url));
@@ -76,7 +80,8 @@ const isInside = (candidate, root) => {
 function assertQuarantined(mode, artifactsRoot, runsPath) {
   const touchesArtifacts = isInside(artifactsRoot, DEFAULT_ARTIFACT_ROOT);
   const touchesLedger =
-    resolve(runsPath) === resolve(NATIVE_LEDGER_PATH) || isInside(runsPath, DEFAULT_ARTIFACT_ROOT);
+    NATIVE_LEDGER_PATHS.some(ledger => resolve(runsPath) === resolve(ledger)) ||
+    isInside(runsPath, DEFAULT_ARTIFACT_ROOT);
   if (!touchesArtifacts && !touchesLedger) return;
   throw new Error(
     `--mode=${mode} cannot produce native evidence: deterministic runs are quarantined under webmcp/evals/demo/ and must not write to ${DEFAULT_ARTIFACT_ROOT} or ${NATIVE_LEDGER_PATH}`,

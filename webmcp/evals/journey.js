@@ -141,6 +141,43 @@ export function sequenceStatus(called, definition) {
 }
 
 /**
+ * Splits the calls a case admits as extras from the calls that must match its chain.
+ *
+ * Dataset 3.0.0 names, per case, the read-only tools an agent may call in addition to the expected
+ * chain (`extra_calls_allowed`; the owner's decision of 2026-09-15). An ordered chain is matched
+ * greedily: a call that is the next expected tool advances the chain, an admitted read that is not
+ * sets aside as an extra, and anything else stays in the chain, where it is a mismatch. A case with
+ * no `extra_calls_allowed` — every 2.0.0 case — admits nothing, so its grading is unchanged.
+ */
+export function partitionAdmittedExtras(invocations, definition) {
+  const admitted = Array.isArray(definition?.extra_calls_allowed)
+    ? new Set(definition.extra_calls_allowed)
+    : null;
+  if (!admitted) return { required: invocations, extras: [] };
+  const expected = Array.isArray(definition?.expected_tools) ? definition.expected_tools : [];
+  const required = [];
+  const extras = [];
+  let next = 0;
+  for (const invocation of invocations) {
+    if (definition?.sequence_mode === 'ordered') {
+      if (next < expected.length && invocation.tool === expected[next]) {
+        required.push(invocation);
+        next += 1;
+      } else if (admitted.has(invocation.tool)) {
+        extras.push(invocation);
+      } else {
+        required.push(invocation);
+      }
+    } else if (!expected.includes(invocation.tool) && admitted.has(invocation.tool)) {
+      extras.push(invocation);
+    } else {
+      required.push(invocation);
+    }
+  }
+  return { required, extras };
+}
+
+/**
  * Grades one trace against one frozen case definition.
  *
  * @param {object} definition - the frozen case (`sequence_mode`, `expected_tools`, `group`, `id`)
@@ -152,10 +189,13 @@ export function gradeJourney(definition, trace) {
   const journey = deriveJourney(definition);
   const invocations = readInvocations(trace);
   const terminal = readTerminal(trace);
-  const called = invocations.map(invocation => invocation.tool);
+  /* Extra admitted reads are neither matched against the chain nor able to fail it; their arguments
+   * are still checked, and a blocked navigation from any call still fails the run. */
+  const { required, extras } = partitionAdmittedExtras(invocations, definition);
+  const called = required.map(invocation => invocation.tool);
   const sequence = sequenceStatus(called, definition);
 
-  const failedStep = invocations.find(
+  const failedStep = required.find(
     invocation =>
       invocation.result && typeof invocation.result === 'object' && invocation.result.ok === false,
   );
@@ -174,7 +214,8 @@ export function gradeJourney(definition, trace) {
     sequence,
     terminal,
     journey,
-    steps: called.length,
+    steps: invocations.length,
+    extraReads: extras.length,
     failures,
     reason,
   });
@@ -290,7 +331,12 @@ export function gradeJourney(definition, trace) {
     return verdict('failed', failures[0]);
   }
 
-  return verdict('passed', 'the expected tools ran in order and the run recorded a terminal answer');
+  return verdict(
+    'passed',
+    `the expected tools ran in order and the run recorded a terminal answer${
+      extras.length ? ` (with ${extras.length} admitted extra read${extras.length === 1 ? '' : 's'})` : ''
+    }`,
+  );
 }
 
 /**

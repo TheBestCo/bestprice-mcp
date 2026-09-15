@@ -1142,8 +1142,8 @@ export function printAuditTable(result) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = process.argv.slice(2);
-  let casesPath = fileURLToPath(new URL('./natural-language-cases.v2.json', import.meta.url));
-  let runsPath = fileURLToPath(new URL('./runs.v2.json', import.meta.url));
+  let casesPath = fileURLToPath(new URL('./natural-language-cases.v3.json', import.meta.url));
+  let runsPath = fileURLToPath(new URL('./runs.v3.json', import.meta.url));
   let artifactsDir = DEFAULT_ARTIFACT_ROOT;
   let strict = false;
   let json = false;

@@ -3,7 +3,11 @@
 This is the canonical home of the versioned Greek shopper prompt datasets for the
 contextual tools in [`../src/contracts.js`](../src/contracts.js):
 
-- [`natural-language-cases.v2.json`](natural-language-cases.v2.json) — current, 47 cases
+- [`natural-language-cases.v3.json`](natural-language-cases.v3.json) — current, 47 cases, derived by
+  [`dataset-v3.js`](dataset-v3.js) from v2 and the published contract (argument rules generated from
+  `src/contracts.js`, admitted extra read-only calls, concrete starting pages); evidence in
+  [`runs.v3.json`](runs.v3.json)
+- [`natural-language-cases.v2.json`](natural-language-cases.v2.json) — frozen, 47 cases
   covering all 14 contextual tools, including the item-page `show_offer` action verb.
 - [`natural-language-cases.v1.json`](natural-language-cases.v1.json) — frozen import, 43
   cases covering the 13 tools of its time. It is never rewritten; v2 carries every v1

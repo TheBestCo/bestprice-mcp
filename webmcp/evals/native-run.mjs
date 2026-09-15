@@ -34,7 +34,7 @@
  *     --agent-name 'Model Context Tool Inspector' --agent-model 'gpt-5.2' \
  *     [--language el] [--max-steps 8] [--cases home-001,multi-001] [--dry-run]
  *
- * A real run appends to runs.v2.json and writes artifacts/, so
+ * A real run appends to runs.v3.json (runs.v2.json with --dataset=v2) and writes artifacts/, so
  * `node webmcp/evals/run-evidence.js --strict` validates it like any other
  * release evidence. `--dry-run` judges and prints without writing anything.
  */
@@ -58,9 +58,12 @@ import {
 } from './run-evidence.js';
 
 const EVAL_DIR = fileURLToPath(new URL('./', import.meta.url));
-const NATIVE_LEDGER_PATH = join(EVAL_DIR, 'runs.v2.json');
-const CASES_PATH = join(EVAL_DIR, 'natural-language-cases.v2.json');
-const DATASET_VERSION = '2.0.0';
+/* Dataset 3.0.0 is current (see dataset-v3.js); `--dataset=v2` still runs the frozen 2.0.0 cases
+ * into their own ledger. A run's dataset version is read from the file, never assumed. */
+const DATASETS = Object.freeze({
+  v2: { cases: join(EVAL_DIR, 'natural-language-cases.v2.json'), ledger: join(EVAL_DIR, 'runs.v2.json') },
+  v3: { cases: join(EVAL_DIR, 'natural-language-cases.v3.json'), ledger: join(EVAL_DIR, 'runs.v3.json') },
+});
 const SHELL_TIMEOUT_MS = 180_000;
 /* A journey budget, not a target: a case that needs more is `blocked` with that reason, and the
  * budget is reported in the artifact. Without a bound, a two-command loop can spin forever. */
@@ -178,7 +181,10 @@ const main = async () => {
   const maxSteps = Number.parseInt(options.maxSteps, 10);
   if (!Number.isInteger(maxSteps) || maxSteps < 1) throw new Error('--max-steps must be a positive integer');
 
-  const dataset = JSON.parse(readFileSync(CASES_PATH, 'utf8'));
+  const selectedDataset = DATASETS[options.dataset ?? 'v3'];
+  if (!selectedDataset) throw new Error(`--dataset must be one of ${Object.keys(DATASETS).join(', ')}`);
+  const dataset = JSON.parse(readFileSync(selectedDataset.cases, 'utf8'));
+  const DATASET_VERSION = dataset.datasetVersion;
   const selected = options.cases
     ? new Set(
         String(options.cases)
@@ -210,7 +216,7 @@ const main = async () => {
 
   const revision = currentRevision();
   const fingerprint = implementationFingerprint();
-  const ledgerPath = options.runs || NATIVE_LEDGER_PATH;
+  const ledgerPath = options.runs || selectedDataset.ledger;
   const artifactRoot = options.artifactsDir || DEFAULT_ARTIFACT_ROOT;
   if (!options.dryRun) mkdirSync(artifactRoot, { recursive: true });
   const ledger = options.dryRun ? { runs: [] } : JSON.parse(readFileSync(ledgerPath, 'utf8'));
