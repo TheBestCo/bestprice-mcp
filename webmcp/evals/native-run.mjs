@@ -283,11 +283,16 @@ const main = async () => {
             prompt: options.language === 'en' ? definition.prompt_en : definition.prompt_el,
             url: pageUrl,
             tools: registeredTools,
+            /* The actor also learns when a call's page navigated away before it could answer, so a
+             * lost result is not mistaken for an empty one. Grading data is never included. */
             transcript: steps.map(entry => ({
               step: entry.step,
               tool: entry.tool,
               arguments: entry.arguments,
               result: entry.result,
+              payloadStatus: entry.payloadStatus,
+              navigatedTo: entry.navigatedTo,
+              error: entry.error,
             })),
           });
         } catch (error) {

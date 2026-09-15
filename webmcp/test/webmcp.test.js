@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { describe, it } from 'node:test';
+import { describe, it, test } from 'node:test';
 
 import { createTools, PAGE_TOOL_NAMES, TOOL_NAMES } from '../src/contracts.js';
 import { BRAND_FILTER, createDemoAdapter, PAGES, SORT_OPTIONS } from '../src/demo-adapter.js';
@@ -314,4 +314,17 @@ describe('demo adapter', () => {
     for (const page of PAGES) adapter.setPage(page);
     assert.throws(() => adapter.setPage('checkout'), /Unknown page: checkout/u);
   });
+});
+
+/* Contract 1.6 (audit pass 8, F06): one fact in full, by the name a previous call returned. */
+test('the demo adapter reads one named fact and refuses a name it does not show', async () => {
+  const adapter = createDemoAdapter();
+  adapter.setPage('product');
+  const size = await adapter.execute('get_product_specifications', { fact: 'Μέγεθος' });
+  assert.equal(size.ok, true);
+  assert.deepEqual(
+    size.specifications.map(row => row.name),
+    ['Μέγεθος'],
+  );
+  assert.equal((await adapter.execute('get_product_specifications', { fact: 'Missing' })).ok, false);
 });

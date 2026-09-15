@@ -119,11 +119,14 @@ const DEFINITIONS = [
   {
     name: 'get_product_specifications',
     title: 'Product specifications',
-    description: 'Return structured specifications for the product on this page.',
+    description:
+      'Return structured specifications for the product on this page, one section, or one fact in full.',
     annotations: READ_ONLY,
     inputSchema: objectSchema({
       section: textSchema(48, 'Visible section name or all.'),
       limit: limitSchema(16, 'Facts to return.'),
+      /* Contract 1.6: the exact continuation for a value a previous call marked truncated. */
+      fact: textSchema(72, 'A fact name a previous call returned; returns that fact in full.'),
     }),
   },
   {

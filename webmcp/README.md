@@ -62,8 +62,11 @@ Production registers only the tools relevant to the open page:
 The seventh product-page entry, `show_offer`, is an action verb: it scrolls to
 one rendered offer and marks it for the shopper, and it returns no merchant
 link. It is live: the production manifests on `www.bestprice.gr` and
-`mcp.bestprice.gr` both report version 1.5 with 14 tools (verified 2026-09-11),
-and the origin-trial facade publishes version 1.5 with the tool allow-listed.
+`mcp.bestprice.gr` both report version 1.6 with 14 tools and are identical
+(verified 2026-09-15), and the origin-trial facade publishes version 1.6 with
+the tool allow-listed. Version 1.6 adds `fact` to `get_product_specifications`:
+a fact name a previous call returned reads that fact in full, which is the
+continuation for a value the page marked truncated.
 
 The machine-readable production inventory is available at
 [`/.well-known/webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json).

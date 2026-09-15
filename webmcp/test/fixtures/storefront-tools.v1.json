@@ -5,11 +5,11 @@
   "extractedFrom": [
     {
       "path": "pages/item/webmcp/tools.js",
-      "sha256": "7241213114295bcd613af0d026d9024f5e0c7fe04a5b616119321578760c35f1"
+      "sha256": "31c80c33a90309e790c4e026bc66132fcc08a8286bac152f4cead89548f3cfbf"
     },
     {
       "path": "pages/search/webmcp/tools.js",
-      "sha256": "1b85af491f8f48750e1499f671742ad6deac09949dfb2c582d094a3a688d79ba"
+      "sha256": "5112e1d312c32dfcb99453b76485d3dc2966842c3f4bff05d83d9b602ada8728"
     },
     {
       "path": "js/modules/webmcp/search-tool.js",
@@ -17,7 +17,7 @@
     }
   ],
   "extraction": "webmcp/src/contract-parity.js extractToolDefinitions (object literals carrying name + inputSchema, module-scope schema constants resolved)",
-  "definitionsDigest": "71653b1c9294a983d466dac3ae145b24e050a3dee074e2d2b24056507122c486",
+  "definitionsDigest": "645ef1119c85c3d51242bd4eac689ed1565583fd1b170e0d24c7aab0f2a8561d",
   "tools": [
     "get_page_product",
     "compare_page_offers",
@@ -72,7 +72,7 @@
     },
     "get_product_specifications": {
       "title": "Product specifications",
-      "description": "Return structured specifications for the product on this BestPrice item page, optionally focused on one specification section.",
+      "description": "Return structured specifications for the product on this BestPrice item page, optionally focused on one specification section or one fact. A shortened value is marked truncated; ask for that fact by name to read it in full.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -87,6 +87,12 @@
             "minimum": 1,
             "maximum": 16,
             "description": "Maximum number of specification facts to return, from 1 to 16."
+          },
+          "fact": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 72,
+            "description": "A fact name returned by a previous call. Returns that fact in full; pass its section too when the name appears in more than one section."
           }
         },
         "additionalProperties": false

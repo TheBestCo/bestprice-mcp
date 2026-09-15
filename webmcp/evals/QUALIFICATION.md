@@ -35,8 +35,16 @@ The peer process tree is owned by `browser-session.js`: close and timeout end
 every process the command started, and any ambiguous reply ends the session.
 An action whose outcome is uncertain is never retried.
 
-The actor receives the shopper task, current descriptors and prior tool results,
-not frozen expected tools or grading criteria. It returns either a tool call or
+The runner launches Chrome headless by default and removes only the
+`HeadlessChrome` marker from its user agent (the storefront edge refuses it);
+both facts are recorded in the artifact's `browserHost`. Set `WEBMCP_HEADED=1`
+for a visible window.
+
+The committed actor is `actors/chat-completions-actor.mjs` (OpenAI-compatible
+chat completions, `deepseek-chat` by default; `WEBMCP_ACTOR_MODEL` must match
+`--agent-model`). The actor receives the shopper task, current descriptors and
+prior tool results — including when a navigation replaced the page before a
+call could return — not frozen expected tools or grading criteria. It returns either a tool call or
 a terminal answer/refusal/clarification. A terminal does not require a tool field.
 
 Run native-run.mjs with --dry-run --print-artifacts=true for diagnostic runs.

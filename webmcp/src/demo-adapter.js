@@ -304,9 +304,27 @@ export function createDemoAdapter(onChange = () => {}) {
       if (error) return error;
       const product = activeProduct();
       const section = normalize(args.section ?? 'all');
-      const rows = product.specifications
-        .filter(row => section === 'all' || normalize(row.section).includes(section))
-        .slice(0, limit);
+      const inSection = product.specifications.filter(
+        row => section === 'all' || normalize(row.section).includes(section),
+      );
+      if (args.fact !== undefined) {
+        const named = inSection.filter(row => normalize(row.name) === normalize(args.fact));
+        const sections = [...new Set(named.map(row => row.section))];
+        if (sections.length > 1) {
+          return fail(
+            `More than one section has the fact '${clean(args.fact)}'. Pass one of these sections: ${sections.join(', ')}.`,
+          );
+        }
+        if (!named.length) return fail(`The specification fact '${clean(args.fact)}' was not found.`);
+        return {
+          ok: true,
+          source: 'BestPrice product specifications',
+          product_id: product.product_id,
+          returned: named.length,
+          specifications: named,
+        };
+      }
+      const rows = inSection.slice(0, limit);
       if (!rows.length) return fail(`No specifications matched '${clean(args.section)}'.`);
       return {
         ok: true,
@@ -375,7 +393,7 @@ export function createDemoAdapter(onChange = () => {}) {
     apply_listing_sort: ['sort'],
     get_page_product: [],
     compare_page_offers: ['limit'],
-    get_product_specifications: ['section', 'limit'],
+    get_product_specifications: ['section', 'limit', 'fact'],
     summarize_price_history: [],
     show_offer: ['merchant_id', 'merchant_name'],
     show_price_history: [],
