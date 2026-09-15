@@ -41,6 +41,10 @@ const pageIdentity = url => {
   return kind ? `${kind}:${id}` : `path:${url.pathname.replace(/\/+$/u, '') || '/'}`;
 };
 
+/* A search is routed by the storefront: `/search?q=iphone` lands on `/hub/25/iphone.html`,
+ * `/search?q=iphone 16` on a category listing. Any listing is the page a search case asked for. */
+const isListing = url => url.pathname === '/search' || /^\/(?:cat|hub)\/\d+(?:\/|$)/u.test(url.pathname);
+
 /**
  * The URL the run continues from. The browser may land on a canonical URL for the requested page;
  * the old orchestrator kept the requested one and the peer then refused its own current page. The
@@ -50,6 +54,7 @@ export function adoptStartUrl(requested, reported) {
   const from = httpsUrl(requested);
   const to = httpsUrl(reported);
   if (!from || !to || from.origin !== to.origin) return null;
+  if (from.pathname === '/search' && isListing(to)) return to.href;
   return pageIdentity(from) === pageIdentity(to) ? to.href : null;
 }
 

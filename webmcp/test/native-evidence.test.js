@@ -33,6 +33,21 @@ describe('the start page a run continues from', () => {
       'https://www.bestprice.gr/search?q=iphone&o=1',
     );
   });
+  it('adopts the listing a search is routed to, and nothing else', () => {
+    const search = 'https://www.bestprice.gr/search?q=iphone%2016';
+    for (const landed of [
+      'https://www.bestprice.gr/cat/806/mobile-phones.html?q=iphone+16&from=search',
+      'https://www.bestprice.gr/hub/25/iphone.html',
+      'https://www.bestprice.gr/search?q=iphone+16',
+    ]) {
+      assert.equal(adoptStartUrl(search, landed), landed);
+    }
+    assert.equal(adoptStartUrl(search, 'https://www.bestprice.gr/item/2159919913/x.html'), null);
+    assert.equal(
+      adoptStartUrl('https://www.bestprice.gr/cat/806/x.html', 'https://www.bestprice.gr/cat/3048/y.html'),
+      null,
+    );
+  });
   it('refuses a landing on another product, origin or scheme', () => {
     const requested = 'https://www.bestprice.gr/item/2159919913/x.html';
     for (const reported of [
