@@ -83,6 +83,11 @@ The JSON is keyed by run ID. Each review contains:
   not an infrastructure error with a convenient refusal label
 - rationale: evidence-specific justification, including unknowns and omissions
 
+`node webmcp/evals/review-sheet.mjs --out=<dir>` prepares the work: a
+readable transcript per run that needs a review (task, criterion, prohibitions,
+every call and result, terminal, served build) and a template keyed by run ID
+with each digest filled in and every judgement null. A null qualifies nothing.
+
 Do not bulk-approve reviews or ask the actor to certify itself. Review prices,
 shipping/payment basis, product identity/variant, omissions, unsupported claims,
 and the observed outcome of actions. A changed task, transcript or answer
