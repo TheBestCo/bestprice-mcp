@@ -44,7 +44,23 @@ The committed actor is `actors/chat-completions-actor.mjs` (OpenAI-compatible
 chat completions, `deepseek-chat` by default; `WEBMCP_ACTOR_MODEL` must match
 `--agent-model`). The actor receives the shopper task, current descriptors and
 prior tool results — including when a navigation replaced the page before a
-call could return — not frozen expected tools or grading criteria. It returns either a tool call or
+call could return — not frozen expected tools or grading criteria. Its system
+policy is general, never case-specific: decline what the tools cannot do
+without substituting an action, read before acting and let the page confirm or
+refuse a named item, change the page only when asked, do not repeat reads, and
+finish with the terminal type the outcome calls for. On the same weak cases,
+gpt-5.2 looped far more than deepseek-chat under this policy (12 of 18 blocked),
+so deepseek-chat remains the reference actor.
+
+Run cases in parallel with `--shard=i/n` (each shard covers every n-th case);
+records are appended under a lock, re-reading the ledger at write time. Keep
+parallelism low: six headless browsers on one workstation made pages miss the
+registration wait. A probe that fails is repeated once in a fresh browser — it
+makes no call — and `probeAttempts` is recorded; actions are never retried.
+Product cases should run on a product that satisfies their premises (product-006
+asks about a missing battery section): the Samsung UE43U8072F television,
+`/item/2160734883/…`, has screen specifications, no battery section, 39
+merchants with varied shipping and 276 price observations. It returns either a tool call or
 a terminal answer/refusal/clarification. A terminal does not require a tool field.
 
 Run native-run.mjs with --dry-run --print-artifacts=true for diagnostic runs.

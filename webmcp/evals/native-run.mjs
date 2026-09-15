@@ -45,6 +45,7 @@ import { fileURLToPath } from 'node:url';
 import { browserSession } from './browser-session.js';
 import { currentRevision } from './git-baseline.js';
 import { blockedNavigationAttempt, gradeJourney } from './journey.js';
+import { appendToLedger } from './ledger-append.js';
 import { adoptStartUrl, policyEvidence, servedReceipt, stepEvidence } from './native-evidence.js';
 import { browserFamily, cohortKey, releaseScope } from './release-policy.js';
 import {
@@ -193,7 +194,15 @@ const main = async () => {
           .filter(Boolean),
       )
     : null;
-  const cases = dataset.cases.filter(definition => !selected || selected.has(definition.id));
+  /* `--shard=2/4` runs every fourth case starting from the second, so parallel processes cover the
+   * dataset once each and a collection fits between two deploys of the build it is measuring. */
+  const shard = options.shard ? /^([1-9]\d*)\/([1-9]\d*)$/u.exec(String(options.shard)) : null;
+  if (options.shard && (!shard || Number(shard[1]) > Number(shard[2]))) {
+    throw new Error('--shard must be i/n with 1 <= i <= n');
+  }
+  const cases = dataset.cases
+    .filter(definition => !selected || selected.has(definition.id))
+    .filter((_, index) => !shard || index % Number(shard[2]) === Number(shard[1]) - 1);
   if (!cases.length) throw new Error('no cases selected');
 
   /* Seventeen cases carry a template URL (`/item/<visible-id>/product.html`): the
@@ -219,13 +228,15 @@ const main = async () => {
   const ledgerPath = options.runs || selectedDataset.ledger;
   const artifactRoot = options.artifactsDir || DEFAULT_ARTIFACT_ROOT;
   if (!options.dryRun) mkdirSync(artifactRoot, { recursive: true });
-  const ledger = options.dryRun ? { runs: [] } : JSON.parse(readFileSync(ledgerPath, 'utf8'));
-  const knownRunIds = new Set((ledger.runs || []).map(record => record.runId));
-  const previous = options.dryRun ? [] : [...(ledger.runs || [])];
+  const knownRunIds = new Set(
+    options.dryRun
+      ? []
+      : (JSON.parse(readFileSync(ledgerPath, 'utf8')).runs || []).map(record => record.runId),
+  );
   const appended = [];
 
   for (const definition of cases) {
-    const session = browserSession(options.browserCommand);
+    let session = browserSession(options.browserCommand);
     const startedAt = new Date().toISOString();
     const caseDefinition = { ...definition };
     delete caseDefinition.runs;
@@ -236,19 +247,35 @@ const main = async () => {
     let documentId = null;
     let browserProbe = null;
     let blockedReason = null;
-    try {
-      browserProbe = await session.request({ url: pageUrl, calls: [] });
-    } catch (error) {
-      /* An infrastructure failure is not a model verdict: record it as `blocked` with the reason,
-       * so a broken harness is never reported as a shopper-facing failure (or as a pass). */
-      blockedReason = `the browser could not be probed: ${error.message}`;
+    /* A probe makes no call, so a failed one is safe to repeat once, in a fresh browser: a page that
+     * took too long to register once is an infrastructure hiccup, not a verdict. Actions are never
+     * retried. The artifact records how many probes it took. */
+    let probeAttempts = 0;
+    for (; probeAttempts < 2; ) {
+      probeAttempts += 1;
+      blockedReason = null;
+      try {
+        browserProbe = await session.request({ url: pageUrl, calls: [] });
+        if (browserProbe?.ok) break;
+      } catch (error) {
+        /* An infrastructure failure is not a model verdict: record it as `blocked` with the reason,
+         * so a broken harness is never reported as a shopper-facing failure (or as a pass). */
+        browserProbe = null;
+        blockedReason = `the browser could not be probed: ${error.message}`;
+      }
+      if (probeAttempts < 2) {
+        await session.close();
+        session = browserSession(options.browserCommand);
+      }
     }
     let registeredTools = Array.isArray(browserProbe?.tools) ? browserProbe.tools : [];
     if (
       !blockedReason &&
       (!browserProbe?.ok || registeredTools.some(tool => typeof tool !== 'object' || !tool.inputSchema))
     ) {
-      blockedReason = 'the browser did not provide actual registered tool descriptors';
+      blockedReason = `the browser did not provide actual registered tool descriptors${
+        typeof browserProbe?.error === 'string' ? `: ${browserProbe.error.slice(0, 200)}` : ''
+      }`;
     }
     if (!blockedReason && browserProbe?.persistentSession !== true) {
       blockedReason =
@@ -399,7 +426,9 @@ const main = async () => {
       : 'Chromium 0';
 
     const date = startedAt.slice(0, 10);
-    const runId = `run-${date}-${definition.id}-${sha256(`${revision}:${startedAt}:${definition.id}`).slice(0, 8)}`;
+    let runId = `run-${date}-${definition.id}-${sha256(`${revision}:${startedAt}:${definition.id}`).slice(0, 8)}`;
+    while (knownRunIds.has(runId)) runId = `${runId}-${sha256(runId).slice(0, 4)}`;
+    knownRunIds.add(runId);
     const cohort = cohortKey(releaseScope({ revision, fingerprint, datasetVersion: DATASET_VERSION }), {
       language: options.language,
       model: options.agentModel,
@@ -433,6 +462,7 @@ const main = async () => {
           sequence: verdict.sequence ?? null,
           maxSteps,
           registeredTools,
+          probeAttempts,
           pageUrl: requestedUrl,
           startUrl,
           /* What the storefront served during this run. The release gate requires every counted run
@@ -457,9 +487,9 @@ const main = async () => {
       writeFileSync(join(artifactRoot, `${runId}.json`), bytes);
     }
 
-    let uniqueRunId = runId;
-    while (knownRunIds.has(uniqueRunId)) uniqueRunId = `${uniqueRunId}-${sha256(uniqueRunId).slice(0, 4)}`;
-    knownRunIds.add(uniqueRunId);
+    /* The id is fixed before the artifact is written (see above), so a record and the artifact it
+     * cites can never disagree about it. */
+    const uniqueRunId = runId;
     appended.push({
       runId: uniqueRunId,
       caseId: definition.id,
@@ -485,10 +515,7 @@ const main = async () => {
   }
 
   if (!options.dryRun) {
-    writeFileSync(
-      ledgerPath,
-      `${JSON.stringify({ ...ledger, runs: [...previous, ...appended] }, null, 2)}\n`,
-    );
+    appendToLedger(ledgerPath, appended);
     console.log(`\nappended ${appended.length} native record(s) to ${ledgerPath}`);
     console.log('validate with: node webmcp/evals/run-evidence.js --strict');
   } else {
