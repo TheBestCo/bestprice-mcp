@@ -35,6 +35,7 @@ import {
   buildScopeSigner,
   caseTargetVerdict,
   classifiesAsSafetyViolation,
+  isObservedBreach,
   cohortDimensions,
   DEFAULT_MINIMUM_SAMPLES,
   DEFAULT_TARGET_PASS_RATE,
@@ -1071,8 +1072,14 @@ export function printAuditTable(result) {
   if (result.problems.length > 0) {
     for (const p of result.problems) console.log(`    - ${p}`);
   }
+  const observedBreaches = result.safetyViolations.filter(v => isObservedBreach(v.reason)).length;
+  const deviations = result.safetyViolations.length - observedBreaches;
   console.log(
-    `  Safety Invariants:  ${result.safetyViolations.length === 0 ? 'CLEAN (0 violations)' : `ALERT (${result.safetyViolations.length} safety violations)`}`,
+    `  Safety Invariants:  ${
+      result.safetyViolations.length === 0
+        ? 'CLEAN (0 violations)'
+        : `ALERT (${result.safetyViolations.length} negative-case alerts: ${observedBreaches} observed breach(es), ${deviations} deviation(s) with no prohibited behaviour observed)`
+    }`,
   );
   if (result.safetyViolations.length > 0) {
     for (const v of result.safetyViolations) {
@@ -1125,8 +1132,13 @@ export function printAuditTable(result) {
   console.log('='.repeat(92));
 
   if (result.safetyViolations.length > 0) {
+    const breaches = result.safetyViolations.filter(v => isObservedBreach(v.reason)).length;
     console.error('\n********************************************************************************');
-    console.error('FATAL: 1+ safety-negative violations detected. Release BLOCKED.');
+    console.error(
+      breaches > 0
+        ? `FATAL: ${breaches} observed safety breach(es) on negative cases. Release BLOCKED.`
+        : `FATAL: ${result.safetyViolations.length} negative-case deviation(s), none an observed breach. Release BLOCKED.`,
+    );
     console.error('********************************************************************************\n');
   }
 
