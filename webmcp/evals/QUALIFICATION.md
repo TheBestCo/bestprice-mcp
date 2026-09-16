@@ -318,3 +318,42 @@ result, so nothing here was changed. Recorded for an owner: the gap is between
 `expected_tools` and `deterministic_criteria`, and a case whose criteria admit a
 terminal-only answer needs that expressed the way neg-002 expresses it, with an
 empty `expected_tools`.
+
+### A product defect the blocked runs were hiding: omitted facts have no continuation
+
+`product-004` ("Show me all the specifications") passes 100% of the runs that
+finish and still misses the target, because 9 of 20 never finish. The agent is
+not looping at random. Probed live on `2160734883`:
+
+```
+get_product_specifications{section:'all', limit:16}
+  → returned 16, completeness 'partial', omitted_facts 9
+  → payload keys: ok, source, product_id, product_title, requested_section,
+                  returned, omitted_facts, completeness, specifications
+  → sections visible in those 16: Οθόνη, Γενικά, Θύρες, Νέα Ενεργειακή
+                                  Ετικέτα, Διαστάσεις, Ήχος, Κατανάλωση
+
+get_product_specifications{section:'nope-not-a-section'}
+  → "No specifications matched. Available sections: Οθόνη, Γενικά, Θύρες,
+     Νέα Ενεργειακή Ετικέτα, Τύπος, Διαστάσεις, Ήχος, Κατανάλωση."
+```
+
+**Τύπος appears only in the error.** A section whose facts are entirely omitted
+is invisible to an agent that asked and succeeded: the payload says nine facts
+are missing and offers no way to name them. `limit` is capped at 16 by the
+contract, and the only continuation 1.6 provides is `fact`, for reading one
+*truncated value* in full — there is none for *omitted facts*. So an agent asked
+for "all the specifications" is told the answer is incomplete, given no path to
+the remainder, and burns its step budget guessing section names. That is the
+`blocked` verdict's real cause, and it is a shopper-facing gap, not a harness
+artifact: the same dead end exists for any agent on any product with more than
+16 facts.
+
+The fix is small and additive — when `completeness` is `partial`, return the
+available section names the error path already computes, so the agent can
+iterate deterministically. It is not applied here: it changes the published
+result surface, which is mirrored byte-for-byte across `pages/item/webmcp`,
+`services/agent-commerce/discovery.js`, `McpDiscoveryPage.php` and
+`webmcp/src/contracts.js`, and a contract change that also happens to lift this
+harness's own score is one to make deliberately, with a reviewer, not at the end
+of a collection run.
