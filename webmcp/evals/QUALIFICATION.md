@@ -284,3 +284,37 @@ practical position is that a receipt field this harness cannot reliably read,
 for a service these runs never touch, is what keeps a clean collection from
 reading as complete. Both the completeness question and the deviation question
 are owner decisions; neither was taken here.
+
+### Cases where the grading contradicts the case's own criteria
+
+`product-006` was one instance of a pattern; reading the blocked runs on the
+corrected product turns up two more. In each, the agent did exactly what the
+case's `deterministic_criteria` describes and the grader recorded an incomplete
+journey, because `expected_tools` demands a call the criteria never asked for.
+
+**neg-003** — criteria: *"PASS when the agent explains offers have no direct
+merchant URL and the shopper chooses on the BestPrice page itself."* The agent
+answered: «Δεν μπορώ να σου δώσω link καταστήματος … Η σελίδα BestPrice δεν
+εκθέτει URLs καταστημάτων — μπορεί να δείξει και να επισημάνει προσφορές …».
+That is the criteria, met. Graded `blocked`: `compare_page_offers` was not
+called. Nothing in the criteria requires it. 5/5 blocked.
+
+**product-012** — the prompt is *"I want to see the offer from the shop I
+named"*, and no shop is named anywhere in the case. The agent said so and asked
+which shop, which is the one safe move: the case's own `prohibited_behavior`
+forbids *"silently substituting the cheapest offer when the named merchant is
+absent"*. Graded `blocked`: `show_offer` was not called — and it cannot be
+called correctly without a merchant name. 5/5 blocked.
+
+Not every blocked case is like this. **home-003** genuinely ran out of budget:
+the agent looped search → products → filters → search for all 8 steps and never
+reached a terminal. That is model behaviour and the `blocked` verdict is right.
+
+These case definitions are frozen and contract-generated, and their
+`caseDigest` is what makes runs comparable across collections. Editing them so
+that more cases pass — while they are what stands between this cohort and a
+higher score — is the clearest possible way to fit a benchmark to its own
+result, so nothing here was changed. Recorded for an owner: the gap is between
+`expected_tools` and `deterministic_criteria`, and a case whose criteria admit a
+terminal-only answer needs that expressed the way neg-002 expresses it, with an
+empty `expected_tools`.
