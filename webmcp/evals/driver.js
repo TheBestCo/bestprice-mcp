@@ -16,7 +16,7 @@
 
 import { randomBytes } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, isAbsolute, relative, resolve } from 'node:path';
+import { basename, dirname, isAbsolute, relative, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import { TOOL_NAMES } from '../src/contracts.js';
@@ -80,10 +80,22 @@ const isInside = (candidate, root) => {
  * (`--artifacts-dir=webmcp/evals/artifacts`, `--runs-file=…/runs.v2.json`) that would otherwise put
  * deterministic bytes exactly where a `git add -A` could commit them as native-agent evidence.
  */
+/* Any `runs.v<N>.json` beside this file is a native ledger, by shape rather than by a list.
+ *
+ * The list above had to be extended by hand for each dataset version, and on 2026-09-16 it was not
+ * extended in time for 4.0.0: the quarantine test asked demo mode to write into `runs.v4.json`,
+ * expected a refusal, got none — and so wrote 94 deterministic records into the real ledger, which
+ * were then committed. The test caught the gap by failing, and its failing run was the
+ * contamination. A shape rule cannot fall behind the next version. */
+const NATIVE_LEDGER_NAME = /^runs\.v\d+\.json$/u;
+const isNativeLedgerFile = runsPath =>
+  dirname(resolve(runsPath)) === dirname(resolve(NATIVE_LEDGER_PATH)) && NATIVE_LEDGER_NAME.test(basename(runsPath));
+
 function assertQuarantined(mode, artifactsRoot, runsPath) {
   const touchesArtifacts = isInside(artifactsRoot, DEFAULT_ARTIFACT_ROOT);
   const touchesLedger =
     NATIVE_LEDGER_PATHS.some(ledger => resolve(runsPath) === resolve(ledger)) ||
+    isNativeLedgerFile(runsPath) ||
     isInside(runsPath, DEFAULT_ARTIFACT_ROOT);
   if (!touchesArtifacts && !touchesLedger) return;
   throw new Error(
