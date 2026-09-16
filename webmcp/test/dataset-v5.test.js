@@ -32,7 +32,10 @@ describe('dataset 5.0.0', () => {
 
   it('admits the calls the case sanctions without loosening the rule it tests', () => {
     const item = byId(v5).get('home-005');
-    assert.ok(item.extra_calls_allowed.includes('apply_listing_filter'), 'the shopper asked for a price and availability filter');
+    assert.ok(
+      item.extra_calls_allowed.includes('apply_listing_filter'),
+      'the shopper asked for a price and availability filter',
+    );
     assert.ok(item.extra_calls_allowed.includes('search_bestprice'), 'the criteria sanction a shorter retry');
     /* The one thing the case tests is still enforced on every search call, admitted extra or not. */
     assert.equal(item.allowed_args.search_bestprice.query.maxLength, 120);

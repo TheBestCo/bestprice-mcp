@@ -584,7 +584,12 @@ describe('evaluation harness and test driver', () => {
     /* The store holds real native runs now, so "untouched" is not emptiness: every byte
      * in it is cited by a native ledger record, and a refused demo run adds none. */
     /* Every ledger that cites this store, so a corrected dataset's runs count as published too. */
-    const published = [...readEvidence(2).runs, ...readEvidence(3).runs, ...readEvidence(4).runs, ...readEvidence(5).runs];
+    const published = [
+      ...readEvidence(2).runs,
+      ...readEvidence(3).runs,
+      ...readEvidence(4).runs,
+      ...readEvidence(5).runs,
+    ];
     const cited = new Set(published.map(record => record.evidence.split('/').pop()));
     /* Correction artifacts are adjudications of runs, not runs: they are named after one and are
      * never citable as execution evidence. */

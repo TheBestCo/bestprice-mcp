@@ -236,8 +236,10 @@ export const valueProblem = (key, value, rule) => {
     if (rule.maximum !== undefined && value > rule.maximum) return `${key} must be at most ${rule.maximum}`;
   }
   if (typeof value === 'string') {
-    if (rule.minLength !== undefined && value.length < rule.minLength) return `${key} must be at least ${rule.minLength} characters`;
-    if (rule.maxLength !== undefined && value.length > rule.maxLength) return `${key} must be at most ${rule.maxLength} characters`;
+    if (rule.minLength !== undefined && value.length < rule.minLength)
+      return `${key} must be at least ${rule.minLength} characters`;
+    if (rule.maxLength !== undefined && value.length > rule.maxLength)
+      return `${key} must be at most ${rule.maxLength} characters`;
     if (rule.pattern) {
       let pattern = null;
       try {
@@ -248,7 +250,8 @@ export const valueProblem = (key, value, rule) => {
       if (pattern && !pattern.test(value)) return `${key} does not match its required format`;
     }
   }
-  if (Array.isArray(rule.enum) && !rule.enum.includes(value)) return `${key} must be one of ${rule.enum.join(', ')}`;
+  if (Array.isArray(rule.enum) && !rule.enum.includes(value))
+    return `${key} must be one of ${rule.enum.join(', ')}`;
   return null;
 };
 
