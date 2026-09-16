@@ -18,6 +18,7 @@
  */
 
 import { pathToFileURL } from 'node:url';
+
 const ENDPOINT = process.env.WEBMCP_ACTOR_ENDPOINT || 'https://api.deepseek.com/chat/completions';
 const MODEL = process.env.WEBMCP_ACTOR_MODEL || 'deepseek-chat';
 const API_KEY = process.env.WEBMCP_ACTOR_API_KEY || process.env.DEEPSEEK_API_KEY;

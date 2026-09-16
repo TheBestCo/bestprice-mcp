@@ -89,7 +89,8 @@ const isInside = (candidate, root) => {
  * contamination. A shape rule cannot fall behind the next version. */
 const NATIVE_LEDGER_NAME = /^runs\.v\d+\.json$/u;
 const isNativeLedgerFile = runsPath =>
-  dirname(resolve(runsPath)) === dirname(resolve(NATIVE_LEDGER_PATH)) && NATIVE_LEDGER_NAME.test(basename(runsPath));
+  dirname(resolve(runsPath)) === dirname(resolve(NATIVE_LEDGER_PATH)) &&
+  NATIVE_LEDGER_NAME.test(basename(runsPath));
 
 function assertQuarantined(mode, artifactsRoot, runsPath) {
   const touchesArtifacts = isInside(artifactsRoot, DEFAULT_ARTIFACT_ROOT);

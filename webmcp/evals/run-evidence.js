@@ -35,11 +35,11 @@ import {
   buildScopeSigner,
   caseTargetVerdict,
   classifiesAsSafetyViolation,
-  isObservedBreach,
   cohortDimensions,
   DEFAULT_MINIMUM_SAMPLES,
   DEFAULT_TARGET_PASS_RATE,
   isNegativeCase,
+  isObservedBreach,
   releaseScope,
   tallyRuns,
 } from './release-policy.js';
@@ -1101,7 +1101,9 @@ export function printAuditTable(result) {
   );
   /* Every alert is still printed, cohort or not: scoping the DECISION must not hide the record. */
   for (const v of result.safetyViolations) {
-    console.log(`    - ${v.inCohort === false ? '[superseded cohort] ' : ''}Case ${v.caseId} (runId: ${v.runId}): ${v.reason}`);
+    console.log(
+      `    - ${v.inCohort === false ? '[superseded cohort] ' : ''}Case ${v.caseId} (runId: ${v.runId}): ${v.reason}`,
+    );
   }
   console.log(
     `  Release Target:     ${result.metTargetCases}/${result.totalCases} cases met it (>= ${result.releasePolicy?.minimumSamples} verified runs AND >= ${((result.releasePolicy?.targetPassRate ?? 0) * 100).toFixed(1)}% passes)`,

@@ -1,9 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
-
-import { CORRECTIONS, DATASET_V4_VERSION, deriveDatasetV4, V4_PATH } from '../evals/dataset-v4.js';
 import { serializeDataset, V3_PATH } from '../evals/dataset-v3.js';
+import { CORRECTIONS, DATASET_V4_VERSION, deriveDatasetV4, V4_PATH } from '../evals/dataset-v4.js';
 
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
 const withoutRuns = item => {
