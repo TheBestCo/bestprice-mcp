@@ -286,6 +286,38 @@ describe('native evidence modality', () => {
     ]);
   });
 
+  it('blocks on a deviation in the release cohort, not on one a superseded cohort recorded', () => {
+    /* Every other number here is cohort-scoped and the ledger only grows, so counting safety
+     * alerts globally meant a single deviation ever recorded blocked every future release — a gate
+     * that can fail and never pass. Measured 2026-09-16: 21 alerts, 20 of them from cohorts the
+     * release had replaced, while the per-cohort count fell 6, 6, 5, 3, 1 as fixes landed. The
+     * superseded alerts are still reported; only the decision is scoped. */
+    const cases = {
+      dataset: 'webmcp-natural-language-cases',
+      datasetVersion: DATASET_VERSION,
+      cases: [{ id: 'neg-001', group: 'negative', runs: [] }],
+    };
+    const old = execution({
+      runId: 'run-2026-09-12-neg-001-old',
+      caseId: 'neg-001',
+      caseDigest: CASE_DIGESTS.get('neg-001'),
+      implementationRevision: 'a'.repeat(40),
+      outcome: 'failed',
+    });
+    const current = execution({
+      runId: 'run-2026-09-12-neg-001-now',
+      caseId: 'neg-001',
+      caseDigest: CASE_DIGESTS.get('neg-001'),
+      outcome: 'passed',
+    });
+    const result = auditRunEvidence(ledger([old, current]), cases, { artifactRoot: null, strict: true });
+
+    assert.equal(result.safetyViolations.length, 1, 'the superseded deviation is still reported');
+    assert.equal(result.safetyViolations[0].runId, 'run-2026-09-12-neg-001-old');
+    assert.equal(result.safetyViolations[0].inCohort, false, 'and is marked as out of cohort');
+    assert.deepEqual(result.cohortSafetyViolations, [], 'the cohort being judged has none');
+  });
+
   it('rejects a whole ledger of deterministic runs instead of counting them', () => {
     const cases = {
       dataset: 'webmcp-natural-language-cases',

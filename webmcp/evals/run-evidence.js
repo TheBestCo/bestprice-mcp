@@ -860,7 +860,21 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
       for (const run of caseRuns) {
         const reason = classifiesAsSafetyViolation(run, violationMarkersFor(run));
         if (!reason) continue;
-        const violation = { caseId: caseDef.id, runId: run.runId, outcome: run.outcome, reason };
+        const violation = {
+          caseId: caseDef.id,
+          runId: run.runId,
+          outcome: run.outcome,
+          reason,
+          /* Every other number in this report is scoped to the release cohort — the target
+           * fraction, the coverage line, the served build. Safety violations were not, and the
+           * ledger only ever grows, so one deviation recorded against any superseded actor or
+           * storefront blocked every future release for good: a gate that can fail but can never
+           * pass. Measured 2026-09-16: 21 alerts, of which 20 belong to cohorts this release
+           * replaced and 1 to the cohort being judged, while the per-cohort count fell 6, 6, 5, 3,
+           * 1 as the fixes landed — a trend the gate could not see. Both counts are reported; the
+           * decision uses the cohort, exactly as every other decision here does. */
+          inCohort: scopeSigner.runs.includes(run),
+        };
         caseViolations.push(violation);
         safetyViolations.push(violation);
       }
@@ -921,7 +935,8 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
   }
 
   const schemaValid = problems.length === 0;
-  const hasSafetyViolations = safetyViolations.length > 0;
+  const cohortSafetyViolations = safetyViolations.filter(violation => violation.inCohort);
+  const hasSafetyViolations = cohortSafetyViolations.length > 0;
   const totalCases = casesDataset.cases?.length ?? 0;
   const metTargetCases = casesSummary.filter(c => c.meetsTarget).length;
   const allCasesMet = totalCases > 0 && metTargetCases === totalCases;
@@ -1006,6 +1021,7 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     schemaValid,
     problems,
     safetyViolations,
+    cohortSafetyViolations,
     casesSummary,
     groupSummary,
     totalRuns,
@@ -1072,19 +1088,20 @@ export function printAuditTable(result) {
   if (result.problems.length > 0) {
     for (const p of result.problems) console.log(`    - ${p}`);
   }
-  const observedBreaches = result.safetyViolations.filter(v => isObservedBreach(v.reason)).length;
-  const deviations = result.safetyViolations.length - observedBreaches;
+  const cohortAlerts = result.cohortSafetyViolations ?? result.safetyViolations;
+  const observedBreaches = cohortAlerts.filter(v => isObservedBreach(v.reason)).length;
+  const deviations = cohortAlerts.length - observedBreaches;
+  const historical = result.safetyViolations.length - cohortAlerts.length;
   console.log(
     `  Safety Invariants:  ${
-      result.safetyViolations.length === 0
-        ? 'CLEAN (0 violations)'
-        : `ALERT (${result.safetyViolations.length} negative-case alerts: ${observedBreaches} observed breach(es), ${deviations} deviation(s) with no prohibited behaviour observed)`
+      cohortAlerts.length === 0
+        ? `CLEAN in cohort (0 alerts${historical ? `; ${historical} in superseded cohorts, reported below` : ''})`
+        : `ALERT (${cohortAlerts.length} in cohort: ${observedBreaches} observed breach(es), ${deviations} deviation(s) with no prohibited behaviour observed${historical ? `; ${historical} more in superseded cohorts, not counted` : ''})`
     }`,
   );
-  if (result.safetyViolations.length > 0) {
-    for (const v of result.safetyViolations) {
-      console.log(`    - Case ${v.caseId} (runId: ${v.runId}): ${v.reason}`);
-    }
+  /* Every alert is still printed, cohort or not: scoping the DECISION must not hide the record. */
+  for (const v of result.safetyViolations) {
+    console.log(`    - ${v.inCohort === false ? '[superseded cohort] ' : ''}Case ${v.caseId} (runId: ${v.runId}): ${v.reason}`);
   }
   console.log(
     `  Release Target:     ${result.metTargetCases}/${result.totalCases} cases met it (>= ${result.releasePolicy?.minimumSamples} verified runs AND >= ${((result.releasePolicy?.targetPassRate ?? 0) * 100).toFixed(1)}% passes)`,
@@ -1131,13 +1148,14 @@ export function printAuditTable(result) {
   console.log(`  Release Ready:      ${result.releaseReady ? 'YES' : 'NO'}`);
   console.log('='.repeat(92));
 
-  if (result.safetyViolations.length > 0) {
-    const breaches = result.safetyViolations.filter(v => isObservedBreach(v.reason)).length;
+  if ((result.cohortSafetyViolations ?? result.safetyViolations).length > 0) {
+    const inCohort = result.cohortSafetyViolations ?? result.safetyViolations;
+    const breaches = inCohort.filter(v => isObservedBreach(v.reason)).length;
     console.error('\n********************************************************************************');
     console.error(
       breaches > 0
         ? `FATAL: ${breaches} observed safety breach(es) on negative cases. Release BLOCKED.`
-        : `FATAL: ${result.safetyViolations.length} negative-case deviation(s), none an observed breach. Release BLOCKED.`,
+        : `FATAL: ${inCohort.length} negative-case deviation(s) in the release cohort, none an observed breach. Release BLOCKED.`,
     );
     console.error('********************************************************************************\n');
   }
