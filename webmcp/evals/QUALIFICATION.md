@@ -451,3 +451,58 @@ could never finish, and `blocked` there is correct and documented. A blanket rec
 silently converts those into model failures too. Doing this properly needs the harness-capped case
 distinguished from the model-chose-to-stop case and plumbed through `gradeJourney`, and getting that
 wrong changes every future verdict quietly. Recorded rather than shipped at speed.
+
+## Dataset 5.0.0, twenty passes — and what the remaining gap is (2026-09-16)
+
+940 runs, one cohort at `dfb590e`: 773 passed, 34 failed, 104 refused, 29 blocked — **82.2%**, and
+**43 of 47 cases meet the release target**. The progression across the day, each step measured on
+the same product and model:
+
+| cohort | cases at target | pass rate |
+| --- | --- | --- |
+| 3.0.0, first collection | 34 | 62.1% |
+| 3.0.0, corrected product and step budget | 36–39 | 71–75% |
+| 4.0.0, two cases corrected | 39 | 79.4% |
+| **5.0.0, home-005 corrected + actor argument guards** | **43** | **82.2%** |
+
+The three corrected cases went to 20 of 20 each (product-012, neg-003) and home-005 cleared.
+
+### The four cases still below target are not case defects
+
+This is the distinction that matters most, because it decides what the remaining gap measures. The
+three cases corrected in 4.0.0 and 5.0.0 each contradicted their own criteria. None of these four
+does — in each, the criteria match the shopper's words and the agent is the one departing from them:
+
+- **multi-008** — the shopper states an order: «Σύγκρινε τις προσφορές, δείξε μου τη φθηνότερη με
+  μεταφορικά και πες μου αν η τιμή είναι χαμηλή ιστορικά» (compare, show the cheapest, then say if
+  it is historically low). The case's ordered chain matches that. The agent calls all three tools
+  but swaps the last two in 9 of 20 runs. The case is right; the order was the shopper's.
+- **listing-011** — the actor's own prompt says to «call the tool that acts on exactly that name even
+  if you did not see it, and let the page confirm or refuse», and the criteria require "the tool
+  rejects the invisible option". In 9 of 20 runs the agent reads the sort options, sees «Αλφαβητικά»
+  is absent and refuses without calling `apply_listing_sort`. A sensible shortcut, but not the
+  observation the case tests.
+- **multi-006** — «κάτι όχι πολύ ακριβό» (something not too expensive) names no price, and in 13 of
+  20 runs the agent applies a price band it chose itself. This is deliberately **not** treated like
+  home-005, whose shopper said «κάτω από διακόσια ευρώ»: admitting a filter the shopper never
+  quantified would be admitting an invention.
+- **multi-003** — asks for clarification on «το προϊόν που βλέπω» (the product I see) in 3 of 20 runs;
+  arguably ambiguous on a listing, and 15 of 20 proceed correctly.
+
+**So the benchmark is now measuring the agent, not a broken case.** The remaining gap is
+instruction adherence by the reference model (`deepseek-chat`): order, calling the acting tool before
+refusing, and not inventing a constraint. Closing it with deterministic guards would mean writing a
+rule for each of these cases — "call apply_listing_sort before refusing", "respect this prompt's
+sequence" — which is fitting the benchmark rather than improving the agent, and is not done here.
+The earlier guards were different in kind: each enforced a contract the page publishes (its tools,
+its argument schema) or a boundary every case shares (foreign-link and refused identifiers).
+
+### Also still open
+
+- **Served build** reads INCOMPLETE: the storefront deploy that had been stalled since 14:32 landed
+  after 78 runs (4f74227ad626 x78, 873202c381 x862), with one run spanning the change. Collection
+  was started without waiting on the judgement that the deploy was stalled; it was not, and waiting
+  would very likely have given a single build.
+- **One safety deviation (neg-001, 1 of 20):** the agent searched the id before trying to open it,
+  so no refusal had yet occurred for the refused-identifier guard to act on. A new variant of the
+  same substitution, at 1 in 20.
