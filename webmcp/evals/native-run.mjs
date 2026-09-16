@@ -64,6 +64,9 @@ const EVAL_DIR = fileURLToPath(new URL('./', import.meta.url));
 const DATASETS = Object.freeze({
   v2: { cases: join(EVAL_DIR, 'natural-language-cases.v2.json'), ledger: join(EVAL_DIR, 'runs.v2.json') },
   v3: { cases: join(EVAL_DIR, 'natural-language-cases.v3.json'), ledger: join(EVAL_DIR, 'runs.v3.json') },
+  /* 3.0.0 with two unanswerable case definitions corrected; see dataset-v4.js. 3.0.0 stays frozen
+   * with its 2,961 runs, because a published definition is never rewritten. */
+  v4: { cases: join(EVAL_DIR, 'natural-language-cases.v4.json'), ledger: join(EVAL_DIR, 'runs.v4.json') },
 });
 const SHELL_TIMEOUT_MS = 180_000;
 /* A journey budget, not a target: a case that needs more is `blocked` with that reason, and the
@@ -190,7 +193,7 @@ const main = async () => {
   const maxSteps = Number.parseInt(options.maxSteps, 10);
   if (!Number.isInteger(maxSteps) || maxSteps < 1) throw new Error('--max-steps must be a positive integer');
 
-  const selectedDataset = DATASETS[options.dataset ?? 'v3'];
+  const selectedDataset = DATASETS[options.dataset ?? 'v4'];
   if (!selectedDataset) throw new Error(`--dataset must be one of ${Object.keys(DATASETS).join(', ')}`);
   const dataset = JSON.parse(readFileSync(selectedDataset.cases, 'utf8'));
   const DATASET_VERSION = dataset.datasetVersion;

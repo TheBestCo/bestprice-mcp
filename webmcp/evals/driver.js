@@ -48,6 +48,9 @@ export const NATIVE_LEDGER_PATH = fileURLToPath(new URL('./runs.v2.json', import
 export const NATIVE_LEDGER_PATHS = Object.freeze([
   NATIVE_LEDGER_PATH,
   fileURLToPath(new URL('./runs.v3.json', import.meta.url)),
+  /* The corrected dataset's ledger is native evidence too; without this a deterministic demo run
+   * pointed at it would be written into it instead of refused. */
+  fileURLToPath(new URL('./runs.v4.json', import.meta.url)),
 ]);
 
 /** Deterministic runs are quarantined here, beside the ledger they must never enter. */
