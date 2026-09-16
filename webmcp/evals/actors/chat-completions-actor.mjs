@@ -112,41 +112,71 @@ const messagesFor = request => {
   return messages;
 };
 
-const main = async () => {
-  if (!API_KEY) throw new Error('set WEBMCP_ACTOR_API_KEY or DEEPSEEK_API_KEY');
-  const request = await readStdin();
+/* Identity of a call as the transcript records it, so a repeat is recognised by what it would do
+ * and not by how the model happened to spell it. */
+export const callKey = (tool, args) => JSON.stringify([String(tool), args ?? {}]);
+
+/* The system prompt has always said not to repeat a call whose result is already held, and the
+ * model does it anyway: measured 2026-09-16, home-003 spent its whole budget on
+ * `get_visible_products {"limit":8}` five times over and never finished, and that shape is what
+ * blocks home-003 and product-004 in every collection. The same cases pass with the other actor,
+ * so the corpus was scoring this loop as a BestPrice shortfall. A told rule that is not followed
+ * needs an enforced one: a repeat is not issued, the model is told once that it already holds that
+ * result, and if it insists it must finish — writing its own terminal, never one invented here. */
+const DUPLICATE_RETRIES = 2;
+
+const askModel = async (request, extra, forceFinish) => {
   const response = await fetch(ENDPOINT, {
     method: 'POST',
     headers: { 'content-type': 'application/json', authorization: `Bearer ${API_KEY}` },
     body: JSON.stringify({
       model: MODEL,
-      messages: messagesFor(request),
+      messages: [...messagesFor(request), ...extra],
       tools: [...(request.tools ?? []).map(pageTool), finishTool],
-      tool_choice: 'required',
+      tool_choice: forceFinish ? { type: 'function', function: { name: FINISH } } : 'required',
     }),
     signal: AbortSignal.timeout(TIMEOUT_MS),
   });
   if (!response.ok)
     throw new Error(`model HTTP ${response.status}: ${(await response.text()).slice(0, 300)}`);
-  const message = (await response.json())?.choices?.[0]?.message;
-  const call = message?.tool_calls?.[0]?.function;
-  if (!call) {
-    const text = typeof message?.content === 'string' ? message.content.trim() : '';
-    if (!text) throw new Error('the model answered with neither a tool call nor text');
-    process.stdout.write(JSON.stringify({ terminal: { type: 'answer', text } }));
-    return;
+  return (await response.json())?.choices?.[0]?.message;
+};
+
+const main = async () => {
+  if (!API_KEY) throw new Error('set WEBMCP_ACTOR_API_KEY or DEEPSEEK_API_KEY');
+  const request = await readStdin();
+  const held = new Set((request.transcript ?? []).map(entry => callKey(entry.tool, entry.arguments)));
+  const extra = [];
+
+  for (let attempt = 0; ; attempt++) {
+    const forceFinish = attempt >= DUPLICATE_RETRIES;
+    const message = await askModel(request, extra, forceFinish);
+    const call = message?.tool_calls?.[0]?.function;
+    if (!call) {
+      const text = typeof message?.content === 'string' ? message.content.trim() : '';
+      if (!text) throw new Error('the model answered with neither a tool call nor text');
+      process.stdout.write(JSON.stringify({ terminal: { type: 'answer', text } }));
+      return;
+    }
+    let args;
+    try {
+      args = call.arguments ? JSON.parse(call.arguments) : {};
+    } catch {
+      throw new Error(`the model sent unparseable arguments for ${call.name}`);
+    }
+    if (call.name === FINISH) {
+      process.stdout.write(JSON.stringify({ terminal: { type: args.type, text: String(args.text ?? '') } }));
+      return;
+    }
+    if (!held.has(callKey(call.name, args))) {
+      process.stdout.write(JSON.stringify({ tool: call.name, arguments: args }));
+      return;
+    }
+    extra.push({
+      role: 'user',
+      content: `You already called ${call.name} with exactly those arguments and its result is in this transcript. Call a different tool, or finish the task with what you have.`,
+    });
   }
-  let args;
-  try {
-    args = call.arguments ? JSON.parse(call.arguments) : {};
-  } catch {
-    throw new Error(`the model sent unparseable arguments for ${call.name}`);
-  }
-  if (call.name === FINISH) {
-    process.stdout.write(JSON.stringify({ terminal: { type: args.type, text: String(args.text ?? '') } }));
-    return;
-  }
-  process.stdout.write(JSON.stringify({ tool: call.name, arguments: args }));
 };
 
 main().catch(error => {
