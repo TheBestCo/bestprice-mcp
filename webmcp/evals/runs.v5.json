@@ -1,0 +1,51 @@
+{
+  "dataset": "webmcp-natural-language-runs",
+  "datasetVersion": "5.0.0",
+  "casesRef": "natural-language-cases.v5.json",
+  "note": "Append-only execution evidence. Case definitions stay frozen and their runs arrays stay empty; every record here references a case id, the implementation revision and manifest fingerprint it was observed against, an instant, and an artifact committed under artifacts/. Every record must declare evidenceLayer \"native\", and a record whose agent, model or browser names an in-memory, simulated or deterministic host is rejected: a green deterministic suite is not an agent run. A record is never edited in place: a corrected result is a new record, and deleting or rewriting a published one is a reportable change. Each change is checked against the copy the merged branch already published at the merge base, so the working tree cannot be its own baseline. Nothing in this file is a substitute for the case's pass criterion. A copy of a record is not additional evidence. Corrections are appended, never edited: a correction is a new record that references the run and artifact it corrects, the original record and the original artifact bytes stay exactly as published, and a later correction supersedes an earlier one by naming it.",
+  "requiredFields": [
+    "runId",
+    "caseId",
+    "datasetVersion",
+    "evidenceLayer",
+    "agent",
+    "model",
+    "browser",
+    "implementationRevision",
+    "implementationFingerprint",
+    "caseDigest",
+    "startedAt",
+    "date",
+    "outcome",
+    "evidence",
+    "evidenceDigest"
+  ],
+  "outcomes": [
+    "passed",
+    "failed",
+    "refused",
+    "blocked"
+  ],
+  "rules": [
+    "caseId must exist in the referenced dataset version",
+    "datasetVersion must equal the referenced dataset version",
+    "implementationRevision must be a full 40-character revision",
+    "implementationFingerprint must be the sha256 manifest of webmcp/src/contracts.js + webmcp/src/runtime.js, and the artifact must declare the same fingerprint",
+    "caseDigest must be the sha256 of the case's frozen definition in the referenced dataset, with the definition's empty runs array excluded",
+    "startedAt must be an ISO-8601 UTC instant; date must be a real calendar day",
+    "evidence must be a path under artifacts/ with no traversal, resolving inside webmcp/evals/artifacts",
+    "evidenceDigest must be the sha256 of the referenced artifact file's bytes",
+    "the artifact must exist on disk, declare artifactVersion 1, and list an execution whose runId and identity fields match this record",
+    "one artifact may evidence several runs only when it identifies each execution separately; the same execution under a new runId is not a second run",
+    "runId must be unique; the store is append-only, so removing, reordering or editing a published record is a reportable change",
+    "every frozen case file (v1, v2, v3, v4 and v5) are compared against the trusted merge-base copy, so a published definition cannot be rewritten",
+    "outcome is a semantic result (passed/failed/refused/blocked), separate from whether the host ran at all",
+    "evidenceLayer must be \"native\": only an execution driven by a real agent in a real browser engine belongs in this ledger. Deterministic, in-memory, simulated or fixture-driven runs are not evidence, are rejected here, and are quarantined under webmcp/evals/demo/",
+    "agent, model and browser must name a real host, model and browser engine with a version; a record naming an in-memory adapter, Node.js, jsdom, a simulation, a deterministic driver, a test driver or a fixture is rejected as non-native rather than accepted on shape",
+    "a correction is an appended record, never an edit: the original run record and the original artifact bytes are untouched, and the correction cites both",
+    "a correction must reference a runId that already exists in this ledger, and must restate that run’s original outcome and original artifact digest",
+    "a correction is not an execution: it carries no evidenceLayer, agent, model or browser, and it counts towards no sample floor and no pass fraction",
+    "a later correction supersedes an earlier one by naming it in `supersedes`; corrections are never edited or deleted either"
+  ],
+  "runs": []
+}

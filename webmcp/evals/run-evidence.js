@@ -1174,11 +1174,11 @@ export function printAuditTable(result) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = process.argv.slice(2);
-  /* 4.0.0 is current: 3.0.0 with two unanswerable case definitions corrected (dataset-v4.js).
+  /* 5.0.0 is current: 3.0.0 corrected twice (dataset-v4.js, dataset-v5.js).
    * 3.0.0 and its 2,961 runs stay exactly as published, and are still audited with
    * `--cases=…/natural-language-cases.v3.json --runs=…/runs.v3.json`. */
-  let casesPath = fileURLToPath(new URL('./natural-language-cases.v4.json', import.meta.url));
-  let runsPath = fileURLToPath(new URL('./runs.v4.json', import.meta.url));
+  let casesPath = fileURLToPath(new URL('./natural-language-cases.v5.json', import.meta.url));
+  let runsPath = fileURLToPath(new URL('./runs.v5.json', import.meta.url));
   let artifactsDir = DEFAULT_ARTIFACT_ROOT;
   let strict = false;
   let json = false;
