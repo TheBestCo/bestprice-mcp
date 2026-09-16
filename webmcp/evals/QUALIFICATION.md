@@ -422,3 +422,32 @@ one collection to learn.
 None of this is an argument for lowering a threshold. It is the arithmetic of the thresholds that
 exist, and it says where the remaining work is: fix two case definitions, then collect deep rather
 than often.
+
+### The blocked runs are mostly verdicts filed as ignorance — and the fix needs one distinction
+
+Of the 76 blocked runs in the current cohorts, **51 come from one branch**: `journey.js`, ordered
+sequence incomplete. That branch is reached only *after* the no-terminal check, so in every one of
+those runs **the agent recorded a terminal** — it answered, having called fewer of the expected
+tools than the case names. The whole journey was observed.
+
+`blocked` is defined in this harness as infrastructure: *"a browser that cannot be probed, an agent
+command that exits non-zero — recorded as `blocked`, not as model failures."* An answered journey is
+not that. And three lines above, calling the **wrong** tools with a terminal already grades
+`failed`, so the same observation is filed two different ways depending on whether the agent picked
+the wrong tools or too few of the right ones.
+
+This matters because blocked runs are excluded from the pass fraction but counted in the 0.95
+completion floor, which is what holds ten cases below target while they read a 100% pass rate.
+
+**Reclassifying would not be a pass-rate gift.** It counts against the rate as well as toward
+completion: on the current numbers `neg-007` (8 passed, 2 of these) would reach 80% and meet the
+target, while `listing-011` (4 refused, 6 of these) would drop to 40% and miss it. Both would become
+verdicts instead of unknowns, which is the point.
+
+**It was attempted and reverted, for a reason worth recording.**
+`adjudicateSingleCallTrace` delegates to `gradeJourney`, and for a single-call runner the
+incompleteness genuinely *is* a harness limit — the runner asks for one call, so a multi-step case
+could never finish, and `blocked` there is correct and documented. A blanket reclassification
+silently converts those into model failures too. Doing this properly needs the harness-capped case
+distinguished from the model-chose-to-stop case and plumbed through `gradeJourney`, and getting that
+wrong changes every future verdict quietly. Recorded rather than shipped at speed.
