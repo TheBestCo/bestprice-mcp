@@ -219,3 +219,25 @@ prohibited behaviour observed in the artifact`. The counts are reported
 separately, so a reviewer is not told the opposite of what the evidence holds.
 Whether a deviation with no observed breach *should* block a release is an
 owner decision this note does not take.
+
+### Is the gateway revision part of what serves these runs?
+
+Two of the three remaining blockers — "two gateway builds" and the 6 runs whose
+receipt is `complete: false` — both rest on `gatewayRevision`, read from
+`mcp.bestprice.gr/healthz`. Measured 2026-09-16: **no page tool calls the
+gateway.** `search_bestprice` builds `new URL('/search', window.location.origin)`
+and navigates; no runtime file under `pages/` or `js/modules/webmcp/` references
+`mcp.bestprice.gr` at all. What serves a WebMCP journey is the storefront origin,
+its release, the `webmcp.json` discovery digest and the page scripts — all four
+uniform across the 235 runs, on one storefront build.
+
+So a gateway deploy cannot change what these runs exercised, yet it both splits
+the receipt and marks six of them incomplete. The field is worth recording as
+context; whether it belongs in the *completeness* test is a different question,
+and relaxing it is not a change to make while it is the thing standing between
+a collection and a YES — that is how a receipt gets fitted to the result it is
+meant to check. Left as it is, for an owner to rule on.
+
+Note also that a deploy-quiet window cannot be arranged from a workstation:
+`origin/main` took six pushes in the 27 minutes before 06:20 on 2026-09-16, and
+each one deploys. A single-gateway collection needs a coordinated freeze.
