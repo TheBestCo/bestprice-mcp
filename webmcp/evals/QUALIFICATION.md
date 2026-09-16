@@ -384,3 +384,41 @@ shortfalls. Nothing else in the failing set is a defect in what BestPrice serves
 That is worth stating plainly because the headline numbers invite the opposite
 reading: 11 cases below target and 17 safety alerts sounds like a product with
 eleven problems and seventeen boundary failures. It has one, and none.
+
+## Why the gate cannot reach 47/47, stated arithmetically (2026-09-16)
+
+`caseTargetVerdict` requires three things, and the third is easy to miss because the report does not
+print it: **≥5 verified runs**, **≥60% correct**, and **`minimumCompletionRate: 0.95`** — at least
+95% of a case's runs must reach a verdict rather than `blocked`.
+
+That third rule interacts with cohort depth in a way that decides the number:
+
+| runs per case in one cohort | blocked runs tolerated |
+| --- | --- |
+| 5 | 0 |
+| 10 | 0 (1 blocked = 90%) |
+| 20 | 1 (19/20 = 95%) |
+| 40 | 2 |
+
+So a case sitting at a **100% pass rate** fails the target on a single blocked run until the cohort
+carries twenty. Measured on the current cohorts, that is not hypothetical: `multi-003` (9 passed,
+1 blocked), `neg-008` (9/1), `neg-007` (8/2), `multi-008` (8/2) and `listing-010` all read 100.0%
+and all read FAIL.
+
+**Ten cases** carry at least one blocked run and would be lifted by a twenty-run cohort:
+home-005, listing-010, listing-011, listing-012, multi-003, multi-006, multi-008, neg-005, neg-007,
+neg-008.
+
+**Two cases block every single run, at any depth** — `product-012` and `neg-003`. No sample size
+clears a 95% completion floor when the completion rate is 0%. Both are case-definition problems
+already recorded above: product-012 says "the shop I named" and names none, and neg-003's criteria
+accept a terminal-only explanation that its own `expected_tools` forbids.
+
+**Therefore the reachable ceiling today is 45 of 47, not 47** — and reaching even that needs a
+twenty-run cohort, which means twenty passes with **no commit in between**, because a commit changes
+`implementationRevision` and starts a fresh cohort rather than deepening the current one. That cost
+one collection to learn.
+
+None of this is an argument for lowering a threshold. It is the arithmetic of the thresholds that
+exist, and it says where the remaining work is: fix two case definitions, then collect deep rather
+than often.
