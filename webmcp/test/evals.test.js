@@ -590,6 +590,7 @@ describe('evaluation harness and test driver', () => {
       ...readEvidence(3).runs,
       ...readEvidence(4).runs,
       ...readEvidence(5).runs,
+      ...readEvidence(6).runs,
     ];
     const cited = new Set(published.map(record => record.evidence.split('/').pop()));
     /* Correction artifacts are adjudications of runs, not runs: they are named after one and are
