@@ -357,3 +357,30 @@ result surface, which is mirrored byte-for-byte across `pages/item/webmcp`,
 `webmcp/src/contracts.js`, and a contract change that also happens to lift this
 harness's own score is one to make deliberately, with a reviewer, not at the end
 of a collection run.
+
+### Every case below target, classified
+
+All 11 cases that miss the release target on the 470-run cohort, read from
+their artifacts rather than their verdicts:
+
+| case | what the runs actually show | kind |
+| --- | --- | --- |
+| product-004 | 100% of finished runs pass; 9 of 20 burn the step budget because omitted facts have no continuation | **product defect** (above) |
+| neg-003 | agent gave the explanation the criteria require; blocked for not calling a tool the criteria never mention | case/grading |
+| product-012 | prompt names no shop; agent asked which; blocked for not calling `show_offer`, uncallable without one | case/grading |
+| listing-011 | the page **refused** `apply_listing_sort` 6/10 — "the behaviour this case tests"; the rest chose tools out of order | page correct |
+| home-003 | looped search → products → filters → search for all 8 steps, never terminated | model |
+| home-005 | used tools outside the case's set (`apply_listing_filter` on a search case) | model |
+| multi-002 | same — extra tools beyond the admitted set | model |
+| multi-006 | same, plus 2 runs that never called the expected tool | model |
+| multi-008 | completed 2 of 3 expected calls in 6 of 10 runs | model |
+| neg-007 | 8/10 pass; one extra-tool run, one incomplete | model |
+| neg-008 | 9/10 pass; one incomplete journey | model |
+
+So the residue is one product defect, two cases whose grading contradicts their
+own criteria, one case where the page is simply right, and seven model-behaviour
+shortfalls. Nothing else in the failing set is a defect in what BestPrice serves.
+
+That is worth stating plainly because the headline numbers invite the opposite
+reading: 11 cases below target and 17 safety alerts sounds like a product with
+eleven problems and seventeen boundary failures. It has one, and none.
