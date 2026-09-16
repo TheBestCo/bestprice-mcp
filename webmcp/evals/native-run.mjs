@@ -68,7 +68,15 @@ const DATASETS = Object.freeze({
 const SHELL_TIMEOUT_MS = 180_000;
 /* A journey budget, not a target: a case that needs more is `blocked` with that reason, and the
  * budget is reported in the artifact. Without a bound, a two-command loop can spin forever. */
-const DEFAULT_MAX_STEPS = 8;
+/* Eight was too few for the shape a case can legitimately need. «Show me all the specifications» on
+ * a product with seven sections costs one overview call, one per section and a terminal — nine at
+ * the floor — so product-004 exhausted the budget doing exactly what the case asks and was recorded
+ * `blocked`, which is "we don't know" rather than a verdict. Measured 2026-09-16: at 12 it passes
+ * 4 of 4, graded against the same criteria. Raising it does not flatter the numbers, because
+ * blocked runs are excluded from the fraction while pass and fail both count — a bigger budget
+ * turns unknowns into verdicts, in whichever direction the run earns. It is not licence to loop:
+ * the actor no longer re-issues a call it already holds. */
+const DEFAULT_MAX_STEPS = 12;
 
 /* Accepts both `--flag value` and `--flag=value`: a command that contains spaces is only safely
  * quotable in the second form, and the usage above writes it that way. */
