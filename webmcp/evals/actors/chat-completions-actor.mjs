@@ -211,6 +211,44 @@ export const toolSchemaProblem = (name, args, tools) => {
       return `${name} does not accept ${unknown.map(key => `"${key}"`).join(', ')}; it takes ${declared.length ? declared.join(', ') : 'no arguments'}.`;
     }
   }
+  const missing = (schema?.required ?? []).filter(key => !Object.hasOwn(args ?? {}, key));
+  if (missing.length) return `${name} requires ${missing.map(key => `"${key}"`).join(', ')}.`;
+  for (const [key, value] of Object.entries(args ?? {})) {
+    const problem = valueProblem(key, value, schema?.properties?.[key]);
+    if (problem) return `${name}: ${problem}.`;
+  }
+  return null;
+};
+
+/* A declared name with an out-of-range value is still a broken call. home-005 on 5.0.0 passed
+ * `get_visible_products {"limit": 15}` against a schema whose `limit` is `maximum: 8`, and every one
+ * of its five failures was that — the page rejected it and the run failed on "invalid integer
+ * get_visible_products.limit". Checking names alone let it through. These are the page's own
+ * published constraints, the same ones the grader checks the call against. */
+export const valueProblem = (key, value, rule) => {
+  if (!rule || typeof rule !== 'object') return null;
+  if (rule.type === 'integer' && !Number.isInteger(value)) return `${key} must be a whole number`;
+  if (rule.type === 'number' && typeof value !== 'number') return `${key} must be a number`;
+  if (rule.type === 'string' && typeof value !== 'string') return `${key} must be text`;
+  if (rule.type === 'boolean' && typeof value !== 'boolean') return `${key} must be true or false`;
+  if (typeof value === 'number') {
+    if (rule.minimum !== undefined && value < rule.minimum) return `${key} must be at least ${rule.minimum}`;
+    if (rule.maximum !== undefined && value > rule.maximum) return `${key} must be at most ${rule.maximum}`;
+  }
+  if (typeof value === 'string') {
+    if (rule.minLength !== undefined && value.length < rule.minLength) return `${key} must be at least ${rule.minLength} characters`;
+    if (rule.maxLength !== undefined && value.length > rule.maxLength) return `${key} must be at most ${rule.maxLength} characters`;
+    if (rule.pattern) {
+      let pattern = null;
+      try {
+        pattern = new RegExp(rule.pattern, 'u');
+      } catch {
+        pattern = null;
+      }
+      if (pattern && !pattern.test(value)) return `${key} does not match its required format`;
+    }
+  }
+  if (Array.isArray(rule.enum) && !rule.enum.includes(value)) return `${key} must be one of ${rule.enum.join(', ')}`;
   return null;
 };
 
