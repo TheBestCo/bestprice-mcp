@@ -185,6 +185,34 @@ export const refusedIdentifiers = transcript => {
   return found;
 };
 
+/* Whether the page's last word in this journey was a refusal. Only the MOST RECENT result counts,
+ * so an early refusal followed by results that do answer the task is not treated as one. */
+export const lastResultRefused = transcript => {
+  const last = [...(transcript ?? [])].reverse().find(entry => entry?.result !== undefined);
+  return last?.result?.ok === false;
+};
+
+/* A call the page cannot honour as written: a tool it never registered, or an argument its schema
+ * does not declare.
+ *
+ * home-005 on 4.0.0 called `read_page` — no such tool — and passed `offset`, `sort` and `price_max`
+ * to get_visible_products, whose schema is `additionalProperties: false` and declares none of them.
+ * The real schemas are sent with every request; the model invents past them. Refused before it
+ * reaches the page, with the declared argument names, so the next attempt can be correct. */
+export const toolSchemaProblem = (name, args, tools) => {
+  const tool = (tools ?? []).find(entry => entry?.name === name);
+  if (!tool) return `There is no tool named "${name}" on this page.`;
+  const schema = tool.inputSchema;
+  if (schema?.additionalProperties === false && schema.properties && typeof schema.properties === 'object') {
+    const unknown = Object.keys(args ?? {}).filter(key => !Object.hasOwn(schema.properties, key));
+    if (unknown.length) {
+      const declared = Object.keys(schema.properties);
+      return `${name} does not accept ${unknown.map(key => `"${key}"`).join(', ')}; it takes ${declared.length ? declared.join(', ') : 'no arguments'}.`;
+    }
+  }
+  return null;
+};
+
 /** True when a proposed call would carry one of those identifiers into a page tool. */
 export const carriesForeignIdentifier = (args, identifiers) => {
   if (identifiers.size === 0) return null;
@@ -217,6 +245,7 @@ const main = async () => {
   const foreign = foreignIdentifiers(request.prompt);
   const refused = refusedIdentifiers(request.transcript);
   const extra = [];
+  let relabelAsked = false;
 
   for (let attempt = 0; ; attempt++) {
     const forceFinish = attempt >= DUPLICATE_RETRIES;
@@ -235,8 +264,29 @@ const main = async () => {
       throw new Error(`the model sent unparseable arguments for ${call.name}`);
     }
     if (call.name === FINISH) {
+      /* product-006 on 4.0.0: asked for the section «Μπαταρία», the page refused — there is none —
+       * and in 9 of 20 runs the agent finished with type `answer`, reporting the refusal under the
+       * label for success. The prompt says to finish with refusal "whenever the page refused what
+       * the shopper asked for". Asked once, never relabelled here: the model chooses the type. */
+      if (args.type === 'answer' && !relabelAsked && lastResultRefused(request.transcript)) {
+        relabelAsked = true;
+        extra.push({
+          role: 'user',
+          content:
+            'The page refused your last call. If you are telling the shopper that the page could not do what they asked, finish with type refusal, not answer. If other results genuinely answer the task, finish as answer again.',
+        });
+        continue;
+      }
       process.stdout.write(JSON.stringify({ terminal: { type: args.type, text: String(args.text ?? '') } }));
       return;
+    }
+    const problem = toolSchemaProblem(call.name, args, request.tools);
+    if (problem) {
+      extra.push({
+        role: 'user',
+        content: `${problem} Call one of the listed tools with its declared arguments, or finish the task.`,
+      });
+      continue;
     }
     const retried = held.has(callKey(call.name, args)) ? null : carriesForeignIdentifier(args, refused);
     if (retried) {
