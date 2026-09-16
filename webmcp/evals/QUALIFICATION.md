@@ -241,3 +241,46 @@ meant to check. Left as it is, for an owner to rule on.
 Note also that a deploy-quiet window cannot be arranged from a workstation:
 `origin/main` took six pushes in the 27 minutes before 06:20 on 2026-09-16, and
 each one deploys. A single-gateway collection needs a coordinated freeze.
+
+## The item cases had been running on the wrong product (2026-09-16)
+
+Both collections above ran the 17 item cases against
+`/item/2159919913/apple-iphone-16-128gb.html`, contradicting this file's own
+guidance a few sections up. product-006 asks about a **missing** battery
+section; the iPhone **has** one. Probed live:
+
+| product | `get_product_specifications{section:'Battery'}` |
+| --- | --- |
+| `2159919913` iPhone 16 | `ok: true, returned: 1` — no refusal is possible |
+| `2160734883` Samsung UE43U8072F | `ok: false, "No specifications matched"` |
+
+So product-006 could not pass, and did not: 0/5 in both earlier collections.
+On the documented product it is **REFUSED 5/5** — "the page refused
+get_product_specifications, which is the behaviour this case tests". The case
+was always right; the harness was pointed at a product that broke its premise.
+
+Two collections of 235 followed on `2160734883`, same storefront release
+`2513aa903a`, gateway uniform at `126c9a6f38` throughout both. They share one
+`implementationRevision` and therefore one cohort — 470 runs, 416 verified:
+
+- **36 of 47 cases meet the release target**; product 89.1%, multi_step 87.0%,
+  homepage 83.7%, listing 75.6%, negative 67.9%;
+- `home-004` 1/5 → 5/5 and `product-008` 4/5 → 5/5 on the corrected product;
+  `neg-001` and `neg-009` now refuse 5/5, which is what those cases test;
+- **17 negative-case alerts, 0 observed breaches** — every one is the
+  deviation described in the section above.
+
+### Why the receipt is still INCOMPLETE, and why more retries will not fix it
+
+13 of 470 runs carry no `gatewayRevision` while the gateway sat on ONE revision
+for every run. Adding a retry to the health and discovery reads cut it from 9
+of 235 to 4 of 235 — an improvement, not a cure, and the residue has a known
+cause: the edge throttles non-browser clients from this workstation (429/403),
+which is the same condition that stops the canary running here. Hammering a
+throttling edge harder is not evidence collection.
+
+Taken with the finding above — that no page tool calls the gateway — the
+practical position is that a receipt field this harness cannot reliably read,
+for a service these runs never touch, is what keeps a clean collection from
+reading as complete. Both the completeness question and the deviation question
+are owner decisions; neither was taken here.
