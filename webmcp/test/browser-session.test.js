@@ -127,3 +127,78 @@ test('an unexpected exit rejects the pending action with a bounded stderr tail',
   );
   await session.close();
 });
+
+/* Audit pass 9, P9-F03. The cap used to be compared only against the
+ * unterminated tail, so a reply carrying its newline in the final fragment was
+ * concatenated and JSON-parsed before its size was ever checked: the same bytes
+ * got a different verdict depending on how the OS divided them into chunks. */
+const replyOfFrameBytes = bytes => {
+  const head = '{"ok":true,"pad":"';
+  const tail = '"}';
+  const pad = bytes - head.length - tail.length;
+  assert.ok(pad >= 0, 'frame budget must fit the envelope');
+  return `${head}${'x'.repeat(pad)}${tail}`;
+};
+
+/* Writes each chunk after a real (async) delay and then exits, so a failed
+ * expectation cannot leave a live peer holding the runner open. */
+const echoingPeer = (name, chunks) =>
+  script(
+    name,
+    `const chunks = ${JSON.stringify(chunks)};
+     process.stdin.once('data', async () => {
+       for (const [text, delayMs] of chunks) {
+         if (delayMs) await new Promise(resolve => setTimeout(resolve, delayMs));
+         await new Promise(resolve => process.stdout.write(text, resolve));
+       }
+       process.exit(0);
+     });`,
+  );
+
+/* Every assertion closes its session: a failed expectation must not leave a live
+ * peer behind, or the runner hangs instead of reporting the failure. */
+const withSession = async (peer, run) => {
+  const session = browserSession(retained(peer), 2000, { closeGraceMs: 200, maxFrameBytes: 128 });
+  try {
+    return await run(session);
+  } finally {
+    await session.close();
+  }
+};
+
+test('an oversized reply is rejected when its newline arrives in the same fragment', async () => {
+  const peer = echoingPeer('newline-oversized.mjs', [[`${replyOfFrameBytes(129)}\n`, 0]]);
+  await withSession(peer, session => assert.rejects(session.request({}), /exceeded 128 bytes/u));
+});
+
+test('an oversized reply is rejected when its bytes arrive in under-cap chunks', async () => {
+  const frame = replyOfFrameBytes(200);
+  const peer = echoingPeer('split-oversized.mjs', [
+    [frame.slice(0, 100), 0],
+    [`${frame.slice(100)}\n`, 30],
+  ]);
+  await withSession(peer, session => assert.rejects(session.request({}), /exceeded 128 bytes/u));
+});
+
+test('a reply of exactly the cap is still accepted', async () => {
+  const frame = replyOfFrameBytes(128);
+  assert.equal(Buffer.byteLength(frame), 128);
+  const peer = echoingPeer('exact-limit.mjs', [[`${frame}\n`, 0]]);
+  await withSession(peer, async session => {
+    assert.deepEqual(await session.request({}), { ok: true, pad: 'x'.repeat(108) });
+  });
+});
+
+test('one byte over the cap is rejected, even with a multi-byte character split across chunks', async () => {
+  const envelope = '{"ok":true,"pad":"';
+  const head = `${envelope}α`; // two-byte character placed on the split
+  const frame = `${head}${'x'.repeat(129 - Buffer.byteLength(head) - 2)}"}`;
+  assert.equal(Buffer.byteLength(frame), 129);
+  const headBytes = Buffer.from(frame, 'utf8');
+  const cut = Buffer.byteLength(envelope) + 1; // one byte into the two-byte character
+  const peer = echoingPeer('split-utf8-oversized.mjs', [
+    [headBytes.subarray(0, cut).toString('latin1'), 0],
+    [`${headBytes.subarray(cut).toString('latin1')}\n`, 30],
+  ]);
+  await withSession(peer, session => assert.rejects(session.request({}), /exceeded 128 bytes/u));
+});

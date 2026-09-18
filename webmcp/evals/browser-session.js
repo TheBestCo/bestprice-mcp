@@ -136,13 +136,29 @@ export function browserSession(
   };
 
   child.stdout.on('data', chunk => {
+    /* A poisoned or closed session consumes no further protocol frames: the
+     * reply that killed it is the last thing this transport reads. */
+    if (state !== 'open') return;
     let start = 0;
     for (let index = chunk.indexOf(10); index !== -1; index = chunk.indexOf(10, start)) {
-      frame.push(chunk.subarray(start, index));
+      const fragment = chunk.subarray(start, index);
+      /* The fragment BEFORE the newline is part of the frame and must be counted
+       * before it is concatenated or decoded. Checking only the unterminated tail
+       * meant an oversized reply was parsed whenever its terminating newline
+       * arrived in the final fragment — single-chunk, split-chunk and split-UTF-8
+       * alike (reproduced 2026-09-18 with a 128-byte cap). */
+      frameBytes += fragment.length;
+      frame.push(fragment);
+      start = index + 1;
+      if (frameBytes > maxFrameBytes) {
+        frame = [];
+        frameBytes = 0;
+        poison(new Error(`browser reply exceeded ${maxFrameBytes} bytes`));
+        return;
+      }
       const line = Buffer.concat(frame).toString('utf8');
       frame = [];
       frameBytes = 0;
-      start = index + 1;
       onLine(line);
     }
     if (start < chunk.length) {
