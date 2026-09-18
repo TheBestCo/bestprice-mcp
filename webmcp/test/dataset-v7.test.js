@@ -53,16 +53,18 @@ describe('dataset 7.0.0', () => {
   });
 
   it('home-003 passes the clarifying question its criteria accept, and nothing else changes', () => {
-    /* The one home-003 run on 2026-09-16 that was blocked by something other than a 429. */
-    assert.equal(grade(before, 'home-003', [], 'clarification').outcome, 'blocked');
+    /* The one home-003 run on 2026-09-16 that was blocked by something other than a 429: it carried a
+     * terminal, so under grader v2 (2026-09-18) it is a completed attempt that skipped the call the
+     * case asks for — `failed` — not an unfinished journey. The published record stays `blocked`. */
+    assert.equal(grade(before, 'home-003', [], 'clarification').outcome, 'failed');
     assert.equal(grade(after, 'home-003', [], 'clarification').outcome, 'passed');
     /* An answer with no search is still no evidence, and a search still passes as before. */
-    assert.equal(grade(after, 'home-003', [], 'answer').outcome, 'blocked');
+    assert.equal(grade(after, 'home-003', [], 'answer').outcome, 'failed');
     assert.equal(grade(after, 'home-003', ['search_bestprice'], 'answer').outcome, 'passed');
   });
 
   it('multi-006 can now accept either terminal, and its invented price filter still fails', () => {
-    assert.equal(grade(before, 'multi-006', [], 'clarification').outcome, 'blocked');
+    assert.equal(grade(before, 'multi-006', [], 'clarification').outcome, 'failed');
     assert.equal(grade(after, 'multi-006', [], 'clarification').outcome, 'passed');
     assert.equal(
       grade(after, 'multi-006', ['search_bestprice', 'get_visible_products'], 'answer').outcome,
@@ -99,14 +101,14 @@ describe('dataset 7.0.0', () => {
       'get_visible_products',
     ];
     assert.equal(grade(after, 'multi-002', reading).outcome, 'passed');
-    /* Reporting without re-reading the sorted products is still unfinished. */
-    assert.equal(grade(after, 'multi-002', reading.slice(0, -1)).outcome, 'blocked');
+    /* Reporting without re-reading the sorted products is the agent ending the task early. */
+    assert.equal(grade(after, 'multi-002', reading.slice(0, -1)).outcome, 'failed');
   });
 
   it('multi-008 needs all three tools, in any order', () => {
     assert.equal(after.get('multi-008').sequence_mode, 'unordered');
     const swapped = ['get_page_product', 'compare_page_offers', 'summarize_price_history', 'show_offer'];
-    assert.equal(grade(before, 'multi-008', swapped).outcome, 'blocked');
+    assert.equal(grade(before, 'multi-008', swapped).outcome, 'failed');
     assert.equal(grade(after, 'multi-008', swapped).outcome, 'passed');
     assert.equal(
       grade(after, 'multi-008', ['compare_page_offers', 'show_offer', 'summarize_price_history']).outcome,
@@ -114,13 +116,13 @@ describe('dataset 7.0.0', () => {
     );
     assert.equal(
       grade(after, 'multi-008', ['compare_page_offers', 'summarize_price_history']).outcome,
-      'blocked',
+      'failed',
     );
   });
 
   it('listing-011 is left on its 6.0.0 definition', () => {
     assert.deepEqual(after.get('listing-011'), before.get('listing-011'));
-    assert.equal(grade(after, 'listing-011', ['get_listing_sort_options'], 'refusal').outcome, 'blocked');
+    assert.equal(grade(after, 'listing-011', ['get_listing_sort_options'], 'refusal').outcome, 'failed');
   });
 
   it('leaves 6.0.0 frozen', () => {

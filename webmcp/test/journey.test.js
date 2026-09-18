@@ -10,7 +10,7 @@ import {
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { describe, it } from 'node:test';
 
 import {
@@ -18,6 +18,7 @@ import {
   appendCorrection,
   CASES_PATH,
   CORRECTIONS_LEDGER_PATH,
+  GRADER,
 } from '../evals/corrections.js';
 import {
   adjudicateSingleCallTrace,
@@ -113,9 +114,12 @@ describe('journey grading', () => {
     const answer = { type: 'answer', text: 'iPhone 16: 6.1", 128GB.' };
 
     /* The prefix that the committed artifact recorded, now with a terminal: the agent answered, but
-     * I did not finish the task, so the answer cannot make the journey complete. */
+     * I did not finish the task, so the answer cannot make the journey complete. Because the agent
+     * declared itself done, this is a verdict about the agent — `failed` — and not an unfinished
+     * journey: `blocked` would exclude it from the release fraction (changed 2026-09-18). */
     const prefix = gradeJourney(definition, { steps: [step('search_bestprice')], terminal: answer });
-    assert.equal(prefix.outcome, INCOMPLETE_OUTCOME);
+    assert.equal(prefix.outcome, 'failed');
+    assert.match(prefix.reason, /ended the task after 1 of 4 required tool calls/u);
     assert.equal(prefix.complete, false);
 
     /* Three of four in order is still unfinished... */
@@ -123,7 +127,7 @@ describe('journey grading', () => {
       steps: [step('search_bestprice'), step('get_visible_products'), step('open_visible_product')],
       terminal: answer,
     });
-    assert.equal(nearly.outcome, INCOMPLETE_OUTCOME);
+    assert.equal(nearly.outcome, 'failed');
     assert.equal(nearly.sequence, 'partial');
 
     /* ... and without a terminal the completed chain is unfinished too: the shopper never got an
@@ -326,29 +330,73 @@ describe('append-only corrections', () => {
     }
   });
 
-  it('is reproducible: re-adjudicating in a scratch store yields the published correction bytes', () => {
+  it('re-adjudicates under the current grader, superseding a published v1 correction without rewriting it', () => {
     const root = scratchStore();
+    const twin = scratchStore();
     const ledgerCopy = join(root, 'runs.v2.json');
+    const twinCopy = join(twin, 'runs.v2.json');
     try {
       const published = readLedger();
-      for (const runId of MULTI_001_RUNS) copy(artifactPath(runId), join(root, 'artifacts', `${runId}.json`));
+      for (const runId of MULTI_001_RUNS) {
+        copy(artifactPath(runId), join(root, 'artifacts', `${runId}.json`));
+        copy(artifactPath(runId), join(twin, 'artifacts', `${runId}.json`));
+      }
       const correction = published.corrections.find(item => item.runId === MULTI_001_RUNS[0]);
       const rewritten = structuredClone({ ...published, corrections: [] });
       writeFileSync(ledgerCopy, JSON.stringify(rewritten, null, 2));
+      writeFileSync(twinCopy, JSON.stringify(rewritten, null, 2));
 
-      const { correction: produced, artifactBytes } = appendCorrection(MULTI_001_RUNS[0], {
-        casesPath: CASES_PATH,
-        ledgerPath: ledgerCopy,
-        artifactRoot: join(root, 'artifacts'),
-        correctedAt: correction.correctedAt,
-      });
+      const adjudicate = target =>
+        appendCorrection(MULTI_001_RUNS[0], {
+          casesPath: CASES_PATH,
+          ledgerPath: target,
+          artifactRoot: join(dirname(target), 'artifacts'),
+          correctedAt: correction.correctedAt,
+        });
 
-      assert.deepEqual(produced, correction, 'the same adjudication produces the same correction');
+      const { correction: produced, artifactBytes } = adjudicate(ledgerCopy);
+      const { correction: again } = adjudicate(twinCopy);
+
+      /* The published correction was adjudicated by grader v1 and this code is v2. A grader change
+       * never rewrites it: it appends a new correction naming the same published bytes. These traces
+       * record no terminal, which v2 still reads as an unfinished journey, so the verdict itself is
+       * unchanged — what differs is the provenance the record carries. */
+      assert.equal(correction.graderVersion, '1', 'the published correction records the grader that made it');
+      assert.equal(produced.graderVersion, String(GRADER.version));
+      assert.notEqual(
+        produced.correctionId,
+        correction.correctionId,
+        'a new adjudication is a new correction, not an edit of the old one',
+      );
+      for (const field of [
+        'runId',
+        'caseId',
+        'originalOutcome',
+        'correctedOutcome',
+        'reason',
+        'sequence',
+        'steps',
+        'expectedSteps',
+        'terminal',
+        'date',
+        'correctedAt',
+        'implementationRevision',
+        'originalArtifact',
+        'originalArtifactDigest',
+      ]) {
+        assert.deepEqual(produced[field], correction[field], field);
+      }
+      assert.deepEqual(produced, again, 'the same adjudication produces the same correction');
       assert.equal(produced.artifactDigest, createHash('sha256').update(artifactBytes).digest('hex'));
       assert.deepEqual(
         readFileSync(join(root, 'artifacts', `${MULTI_001_RUNS[0]}.correction.json`)),
         artifactBytes,
         'the correction artifact is deterministic',
+      );
+      assert.equal(
+        readLedger().corrections.find(item => item.runId === MULTI_001_RUNS[0]).correctionId,
+        correction.correctionId,
+        'the published ledger was never written to',
       );
       /* The ledger metadata documents its own rule, and the rule survives the append. */
       const appended = JSON.parse(readFileSync(ledgerCopy, 'utf8'));
@@ -357,17 +405,10 @@ describe('append-only corrections', () => {
       assert.equal(appended.runs.length, published.runs.length, 'correcting a run adds no run record');
 
       /* A second correction of the same run is refused: corrections supersede, they do not repeat. */
-      assert.throws(
-        () =>
-          appendCorrection(MULTI_001_RUNS[0], {
-            casesPath: CASES_PATH,
-            ledgerPath: ledgerCopy,
-            artifactRoot: join(root, 'artifacts'),
-          }),
-        /already carries correction/u,
-      );
+      assert.throws(() => adjudicate(ledgerCopy), /already carries correction/u);
     } finally {
       rmSync(root, { recursive: true, force: true });
+      rmSync(twin, { recursive: true, force: true });
     }
   });
 
@@ -426,7 +467,8 @@ describe('append-only corrections', () => {
       validateCorrection({ ...correction, artifactDigest: 'not-a-digest' }, context) ?? '',
       /sha256 digest/u,
     );
-    assert.match(validateCorrection({ ...correction, graderVersion: '2' }, context) ?? '', /grader must be/u);
+    /* v1 and v2 corrections are both readable; a version this ledger has no grader for is not. */
+    assert.match(validateCorrection({ ...correction, graderVersion: '3' }, context) ?? '', /grader must be/u);
     assert.match(validateCorrection({ ...correction, supersedes: 'nope' }, context) ?? '', /supersedes/u);
   });
 

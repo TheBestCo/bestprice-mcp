@@ -40,14 +40,15 @@
  */
 import { spawn } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { appendAttempt, journalPathFor, reconcileAttempts } from './attempt-journal.js';
 import { browserSession } from './browser-session.js';
 import { currentRevision } from './git-baseline.js';
 import { blockedNavigationAttempt, gradeJourney } from './journey.js';
 import { appendToLedger } from './ledger-append.js';
 import { adoptStartUrl, policyEvidence, servedReceipt, stepEvidence } from './native-evidence.js';
-import { browserFamily, cohortKey, releaseScope } from './release-policy.js';
+import { browserFamily, CAMPAIGN_PURPOSES, cohortKey, releaseScope } from './release-policy.js';
 import {
   canonicalJson,
   caseDigest,
@@ -246,6 +247,22 @@ const main = async () => {
   const fingerprint = implementationFingerprint();
   const ledgerPath = options.runs || selectedDataset.ledger;
   const artifactRoot = options.artifactsDir || DEFAULT_ARTIFACT_ROOT;
+
+  /* What this campaign is for. A stress or diagnostic campaign executes the same cases and produces
+   * the same shape of record as a qualification campaign, so the purpose is declared here, stamped on
+   * every record, and refused a home in the release ledger: a deliberately degraded run must not be
+   * able to become release evidence by where it was written. */
+  const purpose = options.purpose ?? 'qualification';
+  if (!CAMPAIGN_PURPOSES.includes(purpose)) {
+    throw new Error(`--purpose must be one of ${CAMPAIGN_PURPOSES.join(', ')}`);
+  }
+  if (purpose !== 'qualification' && resolve(ledgerPath) === resolve(selectedDataset.ledger)) {
+    throw new Error(
+      `--purpose ${purpose} may not write to the release ledger ${selectedDataset.ledger}: a ${purpose} campaign needs its own --runs=<path>`,
+    );
+  }
+
+  const journalPath = journalPathFor(ledgerPath);
   if (!options.dryRun) mkdirSync(artifactRoot, { recursive: true });
   const knownRunIds = new Set(
     options.dryRun
@@ -253,6 +270,17 @@ const main = async () => {
       : (JSON.parse(readFileSync(ledgerPath, 'utf8')).runs || []).map(record => record.runId),
   );
   const appended = [];
+
+  /* Take custody of anything a previous run of this campaign left unfinished, before adding to it.
+   * Reconciliation is append-only: it names what was lost instead of deleting the attempt or
+   * inventing a record for it. */
+  if (!options.dryRun) {
+    for (const attempt of reconcileAttempts(journalPath)) {
+      console.log(
+        `reconciled interrupted attempt ${attempt.runId} (${attempt.caseId ?? 'unknown case'}), started ${attempt.startedAt ?? 'at an unrecorded time'}`,
+      );
+    }
+  }
 
   /* Preflight every case's target before the first browser starts. Resolving URLs lazily inside the
    * loop meant a campaign could abort half-way on a configuration error — measured 2026-09-18: a
@@ -265,6 +293,26 @@ const main = async () => {
     const startedAt = new Date().toISOString();
     const caseDefinition = { ...definition };
     delete caseDefinition.runs;
+
+    /* The id is minted before anything happens, so the attempt journal and the record that may
+     * follow it can never disagree about which attempt this is. */
+    const startDate = startedAt.slice(0, 10);
+    let runId = `run-${startDate}-${definition.id}-${sha256(`${revision}:${startedAt}:${definition.id}`).slice(0, 8)}`;
+    while (knownRunIds.has(runId)) runId = `${runId}-${sha256(runId).slice(0, 4)}`;
+    knownRunIds.add(runId);
+    /* Journalled before the browser opens. An attempt that never reaches a verdict — the process is
+     * killed, the harness throws — leaves this line and no record, which is the only trace that the
+     * campaign planned it (see attempt-journal.js). Reconciliation appends an `abandoned` line; the
+     * release validator blocks while either is missing. */
+    if (!options.dryRun) {
+      appendAttempt(journalPath, {
+        phase: 'start',
+        runId,
+        caseId: definition.id,
+        purpose,
+        startedAt,
+      });
+    }
 
     /* 1. The browser registers the tools the page actually exposes. */
     const requestedUrl = requestedUrls.get(definition.id);
@@ -451,9 +499,6 @@ const main = async () => {
       : 'Chromium 0';
 
     const date = startedAt.slice(0, 10);
-    let runId = `run-${date}-${definition.id}-${sha256(`${revision}:${startedAt}:${definition.id}`).slice(0, 8)}`;
-    while (knownRunIds.has(runId)) runId = `${runId}-${sha256(runId).slice(0, 4)}`;
-    knownRunIds.add(runId);
     const cohort = cohortKey(releaseScope({ revision, fingerprint, datasetVersion: DATASET_VERSION }), {
       language: options.language,
       model: options.agentModel,
@@ -520,6 +565,7 @@ const main = async () => {
       caseId: definition.id,
       datasetVersion: DATASET_VERSION,
       evidenceLayer: NATIVE_EVIDENCE_LAYER,
+      purpose,
       agent: options.agentName,
       model: options.agentModel,
       browser: browserIdentity,
@@ -540,7 +586,19 @@ const main = async () => {
      * part-way through. `appendToLedger` re-reads under an exclusive lock and replaces atomically, so
      * a per-run call is safe for parallel shards. */
     appended.push(record);
-    if (!options.dryRun) appendToLedger(ledgerPath, [record]);
+    if (!options.dryRun) {
+      appendToLedger(ledgerPath, [record]);
+      /* The attempt is closed only after its record is durable, so the journal never claims a
+       * verdict the ledger does not hold. */
+      appendAttempt(journalPath, {
+        phase: 'finish',
+        runId: uniqueRunId,
+        caseId: definition.id,
+        purpose,
+        outcome: verdict.outcome,
+        finishedAt: new Date().toISOString(),
+      });
+    }
     console.log(
       `${verdict.outcome.toUpperCase().padEnd(7)} ${definition.id}  ${steps.map(entry => entry.tool).join(' → ') || '(no tool)'}  ${verdict.reason}`,
     );

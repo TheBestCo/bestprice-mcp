@@ -12,16 +12,21 @@ const definition = { id: 'probe', expected_tools: ['show_offer'], sequence_mode:
 const terminal = { type: 'answer', text: 'Done' };
 const step = { tool: 'show_offer', args: {}, result: { ok: true } };
 
+/* An agent that ends its turn with an answer, a refusal or a clarification while required calls are
+ * missing has answered the case's question — "did it do the job?" — with no. `blocked` is reserved for
+ * a trace with no terminal at all, where the evidence cannot say what the agent decided. Changed
+ * 2026-09-18: 40 of 42 blocked runs in the v8 campaign carried a terminal, so the old reading excluded
+ * a fifth of the campaign from the fraction instead of failing it. */
 test('every sequence mode requires its complete tool set', () => {
   for (const sequence_mode of ['ordered', 'unordered', 'any_of']) {
-    assert.equal(gradeJourney({ ...definition, sequence_mode }, { steps: [], terminal }).outcome, 'blocked');
+    assert.equal(gradeJourney({ ...definition, sequence_mode }, { steps: [], terminal }).outcome, 'failed');
   }
   assert.equal(
     gradeJourney(
       { ...definition, sequence_mode: 'unordered', expected_tools: ['show_offer', 'get_page_product'] },
       { steps: [step], terminal },
     ).outcome,
-    'blocked',
+    'failed',
   );
 });
 test('a named invocation without execution evidence cannot pass', () => {

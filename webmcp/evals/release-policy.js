@@ -251,10 +251,45 @@ export function buildScopeSigner(runs, referenceScope, options = {}) {
   return { scope: selected, cohort, runs: inScope, rejected, candidates };
 }
 
-/** Tallies one collection of runs without interpreting them. */
+/**
+ * What a campaign declares it was doing.
+ *
+ * A stress run and a qualification run execute the same cases and produce the same shape of record.
+ * Nothing about the artifact tells them apart, so a diagnostic or deliberately-degraded campaign
+ * copied into a release ledger used to be indistinguishable from release evidence. The purpose is
+ * declared when the campaign starts, stamped on every record it writes, and only `qualification`
+ * may enter a release fraction.
+ */
+export const CAMPAIGN_PURPOSES = Object.freeze(['qualification', 'diagnostic', 'stress']);
+
+/**
+ * Whether a record may be counted as release evidence.
+ *
+ * A record that declares no purpose is evidence recorded before the field existed (the runner now
+ * always stamps one, and refuses to write a non-qualification purpose to a release ledger), so it is
+ * counted — the alternative would void every campaign run before 2026-09-18. A record that declares
+ * a purpose is believed: only `qualification` counts.
+ */
+export const isQualificationRun = run => {
+  const purpose = run?.purpose;
+  if (purpose === undefined || purpose === null) return true;
+  return purpose === 'qualification';
+};
+
+/**
+ * Tallies one collection of runs without interpreting them.
+ *
+ * Non-qualification records are counted in `excluded` and nowhere else: they neither pass nor fail a
+ * release, and they do not pad the sample floor. A ledger holding only stress runs reports zero
+ * verified runs rather than a green fraction.
+ */
 export function tallyRuns(runs) {
-  const tally = { total: 0, passed: 0, failed: 0, refused: 0, blocked: 0, scored: 0 };
+  const tally = { total: 0, passed: 0, failed: 0, refused: 0, blocked: 0, scored: 0, excluded: 0 };
   for (const run of runs ?? []) {
+    if (!isQualificationRun(run)) {
+      tally.excluded += 1;
+      continue;
+    }
     tally.total += 1;
     if (run?.outcome === 'passed') tally.passed += 1;
     else if (run?.outcome === 'failed') tally.failed += 1;
@@ -267,9 +302,10 @@ export function tallyRuns(runs) {
 
 /** The predicate's verdict for one case, with the inputs it used. */
 export function caseTargetVerdict(runs, options = {}) {
-  const tally = tallyRuns(runs);
+  const counted = (runs ?? []).filter(isQualificationRun);
+  const tally = tallyRuns(counted);
   const correct =
-    tally.passed + (runs ?? []).filter(run => run?.outcome === 'refused' && run.correct === true).length;
+    tally.passed + counted.filter(run => run?.outcome === 'refused' && run.correct === true).length;
   const completionRate = tally.total > 0 ? tally.scored / tally.total : 0;
   const qualityMeetsTarget = passesTargetRule({
     passed: correct,

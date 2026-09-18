@@ -261,13 +261,20 @@ export function gradeJourney(definition, trace) {
     );
   }
 
+  /* Only a trace with the agent's own terminal reaches this point: the branch above already
+   * returned `blocked` for a trace that ends without one. So an unfinished chain here is not an
+   * interruption — the agent ended the task after skipping required calls, and the case's whole
+   * question ("did it do the job?") has an answer: no. Filing it as `blocked` excluded it from the
+   * release fraction and made inaction free. Measured 2026-09-18 on the v8 campaign: 40 of 42
+   * blocked runs carried a terminal — listing-010 claimed «Η ταξινόμηση εφαρμόστηκε με επιτυχία»
+   * after two of three calls — so a fifth of the campaign was being excluded rather than failed. */
   if (sequence !== 'complete') {
     failures.push(
       `only ${called.length} of ${journey.tools.length} expected tool calls were observed in order`,
     );
     return verdict(
-      INCOMPLETE_OUTCOME,
-      `an ordered journey of ${journey.tools.length} tools was not completed: ${failures[0]}`,
+      'failed',
+      `the agent ended the task after ${called.length} of ${journey.tools.length} required tool calls: ${failures[0]}`,
     );
   }
 

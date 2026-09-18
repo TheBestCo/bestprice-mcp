@@ -28,11 +28,13 @@ import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { auditAttempts, journalPathFor } from './attempt-journal.js';
 import { currentRevision, readTrustedBaseline } from './git-baseline.js';
 import { gradeJourney } from './journey.js';
 import {
   BLOCKED_OUTCOME,
   buildScopeSigner,
+  CAMPAIGN_PURPOSES,
   caseTargetVerdict,
   classifiesAsSafetyViolation,
   cohortDimensions,
@@ -40,6 +42,7 @@ import {
   DEFAULT_TARGET_PASS_RATE,
   isNegativeCase,
   isObservedBreach,
+  isQualificationRun,
   releaseScope,
   tallyRuns,
 } from './release-policy.js';
@@ -165,7 +168,10 @@ const CORRECTION_FORBIDDEN_FIELDS = Object.freeze([
 ]);
 /* The grader this repository appends corrections with. A different grader is a supersession, not a
  * silent reinterpretation of the same records. */
-export const CORRECTION_GRADER = Object.freeze({ id: 'journey-grader', version: 1 });
+/* The graders whose corrections this ledger can read. A correction states which adjudication produced
+ * it, and v1 corrections stay readable after the v2 rule change: superseding them is a new appended
+ * correction, not a rewrite. Both versions are accepted; nothing else is. */
+export const CORRECTION_GRADER = Object.freeze({ id: 'journey-grader', versions: Object.freeze([1, 2]) });
 
 /* Native evidence names a real browser engine, and the version that rendered the page. */
 const NATIVE_BROWSER = /^(Chromium|Chrome|Google Chrome|Microsoft Edge|Firefox|Safari)\b.*\d/u;
@@ -425,9 +431,9 @@ export function validateCorrection(correction, context = {}) {
   if (!isCalendarDate(correction.date)) return 'date must be a real calendar date (YYYY-MM-DD)';
   if (
     correction.grader !== CORRECTION_GRADER.id ||
-    Number(correction.graderVersion) !== CORRECTION_GRADER.version
+    !CORRECTION_GRADER.versions.includes(Number(correction.graderVersion))
   ) {
-    return `grader must be ${CORRECTION_GRADER.id} v${CORRECTION_GRADER.version}`;
+    return `grader must be ${CORRECTION_GRADER.id} one of v${CORRECTION_GRADER.versions.join('/v')}`;
   }
   if (correction.correctedOutcome === 'passed' && correction.originalOutcome !== 'passed') {
     return 'a correction may not promote a published non-pass to passed';
@@ -609,6 +615,12 @@ export function validateRunRecord(record, context = {}) {
   }
   if (record.language !== undefined && !RUN_LANGUAGES.includes(record.language)) {
     return `language must be one of ${RUN_LANGUAGES.join(', ')}`;
+  }
+  /* What the campaign declared it was doing. Absent on records written before the field existed (the
+   * runner has always been the writer, and it now always stamps one); anything declared must be a
+   * purpose this ledger understands, and only `qualification` is counted. */
+  if (record.purpose !== undefined && !CAMPAIGN_PURPOSES.includes(record.purpose)) {
+    return `purpose must be one of ${CAMPAIGN_PURPOSES.join(', ')} when present`;
   }
   if (!EVIDENCE_PATH.test(record.evidence) || record.evidence.includes('..')) {
     return 'evidence must be a path under artifacts/ with no traversal';
@@ -857,7 +869,7 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
 
     const caseViolations = [];
     if (isNegativeCase(caseDef)) {
-      for (const run of caseRuns) {
+      for (const run of caseRuns.filter(isQualificationRun)) {
         const reason = classifiesAsSafetyViolation(run, violationMarkersFor(run));
         if (!reason) continue;
         const violation = {
@@ -934,6 +946,30 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     g.passRate = g.scoredRuns > 0 ? g.passes / g.scoredRuns : 0;
   }
 
+  /* Attempt custody: the runner's sidecar journal accounts for every journey the campaign planned,
+   * including the ones that never produced a record. An unresolved attempt or an unreadable journal
+   * line blocks the release: a ledger that cannot show what it lost is not a complete account of the
+   * campaign, and ordinary incompleteness must not read as a smaller campaign that passed. A ledger
+   * supplied as an in-memory object has no journal to audit. */
+  const attemptJournal =
+    typeof runsDatasetOrPath === 'string' ? auditAttempts(journalPathFor(runsDatasetOrPath)) : null;
+  if (attemptJournal?.blocking) {
+    /* Only lines this module can understand: a malformed entry is a JSON blob, and a problem string
+     * must stay readable. */
+    for (const line of attemptJournal.malformed) {
+      problems.push(
+        `attempt journal line ${line.line} is not readable (${line.error}): the journal cannot clear an attempt`,
+      );
+    }
+    for (const attempt of attemptJournal.unresolved) {
+      problems.push(
+        `attempt journal: ${attempt.runId} (${attempt.caseId ?? 'unknown case'}) started ${
+          attempt.startedAt ?? 'at an unrecorded time'
+        } and never recorded a verdict; reconcile it or re-run the case`,
+      );
+    }
+  }
+
   const schemaValid = problems.length === 0;
   const cohortSafetyViolations = safetyViolations.filter(violation => violation.inCohort);
   const hasSafetyViolations = cohortSafetyViolations.length > 0;
@@ -942,6 +978,7 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
   const allCasesMet = totalCases > 0 && metTargetCases === totalCases;
   const totalRuns = runsDataset.runs?.length ?? 0;
   const verifiedRuns = casesSummary.reduce((sum, cs) => sum + cs.scoredRuns, 0);
+  const excludedRuns = casesSummary.reduce((sum, cs) => sum + (cs.excluded ?? 0), 0);
 
   /* Modality tally: how many records are native evidence, and what the rest claim to be. Counting
    * it here (not only inside the per-record problems) keeps the release gate honest even if a
@@ -1036,6 +1073,18 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     nonNativeRuns,
     nativeOnly,
     releaseReady,
+    /* Custody of the campaign's attempts, and how many records were left out of the fraction because
+     * they do not claim to be qualification evidence. Both are reported, never inferred. */
+    attemptJournal: attemptJournal
+      ? {
+          journalPath: attemptJournal.journalPath,
+          entries: attemptJournal.attempts,
+          unresolved: attemptJournal.unresolved.length,
+          malformed: attemptJournal.malformed.length,
+          blocking: attemptJournal.blocking,
+        }
+      : null,
+    excludedRuns,
     servedImplementation,
     taskReviewRequired: true,
     releasePolicy: {
@@ -1147,6 +1196,19 @@ export function printAuditTable(result) {
             : 'NONE';
     console.log(`  Served Build:       ${servedVerdict}`);
   }
+  console.log(
+    `  Verified runs:      ${result.verifiedRuns ?? result.casesSummary.reduce((sum, cs) => sum + cs.scoredRuns, 0)}`,
+  );
+  if (result.excludedRuns > 0) {
+    console.log(
+      `  Not counted:        ${result.excludedRuns} record(s) declare a purpose other than qualification (diagnostic or stress)`,
+    );
+  }
+  if (result.attemptJournal?.blocking) {
+    console.log(
+      `  Attempt custody:    ${result.attemptJournal.unresolved} unresolved attempt(s), ${result.attemptJournal.malformed} unreadable journal line(s) — BLOCKING`,
+    );
+  }
   console.log(`  Release Ready:      ${result.releaseReady ? 'YES' : 'NO'}`);
   /* Scope, stated where the verdict is read. Both surfaces ARE live in
    * production — the storefront serves the in-page tools to every visitor whose
@@ -1158,7 +1220,7 @@ export function printAuditTable(result) {
    * "the surface is dark" in review and in handoffs, which is the opposite of
    * what the evidence shows. */
   console.log(
-    '  Scope:              serving status is independent. Both surfaces are LIVE; this audits qualification evidence only.'
+    '  Scope:              serving status is independent. Both surfaces are LIVE; this audits qualification evidence only.',
   );
   console.log('='.repeat(92));
 

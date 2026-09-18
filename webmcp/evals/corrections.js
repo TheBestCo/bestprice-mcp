@@ -29,8 +29,14 @@ const EVAL_DIR = fileURLToPath(new URL('./', import.meta.url));
 export const CASES_PATH = join(EVAL_DIR, 'natural-language-cases.v2.json');
 export const CORRECTIONS_LEDGER_PATH = join(EVAL_DIR, 'runs.v2.json');
 
-/** The grader identity a correction was produced under: a grader change can supersede one. */
-export const GRADER = Object.freeze({ id: 'journey-grader', version: 1 });
+/**
+ * The grader identity a correction was produced under: a grader change can supersede one.
+ *
+ * v2 (2026-09-18): a trace that ends with the agent's own terminal but skips required tool calls is
+ * `failed`, not `blocked`. v1 read it as an unfinished journey, which excluded those runs from the
+ * release fraction — 40 of the 42 blocked runs in the v8 campaign carried a terminal.
+ */
+export const GRADER = Object.freeze({ id: 'journey-grader', version: 2 });
 
 const FULL_REVISION = /^[0-9a-f]{40}$/u;
 

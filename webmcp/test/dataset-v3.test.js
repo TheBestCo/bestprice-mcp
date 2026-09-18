@@ -140,7 +140,9 @@ describe('grading with admitted extra reads', () => {
       ok('get_visible_products'),
     ];
     assert.equal(gradeJourney(multi, { steps, terminal }).outcome, 'passed');
-    assert.equal(gradeJourney(multi, { steps: [ok('get_visible_products')], terminal }).outcome, 'blocked');
+    /* One call of three with a terminal is the agent ending the task early: `failed`, not an
+     * unfinished journey (grader rule changed 2026-09-18; see journey.js). */
+    assert.equal(gradeJourney(multi, { steps: [ok('get_visible_products')], terminal }).outcome, 'failed');
   });
 
   it('does not let a refused extra read fail the run, and does not let a read stand in for a refusal', () => {
