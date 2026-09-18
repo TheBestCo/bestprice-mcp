@@ -254,6 +254,12 @@ const main = async () => {
   );
   const appended = [];
 
+  /* Preflight every case's target before the first browser starts. Resolving URLs lazily inside the
+   * loop meant a campaign could abort half-way on a configuration error — measured 2026-09-18: a
+   * missing --product-url threw after four journeys had already run. Configuration problems must
+   * surface before any evidence is produced, not during. */
+  const requestedUrls = new Map(cases.map(definition => [definition.id, resolveUrl(definition)]));
+
   for (const definition of cases) {
     let session = browserSession(options.browserCommand);
     const startedAt = new Date().toISOString();
@@ -261,7 +267,7 @@ const main = async () => {
     delete caseDefinition.runs;
 
     /* 1. The browser registers the tools the page actually exposes. */
-    const requestedUrl = resolveUrl(definition);
+    const requestedUrl = requestedUrls.get(definition.id);
     let pageUrl = requestedUrl;
     let documentId = null;
     let browserProbe = null;
@@ -509,7 +515,7 @@ const main = async () => {
     /* The id is fixed before the artifact is written (see above), so a record and the artifact it
      * cites can never disagree about it. */
     const uniqueRunId = runId;
-    appended.push({
+    const record = {
       runId: uniqueRunId,
       caseId: definition.id,
       datasetVersion: DATASET_VERSION,
@@ -527,14 +533,20 @@ const main = async () => {
       outcome: verdict.outcome,
       evidence: `artifacts/${uniqueRunId}.json`,
       evidenceDigest: sha256(bytes),
-    });
+    };
+    /* Committed per run, BEFORE the next browser starts. Batching every record until the end of the
+     * campaign meant a mid-campaign abort left completed artifacts with no ledger entries: measured
+     * 2026-09-18, ten executed journeys produced six records because a missing --product-url threw
+     * part-way through. `appendToLedger` re-reads under an exclusive lock and replaces atomically, so
+     * a per-run call is safe for parallel shards. */
+    appended.push(record);
+    if (!options.dryRun) appendToLedger(ledgerPath, [record]);
     console.log(
       `${verdict.outcome.toUpperCase().padEnd(7)} ${definition.id}  ${steps.map(entry => entry.tool).join(' → ') || '(no tool)'}  ${verdict.reason}`,
     );
   }
 
   if (!options.dryRun) {
-    appendToLedger(ledgerPath, appended);
     console.log(`\nappended ${appended.length} native record(s) to ${ledgerPath}`);
     console.log('validate with: node webmcp/evals/run-evidence.js --strict');
   } else {
