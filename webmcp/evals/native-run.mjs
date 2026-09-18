@@ -73,6 +73,8 @@ const DATASETS = Object.freeze({
   v6: { cases: join(EVAL_DIR, 'natural-language-cases.v6.json'), ledger: join(EVAL_DIR, 'runs.v6.json') },
   /* 6.0.0 with home-003, multi-006, multi-002 and multi-008 corrected; see dataset-v7.js. */
   v7: { cases: join(EVAL_DIR, 'natural-language-cases.v7.json'), ledger: join(EVAL_DIR, 'runs.v7.json') },
+  /* 7.0.0 with listing-010 and neg-007 corrected; see dataset-v8.js. */
+  v8: { cases: join(EVAL_DIR, 'natural-language-cases.v8.json'), ledger: join(EVAL_DIR, 'runs.v8.json') },
 });
 const SHELL_TIMEOUT_MS = 180_000;
 /* A journey budget, not a target: a case that needs more is `blocked` with that reason, and the
@@ -199,7 +201,7 @@ const main = async () => {
   const maxSteps = Number.parseInt(options.maxSteps, 10);
   if (!Number.isInteger(maxSteps) || maxSteps < 1) throw new Error('--max-steps must be a positive integer');
 
-  const selectedDataset = DATASETS[options.dataset ?? 'v7'];
+  const selectedDataset = DATASETS[options.dataset ?? 'v8'];
   if (!selectedDataset) throw new Error(`--dataset must be one of ${Object.keys(DATASETS).join(', ')}`);
   const dataset = JSON.parse(readFileSync(selectedDataset.cases, 'utf8'));
   const DATASET_VERSION = dataset.datasetVersion;

@@ -571,6 +571,7 @@ describe('evaluation harness and test driver', () => {
       { runsFile: fileURLToPath(new URL('../evals/runs.v5.json', import.meta.url)) },
       { runsFile: fileURLToPath(new URL('../evals/runs.v6.json', import.meta.url)) },
       { runsFile: fileURLToPath(new URL('../evals/runs.v7.json', import.meta.url)) },
+      { runsFile: fileURLToPath(new URL('../evals/runs.v8.json', import.meta.url)) },
       /* A version that does not exist yet. The list of ledgers used to be hand-extended, and 4.0.0's
        * was added too late: this very test then wrote 94 demo records into runs.v4.json. The
        * refusal is now by shape, so it must already hold for a ledger nobody has created. The
@@ -585,14 +586,13 @@ describe('evaluation harness and test driver', () => {
     }
     /* The store holds real native runs now, so "untouched" is not emptiness: every byte
      * in it is cited by a native ledger record, and a refused demo run adds none. */
-    /* Every ledger that cites this store, so a corrected dataset's runs count as published too. */
-    const published = [
-      ...readEvidence(2).runs,
-      ...readEvidence(3).runs,
-      ...readEvidence(4).runs,
-      ...readEvidence(5).runs,
-      ...readEvidence(6).runs,
-    ];
+    /* Every ledger that cites this store, found by shape like the quarantine above. The list used
+     * to be hand-extended too, and 7.0.0's was never added: once its runs were committed
+     * (2026-09-18, 94c48f3) this assertion read 940 published artifacts as demo leaks. */
+    const published = readdirSync(new URL('../evals/', import.meta.url))
+      .map(name => /^runs\.v(\d+)\.json$/u.exec(name)?.[1])
+      .filter(Boolean)
+      .flatMap(version => readEvidence(version).runs);
     const cited = new Set(published.map(record => record.evidence.split('/').pop()));
     /* Correction artifacts are adjudications of runs, not runs: they are named after one and are
      * never citable as execution evidence. */

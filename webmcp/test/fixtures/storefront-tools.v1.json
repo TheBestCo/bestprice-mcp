@@ -5,7 +5,7 @@
   "extractedFrom": [
     {
       "path": "pages/item/webmcp/tools.js",
-      "sha256": "31c80c33a90309e790c4e026bc66132fcc08a8286bac152f4cead89548f3cfbf"
+      "sha256": "c21e000656b826e0acff469b162bb872147a56a4164d7a4e3fb7e95f49206235"
     },
     {
       "path": "pages/search/webmcp/tools.js",
@@ -17,7 +17,7 @@
     }
   ],
   "extraction": "webmcp/src/contract-parity.js extractToolDefinitions (object literals carrying name + inputSchema, module-scope schema constants resolved)",
-  "definitionsDigest": "645ef1119c85c3d51242bd4eac689ed1565583fd1b170e0d24c7aab0f2a8561d",
+  "definitionsDigest": "1336f8b684d4929db184bb17c53683414b84cf1524d2049f18092d8d936d7b47",
   "tools": [
     "get_page_product",
     "compare_page_offers",
@@ -92,7 +92,7 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 72,
-            "description": "A fact name returned by a previous call. Returns that fact in full; pass its section too when the name appears in more than one section."
+            "description": "A specification fact name, such as one a previous call returned. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section."
           }
         },
         "additionalProperties": false
