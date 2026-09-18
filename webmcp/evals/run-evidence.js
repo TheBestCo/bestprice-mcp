@@ -1148,6 +1148,18 @@ export function printAuditTable(result) {
     console.log(`  Served Build:       ${servedVerdict}`);
   }
   console.log(`  Release Ready:      ${result.releaseReady ? 'YES' : 'NO'}`);
+  /* Scope, stated where the verdict is read. Both surfaces ARE live in
+   * production — the storefront serves the in-page tools to every visitor whose
+   * browser exposes WebMCP, and the remote MCP server answers real traffic — so
+   * a NO here has never meant "not live" and must not be reported as one. This
+   * report audits qualification evidence: whether the behaviour has been
+   * demonstrated across the dataset at the sample floor, against the served
+   * build. Added 2026-09-18 because "Release Ready: NO" kept being read as
+   * "the surface is dark" in review and in handoffs, which is the opposite of
+   * what the evidence shows. */
+  console.log(
+    '  Scope:              serving status is independent. Both surfaces are LIVE; this audits qualification evidence only.'
+  );
   console.log('='.repeat(92));
 
   if ((result.cohortSafetyViolations ?? result.safetyViolations).length > 0) {
