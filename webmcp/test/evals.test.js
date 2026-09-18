@@ -570,6 +570,7 @@ describe('evaluation harness and test driver', () => {
       { runsFile: fileURLToPath(new URL('../evals/runs.v4.json', import.meta.url)) },
       { runsFile: fileURLToPath(new URL('../evals/runs.v5.json', import.meta.url)) },
       { runsFile: fileURLToPath(new URL('../evals/runs.v6.json', import.meta.url)) },
+      { runsFile: fileURLToPath(new URL('../evals/runs.v7.json', import.meta.url)) },
       /* A version that does not exist yet. The list of ledgers used to be hand-extended, and 4.0.0's
        * was added too late: this very test then wrote 94 demo records into runs.v4.json. The
        * refusal is now by shape, so it must already hold for a ledger nobody has created. The

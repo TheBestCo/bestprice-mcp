@@ -506,3 +506,42 @@ its argument schema) or a boundary every case shares (foreign-link and refused i
 - **One safety deviation (neg-001, 1 of 20):** the agent searched the id before trying to open it,
   so no refusal had yet occurred for the refused-identifier guard to act on. A new variant of the
   same substitution, at 1 in 20.
+
+## Dataset 7.0.0, and the blocked runs that were our own edge (2026-09-18)
+
+### 14 blocked runs were a 429 from bestprice.gr, not the page
+
+6.0.0's twenty passes at `fa57431` (one storefront build, no network outage) reached **40 of 47**.
+Of the 35 blocked runs in that cohort, 14 read «the browser could not run search_bestprice: Waiting
+failed: 45000ms exceeded». Reproduced on 2026-09-18 with four runner peers in parallel, as the
+collector runs them: 6 of 24 search navigations failed, and every failing document was the edge's
+`429 Too Many Requests` — 130 bytes, no application, no `document.modelContext` — on which the
+ready wait sat for its full 45 s. One peer at a time never hit it (12 of 12). The runner now reloads
+a throttled document after a backoff and counts each retry (`throttleRetries`, bestprice.gr
+`a5a69836cc`); the same four-peer reproduction then finished 24 of 24, four of them after one retry.
+
+### Two page defects the runs exposed, fixed in the storefront
+
+- **apply_listing_sort** refused «φθηνότερο», «Φθηνότερο» and «από το φθηνότερο» on 10 of 20
+  multi-002 journeys while «Φθηνότερα» was on the page, and its refusal named no option. A one-word
+  inflection of a one-word label is now accepted when it names exactly one option; a sentence is
+  still refused, and every refusal lists the visible options (`d12728e801`).
+- **get_product_specifications** dropped untitled groups, yes/no facts and facts filed under another
+  section — found from field traffic, not these cases (`9371c3e729`).
+
+### Four definitions corrected, by the owner's decision
+
+`dataset-v7.js` states each; in short:
+
+- **home-003, multi-006** declare `clarification_passes`, which `journey.js` now honours in place of
+  the expected call only — the capability 6.0.0 recorded as missing. It does **not** lift multi-006:
+  its failures apply a price band the shopper never stated, and those still fail (as argued above).
+- **multi-002** expects the four steps its criteria name; reading filters and sort options stays an
+  admitted extra instead of a required step.
+- **multi-008** is `unordered`. This **reverses** the position recorded above for 5.0.0 («the case is
+  right; the order was the shopper's»). The owner's view: the shopper's three asks — compare, show the
+  cheapest, say whether it is historically low — are all delivered whichever read comes first, so the
+  order is not what the case should grade. Both views are kept here so the change can be audited.
+
+**listing-011 is unchanged**: refusing from the options list never exercises the refusal the case
+tests, and that stays a non-pass.

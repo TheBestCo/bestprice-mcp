@@ -239,6 +239,19 @@ export function gradeJourney(definition, trace) {
     );
   }
 
+  /* A case whose criteria accept a clarifying question as the whole reply declares it
+   * (`clarification_passes`, dataset 7.0.0: home-003 «Θέλω κάτι καλό για φωτογραφίες», multi-006
+   * «ένα δώρο για τη μητέρα μου»). Without it the grader could express only one of their two
+   * terminals: a question in place of the expected call was `blocked` as an unfinished journey. It
+   * passes only in place of that call — nothing it did call contradicted the case, or it already
+   * failed above — and a case that does not declare it is graded exactly as before. */
+  if (definition?.clarification_passes === true && terminal.type === 'clarification' && called.length === 0) {
+    return verdict(
+      'passed',
+      'the agent asked a clarifying question, which this case accepts in place of a call',
+    );
+  }
+
   if (sequence !== 'complete') {
     failures.push(
       `only ${called.length} of ${journey.tools.length} expected tool calls were observed in order`,
