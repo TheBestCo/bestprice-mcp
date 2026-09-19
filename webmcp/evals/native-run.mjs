@@ -513,6 +513,12 @@ const main = async () => {
           caseId: definition.id,
           datasetVersion: DATASET_VERSION,
           evidenceLayer: NATIVE_EVIDENCE_LAYER,
+          /* The artifact is the run's independent witness: the validator makes it repeat the
+           * record's purpose and custody version, so a record cannot be relabelled as
+           * qualification evidence (or downgraded to the legacy path) without the bytes
+           * disagreeing. Stamped from the same `purpose` the record and journal carry. */
+          purpose,
+          custodyVersion: 2,
           agent: options.agentName,
           model: options.agentModel,
           browser: browserIdentity,
