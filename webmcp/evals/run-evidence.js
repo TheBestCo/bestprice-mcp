@@ -343,7 +343,7 @@ export function resolveEvidencePath(artifactRoot, evidence) {
  * identity. One file may hold several separately identified executions (a session trace, say), so
  * sharing a file is allowed; sharing an *execution* under a new runId is not.
  */
-function checkArtifact(record, { artifactRoot, seenExecutions }) {
+function checkArtifact(record, { artifactRoot, seenExecutions, legacyRunIds }) {
   if (!artifactRoot) return null;
   let bytes;
   try {
@@ -374,6 +374,17 @@ function checkArtifact(record, { artifactRoot, seenExecutions }) {
   for (const field of EXECUTION_FIELDS) {
     if (execution[field] !== record[field]) {
       return `${record.evidence} execution ${record.runId} disagrees with the record on ${field}`;
+    }
+  }
+  /* Purpose/custody were introduced after the first published ledgers. They are
+   * mandatory and artifact-bound for every NEW run, while trusted merge-base
+   * records retain their historical bytes unchanged. */
+  if (legacyRunIds?.has(record.runId) !== true) {
+    if (execution.purpose !== record.purpose) {
+      return `${record.evidence} execution ${record.runId} disagrees with the record on purpose`;
+    }
+    if (execution.custodyVersion !== record.custodyVersion) {
+      return `${record.evidence} execution ${record.runId} disagrees with the record on custodyVersion`;
     }
   }
   if (seenExecutions) {
@@ -578,12 +589,21 @@ export function validateCorrections(ledger, context = {}) {
  *   seenExecutions?: Map<string, string>,
  *   artifactRoot?: string,
  *   implementation?: { revision: string, fingerprint: string } | null,
+ *   legacyRunIds?: Set<string>,
  * }} context
  * @returns {string|null} the first problem, or null when the record is acceptable
  */
 export function validateRunRecord(record, context = {}) {
-  const { caseIds, caseDigests, datasetVersion, seenRunIds, seenExecutions, artifactRoot, implementation } =
-    context;
+  const {
+    caseIds,
+    caseDigests,
+    datasetVersion,
+    seenRunIds,
+    seenExecutions,
+    artifactRoot,
+    implementation,
+    legacyRunIds,
+  } = context;
   if (!record || typeof record !== 'object' || Array.isArray(record)) return 'record must be an object';
   /* Modality first: a deterministic run must not be accepted on shape alone. */
   const modalityProblem = checkModality(record);
@@ -616,11 +636,22 @@ export function validateRunRecord(record, context = {}) {
   if (record.language !== undefined && !RUN_LANGUAGES.includes(record.language)) {
     return `language must be one of ${RUN_LANGUAGES.join(', ')}`;
   }
-  /* What the campaign declared it was doing. Absent on records written before the field existed (the
-   * runner has always been the writer, and it now always stamps one); anything declared must be a
-   * purpose this ledger understands, and only `qualification` is counted. */
+  /* New evidence must prove its campaign purpose at the artifact boundary.
+   * Only records already present in the trusted merge-base are grandfathered:
+   * deleting `purpose` from a newly copied stress record cannot turn it into
+   * release evidence. */
+  const legacyPublished = legacyRunIds?.has(record.runId) === true;
   if (record.purpose !== undefined && !CAMPAIGN_PURPOSES.includes(record.purpose)) {
     return `purpose must be one of ${CAMPAIGN_PURPOSES.join(', ')} when present`;
+  }
+  if (!legacyPublished && !CAMPAIGN_PURPOSES.includes(record.purpose)) {
+    return `new records must declare purpose as one of ${CAMPAIGN_PURPOSES.join(', ')}`;
+  }
+  if (record.custodyVersion !== undefined && record.custodyVersion !== 2) {
+    return 'custodyVersion must be 2 when present';
+  }
+  if (!legacyPublished && record.custodyVersion !== 2) {
+    return 'new records must declare custodyVersion 2';
   }
   if (!EVIDENCE_PATH.test(record.evidence) || record.evidence.includes('..')) {
     return 'evidence must be a path under artifacts/ with no traversal';
@@ -636,7 +667,7 @@ export function validateRunRecord(record, context = {}) {
   ) {
     return `implementationFingerprint does not match ${IMPLEMENTATION_FILES.join(' + ')} at revision ${implementation.revision}`;
   }
-  return checkArtifact(record, { artifactRoot, seenExecutions });
+  return checkArtifact(record, { artifactRoot, seenExecutions, legacyRunIds });
 }
 
 /**
@@ -664,6 +695,10 @@ export function validateEvidenceFile(ledger, context = {}) {
     problems.push(`datasetVersion must be ${datasetVersion}`);
   }
   const knownCases = caseIds ?? (caseDigests ? new Set(caseDigests.keys()) : undefined);
+  /* Records already published at the trusted merge-base are the only legacy
+   * executions allowed to omit the custody-v2 fields. A newly imported record
+   * cannot become "legacy" merely by deleting purpose/custody metadata. */
+  const legacyRunIds = new Set((baselineRuns ?? []).map(record => record?.runId).filter(Boolean));
   const seenRunIds = new Set();
   const seenExecutions = new Map();
   for (const [index, record] of ledger.runs.entries()) {
@@ -675,6 +710,7 @@ export function validateEvidenceFile(ledger, context = {}) {
       seenExecutions,
       artifactRoot,
       implementation,
+      legacyRunIds,
     });
     if (problem) problems.push(`runs[${index}]: ${problem}`);
     else seenRunIds.add(record.runId);
