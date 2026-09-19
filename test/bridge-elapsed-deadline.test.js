@@ -118,3 +118,50 @@ test('request deadline includes shared lazy initialization elapsed time', async 
   await assert.rejects(fixture.host.listTools(), error => error.code === ErrorCode.RequestTimeout);
   assert.equal(calls, 1);
 });
+
+for (const status of [400, 503]) {
+  test(`late handshake HTTP ${status} cannot mask the elapsed initialization deadline`, async t => {
+    let clock = 0;
+    t.mock.method(performance, 'now', () => clock);
+    const fixture = await setup(t, body => {
+      if (body?.method === 'initialize') {
+        clock += 1000;
+        return new Response('rejected', { status });
+      }
+    });
+    await assert.rejects(fixture.bridge.connectRemote(), error => error.code === ErrorCode.RequestTimeout);
+    assert.equal(fixture.bridge.client(), undefined);
+  });
+}
+
+test('a recovery handshake failure cannot mask the original request deadline', async t => {
+  let clock = 0;
+  let initializations = 0;
+  t.mock.method(performance, 'now', () => clock);
+  const fixture = await setup(t, body => {
+    if (body?.method === 'initialize' && ++initializations > 1) {
+      clock += 500;
+      return new Response('temporarily unavailable', { status: 503 });
+    }
+    if (body?.method === 'tools/list') {
+      clock += 600;
+      return new Response('session expired', { status: 404 });
+    }
+  });
+  await fixture.start();
+  await assert.rejects(fixture.host.listTools(), error => error.code === ErrorCode.RequestTimeout);
+  assert.equal(initializations, 2);
+});
+
+test('explicit close retains cancellation precedence even when the clock also expires', async t => {
+  let clock = 0;
+  t.mock.method(performance, 'now', () => clock);
+  const fixture = await setup(t, body => {
+    if (body?.method === 'initialize') {
+      clock += 1000;
+      fixture.bridge.close();
+    }
+  });
+  await assert.rejects(fixture.bridge.connectRemote(), error => error.code === ErrorCode.ConnectionClosed);
+  assert.equal(fixture.bridge.client(), undefined);
+});
