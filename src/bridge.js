@@ -398,3 +398,4 @@ export function createBridge({
   };
 
   return { connectRemote, start, close, client: () => client };
+}
