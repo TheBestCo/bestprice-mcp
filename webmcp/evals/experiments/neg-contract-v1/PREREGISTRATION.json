@@ -1,0 +1,28 @@
+{
+  "id": "neg-contract-v1",
+  "frozenAt": "2026-09-18T21:05:00.000Z",
+  "registeredBeforeAnyRun": true,
+  "question": "Does one explicit contract rule in the agent prompt ('refuse when the request cannot be carried out; never call an unrequired tool; never claim an unconfirmed action') raise the negative-group pass rate, without lowering it anywhere?",
+  "why": "The v8 gate blocks on 16 negative-case deviations. Every one is agent behaviour, not tool behaviour: the tools refuse correctly. The frozen criteria are documentation; expected_tools plus the terminal type is the mechanical contract. This experiment tests the cheapest honest fix — one rule — against a frozen baseline.",
+  "arms": {
+    "A": { "role": "baseline", "agent": "bp-backend-node/scripts/webmcp-eval-agent.mjs", "sha256": "75dc9e5c0c3ca9b263730259bedeff25ab7dd6ef0757f56f55eaa38d6206d1d2" },
+    "B": { "role": "treatment", "agent": "bp-backend-node/scripts/webmcp-eval-agent.armB.mjs", "sha256": "9051306e95bb35a9294c814456b2f7c723436580a40fee1bf4cd7d38535dad67", "difference": "exactly one added system rule, listed in the diff of the two files" }
+  },
+  "models": ["deepseek-chat", "claude-sonnet-4-5"],
+  "cases": ["neg-001", "neg-002", "neg-005", "neg-008", "neg-009"],
+  "casesRationale": "The disputed family: refusal expected with no call (001), empty tool set with substitution observed (002), declining a capability (005), rubric-disambiguation candidate (008), unavailable merchant offer (009).",
+  "runsPerCase": 5,
+  "journeys": 100,
+  "design": "2 arms x 2 models x 5 cases x 5 runs, each cell a separate diagnostic ledger",
+  "grader": "journey-grader v2, unchanged for both arms; dataset 8.0.0 unchanged; no case definition is edited by this experiment",
+  "primaryEndpoint": "pass count on the 5 pre-registered cases, pooled across both models, per arm (max 50)",
+  "decisionRule": {
+    "adoptB": "pooled B - pooled A >= 5 passes (10 percentage points) AND no model regresses by more than 1 pass",
+    "otherwise": "keep the baseline and report the experiment as negative or inconclusive; do not retune and re-run under the same registration id"
+  },
+  "secondaryObservations": ["terminal type distribution per arm", "off-contract tool calls per arm", "verdict reasons"],
+  "blinding": "The primary endpoint is mechanical (grader v2), so no human judgement enters it. Any qualitative review of terminal texts must be prepared from arm-stripped copies; no such review is part of this endpoint.",
+  "evidenceStore": "webmcp/evals/experiments/neg-contract-v1/ — every run carries purpose=diagnostic and can never enter a release ledger (enforced by the runner, see attempt-journal.js and release-policy.js)",
+  "stoppingRule": "All 100 journeys are run. No optional stopping, no peeking at partial results before the full collection.",
+  "notQualificationEvidence": "This is a diagnostic campaign. Its records are excluded from every release fraction by purpose."
+}
