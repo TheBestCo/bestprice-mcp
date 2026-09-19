@@ -91,7 +91,13 @@ export function appendAttempt(journalPath, entry) {
  * re-entered loop, not a second journey.
  */
 export function unresolvedAttempts(journalPath) {
-  const { attempts } = readAttempts(journalPath);
+  return unresolvedFromEntries(readAttempts(journalPath).attempts);
+}
+
+/* An audit must derive every field from one read. A second read may observe an append and mix
+ * unresolved attempts from a later snapshot with starts, terminals and malformed lines from the
+ * earlier one. This is snapshot consistency, not a lock on an actively running campaign. */
+function unresolvedFromEntries(attempts) {
   const phaseByRunId = new Map();
   const startByRunId = new Map();
   for (const entry of attempts) {
@@ -138,22 +144,27 @@ export function reconcileAttempts(journalPath, options = {}) {
  * What the validator needs to say about a journal.
  *
  * `blocking` is the whole point: unresolved attempts and unreadable lines both mean the ledger
- * cannot be read as a complete account of the campaign.
+ * cannot be read as a complete one.
  *
  * @returns {{journalPath: string, found: boolean, attempts: number, starts: number, unresolved: Array<object>, malformed: Array<object>, blocking: boolean, reasons: Array<string>}}
  */
 export function auditAttempts(journalPath, runs = []) {
   const { attempts, malformed } = readAttempts(journalPath);
-  const unresolved = unresolvedAttempts(journalPath);
+  const unresolved = unresolvedFromEntries(attempts);
   const reasons = [];
   const starts = new Map();
   const finals = new Map();
   const PURPOSES = new Set(['qualification', 'diagnostic', 'stress']);
   const OUTCOMES = new Set(['passed', 'failed', 'refused', 'blocked']);
-  const validInstant = value =>
-    typeof value === 'string' &&
-    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/u.test(value) &&
-    !Number.isNaN(Date.parse(value));
+  const validInstant = value => {
+    if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/u.test(value)) {
+      return false;
+    }
+    const parsed = new Date(value);
+    /* Date.parse normalizes February 30 and 24:00 into a different day. Evidence must name a
+     * real instant as written, not merely a string the runtime can normalize. */
+    return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 19) === value.slice(0, 19);
+  };
 
   for (const line of malformed) {
     reasons.push(
@@ -210,6 +221,13 @@ export function auditAttempts(journalPath, runs = []) {
       if (!validInstant(entry.finishedAt)) {
         reasons.push(`attempt ${entry.runId} custody-v2 ${entry.phase} has invalid finishedAt`);
       }
+      if (
+        validInstant(opened.startedAt) &&
+        validInstant(entry.finishedAt) &&
+        Date.parse(entry.finishedAt) < Date.parse(opened.startedAt)
+      ) {
+        reasons.push(`attempt ${entry.runId} ${entry.phase} occurs before its start`);
+      }
       if (entry.phase === 'finish' && !OUTCOMES.has(entry.outcome)) {
         reasons.push(`attempt ${entry.runId} custody-v2 finish has invalid outcome`);
       }
@@ -237,6 +255,16 @@ export function auditAttempts(journalPath, runs = []) {
       reasons.push(`custody-v2 run ${record.runId} has no journal finish`);
       continue;
     }
+    /* The record is an independent v2 witness. Deleting the version on BOTH journal lines must
+     * not downgrade this run into the legacy path and disable validation of its timestamps. */
+    if (opened.custodyVersion !== 2 || closed.custodyVersion !== 2) {
+      reasons.push(`custody-v2 run ${record.runId} disagrees with its journal custodyVersion`);
+    }
+    /* The outer record validator requires startedAt; accept minimal records in this helper, but
+     * when an execution time is supplied it must bind to the same journal start, byte-for-byte. */
+    if (record.startedAt !== undefined && opened.startedAt !== record.startedAt) {
+      reasons.push(`custody-v2 run ${record.runId} disagrees with its journal startedAt`);
+    }
     if (
       opened.caseId !== record.caseId ||
       opened.purpose !== record.purpose ||
@@ -251,7 +279,11 @@ export function auditAttempts(journalPath, runs = []) {
   for (const [runId, closed] of finals) {
     if (closed.custodyVersion !== 2 || closed.phase !== 'finish') continue;
     const record = records.get(runId);
-    if (!record) reasons.push(`custody-v2 attempt ${runId} finished but has no durable run record`);
+    if (!record) {
+      reasons.push(`custody-v2 attempt ${runId} finished but has no durable run record`);
+    } else if (record.custodyVersion !== 2) {
+      reasons.push(`custody-v2 attempt ${runId} disagrees with its durable record custodyVersion`);
+    }
   }
 
   return {
