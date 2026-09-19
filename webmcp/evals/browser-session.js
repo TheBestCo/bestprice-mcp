@@ -21,12 +21,28 @@ const CLOSE_GRACE_MS = 5000;
 const KILL_WAIT_MS = 2000;
 const POLL_MS = 25;
 const POSIX = process.platform !== 'win32';
+const MAX_TIMER_MS = 2_147_483_647;
+const validateInterval = (value, name, minimum = 1) => {
+  if (!Number.isSafeInteger(value) || value < minimum || value > MAX_TIMER_MS) {
+    throw new TypeError(`${name} must be an integer from ${minimum} to ${MAX_TIMER_MS}`);
+  }
+};
 
 export function browserSession(
   command,
   timeoutMs = 60000,
   { closeGraceMs = CLOSE_GRACE_MS, maxFrameBytes = MAX_FRAME_BYTES } = {},
 ) {
+  // Reject invalid bounds before creating any processes. NaN/Infinity must not disable caps.
+  validateInterval(timeoutMs, 'timeoutMs');
+  validateInterval(closeGraceMs, 'closeGraceMs', 0);
+  if (!Number.isSafeInteger(maxFrameBytes) || maxFrameBytes < 1) {
+    throw new TypeError('maxFrameBytes must be a positive safe integer');
+  }
+  // Preserve a leading BOM so JSON.parse still rejects it, as it did before. Validation must
+  // never silently repair bytes that will later be recorded as browser observations.
+  const decoder = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true });
+  let serializing = false;
   const child = spawn('/bin/sh', ['-c', command], { stdio: ['pipe', 'pipe', 'pipe'], detached: POSIX });
   let state = 'open';
   let failure = null;
@@ -111,6 +127,8 @@ export function browserSession(
   };
 
   const poison = error => {
+    frame = [];
+    frameBytes = 0;
     if (state === 'open') {
       state = 'poisoned';
       failure = error;
@@ -156,10 +174,18 @@ export function browserSession(
         poison(new Error(`browser reply exceeded ${maxFrameBytes} bytes`));
         return;
       }
-      const line = Buffer.concat(frame).toString('utf8');
+      const bytes = Buffer.concat(frame, frameBytes);
       frame = [];
       frameBytes = 0;
+      let line;
+      try {
+        line = decoder.decode(bytes);
+      } catch {
+        poison(new Error('invalid browser reply: invalid UTF-8'));
+        return;
+      }
       onLine(line);
+      if (state !== 'open') return;
     }
     if (start < chunk.length) {
       frame.push(chunk.subarray(start));
@@ -195,7 +221,21 @@ export function browserSession(
           ),
         );
       }
-      if (pending) return Promise.reject(new Error('browser session is busy'));
+      if (pending || serializing) return Promise.reject(new Error('browser session is busy'));
+      // Serialization is local work: a rejected input has not reached the browser and must not
+      // reserve a pending reply or poison the next request. Reserve against toJSON/getter
+      // reentrancy, and recheck close after serialization before dispatching anything.
+      let serialized;
+      serializing = true;
+      try {
+        serialized = JSON.stringify(payload);
+        if (typeof serialized !== 'string') throw new TypeError('browser request must serialize to JSON');
+      } catch (error) {
+        return Promise.reject(error);
+      } finally {
+        serializing = false;
+      }
+      if (state !== 'open') return Promise.reject(new Error('browser session is closed'));
       return new Promise((resolve, reject) => {
         pending = {
           resolve,
@@ -210,9 +250,13 @@ export function browserSession(
             timeoutMs,
           ),
         };
-        child.stdin.write(`${JSON.stringify(payload)}\n`, error => {
-          if (error) poison(withDiagnostics(`browser session input failed: ${error.message}`));
-        });
+        try {
+          child.stdin.write(`${serialized}\n`, error => {
+            if (error) poison(withDiagnostics(`browser session input failed: ${error.message}`));
+          });
+        } catch (error) {
+          poison(withDiagnostics(`browser session input failed: ${error.message}`));
+        }
       });
     },
     /** Idempotent. Resolves once every process this session started has exited. */
