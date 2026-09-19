@@ -112,7 +112,7 @@ describe('execution evidence ledger', () => {
     delete stripped.purpose;
     delete stripped.custodyVersion;
     assert.match(
-      validateEvidenceFile(ledger([stripped]), context())[0],
+      validateEvidenceFile(ledger([stripped]), { ...context(), requireCustodyV2: true })[0],
       /new records must declare purpose/u,
       'a newly imported record cannot impersonate legacy evidence by deleting custody metadata',
     );
