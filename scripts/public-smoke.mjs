@@ -132,7 +132,8 @@ export async function runPublicSmoke({
     try {
       response = await waitFor(fetchImpl(source, { headers, redirect: 'manual', signal }), signal, cancel);
       event.status = response.status;
-      event.revision = response.headers.get('x-bestprice-revision');
+      const reportedRevision = response.headers.get('x-bestprice-revision');
+      event.revision = /^[a-f0-9]{40}$/u.test(reportedRevision ?? '') ? reportedRevision : null;
       // Record rejected responses too, but only successful responses may attest the serving revision.
       if (response.ok) {
         ensure(/^[a-f0-9]{40}$/u.test(event.revision ?? ''), 'MISSING_REVISION');
@@ -190,6 +191,12 @@ export async function runPublicSmoke({
         checkTime();
         const server = client.getServerVersion();
         ensure(server?.name === 'bestprice-agent-commerce', 'SERVER_IDENTITY_DRIFT');
+        ensure(
+          typeof server.version === 'string' &&
+            /^[0-9]+\.[0-9]+\.[0-9]+$/u.test(server.version) &&
+            server.version.length <= 32,
+          'SERVER_VERSION_INVALID',
+        );
         result.serverVersion = server.version;
         const { tools } = await waitFor(client.listTools({}, options), controller.signal);
         checkTime();
@@ -233,7 +240,13 @@ export async function runPublicSmoke({
       }
     }
     await health();
-    report.passed = report.lanes.length === 2 && report.lanes.every(lane => lane.passed);
+    const requestsClean = report.requests.every(
+      event =>
+        !event.failure &&
+        ([200, 202, 204].includes(event.status) || (event.method === 'GET' && event.status === 405)),
+    );
+    report.passed = requestsClean && report.lanes.length === 2 && report.lanes.every(lane => lane.passed);
+    if (!requestsClean) report.failure = 'HTTP_OBSERVATION_FAILED';
   } catch (error) {
     report.failure = safeFailure(error);
   } finally {
