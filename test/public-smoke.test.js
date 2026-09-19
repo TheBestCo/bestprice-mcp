@@ -265,3 +265,48 @@ test('a known recommendation over the item budget cannot produce a passing lane'
   assert.equal(report.passed, false);
   assert.ok(report.lanes.every(lane => lane.failure === 'DECISION_ITEM_BUDGET_BREACH'));
 });
+
+for (const problem of ['missing-revision', 'rate-limit', 'server-error']) {
+  test(`an SDK background event-channel ${problem} cannot be swallowed into a green report`, async () => {
+    const mock = fixture(state => {
+      if (state.request.method !== 'GET' || state.request.url.endsWith('/healthz')) return;
+      if (problem === 'missing-revision') {
+        state.status = 200;
+        delete state.headers['x-bestprice-revision'];
+      } else state.status = problem === 'rate-limit' ? 429 : 503;
+    });
+    const report = await runPublicSmoke(mock);
+    assert.equal(report.passed, false);
+    assert.equal(report.failure, 'HTTP_OBSERVATION_FAILED');
+  });
+}
+
+test('untrusted revision headers are never copied into sanitized observations', async () => {
+  const mock = fixture(state => {
+    state.headers['x-bestprice-revision'] = SECRET;
+  });
+  const report = await runPublicSmoke(mock);
+  assert.equal(report.passed, false);
+  assert.equal(report.requests[0].revision, null);
+  assert.ok(!JSON.stringify(report).includes(SECRET));
+});
+
+test('per-request elapsed time is enforced even before the timer callback can run', async t => {
+  let clock = 0;
+  t.mock.method(performance, 'now', () => clock);
+  const mock = fixture(() => {
+    clock += 10;
+  });
+  const report = await runPublicSmoke({ ...mock, requestMs: 10, deadlineMs: 100 });
+  assert.equal(report.passed, false);
+  assert.equal(report.failure, 'REQUEST_DEADLINE');
+});
+
+test('a raw server version cannot leak arbitrary remote text into reports', async () => {
+  const mock = fixture(state => {
+    if (state.body?.method === 'initialize') state.output.result.serverInfo.version = SECRET;
+  });
+  const report = await runPublicSmoke(mock);
+  assert.equal(report.passed, false);
+  assert.ok(!JSON.stringify(report).includes(SECRET));
+});
