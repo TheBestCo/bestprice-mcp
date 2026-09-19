@@ -1,0 +1,63 @@
+name: Public MCP integrity
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_revision:
+        description: Optional full lowercase SHA of the expected serving artifact
+        required: false
+        type: string
+  # A workflow edit on main runs one bounded verification, not a recurring monitor.
+  push:
+    branches: [main]
+    paths: [.github/workflows/public-integrity.yml]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-mcp-integrity
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.repository == 'TheBestCo/bestprice-mcp' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - name: Record exact probe source
+        run: |
+          mkdir -p integrity-output
+          git rev-parse HEAD > integrity-output/source-revision.txt
+          sha256sum scripts/public-smoke.mjs scripts/public-contracts.js package-lock.json > integrity-output/source-sha256.txt
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Validate before making public requests
+        run: |
+          npm run check > integrity-output/check.log 2>&1
+          npm test > integrity-output/tests.log 2>&1
+      - name: One bounded read-only public observation
+        env:
+          EXPECTED_REVISION: ${{ inputs.expected_revision }}
+        run: |
+          if [ -n "$EXPECTED_REVISION" ]; then
+            node scripts/public-smoke.mjs integrity-output/public-integrity.json "$EXPECTED_REVISION"
+          else
+            node scripts/public-smoke.mjs integrity-output/public-integrity.json
+          fi
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        if: always()
+        with:
+          name: public-integrity-${{ github.run_id }}-${{ github.run_attempt }}
+          path: integrity-output/
+          if-no-files-found: error
+          retention-days: 7
