@@ -7,9 +7,12 @@ import { createBridge } from '../src/bridge.js';
 import { startFakeRemote } from './helpers/fake-remote.js';
 
 const URL = 'https://remote.test/mcp';
-const rpcError = (code, message, data) => JSON.stringify({
-  jsonrpc: '2.0', id: null, error: { code, message, ...(data ? { data } : {}) },
-});
+const rpcError = (code, message, data) =>
+  JSON.stringify({
+    jsonrpc: '2.0',
+    id: null,
+    error: { code, message, ...(data ? { data } : {}) },
+  });
 const readMessage = async (input, init) => {
   const request = new Request(input, init);
   return { request, body: request.method === 'POST' ? await request.clone().json() : null };
@@ -63,21 +66,38 @@ for (const [name, body] of [
 
 for (const status of [400, 404]) {
   test(`does not invent session recovery for sessionless HTTP ${status}`, async t => {
-    const first = await remoteFor(t, { stateless: true });
-    const second = await remoteFor(t, { stateless: true });
     let calls = 0;
     let initializations = 0;
+    // Reusing a stateless SDK server transport across requests is invalid. This wire fixture
+    // instead completes a real SDK client handshake without ever issuing a session header.
     const { bridge, host } = await hostFor(t, {
       fetch: async (input, init) => {
-        const { body } = await readMessage(input, init);
-        if (body?.method === 'initialize') initializations += 1;
+        const { request, body } = await readMessage(input, init);
+        assert.equal(request.headers.has('mcp-session-id'), false);
+        if (request.method === 'GET') return new Response(null, { status: 405 });
+        if (body?.method === 'initialize') {
+          initializations += 1;
+          return new Response(
+            JSON.stringify({
+              jsonrpc: '2.0',
+              id: body.id,
+              result: {
+                protocolVersion: body.params.protocolVersion,
+                capabilities: { tools: {} },
+                serverInfo: { name: 'stateless-fixture', version: '1.0.0' },
+              },
+            }),
+            { headers: { 'content-type': 'application/json' } },
+          );
+        }
         if (body?.method === 'tools/call') {
           calls += 1;
           return new Response(rpcError(-32000, 'Bad Request: Server not initialized'), { status });
         }
-        return (initializations > 1 ? second : first).fetch(input, init);
+        return new Response(null, { status: 202 });
       },
     });
+    assert.ok(bridge.client(), 'the stateless handshake must have actually succeeded');
     assert.equal(bridge.client().transport.sessionId, undefined);
     await assert.rejects(host.callTool({ name: 'echo', arguments: { text: 'once' } }));
     assert.equal(calls, 1);
@@ -101,7 +121,8 @@ for (const status of [400, 404]) {
         return (initializations > 1 ? second : first).fetch(input, init);
       },
     });
-    assert.equal((await host.callTool({ name: 'echo', arguments: { text: 'recovered' } })).content[0].text, 'recovered');
+    const result = await host.callTool({ name: 'echo', arguments: { text: 'recovered' } });
+    assert.equal(result.content[0].text, 'recovered');
     assert.equal(calls, 2);
     assert.equal(initializations, 2);
   });
@@ -111,8 +132,11 @@ test('a throwing diagnostic sink cannot prevent fallback startup and later recov
   const remote = await remoteFor(t);
   let reachable = false;
   const { host } = await hostFor(t, {
-    fetch: (input, init) => reachable ? remote.fetch(input, init) : Promise.reject(new Error('offline')),
-    log: () => { throw new Error('diagnostic sink failed'); },
+    fetch: (input, init) =>
+      reachable ? remote.fetch(input, init) : Promise.reject(new Error('offline')),
+    log: () => {
+      throw new Error('diagnostic sink failed');
+    },
   });
   reachable = true;
   assert.ok((await host.listTools()).tools.length > 0);
@@ -130,7 +154,9 @@ test('a throwing diagnostic sink cannot skip transport abort after failed DELETE
       }
       return remote.fetch(input, init);
     },
-    log: () => { throw new Error('diagnostic sink failed'); },
+    log: () => {
+      throw new Error('diagnostic sink failed');
+    },
   });
   const client = bridge.client();
   t.after(() => client.close());
