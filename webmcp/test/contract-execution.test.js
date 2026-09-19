@@ -49,17 +49,21 @@ for (const stop of ['caller', 'teardown', 'replacement']) {
       release.resolve();
       registration.teardown();
     });
-    await registration.register(createTools({
-      page: 'home',
-      execute: async (_name, _args, options) => {
-        handlerSignal = options?.signal;
-        await release.promise;
-        if (!handlerSignal?.aborted) effects += 1;
-        finished.resolve();
-        return { ok: true };
-      },
-    }));
-    const pending = context.tools.get('search_bestprice').execute({ query: 'phone' }, { signal: caller.signal });
+    await registration.register(
+      createTools({
+        page: 'home',
+        execute: async (_name, _args, options) => {
+          handlerSignal = options?.signal;
+          await release.promise;
+          if (!handlerSignal?.aborted) effects += 1;
+          finished.resolve();
+          return { ok: true };
+        },
+      }),
+    );
+    const pending = context.tools
+      .get('search_bestprice')
+      .execute({ query: 'phone' }, { signal: caller.signal });
     if (stop === 'caller') caller.abort(reason);
     else if (stop === 'teardown') registration.teardown();
     else await registration.register(createTools({ page: 'home', execute: () => ({ ok: true }) }));
@@ -85,14 +89,16 @@ test('composed contracts keep sibling invocation signals independent', async t =
     release.resolve();
     registration.teardown();
   });
-  await registration.register(createTools({
-    page: 'home',
-    execute: async (_name, args, options) => {
-      signals.set(args.query, options?.signal);
-      await release.promise;
-      return { ok: true };
-    },
-  }));
+  await registration.register(
+    createTools({
+      page: 'home',
+      execute: async (_name, args, options) => {
+        signals.set(args.query, options?.signal);
+        await release.promise;
+        return { ok: true };
+      },
+    }),
+  );
   const caller = new AbortController();
   const tool = context.tools.get('search_bestprice');
   const first = tool.execute({ query: 'first' }, { signal: caller.signal });
@@ -108,8 +114,16 @@ test('composed contracts keep sibling invocation signals independent', async t =
 
 test('binding preserves original throws, promise identity, and calls without options', async () => {
   const error = new Error('original handler failure');
-  const [throwing] = createTools({ page: 'home', execute: () => { throw error; } });
-  assert.throws(() => throwing.execute({}), received => received === error);
+  const [throwing] = createTools({
+    page: 'home',
+    execute: () => {
+      throw error;
+    },
+  });
+  assert.throws(
+    () => throwing.execute({}),
+    received => received === error,
+  );
   const pending = Promise.resolve({ ok: true });
   const [asyncTool] = createTools({ page: 'home', execute: () => pending });
   assert.equal(asyncTool.execute({}), pending);
