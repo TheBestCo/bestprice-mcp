@@ -144,7 +144,7 @@ export function reconcileAttempts(journalPath, options = {}) {
  * What the validator needs to say about a journal.
  *
  * `blocking` is the whole point: unresolved attempts and unreadable lines both mean the ledger
- * cannot be read as a complete account of the campaign.
+ * cannot be read as a complete one.
  *
  * @returns {{journalPath: string, found: boolean, attempts: number, starts: number, unresolved: Array<object>, malformed: Array<object>, blocking: boolean, reasons: Array<string>}}
  */
@@ -157,10 +157,7 @@ export function auditAttempts(journalPath, runs = []) {
   const PURPOSES = new Set(['qualification', 'diagnostic', 'stress']);
   const OUTCOMES = new Set(['passed', 'failed', 'refused', 'blocked']);
   const validInstant = value => {
-    if (
-      typeof value !== 'string' ||
-      !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/u.test(value)
-    ) {
+    if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/u.test(value)) {
       return false;
     }
     const parsed = new Date(value);
