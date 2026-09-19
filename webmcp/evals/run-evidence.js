@@ -988,7 +988,9 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
    * campaign, and ordinary incompleteness must not read as a smaller campaign that passed. A ledger
    * supplied as an in-memory object has no journal to audit. */
   const attemptJournal =
-    typeof runsDatasetOrPath === 'string' ? auditAttempts(journalPathFor(runsDatasetOrPath)) : null;
+    typeof runsDatasetOrPath === 'string'
+      ? auditAttempts(journalPathFor(runsDatasetOrPath), runsDataset.runs ?? [])
+      : null;
   if (attemptJournal?.blocking) {
     /* Only lines this module can understand: a malformed entry is a JSON blob, and a problem string
      * must stay readable. */
