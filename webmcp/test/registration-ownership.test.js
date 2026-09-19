@@ -277,12 +277,17 @@ test('ready callbacks preserve arguments, receiver, return value and thrown erro
   try {
     const args = { value: 1 };
     const options = { custom: true };
-    assert.deepEqual(await context.tools.get('safe').execute(args, options), {
+    const actual = context.tools.get('safe').execute(args, options);
+    assert.deepEqual(actual, {
       ok: true,
       name: 'safe',
       args,
-      options,
+      options: { ...options, signal: actual.options.signal },
     });
+    assert.ok(actual.options.signal instanceof AbortSignal);
+    assert.equal(actual.options.signal.aborted, false);
+    assert.equal(actual.args, args);
+    assert.deepEqual(options, { custom: true }, 'the caller options are not mutated');
     await assert.rejects(
       async () => context.tools.get('safe').execute({ fail: true }),
       error => error === failure,

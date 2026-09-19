@@ -32,7 +32,7 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
   const report = state => {
     try {
       // Observers neither own the verdict nor the registration lifecycle.
-      onState({ ...state });
+      Promise.resolve(onState({ ...state })).catch(() => {});
     } catch {
       // Telemetry must not strand tools or prevent teardown.
     }
@@ -95,16 +95,83 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
     const operation = { controller, cancel, ready: false };
     current = operation;
     const owns = () => mine === generation && current === operation && !controller.signal.aborted;
+    const refusal = () => ({
+      ok: false,
+      error: 'The BestPrice page tools are not available right now.',
+    });
+    // One registration listener, even with many concurrent invocations. Each invocation owns
+    // its own controller: cancelling one must not abort a sibling or a caller-owned signal.
+    const invocations = new Set();
+    controller.signal.addEventListener(
+      'abort',
+      () => {
+        for (const cancel of [...invocations]) cancel();
+      },
+      { once: true },
+    );
     const guarded = snapshot.map(value => ({
       ...value,
       execute: (...args) => {
-        if (!owns() || !operation.ready || args[1]?.signal?.aborted === true) {
-          return Promise.resolve({
-            ok: false,
-            error: 'The BestPrice page tools are not available right now.',
-          });
+        const parent = args[1]?.signal;
+        if (!owns() || !operation.ready || parent?.aborted === true) {
+          return Promise.resolve(refusal());
         }
-        return value.execute(...args);
+        const invocation = new AbortController();
+        let resolve;
+        let reject;
+        const pending = new Promise((yes, no) => {
+          resolve = yes;
+          reject = no;
+        });
+        let settled = false;
+        const finish = (callback, result) => {
+          if (settled) return;
+          settled = true;
+          invocations.delete(cancel);
+          parent?.removeEventListener('abort', cancel);
+          callback(result);
+        };
+        const cancel = () => {
+          if (settled) return;
+          // Settle before dispatching abort: handler listeners can re-enter the registry.
+          finish(resolve, refusal());
+          invocation.abort(parent?.aborted ? parent.reason : controller.signal.reason);
+        };
+        invocations.add(cancel);
+        try {
+          parent?.addEventListener('abort', cancel, { once: true });
+          args[1] = { ...args[1], signal: invocation.signal };
+          if (!owns() || parent?.aborted === true) {
+            cancel();
+            return pending;
+          }
+          const result = value.execute(...args);
+          if (result != null && typeof result.then === 'function') {
+            // Observe late rejections even if cancellation already settled the caller. The
+            // signal lets cooperative handlers stop later effects; synchronous effects cannot
+            // be undone. Original handler failures still reject while the invocation is live.
+            Promise.resolve(result).then(
+              output => finish(resolve, owns() ? output : refusal()),
+              error => finish(reject, error),
+            );
+            return pending;
+          }
+          // Preserve synchronous handlers' return identity and thrown errors while still
+          // refusing any result whose handler synchronously tore down its own registration.
+          if (settled) return pending;
+          if (!owns()) {
+            cancel();
+            return pending;
+          }
+          finish(resolve, undefined);
+          return result;
+        } catch (error) {
+          if (settled) return pending;
+          // This promise was not returned. Resolve it only to release bookkeeping, then
+          // rethrow the original synchronous exception without manufacturing a rejection.
+          finish(resolve, undefined);
+          throw error;
+        }
       },
     }));
     report({ status: 'registering', registered: 0 });

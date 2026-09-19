@@ -113,9 +113,25 @@ export function readConfig({ env = process.env } = {}) {
  *   client: () => Client | undefined,
  * }}
  */
-export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch, log = () => {} }) {
+export function createBridge({
+  remoteUrl,
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+  fetch,
+  log: diagnosticSink = () => {},
+}) {
   validateTimeout(timeoutMs);
   const url = new URL(remoteUrl);
+  if (url.protocol !== 'https:' && url.protocol !== 'http:') {
+    throw new TypeError('BESTPRICE_MCP_URL must use http or https.');
+  }
+  // Logging is an optional observer, never an owner of connection or cleanup control flow.
+  const log = message => {
+    try {
+      Promise.resolve(diagnosticSink(message)).catch(() => {});
+    } catch {
+      // A broken diagnostic sink cannot prevent fallback or leave a transport alive.
+    }
+  };
   const requestOptions = { timeout: timeoutMs };
   let client;
   let connecting;
@@ -138,10 +154,28 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
     return relay(ErrorCode.InternalError, `Upstream ${url.host}: ${error?.message ?? String(error)}`);
   };
 
-  /** Only an explicit rejected-session response permits one replay of that request. */
-  const isStaleSession = error =>
-    error instanceof StreamableHTTPError &&
-    (error.code === 404 || (error.code === 400 && /session|not initialized/iu.test(error.message)));
+  /** Only a rejected stateful session permits replay, never an arbitrary validation error. */
+  const isStaleSession = (error, sessionId) => {
+    if (!sessionId || !(error instanceof StreamableHTTPError)) return false;
+    if (error.code === 404) return true;
+    if (error.code !== 400) return false;
+    // SDK v1 servers also use this exact envelope when a restart lost initialization. Inspect
+    // the actual RPC error, not text in a validation message, nested data, or an HTML response.
+    // The prefix is the installed SDK's POST error wrapper. Unknown shapes fail without replay.
+    const prefix = 'Streamable HTTP error: Error POSTing to endpoint: ';
+    if (!error.message.startsWith(prefix)) return false;
+    try {
+      const payload = JSON.parse(error.message.slice(prefix.length));
+      return (
+        payload?.jsonrpc === '2.0' &&
+        payload.id === null &&
+        payload.error?.code === -32000 &&
+        payload.error?.message === 'Bad Request: Server not initialized'
+      );
+    } catch {
+      return false;
+    }
+  };
 
   const closeRemote = async (remote, terminate = false) => {
     if (!remote) return;
@@ -242,12 +276,14 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
           signal.throwIfAborted();
           // An earlier waiter may have retired the resolved client before this waiter resumed.
         } while (remote !== client);
+        // Capture the session used for THIS request, not whatever replacement is current later.
+        const sessionId = remote.transport?.sessionId;
         references.set(remote, (references.get(remote) ?? 0) + 1);
         try {
           return await waitForSignal(fn(remote, { ...requestOptions, signal }), signal);
         } catch (error) {
           signal.throwIfAborted();
-          if (!isStaleSession(error)) throw error;
+          if (!isStaleSession(error, sessionId)) throw error;
           if (client === remote) client = undefined;
           retired.add(remote);
           if (attempt !== 0) throw error;
