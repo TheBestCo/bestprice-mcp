@@ -132,8 +132,7 @@ test('a throwing diagnostic sink cannot prevent fallback startup and later recov
   const remote = await remoteFor(t);
   let reachable = false;
   const { host } = await hostFor(t, {
-    fetch: (input, init) =>
-      reachable ? remote.fetch(input, init) : Promise.reject(new Error('offline')),
+    fetch: (input, init) => (reachable ? remote.fetch(input, init) : Promise.reject(new Error('offline'))),
     log: () => {
       throw new Error('diagnostic sink failed');
     },
@@ -169,3 +168,44 @@ for (const remoteUrl of ['ftp://remote.test/mcp', 'file:///tmp/mcp', 'data:text/
     assert.throws(() => createBridge({ remoteUrl }), TypeError);
   });
 }
+
+test('an asynchronously rejected diagnostic sink cannot poison fallback startup', async t => {
+  const remote = await remoteFor(t);
+  let reachable = false;
+  let observations = 0;
+  const { host } = await hostFor(t, {
+    fetch: (input, init) => (reachable ? remote.fetch(input, init) : Promise.reject(new Error('offline'))),
+    log: async () => {
+      observations += 1;
+      throw new Error('asynchronous diagnostic failure');
+    },
+  });
+  reachable = true;
+  assert.ok((await host.listTools()).tools.length > 0);
+  assert.ok(observations > 0, 'the rejecting sink must have been exercised');
+  await new Promise(resolve => setImmediate(resolve));
+});
+
+test('an asynchronously rejected diagnostic sink cannot escape shutdown cleanup', async t => {
+  const remote = await remoteFor(t);
+  let observations = 0;
+  let deleteSignal;
+  const { bridge } = await hostFor(t, {
+    fetch: async (input, init) => {
+      const { request } = await readMessage(input, init);
+      if (request.method === 'DELETE') {
+        deleteSignal = init.signal;
+        return new Response('termination failed', { status: 503 });
+      }
+      return remote.fetch(input, init);
+    },
+    log: async () => {
+      observations += 1;
+      throw new Error('asynchronous diagnostic failure');
+    },
+  });
+  await bridge.close();
+  assert.ok(observations > 0);
+  assert.equal(deleteSignal?.aborted, true);
+  await new Promise(resolve => setImmediate(resolve));
+});
