@@ -147,6 +147,17 @@ export function createBridge({
   const cleanups = new Set();
   const closedError = () => new McpError(ErrorCode.ConnectionClosed, 'Bridge is closed.');
 
+  // Timers cannot preempt synchronous work or a busy microtask queue. Check the same
+  // monotonic deadline at async boundaries so a late result cannot beat a delayed timer.
+  // Caller/close cancellation keeps its original reason rather than becoming a timeout.
+  const elapsedDeadline = (controller, error) => {
+    const expiresAt = performance.now() + timeoutMs;
+    return () => {
+      if (!controller.signal.aborted && performance.now() >= expiresAt) controller.abort(error);
+      controller.signal.throwIfAborted();
+    };
+  };
+
   /** Relay the original error code/data without accumulating SDK message prefixes. */
   const relay = (code, message, data) => Object.assign(new Error(message), { code, data });
   const toRelayError = error => {
@@ -216,10 +227,9 @@ export function createBridge({
     // by MCP). A single caller cancelling its wait must not abort this shared connection.
     const connection = new AbortController();
     pendingConnection = connection;
-    const timer = setTimeout(
-      () => connection.abort(new McpError(ErrorCode.RequestTimeout, 'Upstream initialization timed out')),
-      timeoutMs,
-    );
+    const timeoutError = new McpError(ErrorCode.RequestTimeout, 'Upstream initialization timed out');
+    const checkDeadline = elapsedDeadline(connection, timeoutError);
+    const timer = setTimeout(() => connection.abort(timeoutError), timeoutMs);
     let candidateClosed = false;
     candidate.onerror = error => log(`Upstream error: ${error.message}`);
     candidate.onclose = () => {
@@ -238,11 +248,13 @@ export function createBridge({
           candidate.connect(new StreamableHTTPClientTransport(url, { fetch }), { timeout: MAX_TIMEOUT_MS }),
           connection.signal,
         );
+        checkDeadline();
         if (closed || candidateClosed) throw closedError();
         client = candidate;
         return candidate;
       } catch (error) {
         await closeRemote(candidate);
+        checkDeadline();
         throw error;
       } finally {
         clearTimeout(timer);
@@ -261,28 +273,28 @@ export function createBridge({
     const cancel = () => controller.abort(parentSignal.reason);
     parentSignal?.addEventListener('abort', cancel, { once: true });
     if (parentSignal?.aborted) cancel();
-    const timer = setTimeout(
-      () =>
-        controller.abort(new McpError(ErrorCode.RequestTimeout, 'Request timed out', { timeout: timeoutMs })),
-      timeoutMs,
-    );
+    const timeoutError = new McpError(ErrorCode.RequestTimeout, 'Request timed out', { timeout: timeoutMs });
+    const checkDeadline = elapsedDeadline(controller, timeoutError);
+    const timer = setTimeout(() => controller.abort(timeoutError), timeoutMs);
     requests.add(controller);
     try {
       for (let attempt = 0; attempt < 2; attempt += 1) {
-        signal.throwIfAborted();
+        checkDeadline();
         let remote;
         do {
           remote = await waitForSignal(connectRemote(), signal);
-          signal.throwIfAborted();
+          checkDeadline();
           // An earlier waiter may have retired the resolved client before this waiter resumed.
         } while (remote !== client);
         // Capture the session used for THIS request, not whatever replacement is current later.
         const sessionId = remote.transport?.sessionId;
         references.set(remote, (references.get(remote) ?? 0) + 1);
         try {
-          return await waitForSignal(fn(remote, { ...requestOptions, signal }), signal);
+          const result = await waitForSignal(fn(remote, { ...requestOptions, signal }), signal);
+          checkDeadline();
+          return result;
         } catch (error) {
-          signal.throwIfAborted();
+          checkDeadline();
           if (!isStaleSession(error, sessionId)) throw error;
           if (client === remote) client = undefined;
           retired.add(remote);
@@ -298,6 +310,13 @@ export function createBridge({
         }
       }
     } catch (error) {
+      // Shared initialization can reject while its own deadline is still open but this
+      // caller's earlier deadline has elapsed. Keep timeout precedence at this boundary too.
+      try {
+        checkDeadline();
+      } catch (expired) {
+        throw toRelayError(expired);
+      }
       throw toRelayError(error);
     } finally {
       clearTimeout(timer);
