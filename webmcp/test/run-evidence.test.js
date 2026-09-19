@@ -50,6 +50,8 @@ const execution = (overrides = {}) => ({
   caseId: CASE_ID,
   datasetVersion: DATASET_VERSION,
   evidenceLayer: NATIVE_EVIDENCE_LAYER,
+  purpose: 'qualification',
+  custodyVersion: 2,
   agent: 'Model Context Tool Inspector',
   model: 'example-agent-1',
   browser: 'Chromium 144',
@@ -94,6 +96,33 @@ describe('execution evidence ledger', () => {
     assert.deepEqual(
       validateEvidenceFile(ledger([published, rerun]), { ...context(), baselineRuns: [published] }),
       [],
+    );
+  });
+
+  it('binds purpose and custody version into new artifact identity while grandfathering trusted legacy records', () => {
+    const [record] = store('purpose-bound.json', [execution()]);
+    assert.deepEqual(validateEvidenceFile(ledger([record]), context()), []);
+
+    const relabelled = { ...record, purpose: 'stress' };
+    assert.deepEqual(validateEvidenceFile(ledger([relabelled]), context()), [
+      `runs[0]: ${record.evidence} execution ${record.runId} disagrees with the record on purpose`,
+    ]);
+
+    const stripped = { ...record };
+    delete stripped.purpose;
+    delete stripped.custodyVersion;
+    assert.match(
+      validateEvidenceFile(ledger([stripped]), context())[0],
+      /new records must declare purpose/u,
+      'a newly imported record cannot impersonate legacy evidence by deleting custody metadata',
+    );
+
+    const legacyExecution = execution({ purpose: undefined, custodyVersion: undefined });
+    const [legacy] = store('legacy.json', [legacyExecution]);
+    assert.deepEqual(
+      validateEvidenceFile(ledger([legacy]), { ...context(), baselineRuns: [legacy] }),
+      [],
+      'a record already published at the trusted baseline retains its historical artifact bytes',
     );
   });
 
