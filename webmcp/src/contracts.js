@@ -219,12 +219,17 @@ for (const name of TOOL_NAMES) {
 /**
  * Builds the WebMCP tool objects for a page.
  *
- * @param {{ page: 'home' | 'listing' | 'product', execute: (name: string, args: object) => unknown }} options
- * @returns {Array<{ name: string, title: string, description: string, annotations: object, inputSchema: object, execute: (args: object) => unknown }>}
- * @throws {TypeError} for an unknown page type.
+ * @param {{ page: 'home' | 'listing' | 'product', execute: (name: string, args: object, options?: { signal?: AbortSignal }) => unknown }} options
+ * @returns {Array<{ name: string, title: string, description: string, annotations: object, inputSchema: object, execute: (args: object, options?: { signal?: AbortSignal }) => unknown }>}
+ * @throws {TypeError} for an unknown page type or a non-callable executor.
  */
 export function createTools({ page, execute }) {
-  const names = PAGE_TOOL_NAMES[page];
-  if (!names) throw new TypeError(`Unknown WebMCP page type: ${page}`);
-  return names.map(name => ({ ...DEFINITIONS_BY_NAME.get(name), execute: args => execute(name, args) }));
+  if (!Object.hasOwn(PAGE_TOOL_NAMES, page)) throw new TypeError(`Unknown WebMCP page type: ${page}`);
+  if (typeof execute !== 'function') throw new TypeError('WebMCP execute must be a function.');
+  // The registration runtime supplies an invocation-owned signal here. Dropping the options
+  // hides cancelled results but lets a cooperative page handler continue its later effects.
+  return PAGE_TOOL_NAMES[page].map(name => ({
+    ...DEFINITIONS_BY_NAME.get(name),
+    execute: (args, options) => execute(name, args, options),
+  }));
 }
