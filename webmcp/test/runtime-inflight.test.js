@@ -178,7 +178,10 @@ test('keeps synchronous return identity, receiver and errors without retaining c
     return result;
   });
   assert.equal(tool.execute({}, { signal: parent.signal }), result);
-  assert.throws(() => tool.execute({ fail: true }, { signal: parent.signal }), value => value === error);
+  assert.throws(
+    () => tool.execute({ fail: true }, { signal: parent.signal }),
+    value => value === error,
+  );
   assert.equal(getEventListeners(parent.signal, 'abort').length, 0);
 });
 
@@ -224,9 +227,7 @@ test('reentrant replacement from a running handler abort cannot steal or cancel 
       () => {
         if (replaced) return;
         replaced = true;
-        replacement = registration.register([
-          { name: 'read', execute: () => ({ ok: true, fresh: true }) },
-        ]);
+        replacement = registration.register([{ name: 'read', execute: () => ({ ok: true, fresh: true }) }]);
       },
       { once: true },
     );
