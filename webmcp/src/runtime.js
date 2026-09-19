@@ -87,6 +87,10 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
     }
 
     if (mine !== generation) return Promise.resolve(cancelledState());
+    // Timers cannot preempt synchronous registration or a busy microtask queue. Keep
+    // a monotonic budget too, starting before registration observers and browser calls.
+    const expiresAt = performance.now() + timeoutMs;
+    const expired = () => performance.now() >= expiresAt;
     const controller = new AbortController();
     let cancel;
     const cancelled = new Promise(resolve => {
@@ -181,6 +185,7 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
       guarded.map(value =>
         Promise.resolve().then(() => {
           if (!owns()) throw CANCELLED;
+          if (expired()) throw TIMED_OUT;
           return modelContext.registerTool(value, { signal: controller.signal });
         }),
       ),
@@ -192,9 +197,9 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
     return Promise.race([registrations, timeout, cancelled]).then(outcome => {
       clearTimeout(timer);
       if (!owns() || outcome === CANCELLED) return cancelledState();
-      const registered =
-        outcome === TIMED_OUT ? 0 : outcome.filter(result => result.status === 'fulfilled').length;
-      if (outcome === TIMED_OUT || registered !== snapshot.length) {
+      const timedOut = outcome === TIMED_OUT || expired();
+      const registered = timedOut ? 0 : outcome.filter(result => result.status === 'fulfilled').length;
+      if (timedOut || registered !== snapshot.length) {
         current = undefined;
         controller.abort();
         if (mine !== generation) return cancelledState();
