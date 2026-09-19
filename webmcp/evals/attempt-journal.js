@@ -124,6 +124,8 @@ export function reconcileAttempts(journalPath, options = {}) {
       phase: 'abandoned',
       runId: attempt.runId,
       caseId: attempt.caseId ?? null,
+      purpose: attempt.purpose ?? null,
+      custodyVersion: attempt.custodyVersion ?? null,
       startedAt: attempt.startedAt ?? null,
       finishedAt,
       reason,
@@ -140,10 +142,80 @@ export function reconcileAttempts(journalPath, options = {}) {
  *
  * @returns {{journalPath: string, found: boolean, attempts: number, starts: number, unresolved: Array<object>, malformed: Array<object>, blocking: boolean, reasons: Array<string>}}
  */
-export function auditAttempts(journalPath) {
+export function auditAttempts(journalPath, runs = []) {
   const { attempts, malformed } = readAttempts(journalPath);
   const unresolved = unresolvedAttempts(journalPath);
   const reasons = [];
+  const starts = new Map();
+  const finals = new Map();
+  const PURPOSES = new Set(['qualification', 'diagnostic', 'stress']);
+  const OUTCOMES = new Set(['passed', 'failed', 'refused', 'blocked']);
+  const validInstant = value =>
+    typeof value === 'string' &&
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/u.test(value) &&
+    !Number.isNaN(Date.parse(value));
+
+  for (const line of malformed) {
+    reasons.push(
+      `attempt journal line ${line.line} is not readable (${line.error}): the journal cannot clear an attempt`,
+    );
+  }
+
+  for (const entry of attempts) {
+    if (entry.custodyVersion !== undefined && entry.custodyVersion !== null && entry.custodyVersion !== 2) {
+      reasons.push(`attempt ${entry.runId} declares unsupported custodyVersion ${entry.custodyVersion}`);
+    }
+
+    if (entry.phase === 'start') {
+      if (starts.has(entry.runId)) {
+        reasons.push(`attempt ${entry.runId} has more than one start line`);
+        continue;
+      }
+      starts.set(entry.runId, entry);
+      if (entry.custodyVersion === 2) {
+        if (typeof entry.caseId !== 'string' || entry.caseId.trim() === '') {
+          reasons.push(`attempt ${entry.runId} custody-v2 start is missing caseId`);
+        }
+        if (!PURPOSES.has(entry.purpose)) {
+          reasons.push(`attempt ${entry.runId} custody-v2 start has invalid purpose`);
+        }
+        if (!validInstant(entry.startedAt)) {
+          reasons.push(`attempt ${entry.runId} custody-v2 start has invalid startedAt`);
+        }
+      }
+      continue;
+    }
+
+    if (!starts.has(entry.runId)) {
+      reasons.push(`attempt ${entry.runId} has ${entry.phase} without a start line`);
+      finals.set(entry.runId, entry);
+      continue;
+    }
+    if (finals.has(entry.runId)) {
+      reasons.push(`attempt ${entry.runId} has more than one terminal journal line`);
+      continue;
+    }
+    finals.set(entry.runId, entry);
+    const opened = starts.get(entry.runId);
+    if (opened.custodyVersion === 2 || entry.custodyVersion === 2) {
+      if (opened.custodyVersion !== 2 || entry.custodyVersion !== 2) {
+        reasons.push(`attempt ${entry.runId} changes custodyVersion within the journal`);
+      }
+      if (entry.caseId !== opened.caseId) {
+        reasons.push(`attempt ${entry.runId} changes caseId between start and ${entry.phase}`);
+      }
+      if (entry.purpose !== opened.purpose) {
+        reasons.push(`attempt ${entry.runId} changes purpose between start and ${entry.phase}`);
+      }
+      if (!validInstant(entry.finishedAt)) {
+        reasons.push(`attempt ${entry.runId} custody-v2 ${entry.phase} has invalid finishedAt`);
+      }
+      if (entry.phase === 'finish' && !OUTCOMES.has(entry.outcome)) {
+        reasons.push(`attempt ${entry.runId} custody-v2 finish has invalid outcome`);
+      }
+    }
+  }
+
   for (const attempt of unresolved) {
     reasons.push(
       `attempt ${attempt.runId} (${attempt.caseId ?? 'unknown case'}) started ${
@@ -151,11 +223,37 @@ export function auditAttempts(journalPath) {
       } and never recorded a verdict: recover it with --reconcile, or re-run the case`,
     );
   }
-  for (const line of malformed) {
-    reasons.push(
-      `attempt journal line ${line.line} is not readable (${line.error}): the journal cannot clear an attempt`,
-    );
+
+  const records = new Map((runs ?? []).map(record => [record?.runId, record]).filter(([runId]) => runId));
+  for (const record of runs ?? []) {
+    if (record?.custodyVersion !== 2) continue;
+    const opened = starts.get(record.runId);
+    const closed = finals.get(record.runId);
+    if (!opened) {
+      reasons.push(`custody-v2 run ${record.runId} has no journal start`);
+      continue;
+    }
+    if (closed?.phase !== 'finish') {
+      reasons.push(`custody-v2 run ${record.runId} has no journal finish`);
+      continue;
+    }
+    if (
+      opened.caseId !== record.caseId ||
+      opened.purpose !== record.purpose ||
+      closed.caseId !== record.caseId ||
+      closed.purpose !== record.purpose ||
+      closed.outcome !== record.outcome
+    ) {
+      reasons.push(`custody-v2 run ${record.runId} disagrees with its journal metadata`);
+    }
   }
+
+  for (const [runId, closed] of finals) {
+    if (closed.custodyVersion !== 2 || closed.phase !== 'finish') continue;
+    const record = records.get(runId);
+    if (!record) reasons.push(`custody-v2 attempt ${runId} finished but has no durable run record`);
+  }
+
   return {
     journalPath,
     found: attempts.length > 0 || malformed.length > 0,

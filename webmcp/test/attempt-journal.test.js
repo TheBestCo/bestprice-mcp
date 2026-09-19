@@ -117,6 +117,94 @@ describe('the attempt journal accounts for journeys that produced no verdict', (
       assert.match(audit.reasons.join('\n'), /journal line 2 is not readable/u);
     });
   });
+
+  it('binds custody-v2 starts, finishes and durable records one-to-one', () => {
+    withStore(ledger => {
+      const journal = journalPathFor(ledger);
+      const record = {
+        runId: 'run-v2',
+        caseId: 'product-011',
+        purpose: 'qualification',
+        custodyVersion: 2,
+        outcome: 'passed',
+      };
+
+      appendAttempt(journal, {
+        phase: 'start',
+        runId: record.runId,
+        caseId: record.caseId,
+        purpose: record.purpose,
+        custodyVersion: 2,
+        startedAt: '2026-09-19T04:00:00.000Z',
+      });
+      appendAttempt(journal, {
+        phase: 'finish',
+        runId: record.runId,
+        caseId: record.caseId,
+        purpose: record.purpose,
+        custodyVersion: 2,
+        outcome: record.outcome,
+        finishedAt: '2026-09-19T04:01:00.000Z',
+      });
+
+      assert.equal(auditAttempts(journal, [record]).blocking, false);
+
+      const withoutRecord = auditAttempts(journal, []);
+      assert.equal(withoutRecord.blocking, true, 'a finished custody-v2 attempt needs a durable record');
+      assert.match(withoutRecord.reasons.join('\n'), /finished but has no durable run record/u);
+    });
+  });
+
+  it('fails closed when custody-v2 journal metadata changes or a record has no journal', () => {
+    withStore(ledger => {
+      const journal = journalPathFor(ledger);
+      appendAttempt(journal, {
+        phase: 'start',
+        runId: 'run-mismatch',
+        caseId: 'home-004',
+        purpose: 'qualification',
+        custodyVersion: 2,
+        startedAt: '2026-09-19T04:00:00.000Z',
+      });
+      appendAttempt(journal, {
+        phase: 'finish',
+        runId: 'run-mismatch',
+        caseId: 'home-005',
+        purpose: 'stress',
+        custodyVersion: 2,
+        outcome: 'passed',
+        finishedAt: '2026-09-19T04:01:00.000Z',
+      });
+      const audit = auditAttempts(journal, [
+        {
+          runId: 'run-mismatch',
+          caseId: 'home-004',
+          purpose: 'qualification',
+          custodyVersion: 2,
+          outcome: 'passed',
+        },
+      ]);
+      assert.equal(audit.blocking, true);
+      assert.match(
+        audit.reasons.join('\n'),
+        /changes caseId|changes purpose|disagrees with its journal metadata/u,
+      );
+    });
+
+    withStore(ledger => {
+      const missing = auditAttempts(journalPathFor(ledger), [
+        {
+          runId: 'run-no-journal',
+          caseId: 'home-004',
+          purpose: 'qualification',
+          custodyVersion: 2,
+          outcome: 'passed',
+        },
+      ]);
+      assert.equal(missing.blocking, true);
+      assert.match(missing.reasons.join('\n'), /has no journal start/u);
+    });
+  });
 });
 
 describe('a campaign purpose that is not qualification cannot become release evidence', () => {
