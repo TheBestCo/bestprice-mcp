@@ -379,7 +379,7 @@ function checkArtifact(record, { artifactRoot, seenExecutions, legacyRunIds }) {
   /* Purpose/custody were introduced after the first published ledgers. They are
    * mandatory and artifact-bound for every NEW run, while trusted merge-base
    * records retain their historical bytes unchanged. */
-  if (legacyRunIds?.has(record.runId) !== true) {
+  if (record.custodyVersion === 2) {
     if (execution.purpose !== record.purpose) {
       return `${record.evidence} execution ${record.runId} disagrees with the record on purpose`;
     }
@@ -590,6 +590,7 @@ export function validateCorrections(ledger, context = {}) {
  *   artifactRoot?: string,
  *   implementation?: { revision: string, fingerprint: string } | null,
  *   legacyRunIds?: Set<string>,
+ *   requireCustodyV2?: boolean,
  * }} context
  * @returns {string|null} the first problem, or null when the record is acceptable
  */
@@ -603,6 +604,7 @@ export function validateRunRecord(record, context = {}) {
     artifactRoot,
     implementation,
     legacyRunIds,
+    requireCustodyV2 = false,
   } = context;
   if (!record || typeof record !== 'object' || Array.isArray(record)) return 'record must be an object';
   /* Modality first: a deterministic run must not be accepted on shape alone. */
@@ -644,13 +646,13 @@ export function validateRunRecord(record, context = {}) {
   if (record.purpose !== undefined && !CAMPAIGN_PURPOSES.includes(record.purpose)) {
     return `purpose must be one of ${CAMPAIGN_PURPOSES.join(', ')} when present`;
   }
-  if (!legacyPublished && !CAMPAIGN_PURPOSES.includes(record.purpose)) {
+  if (requireCustodyV2 && !legacyPublished && !CAMPAIGN_PURPOSES.includes(record.purpose)) {
     return `new records must declare purpose as one of ${CAMPAIGN_PURPOSES.join(', ')}`;
   }
   if (record.custodyVersion !== undefined && record.custodyVersion !== 2) {
     return 'custodyVersion must be 2 when present';
   }
-  if (!legacyPublished && record.custodyVersion !== 2) {
+  if (requireCustodyV2 && !legacyPublished && record.custodyVersion !== 2) {
     return 'new records must declare custodyVersion 2';
   }
   if (!EVIDENCE_PATH.test(record.evidence) || record.evidence.includes('..')) {
@@ -688,6 +690,7 @@ export function validateEvidenceFile(ledger, context = {}) {
     baselineRuns,
     baselineCorrections,
     previousRunIds,
+    requireCustodyV2 = false,
   } = context;
   const problems = [];
   if (!Array.isArray(ledger?.runs)) return ['runs must be an array'];
@@ -711,6 +714,7 @@ export function validateEvidenceFile(ledger, context = {}) {
       artifactRoot,
       implementation,
       legacyRunIds,
+      requireCustodyV2,
     });
     if (problem) problems.push(`runs[${index}]: ${problem}`);
     else seenRunIds.add(record.runId);
@@ -810,6 +814,7 @@ export function auditRunEvidence(runsDatasetOrPath, casesDatasetOrPath, options 
     implementation,
     baselineRuns,
     baselineCorrections,
+    requireCustodyV2: typeof runsDatasetOrPath === 'string',
   });
 
   /* The cohort a release decision is scoped to. A run recorded against a different implementation
