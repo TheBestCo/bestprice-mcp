@@ -185,7 +185,10 @@ describe('the attempt journal accounts for journeys that produced no verdict', (
         },
       ]);
       assert.equal(audit.blocking, true);
-      assert.match(audit.reasons.join('\n'), /changes caseId|changes purpose|disagrees with its journal metadata/u);
+      assert.match(
+        audit.reasons.join('\n'),
+        /changes caseId|changes purpose|disagrees with its journal metadata/u,
+      );
     });
 
     withStore(ledger => {
