@@ -192,7 +192,7 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
     );
     let timer;
     const timeout = new Promise(resolve => {
-      timer = setTimeout(() => resolve(TIMED_OUT), timeoutMs);
+      timer = setTimeout(() => resolve(TIMED_OUT), Math.max(1, Math.ceil(expiresAt - performance.now())));
     });
     return Promise.race([registrations, timeout, cancelled]).then(outcome => {
       clearTimeout(timer);

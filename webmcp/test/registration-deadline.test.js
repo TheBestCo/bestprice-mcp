@@ -125,3 +125,25 @@ test('reentrant replacement retains ownership when the superseded generation als
   assert.deepEqual(await next, { status: 'ready', registered: 1 });
   assert.deepEqual([...context.tools.keys()], ['second']);
 });
+
+test('the fallback timer receives only the budget left after observers', async t => {
+  let clock = 0;
+  const delays = [];
+  const setTimer = globalThis.setTimeout;
+  t.mock.method(performance, 'now', () => clock);
+  t.mock.method(globalThis, 'setTimeout', (callback, delay, ...args) => {
+    delays.push(delay);
+    return setTimer(callback, delay, ...args);
+  });
+  const context = createLocalModelContext();
+  const runtime = createRegistration({
+    modelContext: context,
+    timeoutMs: 1000,
+    onState: state => {
+      if (state.status === 'registering') clock += 400;
+    },
+  });
+  t.after(() => runtime.teardown());
+  assert.deepEqual(await runtime.register([tool('first')]), { status: 'ready', registered: 1 });
+  assert.deepEqual(delays, [600]);
+});
