@@ -146,7 +146,10 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
     if (!remote) return;
     if (terminate) {
       const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(new Error('Session termination timed out')), Math.min(timeoutMs, 1000));
+      const timer = setTimeout(
+        () => controller.abort(new Error('Session termination timed out')),
+        Math.min(timeoutMs, 1000),
+      );
       try {
         await waitForSignal(remote.transport?.terminateSession?.(), controller.signal);
       } catch (error) {
@@ -210,7 +213,8 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
     parentSignal?.addEventListener('abort', cancel, { once: true });
     if (parentSignal?.aborted) cancel();
     const timer = setTimeout(
-      () => controller.abort(new McpError(ErrorCode.RequestTimeout, 'Request timed out', { timeout: timeoutMs })),
+      () =>
+        controller.abort(new McpError(ErrorCode.RequestTimeout, 'Request timed out', { timeout: timeoutMs })),
       timeoutMs,
     );
     requests.add(controller);
@@ -228,10 +232,11 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
           return await waitForSignal(fn(remote, { ...requestOptions, signal }), signal);
         } catch (error) {
           signal.throwIfAborted();
-          if (attempt !== 0 || !isStaleSession(error)) throw error;
-          log('Upstream session expired; reconnecting');
+          if (!isStaleSession(error)) throw error;
           if (client === remote) client = undefined;
           retired.add(remote);
+          if (attempt !== 0) throw error;
+          log('Upstream session expired; reconnecting');
           // Do not close a sibling's in-flight request or replay an ambiguous transport failure.
           // Each sibling keeps its own deadline and may retry only its own stale-session response.
         } finally {
@@ -281,7 +286,8 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
       // Forward other advertised methods with the same cancellation and elapsed deadline.
       local.fallbackRequestHandler = (request, extra) =>
         withRemote(
-          (c, options) => c.request({ method: request.method, params: request.params }, ResultSchema, options),
+          (c, options) =>
+            c.request({ method: request.method, params: request.params }, ResultSchema, options),
           extra.signal,
         );
 
@@ -307,11 +313,16 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
     client = undefined;
     retired.clear();
     for (const controller of requests) controller.abort(closedError());
-    closing = Promise.allSettled([
-      local?.close(),
-      ...[...remotes].map(remote => closeRemote(remote, remote === current && !!remote)),
-      ...cleanups,
-    ]).then(() => {});
+    // Reserve the shared close promise before invoking any user-supplied onclose callback.
+    closing = Promise.resolve()
+      .then(() =>
+        Promise.allSettled([
+          local?.close(),
+          ...[...remotes].map(remote => closeRemote(remote, remote === current && !!remote)),
+          ...cleanups,
+        ]),
+      )
+      .then(() => {});
     return closing;
   };
 
