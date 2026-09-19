@@ -24,6 +24,8 @@ import {
   ToolListChangedNotificationSchema,
 } from '@modelcontextprotocol/sdk/types.js';
 
+import { validateUtf8Response } from './utf8-response.js';
+
 const pkg = createRequire(import.meta.url)('../package.json');
 
 export const DEFAULT_REMOTE_URL = 'https://mcp.bestprice.gr/mcp';
@@ -132,6 +134,10 @@ export function createBridge({
       // A broken diagnostic sink cannot prevent fallback or leave a transport alive.
     }
   };
+  // The SDK's JSON/SSE decoders replace malformed UTF-8 by default. Refuse corrupt bytes
+  // before parsing, preserving backpressure and original bytes for both transport forms.
+  const checkedFetch = async (input, init) =>
+    validateUtf8Response(await (fetch ?? globalThis.fetch)(input, init));
   const requestOptions = { timeout: timeoutMs };
   let client;
   let connecting;
@@ -245,7 +251,9 @@ export function createBridge({
     connecting = (async () => {
       try {
         await waitForSignal(
-          candidate.connect(new StreamableHTTPClientTransport(url, { fetch }), { timeout: MAX_TIMEOUT_MS }),
+          candidate.connect(new StreamableHTTPClientTransport(url, { fetch: checkedFetch }), {
+            timeout: MAX_TIMEOUT_MS,
+          }),
           connection.signal,
         );
         checkDeadline();
