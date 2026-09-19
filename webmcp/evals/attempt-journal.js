@@ -152,7 +152,7 @@ export function auditAttempts(journalPath, runs = []) {
   const OUTCOMES = new Set(['passed', 'failed', 'refused', 'blocked']);
   const validInstant = value =>
     typeof value === 'string' &&
-    /^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,3})?Z$/u.test(value) &&
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/u.test(value) &&
     !Number.isNaN(Date.parse(value));
 
   for (const line of malformed) {
@@ -233,7 +233,7 @@ export function auditAttempts(journalPath, runs = []) {
       reasons.push(`custody-v2 run ${record.runId} has no journal start`);
       continue;
     }
-    if (!closed || closed.phase !== 'finish') {
+    if (closed?.phase !== 'finish') {
       reasons.push(`custody-v2 run ${record.runId} has no journal finish`);
       continue;
     }
