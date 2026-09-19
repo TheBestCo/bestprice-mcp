@@ -11,6 +11,7 @@
  */
 
 import { execFileSync } from 'node:child_process';
+import { isAbsolute, relative } from 'node:path';
 
 const GIT_TIMEOUT_MS = 10_000;
 
@@ -31,6 +32,26 @@ export function gitOutput(args, { cwd } = {}) {
   }
 }
 
+/**
+ * The path git needs: `<rev>:<path>` resolves from the repository root, so an absolute filesystem
+ * path silently resolves to nothing and the baseline reads as "no baseline at all".
+ *
+ * That is not a theoretical worry. Callers hand this module the path they were given, and
+ * `run-evidence.js` defaults to an absolute one — so the custody-v2 boundary ("records already
+ * published at the merge base are legacy") exempted nobody, and the gate's default invocation
+ * reported all 705 published records as new-and-invalid. Measured 2026-09-19: absolute path → 705
+ * problems, repo-relative path → clean, and `git show HEAD:/abs/path` fails.
+ */
+export function gitPathFor(path, { cwd } = {}) {
+  if (!isAbsolute(path)) return path;
+  const root = gitOutput(['rev-parse', '--show-toplevel'], { cwd })?.trim();
+  if (!root) return path;
+  const repoRelative = relative(root, path);
+  /* Outside the repository there is no baseline to read; returning the original keeps the failure
+   * mode explicit (no baseline) instead of inventing a path that cannot exist. */
+  return repoRelative.startsWith('..') ? path : repoRelative;
+}
+
 /** The commit this checkout must not contradict: the merge base with the branch it merges into. */
 export function resolveBaselineRevision({ cwd, refs = BASELINE_REFS } = {}) {
   for (const ref of refs) {
@@ -49,8 +70,9 @@ export function resolveBaselineRevision({ cwd, refs = BASELINE_REFS } = {}) {
 export function readTrustedBaseline(relativePath, { cwd, refs } = {}) {
   const resolved = resolveBaselineRevision({ cwd, refs });
   if (!resolved) return null;
-  const text = gitOutput(['show', `${resolved.revision}:${relativePath}`], { cwd });
-  return { ...resolved, path: relativePath, text: text ?? null };
+  const gitPath = gitPathFor(relativePath, { cwd });
+  const text = gitOutput(['show', `${resolved.revision}:${gitPath}`], { cwd });
+  return { ...resolved, path: gitPath, text: text ?? null };
 }
 
 /** The revision currently checked out, so a record can be bound to the implementation it names. */
