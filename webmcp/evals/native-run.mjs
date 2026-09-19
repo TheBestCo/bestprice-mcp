@@ -310,6 +310,7 @@ const main = async () => {
         runId,
         caseId: definition.id,
         purpose,
+        custodyVersion: 2,
         startedAt,
       });
     }
@@ -566,6 +567,7 @@ const main = async () => {
       datasetVersion: DATASET_VERSION,
       evidenceLayer: NATIVE_EVIDENCE_LAYER,
       purpose,
+      custodyVersion: 2,
       agent: options.agentName,
       model: options.agentModel,
       browser: browserIdentity,
@@ -595,6 +597,7 @@ const main = async () => {
         runId: uniqueRunId,
         caseId: definition.id,
         purpose,
+        custodyVersion: 2,
         outcome: verdict.outcome,
         finishedAt: new Date().toISOString(),
       });
