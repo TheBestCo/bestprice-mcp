@@ -120,6 +120,7 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
   let client;
   let connecting;
   let pendingClient;
+  let pendingConnection;
   let server;
   let starting = false;
   let closed = false;
@@ -176,6 +177,15 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
 
     const candidate = new Client(BRIDGE_INFO, { capabilities: {} });
     pendingClient = candidate;
+    // The SDK request timeout does not cover notifications/initialized. Bound the entire
+    // handshake ourselves and close its transport, rather than cancelling initialize (forbidden
+    // by MCP). A single caller cancelling its wait must not abort this shared connection.
+    const connection = new AbortController();
+    pendingConnection = connection;
+    const timer = setTimeout(
+      () => connection.abort(new McpError(ErrorCode.RequestTimeout, 'Upstream initialization timed out')),
+      timeoutMs,
+    );
     let candidateClosed = false;
     candidate.onerror = error => log(`Upstream error: ${error.message}`);
     candidate.onclose = () => {
@@ -190,7 +200,10 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
     });
     connecting = (async () => {
       try {
-        await candidate.connect(new StreamableHTTPClientTransport(url, { fetch }), requestOptions);
+        await waitForSignal(
+          candidate.connect(new StreamableHTTPClientTransport(url, { fetch }), { timeout: MAX_TIMEOUT_MS }),
+          connection.signal,
+        );
         if (closed || candidateClosed) throw closedError();
         client = candidate;
         return candidate;
@@ -198,7 +211,9 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
         await closeRemote(candidate);
         throw error;
       } finally {
+        clearTimeout(timer);
         if (pendingClient === candidate) pendingClient = undefined;
+        if (pendingConnection === connection) pendingConnection = undefined;
       }
     })().finally(() => {
       connecting = undefined;
@@ -255,6 +270,27 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
     }
   };
 
+  // The SDK allocates a fresh upstream progress token for each request. Map it back to the
+  // requesting host's token (zero is valid), never through a global notification handler. The
+  // request-owned signal also prevents progress leaking after timeout or cancellation.
+  const forward = (request, extra, invoke) =>
+    withRemote((remote, options) => {
+      const token = request.params?._meta?.progressToken;
+      if (typeof token !== 'string' && typeof token !== 'number') return invoke(remote, options);
+      return invoke(remote, {
+        ...options,
+        onprogress: progress => {
+          if (options.signal.aborted) return;
+          extra
+            .sendNotification({
+              method: 'notifications/progress',
+              params: { ...progress, progressToken: token },
+            })
+            .catch(error => log(`Could not relay progress: ${error.message}`));
+        },
+      });
+    }, extra.signal);
+
   const start = async serverTransport => {
     if (closed) throw closedError();
     if (server || starting) throw new Error('Bridge already started.');
@@ -277,18 +313,16 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
       server = local;
       if (capabilities.tools) {
         local.setRequestHandler(ListToolsRequestSchema, (request, extra) =>
-          withRemote((c, options) => c.listTools(request.params, options), extra.signal),
+          forward(request, extra, (c, options) => c.listTools(request.params, options)),
         );
         local.setRequestHandler(CallToolRequestSchema, (request, extra) =>
-          withRemote((c, options) => c.callTool(request.params, CallToolResultSchema, options), extra.signal),
+          forward(request, extra, (c, options) => c.callTool(request.params, CallToolResultSchema, options)),
         );
       }
       // Forward other advertised methods with the same cancellation and elapsed deadline.
       local.fallbackRequestHandler = (request, extra) =>
-        withRemote(
-          (c, options) =>
-            c.request({ method: request.method, params: request.params }, ResultSchema, options),
-          extra.signal,
+        forward(request, extra, (c, options) =>
+          c.request({ method: request.method, params: request.params }, ResultSchema, options),
         );
 
       await local.connect(serverTransport);
@@ -306,6 +340,7 @@ export function createBridge({ remoteUrl, timeoutMs = DEFAULT_TIMEOUT_MS, fetch,
   const close = () => {
     if (closing) return closing;
     closed = true;
+    pendingConnection?.abort(closedError());
     const local = server;
     const current = client;
     const remotes = new Set([current, pendingClient, ...retired]);
