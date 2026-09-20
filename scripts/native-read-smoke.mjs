@@ -6,6 +6,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { pathToFileURL } from 'node:url';
 import {
+  allowPriceHistoryRead,
   allowSpecificationsRead,
   inspectBrowsingProductLinks,
   isAllowedBrowsingPage,
@@ -31,7 +32,7 @@ const report = {
     externalRequests: 'blocked',
     userAgentOverride: false,
     toolActions: false,
-    nonReadHttpMethods: 'blocked_except_one_current_product_specifications_read',
+    nonReadHttpMethods: 'blocked_except_scoped_specifications_and_price_history_reads',
   },
 };
 let phase = 'launch';
@@ -86,7 +87,10 @@ try {
   });
   let controlOrigin = null;
   let specificationsPermit = null;
+  let historyPermit = null;
   report.specificationsReads = 0;
+  report.priceHistoryReads = 0;
+  report.priceHistoryPreflights = 0;
   const controlBlocks = { redirect: 0, frame: 0, popup: 0 };
   const deniedControl = new Map([
     ['/denied-main', 'redirect'],
@@ -121,6 +125,9 @@ try {
         allowSpecificationsRead(event.request, event.resourceType, specificationsPermit, performance.now())
       ) {
         report.specificationsReads += 1;
+      } else if (allowPriceHistoryRead(event.request, event.resourceType, historyPermit, performance.now())) {
+        if (event.request.method === 'POST') report.priceHistoryReads += 1;
+        else report.priceHistoryPreflights += 1;
       } else if (!['GET', 'HEAD'].includes(event.request.method)) blocked = 'non_read_method';
       else if (
         (url.hostname === 'rpc.bestprice.gr' && url.pathname.startsWith('/beacon')) ||
@@ -324,6 +331,14 @@ try {
         expiresAt: performance.now() + 10000,
         used: false,
       };
+    if (name === 'summarize_price_history')
+      historyPermit = {
+        tool: name,
+        productId: expectedProductId,
+        expiresAt: performance.now() + 10000,
+        used: false,
+        preflightUsed: false,
+      };
     let observation;
     try {
       observation = await page.evaluate(
@@ -383,6 +398,7 @@ try {
       );
     } finally {
       specificationsPermit = null;
+      historyPermit = null;
     }
     // Candidate identities/URLs are ephemeral navigation input, never report content.
     const { productCandidates, ...publicObservation } = observation;
@@ -432,7 +448,8 @@ try {
   await invoke('product', 'get_page_product', {}, target.productId);
   await invoke('product', 'compare_page_offers', { limit: 2 });
   await invoke('product', 'get_product_specifications', { limit: 3 });
-  await invoke('product', 'summarize_price_history');
+  await invoke('product', 'summarize_price_history', {}, target.productId);
+  ensure(report.priceHistoryReads === 1, 'history_read_not_observed');
   ensure(report.specificationsReads === 1, 'specifications_read_not_observed');
   ensure(!report.blocked.budget, 'browser_budget_exhausted');
   ensure(!report.blocked.navigation_guard_error, 'navigation_guard_failed');

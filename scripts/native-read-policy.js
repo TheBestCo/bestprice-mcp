@@ -120,3 +120,78 @@ export function selectVisibleProductReadTarget(products) {
   }
   return null;
 }
+
+/** The source-confirmed history RPC is read-only. Authorize one selected-product
+ * POST (and its one CORS preflight), not an origin-wide RPC exemption. */
+export function allowPriceHistoryRead(request, resourceType, permit, now) {
+  if (
+    !permit ||
+    permit.tool !== 'summarize_price_history' ||
+    permit.used ||
+    !Number.isFinite(now) ||
+    !Number.isFinite(permit.expiresAt) ||
+    now >= permit.expiresAt ||
+    typeof permit.productId !== 'string' ||
+    !/^\d{10}$/u.test(permit.productId) ||
+    Number(permit.productId) < 2147483648 ||
+    Number(permit.productId) > 4294967295 ||
+    request?.url !== 'https://rpc.bestprice.gr/backend/clusters.prices.get'
+  )
+    return false;
+  const headers = Object.entries(request.headers ?? {});
+  const readHeader = name => {
+    const matches = headers.filter(([key]) => key.toLowerCase() === name);
+    return matches.length === 1 ? matches[0][1] : undefined;
+  };
+  if (request.method === 'OPTIONS') {
+    if (
+      permit.preflightUsed ||
+      !['Other', 'Fetch', 'XHR', 'Preflight'].includes(resourceType) ||
+      readHeader('origin') !== 'https://www.bestprice.gr' ||
+      readHeader('access-control-request-method') !== 'POST' ||
+      request.postData
+    )
+      return false;
+    permit.preflightUsed = true;
+    return true;
+  }
+  if (
+    request.method !== 'POST' ||
+    !['Fetch', 'XHR'].includes(resourceType) ||
+    readHeader('content-type') !== 'application/json' ||
+    typeof request.postData !== 'string' ||
+    Buffer.byteLength(request.postData) > 4096
+  )
+    return false;
+  let body;
+  try {
+    body = JSON.parse(request.postData);
+  } catch {
+    return false;
+  }
+  if (
+    !body ||
+    typeof body !== 'object' ||
+    Array.isArray(body) ||
+    Object.keys(body).some(key => !['m', 'a', 'ctx', 'cacheTTL', 'client'].includes(key)) ||
+    body.m !== 'bestprice.clusters.prices.get' ||
+    body.ctx !== 'bestprice' ||
+    body.cacheTTL !== 60000 ||
+    !Array.isArray(body.a) ||
+    body.a.length !== 1 ||
+    !Array.isArray(body.a[0]) ||
+    body.a[0].length !== 1 ||
+    body.a[0][0] !== permit.productId ||
+    typeof body.client !== 'string' ||
+    body.client.length > 2048
+  )
+    return false;
+  try {
+    const client = JSON.parse(body.client);
+    if (!client || typeof client !== 'object' || Array.isArray(client)) return false;
+  } catch {
+    return false;
+  }
+  permit.used = true;
+  return true;
+}
