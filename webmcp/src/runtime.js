@@ -103,16 +103,6 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
       ok: false,
       error: 'The BestPrice page tools are not available right now.',
     });
-    // One registration listener, even with many concurrent invocations. Each invocation owns
-    // its own composed signal: cancelling one must not abort a sibling or a caller-owned signal.
-    const invocations = new Set();
-    controller.signal.addEventListener(
-      'abort',
-      () => {
-        for (const cancel of [...invocations]) cancel();
-      },
-      { once: true },
-    );
     const guarded = snapshot.map(value => ({
       ...value,
       execute: (...args) => {
@@ -124,6 +114,9 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
         // remains active. Native composition keeps that watcher bound to the caller and
         // registration after waiter bookkeeping is released, without a retained manual listener.
         const invocationSignal = AbortSignal.any([controller.signal, parent].filter(Boolean));
+        // Never expose the waiter's signal. Public abort events can be fabricated or stopped;
+        // native composition follows actual abort state rather than event propagation.
+        const completionSignal = AbortSignal.any([invocationSignal]);
         let resolve;
         let reject;
         const pending = new Promise((yes, no) => {
@@ -134,8 +127,7 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
         const finish = (callback, result) => {
           if (settled) return;
           settled = true;
-          invocations.delete(cancel);
-          parent?.removeEventListener('abort', cancel);
+          completionSignal.removeEventListener('abort', cancel);
           callback(result);
         };
         const cancel = () => {
@@ -143,11 +135,10 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
           // Release the waiter once even when an abort listener re-enters the registry.
           finish(resolve, refusal());
         };
-        invocations.add(cancel);
         try {
-          parent?.addEventListener('abort', cancel, { once: true });
+          completionSignal.addEventListener('abort', cancel, { once: true });
           args[1] = { ...args[1], signal: invocationSignal };
-          if (!owns() || parent?.aborted === true) {
+          if (!owns() || completionSignal.aborted) {
             cancel();
             return pending;
           }
@@ -157,7 +148,7 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
             // signal lets cooperative handlers stop later effects; synchronous effects cannot
             // be undone. Original handler failures still reject while the invocation is live.
             Promise.resolve(result).then(
-              output => finish(resolve, owns() ? output : refusal()),
+              output => finish(resolve, owns() && !completionSignal.aborted ? output : refusal()),
               error => finish(reject, error),
             );
             return pending;
@@ -165,7 +156,7 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
           // Preserve synchronous handlers' return identity and thrown errors while still
           // refusing any result whose handler synchronously tore down its own registration.
           if (settled) return pending;
-          if (!owns()) {
+          if (!owns() || completionSignal.aborted) {
             cancel();
             return pending;
           }
