@@ -42,8 +42,9 @@ const shutdown = (reason, code = 0) => {
 
 process.on('SIGINT', () => shutdown('SIGINT'));
 process.on('SIGTERM', () => shutdown('SIGTERM'));
-// Observe the validated stream: raw EOF must not win over a truncated UTF-8 error.
-input.once('end', () => shutdown('stdin closed'));
+// Writable finish follows successful UTF-8 flush, even when startup has not attached
+// the SDK reader. Readable end would wait for that reader and strand a closed host.
+input.once('finish', () => shutdown('stdin closed'));
 input.once('error', () => shutdown('invalid stdin', 1));
 process.stdin.once('error', () => shutdown('stdin error', 1));
 process.on('unhandledRejection', error => {

@@ -106,17 +106,27 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
     const guarded = snapshot.map(value => ({
       ...value,
       execute: (...args) => {
-        const parent = args[1]?.signal;
-        if (!owns() || !operation.ready || parent?.aborted === true) {
+        if (!owns() || !operation.ready) return Promise.resolve(refusal());
+        let invocationSignal;
+        let completionSignal;
+        try {
+          // Read each option once. Accessors may throw, cancel, or replace registration;
+          // never select one signal and then re-read a different one during object spread.
+          const { signal: parent, ...options } = args[1] ?? {};
+          if (parent != null) AbortSignal.prototype.throwIfAborted.call(parent);
+          if (!owns() || !operation.ready) return Promise.resolve(refusal());
+          // Do not filter by truthiness: false, 0 and empty strings are invalid signals,
+          // not permission to execute without caller cancellation.
+          const sources = parent == null ? [controller.signal] : [controller.signal, parent];
+          // Confirmation watchers must remain bound after an immediate dispatch receipt.
+          invocationSignal = AbortSignal.any(sources);
+          // Never expose the waiter's signal. Public abort events can be fabricated or stopped;
+          // native composition follows actual abort state rather than event propagation.
+          completionSignal = AbortSignal.any([invocationSignal]);
+          args[1] = { ...options, signal: invocationSignal };
+        } catch {
           return Promise.resolve(refusal());
         }
-        // The result may be an immediate dispatch receipt while a confirmation watcher
-        // remains active. Native composition keeps that watcher bound to the caller and
-        // registration after waiter bookkeeping is released, without a retained manual listener.
-        const invocationSignal = AbortSignal.any([controller.signal, parent].filter(Boolean));
-        // Never expose the waiter's signal. Public abort events can be fabricated or stopped;
-        // native composition follows actual abort state rather than event propagation.
-        const completionSignal = AbortSignal.any([invocationSignal]);
         let resolve;
         let reject;
         const pending = new Promise((yes, no) => {
@@ -137,7 +147,6 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
         };
         try {
           completionSignal.addEventListener('abort', cancel, { once: true });
-          args[1] = { ...args[1], signal: invocationSignal };
           if (!owns() || completionSignal.aborted) {
             cancel();
             return pending;
