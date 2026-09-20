@@ -54,3 +54,18 @@ export function allowSpecificationsRead(request, resourceType, permit, now) {
   permit.used = true;
   return true;
 }
+
+/** Prefer a safe grouped-product link, never the first item-looking redirect target. */
+export function selectBrowsingProductUrl(values) {
+  if (!Array.isArray(values)) return null;
+  for (const value of values.slice(0, 64)) {
+    if (typeof value !== 'string' || value.length > 2048) continue;
+    try {
+      const url = new URL(value);
+      if (url.pathname.startsWith('/item/') && isAllowedBrowsingPage(url)) return url.href;
+    } catch {
+      // Invalid or unsafe candidates are not navigation instructions.
+    }
+  }
+  return null;
+}

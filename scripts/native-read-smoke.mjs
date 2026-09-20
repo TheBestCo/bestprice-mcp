@@ -5,7 +5,11 @@ import { createReadStream } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { pathToFileURL } from 'node:url';
-import { allowSpecificationsRead, isAllowedBrowsingPage } from './native-read-policy.js';
+import {
+  allowSpecificationsRead,
+  isAllowedBrowsingPage,
+  selectBrowsingProductUrl,
+} from './native-read-policy.js';
 
 const report = {
   kind: 'native-webmcp-read-smoke',
@@ -371,8 +375,8 @@ try {
   await invoke('listing', 'get_visible_products', { limit: 2 });
   await invoke('listing', 'get_listing_filters');
   await invoke('listing', 'get_listing_sort_options');
-  const productUrl = await page.locator('a[href*="/item/"]').evaluateAll(elements => {
-    const match = elements.find(element => {
+  const productLinks = await page.locator('a[href*="/item/"]').evaluateAll(elements => {
+    const matches = elements.filter(element => {
       const url = new URL(element.href, location.href);
       const rect = element.getBoundingClientRect();
       return (
@@ -382,9 +386,10 @@ try {
         rect.height > 0
       );
     });
-    return match?.href ?? null;
+    return matches.slice(0, 64).map(element => element.href);
   });
-  ensure(productUrl, 'no_visible_product_link');
+  const productUrl = selectBrowsingProductUrl(productLinks);
+  ensure(productUrl, 'no_safe_visible_product_link');
   ensure(allowedPage(new URL(productUrl)), 'unsafe_product_link');
   await visit('product', productUrl);
   await invoke('product', 'get_page_product');
