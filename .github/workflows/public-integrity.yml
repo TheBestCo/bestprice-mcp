@@ -47,7 +47,7 @@ jobs:
         run: |
           npm run check > integrity-output/check.log 2>&1
           npm test > integrity-output/tests.log 2>&1
-      - name: One bounded read-only observation after request-lifetime hardening
+      - name: One bounded read-only observation after stream-failure hardening
         env:
           EXPECTED_REVISION: ${{ inputs.expected_revision }}
         run: |

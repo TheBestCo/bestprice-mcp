@@ -1,10 +1,15 @@
 /** Native browser/read-only smoke. No model, polyfill, merchant navigation, retries or qualification. */
 
-import { createHash } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { createReadStream } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { pathToFileURL } from 'node:url';
+import {
+  makeNativeReadReceipt,
+  verifyNativeReadPayload,
+  verifyReadDocument,
+} from './native-read-contracts.js';
 import {
   allowPriceHistoryRead,
   allowSpecificationsRead,
@@ -17,6 +22,7 @@ const report = {
   kind: 'native-webmcp-read-smoke',
   purpose: 'diagnostic',
   nativeQualification: false,
+  readContractVersion: 2,
   model: null,
   startedAt: new Date().toISOString(),
   sourceRevision: process.env.GITHUB_SHA ?? null,
@@ -246,12 +252,26 @@ try {
     acceptDownloads: false,
     viewport: { width: 1440, height: 1000 },
   });
+  // A URL cannot identify a document: same-URL reloads must invalidate a read receipt.
+  // This sentinel does not replace or polyfill any native WebMCP API.
+  const documentKey = `__bpNativeRead_${randomUUID().replaceAll('-', '')}`;
+  await context.addInitScript(key => {
+    Object.defineProperty(globalThis, key, { value: crypto.randomUUID(), configurable: false });
+  }, documentKey);
   await context.routeWebSocket('**/*', socket => {
     markBlocked('websocket');
     socket.close();
   });
   const page = await context.newPage();
   page.setDefaultTimeout(12000);
+  const readDocument = () =>
+    page.evaluate(
+      key => ({
+        documentId: globalThis[key] ?? null,
+        url: location.href,
+      }),
+      documentKey,
+    );
   let firstRelease;
   const visit = async (kind, target) => {
     phase = `${kind}:navigation`;
@@ -317,11 +337,11 @@ try {
       ].includes(name),
       'action_tool_refused',
     );
-    const before = page.url();
+    const before = await readDocument();
     const began = performance.now();
     // This tool reads specifications using a POST with exactly one FormData field.
     // The source-confirmed selector is read-only; it does not authorize other POSTs.
-    const specificationsUrl = new URL(before);
+    const specificationsUrl = new URL(before.url);
     specificationsUrl.search = '';
     specificationsUrl.hash = '';
     if (name === 'get_product_specifications')
@@ -342,7 +362,8 @@ try {
     let observation;
     try {
       observation = await page.evaluate(
-        async ({ name, args, modernArgs, expectedProductId }) => {
+        async ({ name, args, modernArgs, expectedProductId, documentKey }) => {
+          const documentBefore = { documentId: globalThis[documentKey] ?? null, url: location.href };
           const tool = (await document.modelContext.getTools()).find(tool => tool.name === name);
           if (tool?.annotations?.readOnlyHint !== true) return { error: 'not_read_only' };
           const result = await document.modelContext.executeTool(
@@ -385,6 +406,11 @@ try {
                 }))
               : undefined;
           return {
+            // Raw output is ephemeral input to semantic validation; never spread it into
+            // the persisted observation, where only allowlisted summaries belong.
+            payload: new TextEncoder().encode(wire ?? '').byteLength <= 262144 ? payload : null,
+            documentBefore,
+            documentAfter: { documentId: globalThis[documentKey] ?? null, url: location.href },
             ok: payload?.ok === true,
             bytes: new TextEncoder().encode(wire ?? '').byteLength,
             arrays,
@@ -394,22 +420,32 @@ try {
               : {}),
           };
         },
-        { name, args, modernArgs, expectedProductId },
+        { name, args, modernArgs, expectedProductId, documentKey },
       );
     } finally {
       specificationsPermit = null;
       historyPermit = null;
     }
     // Candidate identities/URLs are ephemeral navigation input, never report content.
-    const { productCandidates, ...publicObservation } = observation;
-    const row = { name, page: kind, ...publicObservation, durationMs: Math.round(performance.now() - began) };
+    const { productCandidates, payload, documentBefore, documentAfter } = observation;
+    const row = makeNativeReadReceipt({
+      name,
+      page: kind,
+      observation,
+      durationMs: Math.round(performance.now() - began),
+    });
     report.calls.push(row);
     ensure(
       observation.ok && observation.bytes > 0 && observation.bytes <= 262144,
       'read_tool_contract_failed',
     );
-    ensure(page.url() === before, 'read_tool_changed_document');
-    if (expectedProductId) ensure(observation.productIdentityMatches, 'product_identity_mismatch');
+    // Observe the near-term transition interval too; a dispatched same-URL reload is not
+    // a successful read. This is an observed 150ms window, not a promise about future navigation.
+    await page.waitForTimeout(150);
+    verifyReadDocument(before, documentBefore, documentAfter, await readDocument());
+    row.documentUnchanged = true;
+    row.contractChecks = verifyNativeReadPayload(name, args, payload, expectedProductId);
+    row.contractValidated = true;
     return productCandidates;
   };
   await visit('home', 'https://www.bestprice.gr/');
@@ -446,8 +482,8 @@ try {
     'product_navigation_identity_mismatch',
   );
   await invoke('product', 'get_page_product', {}, target.productId);
-  await invoke('product', 'compare_page_offers', { limit: 2 });
-  await invoke('product', 'get_product_specifications', { limit: 3 });
+  await invoke('product', 'compare_page_offers', { limit: 2 }, target.productId);
+  await invoke('product', 'get_product_specifications', { limit: 3 }, target.productId);
   await invoke('product', 'summarize_price_history', {}, target.productId);
   ensure(report.priceHistoryReads === 1, 'history_read_not_observed');
   ensure(report.specificationsReads === 1, 'specifications_read_not_observed');
@@ -457,7 +493,7 @@ try {
 } catch (error) {
   report.failure = {
     phase,
-    category: /^[a-z_]{1,60}$/u.test(error.message ?? '') ? error.message : 'browser_or_assertion_failure',
+    category: /^[A-Za-z_]{1,60}$/u.test(error.message ?? '') ? error.message : 'browser_or_assertion_failure',
   };
   process.exitCode = 1;
 } finally {
