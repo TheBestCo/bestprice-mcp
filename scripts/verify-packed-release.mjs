@@ -7,7 +7,17 @@
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { copyFile, lstat, mkdir, mkdtemp, readFile, readdir, realpath, rm, writeFile } from 'node:fs/promises';
+import {
+  copyFile,
+  lstat,
+  mkdir,
+  mkdtemp,
+  readdir,
+  readFile,
+  realpath,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -35,7 +45,10 @@ const childEnv = () => ({
 
 export function isWithin(root, target) {
   const relative = path.relative(root, target);
-  return relative === '' || (!relative.startsWith(`..${path.sep}`) && relative !== '..' && !path.isAbsolute(relative));
+  return (
+    relative === '' ||
+    (!relative.startsWith(`..${path.sep}`) && relative !== '..' && !path.isAbsolute(relative))
+  );
 }
 
 export async function runtimePaths(root) {
@@ -75,7 +88,10 @@ export async function verifyRuntimeFiles(source, installed, paths) {
   for (const name of paths) {
     assert.ok(!path.isAbsolute(name) && !name.split('/').includes('..'), 'Invalid runtime path');
     for (const root of [source, installed]) {
-      assert.ok(isWithin(await realpath(root), await realpath(path.join(root, name))), 'Runtime escaped root');
+      assert.ok(
+        isWithin(await realpath(root), await realpath(path.join(root, name))),
+        'Runtime escaped root',
+      );
       assert.ok((await lstat(path.join(root, name))).isFile(), 'Runtime is not a regular file');
     }
     const expected = await readFile(path.join(source, name));
@@ -106,7 +122,10 @@ export async function verifyPackedRelease(output) {
   assert.ok(!isWithin(root, destination), 'Output must be outside checkout');
   await mkdir(path.dirname(destination), { recursive: true });
   const parent = await realpath(path.dirname(destination));
-  assert.ok(!isWithin(root, path.join(parent, path.basename(destination))), 'Output must be outside checkout');
+  assert.ok(
+    !isWithin(root, path.join(parent, path.basename(destination))),
+    'Output must be outside checkout',
+  );
   // Refuse to overwrite any prior receipt or package, including a symlinked directory.
   await mkdir(destination);
   const report = {
@@ -134,22 +153,39 @@ export async function verifyPackedRelease(output) {
     report.lockSha256 = sha256(lockBytes);
     const runtime = await runtimePaths(root);
     const tracked = (await execute('git', ['ls-files', '--', 'package.json', 'stdio.mjs', 'src'])).stdout;
-    assert.deepEqual(tracked.trim().split('\n').sort(), runtime, 'Runtime inventory differs from tracked source');
+    assert.deepEqual(
+      tracked.trim().split('\n').sort(),
+      runtime,
+      'Runtime inventory differs from tracked source',
+    );
     await execute('git', ['ls-files', '--error-unmatch', '--', ...SUPPORT]);
     workspace = await mkdtemp(path.join(tmpdir(), 'bp-installed-release-'));
     stage = 'pack';
     const packResult = await execute('npm', [
-      'pack', '--offline', '--ignore-scripts', '--json', '--pack-destination', destination,
+      'pack',
+      '--offline',
+      '--ignore-scripts',
+      '--json',
+      '--pack-destination',
+      destination,
     ]);
     const packed = validatePack(JSON.parse(packResult.stdout), manifest, runtime);
     const tarball = path.join(destination, packed.filename);
     const bytes = await readFile(tarball);
     assert.equal(packed.integrity, `sha512-${createHash('sha512').update(bytes).digest('base64')}`);
-    report.package = { name: packed.name, version: packed.version, sha256: sha256(bytes), integrity: packed.integrity };
+    report.package = {
+      name: packed.name,
+      version: packed.version,
+      sha256: sha256(bytes),
+      integrity: packed.integrity,
+    };
     const names = (await execute('tar', ['-tzf', tarball])).stdout.trim().split('\n');
     assert.deepEqual(names.sort(), packed.files.map(file => `package/${file.path}`).sort());
     const types = (await execute('tar', ['-tvzf', tarball])).stdout.trim().split('\n');
-    assert.ok(types.every(line => line.startsWith('-')), 'Package must contain only regular files');
+    assert.ok(
+      types.every(line => line.startsWith('-')),
+      'Package must contain only regular files',
+    );
     await execute('tar', ['-xzf', tarball, '-C', workspace]);
     const installed = path.join(workspace, 'package');
     report.runtimeSha256 = await verifyRuntimeFiles(root, installed, runtime);
@@ -158,9 +194,12 @@ export async function verifyPackedRelease(output) {
     // this diagnostic explicitly; this is not a claim about arbitrary consumer resolution.
     await writeFile(path.join(installed, 'package-lock.json'), lockBytes, { flag: 'wx' });
     const cache = (await execute('npm', ['config', 'get', 'cache'])).stdout.trim();
-    await execute('npm', [
-      'ci', '--offline', '--ignore-scripts', '--omit=dev', '--no-audit', '--no-fund', '--cache', cache,
-    ], installed, 120000);
+    await execute(
+      'npm',
+      ['ci', '--offline', '--ignore-scripts', '--omit=dev', '--no-audit', '--no-fund', '--cache', cache],
+      installed,
+      120000,
+    );
     assert.ok(lockBytes.equals(await readFile(path.join(installed, 'package-lock.json'))), 'Lock changed');
     const require = createRequire(path.join(installed, 'stdio.mjs'));
     const sdk = await realpath(require.resolve('@modelcontextprotocol/sdk/server/stdio.js'));
@@ -183,7 +222,12 @@ export async function verifyPackedRelease(output) {
       report.testSupportSha256[name] = sha256(await readFile(path.join(installed, name)));
     }
     try {
-      const tests = await execute(process.execPath, ['--test', '--test-reporter=tap', ...TESTS], installed, 60000);
+      const tests = await execute(
+        process.execPath,
+        ['--test', '--test-reporter=tap', ...TESTS],
+        installed,
+        60000,
+      );
       await writeFile(path.join(destination, 'tests.tap'), tests.stdout, { flag: 'wx' });
       report.tests = parseTestSummary(tests.stdout);
     } catch (error) {
@@ -202,7 +246,9 @@ export async function verifyPackedRelease(output) {
   } finally {
     if (workspace) await rm(workspace, { recursive: true, force: true });
     report.finishedAt = new Date().toISOString();
-    await writeFile(path.join(destination, 'receipt.json'), `${JSON.stringify(report, null, 2)}\n`, { flag: 'wx' });
+    await writeFile(path.join(destination, 'receipt.json'), `${JSON.stringify(report, null, 2)}\n`, {
+      flag: 'wx',
+    });
   }
   return report;
 }
@@ -210,7 +256,9 @@ export async function verifyPackedRelease(output) {
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   try {
     const report = await verifyPackedRelease(process.argv[2]);
-    console.log(JSON.stringify({ ok: report.ok, stage: report.failedStage ?? 'complete', qualification: false }));
+    console.log(
+      JSON.stringify({ ok: report.ok, stage: report.failedStage ?? 'complete', qualification: false }),
+    );
     if (!report.ok) process.exitCode = 1;
   } catch {
     console.error('Installed package verification could not start safely.');

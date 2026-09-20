@@ -10,9 +10,11 @@ import { promisify } from 'node:util';
 const run = promisify(execFile);
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const release = await readFile(path.join(ROOT, '.github/workflows/release.yml'), 'utf8');
-const tagStep = release.match(/name: Check whether the tag exists[\s\S]*?        run: \|\n([\s\S]*?)(?=\n      -)/u);
+const tagStep = release.match(
+  /name: Check whether the tag exists[\s\S]*? {8}run: \|\n([\s\S]*?)(?=\n {6}-)/u,
+);
 assert.ok(tagStep, 'The release tag check must remain testable');
-const tagCommand = tagStep[1].replace(/^          /gmu, '');
+const tagCommand = tagStep[1].replace(/^ {10}/gmu, '');
 
 for (const status of [0, 2, 1, 128, 129, 143]) {
   test(`actual release shell handles git lookup status ${status} without inventing absence`, async t => {
@@ -58,11 +60,16 @@ test('release checks genuine history and both installed artifacts before tagging
   assert.equal((release.match(/run: npm test/gu) ?? []).length, 2);
   assert.match(release, /run: npm run check/u);
   for (const version of [20, 22]) {
-    const verify = release.indexOf(`run: node scripts/verify-packed-release.mjs "$RUNNER_TEMP/installed-package-node${version}"`);
+    const verify = release.indexOf(
+      `run: node scripts/verify-packed-release.mjs "$RUNNER_TEMP/installed-package-node${version}"`,
+    );
     assert.ok(verify > 0 && verify < release.indexOf('gh release create'));
   }
   assert.match(release, /cmp "\$RUNNER_TEMP\/installed-package-node20\//u);
-  assert.match(release, /gh release create "v\$VERSION" \\\n            "\$RUNNER_TEMP\/installed-package-node22\/bestprice-mcp-\$VERSION.tgz"/u);
+  assert.match(
+    release,
+    /gh release create "v\$VERSION" \\\n {12}"\$RUNNER_TEMP\/installed-package-node22\/bestprice-mcp-\$VERSION.tgz"/u,
+  );
 });
 
 test('existing Node 20/22 CI also verifies the isolated package without weakening test gates', async () => {

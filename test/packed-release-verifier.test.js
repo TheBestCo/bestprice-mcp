@@ -18,10 +18,14 @@ const run = promisify(execFile);
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const paths = ['package.json', 'stdio.mjs', 'src/bridge.js', 'src/utf8-input.js', 'src/utf8-response.js'];
 const manifest = { name: 'bestprice-mcp', version: '1.2.0' };
-const pack = () => [{
-  name: 'bestprice-mcp', version: '1.2.0', filename: 'bestprice-mcp-1.2.0.tgz',
-  files: [...paths, 'LICENSE', 'README.md'].map(file => ({ path: file })),
-}];
+const pack = () => [
+  {
+    name: 'bestprice-mcp',
+    version: '1.2.0',
+    filename: 'bestprice-mcp-1.2.0.tgz',
+    files: [...paths, 'LICENSE', 'README.md'].map(file => ({ path: file })),
+  },
+];
 const summary = '# tests 63\n# pass 63\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n';
 
 test('the packed file contract accepts exactly the runtime and public documentation', () => {
@@ -30,20 +34,90 @@ test('the packed file contract accepts exactly the runtime and public documentat
 });
 
 for (const [label, corrupt] of [
-  ['missing validator', p => { p[0].files = p[0].files.filter(f => f.path !== 'src/utf8-input.js'); }],
-  ['checkout-only bridge', p => { p[0].files = p[0].files.filter(f => f.path !== 'src/bridge.js'); }],
-  ['duplicate entry', p => { p[0].files.push(p[0].files[0]); }],
-  ['secret file', p => { p[0].files.push({ path: '.env' }); }],
-  ['nested secret', p => { p[0].files.push({ path: 'src/.env' }); }],
-  ['test support shipped', p => { p[0].files.push({ path: 'test/helpers/fake-remote.js' }); }],
-  ['path escape', p => { p[0].files.push({ path: '../stdio.mjs' }); }],
-  ['absolute path', p => { p[0].files.push({ path: '/tmp/stdio.mjs' }); }],
-  ['wrong package', p => { p[0].name = 'other'; }],
-  ['wrong version', p => { p[0].version = '0.0.0'; }],
-  ['tarball escape', p => { p[0].filename = '../bestprice-mcp-1.2.0.tgz'; }],
-  ['missing inventory', p => { delete p[0].files; }],
-  ['two tarballs', p => { p.push(p[0]); }],
-  ['no tarball', p => { p.length = 0; }],
+  [
+    'missing validator',
+    p => {
+      p[0].files = p[0].files.filter(f => f.path !== 'src/utf8-input.js');
+    },
+  ],
+  [
+    'checkout-only bridge',
+    p => {
+      p[0].files = p[0].files.filter(f => f.path !== 'src/bridge.js');
+    },
+  ],
+  [
+    'duplicate entry',
+    p => {
+      p[0].files.push(p[0].files[0]);
+    },
+  ],
+  [
+    'secret file',
+    p => {
+      p[0].files.push({ path: '.env' });
+    },
+  ],
+  [
+    'nested secret',
+    p => {
+      p[0].files.push({ path: 'src/.env' });
+    },
+  ],
+  [
+    'test support shipped',
+    p => {
+      p[0].files.push({ path: 'test/helpers/fake-remote.js' });
+    },
+  ],
+  [
+    'path escape',
+    p => {
+      p[0].files.push({ path: '../stdio.mjs' });
+    },
+  ],
+  [
+    'absolute path',
+    p => {
+      p[0].files.push({ path: '/tmp/stdio.mjs' });
+    },
+  ],
+  [
+    'wrong package',
+    p => {
+      p[0].name = 'other';
+    },
+  ],
+  [
+    'wrong version',
+    p => {
+      p[0].version = '0.0.0';
+    },
+  ],
+  [
+    'tarball escape',
+    p => {
+      p[0].filename = '../bestprice-mcp-1.2.0.tgz';
+    },
+  ],
+  [
+    'missing inventory',
+    p => {
+      delete p[0].files;
+    },
+  ],
+  [
+    'two tarballs',
+    p => {
+      p.push(p[0]);
+    },
+  ],
+  [
+    'no tarball',
+    p => {
+      p.length = 0;
+    },
+  ],
 ]) {
   test(`package contract rejects ${label}`, () => {
     const value = pack();
@@ -53,7 +127,14 @@ for (const [label, corrupt] of [
 }
 
 test('only a complete positive zero-skip TAP summary certifies installed tests', () => {
-  assert.deepEqual(parseTestSummary(summary), { tests: 63, pass: 63, fail: 0, cancelled: 0, skipped: 0, todo: 0 });
+  assert.deepEqual(parseTestSummary(summary), {
+    tests: 63,
+    pass: 63,
+    fail: 0,
+    cancelled: 0,
+    skipped: 0,
+    todo: 0,
+  });
 });
 for (const key of ['fail', 'cancelled', 'skipped', 'todo']) {
   test(`a nonzero ${key} cannot produce an installed pass`, () => {
@@ -115,12 +196,24 @@ test('runtime inventory refuses non-code and symlinked source entries', async t 
   await assert.rejects(runtimePaths(source));
 });
 
-test('real offline npm tarball satisfies the complete installed-runtime inventory contract', { timeout: 15000 }, async t => {
+test('real offline npm tarball satisfies the complete installed-runtime inventory contract', {
+  timeout: 15000,
+}, async t => {
   const { directory } = await fixture(t);
-  const { stdout } = await run('npm', [
-    'pack', '--offline', '--ignore-scripts', '--json', '--pack-destination', directory,
-    '--cache', path.join(directory, 'cache'),
-  ], { cwd: ROOT, timeout: 10000, maxBuffer: 1024 * 1024 });
+  const { stdout } = await run(
+    'npm',
+    [
+      'pack',
+      '--offline',
+      '--ignore-scripts',
+      '--json',
+      '--pack-destination',
+      directory,
+      '--cache',
+      path.join(directory, 'cache'),
+    ],
+    { cwd: ROOT, timeout: 10000, maxBuffer: 1024 * 1024 },
+  );
   const metadata = JSON.parse(await readFile(path.join(ROOT, 'package.json'), 'utf8'));
   validatePack(JSON.parse(stdout), metadata, await runtimePaths(ROOT));
 });
