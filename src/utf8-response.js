@@ -1,7 +1,7 @@
 /** Validate transport bytes without replacing, buffering, or re-encoding the response. */
 export const MAX_RESPONSE_BYTES = 8 * 1024 * 1024;
 
-export function validateUtf8Response(response, { maxBytes = MAX_RESPONSE_BYTES } = {}) {
+export function validateUtf8Response(response, { maxBytes = MAX_RESPONSE_BYTES, onFailure } = {}) {
   if (!Number.isSafeInteger(maxBytes) || maxBytes < 1) {
     throw new TypeError('maxBytes must be a positive safe integer.');
   }
@@ -54,21 +54,43 @@ export function validateUtf8Response(response, { maxBytes = MAX_RESPONSE_BYTES }
       else contentBytes += 1;
     }
   };
-  const body = response.body.pipeThrough(
-    new TransformStream({
-      transform(chunk, controller) {
+  let reported = false;
+  const notifyFailure = error => {
+    if (reported) return;
+    reported = true;
+    try {
+      Promise.resolve(onFailure?.(error)).catch(() => {});
+    } catch {
+      // A broken observer cannot replace the original stream error or own cleanup.
+    }
+  };
+  const transform = new TransformStream({
+    transform(chunk, controller) {
+      try {
         // Enforce byte bounds before creating a decoded string or passing data to the SDK.
         checkBytes(chunk);
         decoder.decode(chunk, { stream: true });
         controller.enqueue(chunk);
-      },
-      flush() {
+      } catch (error) {
+        // Signal now: pipeTo's rejection can wait indefinitely for source.cancel().
+        notifyFailure(error);
+        throw error;
+      }
+    },
+    flush() {
+      try {
         // A trailing partial code point is invalid even if all earlier chunks were valid.
         decoder.decode();
-      },
-    }),
-  );
-  const checked = new Response(body, {
+      } catch (error) {
+        notifyFailure(error);
+        throw error;
+      }
+    },
+  });
+  // Observe upstream read failures too. The same pipe/backpressure behavior as pipeThrough
+  // is retained, but its normally hidden completion promise now carries request-local failure.
+  response.body.pipeTo(transform.writable).catch(notifyFailure);
+  const checked = new Response(transform.readable, {
     status: response.status,
     statusText: response.statusText,
     headers: response.headers,

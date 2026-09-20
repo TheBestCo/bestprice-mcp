@@ -170,7 +170,17 @@ export function createBridge({
       }
       throw signal.reason;
     }
-    return validateUtf8Response(response);
+    return validateUtf8Response(response, {
+      onFailure: error => {
+        // The SDK logs POST-SSE read failures without rejecting the pending request.
+        // Fail only the owning invocation; never reset/replay a healthy shared session.
+        // Normal completion and caller cancellation already abort the wire signal and
+        // must not be reclassified or emit a second cancellation notification.
+        if (!handshake && !cancellation && scope?.owner === wireOwner && !signal?.aborted) {
+          scope.fail(error);
+        }
+      },
+    });
   };
   const wireOwner = {};
   const requestOptions = { timeout: timeoutMs };
@@ -338,8 +348,9 @@ export function createBridge({
         references.set(remote, (references.get(remote) ?? 0) + 1);
         try {
           const result = await waitForSignal(
-            wireRequestScope.run({ owner: wireOwner, signal: wireSignal }, () =>
-              fn(remote, { ...requestOptions, signal }),
+            wireRequestScope.run(
+              { owner: wireOwner, signal: wireSignal, fail: error => controller.abort(error) },
+              () => fn(remote, { ...requestOptions, signal }),
             ),
             signal,
           );
