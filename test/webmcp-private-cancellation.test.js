@@ -185,7 +185,10 @@ test('parallel caller cancellation settles every waiter without aborting registr
   const calls = Array.from({ length: 20 }, () => fixture.invoke({}, { signal: parent.signal }));
   parent.abort();
   const results = await bounded(Promise.all(calls));
-  assert.equal(results.every(result => result.ok === false), true);
+  assert.equal(
+    results.every(result => result.ok === false),
+    true,
+  );
   assert.equal(fixture.lifetime.aborted, false);
 });
 
@@ -197,5 +200,8 @@ test('live synchronous return and throw identity remain unchanged', async t => {
   const second = await setup(t, () => {
     throw error;
   });
-  assert.throws(() => second.invoke({}), value => value === error);
+  assert.throws(
+    () => second.invoke({}),
+    value => value === error,
+  );
 });
