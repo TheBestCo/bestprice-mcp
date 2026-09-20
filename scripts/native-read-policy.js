@@ -55,17 +55,39 @@ export function allowSpecificationsRead(request, resourceType, permit, now) {
   return true;
 }
 
+/** Classify selection failures without retaining URLs, query strings or arbitrary error text. */
+export function inspectBrowsingProductLinks(values) {
+  const diagnostics = { examined: 0, inputLimited: false, rejected: {}, approved: 0 };
+  let selected = null;
+  if (!Array.isArray(values)) return { selected, diagnostics };
+  diagnostics.inputLimited = values.length > 64;
+  for (const value of values.slice(0, 64)) {
+    diagnostics.examined += 1;
+    let reason = null;
+    if (typeof value !== 'string') reason = 'non_string';
+    else if (value.length > 2048) reason = 'too_long';
+    else {
+      try {
+        const url = new URL(value);
+        if (url.origin !== 'https://www.bestprice.gr') reason = 'different_origin';
+        else if (url.username || url.password) reason = 'credentials';
+        else if (!url.pathname.startsWith('/item/')) reason = 'non_product_path';
+        else if (url.search || url.hash) reason = 'query_or_fragment';
+        else if (!isAllowedBrowsingPage(url)) reason = 'non_grouped_product_path';
+        else {
+          diagnostics.approved += 1;
+          selected ??= url.href;
+        }
+      } catch {
+        reason = 'invalid_url';
+      }
+    }
+    if (reason) diagnostics.rejected[reason] = (diagnostics.rejected[reason] ?? 0) + 1;
+  }
+  return { selected, diagnostics };
+}
+
 /** Prefer a safe grouped-product link, never the first item-looking redirect target. */
 export function selectBrowsingProductUrl(values) {
-  if (!Array.isArray(values)) return null;
-  for (const value of values.slice(0, 64)) {
-    if (typeof value !== 'string' || value.length > 2048) continue;
-    try {
-      const url = new URL(value);
-      if (url.pathname.startsWith('/item/') && isAllowedBrowsingPage(url)) return url.href;
-    } catch {
-      // Invalid or unsafe candidates are not navigation instructions.
-    }
-  }
-  return null;
+  return inspectBrowsingProductLinks(values).selected;
 }

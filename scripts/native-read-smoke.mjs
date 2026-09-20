@@ -7,8 +7,8 @@ import { createServer } from 'node:http';
 import { pathToFileURL } from 'node:url';
 import {
   allowSpecificationsRead,
+  inspectBrowsingProductLinks,
   isAllowedBrowsingPage,
-  selectBrowsingProductUrl,
 } from './native-read-policy.js';
 
 const report = {
@@ -375,6 +375,7 @@ try {
   await invoke('listing', 'get_visible_products', { limit: 2 });
   await invoke('listing', 'get_listing_filters');
   await invoke('listing', 'get_listing_sort_options');
+  phase = 'product:selection';
   const productLinks = await page.locator('a[href*="/item/"]').evaluateAll(elements => {
     const matches = elements.filter(element => {
       const url = new URL(element.href, location.href);
@@ -388,7 +389,8 @@ try {
     });
     return matches.slice(0, 64).map(element => element.href);
   });
-  const productUrl = selectBrowsingProductUrl(productLinks);
+  const { selected: productUrl, diagnostics } = inspectBrowsingProductLinks(productLinks);
+  report.productLinkSelection = diagnostics;
   ensure(productUrl, 'no_safe_visible_product_link');
   ensure(allowedPage(new URL(productUrl)), 'unsafe_product_link');
   await visit('product', productUrl);
