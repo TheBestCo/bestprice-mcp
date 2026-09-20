@@ -137,10 +137,21 @@ export function browserSession(
     terminate({ graceful: false });
   };
 
+  const requestTimeout = () =>
+    withDiagnostics(
+      `browser session timed out after ${timeoutMs}ms; the action may have run and is not retried`,
+    );
+
   const onLine = line => {
     if (state !== 'open') return;
     if (!pending) {
       poison(new Error('unsolicited browser reply'));
+      return;
+    }
+    // A queued I/O callback can run before an overdue timer. Accept only a reply
+    // that belongs to the still-live request budget, including JSON decoding work.
+    if (performance.now() >= pending.expiresAt) {
+      poison(requestTimeout());
       return;
     }
     let reply;
@@ -150,6 +161,10 @@ export function browserSession(
       poison(withDiagnostics('invalid browser reply'));
       return;
     }
+    if (performance.now() >= pending.expiresAt) {
+      poison(requestTimeout());
+      return;
+    }
     settle(null, reply);
   };
 
@@ -157,6 +172,16 @@ export function browserSession(
     /* A poisoned or closed session consumes no further protocol frames: the
      * reply that killed it is the last thing this transport reads. */
     if (state !== 'open') return;
+    if (!pending && chunk.length) {
+      poison(
+        new Error(
+          chunk.length > maxFrameBytes
+            ? `browser reply exceeded ${maxFrameBytes} bytes`
+            : 'unsolicited browser reply bytes',
+        ),
+      );
+      return;
+    }
     let start = 0;
     for (let index = chunk.indexOf(10); index !== -1; index = chunk.indexOf(10, start)) {
       const fragment = chunk.subarray(start, index);
@@ -186,6 +211,12 @@ export function browserSession(
       }
       onLine(line);
       if (state !== 'open') return;
+      // A surplus prefix is already unsolicited; waiting for its newline would
+      // let the next request accidentally claim bytes from a previous operation.
+      if (start < chunk.length && !pending) {
+        poison(new Error('unsolicited browser reply bytes'));
+        return;
+      }
     }
     if (start < chunk.length) {
       frame.push(chunk.subarray(start));
@@ -222,6 +253,7 @@ export function browserSession(
         );
       }
       if (pending || serializing) return Promise.reject(new Error('browser session is busy'));
+      const expiresAt = performance.now() + timeoutMs;
       // Serialization is local work: a rejected input has not reached the browser and must not
       // reserve a pending reply or poison the next request. Reserve against toJSON/getter
       // reentrancy, and recheck close after serialization before dispatching anything.
@@ -236,18 +268,20 @@ export function browserSession(
         serializing = false;
       }
       if (state !== 'open') return Promise.reject(new Error('browser session is closed'));
+      if (performance.now() >= expiresAt) {
+        // No bytes were dispatched: this local failure does not poison the peer.
+        return Promise.reject(
+          new Error(`browser request deadline elapsed after ${timeoutMs}ms before dispatch`),
+        );
+      }
       return new Promise((resolve, reject) => {
         pending = {
           resolve,
           reject,
+          expiresAt,
           timer: setTimeout(
-            () =>
-              poison(
-                withDiagnostics(
-                  `browser session timed out after ${timeoutMs}ms; the action may have run and is not retried`,
-                ),
-              ),
-            timeoutMs,
+            () => poison(requestTimeout()),
+            Math.max(1, Math.ceil(expiresAt - performance.now())),
           ),
         };
         try {

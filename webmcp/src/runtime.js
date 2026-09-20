@@ -104,7 +104,7 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
       error: 'The BestPrice page tools are not available right now.',
     });
     // One registration listener, even with many concurrent invocations. Each invocation owns
-    // its own controller: cancelling one must not abort a sibling or a caller-owned signal.
+    // its own composed signal: cancelling one must not abort a sibling or a caller-owned signal.
     const invocations = new Set();
     controller.signal.addEventListener(
       'abort',
@@ -120,7 +120,10 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
         if (!owns() || !operation.ready || parent?.aborted === true) {
           return Promise.resolve(refusal());
         }
-        const invocation = new AbortController();
+        // The result may be an immediate dispatch receipt while a confirmation watcher
+        // remains active. Native composition keeps that watcher bound to the caller and
+        // registration after waiter bookkeeping is released, without a retained manual listener.
+        const invocationSignal = AbortSignal.any([controller.signal, parent].filter(Boolean));
         let resolve;
         let reject;
         const pending = new Promise((yes, no) => {
@@ -137,14 +140,13 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
         };
         const cancel = () => {
           if (settled) return;
-          // Settle before dispatching abort: handler listeners can re-enter the registry.
+          // Release the waiter once even when an abort listener re-enters the registry.
           finish(resolve, refusal());
-          invocation.abort(parent?.aborted ? parent.reason : controller.signal.reason);
         };
         invocations.add(cancel);
         try {
           parent?.addEventListener('abort', cancel, { once: true });
-          args[1] = { ...args[1], signal: invocation.signal };
+          args[1] = { ...args[1], signal: invocationSignal };
           if (!owns() || parent?.aborted === true) {
             cancel();
             return pending;

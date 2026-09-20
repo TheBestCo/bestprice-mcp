@@ -7,6 +7,7 @@
  * built from what the remote reported when the bridge connected.
  */
 
+import { AsyncLocalStorage } from 'node:async_hooks';
 import { createRequire } from 'node:module';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import {
@@ -27,6 +28,8 @@ import {
 import { validateUtf8Response } from './utf8-response.js';
 
 const pkg = createRequire(import.meta.url)('../package.json');
+// Request scope reaches the SDK's asynchronous send without changing its protocol parser.
+const wireRequestScope = new AsyncLocalStorage();
 
 export const DEFAULT_REMOTE_URL = 'https://mcp.bestprice.gr/mcp';
 export const DEFAULT_TIMEOUT_MS = 60_000;
@@ -136,8 +139,40 @@ export function createBridge({
   };
   // The SDK's JSON/SSE decoders replace malformed UTF-8 by default. Refuse corrupt bytes
   // before parsing, preserving backpressure and original bytes for both transport forms.
-  const checkedFetch = async (input, init) =>
-    validateUtf8Response(await (fetch ?? globalThis.fetch)(input, init));
+  const checkedFetch = async (input, init = {}) => {
+    const scope = wireRequestScope.getStore();
+    let message;
+    if (init.method === 'POST' && typeof init.body === 'string') {
+      try {
+        message = JSON.parse(init.body);
+      } catch {
+        // The SDK owns malformed-message handling; do not reinterpret its payload.
+      }
+    }
+    // Cancellation is a separate control message. Sending it with the cancelled operation's
+    // signal prevents it reaching the server; leaving it unbounded leaks a different POST.
+    const cancellation = message?.method === 'notifications/cancelled';
+    const handshake = ['initialize', 'notifications/initialized'].includes(message?.method);
+    const lifetime = cancellation
+      ? AbortSignal.timeout(Math.min(timeoutMs, 1000))
+      : !handshake && scope?.owner === wireOwner
+        ? scope.signal
+        : undefined;
+    const signal = lifetime ? AbortSignal.any([init.signal, lifetime].filter(Boolean)) : init.signal;
+    signal?.throwIfAborted();
+    const response = await (fetch ?? globalThis.fetch)(input, { ...init, signal });
+    if (signal?.aborted) {
+      // Even an injected fetch that resolves after cancellation must not retain a late body.
+      try {
+        Promise.resolve(response.body?.cancel()).catch(() => {});
+      } catch {
+        // Disposal must not replace the original cancellation reason.
+      }
+      throw signal.reason;
+    }
+    return validateUtf8Response(response);
+  };
+  const wireOwner = {};
   const requestOptions = { timeout: timeoutMs };
   let client;
   let connecting;
@@ -278,6 +313,10 @@ export function createBridge({
   const withRemote = async (fn, parentSignal) => {
     const controller = new AbortController();
     const { signal } = controller;
+    // Wire completion is not protocol cancellation: the SDK retains its abort listener
+    // after a result, so ending that same signal would emit a spurious cancelled message.
+    const wire = new AbortController();
+    const wireSignal = AbortSignal.any([signal, wire.signal]);
     const cancel = () => controller.abort(parentSignal.reason);
     parentSignal?.addEventListener('abort', cancel, { once: true });
     if (parentSignal?.aborted) cancel();
@@ -298,7 +337,12 @@ export function createBridge({
         const sessionId = remote.transport?.sessionId;
         references.set(remote, (references.get(remote) ?? 0) + 1);
         try {
-          const result = await waitForSignal(fn(remote, { ...requestOptions, signal }), signal);
+          const result = await waitForSignal(
+            wireRequestScope.run({ owner: wireOwner, signal: wireSignal }, () =>
+              fn(remote, { ...requestOptions, signal }),
+            ),
+            signal,
+          );
           checkDeadline();
           return result;
         } catch (error) {
@@ -330,6 +374,9 @@ export function createBridge({
       clearTimeout(timer);
       parentSignal?.removeEventListener('abort', cancel);
       requests.delete(controller);
+      // A JSON-RPC result completes this POST even if its SSE body stays open. Abort only
+      // request-owned transport work; the session event stream and sibling calls survive.
+      wire.abort(new DOMException('MCP request completed', 'AbortError'));
     }
   };
 
