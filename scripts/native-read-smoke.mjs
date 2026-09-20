@@ -166,13 +166,21 @@ try {
   await new Promise(resolve => fixture.listen(0, '127.0.0.1', resolve));
   controlOrigin = `http://127.0.0.1:${fixture.address().port}`;
   const control = await browser.newContext({ serviceWorkers: 'block' });
+  let controlPhase = 'redirect';
   try {
+    // A refused redirect may leave an error-document navigation in progress. Do not reuse
+    // that page for the iframe/popup controls or confuse its late commit with their failure.
+    const redirectPage = await control.newPage();
+    await redirectPage.goto(`${controlOrigin}/redirect`, { timeout: 5000 }).catch(() => {});
+    await redirectPage.close();
+    controlPhase = 'page';
     const controlPage = await control.newPage();
-    await controlPage.goto(`${controlOrigin}/redirect`, { timeout: 5000 }).catch(() => {});
     await controlPage.goto(`${controlOrigin}/page`, { waitUntil: 'domcontentloaded', timeout: 5000 });
     // Each vector has a distinct noncacheable endpoint and an observable attempted request.
     // A user-gesture popup avoids mistaking the browser's popup blocker for our boundary.
-    await controlPage.locator('#open').click();
+    controlPhase = 'popup';
+    await controlPage.locator('#open').click({ timeout: 5000 });
+    controlPhase = 'observations';
     const until = performance.now() + 2000;
     while (Object.values(controlBlocks).some(count => count < 1) && performance.now() < until) {
       await controlPage.waitForTimeout(25);
@@ -198,7 +206,13 @@ try {
       deniedRequests: Object.fromEntries([...deniedControl].map(([path, kind]) => [kind, hits[path] ?? 0])),
       blocked: { ...controlBlocks },
       passed: false,
+      step: controlPhase,
       errorName: String(error.name).slice(0, 40),
+      // Local control errors contain no catalog/user data; redact URLs and retain a bounded
+      // diagnostic so a failed assertion, timeout and competing navigation are distinguishable.
+      detail: String(error.message)
+        .replace(/https?:\/\/[^\s"']+/gu, '[local-url]')
+        .slice(0, 240),
       networkCode: /ERR_[A-Z_]+/u.exec(String(error.message))?.[0] ?? null,
     };
     throw error;
