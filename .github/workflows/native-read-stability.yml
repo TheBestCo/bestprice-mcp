@@ -47,7 +47,7 @@ jobs:
           echo 'CHROME_BIN=/opt/google/chrome/chrome' >> "$GITHUB_ENV"
           echo "PLAYWRIGHT_MODULE=$deps/node_modules/playwright-core/index.mjs" >> "$GITHUB_ENV"
           cp "$deps/package-lock.json" diagnostic-output/driver-package-lock.json
-      - name: Prove guards and record bounded product-selection diagnostics before live reads
+      - name: Prove guards and bind native read identities before product-page verification
         run: timeout --signal=TERM --kill-after=5s 180s xvfb-run -a node scripts/native-read-smoke.mjs --live
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         if: always()

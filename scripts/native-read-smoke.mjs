@@ -9,6 +9,7 @@ import {
   allowSpecificationsRead,
   inspectBrowsingProductLinks,
   isAllowedBrowsingPage,
+  selectVisibleProductReadTarget,
 } from './native-read-policy.js';
 
 const report = {
@@ -295,7 +296,7 @@ try {
     ensure(row.release === firstRelease, 'storefront_release_changed');
     row.passed = true;
   };
-  const invoke = async (kind, name, args = {}) => {
+  const invoke = async (kind, name, args = {}, expectedProductId) => {
     phase = `${kind}:${name}`;
     ensure(
       [
@@ -326,7 +327,7 @@ try {
     let observation;
     try {
       observation = await page.evaluate(
-        async ({ name, args, modernArgs }) => {
+        async ({ name, args, modernArgs, expectedProductId }) => {
           const tool = (await document.modelContext.getTools()).find(tool => tool.name === name);
           if (tool?.annotations?.readOnlyHint !== true) return { error: 'not_read_only' };
           const result = await document.modelContext.executeTool(
@@ -355,24 +356,49 @@ try {
             )
               arrays[key] = value.length;
           }
-          return { ok: payload?.ok === true, bytes: new TextEncoder().encode(wire ?? '').byteLength, arrays };
+          const productCandidates =
+            name === 'get_visible_products' && Array.isArray(payload?.products)
+              ? payload.products.slice(0, 8).map(product => ({
+                  product_id:
+                    typeof product?.product_id === 'string' && product.product_id.length <= 20
+                      ? product.product_id
+                      : null,
+                  bestprice_url:
+                    typeof product?.bestprice_url === 'string' && product.bestprice_url.length <= 2048
+                      ? product.bestprice_url
+                      : null,
+                }))
+              : undefined;
+          return {
+            ok: payload?.ok === true,
+            bytes: new TextEncoder().encode(wire ?? '').byteLength,
+            arrays,
+            ...(productCandidates ? { productCandidates } : {}),
+            ...(expectedProductId
+              ? { productIdentityMatches: payload?.product_id === expectedProductId }
+              : {}),
+          };
         },
-        { name, args, modernArgs },
+        { name, args, modernArgs, expectedProductId },
       );
     } finally {
       specificationsPermit = null;
     }
-    const row = { name, page: kind, ...observation, durationMs: Math.round(performance.now() - began) };
+    // Candidate identities/URLs are ephemeral navigation input, never report content.
+    const { productCandidates, ...publicObservation } = observation;
+    const row = { name, page: kind, ...publicObservation, durationMs: Math.round(performance.now() - began) };
     report.calls.push(row);
     ensure(
       observation.ok && observation.bytes > 0 && observation.bytes <= 262144,
       'read_tool_contract_failed',
     );
     ensure(page.url() === before, 'read_tool_changed_document');
+    if (expectedProductId) ensure(observation.productIdentityMatches, 'product_identity_mismatch');
+    return productCandidates;
   };
   await visit('home', 'https://www.bestprice.gr/');
   await visit('listing', 'https://www.bestprice.gr/search?q=Sony%20WH-1000XM5');
-  await invoke('listing', 'get_visible_products', { limit: 2 });
+  const visibleProducts = await invoke('listing', 'get_visible_products', { limit: 2 });
   await invoke('listing', 'get_listing_filters');
   await invoke('listing', 'get_listing_sort_options');
   phase = 'product:selection';
@@ -389,12 +415,21 @@ try {
     });
     return matches.slice(0, 64).map(element => element.href);
   });
-  const { selected: productUrl, diagnostics } = inspectBrowsingProductLinks(productLinks);
-  report.productLinkSelection = diagnostics;
-  ensure(productUrl, 'no_safe_visible_product_link');
-  ensure(allowedPage(new URL(productUrl)), 'unsafe_product_link');
-  await visit('product', productUrl);
-  await invoke('product', 'get_page_product');
+  report.productLinkSelection = inspectBrowsingProductLinks(productLinks).diagnostics;
+  const target = selectVisibleProductReadTarget(visibleProducts);
+  report.productReadSelection = {
+    source: 'get_visible_products',
+    candidates: visibleProducts?.length ?? 0,
+    selected: Boolean(target),
+  };
+  ensure(target, 'no_safe_native_read_product');
+  ensure(allowedPage(new URL(target.url)), 'unsafe_product_link');
+  await visit('product', target.url);
+  ensure(
+    /^\/item\/(\d{10})\//u.exec(new URL(page.url()).pathname)?.[1] === target.productId,
+    'product_navigation_identity_mismatch',
+  );
+  await invoke('product', 'get_page_product', {}, target.productId);
   await invoke('product', 'compare_page_offers', { limit: 2 });
   await invoke('product', 'get_product_specifications', { limit: 3 });
   await invoke('product', 'summarize_price_history');
