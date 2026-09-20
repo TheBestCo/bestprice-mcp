@@ -47,6 +47,15 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - name: Verify the isolated installed tarball
+        run: node scripts/verify-packed-release.mjs "$RUNNER_TEMP/installed-package"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: installed-package-node${{ matrix.node }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/installed-package/
+          if-no-files-found: warn
+          retention-days: 7
 
   registry-metadata:
     name: Validate server.json

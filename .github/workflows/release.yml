@@ -25,6 +25,9 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Frozen evidence checks need genuine history in the release path too.
+          fetch-depth: 0
 
       - id: version
         run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
@@ -38,8 +41,24 @@ jobs:
             echo "v$VERSION already exists; nothing to release"
             echo "created=false" >> "$GITHUB_OUTPUT"
           else
+            status=$?
+            # Only exit 2 means no matching ref. Auth/network failures must stop here.
+            if [ "$status" -ne 2 ]; then exit "$status"; fi
             echo "created=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - if: steps.tag.outputs.created == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+      - if: steps.tag.outputs.created == 'true'
+        run: npm ci
+      - if: steps.tag.outputs.created == 'true'
+        run: npm test
+      - if: steps.tag.outputs.created == 'true'
+        name: Verify the Node 20 installed package
+        run: node scripts/verify-packed-release.mjs "$RUNNER_TEMP/installed-package-node20"
 
       - if: steps.tag.outputs.created == 'true'
         uses: actions/setup-node@v7
@@ -52,6 +71,10 @@ jobs:
         run: npm run check
       - if: steps.tag.outputs.created == 'true'
         run: npm test
+
+      - if: steps.tag.outputs.created == 'true'
+        name: Verify the Node 22 installed package
+        run: node scripts/verify-packed-release.mjs "$RUNNER_TEMP/installed-package-node22"
 
       - if: steps.tag.outputs.created == 'true'
         name: Extract the changelog section
@@ -75,8 +98,26 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ steps.version.outputs.version }}
         run: |
+          # Publish the very tarball checked above, not a newly packed replacement.
+          cmp "$RUNNER_TEMP/installed-package-node20/bestprice-mcp-$VERSION.tgz" \
+              "$RUNNER_TEMP/installed-package-node22/bestprice-mcp-$VERSION.tgz"
+          cp "$RUNNER_TEMP/installed-package-node20/receipt.json" "$RUNNER_TEMP/installed-package-node20.json"
+          cp "$RUNNER_TEMP/installed-package-node22/receipt.json" "$RUNNER_TEMP/installed-package-node22.json"
           gh release create "v$VERSION" \
+            "$RUNNER_TEMP/installed-package-node22/bestprice-mcp-$VERSION.tgz" \
+            "$RUNNER_TEMP/installed-package-node20.json" \
+            "$RUNNER_TEMP/installed-package-node22.json" \
             --target "$GITHUB_SHA" \
             --title "BestPrice MCP extension $VERSION" \
             --notes-file "$RUNNER_TEMP/notes.md" \
             --latest
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always() && steps.tag.outputs.created == 'true'
+        with:
+          name: release-package-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/installed-package-node20/
+            ${{ runner.temp }}/installed-package-node22/
+          if-no-files-found: warn
+          retention-days: 7
