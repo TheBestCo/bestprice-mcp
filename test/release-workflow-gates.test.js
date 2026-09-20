@@ -35,9 +35,13 @@ for (const status of [0, 2, 1, 128, 129, 143]) {
           VERSION: '1.2.0',
           GITHUB_OUTPUT: output,
         },
-        timeout: 2000,
+        // This is a process-start watchdog, not a release latency assertion.
+        // Contended runners can spend more than two seconds starting a shell.
+        timeout: 10000,
       });
     } catch (error) {
+      assert.equal(error.killed, false, 'Shell fixture exceeded its bounded watchdog');
+      assert.equal(error.signal, null, 'Shell fixture ended by signal, not a git exit status');
       exitCode = error.code;
     }
     const result = await readFile(output, 'utf8');
