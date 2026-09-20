@@ -46,7 +46,13 @@ for (const ending of ['', '\n', '\r\n']) {
 test('newline resets only the frame budget, not the stream lifetime budget', async () => {
   const bytes = Buffer.from('€€\n'.repeat(100));
   assert.deepEqual(await pass([bytes], { maxFrameBytes: 6 }), bytes);
-  assert.deepEqual(await pass([...bytes].map(byte => Buffer.from([byte])), { maxFrameBytes: 6 }), bytes);
+  assert.deepEqual(
+    await pass(
+      [...bytes].map(byte => Buffer.from([byte])),
+      { maxFrameBytes: 6 },
+    ),
+    bytes,
+  );
 });
 
 test('carriage returns do not reset the SDK newline-delimited frame budget', async () => {
