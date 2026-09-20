@@ -5,6 +5,7 @@ import { createReadStream } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { pathToFileURL } from 'node:url';
+import { allowSpecificationsRead, isAllowedBrowsingPage } from './native-read-policy.js';
 
 const report = {
   kind: 'native-webmcp-read-smoke',
@@ -25,7 +26,7 @@ const report = {
     externalRequests: 'blocked',
     userAgentOverride: false,
     toolActions: false,
-    nonReadHttpMethods: 'blocked',
+    nonReadHttpMethods: 'blocked_except_one_current_product_specifications_read',
   },
 };
 let phase = 'launch';
@@ -41,11 +42,7 @@ const ensure = (condition, code) => {
 const markBlocked = key => {
   report.blocked[key] = (report.blocked[key] ?? 0) + 1;
 };
-const allowedPage = url =>
-  url.origin === 'https://www.bestprice.gr' &&
-  !url.username &&
-  !url.password &&
-  /^\/(?:$|search(?:\/|$)|cat\/|hub\/|item\/)/u.test(url.pathname);
+const allowedPage = isAllowedBrowsingPage;
 const sha256File = async path => {
   const hash = createHash('sha256');
   for await (const chunk of createReadStream(path)) hash.update(chunk);
@@ -83,6 +80,8 @@ try {
     timeout: 20000,
   });
   let controlOrigin = null;
+  let specificationsPermit = null;
+  report.specificationsReads = 0;
   const controlBlocks = { redirect: 0, frame: 0, popup: 0 };
   const deniedControl = new Map([
     ['/denied-main', 'redirect'],
@@ -113,6 +112,10 @@ try {
         report.navigations += 1;
         if (report.navigations > 12 || event.request.method !== 'GET' || !allowedPage(url))
           blocked = 'navigation';
+      } else if (
+        allowSpecificationsRead(event.request, event.resourceType, specificationsPermit, performance.now())
+      ) {
+        report.specificationsReads += 1;
       } else if (!['GET', 'HEAD'].includes(event.request.method)) blocked = 'non_read_method';
       else if (
         (url.hostname === 'rpc.bestprice.gr' && url.pathname.startsWith('/beacon')) ||
@@ -304,40 +307,57 @@ try {
     );
     const before = page.url();
     const began = performance.now();
-    const observation = await page.evaluate(
-      async ({ name, args, modernArgs }) => {
-        const tool = (await document.modelContext.getTools()).find(tool => tool.name === name);
-        if (tool?.annotations?.readOnlyHint !== true) return { error: 'not_read_only' };
-        const result = await document.modelContext.executeTool(
-          tool,
-          modernArgs ? args : JSON.stringify(args),
-          { signal: AbortSignal.timeout(10000) },
-        );
-        const payload = typeof result === 'string' ? JSON.parse(result) : result;
-        const wire = JSON.stringify(payload);
-        const arrays = {};
-        for (const [key, value] of Object.entries(payload ?? {})) {
-          if (
-            [
-              'products',
-              'offers',
-              'groups',
-              'specifications',
-              'series',
-              'filters',
-              'options',
-              'warnings',
-              'sort_options',
-              'sections',
-            ].includes(key) &&
-            Array.isArray(value)
-          )
-            arrays[key] = value.length;
-        }
-        return { ok: payload?.ok === true, bytes: new TextEncoder().encode(wire ?? '').byteLength, arrays };
-      },
-      { name, args, modernArgs },
-    );
+    // This tool reads specifications using a POST with exactly one FormData field.
+    // The source-confirmed selector is read-only; it does not authorize other POSTs.
+    const specificationsUrl = new URL(before);
+    specificationsUrl.search = '';
+    specificationsUrl.hash = '';
+    if (name === 'get_product_specifications')
+      specificationsPermit = {
+        tool: name,
+        url: specificationsUrl.href,
+        expiresAt: performance.now() + 10000,
+        used: false,
+      };
+    let observation;
+    try {
+      observation = await page.evaluate(
+        async ({ name, args, modernArgs }) => {
+          const tool = (await document.modelContext.getTools()).find(tool => tool.name === name);
+          if (tool?.annotations?.readOnlyHint !== true) return { error: 'not_read_only' };
+          const result = await document.modelContext.executeTool(
+            tool,
+            modernArgs ? args : JSON.stringify(args),
+            { signal: AbortSignal.timeout(10000) },
+          );
+          const payload = typeof result === 'string' ? JSON.parse(result) : result;
+          const wire = JSON.stringify(payload);
+          const arrays = {};
+          for (const [key, value] of Object.entries(payload ?? {})) {
+            if (
+              [
+                'products',
+                'offers',
+                'groups',
+                'specifications',
+                'series',
+                'filters',
+                'options',
+                'warnings',
+                'sort_options',
+                'sections',
+              ].includes(key) &&
+              Array.isArray(value)
+            )
+              arrays[key] = value.length;
+          }
+          return { ok: payload?.ok === true, bytes: new TextEncoder().encode(wire ?? '').byteLength, arrays };
+        },
+        { name, args, modernArgs },
+      );
+    } finally {
+      specificationsPermit = null;
+    }
     const row = { name, page: kind, ...observation, durationMs: Math.round(performance.now() - began) };
     report.calls.push(row);
     ensure(
@@ -365,11 +385,13 @@ try {
     return match?.href ?? null;
   });
   ensure(productUrl, 'no_visible_product_link');
+  ensure(allowedPage(new URL(productUrl)), 'unsafe_product_link');
   await visit('product', productUrl);
   await invoke('product', 'get_page_product');
   await invoke('product', 'compare_page_offers', { limit: 2 });
   await invoke('product', 'get_product_specifications', { limit: 3 });
   await invoke('product', 'summarize_price_history');
+  ensure(report.specificationsReads === 1, 'specifications_read_not_observed');
   ensure(!report.blocked.budget, 'browser_budget_exhausted');
   ensure(!report.blocked.navigation_guard_error, 'navigation_guard_failed');
   report.passed = true;

@@ -34,7 +34,7 @@ jobs:
           git rev-parse HEAD > diagnostic-output/source-revision.txt
           git archive --format=tar.gz --output=diagnostic-output/source.tar.gz HEAD
           node --version > diagnostic-output/runtime.txt
-          sha256sum scripts/native-read-smoke.mjs package-lock.json diagnostic-output/source.tar.gz > diagnostic-output/source-sha256.txt
+          sha256sum scripts/native-read-smoke.mjs scripts/native-read-policy.js package-lock.json diagnostic-output/source.tar.gz > diagnostic-output/source-sha256.txt
           npm ci
           npm run check > diagnostic-output/check.log 2>&1
           npm test > diagnostic-output/tests.log 2>&1

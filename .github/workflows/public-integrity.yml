@@ -38,7 +38,9 @@ jobs:
         run: |
           mkdir -p integrity-output
           git rev-parse HEAD > integrity-output/source-revision.txt
-          sha256sum scripts/public-smoke.mjs scripts/public-contracts.js scripts/public-diagnose.mjs package-lock.json > integrity-output/source-sha256.txt
+          git archive --format=tar.gz --output=integrity-output/source.tar.gz HEAD
+          node --version > integrity-output/runtime.txt
+          sha256sum scripts/public-smoke.mjs scripts/public-contracts.js scripts/public-diagnose.mjs package-lock.json integrity-output/source.tar.gz > integrity-output/source-sha256.txt
       - name: Install locked dependencies
         run: npm ci
       - name: Validate before making public requests
