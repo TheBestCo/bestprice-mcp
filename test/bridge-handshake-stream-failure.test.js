@@ -85,7 +85,11 @@ for (const mime of ['application/json', 'text/event-stream']) {
       assert.doesNotMatch(a.error.message, /timed out|timeout/iu);
       assert.equal(signal.aborted, true);
       assert.equal(bridge.client(), undefined);
-      assert.equal(methods.filter(method => method === 'initialize').length, 1, 'no implicit corruption replay');
+      assert.equal(
+        methods.filter(method => method === 'initialize').length,
+        1,
+        'no implicit corruption replay',
+      );
       assert.equal(
         methods.includes('notifications/cancelled'),
         false,

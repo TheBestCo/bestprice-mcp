@@ -2,6 +2,9 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { createRegistration } from '../webmcp/src/runtime.js';
 
+// Descriptor-based fixtures deliberately exercise Promise assimilation capabilities.
+const thenable = descriptor => Object.defineProperty({}, 'then', descriptor);
+
 async function fixture(t, execute) {
   let tool;
   const registry = createRegistration({
@@ -21,8 +24,8 @@ for (const second of ['throw', 'different', 'not-callable']) {
     let reads = 0;
     let receiver;
     const expected = { ok: true, value: 'observed' };
-    const result = {
-      get then() {
+    const result = thenable({
+      get() {
         reads++;
         if (reads === 1) {
           return function (resolve) {
@@ -34,7 +37,7 @@ for (const second of ['throw', 'different', 'not-callable']) {
         if (second === 'different') return resolve => resolve({ ok: true, value: 'invented' });
         return undefined;
       },
-    };
+    });
     const f = await fixture(t, () => result);
     assert.equal(await f.invoke({}), expected);
     assert.equal(reads, 1);
@@ -45,14 +48,15 @@ for (const second of ['throw', 'different', 'not-callable']) {
 test('thenable body stays asynchronous and duplicate settlements cannot replace the first', async t => {
   const order = [];
   const expected = { ok: true };
-  const f = await fixture(t, () => ({
-    then(resolve, reject) {
+  const result = thenable({
+    value(resolve, reject) {
       order.push('then');
       resolve(expected);
       reject(new Error('late'));
       resolve({ ok: false });
     },
-  }));
+  });
+  const f = await fixture(t, () => result);
   const pending = f.invoke({});
   order.push('returned');
   assert.equal(await pending, expected);
@@ -61,11 +65,12 @@ test('thenable body stays asynchronous and duplicate settlements cannot replace 
 
 test('throwing first then accessor preserves the live synchronous exception', async t => {
   const expected = new Error('original then accessor');
-  const f = await fixture(t, () => ({
-    get then() {
+  const result = thenable({
+    get() {
       throw expected;
     },
-  }));
+  });
+  const f = await fixture(t, () => result);
   assert.throws(
     () => f.invoke({}),
     error => error === expected,
@@ -74,13 +79,12 @@ test('throwing first then accessor preserves the live synchronous exception', as
 
 test('non-callable then preserves synchronous return identity', async t => {
   let reads = 0;
-  const expected = {
-    ok: true,
-    get then() {
+  const expected = thenable({
+    get() {
       reads++;
       return 7;
     },
-  };
+  });
   const f = await fixture(t, () => expected);
   assert.equal(f.invoke({}), expected);
   assert.equal(reads, 1);
@@ -90,15 +94,12 @@ test('caller cancellation still wins a deferred thenable and does not affect its
   const parent = new AbortController();
   let settle;
   const expected = { ok: true };
-  const f = await fixture(t, args =>
-    args.immediate
-      ? expected
-      : {
-          then(resolve) {
-            settle = resolve;
-          },
-        },
-  );
+  const result = thenable({
+    value(resolve) {
+      settle = resolve;
+    },
+  });
+  const f = await fixture(t, args => (args.immediate ? expected : result));
   const pending = f.invoke({}, { signal: parent.signal });
   await Promise.resolve();
   parent.abort();
@@ -109,13 +110,11 @@ test('caller cancellation still wins a deferred thenable and does not affect its
 
 test('thenable errors retain their original rejection identity', async t => {
   const error = new Error('then body failed');
-  const f = await fixture(t, () => ({
-    then() {
+  const result = thenable({
+    value() {
       throw error;
     },
-  }));
-  await assert.rejects(
-    f.invoke({}),
-    value => value === error,
-  );
+  });
+  const f = await fixture(t, () => result);
+  await assert.rejects(f.invoke({}), value => value === error);
 });

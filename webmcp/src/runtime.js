@@ -159,7 +159,16 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
             // Observe late rejections even if cancellation already settled the caller. The
             // signal lets cooperative handlers stop later effects; synchronous effects cannot
             // be undone. Original handler failures still reject while the invocation is live.
-            Promise.resolve({ then: (yes, no) => Reflect.apply(then, result, [yes, no]) }).then(
+            const adopted = new Promise((yes, no) => {
+              queueMicrotask(() => {
+                try {
+                  Reflect.apply(then, result, [yes, no]);
+                } catch (error) {
+                  no(error);
+                }
+              });
+            });
+            adopted.then(
               output => finish(resolve, owns() && !completionSignal.aborted ? output : refusal()),
               error => finish(reject, error),
             );
