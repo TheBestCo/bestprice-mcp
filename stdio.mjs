@@ -12,7 +12,28 @@ import { createUtf8Input } from './src/utf8-input.js';
 
 // stdout carries the JSON-RPC frames; any other byte there corrupts the host's parser.
 // Every diagnostic goes to stderr.
-const log = message => process.stderr.write(`${message}\n`);
+// A host may close the diagnostic pipe independently of the protocol. Observe errors
+// before the first write; logging must not crash the bridge or recurse while shutting down.
+let diagnosticsAvailable = true;
+process.stderr.on('error', () => {
+  diagnosticsAvailable = false;
+});
+process.stderr.once('close', () => {
+  diagnosticsAvailable = false;
+});
+const writeDiagnostic = (message, done = () => {}) => {
+  if (!diagnosticsAvailable || process.stderr.destroyed || process.stderr.writableEnded) {
+    done();
+    return;
+  }
+  try {
+    process.stderr.write(message, done);
+  } catch {
+    diagnosticsAvailable = false;
+    done();
+  }
+};
+const log = message => writeDiagnostic(`${message}\n`);
 
 log('BestPrice MCP stdio forwarder started');
 
@@ -31,11 +52,14 @@ let closing = false;
 const shutdown = (reason, code = 0) => {
   if (closing) return;
   closing = true;
+  // A pending cleanup promise does not keep Node alive. Preserve failure even if
+  // all handles close before the unreferenced final watchdog can run.
+  process.exitCode = code;
   process.stdin.unpipe(input);
   process.stdin.pause();
   input.destroy();
   // stderr is a pipe, so this write is asynchronous; wait for it or process.exit truncates it.
-  const flushed = new Promise(resolve => process.stderr.write(`Shutting down (${reason})\n`, resolve));
+  const flushed = new Promise(resolve => writeDiagnostic(`Shutting down (${reason})\n`, resolve));
   setTimeout(() => process.exit(code), 2_000).unref();
   Promise.allSettled([bridge.close(), flushed]).then(() => process.exit(code));
 };
@@ -47,6 +71,8 @@ process.on('SIGTERM', () => shutdown('SIGTERM'));
 input.once('finish', () => shutdown('stdin closed'));
 input.once('error', () => shutdown('invalid stdin', 1));
 process.stdin.once('error', () => shutdown('stdin error', 1));
+// A broken output pipe ends the protocol, unlike stderr. Close the upstream too.
+process.stdout.on('error', () => shutdown('stdout error', 1));
 process.on('unhandledRejection', error => {
   log(`Unhandled rejection: ${error?.stack ?? error}`);
   shutdown('unhandled rejection', 1);

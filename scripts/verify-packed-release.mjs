@@ -28,6 +28,7 @@ const run = promisify(execFile);
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const TESTS = [
   'test/stdio.test.js',
+  'test/stdio-pipe-sdk.test.js',
   'test/bridge-handshake-stream-failure.test.js',
   'test/stdio-utf8.test.js',
   'test/stdio-eof-sdk.test.js',
@@ -110,7 +111,7 @@ export function parseTestSummary(log) {
     assert.equal(matches.length, 1, `Expected one ${key} summary`);
     counts[key] = Number(matches[0][1]);
   }
-  assert.ok(counts.tests >= 72 && Number.isSafeInteger(counts.tests), 'Incomplete installed-package tests');
+  assert.ok(counts.tests >= 75 && Number.isSafeInteger(counts.tests), 'Incomplete installed-package tests');
   assert.equal(counts.pass, counts.tests, 'Not every installed-package test passed');
   for (const key of ['fail', 'cancelled', 'skipped', 'todo']) assert.equal(counts[key], 0);
   return counts;
