@@ -1,0 +1,86 @@
+name: Native guard failure diagnosis
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/native-guard-diagnostic.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - name: Add bounded categorical diagnostics to the exact guard
+        run: |
+          mkdir -p diagnostic-output
+          git rev-parse HEAD > diagnostic-output/source-revision.txt
+          cp scripts/native-read-smoke.mjs diagnostic-output/original-native-read-smoke.mjs
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p = Path('scripts/native-read-smoke.mjs')
+          raw = p.read_bytes()
+          assert hashlib.sha1(f'blob {len(raw)}\0'.encode() + raw).hexdigest() == '930bef18149d68b9ffa06d91e29564c0c9bdf6ed'
+          s = raw.decode()
+          old = "    navigationGuard\n      .send(blocked ? 'Fetch.failRequest' : 'Fetch.continueRequest', {"
+          new = "    const guardedPhase = phase;\n    navigationGuard\n      .send(blocked ? 'Fetch.failRequest' : 'Fetch.continueRequest', {"
+          assert s.count(old) == 1
+          s = s.replace(old, new)
+          old = "      .catch(() => {\n        markBlocked('navigation_guard_error');\n      });"
+          new = """      .catch(error => {
+                  markBlocked('navigation_guard_error');
+                  report.guardErrors ??= [];
+                  if (report.guardErrors.length < 8) {
+                    const message = String(error?.message ?? '');
+                    const category = /Invalid InterceptionId|Invalid interceptionId|Invalid RequestId|Invalid requestId/u.test(message)
+                      ? 'request_no_longer_intercepted'
+                      : /Target closed|Session closed|has been closed/u.test(message)
+                        ? 'target_or_session_closed'
+                        : 'other_protocol_error';
+                    report.guardErrors.push({
+                      phase: guardedPhase,
+                      decision: blocked ? 'deny' : 'allow',
+                      document: navigation,
+                      resourceType: /^[A-Za-z]{1,24}$/u.test(event.resourceType) ? event.resourceType : 'other',
+                      control: controlOrigin != null,
+                      category,
+                    });
+                  }
+                });"""
+          assert s.count(old) == 1
+          p.write_text(s.replace(old, new))
+          PY
+          npm ci
+          ./node_modules/.bin/biome format --write scripts/native-read-smoke.mjs
+          npm run check > diagnostic-output/check.log 2>&1
+          npm test > diagnostic-output/tests.log 2>&1
+          cp scripts/native-read-smoke.mjs diagnostic-output/diagnostic-native-read-smoke.mjs
+          git diff -- scripts/native-read-smoke.mjs > diagnostic-output/diagnostic.patch
+          sha256sum scripts/native-read-smoke.mjs scripts/native-read-policy.js scripts/native-read-contracts.js package-lock.json > diagnostic-output/source-sha256.txt
+      - name: Use the existing isolated native browser driver
+        run: |
+          deps="$RUNNER_TEMP/native-webmcp-driver"
+          npm install --prefix "$deps" --ignore-scripts --no-audit --no-fund --save-exact playwright-core@1.55.0
+          test -x /opt/google/chrome/chrome
+          echo 'CHROME_BIN=/opt/google/chrome/chrome' >> "$GITHUB_ENV"
+          echo "PLAYWRIGHT_MODULE=$deps/node_modules/playwright-core/index.mjs" >> "$GITHUB_ENV"
+      - name: Run unchanged guarded read scenarios
+        run: timeout --signal=TERM --kill-after=5s 180s xvfb-run -a node scripts/native-read-smoke.mjs --live
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: native-guard-diagnostic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: diagnostic-output/
+          retention-days: 7
