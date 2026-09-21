@@ -1,0 +1,63 @@
+name: Shopping breadth observation
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/shopping-breadth-20260921.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  observe:
+    if: github.repository == 'TheBestCo/bestprice-mcp' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - name: Retain immutable source and require existing offline gates
+        run: |
+          set -euo pipefail
+          mkdir -p breadth-evidence
+          git rev-parse HEAD > breadth-evidence/commit.txt
+          git rev-parse HEAD^{tree} > breadth-evidence/tree.txt
+          git ls-files -s > breadth-evidence/tracked-files.txt
+          node --version > breadth-evidence/node.txt
+          npm ci
+          npm run check > breadth-evidence/check.log 2>&1
+          npm test > breadth-evidence/tests.log 2>&1
+      - name: Recover the bounded reviewed observer without changing any existing script
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          import base64,hashlib,json,pathlib,urllib.request,os
+          sha='d26d20b7c9b9894fdd29c2f70db84750319b008c'
+          request=urllib.request.Request(f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/git/blobs/{sha}',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+          with urllib.request.urlopen(request,timeout=30) as response: raw=base64.b64decode(json.load(response)['content'])
+          assert hashlib.sha1(f'blob {len(raw)}\0'.encode()+raw).hexdigest()==sha
+          assert hashlib.sha256(raw).hexdigest()=='c87bccdc59f1b29b4c617a69d8f00ecb7ee0ddb138a4326c12802fc0db4af07c'
+          p=pathlib.Path('scripts/breadth-observe.mjs');assert not p.exists();p.write_bytes(raw)
+          pathlib.Path('breadth-evidence/observer.mjs').write_bytes(raw)
+      - name: Capture twenty fixed requests; never follow links
+        run: |
+          set -euo pipefail
+          node --check scripts/breadth-observe.mjs
+          sha256sum scripts/breadth-observe.mjs scripts/shopper-outcomes.js scripts/public-contracts.js package-lock.json > breadth-evidence/source-sha256.txt
+          timeout --signal=TERM --kill-after=5s 250s node scripts/breadth-observe.mjs breadth-evidence/observations.json --live
+          git diff --exit-code
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: shopping-breadth-${{ github.run_id }}-${{ github.run_attempt }}
+          path: breadth-evidence/
+          if-no-files-found: error
+          retention-days: 7
