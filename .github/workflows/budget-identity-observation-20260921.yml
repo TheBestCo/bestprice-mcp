@@ -1,0 +1,129 @@
+name: Budget and identity observation
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/budget-identity-observation-20260921.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - name: Require existing repository checks before any live request
+        run: |
+          mkdir -p diagnostic-output
+          git rev-parse HEAD > diagnostic-output/commit.txt
+          git rev-parse HEAD^{tree} > diagnostic-output/tree.txt
+          npm ci
+          npm run check > diagnostic-output/check.log 2>&1
+          npm test > diagnostic-output/tests.log 2>&1
+      - name: Capture four labelled synthetic searches without following links
+        run: |
+          cat > diagnostic-budget-identity.mjs <<'JS'
+          import { writeFileSync } from 'node:fs';
+          import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+          import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
+          import { AjvJsonSchemaValidator } from '@modelcontextprotocol/sdk/validation/ajv';
+          import { createToolVerifier, verifyMirror, verifyPublicLinks } from './scripts/public-contracts.js';
+          const ENDPOINT = 'https://mcp.bestprice.gr/mcp';
+          const NAME = 'bestprice-release-canary';
+          const VERSION = 'budget-identity-observation-v1';
+          const cases = [
+            { id: 'phone-typed-budget', query: 'Apple iPhone 16 128GB', price_max: 800 },
+            { id: 'phone-text-budget', query: 'Apple iPhone 16 128GB έως 800 ευρώ' },
+            { id: 'part-typed-budget', query: 'Logitech MX Master 3S 910-006559', price_max: 100 },
+            { id: 'part-text-budget', query: 'Logitech MX Master 3S 910-006559 έως 100 ευρώ' },
+          ];
+          const report = { kind: VERSION, sourceRevision: process.env.GITHUB_SHA, startedAt: new Date().toISOString(), cohort: 'synthetic', qualification: false, commercialLift: null, completed: false, revision: null, requests: [], cases: [], policy: { maximumRequests: 18, maximumBytesPerResponse: 2000000, retries: 0, redirects: false, signedLinkFetches: false, browserNavigation: false, merchantNavigation: false } };
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 90000);
+          let client;
+          const check = value => { if (!value) throw new Error('OBSERVATION_CONTRACT'); };
+          const request = async (input, options = {}) => {
+            controller.signal.throwIfAborted();
+            const source = new Request(input, options);
+            check(source.url === ENDPOINT && ['POST','GET','DELETE'].includes(source.method));
+            check(report.requests.length < 18);
+            const headers = new Headers(source.headers);
+            headers.set('user-agent', `${NAME}/${VERSION}`);
+            headers.set('x-mcp-client-name', NAME);
+            headers.set('x-mcp-client-version', VERSION);
+            const signal = AbortSignal.any([controller.signal, source.signal, AbortSignal.timeout(15000)]);
+            const entry = { method: source.method }; report.requests.push(entry);
+            const response = await fetch(source, { headers, signal, redirect: 'manual' });
+            entry.status = response.status;
+            check(response.status < 300 || response.status >= 400);
+            if (response.ok) {
+              const revision = response.headers.get('x-bestprice-revision');
+              check(/^[a-f0-9]{40}$/u.test(revision ?? ''));
+              check(report.revision === null || report.revision === revision);
+              report.revision = revision; entry.revision = revision;
+            }
+            if (source.method === 'GET' || !response.body) return response;
+            const reader = response.body.getReader(); const chunks = []; let size = 0; let complete = false;
+            try {
+              for (;;) {
+                signal.throwIfAborted();
+                const { done, value } = await reader.read();
+                if (done) { complete = true; break; }
+                size += value.byteLength; check(size <= 2000000); chunks.push(value);
+              }
+              signal.throwIfAborted();
+              const text = new TextDecoder('utf-8', { fatal: true }).decode(Buffer.concat(chunks, size));
+              const copied = new Headers(response.headers); copied.delete('content-encoding'); copied.delete('content-length');
+              return new Response([204,205,304].includes(response.status) ? null : text, { status: response.status, headers: copied });
+            } finally {
+              if (!complete) await reader.cancel().catch(() => {});
+              reader.releaseLock();
+            }
+          };
+          const text = value => typeof value === 'string' ? value.replace(/[\u0000-\u001f\u007f]/gu, ' ').slice(0,400) : null;
+          try {
+            client = new Client({ name: NAME, version: VERSION });
+            const transport = new StreamableHTTPClientTransport(new URL(ENDPOINT), { fetch: request, reconnectionOptions: { maxRetries: 0, initialReconnectionDelay: 1000, maxReconnectionDelay: 1000, reconnectionDelayGrowFactor: 1 } });
+            const options = { timeout: 15000, signal: controller.signal };
+            await client.connect(transport, options);
+            const { tools } = await client.listTools({}, options);
+            const verifier = createToolVerifier(tools);
+            const validator = new AjvJsonSchemaValidator().getValidator(tools.find(t => t.name === 'search_products').outputSchema);
+            for (const item of cases) {
+              const { id, ...args } = item; args.limit = 3;
+              verifier.input('search_products', args);
+              const result = await client.callTool({ name: 'search_products', arguments: args }, undefined, options);
+              check(result.isError !== true); verifyMirror(result);
+              check(validator(result.structuredContent).valid); verifyPublicLinks(result.structuredContent);
+              const value = result.structuredContent;
+              report.cases.push({ id, arguments: args, requested_query: text(value.requested_query), interpreted_query: text(value.interpreted_query), applied_filters: { price_min: value.applied_filters?.price_min ?? null, price_max: value.applied_filters?.price_max ?? null }, total_matches: value.total_matches, products: value.products.map(p => ({ product_id: p.product_id, title: text(p.title), variant: text(p.variant), price_from: p.price_from })) });
+            }
+            report.completed = report.cases.length === 4;
+          } catch {
+            report.failure = 'OBSERVATION_FAILED';
+          } finally {
+            controller.abort();
+            await client?.close().catch(() => {});
+            clearTimeout(timer);
+            report.finishedAt = new Date().toISOString();
+            writeFileSync('diagnostic-output/budget-identity.json', JSON.stringify(report, null, 2));
+            if (!report.completed) process.exitCode = 1;
+          }
+          JS
+          sha256sum diagnostic-budget-identity.mjs > diagnostic-output/probe-sha256.txt
+          cp diagnostic-budget-identity.mjs diagnostic-output/probe.mjs
+          timeout --signal=TERM --kill-after=5s 110s node diagnostic-budget-identity.mjs
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: budget-identity-observation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: diagnostic-output/
+          if-no-files-found: error
+          retention-days: 7
