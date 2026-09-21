@@ -7,6 +7,8 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-09-21
+
 ### Added
 
 - The item page's seventh WebMCP tool, `show_offer`: it scrolls the shopper's own tab to one
@@ -19,6 +21,31 @@ in `server.json`; see the Versioning section of the README.
   sanitized canary results, and explicit limits on what was tested.
 - A release workflow tags every package version that reaches `main` and creates the GitHub
   Release from the matching changelog section.
+
+### Fixed
+
+- Validate stdin bytes before SDK parsing, preserve valid UTF-8 exactly, reject malformed or
+  truncated input without logging shopper payloads, and bound every raw stdin frame at 8 MiB.
+- Close validated stdin promptly even while upstream initialization is stalled.
+- Give initialization response streams their own failure and completion lifetime: corrupt,
+  oversized or broken initialization responses fail promptly, and a completed initialization
+  SSE body closes without ending the negotiated session's event stream.
+- Preserve request-local deadlines, cancellation, session recovery and transport cleanup without
+  replaying ambiguous failures or cancelling healthy sibling calls.
+- Keep WebMCP waiter cancellation private, snapshot invocation options once, refuse invalid signals,
+  and adopt accessor-backed thenable results exactly once with their original receiver.
+
+### Verification
+
+- CI and new-version releases test the actual extracted package outside the checkout on Node 20
+  and Node 22, using the unchanged release lock and offline dependency installation.
+- Installed-package verification includes 72 stdio, UTF-8, framing, SDK and loopback-handshake tests,
+  complete file inventories, runtime hashes and dependency-resolution checks. Releases attach
+  the verified tarball and per-Node receipts after comparing the two tarballs byte for byte.
+- Tag lookup errors fail closed; release checks use genuine Git history. Existing qualification
+  datasets, decision rules, evidence ledgers and benchmark-blind review remain unchanged.
+- These package and lifecycle checks do not certify external-client adoption, all production
+  allocations, native real-model shopper journeys, or Shopping Brain recommendation quality.
 
 ## [1.2.0] - 2026-09-07
 
@@ -86,7 +113,8 @@ in `server.json`; see the Versioning section of the README.
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.0.0...v1.0.1
