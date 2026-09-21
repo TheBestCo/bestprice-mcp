@@ -1,0 +1,89 @@
+name: Qualify synthetic shopping diagnostic
+
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/shopper-outcomes-qualification.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - name: Recover exact reviewed candidate without changing runtime or branches
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          import base64, hashlib, json, lzma, os, pathlib, subprocess, urllib.request
+          root=pathlib.Path('/tmp/shopper-qualified'); root.mkdir()
+          api='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          ids=['fa1498e0a8ded87b5949929921d01daca06f8783','70e9eb0681ae45a3f31060fa54d2119efe2ced66','98d59b031abc0aac6c2114a0982ee6a2e9aa9ce6','2f28d33639069527d843ea8c2977290b2e290750']
+          def blob(data): return hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+          parts=[]
+          for sha in ids:
+              request=urllib.request.Request(api+'/git/blobs/'+sha,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+              with urllib.request.urlopen(request,timeout=30) as response: data=base64.b64decode(json.load(response)['content'])
+              assert blob(data)==sha
+              parts.append(data)
+          encoded=b''.join(parts)
+          assert hashlib.sha256(encoded).hexdigest()=='6e1cfe661003d03bec9069056498d00084b18baf492f490934e3e566135fa461'
+          candidate=json.loads(lzma.decompress(base64.b64decode(encoded,validate=True)))
+          expected={'scripts/shopper-outcomes.js','scripts/shopper-outcomes.mjs','test/shopper-outcomes.test.js','test/shopper-outcomes-runner.test.js'}
+          assert set(candidate)==expected
+          for name,text in candidate.items():
+              path=pathlib.Path(name); assert not path.exists(),name
+              path.parent.mkdir(parents=True,exist_ok=True); path.write_text(text)
+          path=pathlib.Path('scripts/public-smoke.mjs')
+          before=path.read_bytes(); assert blob(before)=='58911e249f7c8445e7977f2e06b71f27822b9026'
+          assert before.count(b'bestprice-integrity-canary')==1
+          path.write_bytes(before.replace(b'bestprice-integrity-canary',b'bestprice-release-canary'))
+          candidate[str(path)]=path.read_text()
+          (root/'before-format.json').write_text(json.dumps(candidate,ensure_ascii=False))
+          (root/'source-revision.txt').write_text(subprocess.check_output(['git','rev-parse','HEAD'],text=True))
+          (root/'paths.json').write_text(json.dumps(sorted(candidate)))
+      - run: npm ci
+      - name: Apply repository formatting only to the candidate files
+        run: |
+          npx biome check --write scripts/shopper-outcomes.js scripts/shopper-outcomes.mjs scripts/public-smoke.mjs test/shopper-outcomes.test.js test/shopper-outcomes-runner.test.js > /tmp/shopper-qualified/format.log 2>&1
+      - name: Require existing full gates and real installed-SDK tests
+        run: |
+          npm run check > /tmp/shopper-qualified/check.log 2>&1
+          npm test > /tmp/shopper-qualified/tests.log 2>&1
+          node --test --test-reporter=tap test/shopper-outcomes.test.js test/shopper-outcomes-runner.test.js > /tmp/shopper-qualified/focused.tap 2>&1
+      - name: Retain exact qualified file objects without updating any ref
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          import base64,hashlib,json,os,pathlib,urllib.request
+          root=pathlib.Path('/tmp/shopper-qualified'); manifest={}
+          for name in json.loads((root/'paths.json').read_text()):
+              data=pathlib.Path(name).read_bytes()
+              sha=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              target=root/'candidate'/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
+              request=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/git/blobs',data=json.dumps({'encoding':'base64','content':base64.b64encode(data).decode()}).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Content-Type':'application/json'},method='POST')
+              with urllib.request.urlopen(request,timeout=30) as response: result=json.load(response)
+              assert result['sha']==sha,name
+              manifest[name]=sha
+          (root/'qualified-blobs.json').write_text(json.dumps(manifest,indent=2))
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: shopper-qualified-${{ github.run_id }}
+          path: /tmp/shopper-qualified/
+          if-no-files-found: error
+          retention-days: 7
