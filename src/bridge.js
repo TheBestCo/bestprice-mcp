@@ -153,9 +153,12 @@ export function createBridge({
     // signal prevents it reaching the server; leaving it unbounded leaks a different POST.
     const cancellation = message?.method === 'notifications/cancelled';
     const handshake = ['initialize', 'notifications/initialized'].includes(message?.method);
+    const ownedScope = scope?.owner === wireOwner;
+    const ownedHandshake = ownedScope && scope.phase === 'handshake' && handshake;
+    const ownedRequest = ownedScope && scope.phase !== 'handshake' && !handshake;
     const lifetime = cancellation
       ? AbortSignal.timeout(Math.min(timeoutMs, 1000))
-      : !handshake && scope?.owner === wireOwner
+      : ownedHandshake || ownedRequest
         ? scope.signal
         : undefined;
     const signal = lifetime ? AbortSignal.any([init.signal, lifetime].filter(Boolean)) : init.signal;
@@ -176,7 +179,7 @@ export function createBridge({
         // Fail only the owning invocation; never reset/replay a healthy shared session.
         // Normal completion and caller cancellation already abort the wire signal and
         // must not be reclassified or emit a second cancellation notification.
-        if (!handshake && !cancellation && scope?.owner === wireOwner && !signal?.aborted) {
+        if (!cancellation && (ownedHandshake || ownedRequest) && !signal?.aborted) {
           scope.fail(error);
         }
       },
@@ -277,6 +280,9 @@ export function createBridge({
     // handshake ourselves and close its transport, rather than cancelling initialize (forbidden
     // by MCP). A single caller cancelling its wait must not abort this shared connection.
     const connection = new AbortController();
+    // A completed initialize POST can keep its SSE body open. End only the handshake
+    // wires after both phases finish; the transport's session GET must remain alive.
+    const handshakeWire = new AbortController();
     pendingConnection = connection;
     const timeoutError = new McpError(ErrorCode.RequestTimeout, 'Upstream initialization timed out');
     const checkDeadline = elapsedDeadline(connection, timeoutError);
@@ -296,9 +302,21 @@ export function createBridge({
     connecting = (async () => {
       try {
         await waitForSignal(
-          candidate.connect(new StreamableHTTPClientTransport(url, { fetch: checkedFetch }), {
-            timeout: MAX_TIMEOUT_MS,
-          }),
+          wireRequestScope.run(
+            {
+              owner: wireOwner,
+              phase: 'handshake',
+              signal: AbortSignal.any([connection.signal, handshakeWire.signal]),
+              fail: error => {
+                // A late body cannot invalidate an already negotiated or newer session.
+                if (pendingConnection === connection && client !== candidate) connection.abort(error);
+              },
+            },
+            () =>
+              candidate.connect(new StreamableHTTPClientTransport(url, { fetch: checkedFetch }), {
+                timeout: MAX_TIMEOUT_MS,
+              }),
+          ),
           connection.signal,
         );
         checkDeadline();
@@ -313,6 +331,7 @@ export function createBridge({
         clearTimeout(timer);
         if (pendingClient === candidate) pendingClient = undefined;
         if (pendingConnection === connection) pendingConnection = undefined;
+        handshakeWire.abort(new DOMException('MCP handshake completed', 'AbortError'));
       }
     })().finally(() => {
       connecting = undefined;

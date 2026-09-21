@@ -152,11 +152,14 @@ export function createRegistration({ modelContext, onState = () => {}, timeoutMs
             return pending;
           }
           const result = value.execute(...args);
-          if (result != null && typeof result.then === 'function') {
+          // Read an accessor-backed then capability once, like Promise resolution does.
+          // Re-reading it can execute a different function or lose the original result.
+          const then = result?.then;
+          if (typeof then === 'function') {
             // Observe late rejections even if cancellation already settled the caller. The
             // signal lets cooperative handlers stop later effects; synchronous effects cannot
             // be undone. Original handler failures still reject while the invocation is live.
-            Promise.resolve(result).then(
+            Promise.resolve({ then: (yes, no) => Reflect.apply(then, result, [yes, no]) }).then(
               output => finish(resolve, owns() && !completionSignal.aborted ? output : refusal()),
               error => finish(reject, error),
             );

@@ -26,7 +26,7 @@ const pack = () => [
     files: [...paths, 'LICENSE', 'README.md'].map(file => ({ path: file })),
   },
 ];
-const summary = '# tests 63\n# pass 63\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n';
+const summary = '# tests 72\n# pass 72\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n';
 
 test('the packed file contract accepts exactly the runtime and public documentation', () => {
   const value = pack();
@@ -128,8 +128,8 @@ for (const [label, corrupt] of [
 
 test('only a complete positive zero-skip TAP summary certifies installed tests', () => {
   assert.deepEqual(parseTestSummary(summary), {
-    tests: 63,
-    pass: 63,
+    tests: 72,
+    pass: 72,
     fail: 0,
     cancelled: 0,
     skipped: 0,
@@ -143,8 +143,8 @@ for (const key of ['fail', 'cancelled', 'skipped', 'todo']) {
 }
 for (const [label, value] of [
   ['empty', ''],
-  ['too few tests', summary.replaceAll('63', '62')],
-  ['wrong pass count', summary.replace('# pass 63', '# pass 62')],
+  ['too few tests', summary.replaceAll('72', '62')],
+  ['wrong pass count', summary.replace('# pass 72', '# pass 62')],
   ['duplicate summary', summary + summary],
   ['partial summary', summary.replace('# skipped 0\n', '')],
 ]) {
