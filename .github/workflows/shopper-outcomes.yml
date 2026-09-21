@@ -1,0 +1,50 @@
+name: Synthetic shopping outcomes
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/shopper-outcomes.yml]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: synthetic-shopping-outcomes
+  cancel-in-progress: false
+
+jobs:
+  observe:
+    if: github.repository == 'TheBestCo/bestprice-mcp' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - name: Retain source custody
+        run: |
+          mkdir -p outcomes-evidence
+          git rev-parse HEAD > outcomes-evidence/source-revision.txt
+          git rev-parse HEAD^{tree} > outcomes-evidence/source-tree.txt
+          node --version > outcomes-evidence/node.txt
+          sha256sum scripts/shopper-outcomes.js scripts/shopper-outcomes.mjs scripts/public-contracts.js package-lock.json > outcomes-evidence/source-sha256.txt
+      - run: npm ci
+      - name: Require existing full tests and formatting before any live request
+        run: |
+          npm run check > outcomes-evidence/check.log 2>&1
+          npm test > outcomes-evidence/tests.log 2>&1
+      - name: Six synthetic shopping requests and at most three machine-only landing routes
+        run: node scripts/shopper-outcomes.mjs outcomes-evidence/outcomes.json --live
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: shopper-outcomes-${{ github.run_id }}-${{ github.run_attempt }}
+          path: outcomes-evidence/
+          if-no-files-found: error
+          retention-days: 7

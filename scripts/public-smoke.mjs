@@ -175,7 +175,7 @@ export async function runPublicSmoke({
       checkTime();
       const result = { lane, passed: false, steps: [] };
       report.lanes.push(result);
-      const client = new Client({ name: 'bestprice-integrity-canary', version: '1.0.0' });
+      const client = new Client({ name: 'bestprice-release-canary', version: '1.0.0' });
       const transport = new StreamableHTTPClientTransport(new URL(ENDPOINT), {
         fetch: (input, init) => request(input, init, lane),
         reconnectionOptions: {
