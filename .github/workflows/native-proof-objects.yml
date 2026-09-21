@@ -21,12 +21,26 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          import base64, hashlib, io, json, os, pathlib, urllib.request, zipfile
+          import base64, hashlib, io, json, os, pathlib, urllib.request, urllib.error, urllib.parse, zipfile
           root='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args): return None
+          opener=urllib.request.build_opener(NoRedirect)
           def api(path, payload=None):
               data=None if payload is None else json.dumps(payload).encode()
               r=urllib.request.Request(root+path,data=data,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
-              with urllib.request.urlopen(r,timeout=30) as response: return response.read()
+              try:
+                  with opener.open(r,timeout=30) as response: return response.read()
+              except urllib.error.HTTPError as error:
+                  if payload is not None or path!='/actions/artifacts/10636311659/zip' or error.code!=302: raise
+                  location=error.headers['Location']; target=urllib.parse.urlsplit(location)
+                  assert target.scheme=='https' and not target.username and not target.password
+                  assert target.hostname.endswith('.blob.core.windows.net'), target.hostname
+                  # The signed storage URL is sufficient; never forward API credentials.
+                  with opener.open(urllib.request.Request(location),timeout=30) as response:
+                      content=response.read(1048577)
+                      assert len(content)<=1048576
+                      return content
           metadata=json.loads(api('/actions/artifacts/10636311659'))
           assert metadata['workflow_run']['head_sha']=='5f83489e3eeb00fc3da79590764eb5e0a1fc73d9'
           data=api('/actions/artifacts/10636311659/zip')
