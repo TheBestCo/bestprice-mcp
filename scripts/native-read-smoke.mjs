@@ -17,6 +17,7 @@ import {
   isAllowedBrowsingPage,
   selectVisibleProductReadTarget,
 } from './native-read-policy.js';
+import { finalizeNativeReadVerdict, recordNativeGuardFailure } from './native-read-verdict.js';
 
 const report = {
   kind: 'native-webmcp-read-smoke',
@@ -153,14 +154,20 @@ try {
         blocked = 'external_subresource';
       if (blocked) markBlocked(blocked);
     }
+    // Capture provenance before asynchronous completion or a page/control transition.
+    const observation = {
+      phase,
+      denied: Boolean(blocked),
+      document: navigation,
+      resourceType: event.resourceType,
+      control: controlOrigin != null,
+    };
     navigationGuard
       .send(blocked ? 'Fetch.failRequest' : 'Fetch.continueRequest', {
         requestId: event.requestId,
         ...(blocked ? { errorReason: 'BlockedByClient' } : {}),
       })
-      .catch(() => {
-        markBlocked('navigation_guard_error');
-      });
+      .catch(error => recordNativeGuardFailure(report, observation, error));
   });
   // One browser-wide interceptor, not overlapping browser/context Fetch handlers.
   // Unsupported interception fails before any live page is visited.
@@ -499,6 +506,7 @@ try {
 } finally {
   await context?.close().catch(() => {});
   await browser?.close().catch(() => {});
+  process.exitCode = finalizeNativeReadVerdict(report);
   report.finishedAt = new Date().toISOString();
   await mkdir('diagnostic-output', { recursive: true });
   await writeFile('diagnostic-output/native-read-smoke.json', JSON.stringify(report, null, 2));
