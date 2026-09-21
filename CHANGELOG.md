@@ -7,6 +7,26 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.2] - 2026-09-21
+
+### Fixed
+
+- Keep the stdio protocol alive when a host closes its diagnostic stderr pipe, including
+  during startup. Diagnostic failures no longer crash unrelated protocol work.
+- Route broken stdout through the existing bounded shutdown and upstream session cleanup.
+  Preserve a nonzero exit status even when cleanup does not resolve before Node exits.
+- Keep the existing two-second shutdown watchdog, input byte limits and cancellation rules.
+
+### Verification
+
+- Add six real-OS-pipe entrypoint regressions and three separate real-SDK/loopback tests
+  requiring exactly one upstream session DELETE after output loss or ordinary EOF.
+- Require all 75 installed-package tests on Node 20 and Node 22 before a new release.
+- Add a deterministic WebMCP lifecycle soak covering repeated registration, cancellation,
+  sibling isolation, late outcomes, confirmation cleanup and refused stale callbacks.
+- These are bounded stability checks, not proof of all production allocations, external
+  client upgrades, native real-model shopper qualification or memory-leak absence.
+
 ## [1.2.1] - 2026-09-21
 
 ### Added
@@ -113,7 +133,8 @@ in `server.json`; see the Versioning section of the README.
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.2...HEAD
+[1.2.2]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.0.1...v1.1.0
