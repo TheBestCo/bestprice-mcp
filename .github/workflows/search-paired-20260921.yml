@@ -1,0 +1,44 @@
+name: Paired search evidence
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/search-paired-20260921.yml']
+permissions:
+  contents: read
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Existing gates before any shopping requests
+        run: npm run check && npm test
+      - name: Recover exact reviewed read-only diagnostic
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          import base64,hashlib,json,os,pathlib,urllib.request
+          sha='18014239efdf1055de148196821587b39affe608'
+          url='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/git/blobs/'+sha
+          req=urllib.request.Request(url,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+          with urllib.request.urlopen(req,timeout=30) as response: data=base64.b64decode(json.load(response)['content'])
+          assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==sha
+          pathlib.Path('paired-observe.mjs').write_bytes(data)
+          pathlib.Path('/tmp/paired-source.txt').write_text(os.environ['GITHUB_SHA']+'\n'+sha+'\n')
+      - name: Four synthetic pairs with no merchant or browser actions
+        run: node --check paired-observe.mjs && node paired-observe.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: paired-search-${{ github.run_id }}
+          path: |
+            /tmp/paired-search.json
+            /tmp/paired-source.txt
+          retention-days: 7
