@@ -22,12 +22,14 @@ async function fixture(t, { closeStderr = false } = {}) {
       if (request.method === 'DELETE') deletes++;
       const controller = new AbortController();
       response.once('close', () => controller.abort());
-      const result = await remote.fetch(new Request(`http://${request.headers.host}${request.url}`, {
-        method: request.method,
-        headers: request.headers,
-        ...(chunks.length ? { body: Buffer.concat(chunks) } : {}),
-        signal: controller.signal,
-      }));
+      const result = await remote.fetch(
+        new Request(`http://${request.headers.host}${request.url}`, {
+          method: request.method,
+          headers: request.headers,
+          ...(chunks.length ? { body: Buffer.concat(chunks) } : {}),
+          signal: controller.signal,
+        }),
+      );
       response.writeHead(result.status, Object.fromEntries(result.headers));
       if (result.body) {
         for await (const chunk of result.body) response.write(chunk);

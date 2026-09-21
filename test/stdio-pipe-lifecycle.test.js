@@ -120,7 +120,9 @@ for (const when of ['startup', 'after startup']) {
 }
 
 for (const closeStderr of [false, true]) {
-  test(`a lost protocol pipe closes the bridge once (stderr closed=${closeStderr})`, { timeout: 10000 }, async t => {
+  test(`a lost protocol pipe closes the bridge once (stderr closed=${closeStderr})`, {
+    timeout: 10000,
+  }, async t => {
     const f = await start(t, { closeStderr });
     await f.waitFor('ready');
     f.child.stdout.destroy();

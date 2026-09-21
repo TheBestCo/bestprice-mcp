@@ -94,7 +94,10 @@ export async function exerciseLifecycle(createFixture, cycles = 25, width = 16) 
       const countBefore = calls;
       check((await bounded(Promise.resolve(invoke({ id: 0 })))).ok === false, 'A stale tool ran');
       check(calls === countBefore, 'Stale registration caused another effect');
-      check((await Promise.all(outputs)).every((value, id) => value === results[id]), 'Settlement changed');
+      check(
+        (await Promise.all(outputs)).every((value, id) => value === results[id]),
+        'Settlement changed',
+      );
     }
     check(calls === cycles * width, 'Duplicate or missing tool execution');
     return { cycles, invocations: calls, staleCallsRefused: cycles };
