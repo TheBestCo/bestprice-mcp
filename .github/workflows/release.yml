@@ -7,6 +7,12 @@ name: Release
 on:
   push:
     branches: [main]
+    # A release only happens when the version changes, so only run when the files that
+    # carry it change. workflow_dispatch covers anything else.
+    paths:
+      - package.json
+      - CHANGELOG.md
+      - .github/workflows/release.yml
   workflow_dispatch:
 
 permissions:

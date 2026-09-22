@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
 
 permissions:
@@ -13,28 +14,21 @@ permissions:
 env:
   MCP_PUBLISHER_VERSION: v1.8.1
 
-jobs:
-  check:
-    name: Lint and format
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-      - run: npm ci
-      - run: npm run check
+# One run per PR (or per ref on main); a newer push cancels the older run.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
-  test:
-    name: Test (Node ${{ matrix.node }})
+jobs:
+  # Lint, tests, packed-release verification and server.json validation used to be four
+  # billed jobs (two of them a Node 20/22 matrix). Every job is billed rounded up to a full
+  # minute, so they are one job on the .nvmrc Node now. Release still verifies Node 20 and 22
+  # on version bumps.
+  ci:
+    name: Check, test and validate
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    strategy:
-      fail-fast: false
-      matrix:
-        node: [20, 22]
     steps:
       # The evidence ledger is checked against the merge base, so the job needs the history and the
       # target branch, not just the merge commit.
@@ -43,29 +37,23 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
-          node-version: ${{ matrix.node }}
+          node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run check
       - run: npm test
       - name: Verify the isolated installed tarball
         run: node scripts/verify-packed-release.mjs "$RUNNER_TEMP/installed-package"
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
-        if: always()
-        with:
-          name: installed-package-node${{ matrix.node }}-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/installed-package/
-          if-no-files-found: warn
-          retention-days: 7
-
-  registry-metadata:
-    name: Validate server.json
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v7
       - name: Install the official MCP publisher
         run: |
           curl --fail --location --silent --show-error \
             "https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" \
             | tar xz mcp-publisher
       - run: ./mcp-publisher validate server.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: failure()
+        with:
+          name: installed-package-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/installed-package/
+          if-no-files-found: warn
+          retention-days: 3
