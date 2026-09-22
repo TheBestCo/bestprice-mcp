@@ -231,6 +231,23 @@ describe('contract parity with the storefront', () => {
 
     /* The regex literal in the storefront's own pattern must not swallow the rest of the file. */
     assert.ok(fixture.surface.show_offer.inputSchema.properties.merchant_id.pattern);
+
+    /* Contract 1.7 bounds every continuation offset with `Number.MAX_SAFE_INTEGER`: the reader
+     * resolves that one member expression, and leaves any other as a named hole. */
+    const [bounded] = extractToolDefinitions(
+      [
+        "const t = { name: 'o', inputSchema: { type: 'object', properties: {",
+        '  offset: { type: "integer", minimum: 0, maximum: Number.MAX_SAFE_INTEGER },',
+        '  other: { type: "integer", maximum: Math.PI },',
+        '}, additionalProperties: false } };',
+      ].join('\n'),
+    );
+    assert.equal(bounded.inputSchema.properties.offset.maximum, Number.MAX_SAFE_INTEGER);
+    assert.deepEqual(bounded.inputSchema.properties.other.maximum, { $ref: 'Math.PI' });
+    assert.equal(
+      fixture.surface.get_product_specifications.inputSchema.properties.offset.maximum,
+      Number.MAX_SAFE_INTEGER,
+    );
   });
 
   it('keeps the committed snapshot a transcription of the sibling checkout', {

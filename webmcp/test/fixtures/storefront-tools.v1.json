@@ -5,11 +5,11 @@
   "extractedFrom": [
     {
       "path": "pages/item/webmcp/tools.js",
-      "sha256": "c21e000656b826e0acff469b162bb872147a56a4164d7a4e3fb7e95f49206235"
+      "sha256": "36a70fa1e1815a67829ede45814d70e6db9202be1e1290b292eba33a86e187b2"
     },
     {
       "path": "pages/search/webmcp/tools.js",
-      "sha256": "3b91f2cd913a9e3d4c567cbcaf300e6f00b04ee6ec25e04cecabaefc807bd233"
+      "sha256": "0e2a4695bfdc0ff5912b1a2a000e0741d5a65640c1450d13f5d1d85d0c50b2e4"
     },
     {
       "path": "js/modules/webmcp/search-tool.js",
@@ -17,7 +17,7 @@
     }
   ],
   "extraction": "webmcp/src/contract-parity.js extractToolDefinitions (object literals carrying name + inputSchema, module-scope schema constants resolved)",
-  "definitionsDigest": "1336f8b684d4929db184bb17c53683414b84cf1524d2049f18092d8d936d7b47",
+  "definitionsDigest": "f5734cb7c7e0704ea6bfa744b034bd48e1b7a88a0a3e423a6f538642e741cc1e",
   "tools": [
     "get_page_product",
     "compare_page_offers",
@@ -51,7 +51,7 @@
     },
     "compare_page_offers": {
       "title": "Compare offers on this page",
-      "description": "Compare up to four currently rendered offers by item price, shipping, delivered price, availability, and merchant rating. Every returned offer carries an offer_ref for show_offer; unpriced_rows reports how many rendered rows of that store could not be priced.",
+      "description": "Compare up to four rendered offers by item price, shipping, delivered price, availability, and merchant rating. Every offer carries an offer_ref for show_offer. stores_considered of stores_total says how many stores were ranked; completeness partial means more are behind «Όλες οι τιμές» (include_all_stores loads them).",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -60,6 +60,10 @@
             "minimum": 1,
             "maximum": 4,
             "description": "Number of lowest-delivered-price offers to return, from 1 to 4."
+          },
+          "include_all_stores": {
+            "type": "boolean",
+            "description": "First load the stores this page keeps behind «Όλες οι τιμές», as when the shopper presses it. Defaults to false."
           }
         },
         "additionalProperties": false
@@ -72,7 +76,7 @@
     },
     "get_product_specifications": {
       "title": "Product specifications",
-      "description": "Return structured specifications for the product on this BestPrice item page, optionally focused on one specification section or one fact. A shortened value is marked truncated; ask for that fact by name to read it in full.",
+      "description": "Return structured specifications for the product on this BestPrice item page, optionally focused on one specification section or one fact. Follow next_offset with the same section to read omitted facts. A shortened value is marked truncated; ask for that fact by name to read it in full.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -93,6 +97,12 @@
             "minLength": 1,
             "maxLength": 72,
             "description": "A specification fact name, such as one a previous call returned. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "Use next_offset from the previous result, keeping the same product and section. Defaults to 0. Do not combine with fact."
           }
         },
         "additionalProperties": false
@@ -119,7 +129,7 @@
     },
     "show_offer": {
       "title": "Show an offer for this product",
-      "description": "Scroll this BestPrice item page to one merchant offer it already shows and mark it for the shopper. Use the offer_ref returned by compare_page_offers; merchant_id or merchant_name also work when they identify exactly one shown offer. It never opens a merchant page and never exposes a merchant URL.",
+      "description": "Scroll this BestPrice item page to one merchant offer it already shows and mark it for the shopper. Use the offer_ref returned by compare_page_offers; merchant_name (or a merchant_id from the page markup) also works when it identifies exactly one shown offer. It never opens a merchant page and never exposes a merchant URL.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -132,7 +142,7 @@
           "merchant_id": {
             "type": "string",
             "pattern": "^\\d{1,20}$",
-            "description": "Numeric merchant id from compare_page_offers, when the page exposes one."
+            "description": "Numeric merchant id as the page markup shows it (data-mid); compare_page_offers does not return it, so prefer offer_ref."
           },
           "merchant_name": {
             "type": "string",
@@ -171,7 +181,7 @@
     },
     "get_visible_products": {
       "title": "Products on this page",
-      "description": "Return up to eight products currently rendered on this BestPrice listing page.",
+      "description": "Return up to eight products currently rendered on this BestPrice listing page. Follow next_offset to read the rest; open one with open_visible_product and its product_id.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -180,6 +190,12 @@
             "minimum": 1,
             "maximum": 8,
             "description": "Maximum products to return."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "Use next_offset from the previous result on the same page. Defaults to 0."
           }
         },
         "additionalProperties": false
@@ -216,10 +232,23 @@
     },
     "get_listing_filters": {
       "title": "Available filters",
-      "description": "Return the selected and available values from filters currently rendered on this listing page.",
+      "description": "Return the selected and available values from filters on this listing page, including values behind «Εμφάνιση όλων». Pass group to read one filter in full; follow next_offset to continue.",
       "inputSchema": {
         "type": "object",
-        "properties": {},
+        "properties": {
+          "group": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "description": "A filter key or name a previous call returned; returns that filter with all of its values."
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "Use next_offset from the previous result with the same group, or none. Defaults to 0."
+          }
+        },
         "additionalProperties": false
       },
       "annotations": {
@@ -230,7 +259,7 @@
     },
     "apply_listing_filter": {
       "title": "Apply a filter",
-      "description": "Apply a visible filter value using the same in-page navigation as a shopper. Exact or one unambiguous partial label works.",
+      "description": "Apply a filter value this listing offers, including one behind «Εμφάνιση όλων», using the same navigation as a shopper. Exact or one unambiguous partial label works.",
       "inputSchema": {
         "type": "object",
         "properties": {

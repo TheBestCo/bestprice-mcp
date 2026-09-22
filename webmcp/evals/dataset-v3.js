@@ -42,6 +42,106 @@ const STARTING_PAGES = Object.freeze({
 
 const RULE_KEYS = Object.freeze(['type', 'minLength', 'maxLength', 'minimum', 'maximum', 'pattern', 'enum']);
 
+/* The argument rules of contract 1.6, the contract 3.0.0 was derived from, recorded from
+ * webmcp/src/contracts.js at faf3bc9 with `argumentRules` below. 3.0.0 is frozen, so its derivation
+ * reads these and not the live contract: contract 1.7 (2026-09-22) added arguments, and a dataset
+ * that admits them is the next dataset version — an owner's decision — not an edit of this one.
+ * `webmcp/test/dataset-v3.test.js` names the arguments published since. */
+const deepFreeze = value => {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    Object.freeze(value);
+    for (const child of Object.values(value)) deepFreeze(child);
+  }
+  return value;
+};
+export const CONTRACT_1_6_ARGUMENT_RULES = deepFreeze({
+  search_bestprice: {
+    query: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 120,
+    },
+  },
+  get_visible_products: {
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 8,
+    },
+  },
+  open_visible_product: {
+    product_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+  },
+  get_listing_filters: {},
+  apply_listing_filter: {
+    filter: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    value: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  clear_listing_filters: {},
+  get_listing_sort_options: {},
+  apply_listing_sort: {
+    sort: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  get_page_product: {},
+  compare_page_offers: {
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 4,
+    },
+  },
+  get_product_specifications: {
+    section: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 48,
+    },
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 16,
+    },
+    fact: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  summarize_price_history: {},
+  show_offer: {
+    offer_ref: {
+      type: 'string',
+      minLength: 8,
+      maxLength: 40,
+    },
+    merchant_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+    merchant_name: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 68,
+    },
+  },
+  show_price_history: {},
+});
+
 const publishedDefinitions = () => {
   const byName = new Map();
   for (const page of Object.keys(PAGE_TOOL_NAMES)) {
@@ -59,7 +159,7 @@ export const readOnlyTools = (definitions = publishedDefinitions()) =>
     .sort();
 
 /** One tool's argument rules, straight from its published input schema. */
-const argumentRules = definition =>
+export const argumentRules = definition =>
   Object.fromEntries(
     Object.entries(definition.inputSchema?.properties ?? {}).map(([name, schema]) => [
       name,
@@ -76,7 +176,9 @@ export function deriveDatasetV3(v2 = JSON.parse(readFileSync(V2_PATH, 'utf8'))) 
       ...item,
       starting_url: STARTING_PAGES[item.id] ?? item.starting_url,
       allowed_args: Object.fromEntries(
-        tools.filter(tool => definitions.has(tool)).map(tool => [tool, argumentRules(definitions.get(tool))]),
+        tools
+          .filter(tool => Object.hasOwn(CONTRACT_1_6_ARGUMENT_RULES, tool))
+          .map(tool => [tool, structuredClone(CONTRACT_1_6_ARGUMENT_RULES[tool])]),
       ),
       extra_calls_allowed: extras,
       runs: [],

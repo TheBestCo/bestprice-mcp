@@ -45,6 +45,10 @@ export const DEFAULT_STOREFRONT_ROOT =
 /* --------------------------------------------------------------------------------------------- */
 
 const IDENTIFIER = /^[A-Za-z_$][\w$]*/u;
+const KNOWN_MEMBERS = Object.freeze({
+  'Number.MAX_SAFE_INTEGER': Number.MAX_SAFE_INTEGER,
+  'Number.MIN_SAFE_INTEGER': Number.MIN_SAFE_INTEGER,
+});
 const REGEX_PREFIX_TOKENS = Object.freeze([')', ']', '}']);
 
 /**
@@ -200,6 +204,15 @@ function parseValue(tokens, index) {
   if (!token) return null;
   if (token.type === 'literal' || token.type === 'string') return { value: token.value, next: index + 1 };
   if (token.type === 'identifier') {
+    /* `Number.MAX_SAFE_INTEGER` is how the storefront bounds a continuation offset. A member
+     * expression the reader knows is its value; any other stays a named hole, never a guess. */
+    if (tokens[index + 1]?.value === '.' && tokens[index + 2]?.type === 'identifier') {
+      const member = `${token.value}.${tokens[index + 2].value}`;
+      return {
+        value: Object.hasOwn(KNOWN_MEMBERS, member) ? KNOWN_MEMBERS[member] : { $ref: member },
+        next: index + 3,
+      };
+    }
     /* A bare identifier may name a schema constant; the caller resolves it. */
     return { value: { $ref: token.value }, next: index + 1 };
   }

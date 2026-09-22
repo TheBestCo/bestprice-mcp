@@ -68,3 +68,16 @@ test('selection is bounded, rejects duplicate identities, and cannot claim an ab
   const wrong = product(path.replace(id, '2147483651'), '2147483652');
   assert.deepEqual(selectVisibleProductReadTarget([wrong, product()]), { productId: id, url: path });
 });
+
+test('a 1.7 list read without links resolves through the page link for the same id only', () => {
+  const listed = [{ product_id: id }];
+  assert.deepEqual(selectVisibleProductReadTarget(listed, [path]), { productId: id, url: path });
+  assert.equal(selectVisibleProductReadTarget(listed, []), null);
+  assert.equal(selectVisibleProductReadTarget(listed), null);
+  /* Another product's link, a query or a fragment never stands in for the listed id. */
+  assert.equal(selectVisibleProductReadTarget(listed, [path.replace(id, '2147483651')]), null);
+  assert.equal(selectVisibleProductReadTarget(listed, [`${path}?from=cat`, `${path}#offers`]), null);
+  assert.equal(selectVisibleProductReadTarget(listed, [path.replace('https:', 'http:')]), null);
+  /* A published link is still the one used, and still judged on its own. */
+  assert.equal(selectVisibleProductReadTarget([product(`${path}?action=1`)], [path]), null);
+});

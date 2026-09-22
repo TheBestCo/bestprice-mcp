@@ -1,7 +1,15 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
-import { deriveDatasetV3, readOnlyTools, serializeDataset, V2_PATH, V3_PATH } from '../evals/dataset-v3.js';
+import {
+  argumentRules,
+  CONTRACT_1_6_ARGUMENT_RULES,
+  deriveDatasetV3,
+  readOnlyTools,
+  serializeDataset,
+  V2_PATH,
+  V3_PATH,
+} from '../evals/dataset-v3.js';
 import { gradeJourney } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
 import { createTools } from '../src/contracts.js';
@@ -43,24 +51,40 @@ describe('dataset 3.0.0', () => {
     }
   });
 
-  it('allows every argument the published contract accepts, and nothing else', () => {
-    const published = new Map(
-      ['home', 'listing', 'product']
-        .flatMap(page => createTools({ page, execute: () => {} }))
-        .map(tool => [tool.name, tool]),
-    );
+  it('allows every argument contract 1.6 accepts, and nothing else', () => {
     for (const item of v3.cases) {
       for (const [tool, rules] of Object.entries(item.allowed_args)) {
-        assert.deepEqual(
-          Object.keys(rules).sort(),
-          Object.keys(published.get(tool).inputSchema.properties).sort(),
-          `${item.id}.${tool}`,
-        );
+        assert.deepEqual(rules, CONTRACT_1_6_ARGUMENT_RULES[tool], `${item.id}.${tool}`);
       }
     }
     const offers = byId(v3).get('product-011').allowed_args.show_offer;
     assert.ok(offers.offer_ref, 'the reference 2.0.0 rejected');
     assert.ok(byId(v3).get('product-005').allowed_args.get_product_specifications.fact);
+  });
+
+  /* The frozen datasets grade against 1.6. What contract 1.7 published since is named here, so the
+   * gap is a decision on record (a dataset that admits it is the next version) and never drift. */
+  it('names exactly the arguments published after contract 1.6', () => {
+    const published = new Map(
+      ['home', 'listing', 'product']
+        .flatMap(page => createTools({ page, execute: () => {} }))
+        .map(tool => [tool.name, argumentRules(tool)]),
+    );
+    const since = [];
+    for (const [tool, rules] of published) {
+      const frozen = CONTRACT_1_6_ARGUMENT_RULES[tool];
+      assert.ok(frozen, `${tool} existed in 1.6`);
+      for (const [name, rule] of Object.entries(frozen))
+        assert.deepEqual(rules[name], rule, `${tool}.${name}`);
+      for (const name of Object.keys(rules)) if (!(name in frozen)) since.push(`${tool}.${name}`);
+    }
+    assert.deepEqual(since.sort(), [
+      'compare_page_offers.include_all_stores',
+      'get_listing_filters.group',
+      'get_listing_filters.offset',
+      'get_product_specifications.offset',
+      'get_visible_products.offset',
+    ]);
   });
 
   it('admits exactly the read-only tools as extras', () => {

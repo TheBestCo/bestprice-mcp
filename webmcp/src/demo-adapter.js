@@ -135,6 +135,22 @@ const rejectUnexpected = (args, allowed) => {
   return bad ? fail(`Unexpected argument: ${bad}.`) : null;
 };
 
+/** Resolves a contract 1.7 continuation `offset`, returning `{ offset }` or an error result. */
+const readOffset = (args, available) => {
+  const offset = args.offset ?? 0;
+  if (!Number.isSafeInteger(offset) || offset < 0) {
+    return { error: fail('offset must be a non-negative safe whole number.') };
+  }
+  if (offset > 0 && offset >= available) {
+    return { error: fail('offset is beyond what this page shows. Restart with offset: 0.') };
+  }
+  return { offset };
+};
+const continuation = (offset, returned, available) => {
+  const next = offset + returned < available ? offset + returned : null;
+  return { offset, next_offset: next, completeness: next === null ? 'complete' : 'partial' };
+};
+
 /** Resolves the `limit` argument for `tool`, returning `{ limit }` or an error result. */
 const readLimit = (args, tool) => {
   const limit = args.limit ?? DEFAULT_LIMITS[tool];
@@ -199,13 +215,22 @@ export function createDemoAdapter(onChange = () => {}) {
     get_visible_products(args) {
       const { limit, error } = readLimit(args, 'get_visible_products');
       if (error) return error;
-      const products = visibleProducts()
-        .slice(0, limit)
-        .map(({ offers, history, specifications, ...product }) => ({
-          ...product,
-          bestprice_url: productUrl(product.product_id),
-        }));
-      return { ok: true, source: 'BestPrice listing page', returned: products.length, products };
+      const rows = visibleProducts();
+      const { offset, error: offsetError } = readOffset(args, rows.length);
+      if (offsetError) return offsetError;
+      /* Like the storefront since contract 1.7: a list read does not repeat each product link;
+       * open_visible_product takes the product_id and returns the landing itself. */
+      const products = rows
+        .slice(offset, offset + limit)
+        .map(({ offers, history, specifications, brand, ...product }) => product);
+      return {
+        ok: true,
+        source: 'BestPrice listing page',
+        shown_products: rows.length,
+        returned: products.length,
+        ...continuation(offset, products.length, rows.length),
+        products,
+      };
     },
 
     open_visible_product(args) {
@@ -220,21 +245,41 @@ export function createDemoAdapter(onChange = () => {}) {
         action: 'opened_visible_product',
         product_id: product.product_id,
         title: product.title,
+        bestprice_url: productUrl(product.product_id),
       };
     },
 
-    get_listing_filters() {
+    get_listing_filters(args) {
+      const group = {
+        key: 'brand',
+        name: BRAND_FILTER,
+        selected_values: state.brand ? [state.brand] : [],
+        available_values: brands().filter(brand => brand !== state.brand),
+      };
+      if (args.group !== undefined && ![group.key, normalize(BRAND_FILTER)].includes(normalize(args.group))) {
+        return fail(`The filter '${clean(args.group)}' was not found on this listing.`);
+      }
+      const total = args.group === undefined ? 1 : group.available_values.length;
+      const { offset, error } = readOffset(args, total);
+      if (error) return error;
+      if (args.group !== undefined) {
+        const values = group.available_values.slice(offset);
+        return {
+          ok: true,
+          source: 'BestPrice listing filters',
+          returned: 1,
+          total_values: total,
+          ...continuation(offset, values.length, total),
+          filters: [{ ...group, available_values: values }],
+        };
+      }
       return {
         ok: true,
         source: 'BestPrice listing filters',
-        filters: [
-          {
-            key: 'brand',
-            name: BRAND_FILTER,
-            selected_values: state.brand ? [state.brand] : [],
-            available_values: brands().filter(brand => brand !== state.brand),
-          },
-        ],
+        returned: 1,
+        total_groups: 1,
+        ...continuation(offset, 1, 1),
+        filters: [group],
       };
     },
 
@@ -288,12 +333,18 @@ export function createDemoAdapter(onChange = () => {}) {
     compare_page_offers(args) {
       const { limit, error } = readLimit(args, 'compare_page_offers');
       if (error) return error;
+      if (args.include_all_stores !== undefined && typeof args.include_all_stores !== 'boolean') {
+        return fail('include_all_stores must be true or false.');
+      }
       const product = activeProduct();
+      /* The fixture renders every store, so there is never a «Όλες οι τιμές» to press. */
       return {
         ok: true,
         source: 'BestPrice item page',
         product_id: product.product_id,
         compared: Math.min(limit, product.offers.length),
+        stores_total: product.offers.length,
+        stores_considered: product.offers.length,
         offers: product.offers.slice(0, limit),
         note: 'Unknown shipping remains unknown. The shopper chooses the merchant.',
       };
@@ -307,6 +358,9 @@ export function createDemoAdapter(onChange = () => {}) {
       const inSection = product.specifications.filter(
         row => section === 'all' || normalize(row.section).includes(section),
       );
+      if (args.fact !== undefined && args.offset !== undefined) {
+        return fail('offset must be a non-negative safe whole number; do not combine it with fact.');
+      }
       if (args.fact !== undefined) {
         const named = inSection.filter(row => normalize(row.name) === normalize(args.fact));
         const sections = [...new Set(named.map(row => row.section))];
@@ -324,13 +378,19 @@ export function createDemoAdapter(onChange = () => {}) {
           specifications: named,
         };
       }
-      const rows = inSection.slice(0, limit);
-      if (!rows.length) return fail(`No specifications matched '${clean(args.section)}'.`);
+      if (!inSection.length) return fail(`No specifications matched '${clean(args.section)}'.`);
+      const { offset, error: offsetError } = readOffset(args, inSection.length);
+      if (offsetError) return offsetError;
+      const rows = inSection.slice(offset, offset + limit);
+      const { completeness, ...position } = continuation(offset, rows.length, inSection.length);
       return {
         ok: true,
         source: 'BestPrice product specifications',
         product_id: product.product_id,
         returned: rows.length,
+        total_facts: inSection.length,
+        ...position,
+        completeness,
         specifications: rows,
       };
     },
@@ -384,16 +444,16 @@ export function createDemoAdapter(onChange = () => {}) {
   /** Argument names each tool accepts; anything else is rejected before the handler runs. */
   const ACCEPTED_ARGS = {
     search_bestprice: ['query'],
-    get_visible_products: ['limit'],
+    get_visible_products: ['limit', 'offset'],
     open_visible_product: ['product_id'],
-    get_listing_filters: [],
+    get_listing_filters: ['group', 'offset'],
     apply_listing_filter: ['filter', 'value'],
     clear_listing_filters: [],
     get_listing_sort_options: [],
     apply_listing_sort: ['sort'],
     get_page_product: [],
-    compare_page_offers: ['limit'],
-    get_product_specifications: ['section', 'limit', 'fact'],
+    compare_page_offers: ['limit', 'include_all_stores'],
+    get_product_specifications: ['section', 'limit', 'fact', 'offset'],
     summarize_price_history: [],
     show_offer: ['merchant_id', 'merchant_name'],
     show_price_history: [],

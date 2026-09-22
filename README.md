@@ -31,8 +31,8 @@ the browser-native WebMCP layer. The server itself is not in this repository.
 | --- | --- | --- |
 | `get_shopping_decision` | Runs the BestPrice Shopping Brain: an evidence-backed recommendation, need-based comparison, or read-only basket plan with reasons, tradeoffs, and unknowns. | Natural-language need, optional budget and five-digit Greek postcode |
 | `search_products` | Finds canonical products in the catalog. Returns product IDs and the catalog minimum price before shipping. | `query`, optional `limit` |
-| `compare_offers` | Compares current merchant offers for one exact product, separating item price, shipping, and delivered total. | `product_id` from a previous result, optional `postal_code` |
-| `get_price_history` | Summarises how a product's price moved over time. | `product_id`, `days` |
+| `compare_offers` | Compares current merchant offers for one exact product, separating item price, shipping, and delivered total. | `product_id` from a previous result, optional `postal_code` (a Greek postcode, 10000–85999, for delivered totals) |
+| `get_price_history` | Summarises how a product's price moved over time, against its 180-day median. | `product_id`, optional `period_days` (30, 90 or 180) |
 
 All four tools are read-only. They never place orders, create alerts, or read account
 data. Results link to a BestPrice product page, never directly to a merchant. Unknown

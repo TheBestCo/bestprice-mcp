@@ -61,12 +61,25 @@ Production registers only the tools relevant to the open page:
 
 The seventh product-page entry, `show_offer`, is an action verb: it scrolls to
 one rendered offer and marks it for the shopper, and it returns no merchant
-link. It is live: the production manifests on `www.bestprice.gr` and
-`mcp.bestprice.gr` both report version 1.6 with 14 tools and are identical
-(verified 2026-09-15), and the origin-trial facade publishes version 1.6 with
-the tool allow-listed. Version 1.6 adds `fact` to `get_product_specifications`:
-a fact name a previous call returned reads that fact in full, which is the
-continuation for a value the page marked truncated.
+link.
+
+Contract 1.7 (2026-09-22) makes every bounded read continuable and says how
+much of the page it covered: `get_visible_products`, `get_listing_filters` and
+`get_product_specifications` take an `offset` and return `next_offset`;
+`get_listing_filters` can read one `group` in full, including the values a long
+list keeps behind «Εμφάνιση όλων»; and `compare_page_offers` reports
+`stores_considered` of `stores_total`, marks a comparison `partial` while more
+stores are behind «Όλες οι τιμές», and loads them on `include_all_stores`.
+Version 1.6 added `fact` to `get_product_specifications`: a fact name a
+previous call returned reads that fact in full.
+
+Parity is checked field by field, not by version string: the storefront tests
+the schemas its pages register against the manifest it serves,
+`test/contract-parity.test.js` checks this contract against a committed
+snapshot of those pages, and the submission canary compares the manifests on
+`www.bestprice.gr` and `mcp.bestprice.gr` as one document. The evaluation
+datasets up to 8.0.0 grade against contract 1.6; `test/dataset-v3.test.js`
+names the arguments published since.
 
 The machine-readable production inventory is available at
 [`/.well-known/webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json).

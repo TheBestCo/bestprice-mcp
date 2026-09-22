@@ -26,6 +26,13 @@ const NAVIGATION = {
 };
 
 const limitSchema = (maximum, description) => ({ type: 'integer', minimum: 1, maximum, description });
+/* Contract 1.7: a continuation. The bound is the storefront's `Number.MAX_SAFE_INTEGER`. */
+const offsetSchema = description => ({
+  type: 'integer',
+  minimum: 0,
+  maximum: Number.MAX_SAFE_INTEGER,
+  description,
+});
 const textSchema = (maxLength, description, minLength = 1) => ({
   type: 'string',
   minLength,
@@ -50,9 +57,13 @@ const DEFINITIONS = [
   {
     name: 'get_visible_products',
     title: 'Products on this page',
-    description: 'Return up to eight products currently rendered on this listing.',
+    description:
+      'Return up to eight products currently rendered on this listing; follow next_offset for the rest.',
     annotations: READ_ONLY,
-    inputSchema: objectSchema({ limit: limitSchema(8, 'Maximum products to return.') }),
+    inputSchema: objectSchema({
+      limit: limitSchema(8, 'Maximum products to return.'),
+      offset: offsetSchema('next_offset from the previous result on the same page. Defaults to 0.'),
+    }),
   },
   {
     name: 'open_visible_product',
@@ -67,14 +78,20 @@ const DEFINITIONS = [
   {
     name: 'get_listing_filters',
     title: 'Available filters',
-    description: 'Return selected and available filters currently rendered on this listing.',
+    description:
+      'Return selected and available filters on this listing, including values behind «Εμφάνιση όλων»; pass group to read one filter in full.',
     annotations: READ_ONLY,
-    inputSchema: EMPTY_SCHEMA,
+    inputSchema: objectSchema({
+      group: textSchema(64, 'A filter key or name a previous call returned.'),
+      offset: offsetSchema(
+        'next_offset from the previous result with the same group, or none. Defaults to 0.',
+      ),
+    }),
   },
   {
     name: 'apply_listing_filter',
     title: 'Apply a filter',
-    description: 'Apply a currently visible filter value.',
+    description: 'Apply a filter value the listing offers, including one behind «Εμφάνιση όλων».',
     annotations: NAVIGATION,
     inputSchema: objectSchema(
       { filter: textSchema(64, 'Visible filter name.'), value: textSchema(72, 'Visible filter value.') },
@@ -112,9 +129,17 @@ const DEFINITIONS = [
   {
     name: 'compare_page_offers',
     title: 'Compare offers on this page',
-    description: 'Compare up to four visible offers by delivered price.',
+    description:
+      'Compare up to four offers by delivered price. stores_considered of stores_total says how many stores were ranked; completeness partial means more are behind «Όλες οι τιμές».',
     annotations: READ_ONLY,
-    inputSchema: objectSchema({ limit: limitSchema(4, 'Offers to return.') }),
+    inputSchema: objectSchema({
+      limit: limitSchema(4, 'Offers to return.'),
+      /* Contract 1.7: the page's own «Όλες οι τιμές» request, as when the shopper presses it. */
+      include_all_stores: {
+        type: 'boolean',
+        description: 'First load the stores the page keeps behind «Όλες οι τιμές». Defaults to false.',
+      },
+    }),
   },
   {
     name: 'get_product_specifications',
@@ -127,6 +152,9 @@ const DEFINITIONS = [
       limit: limitSchema(16, 'Facts to return.'),
       /* Contract 1.6: the exact continuation for a value a previous call marked truncated. */
       fact: textSchema(72, 'A fact name a previous call returned; returns that fact in full.'),
+      offset: offsetSchema(
+        'next_offset from the previous result, same section. Defaults to 0; not with fact.',
+      ),
     }),
   },
   {
@@ -140,7 +168,7 @@ const DEFINITIONS = [
     name: 'show_offer',
     title: 'Show an offer for this product',
     description:
-      'Scroll this item page to one merchant offer it already shows and mark it for the shopper. Use the offer_ref from compare_page_offers; merchant_id or merchant_name also work when they identify exactly one shown offer.',
+      'Scroll this item page to one merchant offer it already shows and mark it for the shopper. Use the offer_ref from compare_page_offers; merchant_name (or a merchant_id from the page markup) also works when it identifies exactly one shown offer.',
     annotations: NAVIGATION,
     inputSchema: objectSchema({
       /* The page-local reference compare_page_offers returns, and the only selector that can separate
@@ -152,7 +180,7 @@ const DEFINITIONS = [
       merchant_id: {
         type: 'string',
         pattern: '^\\d{1,20}$',
-        description: 'Numeric merchant id from compare_page_offers, when the page exposes one.',
+        description: 'Numeric merchant id from the page markup; compare_page_offers does not return it.',
       },
       merchant_name: textSchema(68, 'Merchant name exactly as compare_page_offers returned it.', 2),
     }),

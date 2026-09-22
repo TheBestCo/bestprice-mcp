@@ -95,17 +95,31 @@ export function selectBrowsingProductUrl(values) {
 /** Resolve only a native read's ID-matched grouped product, never a merchant/listing click URL.
  * The inspected storefront productUrl helper emits exactly ?bpref=mcp; removing that fixed
  * attribution tag for a measurement-suppressed diagnostic is not permission to strip other data.
- * All actual navigation still passes the unchanged no-query browsing guard above. */
-export function selectVisibleProductReadTarget(products) {
+ * All actual navigation still passes the unchanged no-query browsing guard above.
+ *
+ * From WebMCP contract 1.7 a list read no longer repeats each product's link (open_visible_product
+ * takes the id alone). A product without `bestprice_url` resolves to the page's own query-free link
+ * for the same id (`links`, as `inspectBrowsingProductLinks` reads them), under the same checks. */
+export function selectVisibleProductReadTarget(products, links = []) {
   if (!Array.isArray(products) || products.length > 8) return null;
   const ids = new Set();
   for (const product of products) {
     if (typeof product?.product_id !== 'string' || ids.has(product.product_id)) return null;
     ids.add(product.product_id);
   }
+  const pageLinks = Array.isArray(links) ? links.slice(0, 64).filter(link => typeof link === 'string') : [];
+  const pageLinkFor = id =>
+    pageLinks.find(link => {
+      try {
+        const url = new URL(link);
+        return url.search === '' && url.hash === '' && /^\/item\/(\d{10})\//u.exec(url.pathname)?.[1] === id;
+      } catch {
+        return false;
+      }
+    });
   for (const product of products) {
     const id = product.product_id;
-    const value = product.bestprice_url;
+    const value = Object.hasOwn(product, 'bestprice_url') ? product.bestprice_url : pageLinkFor(id);
     if (!/^\d{10}$/u.test(id) || typeof value !== 'string' || value.length > 2048) continue;
     try {
       const url = new URL(value);

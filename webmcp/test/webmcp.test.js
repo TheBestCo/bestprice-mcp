@@ -177,12 +177,14 @@ describe('demo adapter', () => {
     assert.equal(listing.ok, true);
     assert.equal(listing.returned, 3);
     assert.ok(JSON.stringify(listing).length <= 1500, 'listing payload stays compact');
-    assert.ok(listing.products.every(product => product.bestprice_url.endsWith('?bpref=mcp')));
+    /* Contract 1.7: a list read does not repeat product links; opening by id returns the landing. */
+    assert.ok(listing.products.every(product => !('bestprice_url' in product)));
     const productId = listing.products[0].product_id;
-    assert.equal(
-      (await tools.find(tool => tool.name === 'open_visible_product').execute({ product_id: productId })).ok,
-      true,
-    );
+    const opened = await tools
+      .find(tool => tool.name === 'open_visible_product')
+      .execute({ product_id: productId });
+    assert.equal(opened.ok, true);
+    assert.ok(opened.bestprice_url.endsWith('?bpref=mcp'));
     assert.equal(adapter.snapshot().page, 'product');
 
     tools = createTools({ page: 'product', execute: adapter.execute });
@@ -314,6 +316,33 @@ describe('demo adapter', () => {
     for (const page of PAGES) adapter.setPage(page);
     assert.throws(() => adapter.setPage('checkout'), /Unknown page: checkout/u);
   });
+});
+
+/* Contract 1.7: every bounded read the storefront pages continues through next_offset. */
+test('the demo adapter continues listing, filter and specification reads with offset', async () => {
+  const adapter = createDemoAdapter();
+  await adapter.execute('search_bestprice', { query: 'phone' });
+  const first = await adapter.execute('get_visible_products', { limit: 2 });
+  assert.deepEqual([first.returned, first.offset, first.next_offset], [2, 0, 2]);
+  const rest = await adapter.execute('get_visible_products', { limit: 2, offset: first.next_offset });
+  assert.deepEqual([rest.returned, rest.next_offset, rest.completeness], [1, null, 'complete']);
+  assert.equal((await adapter.execute('get_visible_products', { offset: 3 })).ok, false);
+
+  const brand = await adapter.execute('get_listing_filters', { group: 'brand' });
+  assert.equal(brand.filters[0].available_values.length, brand.total_values);
+  assert.equal((await adapter.execute('get_listing_filters', { group: 'Missing' })).ok, false);
+
+  adapter.setPage('product');
+  const specs = await adapter.execute('get_product_specifications', { limit: 2 });
+  assert.equal(specs.next_offset, 2);
+  const more = await adapter.execute('get_product_specifications', { limit: 2, offset: 2 });
+  assert.equal(more.returned, 1);
+  assert.equal(
+    (await adapter.execute('get_product_specifications', { fact: 'Μέγεθος', offset: 1 })).ok,
+    false,
+  );
+  const offers = await adapter.execute('compare_page_offers', { include_all_stores: true });
+  assert.equal(offers.stores_considered, offers.stores_total);
 });
 
 /* Contract 1.6 (audit pass 8, F06): one fact in full, by the name a previous call returned. */

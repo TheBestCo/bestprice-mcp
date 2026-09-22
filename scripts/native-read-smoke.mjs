@@ -475,7 +475,7 @@ try {
     return matches.slice(0, 64).map(element => element.href);
   });
   report.productLinkSelection = inspectBrowsingProductLinks(productLinks).diagnostics;
-  const target = selectVisibleProductReadTarget(visibleProducts);
+  const target = selectVisibleProductReadTarget(visibleProducts, productLinks);
   report.productReadSelection = {
     source: 'get_visible_products',
     candidates: visibleProducts?.length ?? 0,
