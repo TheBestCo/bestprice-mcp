@@ -76,13 +76,20 @@ test('release checks genuine history and both installed artifacts before tagging
   );
 });
 
-test('existing Node 20/22 CI also verifies the isolated package without weakening test gates', async () => {
+test('single-job CI still verifies the isolated package without weakening test gates', async () => {
   const ci = await readFile(path.join(ROOT, '.github/workflows/test.yml'), 'utf8');
-  assert.match(ci, /node: \[20, 22\]/u);
+  // One billed job on the .nvmrc Node; Release covers Node 20 and 22 on version bumps.
+  assert.match(ci, /node-version-file: \.nvmrc/u);
+  assert.doesNotMatch(ci, /matrix:/u);
+  assert.match(ci, /run: npm run check/u);
+  assert.ok(ci.indexOf('run: npm run check') < ci.indexOf('run: npm test'));
   assert.ok(ci.indexOf('run: npm test') < ci.indexOf('run: node scripts/verify-packed-release.mjs'));
   assert.match(ci, /run: node scripts\/verify-packed-release.mjs/u);
+  assert.match(ci, /run: \.\/mcp-publisher validate server.json/u);
   assert.doesNotMatch(ci, /continue-on-error: true/u);
-  assert.match(ci, /name: installed-package-node\$\{\{ matrix.node \}\}/u);
+  // Superseded runs are cancelled instead of billed to completion.
+  assert.match(ci, /cancel-in-progress: true/u);
+  assert.match(ci, /name: installed-package-\$\{\{ github.run_id \}\}/u);
 });
 
 test('failed verifier writes a negative receipt and cannot overwrite it on retry', async t => {
