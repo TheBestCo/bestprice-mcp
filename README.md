@@ -29,15 +29,49 @@ the browser-native WebMCP layer. The server itself is not in this repository.
 
 | Tool | What it does | Key arguments |
 | --- | --- | --- |
-| `get_shopping_decision` | Runs the BestPrice Shopping Brain: an evidence-backed recommendation, need-based comparison, or read-only basket plan with reasons, tradeoffs, and unknowns. | Natural-language need, optional budget and five-digit Greek postcode |
-| `search_products` | Finds canonical products in the catalog. Returns product IDs and the catalog minimum price before shipping. | `query`, optional `limit` |
-| `compare_offers` | Compares current merchant offers for one exact product, separating item price, shipping, and delivered total. | `product_id` from a previous result, optional `postal_code` (a Greek postcode, 10000–85999, for delivered totals) |
+| `get_shopping_decision` | Runs the BestPrice Shopping Brain: an evidence-backed recommendation, need-based comparison, or read-only basket plan with reasons, tradeoffs, and unknowns. | `message` (the need in Greek or English, including any budget), optional `postal_code` (required for a completed basket plan), optional `history` (up to 12 recent turns), optional `evidence_detail` (`summary`, the default: only the evidence the answer cites; `full`: every claim and source) |
+| `search_products` | Finds canonical products in the catalog. Returns product IDs and the catalog minimum price before shipping. | `query` (2–200 characters: a name, model, category, or a bare GTIN/EAN barcode), optional `price_min`, `price_max`, `required_features`, `sort` (`relevance`, `price_asc`, `price_desc`), `limit` (1–8) |
+| `compare_offers` | Compares current merchant offers for one exact product, separating item price, shipping, and delivered total. | `product_id` from a previous result, optional `postal_code` (a Greek postcode, 10000–85999, for delivered totals), `objective`, `in_stock_only`, `minimum_merchant_rating`, `limit` (1–10) |
 | `get_price_history` | Summarises how a product's price moved over time, against its 180-day median. | `product_id`, optional `period_days` (30, 90 or 180) |
 
 All four tools are read-only. They never place orders, create alerts, or read account
 data. Results link to a BestPrice product page, never directly to a merchant. Unknown
 shipping is reported as unknown, not as free. Search covers safe physical products;
 digital goods, services, and age-restricted categories are excluded.
+
+## Protocol details
+
+Measured against the live endpoint on 22 September 2026.
+
+- **Versions.** `initialize` negotiates `2025-11-25`, `2025-06-18`, `2025-03-26`, `2024-11-05`
+  and `2024-10-07`; a client that asks for any other version is answered with `2025-11-25`.
+  The `2026-07-28` per-request revision is also served: send the `MCP-Protocol-Version`,
+  `Mcp-Method` (and, for `tools/call`, `Mcp-Name`) headers, and put
+  `io.modelcontextprotocol/protocolVersion` and `io.modelcontextprotocol/clientCapabilities` in
+  every request's `_meta`. A request that names the revision without that envelope is refused
+  with `-32602`.
+- **Stateless.** No `MCP-Session-Id` is issued and none is required; `DELETE` answers `405`.
+  A `GET` with `Accept: text/event-stream` opens a keep-alive stream, but the server never sends
+  requests or notifications on it, so a client loses nothing by not opening it.
+- **Capabilities.** `tools` and `resources` (the optional MCP Apps UI at
+  `ui://bestprice/shopping-results-v1.html` and the server card at `mcp://server-card.json`).
+  There are no prompts, completions or logging; those methods answer `-32601`.
+- **Responses.** A client that accepts both `application/json` and `text/event-stream` gets a
+  one-event SSE response. `Accept: application/json`, `*/*` or no `Accept` header gets a single
+  JSON body. Every tool returns `structuredContent` that validates against its `outputSchema`,
+  plus the same result as text for clients that do not pass structured content to the model.
+- **Errors.** An unknown tool is a JSON-RPC error (`-32602`). Invalid arguments and service
+  failures such as an unknown product are tool results with `isError: true`, so the model can
+  read and correct them.
+- **Limits.** JSON request bodies up to 256 KiB (`413` above that), a 12-second request
+  deadline, and per-client rate limits answered with HTTP `429`, JSON-RPC error `-32029` and a
+  `Retry-After` header. JSON-RPC batch arrays are refused with `400`.
+- **Browsers.** Desktop, CLI and server-side clients send no `Origin` header and are not
+  affected. A browser page may call the endpoint from an allowlisted AI-host origin, from
+  bestprice.gr, or from `localhost` (so MCP Inspector works in direct mode); any other origin
+  gets `403`.
+- **Authentication.** None. There is deliberately no `/.well-known/oauth-protected-resource`
+  document: clients that probe for one get `404` and connect without OAuth.
 
 ## Quick start
 
@@ -111,7 +145,7 @@ variables: `BESTPRICE_MCP_URL` (default: the public endpoint) and
 3. Pass a returned `product_id` to `compare_offers` with postal code `10558`.
 4. Pass the same `product_id` to `get_price_history` for 180 days.
 
-Queries work in Greek or English. Catalog data and merchant names come back in Greek.
+Queries work in Greek or English. Result summaries, catalog data and merchant names come back in Greek.
 
 | Search | Compare offers | Price history |
 | --- | --- | --- |
