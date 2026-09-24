@@ -66,6 +66,15 @@ Official references: [Gemini Antigravity MCP servers](https://ai.google.dev/gemi
 
 ## Claude
 
+Claude Code can add the same repository as a marketplace:
+
+```sh
+claude plugin marketplace add TheBestCo/bestprice-mcp
+claude plugin install bestprice-shopping@bestprice
+```
+
+
+
 This repository also packages one provider-neutral Skill at `skills/bestprice-shopping/SKILL.md` plus `.claude-plugin/plugin.json` and the existing `.mcp.json`. Claude can therefore use the same semantic routing guidance alongside the BestPrice MCP instead of treating the server as a raw bag of tools.
 
 [Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp),
@@ -236,6 +245,17 @@ Official references: [Z.ai MCP calling](https://docs.z.ai/guides/capabilities/mc
 [Z.ai API endpoints](https://docs.z.ai/api-reference/introduction).
 
 ## GitHub Copilot and VS Code
+
+For direct repository discovery in Copilot CLI, add BestPrice's self-hosted marketplace and install the root Agent Plugin:
+
+```sh
+copilot plugin marketplace add TheBestCo/bestprice-mcp
+copilot plugin install bestprice-shopping@bestprice
+```
+
+This resolves to the canonical root `plugin.json`, `mcp.json`, and `skills/bestprice-shopping/SKILL.md`.
+
+
 
 GitHub Agent Finder implements ARD and can search MCP servers and skills at runtime. BestPrice publishes domain-anchored ARD metadata at `https://www.bestprice.gr/.well-known/ard.json`; the public Agent Finder catalog also supplements its generated catalog from GitHub's public MCP catalog. The repository's provider-neutral shopping Skill is suitable for skill catalogs as a separate semantic discovery entry.
 
