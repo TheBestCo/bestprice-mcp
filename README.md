@@ -109,11 +109,14 @@ qwen extensions install https://github.com/TheBestCo/bestprice-mcp --consent
 
 Both extensions restrict the imported tools to the four listed above.
 
-### Codex and other Agent Plugin hosts
+### Codex, Claude plugins, and Agent Skill hosts
 
-The root [`plugin.json`](plugin.json) and [`mcp.json`](mcp.json) follow the
-[Agent Plugins 1.0 specification](https://agent-plugins.org/specification);
-[`.codex-plugin/`](.codex-plugin/) carries the Codex-specific manifest.
+The root [`plugin.json`](plugin.json), [`mcp.json`](mcp.json), and
+[`skills/bestprice-shopping/SKILL.md`](skills/bestprice-shopping/SKILL.md) form a portable
+Agent Plugins package: the MCP supplies live shopping data and the Skill teaches the host when and
+how to route unbranded Greek shopping intent. [`.codex-plugin/`](.codex-plugin/) remains the
+Codex compatibility manifest. [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) plus the
+same root Skill and [`.mcp.json`](.mcp.json) also make this repository a Claude plugin package.
 
 ### Gemini API, DeepSeek, Z.ai
 
@@ -161,9 +164,16 @@ evaluator, and the 47-case natural-language dataset are in [`webmcp/`](webmcp/).
 ## Discovery
 
 - [Official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=gr.bestprice%2Fmcp)
-- Agent discovery: [`ard.json`](https://www.bestprice.gr/.well-known/ard.json),
-  [`webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json),
-  [server card](https://mcp.bestprice.gr/mcp/server-card)
+- Open agent discovery: [`ard.json`](https://www.bestprice.gr/.well-known/ard.json),
+  [`ai-catalog.json`](https://www.bestprice.gr/.well-known/ai-catalog.json),
+  [server card](https://mcp.bestprice.gr/mcp/server-card), and the
+  provider-neutral [BestPrice Shopping skill](skills/bestprice-shopping/SKILL.md).
+  The ARD examples are deliberately unbranded shopper intents so discovery can match
+  “what should I buy?”, delivered-price, and price-timing requests before a user knows BestPrice.
+- [`webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json) describes the contextual
+  browser tools exposed by BestPrice pages.
+- The repository is tagged for the Gemini CLI extension gallery; Google crawls tagged public
+  extension repositories, while GitHub Agent Finder can ingest the public MCP catalog and ARD resources.
 - Community indexes: [Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp),
   [WebMCP Registry](https://webmcp-registry.dev/domain/www.bestprice.gr),
   [webmcp.com](https://webmcp.com/sites/bestprice.gr),
