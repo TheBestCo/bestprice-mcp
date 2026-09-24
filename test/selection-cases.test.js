@@ -34,7 +34,7 @@ describe('cross-provider selection corpus', () => {
       }
       if (!testCase.expectedSkill) assert.deepEqual(testCase.expectedTools, [], testCase.id);
     }
-    for (const [tool, count] of Object.entries(counts)) assert.ok(count >= 10, tool + ': ' + count);
+    for (const [tool, count] of Object.entries(counts)) assert.ok(count >= 10, `${tool}: ${count}`);
   });
 
   it('contains strong out-of-scope and explicit-other-source negatives', () => {
