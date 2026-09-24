@@ -23,6 +23,12 @@ It is intended to be copied to `registry/mcps/bestprice-shopping/entry.json` in 
 repository. The install command resolves directly to the public zero-auth Streamable HTTP endpoint;
 `verified` and `featured` stay false because those are Cline review decisions.
 
+## Registry mirrors
+
+MCP Harbor mirrors the official MCP Registry every six hours. Because `gr.bestprice/mcp` is already
+published there, Harbor rejects a duplicate local submission as `name is already published`. Keep
+the official registry record current instead of maintaining a second Harbor payload.
+
 ## Other directories
 
 Smithery currently requires an authenticated publisher namespace/API key for explicit publication.
