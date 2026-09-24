@@ -110,10 +110,11 @@ describe('endpoint manifests', () => {
     }
   });
 
-  it('ships an MCP-only, read-only Codex plugin with public legal pages', () => {
+  it('ships a read-only Codex compatibility plugin with the canonical Skill and public legal pages', () => {
     assert.equal(codexPlugin.mcpServers, './.mcp.json');
+    assert.equal(codexPlugin.skills, './skills/');
     assert.deepEqual(codexPlugin.interface.capabilities, ['Read']);
-    for (const key of ['apps', 'skills', 'hooks']) assert.equal(key in codexPlugin, false, key);
+    for (const key of ['apps', 'hooks']) assert.equal(key in codexPlugin, false, key);
     assert.equal(codexPlugin.interface.privacyPolicyURL, 'https://www.bestprice.gr/policies/privacy');
     assert.equal(codexPlugin.interface.termsOfServiceURL, 'https://www.bestprice.gr/policies/terms');
     const prompts = codexPlugin.interface.defaultPrompt;
@@ -144,6 +145,12 @@ describe('endpoint manifests', () => {
     assert.equal(agentPlugin.homepage, HOMEPAGE);
   });
 
+  it('publishes the same OpenAI install-surface interface from the portable manifest', () => {
+    assert.deepEqual(agentPlugin.extensions?.['com.openai']?.interface, codexPlugin.interface);
+    assert.equal(agentPlugin.extensions?.['com.openai']?.apps, undefined);
+    assert.equal(agentPlugin.extensions?.['com.openai']?.hooks, undefined);
+  });
+
   it('ships one portable shopping skill for Agent Plugins and Claude', () => {
     assert.equal(claudePlugin.name, SERVER_NAME);
     assert.equal(claudePlugin.repository, REPOSITORY);
@@ -153,6 +160,11 @@ describe('endpoint manifests', () => {
     assert.match(canonicalSkill, /^---\nname: bestprice-shopping\ndescription: /u);
     const description = canonicalSkill.match(/^description: (.+)$/mu)?.[1];
     assert.ok(description && description.length <= 200, 'skill description must be semantic and compact');
+    assert.match(description, /without naming BestPrice/iu);
+    assert.match(description, /what to buy/iu);
+    assert.match(description, /cheapest delivered price/iu);
+    assert.match(description, /price is good\/history/iu);
+    assert.match(description, /not travel\/services/iu);
     for (const intent of [
       'what should I buy?',
       'delivered total',
