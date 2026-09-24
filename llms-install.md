@@ -30,6 +30,19 @@ Add this entry under `mcpServers` in Cline's MCP configuration:
 Do not substitute SSE or stdio when Streamable HTTP is available. Do not add an
 Authorization header or invent an API key.
 
+## Machine discovery
+
+- Domain ARD: `https://www.bestprice.gr/.well-known/ard.json`
+- AI Catalog: `https://www.bestprice.gr/.well-known/ai-catalog.json`
+- MCP server card: `https://mcp.bestprice.gr/mcp/server-card`
+- Canonical Skill resource: `skill://bestprice-shopping/SKILL.md`
+- Official MCP Registry ID: `gr.bestprice/mcp`
+
+On MCP `2026-07-28`, Skills-aware clients can call `skills/list` and `skills/get`.
+The returned Skill manifest includes the SHA-256 digest and byte size for the exact
+`SKILL.md` bytes served through `resources/read`. Use those protocol surfaces instead
+of scraping this document when the host supports them.
+
 ## Verify the connection
 
 After saving the configuration:
