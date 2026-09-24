@@ -7,6 +7,10 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+### Added
+
+- A checked-in `lhm.plugin.json` describes the hosted four-tool, three-resource BestPrice MCP surface for LobeHub Marketplace submission without relying on crawler inference.
+
 ### Changed
 
 - Hosted MCP Registry metadata now tracks server `1.8.1`, the Skills-enabled server that publishes the BestPrice Shopping Skill over MCP alongside the four reviewed shopping tools.
