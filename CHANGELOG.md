@@ -7,6 +7,25 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.6] - 2026-09-24
+
+### Added
+
+- `.agents/skills/bestprice-shopping/SKILL.md` mirrors the canonical shopping Skill for agent-compatible repository scanners.
+- `opencode.json` auto-connects the public BestPrice remote MCP in OpenCode without copying any tool logic.
+- `llms-install.md` gives agents a compact, provider-neutral installation guide for the public endpoint.
+- Provider setup now includes the Factory Droid marketplace/install path.
+
+### Changed
+
+- Expand the bilingual direct/indirect/negative selection benchmark to 166 cases spanning recommendations, known-product lookup, delivered-price intent, price timing, and out-of-scope negatives.
+
+### Verification
+
+- Manifest tests pin OpenCode to `https://mcp.bestprice.gr/mcp`, require the agent-compatible Skill mirror, and keep every marketplace/extension version synchronized.
+- The selection corpus is validated for bilingual coverage and routing-class balance before release.
+
+
 ## [1.2.5] - 2026-09-24
 
 ### Added
@@ -186,7 +205,8 @@ in `server.json`; see the Versioning section of the README.
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.5...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.6...HEAD
+[1.2.6]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.5...v1.2.6
 [1.2.5]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.4...v1.2.5
 [1.2.4]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.3...v1.2.4
 [1.2.3]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.2...v1.2.3
