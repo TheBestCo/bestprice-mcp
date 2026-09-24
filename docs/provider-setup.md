@@ -40,6 +40,13 @@ const response = await client.responses.create({
 For ChatGPT, add the same URL as a custom connector in developer mode. Public
 directory availability is a separate review and publishing process.
 
+The live server also publishes the canonical BestPrice Shopping Skill through the final MCP Skills
+extension (`io.modelcontextprotocol/skills`) on protocol `2026-07-28`. A Skills-aware scanner can
+enumerate it with `skills/list`, fetch its manifest with `skills/get`, and verify the exact
+`skill://bestprice-shopping/SKILL.md` bytes through `resources/read`. OpenAI plugin scanning can
+therefore import the same routing instructions from the live MCP instead of relying only on the ZIP
+package copy; the four reviewed shopping tools remain unchanged.
+
 Official references: [remote MCP tools](https://developers.openai.com/api/docs/guides/tools-connectors-mcp),
 [plugin testing](https://developers.openai.com/plugins/deploy/connect-chatgpt).
 
@@ -48,7 +55,9 @@ Official references: [remote MCP tools](https://developers.openai.com/api/docs/g
 The repository is tagged `gemini-cli-extension` and carries `gemini-extension.json` at its root, so it is eligible for the Gemini CLI extension gallery's automated crawler. CI also runs Google's official `gemini extensions validate .` command against the manifest.
 
 Gemini CLI accepts the bundled `gemini-extension.json` or a direct HTTP MCP
-configuration. Google also supports remote MCP servers in Antigravity and the
+configuration. The extension also carries the canonical root `skills/bestprice-shopping/SKILL.md`,
+so Skill-aware Gemini extension hosts get the same unbranded shopping-routing guidance without a
+provider-specific copy. Google also supports remote MCP servers in Antigravity and the
 Gemini Agents API. Keep the allowlist fixed to the reviewed read-only surface:
 
 ```js
@@ -139,8 +148,10 @@ Official references: [Perplexity custom remote connectors](https://www.perplexit
 ## Grok
 
 Open `grok.com/connectors`, choose **New Connector > Custom**, and enter the
-BestPrice endpoint. Grok discovers the tool schemas from the server. Grok CLI
-can add the same remote server, and the xAI Responses API can call it directly.
+BestPrice endpoint. Grok discovers the tool schemas from the server. Grok CLI can also import the
+repository's root `.mcp.json` as project-scoped MCP configuration, so a BestPrice-aware project
+does not need a duplicate `.grok` server definition. The xAI Responses API can call the same
+remote MCP directly.
 
 Official references: [Grok MCP servers](https://docs.x.ai/build/features/mcp-servers),
 [xAI remote MCP tools](https://docs.x.ai/developers/tools/remote-mcp).
@@ -274,7 +285,7 @@ This resolves to the canonical root `plugin.json`, `mcp.json`, and `skills/bestp
 
 
 
-GitHub Agent Finder implements ARD and can search MCP servers and skills at runtime. BestPrice publishes domain-anchored ARD metadata at `https://www.bestprice.gr/.well-known/ard.json`; the public Agent Finder catalog also supplements its generated catalog from GitHub's public MCP catalog. The repository's provider-neutral shopping Skill is suitable for skill catalogs as a separate semantic discovery entry.
+GitHub Agent Finder implements ARD and can search MCP servers and skills at runtime. BestPrice publishes domain-anchored ARD metadata at `https://www.bestprice.gr/.well-known/ard.json`; the public Agent Finder catalog also supplements its generated catalog from GitHub's public MCP catalog. The exact contributor-managed Skill entry is checked in at `distribution/agentfinder/bestprice-shopping.json`, ready for the catalog's required external pull-request workflow.
 
 Copilot CLI can add the reviewed remote surface directly:
 
@@ -284,18 +295,11 @@ copilot mcp add --transport http \
   bestprice-shopping https://mcp.bestprice.gr/mcp
 ```
 
-VS Code can use the same endpoint from `.vscode/mcp.json`:
-
-```json
-{
-  "servers": {
-    "bestprice-shopping": {
-      "type": "http",
-      "url": "https://mcp.bestprice.gr/mcp"
-    }
-  }
-}
-```
+VS Code Agent Host and Copilot-compatible project tooling can consume the repository's root
+[`.mcp.json`](../.mcp.json), which is kept as the canonical project-scoped MCP configuration.
+Avoid checking in a second copy of the same BestPrice server under `.vscode/mcp.json`; duplicate
+server definitions can create ambiguous project configuration. A standalone VS Code workspace that
+does not use this repository can add the equivalent server through the one-click installer below.
 
 One-click install:
 [Add BestPrice Shopping to VS Code](vscode:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)

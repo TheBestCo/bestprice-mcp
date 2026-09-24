@@ -41,7 +41,7 @@ digital goods, services, and age-restricted categories are excluded.
 
 ## Protocol details
 
-Measured against the live endpoint on 22 September 2026.
+Measured against the live endpoint on 24 September 2026.
 
 - **Versions.** `initialize` negotiates `2025-11-25`, `2025-06-18`, `2025-03-26`, `2024-11-05`
   and `2024-10-07`; a client that asks for any other version is answered with `2025-11-25`.
@@ -53,8 +53,13 @@ Measured against the live endpoint on 22 September 2026.
 - **Stateless.** No `MCP-Session-Id` is issued and none is required; `DELETE` answers `405`.
   A `GET` with `Accept: text/event-stream` opens a keep-alive stream, but the server never sends
   requests or notifications on it, so a client loses nothing by not opening it.
-- **Capabilities.** `tools` and `resources` (the optional MCP Apps UI at
-  `ui://bestprice/shopping-results-v1.html` and the server card at `mcp://server-card.json`).
+- **Capabilities.** `tools` and `resources` are available to compatible clients. The
+  resource surface contains the optional MCP Apps UI at `ui://bestprice/shopping-results-v1.html`,
+  the server card at `mcp://server-card.json`, and the canonical
+  `skill://bestprice-shopping/SKILL.md`. On MCP `2026-07-28` the server also declares the
+  final `io.modelcontextprotocol/skills` extension: `skills/list` and `skills/get` return the
+  one BestPrice Shopping Skill with its SHA-256 digest and byte size, and `resources/read`
+  returns the exact markdown bytes. Older clients simply see the Skill as an ordinary resource.
   There are no prompts, completions or logging; those methods answer `-32601`.
 - **Responses.** A client that accepts both `application/json` and `text/event-stream` gets a
   one-event SSE response. `Accept: application/json`, `*/*` or no `Accept` header gets a single
@@ -194,6 +199,10 @@ evaluator, and the 47-case natural-language dataset are in [`webmcp/`](webmcp/).
   browser tools exposed by BestPrice pages.
 - The repository is tagged for the Gemini CLI extension gallery; Google crawls tagged public
   extension repositories, while GitHub Agent Finder can ingest the public MCP catalog and ARD resources.
+- Copy-ready, CI-pinned external catalog contributions live under [`distribution/`](distribution/):
+  a GitHub Agent Finder Skill entry and a Docker MCP Registry remote-server entry. Those catalogs
+  require review in their own repositories; the checked-in files are submission payloads, not claims
+  that the external listings are already live.
 - Community indexes: [Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp),
   [WebMCP Registry](https://webmcp-registry.dev/domain/www.bestprice.gr),
   [webmcp.com](https://webmcp.com/sites/bestprice.gr),
