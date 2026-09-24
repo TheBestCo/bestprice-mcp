@@ -75,25 +75,81 @@ function syntheticToolResult(name, input = {}) {
     };
   }
   if (name === 'get_shopping_decision') {
+    const bestpriceUrl = 'https://www.bestprice.gr/item/2159919913/synthetic-product.html';
     return {
       schema_version: '2.0',
+      brain: {
+        projection_version: 'bestprice_mcp_decision_v1',
+        decision_id: 'synthetic-routing-benchmark',
+        evidence_fingerprint: '0'.repeat(64),
+      },
       outcome: 'recommendation',
+      status: 'ready',
+      answer:
+        'BestPrice Shopping Brain completed the requested recommendation using checked catalog, offer, and price-history context.',
+      reason: null,
+      message: null,
+      blocking_constraints: [],
       recommended_product_id: productId,
-      recommended_product: {
-        product_id: productId,
-        title: 'Synthetic BestPrice recommendation',
-        price_from: 199,
-        bestprice_url: 'https://www.bestprice.gr/item/2159919913/synthetic-product.html',
+      products: [
+        {
+          product_id: productId,
+          title: 'Synthetic BestPrice recommendation',
+          brand: 'Synthetic',
+          category_title: 'Synthetic benchmark category',
+          price_from: 199,
+          bestprice_url: bestpriceUrl,
+        },
+      ],
+      constraints: {
+        request: input.message ?? null,
+        hard_requirements_checked: true,
+        budget_checked: true,
+        result: 'satisfied',
       },
       reasons: [
-        'Matches the stated shopping need and budget in this synthetic routing benchmark result.',
-        'The recommendation already includes the checked BestPrice product needed to answer the request.',
+        'The selected product satisfies the stated hard requirements for this routing benchmark.',
+        'The stated budget was checked against BestPrice catalog and current-offer evidence.',
       ],
       tradeoffs: [],
-      checked_attributes: [],
-      unknowns: [],
-      evidence: [],
-      bestprice_url: 'https://www.bestprice.gr/item/2159919913/synthetic-product.html',
+      alternatives: [],
+      checked_attributes: [
+        {
+          label: 'Requested requirements',
+          value: 'checked and satisfied',
+          source: 'BestPrice catalog evidence',
+        },
+      ],
+      offer_summary: {
+        price_basis: 'item_price',
+        compared_offer_count: 1,
+        unknown_shipping_count: 0,
+      },
+      price_verdict: {
+        verdict: 'typical',
+        predicts_future_price: false,
+      },
+      next_action: {
+        type: 'open_bestprice',
+        reason: 'recommendation_complete',
+        requires_user_action: true,
+        bestprice_url: bestpriceUrl,
+      },
+      retrieval: {
+        scope: 'returned_page',
+        candidate_count: 4,
+        complete_catalog: false,
+        search_calls: 1,
+      },
+      evidence: {
+        scope: 'returned_products',
+        detail: 'summary',
+        sources: [{ source_id: 'synthetic-source', kind: 'catalog' }],
+        claims: [{ claim_id: 'synthetic-claim', field: 'requirements', value: 'satisfied' }],
+      },
+      uncertainty: [],
+      result_status: 'complete_for_requested_recommendation',
+      bestprice_url: bestpriceUrl,
     };
   }
   throw new Error(`Unexpected BestPrice tool: ${name}`);
