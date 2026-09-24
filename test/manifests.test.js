@@ -31,6 +31,7 @@ const geminiExtension = readJson('gemini-extension.json');
 const qwenExtension = readJson('qwen-extension.json');
 const registry = readJson('server.json');
 const lobeHub = readJson('lhm.plugin.json');
+const openCode = readJson('opencode.json');
 const copilotMarketplace = readJson('.github/plugin/marketplace.json');
 const claudeMarketplace = readJson('.claude-plugin/marketplace.json');
 const cases = readJson('test/fixtures/test-cases.json');
@@ -108,12 +109,22 @@ describe('endpoint manifests', () => {
     assert.equal(qwenExtension.mcpServers[SERVER_NAME].httpUrl, ENDPOINT);
     assert.deepEqual(registry.remotes, [{ type: 'streamable-http', url: ENDPOINT }]);
     assert.equal(lobeHub.cloudEndpoint, ENDPOINT);
+    assert.deepEqual(openCode.mcp, {
+      servers: {
+        [SERVER_NAME]: {
+          type: 'remote',
+          url: ENDPOINT,
+          protocol: 'auto',
+        },
+      },
+    });
     for (const file of [
       '.mcp.json',
       'mcp.json',
       'gemini-extension.json',
       'qwen-extension.json',
       'server.json',
+      'opencode.json',
     ]) {
       assert.doesNotMatch(read(file), /localhost|127\.0\.0\.1|staging|http:\/\//u, file);
     }
