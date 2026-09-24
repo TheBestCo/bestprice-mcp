@@ -30,6 +30,7 @@ const cursorPlugin = readJson('.cursor-plugin/plugin.json');
 const geminiExtension = readJson('gemini-extension.json');
 const qwenExtension = readJson('qwen-extension.json');
 const registry = readJson('server.json');
+const lobeHub = readJson('lhm.plugin.json');
 const cases = readJson('test/fixtures/test-cases.json');
 
 const readme = read('README.md');
@@ -83,6 +84,7 @@ describe('package identity', () => {
       '.codex-plugin/plugin.json',
       '.cursor-plugin/plugin.json',
       'glama.json',
+      'lhm.plugin.json',
     ]) {
       assert.doesNotMatch(read(file), /@gmail\.com/u, file);
     }
@@ -99,6 +101,7 @@ describe('endpoint manifests', () => {
     assert.equal(geminiExtension.mcpServers[SERVER_NAME].httpUrl, ENDPOINT);
     assert.equal(qwenExtension.mcpServers[SERVER_NAME].httpUrl, ENDPOINT);
     assert.deepEqual(registry.remotes, [{ type: 'streamable-http', url: ENDPOINT }]);
+    assert.equal(lobeHub.cloudEndpoint, ENDPOINT);
     for (const file of [
       '.mcp.json',
       'mcp.json',
@@ -202,6 +205,44 @@ describe('endpoint manifests', () => {
     assert.equal(registry.icons[0].src, 'https://www.bestprice.gr/images/logo.svg');
     assert.ok(registry.description.length <= 100);
     assert.match(readme, new RegExp(`Server version: \`${registry.version.replaceAll('.', '\\.')}\``, 'u'));
+  });
+
+  it('ships a LobeHub manifest for the exact hosted public surface', () => {
+    assert.equal(lobeHub.identifier, 'thebestco-bestprice-mcp');
+    assert.equal(lobeHub.name, 'BestPrice Shopping');
+    assert.equal(lobeHub.version, registry.version);
+    assert.equal(lobeHub.author, 'BestPrice');
+    assert.equal(lobeHub.authorUrl, 'https://www.bestprice.gr/');
+    assert.equal(lobeHub.homepage, HOMEPAGE);
+    assert.equal(lobeHub.cloudEndpoint, ENDPOINT);
+    assert.equal(
+      lobeHub.icon,
+      'https://raw.githubusercontent.com/TheBestCo/bestprice-mcp/main/assets/bestprice-mcp-logo-1024.png',
+    );
+    assert.deepEqual(
+      lobeHub.tools.map(tool => tool.name),
+      EXPECTED_TOOLS,
+    );
+    for (const tool of lobeHub.tools) {
+      assert.ok(tool.description.startsWith('Use this when '), tool.name);
+      assert.equal(tool.annotations.readOnlyHint, true, tool.name);
+      assert.equal(tool.annotations.destructiveHint, false, tool.name);
+      assert.equal(tool.annotations.idempotentHint, true, tool.name);
+      assert.equal(tool.annotations.openWorldHint, false, tool.name);
+      assert.equal(tool.inputSchema.type, 'object', tool.name);
+    }
+    assert.deepEqual(
+      lobeHub.resources.map(resource => resource.uri),
+      [
+        'ui://bestprice/shopping-results-v1.html',
+        'mcp://server-card.json',
+        'skill://bestprice-shopping/SKILL.md',
+      ],
+    );
+    assert.deepEqual(lobeHub.prompts, []);
+    for (const tag of ['shopping', 'product-recommendations', 'price-comparison', 'greece', 'mcp']) {
+      assert.ok(lobeHub.tags.includes(tag), tag);
+    }
   });
 });
 
