@@ -1,0 +1,25 @@
+name: Validate Gemini extension
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - gemini-extension.json
+      - GEMINI.md
+      - .github/workflows/gemini-extension-validation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Validate with Gemini CLI 0.61.0
+        run: npx --yes @google/gemini-cli@0.61.0 extensions validate .
