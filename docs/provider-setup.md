@@ -45,6 +45,8 @@ Official references: [remote MCP tools](https://developers.openai.com/api/docs/g
 
 ## Gemini
 
+The repository is tagged `gemini-cli-extension` and carries `gemini-extension.json` at its root, so it is eligible for the Gemini CLI extension gallery's automated crawler. CI also runs Google's official `gemini extensions validate .` command against the manifest.
+
 Gemini CLI accepts the bundled `gemini-extension.json` or a direct HTTP MCP
 configuration. Google also supports remote MCP servers in Antigravity and the
 Gemini Agents API. Keep the allowlist fixed to the reviewed read-only surface:
@@ -63,6 +65,8 @@ Official references: [Gemini Antigravity MCP servers](https://ai.google.dev/gemi
 [Gemini CLI MCP servers](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md).
 
 ## Claude
+
+This repository also packages one provider-neutral Skill at `skills/bestprice-shopping/SKILL.md` plus `.claude-plugin/plugin.json` and the existing `.mcp.json`. Claude can therefore use the same semantic routing guidance alongside the BestPrice MCP instead of treating the server as a raw bag of tools.
 
 [Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp),
 then review and add the prefilled public endpoint.
@@ -232,6 +236,8 @@ Official references: [Z.ai MCP calling](https://docs.z.ai/guides/capabilities/mc
 [Z.ai API endpoints](https://docs.z.ai/api-reference/introduction).
 
 ## GitHub Copilot and VS Code
+
+GitHub Agent Finder implements ARD and can search MCP servers and skills at runtime. BestPrice publishes domain-anchored ARD metadata at `https://www.bestprice.gr/.well-known/ard.json`; the public Agent Finder catalog also supplements its generated catalog from GitHub's public MCP catalog. The repository's provider-neutral shopping Skill is suitable for skill catalogs as a separate semantic discovery entry.
 
 Copilot CLI can add the reviewed remote surface directly:
 
