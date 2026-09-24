@@ -118,6 +118,24 @@ how to route unbranded Greek shopping intent. [`.codex-plugin/`](.codex-plugin/)
 Codex compatibility manifest. [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) plus the
 same root Skill and [`.mcp.json`](.mcp.json) also make this repository a Claude plugin package.
 
+
+### Self-hosted plugin marketplaces
+
+The same repository can be added directly as a plugin marketplace, with no copied tool or Skill logic:
+
+```sh
+copilot plugin marketplace add TheBestCo/bestprice-mcp
+copilot plugin install bestprice-shopping@bestprice
+
+claude plugin marketplace add TheBestCo/bestprice-mcp
+claude plugin install bestprice-shopping@bestprice
+```
+
+Copilot reads [`.github/plugin/marketplace.json`](.github/plugin/marketplace.json); Claude reads
+[`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). Both entries resolve to
+the repository root, so they keep using the canonical `plugin.json`, `.mcp.json`, and
+`skills/bestprice-shopping/SKILL.md`.
+
 ### Gemini API, DeepSeek, Z.ai
 
 Runnable examples live in [`examples/`](examples/): the Gemini Interactions API and Genkit,
