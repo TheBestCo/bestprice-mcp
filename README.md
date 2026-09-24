@@ -114,7 +114,9 @@ Both extensions restrict the imported tools to the four listed above.
 The root [`plugin.json`](plugin.json), [`mcp.json`](mcp.json), and
 [`skills/bestprice-shopping/SKILL.md`](skills/bestprice-shopping/SKILL.md) form a portable
 Agent Plugins package: the MCP supplies live shopping data and the Skill teaches the host when and
-how to route unbranded Greek shopping intent. [`.codex-plugin/`](.codex-plugin/) remains the
+how to route unbranded Greek shopping intent.
+Agent-compatible hosts that discover repository-local skills under `.agents/skills/` get the
+same canonical workflow at [`.agents/skills/bestprice-shopping/SKILL.md`](.agents/skills/bestprice-shopping/SKILL.md). [`.codex-plugin/`](.codex-plugin/) remains the
 Codex compatibility manifest. [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) plus the
 same root Skill and [`.mcp.json`](.mcp.json) also make this repository a Claude plugin package.
 
