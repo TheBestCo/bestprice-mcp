@@ -244,6 +244,23 @@ general application endpoint.
 Official references: [Z.ai MCP calling](https://docs.z.ai/guides/capabilities/mcp-call),
 [Z.ai API endpoints](https://docs.z.ai/api-reference/introduction).
 
+## Factory Droid
+
+Factory Droid supports Claude Code plugin layouts and marketplace manifests, so BestPrice needs no Factory-specific copy. Add the same GitHub repository as a marketplace:
+
+```sh
+droid plugin marketplace add TheBestCo/bestprice-mcp
+droid plugin marketplace list
+```
+
+Factory derives the registered marketplace name from the source. Read that name from the list, then install:
+
+```sh
+droid plugin install bestprice-shopping@<registered-marketplace-name> --scope user
+```
+
+Droid translates the repository's `.claude-plugin/`, `.mcp.json`, and root `skills/` layout into its native plugin cache without changing the source package.
+
 ## GitHub Copilot and VS Code
 
 For direct repository discovery in Copilot CLI, add BestPrice's self-hosted marketplace and install the root Agent Plugin:
