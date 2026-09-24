@@ -29,6 +29,26 @@ describe('external catalog contribution payloads', () => {
     assert.match(entry.description, /delivered totals/u);
   });
 
+  it('pins a valid Cline Marketplace remote MCP entry to the public endpoint', () => {
+    const entry = JSON.parse(read('distribution/cline/bestprice-shopping/entry.json'));
+    assert.equal(entry.$schema, '../../../schemas/mcp.schema.json');
+    assert.equal(entry.id, 'bestprice-shopping');
+    assert.equal(entry.type, 'mcp');
+    assert.equal(entry.name, 'BestPrice Shopping');
+    assert.deepEqual(entry.tags, ['business', 'research']);
+    assert.equal(entry.license, 'Apache-2.0');
+    assert.equal(entry.verified, false);
+    assert.equal(entry.featured, false);
+    assert.equal(entry.repo, 'https://github.com/TheBestCo/bestprice-mcp');
+    assert.equal(entry.homepage, 'https://www.bestprice.gr/mcp');
+    assert.deepEqual(entry.install, {
+      args: ['bestprice-shopping', '--transport', 'http', ENDPOINT],
+    });
+    assert.match(entry.description, /shopping decisions/u);
+    assert.match(entry.description, /delivered totals/u);
+    assert.match(entry.description, /No BestPrice account or API key/u);
+  });
+
   it('pins Docker remote-server metadata to the unauthenticated production endpoint', () => {
     const yaml = read('distribution/docker/bestprice-shopping/server.yaml');
     assert.match(yaml, /^name: bestprice-shopping$/mu);

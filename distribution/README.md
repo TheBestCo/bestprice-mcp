@@ -16,6 +16,13 @@ is already published separately as `gr.bestprice/mcp` in the official MCP Regist
 `server.yaml`, `tools.json`, and `readme.md`. The server is unauthenticated Streamable HTTP,
 so the Docker payload deliberately contains no OAuth configuration and no copied tool inventory.
 
+## Cline Marketplace
+
+`cline/bestprice-shopping/entry.json` matches the current PR-based `cline/marketplace` MCP schema.
+It is intended to be copied to `registry/mcps/bestprice-shopping/entry.json` in a fork of that
+repository. The install command resolves directly to the public zero-auth Streamable HTTP endpoint;
+`verified` and `featured` stay false because those are Cline review decisions.
+
 ## Other directories
 
 Smithery currently requires an authenticated publisher namespace/API key for explicit publication.
