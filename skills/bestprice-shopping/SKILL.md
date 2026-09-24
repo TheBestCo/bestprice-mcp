@@ -1,6 +1,6 @@
 ---
 name: bestprice-shopping
-description: Use for physical-product shopping in Greece—even without naming BestPrice—when the user asks what to buy, names a product, wants the cheapest delivered price, or asks if a price is good/history; not travel/services.
+description: Use for physical-product shopping in Greece without naming BestPrice: what to buy, known products, cheapest delivered price, or whether a price is good/history; not travel/services.
 ---
 
 # BestPrice Shopping
