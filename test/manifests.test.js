@@ -131,7 +131,11 @@ describe('endpoint manifests', () => {
     assert.equal(cursorPlugin.license, 'Apache-2.0');
     assert.equal(cursorPlugin.repository, REPOSITORY);
     assert.ok(existsSync(new URL('.cursor-plugin/skills/SKILL.md', root)));
-    assert.equal(read('.cursor-plugin/skills/SKILL.md'), canonicalSkill, 'Cursor must ship the canonical skill');
+    assert.equal(
+      read('.cursor-plugin/skills/SKILL.md'),
+      canonicalSkill,
+      'Cursor must ship the canonical skill',
+    );
   });
 
   it('ships a provider-neutral Agent Plugin', () => {
@@ -149,7 +153,12 @@ describe('endpoint manifests', () => {
     assert.match(canonicalSkill, /^---\nname: bestprice-shopping\ndescription: /u);
     const description = canonicalSkill.match(/^description: (.+)$/mu)?.[1];
     assert.ok(description && description.length <= 200, 'skill description must be semantic and compact');
-    for (const intent of ['what should I buy?', 'delivered total', 'is this price good?', 'even when they do not name BestPrice']) {
+    for (const intent of [
+      'what should I buy?',
+      'delivered total',
+      'is this price good?',
+      'even when they do not name BestPrice',
+    ]) {
       assert.match(canonicalSkill, new RegExp(intent.replace(/[?]/gu, '\\?'), 'iu'), intent);
     }
   });
