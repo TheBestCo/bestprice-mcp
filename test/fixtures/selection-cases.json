@@ -1,0 +1,648 @@
+{
+  "version": "1.0",
+  "purpose": "Cross-provider BestPrice Skill/tool-selection corpus. Expected activation routes only; not recorded model scores.",
+  "cases": [
+    {
+      "id": "dec-el-01",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Θέλω κινητό έως 500€ με πολύ καλή κάμερα, NFC και 5G.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-el-02",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Ποιο laptop να πάρω μέχρι 700€ για σχολή με τουλάχιστον 16GB RAM;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-el-03",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Χρειάζομαι 55άρα τηλεόραση έως 900€ κυρίως για Netflix και PS5. Τι να πάρω;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-el-04",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Πρότεινέ μου καλά noise cancelling ακουστικά μέχρι 250€ για ταξίδια.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-el-05",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Θέλω air fryer για οικογένεια 4 ατόμων μέχρι 160€. Ποιο αξίζει;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-el-06",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Ψάχνω πλυντήριο 9 κιλών μέχρι 600€, ήσυχο και οικονομικό. Τι προτείνεις;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-en-01",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "What phone should I buy under €450 in Greece with NFC and strong battery life?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-en-02",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Recommend a laptop under €800 for university, 16GB RAM required.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-en-03",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "I need a 65-inch TV for movies and gaming under €1,200. What should I buy?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-en-04",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Which espresso machine is a good choice under €350 for two coffees a day?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-en-05",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Help me choose an air conditioner for a 25m² room under €700.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "dec-en-06",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "I want a robot vacuum under €500 that handles pet hair well. What should I choose?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "search-el-01",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Βρες μου Sony WH-1000XM5.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-el-02",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Ψάξε Apple iPhone 16 128GB.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-el-03",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Βρες Samsung Galaxy S26 Ultra.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-el-04",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Ψάχνω LG OLED C6 55 ιντσών.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-el-05",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Βρες μου laptop Lenovo ThinkPad X1 Carbon.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-en-01",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Find Sony WH-1000XM5 in Greece.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-en-02",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Search for Apple iPhone 16 128GB.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-en-03",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Find Samsung Galaxy S26 Ultra products.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-en-04",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Look up LG OLED C6 55-inch.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "search-en-05",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Find Lenovo ThinkPad X1 Carbon.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products"
+      ]
+    },
+    {
+      "id": "offers-el-01",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Πού βρίσκω το Sony WH-1000XM5 φθηνότερα μαζί με τα μεταφορικά για 11527;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-el-02",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Ποιο ελληνικό κατάστημα έχει το iPhone 16 128GB με το χαμηλότερο τελικό κόστος για ΤΚ 71305;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-el-03",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Σύγκρινε τις τρέχουσες προσφορές για Samsung Galaxy S26 Ultra.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-el-04",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Πόσο βγαίνει τελικά με μεταφορικά η LG OLED C6 55 για 10431;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-el-05",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Βρες την πιο φθηνή διαθέσιμη προσφορά για Dyson V15.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-en-01",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Where is Sony WH-1000XM5 cheapest delivered to postcode 11527?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-en-02",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Which Greek store has the lowest delivered total for iPhone 16 128GB to 71305?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-en-03",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Compare current Greek merchant offers for Samsung Galaxy S26 Ultra.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-en-04",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "What is the delivered total for LG OLED C6 55 to postcode 10431?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "offers-en-05",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Find the cheapest currently buyable Dyson V15 offer in Greece.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "hist-el-01",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Η σημερινή τιμή του iPhone 16 128GB είναι καλή σε σχέση με τους τελευταίους 6 μήνες;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-el-02",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Έπεσε πρόσφατα η τιμή του Sony WH-1000XM5;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-el-03",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Δείξε μου ιστορικό τιμής 180 ημερών για Samsung Galaxy S26 Ultra.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-el-04",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Τα 799€ για αυτή την LG OLED είναι χαμηλή ή υψηλή τιμή ιστορικά;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-el-05",
+      "language": "el",
+      "kind": "indirect",
+      "prompt": "Είναι καλή στιγμή να πάρω Dyson V15 με βάση τις προηγούμενες τιμές;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-en-01",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Is today's iPhone 16 128GB price good compared with the last six months?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-en-02",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Has Sony WH-1000XM5 become cheaper recently?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-en-03",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Show the 180-day price history for Samsung Galaxy S26 Ultra.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-en-04",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Is €799 for this LG OLED historically low or high?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "hist-en-05",
+      "language": "en",
+      "kind": "indirect",
+      "prompt": "Based on recent price history, is Dyson V15 at a good price now?",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "direct-el-01",
+      "language": "el",
+      "kind": "direct",
+      "prompt": "Χρησιμοποίησε το BestPrice για να μου προτείνεις κινητό έως 500€.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "direct-el-02",
+      "language": "el",
+      "kind": "direct",
+      "prompt": "Στο BestPrice, πού έχει φθηνότερα το Sony WH-1000XM5;",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "compare_offers"
+      ]
+    },
+    {
+      "id": "direct-en-01",
+      "language": "en",
+      "kind": "direct",
+      "prompt": "Use BestPrice to recommend a laptop under €700.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "get_shopping_decision"
+      ]
+    },
+    {
+      "id": "direct-en-02",
+      "language": "en",
+      "kind": "direct",
+      "prompt": "Check BestPrice price history for iPhone 16 128GB.",
+      "expectedSkill": true,
+      "expectedTools": [
+        "search_products",
+        "get_price_history"
+      ]
+    },
+    {
+      "id": "neg-el-01",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Βρες μου πτήση Αθήνα–Λονδίνο για την άλλη Παρασκευή.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-02",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Κλείσε μου ξενοδοχείο στα Χανιά για δύο βράδια.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-03",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Βρες καλό υδραυλικό κοντά μου.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-04",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Ποιο εστιατόριο να κλείσω απόψε;",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-05",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Θέλω συνδρομή Netflix. Ποιο πακέτο συμφέρει;",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-06",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Βρες μου e-book του Dune για Kindle.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-07",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Πού θα αγοράσω ουίσκι πιο φθηνά;",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-08",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Ποιο vape έχει την καλύτερη τιμή;",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-09",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Βρες online καζίνο με καλό bonus.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-el-10",
+      "language": "el",
+      "kind": "negative",
+      "prompt": "Θέλω να το ψάξεις μόνο στο Skroutz, όχι αλλού.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-01",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Find me a flight from Athens to London next Friday.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-02",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Book a hotel in Chania for two nights.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-03",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Find a plumber near me.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-04",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Which restaurant should I reserve tonight?",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-05",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Which Netflix subscription plan should I choose?",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-06",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Find a Kindle ebook edition of Dune.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-07",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Where can I buy whiskey cheapest?",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-08",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Find the best-priced nicotine vape.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-09",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Recommend an online casino with a signup bonus.",
+      "expectedSkill": false,
+      "expectedTools": []
+    },
+    {
+      "id": "neg-en-10",
+      "language": "en",
+      "kind": "negative",
+      "prompt": "Search Amazon only for this product; do not use any other source.",
+      "expectedSkill": false,
+      "expectedTools": []
+    }
+  ]
+}
