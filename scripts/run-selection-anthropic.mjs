@@ -6,8 +6,6 @@ const API_URL = 'https://api.anthropic.com/v1/messages';
 const DEFAULT_MODEL = 'claude-haiku-4-5-20251001';
 const MAX_TOOL_TURNS = 4;
 const RETRYABLE_STATUS = new Set([429, 500, 502, 503, 504, 529]);
-const root = new URL('../', import.meta.url);
-
 function option(args, name) {
   const index = args.indexOf(name);
   return index === -1 ? null : (args[index + 1] ?? null);
@@ -203,7 +201,9 @@ async function main() {
   const concurrency = positiveInteger(option(args, '--concurrency'), 4, '--concurrency');
   const limit = positiveInteger(option(args, '--limit'), Number.MAX_SAFE_INTEGER, '--limit');
 
-  const casesDocument = JSON.parse(await readFile(new URL('../test/fixtures/selection-cases.json', import.meta.url)));
+  const casesDocument = JSON.parse(
+    await readFile(new URL('../test/fixtures/selection-cases.json', import.meta.url)),
+  );
   const cases = casesDocument.cases.slice(0, limit);
   const lobeHub = JSON.parse(await readFile(new URL('../lhm.plugin.json', import.meta.url)));
   const tools = lobeHub.tools.map(tool => ({
@@ -211,7 +211,10 @@ async function main() {
     description: tool.description,
     input_schema: tool.inputSchema,
   }));
-  const canonicalSkill = await readFile(new URL('../skills/bestprice-shopping/SKILL.md', import.meta.url), 'utf8');
+  const canonicalSkill = await readFile(
+    new URL('../skills/bestprice-shopping/SKILL.md', import.meta.url),
+    'utf8',
+  );
 
   const baseSystem =
     'Route the user request using the available BestPrice tools only when they are relevant. BestPrice is for safe physical-product shopping in Greece and is read-only. Do not use these tools for travel, hotels, services, digital goods, prohibited or age-restricted products, checkout or payment, account history, alerts, or an explicitly required different retailer/source unless the user also asks for a BestPrice comparison. When no BestPrice tool is appropriate, answer without calling one.';
