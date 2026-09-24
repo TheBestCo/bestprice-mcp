@@ -33,7 +33,10 @@
   "bin": {
     "bestprice-mcp-stdio": "stdio.mjs"
   },
-  "files": ["stdio.mjs", "src/"],
+  "files": [
+    "stdio.mjs",
+    "src/"
+  ],
   "scripts": {
     "test": "node --test",
     "test:coverage": "node --test --experimental-test-coverage",
@@ -45,7 +48,8 @@
     "eval:validate": "node webmcp/evals/run-evidence.js",
     "eval:check": "node webmcp/evals/conformance.mjs && node webmcp/evals/run-evidence.js --strict",
     "eval:conformance": "node webmcp/evals/conformance.mjs",
-    "benchmark:selection": "node scripts/score-selection-run.mjs"
+    "benchmark:selection": "node scripts/score-selection-run.mjs",
+    "benchmark:selection:anthropic": "node scripts/run-selection-anthropic.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0"

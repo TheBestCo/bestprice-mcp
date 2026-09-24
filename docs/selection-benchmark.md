@@ -52,3 +52,25 @@ The report includes:
 
 A deterministic scorer does not establish provider quality by itself. Keep raw run evidence and the
 host/model/version used for each run, and compare providers only on equivalent cohorts.
+
+
+## Run a matched Anthropic routing experiment
+
+When an authorized Anthropic API credential is available, run the same frozen corpus twice:
+
+```bash
+npm run benchmark:selection:anthropic -- --mode tools-only --output /tmp/claude-tools.json
+npm run benchmark:selection:anthropic -- --mode skill --output /tmp/claude-skill.json
+npm run benchmark:selection -- --input /tmp/claude-tools.json --strict
+npm run benchmark:selection -- --input /tmp/claude-skill.json --strict
+```
+
+Both arms expose the exact four public BestPrice tool descriptions and input schemas. The `skill` arm additionally
+loads the canonical `skills/bestprice-shopping/SKILL.md`. Synthetic read-only tool results continue the only
+multi-step routes in the corpus (`search_products → compare_offers` and
+`search_products → get_price_history`) without touching production shopping tools, creating merchant clicks, or
+making purchases.
+
+This measures **model-level activation and routing once BestPrice is available**. It does not measure Claude
+Connectors Directory discovery, installation, ranking, or whether an unconfigured Claude conversation finds
+BestPrice on its own.
