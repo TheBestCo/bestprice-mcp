@@ -22,6 +22,7 @@ const SEMVER = /^\d+\.\d+\.\d+$/u;
 
 const pkg = readJson('package.json');
 const agentPlugin = readJson('plugin.json');
+const claudePlugin = readJson('.claude-plugin/plugin.json');
 const agentMcp = readJson('mcp.json');
 const claudeMcp = readJson('.mcp.json');
 const codexPlugin = readJson('.codex-plugin/plugin.json');
@@ -33,6 +34,8 @@ const cases = readJson('test/fixtures/test-cases.json');
 
 const readme = read('README.md');
 const providerSetup = read('docs/provider-setup.md');
+const providerSetupCompat = read('PROVIDER_SETUP.md');
+const canonicalSkill = read('skills/bestprice-shopping/SKILL.md');
 const security = read('SECURITY.md');
 const contributing = read('CONTRIBUTING.md');
 const changelog = read('CHANGELOG.md');
@@ -51,6 +54,7 @@ describe('package identity', () => {
   it('keeps every package manifest on the package version', () => {
     const versions = {
       'plugin.json': agentPlugin.version,
+      '.claude-plugin/plugin.json': claudePlugin.version,
       '.codex-plugin/plugin.json': codexPlugin.version,
       '.cursor-plugin/plugin.json': cursorPlugin.version,
       'gemini-extension.json': geminiExtension.version,
@@ -62,7 +66,7 @@ describe('package identity', () => {
   it('shares one description and one server name across the plugin manifests', () => {
     const description = agentPlugin.description;
     assert.ok(description.length <= 120 && description.startsWith('Read-only'));
-    for (const manifest of [codexPlugin, cursorPlugin, geminiExtension, qwenExtension]) {
+    for (const manifest of [claudePlugin, codexPlugin, cursorPlugin, geminiExtension, qwenExtension]) {
       assert.equal(manifest.description, description);
       assert.equal(manifest.name, SERVER_NAME);
     }
@@ -70,7 +74,7 @@ describe('package identity', () => {
   });
 
   it('credits BestPrice, never an individual, in every manifest that names an author', () => {
-    for (const manifest of [agentPlugin, codexPlugin, cursorPlugin]) {
+    for (const manifest of [agentPlugin, claudePlugin, codexPlugin, cursorPlugin]) {
       assert.equal(manifest.author.name, 'BestPrice');
       assert.match(manifest.author.url ?? manifest.author.email, /bestprice\.gr/u);
     }
@@ -127,12 +131,27 @@ describe('endpoint manifests', () => {
     assert.equal(cursorPlugin.license, 'Apache-2.0');
     assert.equal(cursorPlugin.repository, REPOSITORY);
     assert.ok(existsSync(new URL('.cursor-plugin/skills/SKILL.md', root)));
+    assert.equal(read('.cursor-plugin/skills/SKILL.md'), canonicalSkill, 'Cursor must ship the canonical skill');
   });
 
   it('ships a provider-neutral Agent Plugin', () => {
     assert.equal(agentPlugin.$schema, 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json');
     assert.equal(agentPlugin.repository, REPOSITORY);
     assert.equal(agentPlugin.homepage, HOMEPAGE);
+  });
+
+  it('ships one portable shopping skill for Agent Plugins and Claude', () => {
+    assert.equal(claudePlugin.name, SERVER_NAME);
+    assert.equal(claudePlugin.repository, REPOSITORY);
+    assert.equal(claudePlugin.homepage, HOMEPAGE);
+    assert.equal(claudePlugin.license, 'Apache-2.0');
+    assert.ok(existsSync(new URL('skills/bestprice-shopping/SKILL.md', root)));
+    assert.match(canonicalSkill, /^---\nname: bestprice-shopping\ndescription: /u);
+    const description = canonicalSkill.match(/^description: (.+)$/mu)?.[1];
+    assert.ok(description && description.length <= 200, 'skill description must be semantic and compact');
+    for (const intent of ['what should I buy?', 'delivered total', 'is this price good?', 'even when they do not name BestPrice']) {
+      assert.match(canonicalSkill, new RegExp(intent.replace(/[?]/gu, '\\?'), 'iu'), intent);
+    }
   });
 
   it('restricts Gemini and Qwen extensions to the four published tools', () => {
@@ -172,6 +191,9 @@ describe('public documents', () => {
       assert.match(providerSetup, new RegExp(tool, 'u'));
     }
     assert.match(readme, /docs\/provider-setup\.md/u);
+    assert.match(readme, /skills\/bestprice-shopping\/SKILL\.md/u);
+    assert.match(providerSetupCompat, /docs\/provider-setup\.md/u);
+    for (const tool of EXPECTED_TOOLS) assert.match(providerSetupCompat, new RegExp(tool, 'u'));
     assert.match(readme, /## License/u);
     assert.match(readme, /Apache-2\.0|Apache License 2\.0/u);
     assert.match(readme, /## Contributing/u);
