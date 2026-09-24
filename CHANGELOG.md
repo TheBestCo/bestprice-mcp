@@ -14,6 +14,7 @@ in `server.json`; see the Versioning section of the README.
 
 ### Fixed
 
+- Distribution status is now contract-tested against package/server versions, the four-tool public surface, canonical Skill URL, and the 14-tool WebMCP contract so discovery claims cannot drift silently.
 - Agent Finder metadata now uses the upstream-required `owner/repository` `metadata.sourceSet` form.
 
 ## [1.2.7] - 2026-09-24
