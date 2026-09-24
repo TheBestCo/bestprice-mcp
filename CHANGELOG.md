@@ -7,6 +7,21 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.3] - 2026-09-24
+
+### Added
+
+- A provider-neutral `skills/bestprice-shopping/SKILL.md` routes unbranded Greek shopping intent to the four reviewed MCP tools and is shared with Cursor.
+- Claude plugin metadata packages the existing remote MCP and the same shopping Skill.
+- A compatibility `PROVIDER_SETUP.md` keeps old indexed documentation URLs pointed at the current four-tool guide.
+- Gemini extension validation runs with Google's official stable CLI.
+
+### Changed
+
+- Gemini/Qwen context guidance, marketplace metadata, and discovery documentation now describe unbranded recommendation, delivered-price, and price-timing intent explicitly.
+- Discovery documentation now treats ARD, the AI Catalog, the server card, the portable Skill, and the official MCP Registry as complementary distribution surfaces.
+
+
 ## [1.2.2] - 2026-09-21
 
 ### Fixed
@@ -134,6 +149,7 @@ in `server.json`; see the Versioning section of the README.
   runtime, and evaluator.
 
 [Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.2...HEAD
+[1.2.3]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.1.0...v1.2.0

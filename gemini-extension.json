@@ -1,6 +1,6 @@
 {
   "name": "bestprice-shopping",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Read-only shopping for Greece: recommendations, product search, live offers, delivered totals, and price history.",
   "mcpServers": {
     "bestprice-shopping": {
@@ -8,7 +8,12 @@
       "headers": {
         "X-MCP-Client-Name": "Gemini CLI"
       },
-      "includeTools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
+      "includeTools": [
+        "get_shopping_decision",
+        "search_products",
+        "compare_offers",
+        "get_price_history"
+      ],
       "timeout": 30000
     }
   },

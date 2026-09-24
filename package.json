@@ -1,6 +1,6 @@
 {
   "name": "bestprice-mcp",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": true,
   "description": "Official BestPrice MCP distribution: client manifests, a stdio bridge to the public Streamable HTTP endpoint, and the browser-native WebMCP contracts.",
   "license": "Apache-2.0",
@@ -33,7 +33,10 @@
   "bin": {
     "bestprice-mcp-stdio": "stdio.mjs"
   },
-  "files": ["stdio.mjs", "src/"],
+  "files": [
+    "stdio.mjs",
+    "src/"
+  ],
   "scripts": {
     "test": "node --test",
     "test:coverage": "node --test --experimental-test-coverage",
