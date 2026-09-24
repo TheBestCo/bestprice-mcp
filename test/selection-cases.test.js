@@ -39,8 +39,27 @@ describe('cross-provider selection corpus', () => {
   });
 
   it('contains strong out-of-scope and explicit-other-source negatives', () => {
-    const negatives = cases.filter(testCase => !testCase.expectedSkill).map(testCase => testCase.prompt).join('\n');
-    for (const concept of ['flight', 'πτήση', 'hotel', 'ξενοδοχείο', 'plumber', 'υδραυλικό', 'Netflix', 'e-book', 'whiskey', 'ουίσκι', 'vape', 'casino', 'καζίνο', 'Skroutz', 'Amazon']) {
+    const negatives = cases
+      .filter(testCase => !testCase.expectedSkill)
+      .map(testCase => testCase.prompt)
+      .join('\n');
+    for (const concept of [
+      'flight',
+      'πτήση',
+      'hotel',
+      'ξενοδοχείο',
+      'plumber',
+      'υδραυλικό',
+      'Netflix',
+      'e-book',
+      'whiskey',
+      'ουίσκι',
+      'vape',
+      'casino',
+      'καζίνο',
+      'Skroutz',
+      'Amazon',
+    ]) {
       assert.match(negatives, new RegExp(concept, 'iu'), concept);
     }
   });
