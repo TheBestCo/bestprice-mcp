@@ -7,6 +7,11 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+### Changed
+
+- Hosted MCP Registry metadata now tracks server `1.8.1`, the Skills-enabled server that publishes the BestPrice Shopping Skill over MCP alongside the four reviewed shopping tools.
+
+
 ## [1.2.4] - 2026-09-24
 
 ### Added

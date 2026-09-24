@@ -82,7 +82,7 @@ function fixture(alter = () => {}) {
           payload = {
             protocolVersion: '2025-11-25',
             capabilities: { tools: {} },
-            serverInfo: { name: 'bestprice-agent-commerce', version: '1.8.0' },
+            serverInfo: { name: 'bestprice-agent-commerce', version: '1.8.1' },
           };
         else if (body.method === 'tools/list') payload = { tools: tools() };
         else if (body.method === 'tools/call') {
