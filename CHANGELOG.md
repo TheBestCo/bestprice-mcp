@@ -37,7 +37,7 @@ in `server.json`; see the Versioning section of the README.
 
 ### Changed
 
-- Expand the bilingual direct/indirect/negative selection benchmark to 166 cases spanning recommendations, known-product lookup, delivered-price intent, price timing, and out-of-scope negatives.
+- Expand the bilingual direct/indirect/negative selection benchmark to 186 cases spanning recommendations, known-product lookup, delivered-price intent, price timing, and out-of-scope negatives.
 
 ### Verification
 
