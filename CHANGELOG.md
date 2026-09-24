@@ -7,13 +7,24 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.5] - 2026-09-24
+
 ### Added
 
+- Native self-hosted marketplace manifests for GitHub Copilot CLI and Claude Code, both resolving `bestprice-shopping` to the repository root so they reuse the canonical Agent Plugin, MCP configuration, and Skill.
 - A checked-in `lhm.plugin.json` describes the hosted four-tool, three-resource BestPrice MCP surface for LobeHub Marketplace submission without relying on crawler inference.
+- A bilingual selection benchmark corpus for direct, indirect, and negative shopping-intent routing.
 
 ### Changed
 
 - Hosted MCP Registry metadata now tracks server `1.8.1`, the Skills-enabled server that publishes the BestPrice Shopping Skill over MCP alongside the four reviewed shopping tools.
+- Glama metadata now advertises recommendations, shopping decisions, delivered-price comparison, and price history rather than the older lookup-only surface.
+
+### Verification
+
+- Anthropic's Claude Code CLI validates the root plugin and self-hosted marketplace.
+- GitHub Copilot CLI can add this repository as the `bestprice` marketplace and browse the `bestprice-shopping` plugin.
+- MCP Registry publisher successfully published `gr.bestprice/mcp` version `1.8.1`.
 
 
 ## [1.2.4] - 2026-09-24
@@ -175,7 +186,8 @@ in `server.json`; see the Versioning section of the README.
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.4...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.5...HEAD
+[1.2.5]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.4...v1.2.5
 [1.2.4]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.3...v1.2.4
 [1.2.3]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.1...v1.2.2
