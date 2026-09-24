@@ -7,6 +7,24 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.4] - 2026-09-24
+
+### Added
+
+- OpenAI portable install-surface metadata under `extensions.com.openai`, with the same reviewed interface as the Codex compatibility manifest.
+- The Codex compatibility manifest now points explicitly at the canonical `./skills/` directory.
+
+### Changed
+
+- Tighten the BestPrice Shopping Skill trigger around unbranded Greek shopping intent: what to buy, known-product lookup, cheapest delivered price, and price-timing questions, with explicit travel/services exclusions.
+- Re-run Google's official Gemini CLI extension validator whenever the shared `skills/` tree changes, not only when the Gemini manifest or context file changes.
+
+### Verification
+
+- Distribution CI remains green with the portable Skill shared by Claude, Cursor, Gemini/Qwen context, Codex compatibility, and the root Agent Plugins package.
+- Gemini CLI 0.61.0 validation remains the provider-native gate for the extension package.
+
+
 ## [1.2.3] - 2026-09-24
 
 ### Added
@@ -148,7 +166,8 @@ in `server.json`; see the Versioning section of the README.
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.2...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.4...HEAD
+[1.2.4]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.3...v1.2.4
 [1.2.3]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.0...v1.2.1
