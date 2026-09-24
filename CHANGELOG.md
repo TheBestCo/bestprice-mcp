@@ -7,6 +7,25 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.7] - 2026-09-24
+
+### Added
+
+- CI-pinned GitHub Agent Finder contribution metadata for the canonical BestPrice Shopping Skill.
+- CI-pinned Docker MCP Registry remote-server payload with Streamable HTTP, no authentication, and no copied tool inventory.
+- Machine-discovery pointers in `llms-install.md` for ARD, AI Catalog, the server card, official MCP Registry identity, and the verified MCP Skill resource.
+
+### Changed
+
+- Public protocol documentation now describes the live `io.modelcontextprotocol/skills` extension, `skills/list`, `skills/get`, and the third `skill://bestprice-shopping/SKILL.md` resource.
+- Provider guidance now documents MCP Skill import for OpenAI scanning, canonical root `.mcp.json` project discovery for Grok/VS Code/Copilot-compatible hosts, and the exact external Agent Finder contribution artifact.
+
+### Verification
+
+- Distribution tests pin the Agent Finder identifier/Skill URL and Docker ecommerce remote-server endpoint while rejecting OAuth or copied dynamic-tool configuration.
+- The full distribution CI passed before this release bump.
+
+
 ## [1.2.6] - 2026-09-24
 
 ### Added
@@ -205,7 +224,8 @@ in `server.json`; see the Versioning section of the README.
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.6...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.7...HEAD
+[1.2.7]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.5...v1.2.6
 [1.2.5]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.4...v1.2.5
 [1.2.4]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.3...v1.2.4
