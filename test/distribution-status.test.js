@@ -12,8 +12,7 @@ const registry = readJson('server.json');
 const status = readJson('distribution/status.json');
 
 const EXPECTED_TOOLS = ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'];
-const SKILL_URL =
-  'https://github.com/TheBestCo/bestprice-mcp/blob/main/skills/bestprice-shopping/SKILL.md';
+const SKILL_URL = 'https://github.com/TheBestCo/bestprice-mcp/blob/main/skills/bestprice-shopping/SKILL.md';
 const STATES = new Set(['published', 'submitted', 'prepared', 'missing', 'external-gate']);
 
 describe('distribution status ledger', () => {
