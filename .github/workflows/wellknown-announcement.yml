@@ -1,0 +1,92 @@
+name: Announce BestPrice to Wellknown
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/wellknown-announcement.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Announce public BestPrice MCP
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/wellknown-payload.json <<'JSON'
+          {
+            "manifest": {
+              "name": "bestprice-shopping",
+              "kind": "agent",
+              "summary": "Read-only shopping decisions, product search, current Greek merchant offers and delivered totals, and price history.",
+              "repository": "https://github.com/TheBestCo/bestprice-mcp",
+              "homepage": "https://www.bestprice.gr/mcp",
+              "protocols": ["mcp"],
+              "endpoints": [
+                {
+                  "url": "https://mcp.bestprice.gr/mcp",
+                  "type": "mcp_streamable_http",
+                  "auth": "none"
+                }
+              ],
+              "tags": [
+                "shopping",
+                "ecommerce",
+                "product-recommendations",
+                "price-comparison",
+                "delivered-price",
+                "price-history",
+                "greece"
+              ],
+              "skills": [
+                {
+                  "name": "shopping_decision",
+                  "description": "Recommend a physical product in Greece from shopper needs, budget, required features, and trade-offs."
+                },
+                {
+                  "name": "product_search",
+                  "description": "Find canonical BestPrice products by product, model, category, or barcode."
+                },
+                {
+                  "name": "offer_comparison",
+                  "description": "Compare current Greek merchant offers, shipping, and delivered total for a known product."
+                },
+                {
+                  "name": "price_history",
+                  "description": "Check whether a current price is low, typical, or high relative to recent BestPrice history."
+                }
+              ]
+            }
+          }
+          JSON
+
+          http_code="$(
+            curl --silent --show-error               --output /tmp/wellknown-response.json               --write-out '%{http_code}'               --max-time 30               --request POST               --header 'content-type: application/json'               --data-binary @/tmp/wellknown-payload.json               https://wellknown.network/api/v1/submit
+          )"
+
+          if [[ "$http_code" -lt 200 || "$http_code" -ge 300 ]]; then
+            echo "Wellknown submission failed with HTTP $http_code" >&2
+            cat /tmp/wellknown-response.json >&2
+            exit 1
+          fi
+
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          response = json.loads(Path("/tmp/wellknown-response.json").read_text())
+          safe = {
+              key: response.get(key)
+              for key in ("status", "id", "agentId", "handle")
+              if response.get(key) is not None
+          }
+          print("Wellknown announcement accepted:", json.dumps(safe, sort_keys=True))
+          PY
+
+          rm -f /tmp/wellknown-payload.json /tmp/wellknown-response.json
