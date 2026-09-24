@@ -1,5 +1,11 @@
 # External catalog contribution payloads
 
+A dated machine-readable distribution ledger is kept in [`status.json`](status.json). It distinguishes
+public listings from submitted reviews, synchronized-fork preparations, stale third-party snapshots,
+and provider/account gates. Update the ledger from observed receipts and public pages; never upgrade a
+state just because a payload exists.
+
+
 These files are canonical, CI-pinned payloads for discovery catalogs whose source of truth lives in
 another repository. They make contribution review reproducible; checking them into this repository
 does **not** mean the external catalog has accepted or published the entry.
