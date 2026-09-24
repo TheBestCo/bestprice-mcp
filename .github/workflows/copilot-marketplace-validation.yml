@@ -1,0 +1,31 @@
+name: Validate Copilot marketplace
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - plugin.json
+      - mcp.json
+      - skills/**
+      - .github/plugin/marketplace.json
+      - .github/workflows/copilot-marketplace-validation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Add and browse local marketplace with Copilot CLI
+        env:
+          COPILOT_HOME: ${{ runner.temp }}/copilot
+        run: |
+          npx --yes @github/copilot@latest plugin marketplace add .
+          npx --yes @github/copilot@latest plugin marketplace browse bestprice
