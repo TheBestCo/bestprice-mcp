@@ -2,9 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
 
-const data = JSON.parse(
-  readFileSync(new URL('fixtures/selection-cases.json', import.meta.url), 'utf8'),
-);
+const data = JSON.parse(readFileSync(new URL('fixtures/selection-cases.json', import.meta.url), 'utf8'));
 const cases = data.cases;
 const tools = new Set(['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history']);
 
