@@ -11,6 +11,10 @@ in `server.json`; see the Versioning section of the README.
 
 - Provider-neutral selection benchmark scorer for actual ChatGPT/Claude/Gemini/Copilot/Grok traces, reporting activation recall, false activation, exact tool routing, optional outcome-quality metrics, and latency percentiles against the frozen 186-case corpus.
 
+### Fixed
+
+- Agent Finder metadata now uses the upstream-required `owner/repository` `metadata.sourceSet` form.
+
 ## [1.2.7] - 2026-09-24
 
 ### Added

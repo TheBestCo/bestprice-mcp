@@ -14,7 +14,7 @@ describe('external catalog contribution payloads', () => {
     assert.equal(entry.displayName, 'BestPrice Shopping');
     assert.equal(entry.mediaType, 'application/ai-skill');
     assert.equal(entry.url, SKILL_URL);
-    assert.equal(entry.metadata.sourceSet, 'bestprice-mcp');
+    assert.equal(entry.metadata.sourceSet, 'TheBestCo/bestprice-mcp');
     assert.equal(entry.metadata.repoPath, 'skills/bestprice-shopping/SKILL.md');
     for (const tag of [
       'shopping',
