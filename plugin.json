@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "bestprice-shopping",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Read-only shopping for Greece: recommendations, product search, live offers, delivered totals, and price history.",
   "author": {
     "name": "BestPrice",
@@ -27,7 +27,9 @@
         "longDescription": "Use the same bounded Shopping Brain as BestPrice Ask for an evidence-backed product decision, or search canonical products, compare current offers and shipping semantics, and inspect compact price history. Results are read-only and link back to BestPrice, never directly to a merchant.",
         "developerName": "BestPrice",
         "category": "Shopping",
-        "capabilities": ["Read"],
+        "capabilities": [
+          "Read"
+        ],
         "websiteURL": "https://www.bestprice.gr/mcp",
         "privacyPolicyURL": "https://www.bestprice.gr/policies/privacy",
         "termsOfServiceURL": "https://www.bestprice.gr/policies/terms",
