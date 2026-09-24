@@ -5,6 +5,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 const API_URL = 'https://api.anthropic.com/v1/messages';
 const DEFAULT_MODEL = 'claude-haiku-4-5-20251001';
 const MAX_TOOL_TURNS = 4;
+const MAX_OUTPUT_TOKENS = 768;
 const RETRYABLE_STATUS = new Set([429, 500, 502, 503, 504, 529]);
 function option(args, name) {
   const index = args.indexOf(name);
@@ -70,14 +71,24 @@ function syntheticToolResult(name, input = {}) {
   }
   if (name === 'get_shopping_decision') {
     return {
+      schema_version: '2.0',
       outcome: 'recommendation',
-      selected_product: {
+      recommended_product_id: productId,
+      recommended_product: {
         product_id: productId,
         title: 'Synthetic BestPrice recommendation',
+        price_from: 199,
         bestprice_url: 'https://www.bestprice.gr/item/2159919913/synthetic-product.html',
       },
-      reasons: ['Synthetic result used only to continue a routing benchmark.'],
+      reasons: [
+        'Matches the stated shopping need and budget in this synthetic routing benchmark result.',
+        'The recommendation already includes the checked BestPrice product needed to answer the request.',
+      ],
+      tradeoffs: [],
+      checked_attributes: [],
       unknowns: [],
+      evidence: [],
+      bestprice_url: 'https://www.bestprice.gr/item/2159919913/synthetic-product.html',
     };
   }
   throw new Error(`Unexpected BestPrice tool: ${name}`);
@@ -141,9 +152,10 @@ async function runCase({ testCase, apiKey, model, tools, system }) {
       apiKey,
       body: {
         model,
-        max_tokens: 256,
+        max_tokens: MAX_OUTPUT_TOKENS,
         system,
         tools,
+        tool_choice: { type: 'auto', disable_parallel_tool_use: true },
         messages,
       },
     });
@@ -217,7 +229,7 @@ async function main() {
   );
 
   const baseSystem =
-    'Route the user request using the available BestPrice tools only when they are relevant. BestPrice is for safe physical-product shopping in Greece and is read-only. Do not use these tools for travel, hotels, services, digital goods, prohibited or age-restricted products, checkout or payment, account history, alerts, or an explicitly required different retailer/source unless the user also asks for a BestPrice comparison. When no BestPrice tool is appropriate, answer without calling one.';
+    'Route the user request using the available BestPrice tools only when they are relevant. BestPrice is for safe physical-product shopping in Greece and is read-only. Do not use these tools for travel, hotels, services, digital goods, prohibited or age-restricted products, checkout or payment, account history, alerts, or an explicitly required different retailer/source unless the user also asks for a BestPrice comparison. Use the minimum BestPrice tool sequence needed to answer the original request. Once a tool result already contains the requested answer, respond to the user instead of gathering unrelated extra BestPrice data. When no BestPrice tool is appropriate, answer without calling one.';
   const system =
     mode === 'skill'
       ? `${baseSystem}\n\nThe following portable Agent Skill is loaded and is authoritative routing guidance:\n\n${canonicalSkill}`
