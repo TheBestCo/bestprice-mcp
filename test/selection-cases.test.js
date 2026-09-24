@@ -8,15 +8,15 @@ const tools = new Set(['get_shopping_decision', 'search_products', 'compare_offe
 
 describe('cross-provider selection corpus', () => {
   it('is large, bilingual, unique, and mostly unbranded', () => {
-    assert.ok(cases.length >= 60);
+    assert.ok(cases.length >= 180);
     assert.equal(new Set(cases.map(testCase => testCase.id)).size, cases.length);
     for (const language of ['el', 'en']) {
-      assert.ok(cases.filter(testCase => testCase.language === language).length >= 30, language);
+      assert.ok(cases.filter(testCase => testCase.language === language).length >= 90, language);
     }
     const positives = cases.filter(testCase => testCase.expectedSkill);
     const negatives = cases.filter(testCase => !testCase.expectedSkill);
-    assert.ok(positives.length >= 40);
-    assert.ok(negatives.length >= 20);
+    assert.ok(positives.length >= 140);
+    assert.ok(negatives.length >= 40);
     const unbranded = positives.filter(testCase => !/bestprice/iu.test(testCase.prompt));
     assert.ok(unbranded.length / positives.length >= 0.9, 'at least 90% of positive cases must be unbranded');
   });
