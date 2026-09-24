@@ -138,10 +138,11 @@ claude plugin marketplace add TheBestCo/bestprice-mcp
 claude plugin install bestprice-shopping@bestprice
 ```
 
-Copilot reads [`.github/plugin/marketplace.json`](.github/plugin/marketplace.json); Claude reads
-[`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). Both entries resolve to
-the repository root, so they keep using the canonical `plugin.json`, `.mcp.json`, and
-`skills/bestprice-shopping/SKILL.md`.
+Copilot reads [`.github/plugin/marketplace.json`](.github/plugin/marketplace.json) and, under
+Agent Plugins 1.0, loads the canonical root `plugin.json`, `mcp.json`, and
+`skills/bestprice-shopping/SKILL.md`. Claude reads
+[`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) and uses
+`.claude-plugin/plugin.json`, `.mcp.json`, and the same root Skill.
 
 ### Gemini API, DeepSeek, Z.ai
 
