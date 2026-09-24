@@ -2,6 +2,15 @@ name: Publish MCP registry metadata
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - server.json
+      - .github/workflows/publish-mcp-registry.yml
+
+concurrency:
+  group: mcp-registry-publish
+  cancel-in-progress: false
 
 permissions:
   contents: read
