@@ -31,6 +31,8 @@ const geminiExtension = readJson('gemini-extension.json');
 const qwenExtension = readJson('qwen-extension.json');
 const registry = readJson('server.json');
 const lobeHub = readJson('lhm.plugin.json');
+const copilotMarketplace = readJson('.github/plugin/marketplace.json');
+const claudeMarketplace = readJson('.claude-plugin/marketplace.json');
 const cases = readJson('test/fixtures/test-cases.json');
 
 const readme = read('README.md');
@@ -60,6 +62,8 @@ describe('package identity', () => {
       '.cursor-plugin/plugin.json': cursorPlugin.version,
       'gemini-extension.json': geminiExtension.version,
       'qwen-extension.json': qwenExtension.version,
+      '.github/plugin/marketplace.json': copilotMarketplace.metadata.version,
+      '.claude-plugin/marketplace.json': claudeMarketplace.plugins[0].version,
     };
     for (const [file, version] of Object.entries(versions)) assert.equal(version, pkg.version, file);
   });
@@ -85,6 +89,8 @@ describe('package identity', () => {
       '.cursor-plugin/plugin.json',
       'glama.json',
       'lhm.plugin.json',
+      '.github/plugin/marketplace.json',
+      '.claude-plugin/marketplace.json',
     ]) {
       assert.doesNotMatch(read(file), /@gmail\.com/u, file);
     }
@@ -146,6 +152,36 @@ describe('endpoint manifests', () => {
     assert.equal(agentPlugin.$schema, 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json');
     assert.equal(agentPlugin.repository, REPOSITORY);
     assert.equal(agentPlugin.homepage, HOMEPAGE);
+  });
+
+  it('makes the repository directly addable as a Copilot CLI marketplace', () => {
+    assert.equal(copilotMarketplace.name, 'bestprice');
+    assert.deepEqual(copilotMarketplace.owner, { name: 'BestPrice' });
+    assert.equal(copilotMarketplace.metadata.version, pkg.version);
+    assert.deepEqual(copilotMarketplace.plugins, [
+      {
+        name: SERVER_NAME,
+        description: agentPlugin.description,
+        version: pkg.version,
+        source: '.',
+      },
+    ]);
+  });
+
+  it('makes the repository directly addable as a Claude Code marketplace', () => {
+    assert.equal(claudeMarketplace.name, 'bestprice');
+    assert.deepEqual(claudeMarketplace.owner, { name: 'BestPrice' });
+    assert.equal(claudeMarketplace.plugins.length, 1);
+    const entry = claudeMarketplace.plugins[0];
+    assert.equal(entry.name, SERVER_NAME);
+    assert.equal(entry.description, claudePlugin.description);
+    assert.equal(entry.version, pkg.version);
+    assert.deepEqual(entry.author, { name: 'BestPrice' });
+    assert.equal(entry.source, '.');
+    assert.equal(entry.homepage, HOMEPAGE);
+    assert.equal(entry.license, 'Apache-2.0');
+    assert.ok(entry.keywords.includes('shopping'));
+    assert.ok(entry.keywords.includes('greece'));
   });
 
   it('publishes the same OpenAI install-surface interface from the portable manifest', () => {
