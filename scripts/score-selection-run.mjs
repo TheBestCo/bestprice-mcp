@@ -6,7 +6,7 @@ import { assertCompleteSelectionRun, scoreSelectionRun } from '../src/selection-
 
 function option(args, name) {
   const index = args.indexOf(name);
-  return index === -1 ? null : args[index + 1] ?? null;
+  return index === -1 ? null : (args[index + 1] ?? null);
 }
 
 function parseRun(text) {

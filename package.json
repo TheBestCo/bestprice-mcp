@@ -33,10 +33,7 @@
   "bin": {
     "bestprice-mcp-stdio": "stdio.mjs"
   },
-  "files": [
-    "stdio.mjs",
-    "src/"
-  ],
+  "files": ["stdio.mjs", "src/"],
   "scripts": {
     "test": "node --test",
     "test:coverage": "node --test --experimental-test-coverage",

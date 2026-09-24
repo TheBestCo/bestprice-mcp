@@ -26,10 +26,7 @@ function nearestRank(values, percentile) {
 
 function optionalBooleanMetric(observations, key) {
   const eligible = observations.filter(({ record }) => typeof record[key] === 'boolean');
-  return ratio(
-    eligible.filter(({ record }) => record[key]).length,
-    eligible.length,
-  );
+  return ratio(eligible.filter(({ record }) => record[key]).length, eligible.length);
 }
 
 function validateCases(cases) {
@@ -74,20 +71,12 @@ function validateRecords(records, caseMap) {
     for (const tool of record.tools) {
       if (!PUBLIC_TOOLS.has(tool)) throw new TypeError(`${record.caseId}: unknown BestPrice tool ${tool}`);
     }
-    for (const key of [
-      'argumentsAccurate',
-      'zeroResultRecovered',
-      'answerCompleted',
-      'evidencePreserved',
-    ]) {
+    for (const key of ['argumentsAccurate', 'zeroResultRecovered', 'answerCompleted', 'evidencePreserved']) {
       if (record[key] !== undefined && typeof record[key] !== 'boolean') {
         throw new TypeError(`${record.caseId}: ${key} must be boolean when provided`);
       }
     }
-    if (
-      record.latencyMs !== undefined &&
-      (!Number.isFinite(record.latencyMs) || record.latencyMs < 0)
-    ) {
+    if (record.latencyMs !== undefined && (!Number.isFinite(record.latencyMs) || record.latencyMs < 0)) {
       throw new TypeError(`${record.caseId}: latencyMs must be a non-negative finite number`);
     }
   }
@@ -111,9 +100,7 @@ export function scoreSelectionRun(cases, records) {
     .filter(value => Number.isFinite(value));
 
   const observedIds = new Set(records.map(record => record.caseId));
-  const missingCaseIds = cases
-    .map(testCase => testCase.id)
-    .filter(caseId => !observedIds.has(caseId));
+  const missingCaseIds = cases.map(testCase => testCase.id).filter(caseId => !observedIds.has(caseId));
 
   return {
     coverage: {
@@ -124,14 +111,10 @@ export function scoreSelectionRun(cases, records) {
     },
     activation: {
       accuracy: ratio(
-        observations.filter(({ record, testCase }) => record.skillSelected === testCase.expectedSkill)
-          .length,
+        observations.filter(({ record, testCase }) => record.skillSelected === testCase.expectedSkill).length,
         observations.length,
       ),
-      recall: ratio(
-        positive.filter(({ record }) => record.skillSelected).length,
-        positive.length,
-      ),
+      recall: ratio(positive.filter(({ record }) => record.skillSelected).length, positive.length),
       falseActivationRate: ratio(
         negative.filter(({ record }) => record.skillSelected).length,
         negative.length,
