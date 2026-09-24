@@ -12,19 +12,11 @@
   "homepage": "https://www.bestprice.gr/mcp",
   "repo": "https://github.com/TheBestCo/bestprice-mcp",
   "icon": "https://raw.githubusercontent.com/TheBestCo/bestprice-mcp/main/assets/bestprice-mcp-logo-1024.png",
-  "tags": [
-    "business",
-    "research"
-  ],
+  "tags": ["business", "research"],
   "license": "Apache-2.0",
   "verified": false,
   "featured": false,
   "install": {
-    "args": [
-      "bestprice-shopping",
-      "--transport",
-      "http",
-      "https://mcp.bestprice.gr/mcp"
-    ]
+    "args": ["bestprice-shopping", "--transport", "http", "https://mcp.bestprice.gr/mcp"]
   }
 }
