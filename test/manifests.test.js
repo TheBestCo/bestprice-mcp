@@ -146,6 +146,11 @@ describe('endpoint manifests', () => {
       canonicalSkill,
       'Cursor must ship the canonical skill',
     );
+    assert.equal(
+      read('.agents/skills/bestprice-shopping/SKILL.md'),
+      canonicalSkill,
+      'Agent-compatible hosts must ship the canonical skill',
+    );
   });
 
   it('ships a provider-neutral Agent Plugin', () => {
@@ -290,6 +295,7 @@ describe('public documents', () => {
     }
     assert.match(readme, /docs\/provider-setup\.md/u);
     assert.match(readme, /skills\/bestprice-shopping\/SKILL\.md/u);
+    assert.match(readme, /\.agents\/skills\/bestprice-shopping\/SKILL\.md/u);
     assert.match(providerSetupCompat, /docs\/provider-setup\.md/u);
     for (const tool of EXPECTED_TOOLS) assert.match(providerSetupCompat, new RegExp(tool, 'u'));
     assert.match(readme, /## License/u);
