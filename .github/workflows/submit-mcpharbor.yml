@@ -1,0 +1,30 @@
+name: Submit MCP Harbor listing
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - distribution/mcpharbor/bestprice-shopping.json
+      - .github/workflows/submit-mcpharbor.yml
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Submit BestPrice Shopping to MCP Harbor
+        shell: bash
+        run: |
+          set -euo pipefail
+          response_file="$(mktemp)"
+          status="$(
+            curl --silent --show-error               --output "$response_file"               --write-out '%{http_code}'               --header 'content-type: application/json'               --data-binary @distribution/mcpharbor/bestprice-shopping.json               https://ai.mcpharbor.dev/api/v0/servers
+          )"
+          cat "$response_file"
+          case "$status" in
+            200|201|202) ;;
+            *) echo "MCP Harbor submission failed with HTTP $status" >&2; exit 1 ;;
+          esac

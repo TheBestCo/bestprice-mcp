@@ -1,0 +1,26 @@
+{
+  "name": "gr.bestprice/mcp",
+  "title": "BestPrice Shopping",
+  "description": "Read-only shopping decisions, product search, current Greek merchant offers with delivered totals, and price history for physical products in Greece.",
+  "version": "1.8.1",
+  "transport": "streamable-http",
+  "remote_url": "https://mcp.bestprice.gr/mcp",
+  "tools": [
+    "get_shopping_decision",
+    "search_products",
+    "compare_offers",
+    "get_price_history"
+  ],
+  "tags": [
+    "shopping",
+    "product-recommendations",
+    "shopping-decisions",
+    "price-comparison",
+    "delivered-price",
+    "price-history",
+    "greece"
+  ],
+  "repository_url": "https://github.com/TheBestCo/bestprice-mcp",
+  "website_url": "https://www.bestprice.gr/mcp",
+  "license": "Apache-2.0"
+}
