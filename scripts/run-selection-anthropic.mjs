@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 
 const API_URL = 'https://api.anthropic.com/v1/messages';
@@ -21,6 +22,10 @@ function positiveInteger(value, fallback, name) {
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function sha256(value) {
+  return createHash('sha256').update(value).digest('hex');
 }
 
 function syntheticToolResult(name, input = {}) {
@@ -213,11 +218,11 @@ async function main() {
   const concurrency = positiveInteger(option(args, '--concurrency'), 4, '--concurrency');
   const limit = positiveInteger(option(args, '--limit'), Number.MAX_SAFE_INTEGER, '--limit');
 
-  const casesDocument = JSON.parse(
-    await readFile(new URL('../test/fixtures/selection-cases.json', import.meta.url)),
-  );
+  const casesText = await readFile(new URL('../test/fixtures/selection-cases.json', import.meta.url), 'utf8');
+  const casesDocument = JSON.parse(casesText);
   const cases = casesDocument.cases.slice(0, limit);
-  const lobeHub = JSON.parse(await readFile(new URL('../lhm.plugin.json', import.meta.url)));
+  const toolContractText = await readFile(new URL('../lhm.plugin.json', import.meta.url), 'utf8');
+  const lobeHub = JSON.parse(toolContractText);
   const tools = lobeHub.tools.map(tool => ({
     name: tool.name,
     description: tool.description,
@@ -264,6 +269,12 @@ async function main() {
     corpusVersion: casesDocument.version,
     generatedAt: new Date().toISOString(),
     caseCount: records.length,
+    benchmarkRevision: process.env.BESTPRICE_BENCHMARK_REVISION || null,
+    digests: {
+      corpusSha256: sha256(casesText),
+      toolContractSha256: sha256(toolContractText),
+      skillSha256: sha256(canonicalSkill),
+    },
     methodology:
       'Model-level routing with the four BestPrice MCP tool contracts exposed on every case. Synthetic read-only tool results continue multi-step routes without calling production shopping tools. This does not measure Claude Directory discovery.',
     usage,
