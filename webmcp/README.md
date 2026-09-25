@@ -162,9 +162,9 @@ output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
-11.0.0 grades contract 1.9 as revised and is the default; 1.0.0–10.0.0 stay
-frozen, with their runs, as the history of contracts 1.6 to 1.9
-([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
+12.0.0 grades contract 1.9 at revision 2026-09-25.12 and is the default;
+1.0.0–11.0.0 stay frozen, with their runs, as the history of contracts 1.6 to
+1.9 ([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 
 The machine-readable production inventory is available at
 [`/.well-known/webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json).

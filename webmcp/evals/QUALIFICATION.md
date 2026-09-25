@@ -680,3 +680,38 @@ success carries, so 11.0.0 stays current. Grading never read the output schemas;
 now validated against both the published projection and the strict contract, which the snapshot records
 from the same storefront module.
 
+
+## Dataset 12.0.0 grades revision 2026-09-25.12
+
+The storefront's revision 2026-09-25.12 (bestprice.gr `116ed10e75`, `fd7b2bbb71`, `6645a4e1c1`; contract
+still 1.9) changes what an agent may send, and so grading:
+
+- new optional arguments: `compare_page_offers` takes `offset` and a `limit` up to 12 (was 4) and returns
+  `offset`/`next_offset` through every ranked offer; `clear_listing_filters` takes `filter` (and `value`)
+  to remove one filter or one selected value; `summarize_price_history` takes `show_chart`. 11.0.0 refuses
+  them as unexpected arguments or out of bounds, so reading a product's fifth offer, or removing one
+  filter the way the page now supports, failed its case;
+- `show_offer` publishes `offer_ref` and `merchant_name` only — one of them, checked by the tool; no
+  input schema uses `anyOf` — and no longer `merchant_id` (the page still takes it, unannounced);
+- `get_visible_products` (`load_more`) and `summarize_price_history` (`show_chart`) change the page when
+  asked, and are no longer marked read-only.
+
+The rest changes no grading: `apply_listing_sort.sort` takes a sort key as well as a label (the same
+string bounds); `get_listing_sort_options` returns each option's `key`; navigations read their
+destination before the tab moves and answer `outcome: 'confirmed'` with what it shows (`destination`,
+`product`), `dispatched` with an `unconfirmed_reason` only when it could not be read; every nested output
+object is typed; input schemas have one source, served in the generated document. Every result property a
+case requires is still one a published success carries.
+
+Dataset 12.0.0 (`dataset-v12.js`, `natural-language-cases.v12.json`, `runs.v12.json`, empty) is 11.0.0 with
+argument rules regenerated from the published input schemas. `get_visible_products` and
+`summarize_price_history` stay admitted extra reads in every case — as reads: where one is not an
+expected tool, `load_more` or `show_chart` admits `false` alone, as `get_product_details.navigate` already
+did, so an extra call that loads more results or opens the chart is an extra action and fails. Where
+`get_visible_products` is expected, `load_more` stays open. Prompts, chains, criteria, required
+properties and admitted reads are 11.0.0's. It is the default of `native-run.mjs` and `run-evidence.js`;
+11.0.0 is frozen, the argument rules it was generated with recorded in `dataset-v11.js`. The
+deterministic demo, which implements the new inputs and the confirmed outcomes (and falls back to
+`dispatched` when its destination reader fails), passes 12.0.0 with 41 passed and the same 6 refusals
+(`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-001`, `neg-009`), no failure, no blocked
+run — as it still passes 2.0.0, 9.0.0, 10.0.0 and 11.0.0.

@@ -3,10 +3,15 @@
 This is the canonical home of the versioned Greek shopper prompt datasets for the
 contextual tools in [`../src/contracts.js`](../src/contracts.js):
 
-- [`natural-language-cases.v11.json`](natural-language-cases.v11.json) — current, 47 cases: 10.0.0
-  graded against contract 1.9 as revised on 2026-09-25 by [`dataset-v11.js`](dataset-v11.js) (search
-  constraints, digits-only product ids, `get_product_details` admitted as a read only); evidence in
-  [`runs.v11.json`](runs.v11.json). See [`QUALIFICATION.md`](QUALIFICATION.md).
+- [`natural-language-cases.v12.json`](natural-language-cases.v12.json) — current, 47 cases: 11.0.0
+  graded against contract 1.9 at registration revision 2026-09-25.12 by [`dataset-v12.js`](dataset-v12.js)
+  (offer `offset` and `limit` up to 12, single-filter removal, `show_chart`, `show_offer` without
+  `merchant_id`; `load_more` and `show_chart` admitted `false` only in extra reads); evidence in
+  [`runs.v12.json`](runs.v12.json). See [`QUALIFICATION.md`](QUALIFICATION.md).
+- [`natural-language-cases.v11.json`](natural-language-cases.v11.json) — frozen, 47 cases: 10.0.0
+  graded against contract 1.9 as revised on 2026-09-25 (revisions .7 to .9) by
+  [`dataset-v11.js`](dataset-v11.js) (search constraints, digits-only product ids, `get_product_details`
+  admitted as a read only); evidence in [`runs.v11.json`](runs.v11.json).
 - [`natural-language-cases.v10.json`](natural-language-cases.v10.json) — frozen, 47 cases: 9.0.0
   graded against WebMCP contract 1.9 as first published by [`dataset-v10.js`](dataset-v10.js)
   (`get_product_details` admitted as an extra read); evidence in [`runs.v10.json`](runs.v10.json).

@@ -1298,13 +1298,14 @@ export function printAuditTable(result) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const args = process.argv.slice(2);
-  /* 11.0.0 is current: 10.0.0 graded against contract 1.9's 2026-09-25.7 revision (dataset-v11.js);
+  /* 12.0.0 is current: 11.0.0 graded against contract 1.9's 2026-09-25.12 revision (dataset-v12.js);
+   * 11.0.0 graded its 2026-09-25.7 revision (dataset-v11.js);
    * 10.0.0 graded 1.9 as first published (dataset-v10.js); 9.0.0 graded 1.8
    * (dataset-v9.js), after 3.0.0 was corrected five times (dataset-v4.js … dataset-v8.js).
    * 3.0.0 and its 2,961 runs stay exactly as published, and are still audited with
    * `--cases=…/natural-language-cases.v3.json --runs=…/runs.v3.json`. */
-  let casesPath = fileURLToPath(new URL('./natural-language-cases.v11.json', import.meta.url));
-  let runsPath = fileURLToPath(new URL('./runs.v11.json', import.meta.url));
+  let casesPath = fileURLToPath(new URL('./natural-language-cases.v12.json', import.meta.url));
+  let runsPath = fileURLToPath(new URL('./runs.v12.json', import.meta.url));
   let artifactsDir = DEFAULT_ARTIFACT_ROOT;
   let strict = false;
   let json = false;
