@@ -8,7 +8,13 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
 import { createTools, PAGE_TOOL_NAMES, TOOL_DEFINITIONS, TOOL_NAMES } from '../src/contracts.js';
-import { createDemoAdapter, DECISION_NOTE, HOME_SECTION, offerRef } from '../src/demo-adapter.js';
+import {
+  createDemoAdapter,
+  DECISION_NOTE,
+  DETAIL_SECTIONS,
+  HOME_SECTION,
+  offerRef,
+} from '../src/demo-adapter.js';
 import { ANNOTATIONS, KEYWORDS, validate } from './helpers/output-schema-check.js';
 
 /** Tools for the adapter's current page, each result checked against its published output schema. */
@@ -128,17 +134,83 @@ describe('demo results against the published output schemas', () => {
     await call('show_offer', { offer_ref: 'offer-unknown' });
     await call('show_price_history', {});
     await call('show_price_history', {});
+
+    /* Any other public page (contract 1.9): search, one product's details, the Shopping Brain. */
+    adapter.setPage('site');
+    const decided = await call('get_shopping_decision', { message: 'κινητό έως 750€' });
+    await call('get_product_details', { product_id: decided.recommended.product_id });
+    await call('get_product_details', { product_id: 'bp_2159919913', include: ['offers'] });
+    await call('get_product_details', { product_id: '9999999999' });
+    await call('get_product_details', { product_id: '2159919913', include: ['reviews'] });
+    await call('search_bestprice', { query: 'pixel', navigate: false });
+    assert.equal(adapter.snapshot().page, 'site');
     await call('search_bestprice', { query: 'iPhone 16 128GB', limit: 8 });
+    await call('get_product_details', {
+      product_id: '2160384659',
+      include: ['price_history', 'specifications'],
+    });
 
     /* Every tool was exercised, and both outcomes of the tools that can refuse. */
     assert.deepEqual([...new Set(calls.map(entry => entry.name))].sort(), [...TOOL_NAMES].sort());
-    for (const name of ['search_bestprice', 'get_shopping_decision', 'show_offer', 'open_visible_product']) {
+    for (const name of [
+      'search_bestprice',
+      'get_shopping_decision',
+      'show_offer',
+      'open_visible_product',
+      'get_product_details',
+    ]) {
       assert.deepEqual(
         [...new Set(calls.filter(entry => entry.name === name).map(entry => entry.ok))].sort(),
         [false, true],
         name,
       );
     }
+  });
+
+  it('reads one product from any page but the item page, without moving the tab (contract 1.9)', async () => {
+    const adapter = createDemoAdapter();
+    const { call } = recorder(adapter);
+    const details = await call('get_product_details', { product_id: '2159919913' });
+    assert.equal(details.source, 'BestPrice product page');
+    assert.equal(details.bestprice_url, 'https://www.bestprice.gr/item/2159919913/product.html?bpref=mcp');
+    /* Ranked as compare_page_offers ranks them, with no offer_ref: show_offer acts on the item page. */
+    assert.deepEqual(
+      details.offers.items.map(offer => [offer.merchant, offer.delivered_price_eur]),
+      [
+        ['Gadgetway', 802],
+        ['TechMobile', 808.48],
+        ['Houseshop', null],
+      ],
+    );
+    assert.ok(details.offers.items.every(offer => !('offer_ref' in offer)));
+    assert.deepEqual([details.specifications.returned, details.specifications.completeness], [3, 'complete']);
+    assert.equal(details.price_history.historical_low_eur, 780);
+    assert.equal(adapter.snapshot().page, 'home', 'the tab does not move');
+
+    const offersOnly = await call('get_product_details', {
+      product_id: 'bp_2159919913',
+      include: ['offers'],
+    });
+    assert.deepEqual(
+      Object.keys(offersOnly).filter(key => DETAIL_SECTIONS.includes(key)),
+      ['offers'],
+    );
+    assert.deepEqual(await call('get_product_details', { product_id: '1234567890' }), {
+      ok: false,
+      error: 'BestPrice has no product page for product_id 1234567890.',
+      reason: 'not_found',
+    });
+    assert.equal(
+      (await call('get_product_details', { product_id: '2159919913', include: [] })).error,
+      'include must list one or more of: offers, specifications, price_history.',
+    );
+    /* The item page registers its own tools for the product in view instead. */
+    assert.equal(
+      createTools({ page: 'product', execute: adapter.execute }).some(
+        tool => tool.name === 'get_product_details',
+      ),
+      false,
+    );
   });
 
   it('reads what contract 1.8 added: more result pages, the named product, the unknown-shipping offer', async () => {
@@ -227,16 +299,17 @@ describe('demo results against the published output schemas', () => {
       const adapter = createDemoAdapter();
       const pick = await adapter.execute('get_shopping_decision', { message: 'κινητό έως 750€' });
       assert.equal(pick.outcome, 'recommendation');
-      assert.equal(pick.recommended.product_id, 'bp_2159922965', 'the best rated phone within the budget');
+      /* Contract 1.9: the page tools' numeric id, which get_product_details and the listing take. */
+      assert.equal(pick.recommended.product_id, '2159922965', 'the best rated phone within the budget');
       assert.deepEqual(
         pick.alternatives.map(product => product.product_id),
-        ['bp_2160384659'],
+        ['2160384659'],
       );
       assert.equal(pick.recommended.offer, undefined, 'no delivered total without a postcode');
       /* A tradeoff names a cheaper phone only when there is one: the pick here is the cheapest fit. */
       assert.deepEqual(pick.tradeoffs, []);
       const open = await adapter.execute('get_shopping_decision', { message: 'ένα κινητό' });
-      assert.equal(open.recommended.product_id, 'bp_2159919913');
+      assert.equal(open.recommended.product_id, '2159919913');
       assert.deepEqual(open.tradeoffs, ['Samsung Galaxy S24 256GB costs 113 € less.']);
       assert.equal(pick.note, DECISION_NOTE);
 

@@ -63,7 +63,7 @@ describe('dataset 3.0.0', () => {
     assert.ok(byId(v3).get('product-005').allowed_args.get_product_specifications.fact);
   });
 
-  /* The frozen datasets grade against 1.6. What contracts 1.7 and 1.8 published since is named here,
+  /* The frozen datasets grade against 1.6. What contracts 1.7 to 1.9 published since is named here,
    * so the gap is a decision on record (a dataset that admits it is the next version) and never drift. */
   it('names exactly the arguments and tools published after contract 1.6', () => {
     const published = new Map(
@@ -83,7 +83,7 @@ describe('dataset 3.0.0', () => {
         assert.deepEqual(rules[name], rule, `${tool}.${name}`);
       for (const name of Object.keys(rules)) if (!(name in frozen)) since.push(`${tool}.${name}`);
     }
-    assert.deepEqual(newTools, ['get_shopping_decision']);
+    assert.deepEqual(newTools.sort(), ['get_product_details', 'get_shopping_decision']);
     assert.deepEqual(since.sort(), [
       'compare_page_offers.include_all_stores',
       'compare_page_offers.product_id',
@@ -109,10 +109,10 @@ describe('dataset 3.0.0', () => {
     ]);
     for (const item of v3.cases)
       assert.deepEqual(item.extra_calls_allowed, [...CONTRACT_1_6_READ_ONLY_TOOLS]);
-    /* Contract 1.8 published one more read-only tool; admitting it is the next dataset version. */
+    /* Contracts 1.8 and 1.9 published two more read-only tools; admitting them is a later version. */
     assert.deepEqual(
       readOnlyTools().filter(name => !CONTRACT_1_6_READ_ONLY_TOOLS.includes(name)),
-      ['get_shopping_decision'],
+      ['get_product_details', 'get_shopping_decision'],
     );
   });
 

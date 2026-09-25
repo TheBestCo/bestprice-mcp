@@ -45,7 +45,7 @@ const noop = () => ({ ok: true });
 
 /** The published surface, read from the same `createTools` a page calls. */
 const publishedSurface = () => {
-  const definitions = ['home', 'listing', 'product'].flatMap(page => createTools({ page, execute: noop }));
+  const definitions = Object.keys(PAGE_TOOL_NAMES).flatMap(page => createTools({ page, execute: noop }));
   const unique = new Map(definitions.map(definition => [definition.name, definition]));
   return surfaceIndex([...unique.values()]);
 };
@@ -400,7 +400,7 @@ describe('contract parity with the storefront', () => {
   });
 
   it('folds the storefront page types onto the package page types, and refuses listings that disagree', () => {
-    const pages = { home: ['a'], search: ['b'], category: ['b'], hub: ['b'], product: ['c'] };
+    const pages = { home: ['a'], search: ['b'], category: ['b'], hub: ['b'], product: ['c'], site: ['d'] };
     const rendered = JSON.stringify({
       webmcp: { version: '9.9', pages: Object.entries(pages).map(([page, tools]) => ({ page, tools })) },
     });
@@ -411,7 +411,7 @@ describe('contract parity with the storefront', () => {
     };
     assert.deepEqual(renderStorefrontPages('/storefront', run), { version: '9.9', pages });
     assert.deepEqual(calls, [['php', join('/storefront', 'tools/scripts/mcp_discovery_json.php')]]);
-    assert.deepEqual(packagePageTools(pages), { home: ['a'], listing: ['b'], product: ['c'] });
+    assert.deepEqual(packagePageTools(pages), { home: ['a'], listing: ['b'], product: ['c'], site: ['d'] });
     assert.throws(
       () => packagePageTools({ ...pages, hub: ['b', 'x'] }),
       /hub page registers different tools/u,

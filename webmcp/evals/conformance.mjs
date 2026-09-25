@@ -18,7 +18,7 @@ const root = resolve(process.argv[2] || DEFAULT_STOREFRONT_ROOT);
 /* The pages' registrations against the published contract: every field, words included. */
 const source = readStorefrontSurface(root);
 const published = surfaceIndex(
-  ['home', 'listing', 'product'].flatMap(page => createTools({ page, execute: () => {} })),
+  Object.keys(PAGE_TOOL_NAMES).flatMap(page => createTools({ page, execute: () => {} })),
 );
 assert.deepEqual(compareSurfaces(source.surface, published), []);
 

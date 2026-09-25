@@ -36,6 +36,7 @@ const samples = snapshot => ({
   show_offer: { offer_ref: offerRef(snapshot.product.product_id, 0) },
   show_price_history: {},
   get_shopping_decision: { message: 'κινητό έως 750€ με 5G', postal_code: '10431' },
+  get_product_details: { product_id: snapshot.homeProducts[1]?.product_id ?? '0', include: ['offers'] },
 });
 
 const escapeHtml = value =>
@@ -155,12 +156,23 @@ const renderProduct = snapshot => {
     </article>`;
 };
 
+/* Contract 1.9: any other public page — here a buying guide — registers the site-wide tools. */
+const renderSite = () => {
+  shop.innerHTML = `
+    <article class="product">
+      <p class="eyebrow">Fixture article page</p>
+      <h2>Πώς να διαλέξεις κινητό το 2026</h2>
+      <p class="product__meta">A buying guide. The agent can search BestPrice, read any product's details, or ask the Shopping Brain from here.</p>
+    </article>`;
+};
+
 const renderShop = snapshot => {
   for (const button of document.querySelectorAll('[data-view]')) {
     button.toggleAttribute('aria-current', button.dataset.view === snapshot.page);
   }
   if (snapshot.page === 'home') renderHome(snapshot);
   else if (snapshot.page === 'listing') renderListing(snapshot);
+  else if (snapshot.page === 'site') renderSite();
   else renderProduct(snapshot);
 };
 

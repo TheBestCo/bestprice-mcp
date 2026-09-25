@@ -1,5 +1,5 @@
 /**
- * WebMCP tool contracts for BestPrice pages (contract 1.8).
+ * WebMCP tool contracts for BestPrice pages (contract 1.9).
  *
  * Each contract is a plain description (name, title, description, annotations, JSON Schema input and
  * output). `createTools` binds the contracts a page exposes to an `execute` function supplied by the
@@ -38,8 +38,11 @@ const NAVIGATION = {
   untrustedContentHint: true,
 };
 
-/** The Shopping Brain: a read of BestPrice's own server that changes nothing, on the page or elsewhere. */
-const DECISION = {
+/**
+ * Reads that fetch from BestPrice rather than the rendered page — the Shopping Brain on
+ * mcp.bestprice.gr, a product's own page — and change nothing, on this page or anywhere else.
+ */
+const FETCHED_READ = {
   readOnlyHint: true,
   destructiveHint: false,
   idempotentHint: true,
@@ -69,6 +72,8 @@ const objectSchema = (properties, required = []) => ({
   additionalProperties: false,
 });
 const NUMERIC_ID = '^\\d{1,20}$';
+/* A product id as every tool accepts it: numeric, or the MCP server's bp_<id>. */
+const PRODUCT_ID_PATTERN = '^(?:bp_)?(\\d{1,20})$';
 /* A five-digit Greek postcode, 10000–85999: the range the Shopping Brain accepts. */
 const POSTAL_CODE_PATTERN = '^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$';
 
@@ -119,6 +124,30 @@ const DEFINITIONS = [
           type: 'string',
           pattern: NUMERIC_ID,
           description: 'Numeric product ID returned by get_visible_products.',
+        },
+      },
+      ['product_id'],
+    ),
+  },
+  {
+    /* Contract 1.9: one product's offers, specifications and price history, read from its page on
+     * every page but the item page, whose own tools cover the product in view. */
+    name: 'get_product_details',
+    annotations: FETCHED_READ,
+    inputSchema: objectSchema(
+      {
+        product_id: {
+          type: 'string',
+          pattern: PRODUCT_ID_PATTERN,
+          description:
+            'The product: its numeric id as get_visible_products, search_bestprice and get_shopping_decision return it (bp_<id> also works).',
+        },
+        include: {
+          type: 'array',
+          minItems: 1,
+          maxItems: 3,
+          items: { type: 'string', enum: ['offers', 'specifications', 'price_history'] },
+          description: 'Sections to read: offers, specifications, price_history. Defaults to all three.',
         },
       },
       ['product_id'],
@@ -187,7 +216,7 @@ const DEFINITIONS = [
       /* Contract 1.8: the id a Shopping Brain answer names; another product than the page's is refused. */
       product_id: {
         type: 'string',
-        pattern: '^(?:bp_)?(\\d{1,20})$',
+        pattern: PRODUCT_ID_PATTERN,
         description:
           'Optional: the product on this page, as bp_<id> (as the BestPrice MCP server names it) or its numeric id. Another product is refused with where to find it.',
       },
@@ -248,7 +277,7 @@ const DEFINITIONS = [
   {
     /* Contract 1.8: the Shopping Brain on every page, asked with the shopper's own words. */
     name: 'get_shopping_decision',
-    annotations: DECISION,
+    annotations: FETCHED_READ,
     inputSchema: objectSchema(
       {
         message: textSchema(
@@ -275,13 +304,24 @@ const deepFreeze = value => {
   return value;
 };
 
-/** Tool names each page type exposes, in registration order: search first, the Shopping Brain last. */
+/**
+ * Tool names each page type exposes, in registration order: search first, the Shopping Brain last.
+ * `site` is every other public page (contract 1.9): articles and guides, deals, lists, stores,
+ * brands, collections, comparisons, stories.
+ */
 export const PAGE_TOOL_NAMES = deepFreeze({
-  home: ['search_bestprice', 'get_visible_products', 'open_visible_product', 'get_shopping_decision'],
+  home: [
+    'search_bestprice',
+    'get_visible_products',
+    'open_visible_product',
+    'get_product_details',
+    'get_shopping_decision',
+  ],
   listing: [
     'search_bestprice',
     'get_visible_products',
     'open_visible_product',
+    'get_product_details',
     'get_listing_filters',
     'apply_listing_filter',
     'clear_listing_filters',
@@ -299,6 +339,7 @@ export const PAGE_TOOL_NAMES = deepFreeze({
     'show_price_history',
     'get_shopping_decision',
   ],
+  site: ['search_bestprice', 'get_product_details', 'get_shopping_decision'],
 });
 
 /* Fail at module load if a definition has no storefront catalog entry, or the catalog one without a
@@ -342,7 +383,7 @@ for (const name of TOOL_NAMES) {
 /**
  * Builds the WebMCP tool objects for a page.
  *
- * @param {{ page: 'home' | 'listing' | 'product', execute: (name: string, args: object, options?: { signal?: AbortSignal }) => unknown }} options
+ * @param {{ page: 'home' | 'listing' | 'product' | 'site', execute: (name: string, args: object, options?: { signal?: AbortSignal }) => unknown }} options
  * @returns {Array<{ name: string, title: string, description: string, annotations: object, inputSchema: object, outputSchema: object, execute: (args: object, options?: { signal?: AbortSignal }) => unknown }>}
  * @throws {TypeError} for an unknown page type or a non-callable executor.
  */

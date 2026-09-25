@@ -54,6 +54,7 @@ export const STOREFRONT_SOURCES = Object.freeze([
   'pages/search/webmcp/shared-tools.js',
   'js/modules/webmcp/search-tool.js',
   'js/modules/webmcp/shopping-decision-tool.js',
+  'js/modules/webmcp/product-details-tool.js',
 ]);
 
 /** Every file the surface is read from, in the order the snapshot records their digests. */
@@ -69,6 +70,9 @@ export const STOREFRONT_PAGE_TYPES = Object.freeze({
   category: 'listing',
   hub: 'listing',
   product: 'product',
+  /* Contract 1.9: every other public page — articles, deals, stores, brands… — registers the
+   * site-wide tools. */
+  site: 'site',
 });
 
 export const DEFAULT_STOREFRONT_ROOT =
@@ -352,6 +356,11 @@ function parseValue(tokens, index) {
       next += 2;
     }
     if (Object.hasOwn(KNOWN_MEMBERS, name)) return { value: KNOWN_MEMBERS[name], next };
+    /* `Object.freeze(<literal>)` is the literal it freezes, as the storefront writes a shared list. */
+    if (name === 'Object.freeze' && isPunct(tokens[next], '(')) {
+      const frozen = parseValue(tokens, next + 1);
+      if (frozen && isPunct(tokens[frozen.next], ')')) return { value: frozen.value, next: frozen.next + 1 };
+    }
     /* A bare identifier may name a constant; the caller resolves it. */
     return { value: { $ref: name }, next };
   }
@@ -369,7 +378,10 @@ function parseValue(tokens, index) {
     if (isPunct(tokens[cursor], '...')) {
       const spread = parseValue(tokens, cursor + 1);
       const complete = spread && isBoundary(tokens[spread.next], close);
-      if (complete && isObject && typeof spread.value?.$ref === 'string') {
+      if (complete && !isObject) {
+        /* `[...LIST]`: the items of a list, spliced in once constants are known. */
+        value.push({ $spread: spread.value });
+      } else if (complete && isObject && typeof spread.value?.$ref === 'string') {
         value[SPREADS] = [...(value[SPREADS] ?? []), spread.value];
       } else if (complete && isObject && spread.value && typeof spread.value === 'object') {
         Object.assign(value, spread.value);
@@ -504,7 +516,16 @@ function resolveConstants(value, constants, depth = 0) {
     const whole = parts.every(part => typeof part === 'string' || typeof part === 'number');
     return whole ? parts.join('') : value;
   }
-  if (Array.isArray(value)) return value.map(item => resolveConstants(item, constants, depth + 1));
+  if (Array.isArray(value)) {
+    return value.flatMap(item => {
+      if (!item || typeof item !== 'object' || !Object.hasOwn(item, '$spread')) {
+        return [resolveConstants(item, constants, depth + 1)];
+      }
+      /* A list spread whose list is not known stays a named hole, never an empty list. */
+      const list = resolveConstants(item.$spread, constants, depth + 1);
+      return Array.isArray(list) ? list : [item];
+    });
+  }
   const spreads = (value[SPREADS] ?? []).map(spread => resolveConstants(spread, constants, depth + 1));
   const resolved = Object.fromEntries(
     Object.entries(value).map(([key, item]) => [key, resolveConstants(item, constants, depth + 1)]),

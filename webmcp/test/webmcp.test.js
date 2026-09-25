@@ -17,19 +17,31 @@ const noop = () => ({ ok: true });
 const DESCRIPTION_LENGTH = Object.freeze({ min: 180, max: 500 });
 
 describe('contracts', () => {
-  it('publishes 15 unique contextual tools across three page types (contract 1.8)', () => {
-    assert.equal(WEBMCP_CONTRACT_VERSION, '1.8');
-    assert.equal(TOOL_NAMES.length, 15);
+  it('publishes 16 unique contextual tools across four page types (contract 1.9)', () => {
+    assert.equal(WEBMCP_CONTRACT_VERSION, '1.9');
+    assert.equal(TOOL_NAMES.length, 16);
     assert.deepEqual(new Set(Object.values(PAGE_TOOL_NAMES).flat()), new Set(TOOL_NAMES));
     /* Search first, the Shopping Brain last, on every page; the home page browses its sections. */
     assert.deepEqual(PAGE_TOOL_NAMES.home, [
       'search_bestprice',
       'get_visible_products',
       'open_visible_product',
+      'get_product_details',
       'get_shopping_decision',
     ]);
-    assert.equal(PAGE_TOOL_NAMES.listing.length, 9);
+    assert.equal(PAGE_TOOL_NAMES.listing.length, 10);
     assert.equal(PAGE_TOOL_NAMES.product.length, 8);
+    /* Every other public page: search, one product's details, and the Shopping Brain. */
+    assert.deepEqual(PAGE_TOOL_NAMES.site, [
+      'search_bestprice',
+      'get_product_details',
+      'get_shopping_decision',
+    ]);
+    /* The item page's own tools cover the product in view; the details tool is everywhere else. */
+    assert.deepEqual(
+      Object.keys(PAGE_TOOL_NAMES).filter(page => PAGE_TOOL_NAMES[page].includes('get_product_details')),
+      ['home', 'listing', 'site'],
+    );
     for (const names of Object.values(PAGE_TOOL_NAMES)) {
       assert.equal(names[0], 'search_bestprice');
       assert.equal(names.at(-1), 'get_shopping_decision');
@@ -127,7 +139,7 @@ describe('registration runtime', () => {
     const result = await registration.register(listingTools());
 
     assert.deepEqual(result, { status: 'degraded', registered: 0 });
-    assert.equal(signals.length, 9);
+    assert.equal(signals.length, 10);
     assert.ok(signals.every(signal => signal.aborted));
     assert.deepEqual(states.at(-1), { status: 'degraded', registered: 0 });
   });
@@ -136,8 +148,8 @@ describe('registration runtime', () => {
     const modelContext = createLocalModelContext();
     const states = [];
     const registration = createRegistration({ modelContext, onState: state => states.push(state) });
-    assert.deepEqual(await registration.register(listingTools()), { status: 'ready', registered: 9 });
-    assert.equal(modelContext.tools.size, 9);
+    assert.deepEqual(await registration.register(listingTools()), { status: 'ready', registered: 10 });
+    assert.equal(modelContext.tools.size, 10);
     /* What the page registers is the whole published contract, output schema included. */
     const registered = modelContext.tools.get('get_shopping_decision');
     for (const field of ['title', 'description', 'annotations', 'inputSchema', 'outputSchema']) {
