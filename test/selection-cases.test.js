@@ -29,7 +29,7 @@ describe('cross-provider selection corpus', () => {
       assert.equal(typeof testCase.prompt, 'string', testCase.id);
       assert.ok(testCase.prompt.length >= 12, testCase.id);
       for (const tool of testCase.expectedTools) {
-        assert.ok(tools.has(tool), testCase.id + ': unknown tool ' + tool);
+        assert.ok(tools.has(tool), `${testCase.id}: unknown tool ${tool}`);
         counts[tool] += 1;
       }
       if (!testCase.expectedSkill) assert.deepEqual(testCase.expectedTools, [], testCase.id);
