@@ -86,9 +86,11 @@ describe('dataset 3.0.0', () => {
     assert.deepEqual(newTools, ['get_shopping_decision']);
     assert.deepEqual(since.sort(), [
       'compare_page_offers.include_all_stores',
+      'compare_page_offers.product_id',
       'get_listing_filters.group',
       'get_listing_filters.offset',
       'get_product_specifications.offset',
+      'get_visible_products.load_more',
       'get_visible_products.offset',
       'search_bestprice.limit',
       'search_bestprice.navigate',

@@ -39,6 +39,7 @@ const MAX_LIMITS = {
 };
 const MAX_MESSAGE_LENGTH = 2000;
 const POSTAL_CODE = /^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$/u;
+const PRODUCT_ID = /^(?:bp_)?(\d{1,20})$/u;
 /* A price moving by more than this share is a direction; less is stable. */
 const STABLE_PCT = 1;
 /* The dates of the fixture's price observations, oldest first. */
@@ -171,6 +172,17 @@ const PRODUCT_WORDS = {
   2159922965: ['samsung', 'galaxy'],
   2160384659: ['google', 'pixel'],
 };
+
+/* The tools a results page registers, which a search that moved the tab names as its next tools. */
+const LISTING_PAGE_TOOLS = Object.freeze([
+  'get_visible_products',
+  'open_visible_product',
+  'get_listing_filters',
+  'apply_listing_filter',
+  'clear_listing_filters',
+  'get_listing_sort_options',
+  'apply_listing_sort',
+]);
 
 /* The storefront's own words for the next call after a search or a decision. */
 const SEARCH_NEXT_STEPS = {
@@ -461,6 +473,7 @@ export function createDemoAdapter(onChange = () => {}, { decide = decideFromFixt
       let nextStep = SEARCH_NEXT_STEPS.stayed;
       if (!rows.length) nextStep = SEARCH_NEXT_STEPS.none;
       else if (navigated) nextStep = products.length ? SEARCH_NEXT_STEPS.moved : SEARCH_NEXT_STEPS.movedEmpty;
+      const listed = navigated && rows.length > 0;
       return {
         ok: true,
         source: 'BestPrice search results',
@@ -473,14 +486,30 @@ export function createDemoAdapter(onChange = () => {}, { decide = decideFromFixt
         products,
         navigated,
         next_step: nextStep,
+        /* The tools the results page registers once the tab is there. */
+        ...(listed ? { next_tools: [...LISTING_PAGE_TOOLS] } : {}),
       };
     },
 
     get_visible_products(args) {
       const { limit, error } = readLimit(args, 'get_visible_products');
       if (error) return error;
+      if (args.load_more !== undefined && typeof args.load_more !== 'boolean') {
+        return fail('load_more must be true or false.');
+      }
       const home = state.page === 'home';
       const rows = shownProducts();
+      /* Contract 1.8: a listing loads its next result page in place. The fixture's listings are one
+       * result page long, and the home page loads no more, as on the storefront. */
+      if (args.load_more === true) {
+        return {
+          ok: false,
+          reason: 'not_available',
+          error: home
+            ? 'This page does not load more results in place; every product it shows is readable from offset: 0.'
+            : `This listing has no more result pages: all ${rows.length} loaded products are readable from offset: 0.`,
+        };
+      }
       const { offset, error: offsetError } = readOffset(args, rows.length);
       if (offsetError) return offsetError;
       /* Like the storefront since contract 1.7: a list read does not repeat each product link;
@@ -491,6 +520,7 @@ export function createDemoAdapter(onChange = () => {}, { decide = decideFromFixt
         source: home ? 'BestPrice home page' : 'BestPrice listing page',
         ...(home ? {} : { total_results: rows.length }),
         shown_products: rows.length,
+        ...(home ? {} : { result_pages_loaded: 1, result_pages_total: 1 }),
         returned: products.length,
         products,
         omitted_products: rows.length - offset - products.length,
@@ -621,7 +651,35 @@ export function createDemoAdapter(onChange = () => {}, { decide = decideFromFixt
         return fail('include_all_stores must be true or false.');
       }
       const product = activeProduct();
-      const offers = product.offers.slice(0, limit).map((_, index) => publicOffer(product, index));
+      /* Contract 1.8: the product a Shopping Brain answer names may be passed; another one is refused
+       * with where its offers are, never guessed here. */
+      if (args.product_id !== undefined) {
+        const id =
+          typeof args.product_id === 'number' && Number.isSafeInteger(args.product_id) && args.product_id > 0
+            ? String(args.product_id)
+            : PRODUCT_ID.exec(typeof args.product_id === 'string' ? args.product_id.trim() : '')?.[1];
+        if (!id)
+          return fail(`product_id must be this page's product, bp_${product.product_id}, or be left out.`);
+        if (id !== product.product_id) {
+          return fail(
+            `product_id bp_${id} is not the product on this page (bp_${product.product_id}). Open https://www.bestprice.gr/item/${id} and call compare_page_offers there, or use compare_offers on the BestPrice MCP server (https://mcp.bestprice.gr/mcp).`,
+          );
+        }
+      }
+      /* Known delivered prices first, lowest first; unknown shipping after, by item price — never free. */
+      const ranked = product.offers
+        .map((_, index) => publicOffer(product, index))
+        .sort(
+          (left, right) =>
+            (left.delivered_price_eur === null) - (right.delivered_price_eur === null) ||
+            (left.delivered_price_eur ?? left.item_price_eur) -
+              (right.delivered_price_eur ?? right.item_price_eur),
+        );
+      const offers = ranked.slice(0, limit);
+      const excluded = ranked.slice(limit).filter(offer => offer.delivered_price_eur === null);
+      const cheapestDelivered = Math.min(
+        ...offers.filter(offer => offer.delivered_price_eur !== null).map(offer => offer.delivered_price_eur),
+      );
       /* The fixture renders every store, so there is never a «Όλες οι τιμές» to press. */
       return {
         ok: true,
@@ -631,8 +689,21 @@ export function createDemoAdapter(onChange = () => {}, { decide = decideFromFixt
         stores_total: product.offers.length,
         stores_considered: product.offers.length,
         price_basis: 'item_plus_shipping',
+        ranking_basis: 'known_delivered_first_then_item_price',
         payment_cost_status: 'not_included',
         offers,
+        ...(excluded.length
+          ? {
+              excluded_unknown_shipping: {
+                count: excluded.length,
+                lowest_item_price_eur: excluded[0].item_price_eur,
+                ...(Number.isFinite(cheapestDelivered) && excluded[0].item_price_eur < cheapestDelivered
+                  ? { may_be_cheapest: true }
+                  : {}),
+                cheapest: excluded[0],
+              },
+            }
+          : {}),
         note: 'Unknown shipping remains unknown. The shopper chooses the merchant.',
       };
     },

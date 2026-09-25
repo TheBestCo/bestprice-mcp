@@ -130,7 +130,15 @@ function tokenize(source) {
       continue;
     }
     if (char === '/' && startsRegex(tokens)) {
-      index = skipRegex(source, index);
+      const end = skipRegex(source, index);
+      if (end === index + 1) {
+        index = end;
+        continue;
+      }
+      /* A regular expression is kept with its flags: a schema may publish its `.source` as a pattern. */
+      const flags = /^[a-z]*/u.exec(source.slice(end))[0];
+      tokens.push({ type: 'regex', value: { $regex: source.slice(index + 1, end - 1), $flags: flags } });
+      index = end + flags.length;
       continue;
     }
     if (char === "'" || char === '"') {
@@ -190,7 +198,7 @@ function startsRegex(tokens) {
   const previous = tokens.at(-1);
   if (!previous) return true;
   if (previous.type === 'identifier') return REGEX_PREFIX_KEYWORDS.has(previous.value);
-  if (previous.type === 'literal' || previous.type === 'string' || previous.type === 'template') return false;
+  if (['literal', 'string', 'template', 'regex'].includes(previous.type)) return false;
   return !REGEX_PREFIX_TOKENS.includes(previous.value);
 }
 
@@ -326,7 +334,12 @@ function skipExpression(tokens, index, close) {
 function parseValue(tokens, index) {
   const token = tokens[index];
   if (!token) return null;
-  if (token.type === 'literal' || token.type === 'string' || token.type === 'template') {
+  if (
+    token.type === 'literal' ||
+    token.type === 'string' ||
+    token.type === 'template' ||
+    token.type === 'regex'
+  ) {
     return { value: token.value, next: index + 1 };
   }
   if (token.type === 'identifier') {
@@ -465,13 +478,25 @@ function readImport(tokens, index) {
   return names.map(name => ({ ...name, specifier: specifier.value }));
 }
 
+/* `NAME.key` of a known constant: a property of an object, or a regular expression's `source`/`flags`. */
+function memberOf(reference, constants) {
+  const [name, ...keys] = reference.split('.');
+  let value = constants.get(name);
+  for (const key of keys) {
+    if (value === undefined || value === null || typeof value !== 'object') return undefined;
+    if (typeof value.$regex === 'string') value = { source: value.$regex, flags: value.$flags }[key];
+    else value = Object.hasOwn(value, key) ? value[key] : undefined;
+  }
+  return value;
+}
+
 /** Replaces `{ $ref: 'NAME' }`, templates and constant spreads with what the constants say. */
 function resolveConstants(value, constants, depth = 0) {
   if (depth > 8 || !value || typeof value !== 'object') return value;
   if (typeof value.$ref === 'string' && Object.keys(value).length === 1) {
     /* An unresolved name stays a `$ref`: the comparison then reports a bound it could not read rather
      * than silently treating it as absent. */
-    const resolved = constants.get(value.$ref);
+    const resolved = constants.has(value.$ref) ? constants.get(value.$ref) : memberOf(value.$ref, constants);
     return resolved === undefined ? value : resolveConstants(resolved, constants, depth + 1);
   }
   if (Array.isArray(value.$template) && Object.keys(value).length === 1) {

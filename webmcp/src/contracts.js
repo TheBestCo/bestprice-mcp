@@ -99,7 +99,15 @@ const DEFINITIONS = [
     annotations: READ_ONLY,
     inputSchema: objectSchema({
       limit: limitSchema(8, 'Maximum products to return.'),
-      offset: offsetSchema('Use next_offset from the previous result on the same page. Defaults to 0.'),
+      offset: offsetSchema(
+        'Use next_offset from the previous result on the same page. Defaults to 0, or with load_more to the first newly loaded product.',
+      ),
+      /* Contract 1.8: a listing's further result pages, loaded as the shopper's scroll does. */
+      load_more: {
+        type: 'boolean',
+        description:
+          'Listing pages: first load the next result page into this listing, as the shopper’s scroll does, then read from its first new product. Use it when more_pages is true.',
+      },
     }),
   },
   {
@@ -166,12 +174,22 @@ const DEFINITIONS = [
     name: 'compare_page_offers',
     annotations: READ_ONLY,
     inputSchema: objectSchema({
-      limit: limitSchema(4, 'Number of lowest-delivered-price offers to return, from 1 to 4.'),
+      limit: limitSchema(
+        4,
+        'Number of offers to return, from 1 to 4: lowest known delivered price first, then offers with unknown shipping by item price.',
+      ),
       /* Contract 1.7: the page's own «Όλες οι τιμές» request, as when the shopper presses it. */
       include_all_stores: {
         type: 'boolean',
         description:
           'First load the stores this page keeps behind «Όλες οι τιμές», as when the shopper presses it. Defaults to false.',
+      },
+      /* Contract 1.8: the id a Shopping Brain answer names; another product than the page's is refused. */
+      product_id: {
+        type: 'string',
+        pattern: '^(?:bp_)?(\\d{1,20})$',
+        description:
+          'Optional: the product on this page, as bp_<id> (as the BestPrice MCP server names it) or its numeric id. Another product is refused with where to find it.',
       },
     }),
   },
@@ -187,7 +205,7 @@ const DEFINITIONS = [
       /* Contract 1.6: the exact continuation for a value a previous call marked truncated. */
       fact: textSchema(
         72,
-        'A specification fact name, such as one a previous call returned. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section.',
+        'A specification fact name, such as one a previous call returned, or a common English name (refresh rate, screen size, weight, energy class…) matched to the product’s own Greek one. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section.',
       ),
       offset: offsetSchema(
         'Use next_offset from the previous result, keeping the same product and section. Defaults to 0. Do not combine with fact.',

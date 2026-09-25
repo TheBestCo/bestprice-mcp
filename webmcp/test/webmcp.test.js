@@ -14,7 +14,7 @@ import { createLocalModelContext, createRegistration } from '../src/runtime.js';
 const noop = () => ({ ok: true });
 /* The storefront's own bound on a tool description (bestprice.gr js/modules/webmcp/output-schemas.test.js):
  * long enough to say what the tool does, when to use it, what it returns and what it changes. */
-const DESCRIPTION_LENGTH = Object.freeze({ min: 180, max: 720 });
+const DESCRIPTION_LENGTH = Object.freeze({ min: 180, max: 500 });
 
 describe('contracts', () => {
   it('publishes 15 unique contextual tools across three page types (contract 1.8)', () => {

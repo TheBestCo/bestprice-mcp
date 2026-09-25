@@ -3,7 +3,7 @@
  *
  * The title, description and output schema of every BestPrice WebMCP tool, as the storefront registers
  * them: bestprice.gr `extra/mcpDiscovery/webmcp-tools.json` (its generated copy of
- * `js/modules/webmcp/tool-catalog.js` and `output-schemas.js`) at 5fdf23cee7, WebMCP
+ * `js/modules/webmcp/tool-catalog.js` and `output-schemas.js`) at e0be10690f, WebMCP
  * contract 1.8. `contracts.js` publishes them as they are, and
  * `webmcp/test/contract-parity.test.js` compares every published definition with the snapshot.
  */
@@ -127,6 +127,23 @@ export const STOREFRONT_CATALOG = {
               maxLength: 300,
               description: 'What to call next.',
             },
+            next_tools: {
+              type: 'array',
+              maxItems: 8,
+              items: {
+                type: 'string',
+                enum: [
+                  'get_visible_products',
+                  'open_visible_product',
+                  'get_listing_filters',
+                  'apply_listing_filter',
+                  'clear_listing_filters',
+                  'get_listing_sort_options',
+                  'apply_listing_sort',
+                ],
+              },
+              description: 'Tools the results page registers once the tab has moved there.',
+            },
             note: {
               type: 'string',
               maxLength: 400,
@@ -200,7 +217,7 @@ export const STOREFRONT_CATALOG = {
   get_visible_products: {
     title: 'Products on this page',
     description:
-      'Read the products shown on this BestPrice listing or home page: product_id, title, lowest current price before shipping and store count for each; on the home page each also names its section (e.g. «Προσφορές της ημέρας»). Use it to see what the shopper is looking at before comparing or opening a product. Returns up to 8 per call; follow next_offset for the rest. Read-only.',
+      'Read the products shown on this BestPrice listing or home page. Use it to see what the shopper is looking at before comparing or opening one. Returns up to 8 per call — product_id, title, lowest price before shipping, store count, and on the home page the section; follow next_offset for the rest, and when more_pages is true pass load_more to load the next result page as the shopper’s scroll does. Read-only, except that load_more adds that page to the listing.',
     outputSchema: {
       type: 'object',
       description: 'Success (ok true) or refusal (ok false).',
@@ -228,6 +245,24 @@ export const STOREFRONT_CATALOG = {
               minimum: 0,
               maximum: 9007199254740991,
               description: 'Readable product cards on this page.',
+            },
+            result_pages_loaded: {
+              type: 'integer',
+              minimum: 0,
+              maximum: 9007199254740991,
+              description: 'Result pages this listing has loaded into its grid so far.',
+            },
+            result_pages_total: {
+              type: 'integer',
+              minimum: 0,
+              maximum: 9007199254740991,
+              description: 'Result pages this listing has in all.',
+            },
+            more_pages: {
+              type: 'boolean',
+              const: true,
+              description:
+                'More result pages exist than are loaded; call get_visible_products with load_more: true to load and read the next one.',
             },
             returned: {
               type: 'integer',
@@ -1048,7 +1083,7 @@ export const STOREFRONT_CATALOG = {
   get_page_product: {
     title: 'Product details on this page',
     description:
-      'Read the product on this BestPrice item page. Use it first on a product page to know what the shopper is viewing. Returns product_id, title, category, lowest current price before shipping, number of store offers, rating and the BestPrice URL. Read-only.',
+      'Read the product on this BestPrice item page. Use it first on a product page to know what the shopper is viewing. Returns product_id, title, category, the lowest current item price (before shipping; compare_page_offers gives delivered prices), number of store offers, rating and the BestPrice URL. Read-only.',
     outputSchema: {
       type: 'object',
       description: 'Success (ok true) or refusal (ok false).',
@@ -1082,7 +1117,8 @@ export const STOREFRONT_CATALOG = {
               type: ['number', 'null'],
               minimum: 0,
               maximum: 10000000,
-              description: 'Lowest current item price, before shipping; null when not shown.',
+              description:
+                'Lowest current item price among the stores, before shipping (its store may not state shipping); compare_page_offers gives delivered prices. null when not shown.',
             },
             offer_count: {
               type: 'integer',
@@ -1154,7 +1190,7 @@ export const STOREFRONT_CATALOG = {
   compare_page_offers: {
     title: 'Compare offers on this page',
     description:
-      'Compare the store offers on this BestPrice item page by delivered price (item + shipping). Use it when the shopper asks where to buy or what it costs delivered. Returns up to four offers with item price, shipping, delivered price, availability and store rating, each with an offer_ref for show_offer; stores_considered of stores_total says how many stores were ranked, and completeness partial means more are behind «Όλες οι τιμές», which include_all_stores loads as the shopper’s button does. Read-only; opens no store link.',
+      'Compare the store offers on this BestPrice item page. Use it when the shopper asks where to buy or what it costs delivered. Returns up to four offers, known delivered price (item + shipping) first, with variant title, prices, availability, store rating and an offer_ref for show_offer; excluded_unknown_shipping names the cheapest unknown-shipping offer left out; include_all_stores loads the stores behind «Όλες οι τιμές». Read-only; opens no store link.',
     outputSchema: {
       type: 'object',
       description: 'Success (ok true) or refusal (ok false).',
@@ -1214,6 +1250,12 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
               const: 'item_plus_shipping',
             },
+            ranking_basis: {
+              type: 'string',
+              const: 'known_delivered_first_then_item_price',
+              description:
+                'Offers with known shipping come first, lowest delivered price (item + shipping) first; offers with unknown shipping follow, lowest item price first. Unknown shipping is never treated as free.',
+            },
             payment_cost_status: {
               type: 'string',
               const: 'not_included',
@@ -1231,8 +1273,9 @@ export const STOREFRONT_CATALOG = {
                   },
                   product: {
                     type: 'string',
-                    maxLength: 120,
-                    description: 'The offer’s own product title; it can name a variant.',
+                    maxLength: 160,
+                    description:
+                      'The offer’s own product title, in full up to 160 characters; it can name a variant.',
                   },
                   item_price_eur: {
                     type: 'number',
@@ -1258,8 +1301,9 @@ export const STOREFRONT_CATALOG = {
                   },
                   merchant_rating: {
                     type: ['number', 'null'],
-                    minimum: 0,
+                    minimum: 1,
                     maximum: 5,
+                    description: 'Store rating from 1 to 5; null when the store is not rated.',
                   },
                   certified: {
                     type: 'boolean',
@@ -1303,6 +1347,115 @@ export const STOREFRONT_CATALOG = {
                 additionalProperties: false,
               },
             },
+            excluded_unknown_shipping: {
+              type: 'object',
+              description:
+                'Present when the ranking left out offers whose shipping is unknown: the cheapest of them by item price, with its offer_ref, so the lowest item price is never silently dropped.',
+              properties: {
+                count: {
+                  type: 'integer',
+                  minimum: 0,
+                  maximum: 9007199254740991,
+                  description: 'Offers with unknown shipping that this answer did not return.',
+                },
+                lowest_item_price_eur: {
+                  type: 'number',
+                  minimum: 0,
+                  maximum: 10000000,
+                  description: 'The lowest item price among them, before shipping.',
+                },
+                may_be_cheapest: {
+                  type: 'boolean',
+                  const: true,
+                  description: 'Its item price alone is below the cheapest delivered price returned.',
+                },
+                cheapest: {
+                  type: 'object',
+                  properties: {
+                    merchant: {
+                      type: 'string',
+                      maxLength: 100,
+                      description: 'Store name (display text).',
+                    },
+                    product: {
+                      type: 'string',
+                      maxLength: 160,
+                      description:
+                        'The offer’s own product title, in full up to 160 characters; it can name a variant.',
+                    },
+                    item_price_eur: {
+                      type: 'number',
+                      minimum: 0,
+                      maximum: 10000000,
+                      description: 'Item price, before shipping.',
+                    },
+                    shipping_eur: {
+                      type: ['number', 'null'],
+                      minimum: 0,
+                      maximum: 10000000,
+                      description: 'Shipping; null means unknown, never free.',
+                    },
+                    delivered_price_eur: {
+                      type: ['number', 'null'],
+                      minimum: 0,
+                      maximum: 10000000,
+                      description: 'Item price plus shipping; null when shipping is unknown.',
+                    },
+                    availability: {
+                      type: 'string',
+                      maxLength: 120,
+                    },
+                    merchant_rating: {
+                      type: ['number', 'null'],
+                      minimum: 1,
+                      maximum: 5,
+                      description: 'Store rating from 1 to 5; null when the store is not rated.',
+                    },
+                    certified: {
+                      type: 'boolean',
+                    },
+                    sponsored: {
+                      type: 'boolean',
+                    },
+                    offer_ref: {
+                      type: ['string', 'null'],
+                      maxLength: 40,
+                      description:
+                        'Exact page-local selector for show_offer; valid while this quote is unchanged.',
+                    },
+                    unpriced_rows: {
+                      type: 'integer',
+                      minimum: 0,
+                      maximum: 9007199254740991,
+                      description: 'Rows of this store that carry no usable price.',
+                    },
+                    product_truncated: {
+                      type: 'boolean',
+                      const: true,
+                    },
+                    merchant_truncated: {
+                      type: 'boolean',
+                      const: true,
+                    },
+                  },
+                  required: [
+                    'merchant',
+                    'product',
+                    'item_price_eur',
+                    'shipping_eur',
+                    'delivered_price_eur',
+                    'availability',
+                    'merchant_rating',
+                    'certified',
+                    'sponsored',
+                    'offer_ref',
+                  ],
+                  additionalProperties: false,
+                },
+              },
+              required: ['count', 'lowest_item_price_eur', 'cheapest'],
+              additionalProperties: false,
+            },
             note: {
               type: 'string',
               maxLength: 400,
@@ -1317,6 +1470,7 @@ export const STOREFRONT_CATALOG = {
             'stores_total',
             'stores_considered',
             'price_basis',
+            'ranking_basis',
             'payment_cost_status',
             'offers',
           ],
@@ -1355,7 +1509,7 @@ export const STOREFRONT_CATALOG = {
   get_product_specifications: {
     title: 'Product specifications',
     description:
-      'Read the technical specifications of the product on this BestPrice item page, optionally one section (e.g. Οθόνη) or one fact by name. Use it to check a feature or compare models. Returns section, name and value rows, up to 16 per call; follow next_offset for more, and ask for a fact by name to read a shortened value in full. Read-only.',
+      'Read the technical specifications of the product on this BestPrice item page, optionally one section (e.g. Οθόνη) or one fact by name, Greek or common English (e.g. refresh rate). Use it to check a feature or compare models. Returns section, name and value rows, up to 16 per call; follow next_offset for more, and ask for a fact by name to read a shortened value in full. Read-only.',
     outputSchema: {
       type: 'object',
       description: 'Success (ok true) or refusal (ok false).',
@@ -1576,7 +1730,7 @@ export const STOREFRONT_CATALOG = {
               type: ['number', 'null'],
               minimum: 0,
               maximum: 10000000,
-              description: 'Current lowest item price.',
+              description: 'Current lowest item price, before shipping.',
             },
             current_price_source: {
               type: 'string',
@@ -1741,8 +1895,9 @@ export const STOREFRONT_CATALOG = {
                 },
                 product: {
                   type: 'string',
-                  maxLength: 120,
-                  description: 'The offer’s own product title; it can name a variant.',
+                  maxLength: 160,
+                  description:
+                    'The offer’s own product title, in full up to 160 characters; it can name a variant.',
                 },
                 item_price_eur: {
                   type: 'number',
@@ -1768,8 +1923,9 @@ export const STOREFRONT_CATALOG = {
                 },
                 merchant_rating: {
                   type: ['number', 'null'],
-                  minimum: 0,
+                  minimum: 1,
                   maximum: 5,
+                  description: 'Store rating from 1 to 5; null when the store is not rated.',
                 },
                 certified: {
                   type: 'boolean',
@@ -1918,7 +2074,7 @@ export const STOREFRONT_CATALOG = {
   get_shopping_decision: {
     title: 'Get a shopping decision',
     description:
-      'Ask the BestPrice Shopping Brain what to buy: pass the shopper’s question as written (need, budget, must-have features; Greek or English) and optionally their Greek postcode. Use it on any BestPrice page when the shopper wants a recommendation, a comparison or advice rather than one product’s details. Returns the outcome (recommendation, comparison, basket, clarification, no_match or answer), the recommended product with its lowest price before shipping and BestPrice link, up to three alternatives, reasons, tradeoffs, unknowns, and a clarifying question when needed. Read-only: the question goes to mcp.bestprice.gr; nothing is bought and the tab does not move.',
+      'Ask the BestPrice Shopping Brain what to buy. Use it on any BestPrice page when the shopper wants a recommendation or comparison: pass their question as written (need, budget, must-haves; Greek or English) and optionally a Greek postcode. Returns the outcome, the recommended product with its price before shipping and BestPrice link, up to three alternatives, reasons, tradeoffs, unknowns, or a clarifying question. Read-only: the question goes to mcp.bestprice.gr; the tab does not move.',
     outputSchema: {
       type: 'object',
       description: 'Success (ok true) or refusal (ok false).',

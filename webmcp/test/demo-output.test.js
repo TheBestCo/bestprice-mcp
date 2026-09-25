@@ -141,6 +141,63 @@ describe('demo results against the published output schemas', () => {
     }
   });
 
+  it('reads what contract 1.8 added: more result pages, the named product, the unknown-shipping offer', async () => {
+    const adapter = createDemoAdapter();
+    const { call } = recorder(adapter);
+    assert.deepEqual(await call('get_visible_products', { load_more: true }), {
+      ok: false,
+      reason: 'not_available',
+      error:
+        'This page does not load more results in place; every product it shows is readable from offset: 0.',
+    });
+    const search = await call('search_bestprice', { query: 'phone' });
+    assert.deepEqual(
+      search.next_tools,
+      PAGE_TOOL_NAMES.listing.slice(1, -1),
+      'the tools the results page registers',
+    );
+    const listing = await call('get_visible_products', {});
+    assert.deepEqual(
+      [listing.result_pages_loaded, listing.result_pages_total, listing.more_pages],
+      [1, 1, undefined],
+    );
+    assert.equal((await call('get_visible_products', { load_more: true })).reason, 'not_available');
+    assert.equal(
+      (await call('get_visible_products', { load_more: 'yes' })).error,
+      'load_more must be true or false.',
+    );
+    const read = await call('search_bestprice', { query: 'phone', navigate: false });
+    assert.equal(read.next_tools, undefined, 'a search that did not move the tab names no next tools');
+
+    await call('open_visible_product', { product_id: '2159919913' });
+    for (const productId of ['bp_2159919913', '2159919913', 2159919913]) {
+      assert.equal(
+        (await call('compare_page_offers', { product_id: productId })).ok,
+        true,
+        String(productId),
+      );
+    }
+    const elsewhere = await call('compare_page_offers', { product_id: 'bp_2160384659' });
+    assert.match(
+      elsewhere.error,
+      /^product_id bp_2160384659 is not the product on this page \(bp_2159919913\)\. Open https:\/\/www\.bestprice\.gr\/item\/2160384659/u,
+    );
+    assert.equal((await call('compare_page_offers', { product_id: 'x1' })).ok, false);
+
+    /* Two offers asked for: the unknown-shipping store is left out, and named rather than dropped. */
+    const two = await call('compare_page_offers', { limit: 2 });
+    assert.equal(two.ranking_basis, 'known_delivered_first_then_item_price');
+    assert.deepEqual(
+      two.offers.map(offer => offer.delivered_price_eur),
+      [802, 808.48],
+    );
+    assert.deepEqual(two.excluded_unknown_shipping, {
+      count: 1,
+      lowest_item_price_eur: 811.02,
+      cheapest: (await call('compare_page_offers', {})).offers[2],
+    });
+  });
+
   it('answers a search with the products the listing then shows, under the same ids', async () => {
     const adapter = createDemoAdapter();
     const search = await adapter.execute('search_bestprice', { query: 'phone', limit: 8 });

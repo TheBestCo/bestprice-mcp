@@ -2,16 +2,16 @@
   "fixtureVersion": 2,
   "what": "The WebMCP tool surface the BestPrice.gr storefront registers, read from the source of truth in the bestprice.gr repository.",
   "sourceOfTruth": "bestprice.gr",
-  "sourceCommit": "5fdf23cee783bbf0e2e63419e40d55b9c78ba503",
+  "sourceCommit": "e0be10690feab299a0c23c3f1503e0cb08bf77f2",
   "contractVersion": "1.8",
   "extractedFrom": [
     {
       "path": "extra/mcpDiscovery/webmcp-tools.json",
-      "sha256": "04f97c425713588e8d2605a3c67ef6188bb2d6cb6658613d4a347882750e5c03"
+      "sha256": "23a57b26039e96777635cdaaec72fb6e9ce3d42eba86cb25a319c19f84eda480"
     },
     {
       "path": "pages/item/webmcp/tools.js",
-      "sha256": "81eec9a8931f1ce2344b14a3418b1e3d03cb0e9af671bf85b5ef22b2f74b9f46"
+      "sha256": "94039ec5d61fe919f53c5c47f248da8c75f66769e8b3257b10de12d54f58a144"
     },
     {
       "path": "pages/search/webmcp/tools.js",
@@ -19,20 +19,20 @@
     },
     {
       "path": "pages/search/webmcp/shared-tools.js",
-      "sha256": "a519bacabee7723e65f4bb6900109b6410a45ed47e5a0fae9a2ab72a0cf80f04"
+      "sha256": "f078a843af2bf2ee6613f8d72780fe5056ad7c8145e081565d920fa721e8de80"
     },
     {
       "path": "js/modules/webmcp/search-tool.js",
-      "sha256": "57badcfd62be750f413f33e4a6c07633e22408560deb8c240f546f880279b9a8"
+      "sha256": "d56b7f0c821723a401facf4e971e60f10fbf04fa71c191421e51dce616bd3a21"
     },
     {
       "path": "js/modules/webmcp/shopping-decision-tool.js",
-      "sha256": "422f69f921e298fad9e0a87db323fe716c5b4bbc57490b01f35471a2e945fcfd"
+      "sha256": "a0f8ba9925f718e0af52be5f18d13bd39cb189cffbe36b3382f0886a660a480a"
     }
   ],
   "extraction": "webmcp/src/contract-parity.js readStorefrontSurface: title, description and output schema from extra/mcpDiscovery/webmcp-tools.json; input schema and annotations from the object literals the page modules register, with module and imported constants resolved",
   "pagesFrom": "tools/scripts/mcp_discovery_json.php webmcp.pages: the manifest the site serves, which the storefront checks against the tools each page registers",
-  "definitionsDigest": "4407d61a3f277cd7a21a369e8378ae5e421dda8918ab58ff7ca8bbbb14c273d7",
+  "definitionsDigest": "d4cb1dfdb6ed4bb8436149dcc33926e6e7bcd32745a92c4fe01766a2c9900c6e",
   "tools": [
     "search_bestprice",
     "get_visible_products",
@@ -239,6 +239,23 @@
                 "maxLength": 300,
                 "description": "What to call next."
               },
+              "next_tools": {
+                "type": "array",
+                "maxItems": 8,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "get_visible_products",
+                    "open_visible_product",
+                    "get_listing_filters",
+                    "apply_listing_filter",
+                    "clear_listing_filters",
+                    "get_listing_sort_options",
+                    "apply_listing_sort"
+                  ]
+                },
+                "description": "Tools the results page registers once the tab has moved there."
+              },
               "note": {
                 "type": "string",
                 "maxLength": 400,
@@ -308,7 +325,7 @@
     },
     "get_visible_products": {
       "title": "Products on this page",
-      "description": "Read the products shown on this BestPrice listing or home page: product_id, title, lowest current price before shipping and store count for each; on the home page each also names its section (e.g. «Προσφορές της ημέρας»). Use it to see what the shopper is looking at before comparing or opening a product. Returns up to 8 per call; follow next_offset for the rest. Read-only.",
+      "description": "Read the products shown on this BestPrice listing or home page. Use it to see what the shopper is looking at before comparing or opening one. Returns up to 8 per call — product_id, title, lowest price before shipping, store count, and on the home page the section; follow next_offset for the rest, and when more_pages is true pass load_more to load the next result page as the shopper’s scroll does. Read-only, except that load_more adds that page to the listing.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -322,7 +339,11 @@
             "type": "integer",
             "minimum": 0,
             "maximum": 9007199254740991,
-            "description": "Use next_offset from the previous result on the same page. Defaults to 0."
+            "description": "Use next_offset from the previous result on the same page. Defaults to 0, or with load_more to the first newly loaded product."
+          },
+          "load_more": {
+            "type": "boolean",
+            "description": "Listing pages: first load the next result page into this listing, as the shopper’s scroll does, then read from its first new product. Use it when more_pages is true."
           }
         },
         "additionalProperties": false
@@ -359,6 +380,23 @@
                 "minimum": 0,
                 "maximum": 9007199254740991,
                 "description": "Readable product cards on this page."
+              },
+              "result_pages_loaded": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991,
+                "description": "Result pages this listing has loaded into its grid so far."
+              },
+              "result_pages_total": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991,
+                "description": "Result pages this listing has in all."
+              },
+              "more_pages": {
+                "type": "boolean",
+                "const": true,
+                "description": "More result pages exist than are loaded; call get_visible_products with load_more: true to load and read the next one."
               },
               "returned": {
                 "type": "integer",
@@ -1252,7 +1290,7 @@
     },
     "get_page_product": {
       "title": "Product details on this page",
-      "description": "Read the product on this BestPrice item page. Use it first on a product page to know what the shopper is viewing. Returns product_id, title, category, lowest current price before shipping, number of store offers, rating and the BestPrice URL. Read-only.",
+      "description": "Read the product on this BestPrice item page. Use it first on a product page to know what the shopper is viewing. Returns product_id, title, category, the lowest current item price (before shipping; compare_page_offers gives delivered prices), number of store offers, rating and the BestPrice URL. Read-only.",
       "inputSchema": {
         "type": "object",
         "properties": {},
@@ -1296,7 +1334,7 @@
                 "type": ["number", "null"],
                 "minimum": 0,
                 "maximum": 10000000,
-                "description": "Lowest current item price, before shipping; null when not shown."
+                "description": "Lowest current item price among the stores, before shipping (its store may not state shipping); compare_page_offers gives delivered prices. null when not shown."
               },
               "offer_count": {
                 "type": "integer",
@@ -1364,7 +1402,7 @@
     },
     "compare_page_offers": {
       "title": "Compare offers on this page",
-      "description": "Compare the store offers on this BestPrice item page by delivered price (item + shipping). Use it when the shopper asks where to buy or what it costs delivered. Returns up to four offers with item price, shipping, delivered price, availability and store rating, each with an offer_ref for show_offer; stores_considered of stores_total says how many stores were ranked, and completeness partial means more are behind «Όλες οι τιμές», which include_all_stores loads as the shopper’s button does. Read-only; opens no store link.",
+      "description": "Compare the store offers on this BestPrice item page. Use it when the shopper asks where to buy or what it costs delivered. Returns up to four offers, known delivered price (item + shipping) first, with variant title, prices, availability, store rating and an offer_ref for show_offer; excluded_unknown_shipping names the cheapest unknown-shipping offer left out; include_all_stores loads the stores behind «Όλες οι τιμές». Read-only; opens no store link.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -1372,11 +1410,16 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 4,
-            "description": "Number of lowest-delivered-price offers to return, from 1 to 4."
+            "description": "Number of offers to return, from 1 to 4: lowest known delivered price first, then offers with unknown shipping by item price."
           },
           "include_all_stores": {
             "type": "boolean",
             "description": "First load the stores this page keeps behind «Όλες οι τιμές», as when the shopper presses it. Defaults to false."
+          },
+          "product_id": {
+            "type": "string",
+            "pattern": "^(?:bp_)?(\\d{1,20})$",
+            "description": "Optional: the product on this page, as bp_<id> (as the BestPrice MCP server names it) or its numeric id. Another product is refused with where to find it."
           }
         },
         "additionalProperties": false
@@ -1445,6 +1488,11 @@
                 "type": "string",
                 "const": "item_plus_shipping"
               },
+              "ranking_basis": {
+                "type": "string",
+                "const": "known_delivered_first_then_item_price",
+                "description": "Offers with known shipping come first, lowest delivered price (item + shipping) first; offers with unknown shipping follow, lowest item price first. Unknown shipping is never treated as free."
+              },
               "payment_cost_status": {
                 "type": "string",
                 "const": "not_included"
@@ -1462,8 +1510,8 @@
                     },
                     "product": {
                       "type": "string",
-                      "maxLength": 120,
-                      "description": "The offer’s own product title; it can name a variant."
+                      "maxLength": 160,
+                      "description": "The offer’s own product title, in full up to 160 characters; it can name a variant."
                     },
                     "item_price_eur": {
                       "type": "number",
@@ -1489,8 +1537,9 @@
                     },
                     "merchant_rating": {
                       "type": ["number", "null"],
-                      "minimum": 0,
-                      "maximum": 5
+                      "minimum": 1,
+                      "maximum": 5,
+                      "description": "Store rating from 1 to 5; null when the store is not rated."
                     },
                     "certified": {
                       "type": "boolean"
@@ -1533,6 +1582,112 @@
                   "additionalProperties": false
                 }
               },
+              "excluded_unknown_shipping": {
+                "type": "object",
+                "description": "Present when the ranking left out offers whose shipping is unknown: the cheapest of them by item price, with its offer_ref, so the lowest item price is never silently dropped.",
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9007199254740991,
+                    "description": "Offers with unknown shipping that this answer did not return."
+                  },
+                  "lowest_item_price_eur": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10000000,
+                    "description": "The lowest item price among them, before shipping."
+                  },
+                  "may_be_cheapest": {
+                    "type": "boolean",
+                    "const": true,
+                    "description": "Its item price alone is below the cheapest delivered price returned."
+                  },
+                  "cheapest": {
+                    "type": "object",
+                    "properties": {
+                      "merchant": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "description": "Store name (display text)."
+                      },
+                      "product": {
+                        "type": "string",
+                        "maxLength": 160,
+                        "description": "The offer’s own product title, in full up to 160 characters; it can name a variant."
+                      },
+                      "item_price_eur": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 10000000,
+                        "description": "Item price, before shipping."
+                      },
+                      "shipping_eur": {
+                        "type": ["number", "null"],
+                        "minimum": 0,
+                        "maximum": 10000000,
+                        "description": "Shipping; null means unknown, never free."
+                      },
+                      "delivered_price_eur": {
+                        "type": ["number", "null"],
+                        "minimum": 0,
+                        "maximum": 10000000,
+                        "description": "Item price plus shipping; null when shipping is unknown."
+                      },
+                      "availability": {
+                        "type": "string",
+                        "maxLength": 120
+                      },
+                      "merchant_rating": {
+                        "type": ["number", "null"],
+                        "minimum": 1,
+                        "maximum": 5,
+                        "description": "Store rating from 1 to 5; null when the store is not rated."
+                      },
+                      "certified": {
+                        "type": "boolean"
+                      },
+                      "sponsored": {
+                        "type": "boolean"
+                      },
+                      "offer_ref": {
+                        "type": ["string", "null"],
+                        "maxLength": 40,
+                        "description": "Exact page-local selector for show_offer; valid while this quote is unchanged."
+                      },
+                      "unpriced_rows": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991,
+                        "description": "Rows of this store that carry no usable price."
+                      },
+                      "product_truncated": {
+                        "type": "boolean",
+                        "const": true
+                      },
+                      "merchant_truncated": {
+                        "type": "boolean",
+                        "const": true
+                      }
+                    },
+                    "required": [
+                      "merchant",
+                      "product",
+                      "item_price_eur",
+                      "shipping_eur",
+                      "delivered_price_eur",
+                      "availability",
+                      "merchant_rating",
+                      "certified",
+                      "sponsored",
+                      "offer_ref"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": ["count", "lowest_item_price_eur", "cheapest"],
+                "additionalProperties": false
+              },
               "note": {
                 "type": "string",
                 "maxLength": 400,
@@ -1547,6 +1702,7 @@
               "stores_total",
               "stores_considered",
               "price_basis",
+              "ranking_basis",
               "payment_cost_status",
               "offers"
             ],
@@ -1581,7 +1737,7 @@
     },
     "get_product_specifications": {
       "title": "Product specifications",
-      "description": "Read the technical specifications of the product on this BestPrice item page, optionally one section (e.g. Οθόνη) or one fact by name. Use it to check a feature or compare models. Returns section, name and value rows, up to 16 per call; follow next_offset for more, and ask for a fact by name to read a shortened value in full. Read-only.",
+      "description": "Read the technical specifications of the product on this BestPrice item page, optionally one section (e.g. Οθόνη) or one fact by name, Greek or common English (e.g. refresh rate). Use it to check a feature or compare models. Returns section, name and value rows, up to 16 per call; follow next_offset for more, and ask for a fact by name to read a shortened value in full. Read-only.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -1601,7 +1757,7 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 72,
-            "description": "A specification fact name, such as one a previous call returned. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section."
+            "description": "A specification fact name, such as one a previous call returned, or a common English name (refresh rate, screen size, weight, energy class…) matched to the product’s own Greek one. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section."
           },
           "offset": {
             "type": "integer",
@@ -1842,7 +1998,7 @@
                 "type": ["number", "null"],
                 "minimum": 0,
                 "maximum": 10000000,
-                "description": "Current lowest item price."
+                "description": "Current lowest item price, before shipping."
               },
               "current_price_source": {
                 "type": "string",
@@ -2033,8 +2189,8 @@
                   },
                   "product": {
                     "type": "string",
-                    "maxLength": 120,
-                    "description": "The offer’s own product title; it can name a variant."
+                    "maxLength": 160,
+                    "description": "The offer’s own product title, in full up to 160 characters; it can name a variant."
                   },
                   "item_price_eur": {
                     "type": "number",
@@ -2060,8 +2216,9 @@
                   },
                   "merchant_rating": {
                     "type": ["number", "null"],
-                    "minimum": 0,
-                    "maximum": 5
+                    "minimum": 1,
+                    "maximum": 5,
+                    "description": "Store rating from 1 to 5; null when the store is not rated."
                   },
                   "certified": {
                     "type": "boolean"
@@ -2214,7 +2371,7 @@
     },
     "get_shopping_decision": {
       "title": "Get a shopping decision",
-      "description": "Ask the BestPrice Shopping Brain what to buy: pass the shopper’s question as written (need, budget, must-have features; Greek or English) and optionally their Greek postcode. Use it on any BestPrice page when the shopper wants a recommendation, a comparison or advice rather than one product’s details. Returns the outcome (recommendation, comparison, basket, clarification, no_match or answer), the recommended product with its lowest price before shipping and BestPrice link, up to three alternatives, reasons, tradeoffs, unknowns, and a clarifying question when needed. Read-only: the question goes to mcp.bestprice.gr; nothing is bought and the tab does not move.",
+      "description": "Ask the BestPrice Shopping Brain what to buy. Use it on any BestPrice page when the shopper wants a recommendation or comparison: pass their question as written (need, budget, must-haves; Greek or English) and optionally a Greek postcode. Returns the outcome, the recommended product with its price before shipping and BestPrice link, up to three alternatives, reasons, tradeoffs, unknowns, or a clarifying question. Read-only: the question goes to mcp.bestprice.gr; the tab does not move.",
       "inputSchema": {
         "type": "object",
         "properties": {
