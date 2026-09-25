@@ -7,6 +7,28 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.4.2] - 2026-09-25
+
+WebMCP contract 1.9 as the storefront revised it again (bestprice.gr `21bce127ae`; registration revision
+2026-09-25.8). The contract version and the 16 tools are unchanged.
+
+### Changed
+
+- **`get_product_details` is on the item page too**: the product page registers 9 tools, the details tool right
+  after `search_bestprice`, with its own wording there (`pageDescriptions.product`).
+- **Tools answer before the tab moves.** Every tool that moves or reloads the tab answers first — `outcome:
+  'dispatched'`, `destination_url` or `bestprice_url`, and the `next_tools` the destination registers — and the
+  navigation starts just after. `search_bestprice` says `results_kind: 'product'` when a search lands on one
+  model's own page; `get_product_details` answers within its deadline with the sections it could read (the rest
+  `null`, with why), still opens the product with `navigate: true` when the read failed, and summarizes an
+  excluded unknown-shipping offer as `cheapest_merchant`. The output schemas are leaner.
+- **The demo** does all of it: its navigation tools answer before its page changes, a search for one model's full
+  name lands on that product, and `get_product_details` time-boxes each section (with injectable `readPage`,
+  `readSection` and `sectionTimeoutMs`) — within the published output schemas.
+- **No new dataset**: the revision changes no argument rule and no required result property, and
+  `get_product_details` was already an admitted read everywhere; 11.0.0 stays current (recorded in
+  `webmcp/evals/QUALIFICATION.md`).
+
 ## [1.4.1] - 2026-09-25
 
 WebMCP contract 1.9 as the storefront revised it the same day (bestprice.gr `971aa25d79`, `b550a849e8`;
@@ -366,7 +388,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.1...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.2...HEAD
+[1.4.2]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.8...v1.3.0
