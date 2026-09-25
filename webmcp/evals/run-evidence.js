@@ -343,7 +343,7 @@ export function resolveEvidencePath(artifactRoot, evidence) {
  * identity. One file may hold several separately identified executions (a session trace, say), so
  * sharing a file is allowed; sharing an *execution* under a new runId is not.
  */
-function checkArtifact(record, { artifactRoot, seenExecutions, legacyRunIds }) {
+function checkArtifact(record, { artifactRoot, seenExecutions }) {
   if (!artifactRoot) return null;
   let bytes;
   try {
