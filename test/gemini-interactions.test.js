@@ -3,12 +3,7 @@ import { describe, it } from 'node:test';
 
 import { buildInteractionsPayload, validatePayloadEnvelope } from '../examples/gemini-interactions.mjs';
 
-const EXPECTED_TOOLS = [
-  'get_shopping_decision',
-  'search_products',
-  'compare_offers',
-  'get_price_history',
-];
+const EXPECTED_TOOLS = ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'];
 
 describe('Gemini Interactions MCP envelope', () => {
   it('keeps the auto allowlist on all four public BestPrice tools', () => {
