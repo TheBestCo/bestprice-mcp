@@ -7,6 +7,33 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-09-25
+
+WebMCP contract 1.9 as the storefront revised it the same day (bestprice.gr `971aa25d79`, `b550a849e8`;
+registration revision 2026-09-25.7). The contract version and the 16 tools are unchanged.
+
+### Changed
+
+- **`search_bestprice` narrows by price, stock, deals and order**: optional `min_price_eur`, `max_price_eur`,
+  `sort` (`relevance`, `price_asc`, `price_desc`, `biggest_price_drop`, `most_stores`, `newest`),
+  `in_stock_only` and `deals_only`; the result reports each requested constraint as `applied` or `not_applied`,
+  with why.
+- **One product id form everywhere, digits only** (`^\d{1,20}$`): `compare_page_offers`, `get_product_details`
+  and `open_visible_product` share one schema, and the MCP server's `bp_<id>` is refused with the digits to send.
+- **`get_product_details` can open the product** (`navigate`), so it is annotated as a navigation, not a read.
+- **Descriptions** follow the storefront's one scannable shape, at most 250 characters, and name only tools
+  their page registers: the item page registers its own wording for `search_bestprice` and
+  `get_shopping_decision` (`TOOL_DEFINITIONS[name].pageDescriptions`, registered by `createTools`). Input field
+  wording follows the storefront's.
+- **Dataset 11.0.0** is the default evaluation set: 10.0.0 with argument rules regenerated from the revision.
+  `get_product_details` stays an admitted extra read only as a read (`navigate: false`); the grader now checks
+  number arguments. 10.0.0 is frozen with its first-1.9 argument rules recorded; `runs.v11.json` starts empty.
+- The demo implements the constraints (its results page offers the two orders its listing renders, and reports
+  the others `not_offered`), the single id form and `navigate`, within the published output schemas, and passes
+  11.0.0 with the same 6 refusals as before.
+- Parity and the release conformance check cover each page's own wording (`pages[].descriptions`); the
+  storefront reader resolves constants imported through the bundler's aliases and re-exports.
+
 ## [1.4.0] - 2026-09-25
 
 WebMCP contract 1.9, as the BestPrice.gr storefront registers it (bestprice.gr `b43f47d55b`, after `867fcffe5a`).
@@ -339,7 +366,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.1...HEAD
+[1.4.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.8...v1.3.0
 [1.2.8]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.7...v1.2.8
