@@ -41,3 +41,37 @@ The canonical Skill materially improved exact tool routing and positive activati
 - Skill usage: 420 API turns, 1,609,110 input tokens, 76,523 output tokens.
 
 The workflow artifact contains the raw per-case records and scorer output. It is retained separately from this repository because it is generated measurement evidence, not a shipped runtime contract.
+
+## Follow-up frozen run — 2026-09-25
+
+After the residual-error review, routing guidance was tightened in a benchmark-blind way: completed shopping decisions and lookup-only searches are terminal for their original intent, while explicit offer/history requests may continue. The 186-case corpus itself was unchanged.
+
+| Metric | Tools only | Canonical Skill | Delta |
+| --- | ---: | ---: | ---: |
+| Coverage | 186/186 (100%) | 186/186 (100%) | — |
+| Activation accuracy | 182/186 (97.85%) | 183/186 (98.39%) | +0.54 pp |
+| Positive activation recall | 143/146 (97.95%) | 143/146 (97.95%) | 0 pp |
+| False activation | 1/40 (2.5%) | 0/40 (0%) | **-2.5 pp** |
+| Exact route, all cases | 142/186 (76.34%) | 157/186 (84.41%) | **+8.06 pp** |
+| Exact route, positive cases | 103/146 (70.55%) | 117/146 (80.14%) | **+9.59 pp** |
+| Negative tool leakage | 1/40 (2.5%) | 0/40 (0%) | **-2.5 pp** |
+| Latency p50 | 5,105 ms | 4,829 ms | -276 ms |
+| Latency p95 | 10,220 ms | 9,104 ms | -1,116 ms |
+
+Relative to the previous Skill run, exact positive routing moved from 112/146 (76.71%) to 117/146 (80.14%), exact routing over all cases moved from 151/186 (81.18%) to 157/186 (84.41%), and the previous nicotine-vape false activation disappeared. The fresh Skill residual is 29 positive cases: 22 completed decision routes followed by redundant search calls, 6 multi-step offer/history routes that stopped early, and 1 history route that searched again instead of calling history. By language, the residual is 15 Greek and 14 English cases.
+
+This follow-up is evidence that the general terminal-routing change is directionally useful, not proof that every case transition was caused by it. Across the two Skill runs, 35 individual case traces changed: 17 previously failing cases became exact, 11 previously exact cases became non-exact, and 7 failures changed shape while remaining failures. That run-to-run movement is why no second case-targeted wording change was made from this result alone.
+
+### Follow-up provenance
+
+- Benchmark revision: `8ed03b883952f8073e0cf39fe1a5b40950b77b7b`
+- Corpus SHA-256: `62d9a0422b8c9ac4f130dd7e68ed452303ae3eaa0dbb294667ef86c3175d38fd`
+- Tool-contract SHA-256: `aa238eb4eb12ba57f89c48052fef4aa3f878c52376360895680c1fc6cea52799`
+- Skill SHA-256: `76db775cf9ad517c6ec1464756265a79d22bb7f3b88108fa63d0ee4bc3bd2503`
+- GitHub Actions run: `TheBestCo/bp-backend-node#36092530111`
+- Artifact digest: `sha256:a9e2964a1b8525610530b9d89be841844268c3eba49bad33e67c5145c506c1b7`
+- Tools-only usage: 435 API turns, 1,463,274 input tokens, 81,028 output tokens.
+- Skill usage: 410 API turns, 1,633,200 input tokens, 76,599 output tokens.
+
+The same caveat applies: this measures model-level routing once BestPrice is already exposed to Claude. It does not measure directory discovery, installation, ranking, or unconfigured-chat discovery.
+
