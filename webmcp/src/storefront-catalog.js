@@ -3,17 +3,17 @@
  *
  * The title, description (and any page type's own wording), input schema and output schema of every
  * BestPrice WebMCP tool, as the storefront registers them: bestprice.gr `extra/mcpDiscovery/webmcp-tools.json` (its generated copy of
- * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 8e13c733ab, WebMCP
- * contract 2.1. `contracts.js` publishes them as they are, and
+ * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 8d040a161a, WebMCP
+ * contract 2.2. `contracts.js` publishes them as they are, and
  * `webmcp/test/contract-parity.test.js` compares every published definition with the snapshot.
  */
 
-export const WEBMCP_CONTRACT_VERSION = '2.1';
+export const WEBMCP_CONTRACT_VERSION = '2.2';
 
 export const STOREFRONT_CATALOG = {
   search_bestprice: {
     title: 'Search BestPrice products',
-    description: 'Searches BestPrice’s whole catalog and returns matching products; changes nothing.',
+    description: 'Finds products by name, brand, model or category in BestPrice’s catalog; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -21,7 +21,7 @@ export const STOREFRONT_CATALOG = {
           type: 'string',
           minLength: 2,
           maxLength: 120,
-          description: 'Product, brand, model, or shopping need to search for, in Greek or English.',
+          description: 'A product name, brand, model or category, in Greek or English.',
         },
         limit: {
           type: 'integer',
@@ -232,44 +232,18 @@ export const STOREFRONT_CATALOG = {
   },
   open_search_results: {
     title: 'Open search results',
-    description: 'Opens BestPrice’s search results page for a query in this tab.',
+    description: 'Opens a search’s results_url in this tab, so the shopper sees those results.',
     inputSchema: {
       type: 'object',
       properties: {
-        query: {
+        results_url: {
           type: 'string',
-          minLength: 2,
-          maxLength: 120,
-          description: 'Product, brand, model, or shopping need to search for, in Greek or English.',
-        },
-        min_price_eur: {
-          type: 'number',
-          minimum: 0,
-          maximum: 10000000,
-          description: 'Only products from this price in euros (item price before shipping).',
-        },
-        max_price_eur: {
-          type: 'number',
-          minimum: 0.01,
-          maximum: 10000000,
-          description: 'Only products up to this price in euros (item price before shipping).',
-        },
-        sort: {
-          type: 'string',
-          enum: ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'],
-          description:
-            'Result order. relevance is the default; newest, biggest_price_drop and most_stores only where offered.',
-        },
-        in_stock_only: {
-          type: 'boolean',
-          description: 'Only products a store has in stock now. Defaults to false.',
-        },
-        deals_only: {
-          type: 'boolean',
-          description: 'Only products priced below their earlier price. Defaults to false.',
+          minLength: 1,
+          maxLength: 2048,
+          description: 'A results_url exactly as a search returned it.',
         },
       },
-      required: ['query'],
+      required: ['results_url'],
       additionalProperties: false,
     },
     outputSchema: {
@@ -288,9 +262,6 @@ export const STOREFRONT_CATALOG = {
               description:
                 'confirmed: results_url was read before the tab moved there. dispatched: it moves there unread.',
             },
-            query: {
-              type: 'string',
-            },
             results_url: {
               type: 'string',
               description: 'Where the tab moves, after this answer.',
@@ -302,67 +273,6 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
               enum: ['listing', 'featured', 'product', 'none'],
               description: 'featured: a category’s highlighted rows. product: one product’s own page.',
-            },
-            applied: {
-              type: 'object',
-              properties: {
-                min_price_eur: {
-                  type: 'number',
-                },
-                max_price_eur: {
-                  type: 'number',
-                },
-                sort: {
-                  type: 'string',
-                  enum: [
-                    'relevance',
-                    'price_asc',
-                    'price_desc',
-                    'biggest_price_drop',
-                    'most_stores',
-                    'newest',
-                  ],
-                },
-                in_stock_only: {
-                  type: 'boolean',
-                },
-                deals_only: {
-                  type: 'boolean',
-                },
-              },
-            },
-            not_applied: {
-              type: 'array',
-              items: {
-                type: 'object',
-                properties: {
-                  constraint: {
-                    type: 'string',
-                    enum: ['min_price_eur', 'max_price_eur', 'sort', 'in_stock_only', 'deals_only'],
-                  },
-                  reason: {
-                    type: 'string',
-                    enum: ['not_offered', 'not_kept', 'no_product_list', 'no_products', 'page_unreadable'],
-                    description:
-                      'not_offered: see offered_sorts. no_product_list: an overview or product page. page_unreadable: unnarrowed.',
-                  },
-                  offered_sorts: {
-                    type: 'array',
-                    items: {
-                      type: 'string',
-                      enum: [
-                        'relevance',
-                        'price_asc',
-                        'price_desc',
-                        'biggest_price_drop',
-                        'most_stores',
-                        'newest',
-                      ],
-                    },
-                  },
-                },
-                required: ['constraint', 'reason'],
-              },
             },
             unconfirmed_reason: {
               type: 'string',
@@ -384,7 +294,7 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
             },
           },
-          required: ['ok', 'outcome', 'query', 'results_url', 'next_step'],
+          required: ['ok', 'outcome', 'results_url', 'next_step'],
         },
         {
           type: 'object',
@@ -399,7 +309,7 @@ export const STOREFRONT_CATALOG = {
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'When given, one of: invalid_argument, cancelled.',
+              description: 'When given, one of: invalid_argument, store_offer, cancelled.',
             },
           },
           required: ['ok', 'error'],
@@ -1991,7 +1901,7 @@ export const STOREFRONT_CATALOG = {
   get_shopping_decision: {
     title: 'Get a shopping decision',
     description:
-      'Recommends what to buy for a shopper’s need, with alternatives and reasons; changes nothing.',
+      'Recommends what to buy for a described need or budget, with alternatives and reasons; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -2000,7 +1910,7 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 2000,
           description:
-            'The shopper’s question as asked, with budget and must-have features, e.g. phone under 400€ with NFC.',
+            'The shopper’s need in their own words, with budget and must-haves, e.g. phone under 400€ with NFC.',
         },
         postal_code: {
           type: 'string',

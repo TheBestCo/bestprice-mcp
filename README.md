@@ -182,9 +182,9 @@ Queries work in Greek or English. Result summaries, catalog data and merchant na
 
 ## Browser-native WebMCP
 
-BestPrice pages register 15 contextual WebMCP tools (contract 2.1) in compatible browsers — each one
+BestPrice pages register 15 contextual WebMCP tools (contract 2.2) in compatible browsers — each one
 reads or acts, never both — covering search with structured results (narrowed by price, stock, deals and
-order) and showing those results in the tab, the visible products and loading more, filters and sorting,
+order) and opening the results page a search returned in the tab, the visible products and loading more, filters and sorting,
 opening any product by id (read before the tab moves), product facts, offers, specifications and price
 history (with its chart), one visible-offer action, and the BestPrice Shopping Brain — on every public
 page, articles and stores included — while leaving the merchant choice to the shopper. Every tool publishes an input and an output

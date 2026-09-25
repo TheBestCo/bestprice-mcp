@@ -22,7 +22,7 @@ let refreshQueued = false;
 /** Safe sample arguments for the "Run" buttons in the inspector. */
 const samples = snapshot => ({
   search_bestprice: { query: 'phone', limit: 3 },
-  open_search_results: { query: 'phone', max_price_eur: 800 },
+  open_search_results: { results_url: 'https://www.bestprice.gr/search?q=phone&price_max=800' },
   get_visible_products: { limit: 3 },
   load_more_products: {},
   open_product: { product_id: snapshot.homeProducts[1]?.product_id ?? '0' },
@@ -97,8 +97,10 @@ const renderHome = snapshot => {
     <div class="products">${productRows(snapshot.homeProducts)}</div>`;
   shop.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
-    /* Contract 2.1: the search that shows its results in this tab. */
-    runTool('open_search_results', { query: new FormData(event.currentTarget).get('query') });
+    /* Contract 2.2: search, then open the results_url it returned in this tab. */
+    runTool('open_search_results', {
+      results_url: `https://www.bestprice.gr/search?q=${encodeURIComponent(new FormData(event.currentTarget).get('query'))}`,
+    });
   });
   bindOpenButtons();
 };

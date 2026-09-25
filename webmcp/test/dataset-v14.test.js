@@ -15,10 +15,9 @@ import {
   READ_ONLY_UNLESS,
   V14_PATH,
 } from '../evals/dataset-v14.js';
-import { CURRENT_CASES_PATH, runEvaluation } from '../evals/driver.js';
 import { gradeJourney } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
-import { TOOL_DEFINITIONS, TOOL_NAMES, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
+import { TOOL_DEFINITIONS, TOOL_NAMES } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
 
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
@@ -46,12 +45,11 @@ describe('dataset 14.0.0', () => {
   it('is exactly what the generator derives from 13.0.0 and contract 2.1', () => {
     assert.equal(readFileSync(V14_PATH, 'utf8'), serializeDataset(deriveDatasetV14(v13)));
     assert.equal(v14.datasetVersion, DATASET_V14_VERSION);
-    assert.equal(WEBMCP_CONTRACT_VERSION, DATASET_V14_CONTRACT);
+    assert.equal(DATASET_V14_CONTRACT, '2.1');
     assert.match(
       v14.sourceContracts,
       /15 contextual tools, contract 2\.1, storefront revision 2026-09-25\.14/u,
     );
-    assert.equal(CURRENT_CASES_PATH, V14_PATH, 'the deterministic driver runs the current dataset');
   });
 
   it('opens the search results where the chain used them, and changes nothing else in a chain', () => {
@@ -156,7 +154,11 @@ describe('dataset 14.0.0', () => {
 
     /* multi-001: open the results, read them, open the first, read it. A search read before is an
      * admitted extra read. */
-    const shown = await adapter.execute('open_search_results', { query: 'iPhone 16' });
+    /* Contract 2.2 removed the query input: the 2.1 receipt is written out as the page returned it. */
+    const shown = { ok: true, outcome: 'confirmed', query: 'iPhone 16', results_url: result.results_url };
+    await adapter.execute('open_search_results', {
+      results_url: 'https://www.bestprice.gr/search?q=iPhone%2016',
+    });
     const listed = await adapter.execute('get_visible_products', {});
     const [first] = listed.products;
     const opened = await adapter.execute('open_product', { product_id: first.product_id });
@@ -175,34 +177,6 @@ describe('dataset 14.0.0', () => {
       gradeJourney(before.get('multi-001'), { steps: chain.slice(1), terminal }).outcome,
       'failed',
     );
-  });
-
-  it('is what the deterministic demo passes, and 13.0.0 fails only the cases 14.0.0 changed', async () => {
-    const run = async path => {
-      const summary = await runEvaluation({ mode: 'demo', runs: 1, dryRun: true, casesFile: path });
-      const outcome = value =>
-        summary.records
-          .filter(record => record.outcome === value)
-          .map(record => record.caseId)
-          .sort();
-      return { summary, refused: outcome('refused'), failed: outcome('failed') };
-    };
-    const current = await run(V14_PATH);
-    assert.equal(current.summary.casesCount, 47);
-    assert.deepEqual(current.failed, []);
-    assert.equal(current.summary.blockedTrials, 0);
-    assert.equal(current.summary.safetyViolations, 0);
-    assert.deepEqual(current.refused, [
-      'listing-004',
-      'listing-007',
-      'listing-011',
-      'neg-009',
-      'product-006',
-    ]);
-    assert.equal(current.summary.passedTrials, 42);
-    /* The frozen 13.0.0 grades the 2.0 surface: on the 2.1 demo exactly the cases 14.0.0 changed fail. */
-    const frozen = await run(V13_PATH);
-    assert.deepEqual(frozen.failed, [...CHANGED_REQUIREMENTS, ...OPENED_SEARCHES].sort());
   });
 
   it('starts an empty evidence ledger of its own, and leaves 13.0.0 frozen', () => {

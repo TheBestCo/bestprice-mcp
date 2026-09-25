@@ -1,5 +1,5 @@
 /**
- * WebMCP tool contracts for BestPrice pages (contract 2.1).
+ * WebMCP tool contracts for BestPrice pages (contract 2.2).
  *
  * Each contract is a plain description (name, title, description, annotations, JSON Schema input and
  * output). `createTools` binds the contracts a page exposes to an `execute` function supplied by the
@@ -81,10 +81,11 @@ const FETCHED_READ = {
  * sort options, replacing get_listing_sort_options; summarize_price_history's `show_chart` replaces
  * show_price_history. Contract 2.1 (2026-09-25) splits every tool that both read and acted: search reads
  * and open_search_results moves the tab (15 tools); get_visible_products reads and load_more_products
- * loads; open_product and the listing actions answer with a receipt.
+ * loads; open_product and the listing actions answer with a receipt. Contract 2.2 has open_search_results
+ * open the results_url a search returned (its one input), as open_product opens a product_id.
  */
 const DEFINITIONS = [
-  /* Contract 2.1: search reads only; open_search_results shows the same results in this tab. */
+  /* Contract 2.1: search reads only; since 2.2 open_search_results opens the results_url it returned. */
   { name: 'search_bestprice', annotations: SEARCH_READ },
   { name: 'open_search_results', annotations: NAVIGATION },
   /* Contract 2.1: reading the cards and loading the next result page are two tools. */

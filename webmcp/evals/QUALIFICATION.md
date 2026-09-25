@@ -785,3 +785,30 @@ receipts with `unchanged`, and the storefront's handling of a legacy `navigate` 
 (refused, naming `load_more_products`) — and passes 14.0.0 with 42 passed and 5 refusals (`listing-004`,
 `listing-007`, `listing-011`, `product-006`, `neg-009`), no failure, no blocked run and no safety violation.
 Run on the same demo, the frozen 13.0.0 fails exactly the nine cases 14.0.0 changed (`dataset-v14.test.js`).
+
+## Dataset 15.0.0 grades contract 2.2
+
+Contract 2.2 (bestprice.gr `8d040a161a`) answers the one overlap webmcp.com's rescan of 2.1 still named
+between reading and acting: `open_search_results` took the same query and constraints as
+`search_bestprice`. It now takes exactly one input, `results_url` — the address a search returned, which
+carries its constraints — as `open_product` takes the `product_id` a search returned; it refuses another
+site, a page that is not a results page and a single store's `/item/` link. Its receipt drops `query`,
+`applied` and `not_applied`. The rest — `search_bestprice`'s query described as a product name, brand,
+model or category, and `get_shopping_decision`'s message as a described need or budget — changes no
+grading.
+
+Dataset 15.0.0 (`dataset-v15.js`, `natural-language-cases.v15.json`, `runs.v15.json`, empty) is 14.0.0 with
+the two chains that open search results (multi-001, multi-002) searching first: `search_bestprice` precedes
+`open_search_results`, which opens the `results_url` it returned. The search was already an admitted extra
+read; in the chain it is required, so opening results nothing returned fails. Their criteria say so, and
+argument rules are regenerated (open_search_results: `results_url` only). No case required the dropped
+receipt fields. Everything else is 14.0.0's, which is frozen with the argument rules it was generated with
+recorded in `dataset-v14.js`.
+
+It is the default of `native-run.mjs`, `run-evidence.js` and the deterministic driver, whose multi-001 and
+multi-002 plans now search and then open exactly the address the demo's search returns. The demo implements
+2.2 — search results addresses that carry their applied constraints, `open_search_results` over search,
+category, brand, hub and product addresses with the storefront's refusals and its `dispatched` fallback —
+and passes 15.0.0 with 42 passed and 5 refusals (`listing-004`, `listing-007`, `listing-011`,
+`product-006`, `neg-009`), no failure, no blocked run and no safety violation. Run on the same demo, the
+frozen 14.0.0 fails exactly multi-001 and multi-002 (`dataset-v15.test.js`).

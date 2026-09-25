@@ -240,18 +240,47 @@ const SEARCH_NEXT_STEPS = {
   product:
     'The search matched one product and the tab did not move: open_product opens its page by product_id.',
   listing:
-    'The tab did not move: open_product opens any of these by product_id, and open_search_results shows these results in this tab.',
+    'The tab did not move: open_product opens any of these by product_id, and open_search_results opens results_url in this tab.',
+  /* open_search_results (contract 2.2), by what the page it opens shows. */
   openedProduct:
-    'The search matched one product and the tab is moving to its page: there, get_page_product reads it and compare_page_offers ranks its stores.',
-  opened: 'The tab is moving to these results: get_visible_products there reads their products.',
-  openedUnread:
-    'The tab is moving to the plain search page, unread: call get_visible_products there once it loads.',
+    'The tab is moving to this product’s page: there, get_page_product reads it and compare_page_offers ranks its stores.',
+  openedListing:
+    'The tab is moving to these results: get_visible_products there reads their products, and get_listing_filters its filters and sort options.',
+  openedNone: 'The tab is moving to a results page that shows no products.',
+  openedUnread: 'The tab is moving to results_url, unread: call get_visible_products there once it loads.',
 };
 /* A constraint the results page did not apply is said so, never passed over. */
 const withNotApplied = (step, notApplied, there = '') =>
   notApplied.length ? `${step} Not applied: what not_applied lists${there}.` : step;
-const SEARCH_UNREAD_NOTE =
-  'The results page could not be read first; get_visible_products there reads it once it loads.';
+/* open_search_results (contract 2.2) opens a results address a search returned — this origin's search,
+ * category, brand, hub or product pages only, and never a single-store offer's /item/ link. */
+const ORIGIN = 'https://www.bestprice.gr';
+const RESULTS_PATH = /^\/(?:search\/?$|(?:cat|b|hub|item)\/)/u;
+const PRODUCT_PATH = /^\/item\/(\d{1,20})(?:\/|$)/u;
+const RESULTS_URL_MAX_LENGTH = 2048;
+const RESULTS_URL_ERROR = 'results_url must be a BestPrice results address, exactly as a search returned it.';
+const readResultsUrl = value => {
+  if (typeof value !== 'string' || !value.trim() || value.length > RESULTS_URL_MAX_LENGTH) {
+    return { error: RESULTS_URL_ERROR, reason: 'invalid_argument' };
+  }
+  let url;
+  try {
+    url = new URL(value.trim(), ORIGIN);
+  } catch {
+    return { error: RESULTS_URL_ERROR, reason: 'invalid_argument' };
+  }
+  if (url.origin !== ORIGIN || !RESULTS_PATH.test(url.pathname)) {
+    return { error: RESULTS_URL_ERROR, reason: 'invalid_argument' };
+  }
+  const productId = PRODUCT_PATH.exec(url.pathname)?.[1];
+  if (productId && Number(productId) < CLUSTER_ID_OFFSET) {
+    return {
+      reason: 'store_offer',
+      error: `Product ${productId} is a single-store offer: its link goes straight to that store’s site, which page tools never open.`,
+    };
+  }
+  return { url, productId };
+};
 /* search_bestprice's `navigate` (contract 2.0) is tolerated and ignored, as on the storefront. */
 const LEGACY_ARGUMENTS = Object.freeze({ search_bestprice: Object.freeze(['navigate']) });
 
@@ -346,11 +375,37 @@ export const CONFIRMED_NOTE =
 const DESTINATION_PRODUCTS = 3;
 
 /** The listing a filter, sort or search leaves the tab on. */
-const listingUrl = ({ query, brand, sort }) => {
+/* The constraints a search applied travel in its address (contract 2.2: open_search_results opens it). */
+const CONSTRAINT_PARAMS = Object.freeze([
+  ['min_price_eur', 'price_min'],
+  ['max_price_eur', 'price_max'],
+  ['in_stock_only', 'in_stock'],
+  ['deals_only', 'deals'],
+]);
+const listingUrl = ({ query, brand, sort, filters = {} }) => {
   const url = new URL(searchUrl(query || 'phone'));
   if (brand) url.searchParams.set('brand', brand);
   if (sort === 'Φθηνότερα') url.searchParams.set('o', 'price_asc');
+  for (const [key, param] of CONSTRAINT_PARAMS) {
+    if (filters[key] !== undefined && filters[key] !== false)
+      url.searchParams.set(param, String(filters[key]));
+  }
   return url.href;
+};
+/* The listing a results address describes (the inverse of listingUrl). */
+const listingAt = url => {
+  const filters = {};
+  for (const [key, param] of CONSTRAINT_PARAMS) {
+    const value = url.searchParams.get(param);
+    if (value === null) continue;
+    filters[key] = key.endsWith('_eur') ? Number(value) : value === 'true';
+  }
+  return {
+    query: url.searchParams.get('q') ?? '',
+    brand: url.searchParams.get('brand'),
+    sort: url.searchParams.get('o') === 'price_asc' ? 'Φθηνότερα' : 'Δημοφιλέστερα',
+    filters,
+  };
 };
 
 /** A product page, as a tool that opens it reads it first. */
@@ -748,7 +803,8 @@ export function createDemoAdapter(
         notApplied.push({ constraint, reason: 'not_offered', offered_sorts: [...OFFERED_SORTS] });
       } else applied[constraint] = constraints[constraint];
     }
-    const label = applied.sort ? SORT_LABELS[applied.sort] : state.sort;
+    /* A new search starts in the results page's default order. */
+    const label = applied.sort ? SORT_LABELS[applied.sort] : SORT_OPTIONS[0];
     const rows = kind === 'listing' ? ordered(filtered(found, filters), label) : found;
     return {
       query,
@@ -830,6 +886,10 @@ export function createDemoAdapter(
     state.page = page;
     changed();
   };
+  /* A move after an answer already reports the change (afterAnswer). */
+  const setPageQuietly = page => {
+    state.page = page;
+  };
 
   /** One handler per contract; each receives already-validated-as-object `args`. */
   const handlers = {
@@ -838,7 +898,8 @@ export function createDemoAdapter(
     search_bestprice(args) {
       const search = readSearch(args, { limit: true });
       if (search.error) return search.error;
-      const { query, kind, unique, rows, requested, applied, notApplied, narrowedToNothing } = search;
+      const { query, kind, unique, rows, requested, applied, notApplied, narrowedToNothing, filters, label } =
+        search;
       const products = rows.slice(0, search.limit).map(product => card(product));
       const step =
         narrowedToNothing || kind === 'none'
@@ -848,7 +909,11 @@ export function createDemoAdapter(
         ok: true,
         source: 'BestPrice search results',
         query,
-        results_url: kind === 'product' ? productUrl(unique[0].product_id) : searchUrl(query),
+        /* The page the search landed on, its applied constraints in the address. */
+        results_url:
+          kind === 'product'
+            ? productUrl(unique[0].product_id)
+            : listingUrl({ query, sort: label, filters: kind === 'listing' ? filters : {} }),
         page_title: kind === 'product' ? unique[0].title : query,
         results_kind: narrowedToNothing ? 'none' : kind,
         ...(requested.length ? { applied, not_applied: notApplied } : {}),
@@ -859,87 +924,74 @@ export function createDemoAdapter(
       };
     },
 
-    /* Contract 2.1: the same search, shown in this tab. The results page is read first and the tab moves
-     * to exactly that page after the answer (`confirmed`) — a receipt, never its products. A results
-     * page that cannot be read still opens, on the plain search page, as `dispatched` with why. */
+    /* Contract 2.2: the results_url a search returned, shown in this tab — as open_product opens the
+     * product_id a search returned. The page is read first and the tab moves to exactly that page after
+     * the answer (`confirmed`) — a receipt, never its products; a page that cannot be read still opens,
+     * as `dispatched` with why. */
     open_search_results(args) {
-      const search = readSearch(args, { limit: false });
-      if (search.error) return { ...search.error, reason: 'invalid_argument' };
-      const { query, kind, unique, requested, applied, notApplied, narrowedToNothing, filters, label } =
-        search;
-      const destination =
-        kind === 'product'
-          ? { url: productUrl(unique[0].product_id), state: productState(unique[0]) }
-          : {
-              url: searchUrl(query),
-              state: listingState({
-                ...state,
-                query,
-                brand: null,
-                filters: kind === 'listing' ? filters : {},
-                sort: label,
-              }),
-            };
-      /* Where the tab goes is settled by the read, before the move runs after the answer. */
-      let unreadable = false;
-      const receipt = confirmThenMove(destination.url, destination.state, () => {
-        if (kind === 'product' && !unreadable) {
-          state.activeProductId = unique[0].product_id;
-          state.page = 'product';
-          return;
-        }
-        state.query = query;
-        state.brand = null;
-        state.pagesLoaded = 1;
-        state.filters = kind === 'listing' && !unreadable ? filters : {};
-        state.sort = unreadable ? SORT_OPTIONS[0] : label;
-        state.page = 'listing';
-      });
-      /* The tab goes to the plain search page when the results could not be read first. */
-      unreadable = receipt.outcome !== 'confirmed';
-      if (unreadable) {
+      const target = readResultsUrl(args.results_url);
+      if (!target.url) return { ...fail(target.error), reason: target.reason };
+      const { url, productId } = target;
+      let page;
+      if (productId) {
+        const product = PRODUCTS.find(row => row.product_id === productId);
+        page = product
+          ? {
+              kind: 'product',
+              title: product.title,
+              state: productState(product),
+              move: () => {
+                state.activeProductId = product.product_id;
+                state.page = 'product';
+              },
+            }
+          : { unreadable: 'not_found', move: () => setPageQuietly('site') };
+      } else {
+        const listing = url.pathname.startsWith('/search')
+          ? listingAt(url)
+          : { ...listingAt(url), query: '' };
+        const destination = { ...state, ...listing };
+        const shown = listingState(destination);
+        page = {
+          kind: shown.total_results ? 'listing' : 'none',
+          title: url.pathname.startsWith('/search') ? listing.query || null : PRODUCT_CATEGORY,
+          state: shown,
+          move: () => {
+            Object.assign(state, listing);
+            state.pagesLoaded = 1;
+            state.page = 'listing';
+          },
+        };
+      }
+      let receipt;
+      if (page.unreadable) {
+        /* BestPrice has no such page to read: the tab still goes there, unread. */
+        afterAnswer(page.move);
+        receipt = { outcome: 'dispatched', reason: page.unreadable };
+      } else {
+        receipt = confirmThenMove(url.href, page.state, page.move);
+      }
+      if (receipt.outcome !== 'confirmed') {
         return {
           ok: true,
           outcome: 'dispatched',
-          query,
-          results_url: searchUrl(query),
-          ...(requested.length
-            ? {
-                applied: {},
-                not_applied: requested.map(constraint => ({ constraint, reason: 'page_unreadable' })),
-              }
-            : {}),
+          results_url: url.href,
           unconfirmed_reason: receipt.reason,
           next_step: SEARCH_NEXT_STEPS.openedUnread,
-          note: `BestPrice search could not be read. No results were read${
-            requested.length ? ' and no constraints were applied' : ''
-          }. ${SEARCH_UNREAD_NOTE}`,
+          note: 'The results page could not be read first.',
         };
       }
-      const resultsKind = narrowedToNothing ? 'none' : kind;
-      let step = SEARCH_NEXT_STEPS.opened;
-      if (narrowedToNothing) step = SEARCH_NEXT_STEPS.narrowedToNothing;
-      else if (kind === 'none') step = SEARCH_NEXT_STEPS.none;
-      else if (kind === 'product') step = withNotApplied(SEARCH_NEXT_STEPS.openedProduct, notApplied);
-      else {
-        step = withNotApplied(
-          step,
-          notApplied,
-          '; get_listing_filters there shows the filters and sort options the page offers',
-        );
-      }
+      const steps = { product: 'openedProduct', listing: 'openedListing', none: 'openedNone' };
       return {
         ok: true,
         outcome: 'confirmed',
-        query,
-        results_url: destination.url,
-        page_title: kind === 'product' ? unique[0].title : query,
-        results_kind: resultsKind,
-        ...(requested.length ? { applied, not_applied: notApplied } : {}),
-        ...(resultsKind !== 'none'
-          ? { next_tools: [...(kind === 'product' ? ITEM_PAGE_TOOLS : LISTING_PAGE_TOOLS)] }
+        results_url: url.href,
+        page_title: page.title,
+        results_kind: page.kind,
+        ...(page.kind !== 'none'
+          ? { next_tools: [...(page.kind === 'product' ? ITEM_PAGE_TOOLS : LISTING_PAGE_TOOLS)] }
           : {}),
-        next_step: step,
+        next_step: SEARCH_NEXT_STEPS[steps[page.kind]],
       };
     },
 

@@ -154,16 +154,19 @@ export const FORBIDDEN_TOOL_NAMES = Object.freeze(
 export const EXPECTED_REFUSAL_CASES = JOURNEY_REFUSAL_CASES;
 
 /**
- * Deterministic execution plan for all 47 cases, in the tools of contract 2.1 — the contract the demo
- * adapter implements, graded by dataset 14.0.0 (the default case file). Since 2.0 a product opens by id
+ * Deterministic execution plan for all 47 cases, in the tools of contract 2.2 — the contract the demo
+ * adapter implements, graded by dataset 15.0.0 (the default case file). Since 2.0 a product opens by id
  * (open_product), the sort options come with the filters (get_listing_filters) and the chart opens with
- * the summary (summarize_price_history, show_chart); since 2.1 search_bestprice only reads, and a search
- * whose listing the next step uses opens it in the tab (open_search_results). A frozen dataset naming a
- * tool the demo no longer implements is not something it can pass: it grades another contract.
+ * the summary (summarize_price_history, show_chart); since 2.1 search_bestprice only reads; since 2.2 a
+ * search whose listing the next step uses is opened in the tab by the results_url it returned
+ * (open_search_results). A frozen dataset naming a tool or argument the demo no longer implements is not
+ * something it can pass: it grades another contract.
  */
 export const CURRENT_CASES_PATH = fileURLToPath(
-  new URL('./natural-language-cases.v14.json', import.meta.url),
+  new URL('./natural-language-cases.v15.json', import.meta.url),
 );
+/* The results_url the demo's search_bestprice returns for a plain query. */
+const resultsUrl = query => `https://www.bestprice.gr/search?q=${encodeURIComponent(query)}`;
 export const DETERMINISTIC_PLANS = Object.freeze({
   'home-001': [{ tool: 'search_bestprice', args: { query: 'iPhone 16 128GB' } }],
   'home-002': [{ tool: 'search_bestprice', args: { query: "καφετιέρες De'Longhi" } }],
@@ -216,13 +219,15 @@ export const DETERMINISTIC_PLANS = Object.freeze({
   ],
   'product-012': [{ tool: 'show_offer', args: { merchant_name: 'TechMobile' } }],
   'multi-001': [
-    { tool: 'open_search_results', args: { query: 'iPhone 16' } },
+    { tool: 'search_bestprice', args: { query: 'iPhone 16' } },
+    { tool: 'open_search_results', args: { results_url: resultsUrl('iPhone 16') } },
     { tool: 'get_visible_products', args: {} },
     { tool: 'open_product', args: { product_id: '2159919913' } },
     { tool: 'get_page_product', args: {} },
   ],
   'multi-002': [
-    { tool: 'open_search_results', args: { query: 'κινητά' } },
+    { tool: 'search_bestprice', args: { query: 'κινητά' } },
+    { tool: 'open_search_results', args: { results_url: resultsUrl('κινητά') } },
     { tool: 'get_listing_filters', args: {} },
     { tool: 'apply_listing_filter', args: { filter: 'Κατασκευαστής', value: 'Apple' } },
     { tool: 'apply_listing_sort', args: { sort: 'Φθηνότερα' } },

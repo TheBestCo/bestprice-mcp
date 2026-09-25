@@ -2,7 +2,7 @@
 
 BestPrice adds page-local WebMCP tools to the shopping journey at
 [`www.bestprice.gr`](https://www.bestprice.gr/). A compatible agent can search
-and read the results or show them in the tab, inspect the products and controls
+and read the results, then open the results page the search returned in the tab, inspect the products and controls
 that are actually on the open page (the home page's sections included) and load
 more of a listing, apply a visible filter or sorting option, open any product by
 id (its page read before the tab moves), compare
@@ -38,7 +38,7 @@ npm test
 ## Source map
 
 - [`src/contracts.js`](src/contracts.js) contains the 15 contextual tool
-  contracts of WebMCP contract 2.1: input and output schemas and safety
+  contracts of WebMCP contract 2.2: input and output schemas and safety
   annotations. Each tool's title, description, input and output schema come from
   [`src/storefront-catalog.js`](src/storefront-catalog.js), generated from the
   storefront's own catalog.
@@ -56,7 +56,7 @@ npm test
   runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
   validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned Greek natural-language dataset
-  (v1–v13 frozen; v14, 47 cases grading contract 2.1, current) and the separate deterministic
+  (v1–v14 frozen; v15, 47 cases grading contract 2.2, current) and the separate deterministic
   and browser-agent evaluation criteria.
 
 ## Production surface
@@ -75,6 +75,22 @@ Every page registers `search_bestprice` first, `open_search_results` second,
 `open_product` among its own tools, and `get_shopping_decision` last. The
 product page's `show_offer` is an action verb: it scrolls to one rendered offer
 and marks it for the shopper, and it returns no merchant link.
+
+Contract 2.2 (2026-09-25, bestprice.gr `8d040a161a`) gives `open_search_results`
+exactly one input, `results_url` — the address a `search_bestprice` result
+returned, which carries its constraints — as `open_product` takes the
+`product_id` a search returned. It reads that page first (`confirmed`) or opens
+it unread (`dispatched`), and refuses another site, a page that is not a results
+page (anything but `/search`, `/cat/`, `/b/`, `/hub/`, `/item/`) and a single
+store's `/item/` link (`store_offer`). Its receipt no longer repeats the query or
+what applied — the search said so. `search_bestprice`'s query is a product name,
+brand, model or category; a described need or budget is `get_shopping_decision`'s
+message. Every tool is at version `2.2.0`.
+
+| Contract 2.1 | Contract 2.2 |
+| --- | --- |
+| `open_search_results { query, …constraints }` | `search_bestprice { query, …constraints }`, then `open_search_results { results_url }` with the `results_url` it returned |
+| `open_search_results` receipt `query`, `applied`, `not_applied` | the search's own result |
 
 Contract 2.1 (2026-09-25, registration revision 2026-09-25.14) makes every tool
 read or act, never both. `search_bestprice` only reads — `navigate` is gone and
@@ -213,8 +229,8 @@ output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
-14.0.0 grades contract 2.1 and is the default; 1.0.0–13.0.0 stay frozen, with
-their runs, as the history of contracts 1.6 to 2.0
+15.0.0 grades contract 2.2 and is the default; 1.0.0–14.0.0 stay frozen, with
+their runs, as the history of contracts 1.6 to 2.1
 ([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 
 The machine-readable production inventory is available at

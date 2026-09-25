@@ -308,7 +308,7 @@
       "verifiedAt": "2026-09-25",
       "evidence": "Page shows \"15 tools registered · Commerce · verified 8/27/2026\" after re-registering the live contract 1.8 document (www release e0be10690f) on 2026-09-25, including get_shopping_decision.",
       "note": "Domain is verified by the DNS TXT record webmcp-verify; writes need the domain-owner API key.",
-      "nextAction": "Re-register the 15-tool contract 2.1 from https://www.bestprice.gr/webmcp.json once it serves revision 2026-09-25.14: every tool reads or acts (search_bestprice reads, open_search_results moves the tab; get_visible_products reads, load_more_products loads), receipts for open_product and the listing actions, short one-sentence descriptions, tools at 2.1.0.",
+      "nextAction": "Re-register the 15-tool contract 2.2 from https://www.bestprice.gr/webmcp.json (live since release 8d040a161a): open_search_results opens the results_url a search returned; every tool reads or acts, never both; tools at 2.2.0.",
       "nextActionBy": "us-external-login"
     },
     {
@@ -320,7 +320,7 @@
       "verifiedAt": "2026-09-25",
       "evidence": "A rescan of the live contract 1.8 (release e0be10690f) graded B+ (up from B-): 4 tools on 1 scanned page (/). The scanner cites precise schemas and explicit success and refusal branches, and flags a product_id format mismatch (get_shopping_decision returned bp_ ids) and no product-page tools, because it never reached an item page. The listing refreshes after their review.",
       "note": "Crawler-populated by nekuda. The rescan form takes only an email address. Pages beyond / appear to follow sitemap order, and our sitemap index starts with blog posts, which registered no tools.",
-      "nextAction": "Request a rescan of contract 2.1: /.well-known/webmcp.json now lists scanner pages (a search, a category, a product, a hub, deals) beyond /, and every tool reads or acts, never both (15 tools).",
+      "nextAction": "Request a rescan of contract 2.2: open_search_results now takes only the results_url a search returned (the search/open overlap the 2.1 rescan named), and /.well-known/webmcp.json lists scanner pages beyond /.",
       "nextActionBy": "us-external-login"
     },
     {

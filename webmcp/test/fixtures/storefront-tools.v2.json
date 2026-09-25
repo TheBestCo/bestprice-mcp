@@ -2,12 +2,12 @@
   "fixtureVersion": 2,
   "what": "The WebMCP tool surface the BestPrice.gr storefront registers, read from the source of truth in the bestprice.gr repository.",
   "sourceOfTruth": "bestprice.gr",
-  "sourceCommit": "8e13c733abbbe5b63def45472c078a006d5fcbb9",
-  "contractVersion": "2.1",
+  "sourceCommit": "8d040a161aa33547fb20b7fe0ee273b4e324b407",
+  "contractVersion": "2.2",
   "extractedFrom": [
     {
       "path": "extra/mcpDiscovery/webmcp-tools.json",
-      "sha256": "e2f20d9b152547fa1078693b3beafd38dfd9d1b36559989be483f5d5a91bfccb"
+      "sha256": "10f195f5d799d42527d9316ca67b73acdb64ded61196d53b94813acd4499e8e6"
     },
     {
       "path": "pages/item/webmcp/tools.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "js/modules/webmcp/search-tool.js",
-      "sha256": "38e30759955207c99a46a13d117ad70c2af3df476ac4a25c5f70f88697766499"
+      "sha256": "f56dd0de79a6127342f077a866a3726ebd2b2b214875dc17569101c72aaa058e"
     },
     {
       "path": "js/modules/webmcp/shopping-decision-tool.js",
@@ -39,7 +39,7 @@
     },
     {
       "path": "js/modules/webmcp/input-schemas.js",
-      "sha256": "06815fb90503b6bc49492faef7ca9f537a66ef785f0db0a0a3664305ba2b5ce2"
+      "sha256": "c5f272048b236b6debfd36415c001faabb6e570f6bca76254f0613ab555e47b6"
     },
     {
       "path": "js/modules/webmcp/annotations.js",
@@ -47,12 +47,12 @@
     },
     {
       "path": "js/modules/webmcp/output-schemas.js",
-      "sha256": "d6e94cfc56484c5afea3e5899f0345f17933ab67b11c839fcd16b107e2fb189d"
+      "sha256": "140fb06d59b1c34f8c69a209f4e4ff6fb069367afaaaabd3e8c0c0e5ec4798b5"
     }
   ],
   "extraction": "webmcp/src/contract-parity.js readStorefrontSurface: title, description and output schema from extra/mcpDiscovery/webmcp-tools.json; input schema and annotations from the object literals the page modules register, with module and imported constants resolved",
   "pagesFrom": "tools/scripts/mcp_discovery_json.php webmcp.pages: the manifest the site serves, which the storefront checks against the tools each page registers",
-  "definitionsDigest": "e51f31d8f2a5177a221826f62e9b988e7a48e85ef48acad1af80cd90a4fb45ee",
+  "definitionsDigest": "e7ced20da5c149a70173a411898109119458669117a7d4c99c3ff7ad873d3f22",
   "tools": [
     "search_bestprice",
     "open_search_results",
@@ -130,7 +130,7 @@
   "surface": {
     "search_bestprice": {
       "title": "Search BestPrice products",
-      "description": "Searches BestPrice’s whole catalog and returns matching products; changes nothing.",
+      "description": "Finds products by name, brand, model or category in BestPrice’s catalog; changes nothing.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -138,7 +138,7 @@
             "type": "string",
             "minLength": 2,
             "maxLength": 120,
-            "description": "Product, brand, model, or shopping need to search for, in Greek or English."
+            "description": "A product name, brand, model or category, in Greek or English."
           },
           "limit": {
             "type": "integer",
@@ -360,43 +360,18 @@
     },
     "open_search_results": {
       "title": "Open search results",
-      "description": "Opens BestPrice’s search results page for a query in this tab.",
+      "description": "Opens a search’s results_url in this tab, so the shopper sees those results.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "query": {
+          "results_url": {
             "type": "string",
-            "minLength": 2,
-            "maxLength": 120,
-            "description": "Product, brand, model, or shopping need to search for, in Greek or English."
-          },
-          "min_price_eur": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 10000000,
-            "description": "Only products from this price in euros (item price before shipping)."
-          },
-          "max_price_eur": {
-            "type": "number",
-            "minimum": 0.01,
-            "maximum": 10000000,
-            "description": "Only products up to this price in euros (item price before shipping)."
-          },
-          "sort": {
-            "type": "string",
-            "enum": ["relevance", "price_asc", "price_desc", "biggest_price_drop", "most_stores", "newest"],
-            "description": "Result order. relevance is the default; newest, biggest_price_drop and most_stores only where offered."
-          },
-          "in_stock_only": {
-            "type": "boolean",
-            "description": "Only products a store has in stock now. Defaults to false."
-          },
-          "deals_only": {
-            "type": "boolean",
-            "description": "Only products priced below their earlier price. Defaults to false."
+            "minLength": 1,
+            "maxLength": 2048,
+            "description": "A results_url exactly as a search returned it."
           }
         },
-        "required": ["query"],
+        "required": ["results_url"],
         "additionalProperties": false
       },
       "annotations": {
@@ -422,9 +397,6 @@
                 "enum": ["confirmed", "dispatched"],
                 "description": "confirmed: results_url was read before the tab moved there. dispatched: it moves there unread."
               },
-              "query": {
-                "type": "string"
-              },
               "results_url": {
                 "type": "string",
                 "description": "Where the tab moves, after this answer."
@@ -436,72 +408,6 @@
                 "type": "string",
                 "enum": ["listing", "featured", "product", "none"],
                 "description": "featured: a category’s highlighted rows. product: one product’s own page."
-              },
-              "applied": {
-                "type": "object",
-                "properties": {
-                  "min_price_eur": {
-                    "type": "number"
-                  },
-                  "max_price_eur": {
-                    "type": "number"
-                  },
-                  "sort": {
-                    "type": "string",
-                    "enum": [
-                      "relevance",
-                      "price_asc",
-                      "price_desc",
-                      "biggest_price_drop",
-                      "most_stores",
-                      "newest"
-                    ]
-                  },
-                  "in_stock_only": {
-                    "type": "boolean"
-                  },
-                  "deals_only": {
-                    "type": "boolean"
-                  }
-                }
-              },
-              "not_applied": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "constraint": {
-                      "type": "string",
-                      "enum": ["min_price_eur", "max_price_eur", "sort", "in_stock_only", "deals_only"]
-                    },
-                    "reason": {
-                      "type": "string",
-                      "enum": [
-                        "not_offered",
-                        "not_kept",
-                        "no_product_list",
-                        "no_products",
-                        "page_unreadable"
-                      ],
-                      "description": "not_offered: see offered_sorts. no_product_list: an overview or product page. page_unreadable: unnarrowed."
-                    },
-                    "offered_sorts": {
-                      "type": "array",
-                      "items": {
-                        "type": "string",
-                        "enum": [
-                          "relevance",
-                          "price_asc",
-                          "price_desc",
-                          "biggest_price_drop",
-                          "most_stores",
-                          "newest"
-                        ]
-                      }
-                    }
-                  },
-                  "required": ["constraint", "reason"]
-                }
               },
               "unconfirmed_reason": {
                 "type": "string",
@@ -523,7 +429,7 @@
                 "type": "string"
               }
             },
-            "required": ["ok", "outcome", "query", "results_url", "next_step"]
+            "required": ["ok", "outcome", "results_url", "next_step"]
           },
           {
             "type": "object",
@@ -538,7 +444,7 @@
               "reason": {
                 "type": "string",
                 "pattern": "^[a-z0-9_]{1,64}$",
-                "description": "When given, one of: invalid_argument, cancelled."
+                "description": "When given, one of: invalid_argument, store_offer, cancelled."
               }
             },
             "required": ["ok", "error"]
@@ -2200,7 +2106,7 @@
     },
     "get_shopping_decision": {
       "title": "Get a shopping decision",
-      "description": "Recommends what to buy for a shopper’s need, with alternatives and reasons; changes nothing.",
+      "description": "Recommends what to buy for a described need or budget, with alternatives and reasons; changes nothing.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -2208,7 +2114,7 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 2000,
-            "description": "The shopper’s question as asked, with budget and must-have features, e.g. phone under 400€ with NFC."
+            "description": "The shopper’s need in their own words, with budget and must-haves, e.g. phone under 400€ with NFC."
           },
           "postal_code": {
             "type": "string",

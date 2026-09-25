@@ -19,14 +19,21 @@ import {
 import { createLocalModelContext, createRegistration } from '../src/runtime.js';
 
 const noop = () => ({ ok: true });
+/* The results_url the demo's search for «phone» returns (contract 2.2: open_search_results opens it). */
+const PHONE_RESULTS = 'https://www.bestprice.gr/search?q=phone';
 /* The storefront's own bounds on a tool description (bestprice.gr js/modules/webmcp/tool-catalog.js
  * MIN_/MAX_DESCRIPTION_LENGTH, and output-schemas.test.js' field bound, which a tool description meets
  * too). Contract 2.1: one short plain sentence — what the tool does and its scope — naming no tool. */
 const DESCRIPTION_LENGTH = Object.freeze({ min: 40, max: 160, field: 110 });
 
 describe('contracts', () => {
-  it('publishes 15 unique contextual tools across four page types (contract 2.1)', () => {
-    assert.equal(WEBMCP_CONTRACT_VERSION, '2.1');
+  it('publishes 15 unique contextual tools across four page types (contract 2.2)', () => {
+    assert.equal(WEBMCP_CONTRACT_VERSION, '2.2');
+    /* Contract 2.2: open_search_results opens one thing, the results_url a search returned. */
+    assert.deepEqual(TOOL_DEFINITIONS.open_search_results.inputSchema.required, ['results_url']);
+    assert.deepEqual(Object.keys(TOOL_DEFINITIONS.open_search_results.inputSchema.properties), [
+      'results_url',
+    ]);
     assert.equal(TOOL_NAMES.length, 15);
     assert.deepEqual(new Set(Object.values(PAGE_TOOL_NAMES).flat()), new Set(TOOL_NAMES));
     /* Search first, the Shopping Brain last, on every page; the home page browses its sections. */
@@ -286,7 +293,9 @@ describe('demo adapter', () => {
     assert.equal(search.query, 'phone');
     assert.deepEqual([search.results_kind, search.returned, 'navigated' in search], ['listing', 3, false]);
     assert.equal(adapter.snapshot().page, 'home');
-    const shown = await tools[1].execute({ query: 'phone' });
+    /* Contract 2.2: it opens the results_url the search returned. */
+    assert.equal(search.results_url, PHONE_RESULTS);
+    const shown = await tools[1].execute({ results_url: search.results_url });
     assert.deepEqual(
       [shown.outcome, shown.results_kind, 'products' in shown],
       ['confirmed', 'listing', false],
@@ -363,7 +372,7 @@ describe('demo adapter', () => {
 
   it('filters and sorts with the labels the listing renders', async () => {
     const adapter = createDemoAdapter();
-    await adapter.execute('open_search_results', { query: 'phone' });
+    await adapter.execute('open_search_results', { results_url: PHONE_RESULTS });
     const filters = await adapter.execute('get_listing_filters', {});
     assert.equal(filters.filters[0].name, BRAND_FILTER);
 
@@ -478,7 +487,7 @@ describe('demo adapter', () => {
         throw unreadable;
       },
     });
-    await adapter.execute('open_search_results', { query: 'phone' });
+    await adapter.execute('open_search_results', { results_url: PHONE_RESULTS });
     /* A receipt (contract 2.1): outcome is the one status field. */
     assert.deepEqual(await adapter.execute('apply_listing_filter', { filter: 'brand', value: 'Apple' }), {
       ok: true,
@@ -532,7 +541,7 @@ describe('demo adapter', () => {
 
   it('refuses an unknown product or a single-store offer, and leaves the tab where it is', async () => {
     const adapter = createDemoAdapter();
-    await adapter.execute('open_search_results', { query: 'phone' });
+    await adapter.execute('open_search_results', { results_url: PHONE_RESULTS });
     assert.deepEqual(await adapter.execute('open_product', { product_id: '9999999999' }), {
       ok: false,
       error: 'BestPrice has no product page for product_id 9999999999.',
@@ -605,7 +614,7 @@ describe('demo adapter', () => {
 /* Contract 1.7: every bounded read the storefront pages continues through next_offset. */
 test('the demo adapter continues listing, filter and specification reads with offset', async () => {
   const adapter = createDemoAdapter();
-  await adapter.execute('open_search_results', { query: 'phone' });
+  await adapter.execute('open_search_results', { results_url: PHONE_RESULTS });
   const first = await adapter.execute('get_visible_products', { limit: 2 });
   assert.deepEqual([first.returned, first.offset, first.next_offset], [2, 0, 2]);
   const rest = await adapter.execute('get_visible_products', { limit: 2, offset: first.next_offset });

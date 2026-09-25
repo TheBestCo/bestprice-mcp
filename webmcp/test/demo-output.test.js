@@ -16,6 +16,8 @@ import { createTools, PAGE_TOOL_NAMES, TOOL_DEFINITIONS, TOOL_NAMES } from '../s
 import { createDemoAdapter, DECISION_NOTE, HOME_SECTION, offerRef, productUrl } from '../src/demo-adapter.js';
 import { ANNOTATIONS, KEYWORDS, validate } from './helpers/output-schema-check.js';
 
+/* The results_url the demo's search for «phone» returns (contract 2.2: open_search_results opens it). */
+const PHONE_RESULTS = 'https://www.bestprice.gr/search?q=phone';
 const STRICT = JSON.parse(
   readFileSync(new URL('./fixtures/storefront-strict-output-schemas.json', import.meta.url), 'utf8'),
 ).schemas;
@@ -126,7 +128,12 @@ describe('demo results against the published output schemas', () => {
     await call('open_product', { product_id: '9999999999' });
     await call('open_product', { product_id: '2147483647' });
     await call('search_bestprice', { query: 'x' });
-    await call('open_search_results', { query: 'x' });
+    /* Contract 2.2: only a BestPrice results address, never another site or a single-store offer. */
+    await call('open_search_results', { results_url: 'https://example.com/search?q=x' });
+    assert.equal(
+      (await call('open_search_results', { results_url: 'https://www.bestprice.gr/item/123/x.html' })).reason,
+      'store_offer',
+    );
     await call('get_shopping_decision', { message: 'κινητό έως 750€' });
     await call('get_shopping_decision', { message: 'κινητό έως 750€', postal_code: '10431' });
     await call('get_shopping_decision', { message: 'iPhone 16 ή Galaxy S24;' });
@@ -136,7 +143,7 @@ describe('demo results against the published output schemas', () => {
     await call('get_shopping_decision', { message: '   ' });
 
     /* Listing: the results shown in the tab, read, loaded further, filtered, sorted, opened. */
-    const shown = await call('open_search_results', { query: 'phone' });
+    const shown = await call('open_search_results', { results_url: PHONE_RESULTS });
     assert.equal(adapter.snapshot().page, 'listing');
     assert.deepEqual([shown.outcome, 'products' in shown], ['confirmed', false]);
     const firstPage = await call('get_visible_products', {});
@@ -229,7 +236,8 @@ describe('demo results against the published output schemas', () => {
     adapter.setPage('site');
     await call('search_bestprice', { query: 'iPhone 16 128GB', limit: 8 });
     /* A unique model's results are its own page: the tab moves there. */
-    const model = await call('open_search_results', { query: 'Google Pixel 9 128GB' });
+    const found = await call('search_bestprice', { query: 'Google Pixel 9 128GB' });
+    const model = await call('open_search_results', { results_url: found.results_url });
     assert.deepEqual([model.results_kind, adapter.snapshot().page], ['product', 'product']);
 
     /* Every tool was exercised, and both outcomes of the tools that can refuse. */
@@ -280,7 +288,7 @@ describe('demo results against the published output schemas', () => {
     const changes = [];
     const adapter = createDemoAdapter(snapshot => changes.push(snapshot.page));
     const { call } = recorder(adapter);
-    await call('open_search_results', { query: 'phone' });
+    await call('open_search_results', { results_url: PHONE_RESULTS });
     /* The answer is complete before the page it describes changes: the state moves after it. */
     const pending = adapter.execute('open_product', { product_id: '2159922965' });
     assert.equal(adapter.snapshot().page, 'listing', 'nothing has moved while the tool is answering');
@@ -304,20 +312,28 @@ describe('demo results against the published output schemas', () => {
       unique.next_step,
       /^The search matched one product and the tab did not move: open_product opens its page/u,
     );
-    /* Shown in the tab, the same search moves it there, with the product page's tools. */
-    const narrowed = await call('open_search_results', { query: 'Google Pixel 9 128GB', max_price_eur: 500 });
-    assert.deepEqual(narrowed.not_applied, [{ constraint: 'max_price_eur', reason: 'no_product_list' }]);
+    /* A product page has no list to narrow; its results_url opens it, with the product page's tools. */
+    const narrowedSearch = await call('search_bestprice', {
+      query: 'Google Pixel 9 128GB',
+      max_price_eur: 500,
+    });
+    assert.deepEqual(narrowedSearch.not_applied, [
+      { constraint: 'max_price_eur', reason: 'no_product_list' },
+    ]);
+    const narrowed = await call('open_search_results', { results_url: narrowedSearch.results_url });
     assert.deepEqual(narrowed.next_tools, PAGE_TOOL_NAMES.product.slice(2, -1));
+    assert.equal('not_applied' in narrowed, false, 'the search said what applied');
     assert.deepEqual(
       [adapter.snapshot().page, adapter.snapshot().product.product_id],
       ['product', '2160384659'],
     );
-    /* Narrowed to nothing, a listing says so and names no destination tools. */
-    const nothing = await call('open_search_results', { query: 'phone', max_price_eur: 100 });
-    assert.deepEqual([nothing.results_kind, nothing.next_tools], ['none', undefined]);
-    assert.match(nothing.next_step, /^No products match these constraints/u);
+    /* Narrowed to nothing, a search says so; its address opens a page that shows no products. */
     const read = await call('search_bestprice', { query: 'phone', max_price_eur: 100 });
     assert.deepEqual([read.results_kind, read.returned], ['none', 0]);
+    assert.match(read.next_step, /^No products match these constraints/u);
+    const nothing = await call('open_search_results', { results_url: read.results_url });
+    assert.deepEqual([nothing.results_kind, nothing.next_tools], ['none', undefined]);
+    assert.equal(nothing.next_step, 'The tab is moving to a results page that shows no products.');
   });
 
   it('says dispatched, with why, wherever a destination cannot be read first (revision 2026-09-25.12)', async () => {
@@ -327,23 +343,12 @@ describe('demo results against the published output schemas', () => {
       },
     });
     const { call } = recorder(adapter);
-    /* Contract 2.1: an unreadable search still opens, on the plain search page, with why. */
-    const opened = await call('open_search_results', { query: 'phone', max_price_eur: 750 });
+    /* Contract 2.2: a results page that cannot be read first still opens, unread, with why. */
+    const address = 'https://www.bestprice.gr/search?q=phone&price_max=750';
+    const opened = await call('open_search_results', { results_url: address });
     assert.deepEqual(
-      [
-        opened.outcome,
-        opened.unconfirmed_reason,
-        opened.results_url,
-        opened.not_applied,
-        adapter.snapshot().page,
-      ],
-      [
-        'dispatched',
-        'upstream_unavailable',
-        'https://www.bestprice.gr/search?q=phone',
-        [{ constraint: 'max_price_eur', reason: 'page_unreadable' }],
-        'listing',
-      ],
+      [opened.outcome, opened.unconfirmed_reason, opened.results_url, adapter.snapshot().page],
+      ['dispatched', 'upstream_unavailable', address, 'listing'],
     );
     const dispatched = [
       await call('apply_listing_filter', { filter: 'brand', value: 'Samsung' }),
@@ -414,9 +419,11 @@ describe('demo results against the published output schemas', () => {
     assert.deepEqual(newest.not_applied, [
       { constraint: 'sort', reason: 'not_offered', offered_sorts: ['relevance', 'price_asc'] },
     ]);
-    /* Shown in the tab, the listing shows what the search returned, under the same ids. */
-    const shown = await call('open_search_results', { query: 'phone', sort: 'newest', deals_only: true });
-    assert.deepEqual([shown.applied, shown.not_applied], [newest.applied, newest.not_applied]);
+    /* Its results_url carries what applied: opened in the tab, the listing shows what the search
+     * returned, under the same ids. */
+    assert.match(newest.results_url, /[?&]deals=true(?:&|$)/u);
+    const shown = await call('open_search_results', { results_url: newest.results_url });
+    assert.equal(shown.results_url, newest.results_url);
     assert.deepEqual(
       (await call('get_visible_products', {})).products.map(product => product.product_id),
       newest.products.map(product => product.product_id),
@@ -455,7 +462,7 @@ describe('demo results against the published output schemas', () => {
       error:
         'load_more is not accepted: get_visible_products only reads, and this page has no further result pages.',
     });
-    const search = await call('open_search_results', { query: 'phone' });
+    const search = await call('open_search_results', { results_url: PHONE_RESULTS });
     assert.deepEqual(
       search.next_tools,
       PAGE_TOOL_NAMES.listing.slice(2, -1),
@@ -516,7 +523,7 @@ describe('demo results against the published output schemas', () => {
     const search = await adapter.execute('search_bestprice', { query: 'phone', limit: 8 });
     assert.equal(search.results_url, 'https://www.bestprice.gr/search?q=phone');
     assert.equal(search.next_step.startsWith('The tab did not move'), true);
-    const shown = await adapter.execute('open_search_results', { query: 'phone' });
+    const shown = await adapter.execute('open_search_results', { results_url: PHONE_RESULTS });
     assert.equal(shown.results_url, search.results_url);
     const listing = await adapter.execute('get_visible_products', { limit: 8 });
     assert.deepEqual(
@@ -530,10 +537,15 @@ describe('demo results against the published output schemas', () => {
       ok: false,
       error: 'limit must be a whole number from 1 to 8.',
     });
-    /* open_search_results reads no products, so it takes no limit. */
+    /* Contract 2.2: open_search_results takes the results_url and nothing else — no query, no limit. */
     assert.deepEqual(await adapter.execute('open_search_results', { query: 'phone', limit: 3 }), {
       ok: false,
-      error: 'Unexpected argument: limit.',
+      error: 'Unexpected argument: query.',
+    });
+    assert.deepEqual(await adapter.execute('open_search_results', {}), {
+      ok: false,
+      error: 'results_url must be a BestPrice results address, exactly as a search returned it.',
+      reason: 'invalid_argument',
     });
   });
 
