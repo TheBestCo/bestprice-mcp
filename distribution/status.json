@@ -8,7 +8,7 @@
     "endpoint": "https://mcp.bestprice.gr/mcp",
     "tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
     "skill": "https://github.com/TheBestCo/bestprice-mcp/blob/main/skills/bestprice-shopping/SKILL.md",
-    "webmcpContractToolCount": 14
+    "webmcpContractToolCount": 15
   },
   "surfaces": [
     {
@@ -303,13 +303,13 @@
       "id": "webmcp-registry",
       "name": "WebMCP Registry",
       "state": "published",
-      "freshness": "current",
+      "freshness": "stale-contract",
       "url": "https://webmcp-registry.dev/domain/www.bestprice.gr",
       "verifiedAt": "2026-09-25",
       "evidence": "Page shows \"14 tools registered · Commerce · verified 8/27/2026\"; all 14 canonical tools, including show_offer, were re-registered from webmcp.json and show Updated 9/25/2026.",
       "note": "Domain is verified by the DNS TXT record webmcp-verify; writes need the domain-owner API key.",
-      "nextAction": "None until the WebMCP contract changes; then re-register from www.bestprice.gr/webmcp.json.",
-      "nextActionBy": "none"
+      "nextAction": "Re-register the 15-tool contract 1.8 from www.bestprice.gr/webmcp.json (it adds get_shopping_decision and an output schema for every tool); the listing still shows the 14-tool registration.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "webmcp-com",
@@ -320,7 +320,7 @@
       "verifiedAt": "2026-09-25",
       "evidence": "The public site API still serves the verified 2026-08-26 scan: 12 tools over /, a category page and an item page (open_visible_product and show_offer missing). A rescan requested on 2026-09-25 loaded only / and graded B- (1 tool, 11 \"removed\"); the listing refreshes only after their review.",
       "note": "Crawler-populated by nekuda; the rescan form takes an email for the report and no page list. Category and item pages answer 200 to a headless Chrome user agent, so the one-page scan is on the crawler side.",
-      "nextAction": "Ask founders@nekuda.ai to keep the multi-page listing and rescan listing and item pages, which expose the 13 contextual tools.",
+      "nextAction": "Ask founders@nekuda.ai to keep the multi-page listing and rescan the home, listing and item pages, which expose the 15 contextual tools of contract 1.8 (the home page alone now registers 4).",
       "nextActionBy": "upstream"
     },
     {

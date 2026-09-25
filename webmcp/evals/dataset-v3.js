@@ -158,6 +158,20 @@ export const readOnlyTools = (definitions = publishedDefinitions()) =>
     .map(definition => definition.name)
     .sort();
 
+/* The read-only tools of contract 1.6, the extras 3.0.0 admits. Like the argument rules, they are
+ * recorded rather than read from the live contract: contract 1.8 (2026-09-25) published another
+ * read-only tool, `get_shopping_decision`, and admitting it is the next dataset version.
+ * `webmcp/test/dataset-v3.test.js` names the read-only tools published since. */
+export const CONTRACT_1_6_READ_ONLY_TOOLS = Object.freeze([
+  'compare_page_offers',
+  'get_listing_filters',
+  'get_listing_sort_options',
+  'get_page_product',
+  'get_product_specifications',
+  'get_visible_products',
+  'summarize_price_history',
+]);
+
 /** One tool's argument rules, straight from its published input schema. */
 export const argumentRules = definition =>
   Object.fromEntries(
@@ -168,8 +182,7 @@ export const argumentRules = definition =>
   );
 
 export function deriveDatasetV3(v2 = JSON.parse(readFileSync(V2_PATH, 'utf8'))) {
-  const definitions = publishedDefinitions();
-  const extras = readOnlyTools(definitions);
+  const extras = [...CONTRACT_1_6_READ_ONLY_TOOLS];
   const cases = v2.cases.map(item => {
     const tools = [...new Set([...item.expected_tools, ...extras])].sort();
     return {

@@ -4,6 +4,7 @@ import { describe, it } from 'node:test';
 import {
   argumentRules,
   CONTRACT_1_6_ARGUMENT_RULES,
+  CONTRACT_1_6_READ_ONLY_TOOLS,
   deriveDatasetV3,
   readOnlyTools,
   serializeDataset,
@@ -62,33 +63,40 @@ describe('dataset 3.0.0', () => {
     assert.ok(byId(v3).get('product-005').allowed_args.get_product_specifications.fact);
   });
 
-  /* The frozen datasets grade against 1.6. What contract 1.7 published since is named here, so the
-   * gap is a decision on record (a dataset that admits it is the next version) and never drift. */
-  it('names exactly the arguments published after contract 1.6', () => {
+  /* The frozen datasets grade against 1.6. What contracts 1.7 and 1.8 published since is named here,
+   * so the gap is a decision on record (a dataset that admits it is the next version) and never drift. */
+  it('names exactly the arguments and tools published after contract 1.6', () => {
     const published = new Map(
       ['home', 'listing', 'product']
         .flatMap(page => createTools({ page, execute: () => {} }))
         .map(tool => [tool.name, argumentRules(tool)]),
     );
     const since = [];
+    const newTools = [];
     for (const [tool, rules] of published) {
       const frozen = CONTRACT_1_6_ARGUMENT_RULES[tool];
-      assert.ok(frozen, `${tool} existed in 1.6`);
+      if (!frozen) {
+        newTools.push(tool);
+        continue;
+      }
       for (const [name, rule] of Object.entries(frozen))
         assert.deepEqual(rules[name], rule, `${tool}.${name}`);
       for (const name of Object.keys(rules)) if (!(name in frozen)) since.push(`${tool}.${name}`);
     }
+    assert.deepEqual(newTools, ['get_shopping_decision']);
     assert.deepEqual(since.sort(), [
       'compare_page_offers.include_all_stores',
       'get_listing_filters.group',
       'get_listing_filters.offset',
       'get_product_specifications.offset',
       'get_visible_products.offset',
+      'search_bestprice.limit',
+      'search_bestprice.navigate',
     ]);
   });
 
-  it('admits exactly the read-only tools as extras', () => {
-    assert.deepEqual(readOnlyTools(), [
+  it('admits exactly the read-only tools of contract 1.6 as extras', () => {
+    assert.deepEqual(CONTRACT_1_6_READ_ONLY_TOOLS, [
       'compare_page_offers',
       'get_listing_filters',
       'get_listing_sort_options',
@@ -97,7 +105,13 @@ describe('dataset 3.0.0', () => {
       'get_visible_products',
       'summarize_price_history',
     ]);
-    for (const item of v3.cases) assert.deepEqual(item.extra_calls_allowed, readOnlyTools());
+    for (const item of v3.cases)
+      assert.deepEqual(item.extra_calls_allowed, [...CONTRACT_1_6_READ_ONLY_TOOLS]);
+    /* Contract 1.8 published one more read-only tool; admitting it is the next dataset version. */
+    assert.deepEqual(
+      readOnlyTools().filter(name => !CONTRACT_1_6_READ_ONLY_TOOLS.includes(name)),
+      ['get_shopping_decision'],
+    );
   });
 
   it('is a valid, empty evidence ledger of its own', () => {

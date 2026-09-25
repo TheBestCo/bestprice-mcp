@@ -8,7 +8,7 @@ contextual tools in [`../src/contracts.js`](../src/contracts.js):
   `src/contracts.js`, admitted extra read-only calls, concrete starting pages); evidence in
   [`runs.v3.json`](runs.v3.json)
 - [`natural-language-cases.v2.json`](natural-language-cases.v2.json) — frozen, 47 cases
-  covering all 14 contextual tools, including the item-page `show_offer` action verb.
+  covering all 14 contextual tools of its time, including the item-page `show_offer` action verb.
 - [`natural-language-cases.v1.json`](natural-language-cases.v1.json) — frozen import, 43
   cases covering the 13 tools of its time. It is never rewritten; v2 carries every v1
   case unchanged so old run evidence keeps its case text.
@@ -247,18 +247,27 @@ fraction over a bounded cohort is a distribution to report per case, not an exce
 
 ## Contract parity with the storefront
 
-The published surface (`webmcp/src/contracts.js`) and the page that actually registers the tools must
-describe the same **fields**. `webmcp/test/contract-parity.test.js` compares every tool's
-`inputSchema` against the storefront source of truth field by field — names, types and bounds, in both
-directions — using `webmcp/src/contract-parity.js`, which reads the storefront files from the sibling
-`bestprice.gr` checkout (override with `BESTPRICE_STOREFRONT_ROOT`).
+The published surface (`webmcp/src/contracts.js`) and the pages that actually register the tools must
+describe the same tools. `webmcp/test/contract-parity.test.js` compares every definition against the
+storefront source of truth: the input contract field by field — names, types and bounds, in both
+directions — and, since contract 1.8, the title, description, annotations, input field wording and
+output schema exactly, plus the tools each page type registers. `webmcp/src/contract-parity.js`
+reads the storefront from the sibling `bestprice.gr` checkout (override with
+`BESTPRICE_STOREFRONT_ROOT`): each tool's words and output schema from its generated
+`extra/mcpDiscovery/webmcp-tools.json`, its input schema and annotations from the page modules that
+register it, and the page lists from the manifest its PHP builder renders.
 
 The comparison always runs against the committed snapshot
-`webmcp/test/fixtures/storefront-tools.v1.json`, so it cannot silently skip when the sibling checkout
-is absent, and it re-extracts the live files when they are present, so the snapshot cannot silently
-drift. When the storefront changes its surface the digest check fails: re-extract, review the fixture,
-and decide whether the published contract changes with it. Names, counts and version strings are not
-parity — `show_offer`'s missing `offer_ref` passed all three of those checks.
+`webmcp/test/fixtures/storefront-tools.v2.json`, so it cannot silently skip when the sibling checkout
+is absent, and it re-reads the live files when the checkout contains the snapshot's source commit, so
+the snapshot cannot silently drift. When the storefront changes its surface the digest check fails:
+`npm run webmcp:snapshot -- <checkout>` rewrites the snapshot and
+`webmcp/src/storefront-catalog.js` (the words and output schemas `contracts.js` publishes), and the
+parity test then names every input field or annotation still to change by hand — the moment a
+reviewer decides whether the published contract changes with it. `npm run eval:conformance`, the
+mandatory release check, holds the live pages, the PHP manifest and the published contract to each
+other with no snapshot. Names, counts and version strings are not parity — `show_offer`'s missing
+`offer_ref` passed all three of those checks.
 
 Tool execution remains bounded to the open page. Unknown shipping stays `null`;
 offers expose no merchant click-through URL. Evaluation must not manufacture

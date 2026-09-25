@@ -45,6 +45,7 @@
     "eval:validate": "node webmcp/evals/run-evidence.js",
     "eval:check": "node webmcp/evals/conformance.mjs && node webmcp/evals/run-evidence.js --strict",
     "eval:conformance": "node webmcp/evals/conformance.mjs",
+    "webmcp:snapshot": "node webmcp/evals/storefront-snapshot.mjs",
     "benchmark:selection": "node scripts/score-selection-run.mjs",
     "benchmark:selection:anthropic": "node scripts/run-selection-anthropic.mjs"
   },

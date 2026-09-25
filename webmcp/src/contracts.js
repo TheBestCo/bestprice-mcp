@@ -1,32 +1,55 @@
 /**
- * WebMCP tool contracts for BestPrice pages.
+ * WebMCP tool contracts for BestPrice pages (contract 1.8).
  *
- * Each contract is a plain description (name, title, description, annotations, JSON Schema input).
- * `createTools` binds the contracts a page exposes to an `execute` function supplied by the page.
+ * Each contract is a plain description (name, title, description, annotations, JSON Schema input and
+ * output). `createTools` binds the contracts a page exposes to an `execute` function supplied by the
+ * page.
+ *
+ * The storefront is the source of truth. Each tool's title, description and output schema come from
+ * `storefront-catalog.js`, generated from the storefront's own catalog; the input schemas and
+ * annotations below are written out, and `webmcp/test/contract-parity.test.js` compares every field of
+ * every definition — words included — with the committed storefront snapshot.
  */
+
+import { STOREFRONT_CATALOG, WEBMCP_CONTRACT_VERSION } from './storefront-catalog.js';
+
+export { WEBMCP_CONTRACT_VERSION };
 
 const EMPTY_SCHEMA = { type: 'object', properties: {}, additionalProperties: false };
 
-/** Tools that only read what is already rendered on the page. */
-const READ_ONLY = {
-  readOnlyHint: true,
-  destructiveHint: false,
-  idempotentHint: true,
-  openWorldHint: false,
-  untrustedContentHint: true,
-};
+/*
+ * Annotations, as the storefront registers them. `consequentialHint` (Chrome 154 ToolAnnotations) marks
+ * a tool whose execution is high-stakes, irreversible or real-world — booking, paying, deleting — so an
+ * agent stops and asks first. No BestPrice tool is: each reads the page or BestPrice's own server, or
+ * moves the shopper's own tab, so every one says `false` explicitly rather than leaving an agent to
+ * assume the worst. Every result carries catalog or page text, so every one is untrusted content.
+ */
 
-/** Tools that change what the page shows (search, filter, sort, open) without leaving BestPrice. */
+/** Tools that only read what is already rendered on the page. */
+const READ_ONLY = { readOnlyHint: true, consequentialHint: false, untrustedContentHint: true };
+
+/** Tools that change what the page shows (search, filter, sort, open, focus) without leaving BestPrice. */
 const NAVIGATION = {
   readOnlyHint: false,
   destructiveHint: false,
   idempotentHint: true,
   openWorldHint: false,
+  consequentialHint: false,
+  untrustedContentHint: true,
+};
+
+/** The Shopping Brain: a read of BestPrice's own server that changes nothing, on the page or elsewhere. */
+const DECISION = {
+  readOnlyHint: true,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: false,
+  consequentialHint: false,
   untrustedContentHint: true,
 };
 
 const limitSchema = (maximum, description) => ({ type: 'integer', minimum: 1, maximum, description });
-/* Contract 1.7: a continuation. The bound is the storefront's `Number.MAX_SAFE_INTEGER`. */
+/* A continuation. The bound is the storefront's `Number.MAX_SAFE_INTEGER`. */
 const offsetSchema = description => ({
   type: 'integer',
   minimum: 0,
@@ -45,130 +68,139 @@ const objectSchema = (properties, required = []) => ({
   ...(required.length ? { required } : {}),
   additionalProperties: false,
 });
+const NUMERIC_ID = '^\\d{1,20}$';
+/* A five-digit Greek postcode, 10000–85999: the range the Shopping Brain accepts. */
+const POSTAL_CODE_PATTERN = '^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$';
 
 const DEFINITIONS = [
   {
     name: 'search_bestprice',
-    title: 'Search BestPrice products',
-    description: 'Start a product search in this browser tab.',
     annotations: NAVIGATION,
-    inputSchema: objectSchema({ query: textSchema(120, 'Product or shopping need.', 2) }, ['query']),
+    inputSchema: objectSchema(
+      {
+        query: textSchema(
+          120,
+          'Product, brand, model, or shopping need to search for, in Greek or English.',
+          2,
+        ),
+        /* Contract 1.8: the search answers with its results, and moving the tab is optional. */
+        limit: limitSchema(8, 'Maximum results to return, from 1 to 8. Defaults to 6.'),
+        navigate: {
+          type: 'boolean',
+          description:
+            'Move this tab to the results page after reading it. Defaults to true; false only reads.',
+        },
+      },
+      ['query'],
+    ),
   },
   {
     name: 'get_visible_products',
-    title: 'Products on this page',
-    description:
-      'Return up to eight products currently rendered on this listing; follow next_offset for the rest.',
     annotations: READ_ONLY,
     inputSchema: objectSchema({
       limit: limitSchema(8, 'Maximum products to return.'),
-      offset: offsetSchema('next_offset from the previous result on the same page. Defaults to 0.'),
+      offset: offsetSchema('Use next_offset from the previous result on the same page. Defaults to 0.'),
     }),
   },
   {
     name: 'open_visible_product',
-    title: 'Open a visible product',
-    description: 'Open a visible product using an ID returned by get_visible_products.',
     annotations: NAVIGATION,
     inputSchema: objectSchema(
-      { product_id: { type: 'string', pattern: '^\\d{1,20}$', description: 'Visible numeric product ID.' } },
+      {
+        product_id: {
+          type: 'string',
+          pattern: NUMERIC_ID,
+          description: 'Numeric product ID returned by get_visible_products.',
+        },
+      },
       ['product_id'],
     ),
   },
   {
     name: 'get_listing_filters',
-    title: 'Available filters',
-    description:
-      'Return selected and available filters on this listing, including values behind «Εμφάνιση όλων»; pass group to read one filter in full.',
     annotations: READ_ONLY,
     inputSchema: objectSchema({
-      group: textSchema(64, 'A filter key or name a previous call returned.'),
+      group: textSchema(
+        64,
+        'A filter key or name a previous call returned; returns that filter with all of its values.',
+      ),
       offset: offsetSchema(
-        'next_offset from the previous result with the same group, or none. Defaults to 0.',
+        'Use next_offset from the previous result with the same group, or none. Defaults to 0.',
       ),
     }),
   },
   {
     name: 'apply_listing_filter',
-    title: 'Apply a filter',
-    description: 'Apply a filter value the listing offers, including one behind «Εμφάνιση όλων».',
     annotations: NAVIGATION,
     inputSchema: objectSchema(
-      { filter: textSchema(64, 'Visible filter name.'), value: textSchema(72, 'Visible filter value.') },
+      {
+        filter: textSchema(64, 'Visible filter name or key.'),
+        value: textSchema(72, 'Visible filter value or unique partial label.'),
+      },
       ['filter', 'value'],
     ),
   },
   {
     name: 'clear_listing_filters',
-    title: 'Clear filters',
-    description: 'Clear the filters currently applied to this listing.',
     annotations: NAVIGATION,
     inputSchema: EMPTY_SCHEMA,
   },
   {
     name: 'get_listing_sort_options',
-    title: 'Available sorting options',
-    description: 'Return sorting choices currently rendered on this listing.',
     annotations: READ_ONLY,
     inputSchema: EMPTY_SCHEMA,
   },
   {
     name: 'apply_listing_sort',
-    title: 'Sort this product listing',
-    description: 'Apply a currently visible sorting option.',
     annotations: NAVIGATION,
-    inputSchema: objectSchema({ sort: textSchema(72, 'Visible sorting option.') }, ['sort']),
+    inputSchema: objectSchema({ sort: textSchema(72, 'Visible sorting option or unique partial label.') }, [
+      'sort',
+    ]),
   },
   {
     name: 'get_page_product',
-    title: 'Product details on this page',
-    description: 'Return the product facts currently rendered on this item page.',
     annotations: READ_ONLY,
     inputSchema: EMPTY_SCHEMA,
   },
   {
     name: 'compare_page_offers',
-    title: 'Compare offers on this page',
-    description:
-      'Compare up to four offers by delivered price. stores_considered of stores_total says how many stores were ranked; completeness partial means more are behind «Όλες οι τιμές».',
     annotations: READ_ONLY,
     inputSchema: objectSchema({
-      limit: limitSchema(4, 'Offers to return.'),
+      limit: limitSchema(4, 'Number of lowest-delivered-price offers to return, from 1 to 4.'),
       /* Contract 1.7: the page's own «Όλες οι τιμές» request, as when the shopper presses it. */
       include_all_stores: {
         type: 'boolean',
-        description: 'First load the stores the page keeps behind «Όλες οι τιμές». Defaults to false.',
+        description:
+          'First load the stores this page keeps behind «Όλες οι τιμές», as when the shopper presses it. Defaults to false.',
       },
     }),
   },
   {
     name: 'get_product_specifications',
-    title: 'Product specifications',
-    description:
-      'Return structured specifications for the product on this page, one section, or one fact in full.',
     annotations: READ_ONLY,
     inputSchema: objectSchema({
-      section: textSchema(48, 'Visible section name or all.'),
-      limit: limitSchema(16, 'Facts to return.'),
+      section: textSchema(
+        48,
+        'Use all or a section name shown on this product, such as Οθόνη, Ισχύς, or Διαστάσεις.',
+      ),
+      limit: limitSchema(16, 'Maximum number of specification facts to return, from 1 to 16.'),
       /* Contract 1.6: the exact continuation for a value a previous call marked truncated. */
-      fact: textSchema(72, 'A fact name a previous call returned; returns that fact in full.'),
+      fact: textSchema(
+        72,
+        'A specification fact name, such as one a previous call returned. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section.',
+      ),
       offset: offsetSchema(
-        'next_offset from the previous result, same section. Defaults to 0; not with fact.',
+        'Use next_offset from the previous result, keeping the same product and section. Defaults to 0. Do not combine with fact.',
       ),
     }),
   },
   {
     name: 'summarize_price_history',
-    title: 'Price history summary',
-    description: 'Summarize the visible product price history.',
     annotations: READ_ONLY,
     inputSchema: EMPTY_SCHEMA,
   },
   {
     name: 'show_offer',
-    title: 'Show an offer for this product',
-    description:
-      'Scroll this item page to one merchant offer it already shows and mark it for the shopper. Use the offer_ref from compare_page_offers; merchant_name (or a merchant_id from the page markup) also works when it identifies exactly one shown offer.',
     annotations: NAVIGATION,
     inputSchema: objectSchema({
       /* The page-local reference compare_page_offers returns, and the only selector that can separate
@@ -176,21 +208,44 @@ const DEFINITIONS = [
        * the action verb landed; this contract — and every consumer of it — declared only the merchant
        * selectors, so a reference the page itself called exact was invalid here. Parity is asserted
        * field by field in `webmcp/test/contract-parity.test.js`. */
-      offer_ref: textSchema(40, 'Page-local offer reference from compare_page_offers.', 8),
+      offer_ref: textSchema(
+        40,
+        'Page-local offer reference from compare_page_offers. Exact, and the only selector that can separate two stores with the same displayed name. A reference names one quote: it is refused once the page state, the merchant, the variant or any price or shipping amount changes; read the offers again.',
+        8,
+      ),
       merchant_id: {
         type: 'string',
-        pattern: '^\\d{1,20}$',
-        description: 'Numeric merchant id from the page markup; compare_page_offers does not return it.',
+        pattern: NUMERIC_ID,
+        description:
+          'Numeric merchant id as the page markup shows it (data-mid); compare_page_offers does not return it, so prefer offer_ref.',
       },
       merchant_name: textSchema(68, 'Merchant name exactly as compare_page_offers returned it.', 2),
     }),
   },
   {
     name: 'show_price_history',
-    title: 'Show this product price history',
-    description: 'Open or focus the price-history chart on this page.',
     annotations: NAVIGATION,
     inputSchema: EMPTY_SCHEMA,
+  },
+  {
+    /* Contract 1.8: the Shopping Brain on every page, asked with the shopper's own words. */
+    name: 'get_shopping_decision',
+    annotations: DECISION,
+    inputSchema: objectSchema(
+      {
+        message: textSchema(
+          2000,
+          'The shopper’s question as they asked it, with budget and required features, e.g. «κινητό έως 400€ με NFC».',
+        ),
+        postal_code: {
+          type: 'string',
+          pattern: POSTAL_CODE_PATTERN,
+          description:
+            'Optional five-digit Greek delivery postcode the shopper gave (10000–85999); adds shipping and delivered totals.',
+        },
+      },
+      ['message'],
+    ),
   },
 ];
 
@@ -202,9 +257,9 @@ const deepFreeze = value => {
   return value;
 };
 
-/** Tool names each page type exposes, in registration order. */
+/** Tool names each page type exposes, in registration order: search first, the Shopping Brain last. */
 export const PAGE_TOOL_NAMES = deepFreeze({
-  home: ['search_bestprice'],
+  home: ['search_bestprice', 'get_visible_products', 'open_visible_product', 'get_shopping_decision'],
   listing: [
     'search_bestprice',
     'get_visible_products',
@@ -214,6 +269,7 @@ export const PAGE_TOOL_NAMES = deepFreeze({
     'clear_listing_filters',
     'get_listing_sort_options',
     'apply_listing_sort',
+    'get_shopping_decision',
   ],
   product: [
     'search_bestprice',
@@ -223,18 +279,39 @@ export const PAGE_TOOL_NAMES = deepFreeze({
     'summarize_price_history',
     'show_offer',
     'show_price_history',
+    'get_shopping_decision',
   ],
 });
 
-const DEFINITIONS_BY_NAME = new Map(DEFINITIONS.map(definition => [definition.name, deepFreeze(definition)]));
+/* Fail at module load if a definition has no storefront catalog entry, or the catalog one without a
+ * definition: the words and output schema of a tool must come from the storefront. */
+for (const { name } of DEFINITIONS) {
+  if (!Object.hasOwn(STOREFRONT_CATALOG, name))
+    throw new Error(`WebMCP tool "${name}" has no storefront catalog entry`);
+}
+for (const name of Object.keys(STOREFRONT_CATALOG)) {
+  if (!DEFINITIONS.some(definition => definition.name === name)) {
+    throw new Error(`The storefront catalog lists "${name}", which no WebMCP contract defines`);
+  }
+}
+
+/** Every definition by name: name, title, description, annotations, inputSchema, outputSchema. */
+export const TOOL_DEFINITIONS = deepFreeze(
+  Object.fromEntries(
+    DEFINITIONS.map(({ name, annotations, inputSchema }) => {
+      const { title, description, outputSchema } = STOREFRONT_CATALOG[name];
+      return [name, { name, title, description, annotations, inputSchema, outputSchema }];
+    }),
+  ),
+);
 
 /** Every distinct tool name across all pages. */
-export const TOOL_NAMES = Object.freeze([...DEFINITIONS_BY_NAME.keys()]);
+export const TOOL_NAMES = Object.freeze(Object.keys(TOOL_DEFINITIONS));
 
 // Fail at module load if the page lists and the definitions ever drift apart.
 for (const [page, names] of Object.entries(PAGE_TOOL_NAMES)) {
   for (const name of names) {
-    if (!DEFINITIONS_BY_NAME.has(name))
+    if (!Object.hasOwn(TOOL_DEFINITIONS, name))
       throw new Error(`Page "${page}" lists an undefined WebMCP tool: ${name}`);
   }
 }
@@ -248,7 +325,7 @@ for (const name of TOOL_NAMES) {
  * Builds the WebMCP tool objects for a page.
  *
  * @param {{ page: 'home' | 'listing' | 'product', execute: (name: string, args: object, options?: { signal?: AbortSignal }) => unknown }} options
- * @returns {Array<{ name: string, title: string, description: string, annotations: object, inputSchema: object, execute: (args: object, options?: { signal?: AbortSignal }) => unknown }>}
+ * @returns {Array<{ name: string, title: string, description: string, annotations: object, inputSchema: object, outputSchema: object, execute: (args: object, options?: { signal?: AbortSignal }) => unknown }>}
  * @throws {TypeError} for an unknown page type or a non-callable executor.
  */
 export function createTools({ page, execute }) {
@@ -257,7 +334,7 @@ export function createTools({ page, execute }) {
   // The registration runtime supplies an invocation-owned signal here. Dropping the options
   // hides cancelled results but lets a cooperative page handler continue its later effects.
   return PAGE_TOOL_NAMES[page].map(name => ({
-    ...DEFINITIONS_BY_NAME.get(name),
+    ...TOOL_DEFINITIONS[name],
     execute: (args, options) => execute(name, args, options),
   }));
 }

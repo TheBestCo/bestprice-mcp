@@ -568,3 +568,16 @@ runner waits for a navigation the page calls «unconfirmed» (`05640b7002`).
 The evidence test that treats uncited artifacts as demo leaks listed its ledgers by hand and never
 gained 7.0.0's, so it read 940 published artifacts as leaks once they were committed; it now finds
 every `runs.v<N>.json` by shape, like the quarantine beside it.
+
+## Contract 1.8 outgrows the frozen datasets (2026-09-25)
+
+Contract 1.8 (bestprice.gr `5fdf23cee7`) publishes an output schema for every tool, and
+`search_bestprice` now answers with its results — `results_url`, `results_kind`, the product cards,
+`navigated` — in a closed schema with no `action` field. Four cases in every dataset from 1.0.0 to
+8.0.0 (`home-001`, `home-002`, `home-005`, `listing-012`) require `action` from `search_bestprice`, so
+they fail on a 1.8 result that did what the shopper asked. The deterministic demo, whose results now
+fit the published output schemas, shows exactly that: 37 passed, 4 failed (those four), 6 refused, where
+1.7 gave 41, 0 and 6. The frozen `allowed_args` also predate `search_bestprice.limit` and `navigate`,
+and the admitted extras predate the new read-only `get_shopping_decision` (`dataset-v3.test.js` names
+both). Frozen cases are not edited: a dataset that grades 1.8 results is the next version, and the
+owner's decision.

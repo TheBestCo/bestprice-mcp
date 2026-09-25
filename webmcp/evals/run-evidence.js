@@ -67,8 +67,15 @@ export const EVIDENCE_LAYERS = Object.freeze([NATIVE_EVIDENCE_LAYER]);
 /** Fields that must agree with the declared modality. */
 export const MODALITY_FIELDS = Object.freeze(['agent', 'model', 'browser']);
 
-/** The implementation a run claims to have exercised: the tool contracts and the registration runtime. */
-export const IMPLEMENTATION_FILES = Object.freeze(['webmcp/src/contracts.js', 'webmcp/src/runtime.js']);
+/**
+ * The implementation a run claims to have exercised: the tool contracts, the storefront catalog they
+ * publish each tool's words and output schema from (since contract 1.8), and the registration runtime.
+ */
+export const IMPLEMENTATION_FILES = Object.freeze([
+  'webmcp/src/contracts.js',
+  'webmcp/src/storefront-catalog.js',
+  'webmcp/src/runtime.js',
+]);
 
 /** Committed artifacts live beside the ledger, so an `artifacts/x.json` path resolves here. */
 export const DEFAULT_ARTIFACT_ROOT = fileURLToPath(new URL('./artifacts/', import.meta.url));

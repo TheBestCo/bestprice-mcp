@@ -1,11 +1,12 @@
 # BestPrice WebMCP
 
 BestPrice adds page-local WebMCP tools to the shopping journey at
-[`www.bestprice.gr`](https://www.bestprice.gr/). A compatible agent can search,
-inspect the products and controls that are actually on the open page, apply a
-visible filter or sorting option, open a returned product, compare rendered
-offers, read specifications, inspect price history, and move the shopper's own
-tab to one offer the page already shows.
+[`www.bestprice.gr`](https://www.bestprice.gr/). A compatible agent can search
+and read the results, inspect the products and controls that are actually on the
+open page (the home page's sections included), apply a visible filter or sorting
+option, open a returned product, compare rendered offers, read specifications,
+inspect price history, move the shopper's own tab to one offer the page already
+shows, and ask the BestPrice Shopping Brain what to buy from any page.
 
 The shopper stays on BestPrice and keeps the final choice. There is no checkout
 tool, no background account access, and no direct merchant URL in a tool result.
@@ -33,12 +34,19 @@ npm test
 
 ## Source map
 
-- [`src/contracts.js`](src/contracts.js) contains the 14 contextual tool
-  contracts, schemas, and safety annotations.
+- [`src/contracts.js`](src/contracts.js) contains the 15 contextual tool
+  contracts of WebMCP contract 1.8: input and output schemas and safety
+  annotations. Each tool's title, description and output schema come from
+  [`src/storefront-catalog.js`](src/storefront-catalog.js), generated from the
+  storefront's own catalog.
+- [`src/contract-parity.js`](src/contract-parity.js) reads the storefront's
+  registered tools and compares them with the published contract.
 - [`src/runtime.js`](src/runtime.js) owns cancellation, timeout, contextual
   re-registration, and fail-closed rollback.
 - [`src/demo-adapter.js`](src/demo-adapter.js) is the deterministic evaluator
-  adapter.
+  adapter. Every result it returns fits its tool's published output schema; its
+  `get_shopping_decision` answers from the fixture unless the host injects
+  `decide`, so it never reaches the network on its own.
 - [`demo/app.js`](demo/app.js) renders the human-visible page and exercises the
   same contracts without a framework.
 - [`test/webmcp.test.js`](test/webmcp.test.js) pins the contracts, the fail-closed
@@ -54,14 +62,27 @@ Production registers only the tools relevant to the open page:
 
 | Page | Tools |
 | --- | ---: |
-| Home | 1 |
-| Search, category, or hub listing | 8 |
-| Product page | 7 |
-| Unique contracts | 14 |
+| Home | 4 |
+| Search, category, or hub listing | 9 |
+| Product page | 8 |
+| Unique contracts | 15 |
 
-The seventh product-page entry, `show_offer`, is an action verb: it scrolls to
-one rendered offer and marks it for the shopper, and it returns no merchant
-link.
+Every page registers `search_bestprice` first and `get_shopping_decision` last.
+The product page's `show_offer` is an action verb: it scrolls to one rendered
+offer and marks it for the shopper, and it returns no merchant link.
+
+Contract 1.8 (2026-09-25) gives every tool an output schema — a closed `oneOf`
+of its success and its refusal — and rewrites every title and description to
+say what the tool does, when to use it, what it returns and what it changes.
+`search_bestprice` reads the results before it moves the tab: it takes an
+optional `limit` (1–8) and `navigate` (false only reads) and returns the
+product cards, the results page and whether the tab moved. The home page
+registers `get_visible_products` and `open_visible_product` over the products
+its sections show. `get_shopping_decision`, on every page, asks the BestPrice
+Shopping Brain (the public MCP endpoint's tool of the same name) with the
+shopper's own words and an optional Greek postcode, and returns the pick,
+alternatives, reasons, tradeoffs and unknowns; it is read-only and does not
+move the tab. Every tool declares `consequentialHint: false`.
 
 Contract 1.7 (2026-09-22) makes every bounded read continuable and says how
 much of the page it covered: `get_visible_products`, `get_listing_filters` and
@@ -75,11 +96,15 @@ previous call returned reads that fact in full.
 
 Parity is checked field by field, not by version string: the storefront tests
 the schemas its pages register against the manifest it serves,
-`test/contract-parity.test.js` checks this contract against a committed
-snapshot of those pages, and the submission canary compares the manifests on
+`test/contract-parity.test.js` checks every field of this contract — words and
+output schemas included — and each page's tool list against a committed
+snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
+regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. The evaluation
 datasets up to 8.0.0 grade against contract 1.6; `test/dataset-v3.test.js`
-names the arguments published since.
+names the arguments and tools published since, and
+[`evals/QUALIFICATION.md`](evals/QUALIFICATION.md) records the four frozen
+cases that expect the 1.6 search result.
 
 The machine-readable production inventory is available at
 [`/.well-known/webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json).

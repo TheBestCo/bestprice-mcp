@@ -1,42 +1,66 @@
 import assert from 'node:assert/strict';
 import { describe, it, test } from 'node:test';
 
-import { createTools, PAGE_TOOL_NAMES, TOOL_NAMES } from '../src/contracts.js';
+import {
+  createTools,
+  PAGE_TOOL_NAMES,
+  TOOL_DEFINITIONS,
+  TOOL_NAMES,
+  WEBMCP_CONTRACT_VERSION,
+} from '../src/contracts.js';
 import { BRAND_FILTER, createDemoAdapter, PAGES, SORT_OPTIONS } from '../src/demo-adapter.js';
 import { createLocalModelContext, createRegistration } from '../src/runtime.js';
 
 const noop = () => ({ ok: true });
+/* The storefront's own bound on a tool description (bestprice.gr js/modules/webmcp/output-schemas.test.js):
+ * long enough to say what the tool does, when to use it, what it returns and what it changes. */
+const DESCRIPTION_LENGTH = Object.freeze({ min: 180, max: 720 });
 
 describe('contracts', () => {
-  it('publishes 14 unique contextual tools across three page types', () => {
-    assert.equal(TOOL_NAMES.length, 14);
+  it('publishes 15 unique contextual tools across three page types (contract 1.8)', () => {
+    assert.equal(WEBMCP_CONTRACT_VERSION, '1.8');
+    assert.equal(TOOL_NAMES.length, 15);
     assert.deepEqual(new Set(Object.values(PAGE_TOOL_NAMES).flat()), new Set(TOOL_NAMES));
-    assert.deepEqual(PAGE_TOOL_NAMES.home, ['search_bestprice']);
-    assert.equal(PAGE_TOOL_NAMES.listing.length, 8);
-    assert.equal(PAGE_TOOL_NAMES.product.length, 7);
+    /* Search first, the Shopping Brain last, on every page; the home page browses its sections. */
+    assert.deepEqual(PAGE_TOOL_NAMES.home, [
+      'search_bestprice',
+      'get_visible_products',
+      'open_visible_product',
+      'get_shopping_decision',
+    ]);
+    assert.equal(PAGE_TOOL_NAMES.listing.length, 9);
+    assert.equal(PAGE_TOOL_NAMES.product.length, 8);
+    for (const names of Object.values(PAGE_TOOL_NAMES)) {
+      assert.equal(names[0], 'search_bestprice');
+      assert.equal(names.at(-1), 'get_shopping_decision');
+    }
     assert.ok(Object.isFrozen(PAGE_TOOL_NAMES.listing));
+    assert.ok(Object.isFrozen(TOOL_DEFINITIONS.get_shopping_decision.outputSchema));
   });
 
-  it('keeps every contract within the WebMCP size limits and annotates it explicitly', () => {
-    const hintKeys = [
-      'readOnlyHint',
-      'destructiveHint',
-      'idempotentHint',
-      'openWorldHint',
-      'untrustedContentHint',
-    ];
+  it('keeps every contract within the storefront limits and annotates it explicitly', () => {
     for (const page of Object.keys(PAGE_TOOL_NAMES)) {
       for (const tool of createTools({ page, execute: noop })) {
         assert.ok(tool.name.length <= 30);
         assert.ok(tool.title);
-        assert.ok(tool.description.length <= 500);
-        assert.deepEqual(Object.keys(tool.annotations).sort(), [...hintKeys].sort(), tool.name);
-        assert.equal(tool.annotations.untrustedContentHint, true);
-        assert.equal(tool.annotations.destructiveHint, false);
+        assert.ok(tool.description.length >= DESCRIPTION_LENGTH.min, tool.name);
+        assert.ok(tool.description.length <= DESCRIPTION_LENGTH.max, tool.name);
+        /* Every tool says it is not consequential and that its results are untrusted content; a tool
+         * that changes the page also says it is not destructive and stays on BestPrice. */
+        assert.equal(typeof tool.annotations.readOnlyHint, 'boolean', tool.name);
+        assert.equal(tool.annotations.consequentialHint, false, tool.name);
+        assert.equal(tool.annotations.untrustedContentHint, true, tool.name);
+        if (!tool.annotations.readOnlyHint) {
+          assert.equal(tool.annotations.destructiveHint, false, tool.name);
+          assert.equal(tool.annotations.idempotentHint, true, tool.name);
+          assert.equal(tool.annotations.openWorldHint, false, tool.name);
+        }
         assert.equal(tool.inputSchema.additionalProperties, false);
         for (const property of Object.values(tool.inputSchema.properties)) {
-          assert.ok(!property.description || property.description.length <= 150);
+          assert.ok(property.description?.length > 0, tool.name);
         }
+        assert.equal(tool.outputSchema.type, 'object', tool.name);
+        assert.equal(tool.outputSchema.oneOf.length, 2, tool.name);
       }
     }
   });
@@ -65,6 +89,11 @@ describe('contracts', () => {
     ]);
     assert.equal(showOffer.inputSchema.additionalProperties, false);
     assert.equal(productTools.get('show_price_history').annotations.readOnlyHint, false);
+
+    /* Contract 1.8: searching moves the tab unless told not to; the Shopping Brain only reads. */
+    assert.equal(productTools.get('search_bestprice').annotations.readOnlyHint, false);
+    assert.equal(productTools.get('get_shopping_decision').annotations.readOnlyHint, true);
+    assert.equal(productTools.get('get_shopping_decision').annotations.openWorldHint, false);
   });
 
   it('binds execute to the tool name', async () => {
@@ -98,7 +127,7 @@ describe('registration runtime', () => {
     const result = await registration.register(listingTools());
 
     assert.deepEqual(result, { status: 'degraded', registered: 0 });
-    assert.equal(signals.length, 8);
+    assert.equal(signals.length, 9);
     assert.ok(signals.every(signal => signal.aborted));
     assert.deepEqual(states.at(-1), { status: 'degraded', registered: 0 });
   });
@@ -107,8 +136,13 @@ describe('registration runtime', () => {
     const modelContext = createLocalModelContext();
     const states = [];
     const registration = createRegistration({ modelContext, onState: state => states.push(state) });
-    assert.deepEqual(await registration.register(listingTools()), { status: 'ready', registered: 8 });
-    assert.equal(modelContext.tools.size, 8);
+    assert.deepEqual(await registration.register(listingTools()), { status: 'ready', registered: 9 });
+    assert.equal(modelContext.tools.size, 9);
+    /* What the page registers is the whole published contract, output schema included. */
+    const registered = modelContext.tools.get('get_shopping_decision');
+    for (const field of ['title', 'description', 'annotations', 'inputSchema', 'outputSchema']) {
+      assert.equal(registered[field], TOOL_DEFINITIONS.get_shopping_decision[field], field);
+    }
     assert.deepEqual(
       states.map(state => state.status),
       ['unavailable', 'registering', 'ready'],
@@ -136,7 +170,7 @@ describe('registration runtime', () => {
     const first = registration.register(listingTools());
     const second = registration.register(createTools({ page: 'product', execute: noop }));
     assert.deepEqual(await first, { status: 'cancelled', registered: 0 });
-    assert.deepEqual(await second, { status: 'ready', registered: 7 });
+    assert.deepEqual(await second, { status: 'ready', registered: 8 });
   });
 
   it('tears down by aborting registered tools and reporting unavailable', async () => {
@@ -165,11 +199,12 @@ describe('demo adapter', () => {
   it('supports the complete search, listing, product, offer, and history journey', async () => {
     const adapter = createDemoAdapter();
     let tools = createTools({ page: 'home', execute: adapter.execute });
-    assert.deepEqual(await tools[0].execute({ query: 'phone' }), {
-      ok: true,
-      action: 'started_product_search',
-      query: 'phone',
-    });
+    /* Contract 1.8: the search answers with its results, then shows them. */
+    const search = await tools[0].execute({ query: 'phone' });
+    assert.equal(search.ok, true);
+    assert.equal(search.source, 'BestPrice search results');
+    assert.equal(search.query, 'phone');
+    assert.deepEqual([search.results_kind, search.returned, search.navigated], ['listing', 3, true]);
     assert.equal(adapter.snapshot().page, 'listing');
 
     tools = createTools({ page: 'listing', execute: adapter.execute });
@@ -214,7 +249,7 @@ describe('demo adapter', () => {
 
     assert.deepEqual(await adapter.execute('show_offer', {}), {
       ok: false,
-      error: 'Provide merchant_id or merchant_name from compare_page_offers.',
+      error: 'Provide offer_ref from compare_page_offers, or merchant_name.',
     });
     assert.deepEqual(await adapter.execute('show_offer', { merchant_name: 'Invented Merchant' }), {
       ok: false,
@@ -244,6 +279,9 @@ describe('demo adapter', () => {
       action: 'applied_filter',
       filter: BRAND_FILTER,
       value: 'Samsung',
+      applied: true,
+      dispatched: true,
+      outcome: 'observed_complete',
     });
     assert.deepEqual(
       adapter.snapshot().products.map(product => product.brand),

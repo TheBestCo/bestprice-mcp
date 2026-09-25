@@ -220,7 +220,7 @@ describe('execution evidence ledger', () => {
     assert.deepEqual(
       validateEvidenceFile(ledger([{ ...record, implementationFingerprint: 'e'.repeat(64) }]), context()),
       [
-        `runs[0]: implementationFingerprint does not match webmcp/src/contracts.js + webmcp/src/runtime.js at revision ${IMPLEMENTATION.revision}`,
+        `runs[0]: implementationFingerprint does not match webmcp/src/contracts.js + webmcp/src/storefront-catalog.js + webmcp/src/runtime.js at revision ${IMPLEMENTATION.revision}`,
       ],
     );
   });

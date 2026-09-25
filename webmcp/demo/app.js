@@ -1,5 +1,11 @@
 import { createTools } from '../src/contracts.js';
-import { BRAND_FILTER, createDemoAdapter, SORT_OPTIONS } from '../src/demo-adapter.js';
+import {
+  BRAND_FILTER,
+  createDemoAdapter,
+  HOME_SECTION,
+  offerRef,
+  SORT_OPTIONS,
+} from '../src/demo-adapter.js';
 import { createLocalModelContext, createRegistration } from '../src/runtime.js';
 
 const shop = document.querySelector('#shop-content');
@@ -15,7 +21,7 @@ let refreshQueued = false;
 
 /** Safe sample arguments for the "Run" buttons in the inspector. */
 const samples = snapshot => ({
-  search_bestprice: { query: 'phone' },
+  search_bestprice: { query: 'phone', limit: 3 },
   get_visible_products: { limit: 3 },
   open_visible_product: { product_id: snapshot.products[0]?.product_id ?? '0' },
   get_listing_filters: {},
@@ -27,8 +33,9 @@ const samples = snapshot => ({
   compare_page_offers: { limit: 3 },
   get_product_specifications: { section: 'all', limit: 6 },
   summarize_price_history: {},
-  show_offer: { merchant_name: snapshot.product.offers[0]?.merchant ?? '' },
+  show_offer: { offer_ref: offerRef(snapshot.product.product_id, 0) },
   show_price_history: {},
+  get_shopping_decision: { message: 'κινητό έως 750€ με 5G', postal_code: '10431' },
 });
 
 const escapeHtml = value =>
@@ -46,31 +53,8 @@ const runTool = async (name, args) => {
   showResult(await tool.execute(args));
 };
 
-const renderHome = () => {
-  shop.innerHTML = `
-    <div class="hero">
-      <p>Search and compare before you choose a shop.</p>
-      <h2>Prices that make sense, with your agent beside you.</h2>
-      <form class="searchbox">
-        <input name="query" value="phone" aria-label="Search products">
-        <button class="primary">Search</button>
-      </form>
-    </div>`;
-  shop.querySelector('form').addEventListener('submit', event => {
-    event.preventDefault();
-    runTool('search_bestprice', { query: new FormData(event.currentTarget).get('query') });
-  });
-};
-
-const renderListing = snapshot => {
-  const brands = ['Apple', 'Samsung', 'Google'];
-  const chips = brands
-    .map(
-      brand =>
-        `<button class="chip ${snapshot.brand === brand ? 'active' : ''}" data-brand="${escapeHtml(brand)}">${escapeHtml(brand)}</button>`,
-    )
-    .join('');
-  const rows = snapshot.products
+const productRows = products =>
+  products
     .map(
       product => `
         <article class="product-row">
@@ -85,6 +69,48 @@ const renderListing = snapshot => {
         </article>`,
     )
     .join('');
+const bindOpenButtons = () => {
+  for (const button of shop.querySelectorAll('[data-product]')) {
+    button.addEventListener('click', () =>
+      adapter.execute('open_visible_product', { product_id: button.dataset.product }),
+    );
+  }
+};
+
+/* Contract 1.8: the home page shows a section of products, which the agent can read and open too. */
+const renderHome = snapshot => {
+  shop.innerHTML = `
+    <div class="hero">
+      <p>Search and compare before you choose a shop.</p>
+      <h2>Prices that make sense, with your agent beside you.</h2>
+      <form class="searchbox">
+        <input name="query" value="phone" aria-label="Search products">
+        <button class="primary">Search</button>
+      </form>
+    </div>
+    <div class="listing-head">
+      <div>
+        <p class="eyebrow">Fixture home section</p>
+        <h2>${escapeHtml(HOME_SECTION)}</h2>
+      </div>
+    </div>
+    <div class="products">${productRows(snapshot.homeProducts)}</div>`;
+  shop.querySelector('form').addEventListener('submit', event => {
+    event.preventDefault();
+    runTool('search_bestprice', { query: new FormData(event.currentTarget).get('query') });
+  });
+  bindOpenButtons();
+};
+
+const renderListing = snapshot => {
+  const brands = ['Apple', 'Samsung', 'Google'];
+  const chips = brands
+    .map(
+      brand =>
+        `<button class="chip ${snapshot.brand === brand ? 'active' : ''}" data-brand="${escapeHtml(brand)}">${escapeHtml(brand)}</button>`,
+    )
+    .join('');
+  const rows = productRows(snapshot.products);
   shop.innerHTML = `
     <div class="listing-head">
       <div>
@@ -107,11 +133,7 @@ const renderListing = snapshot => {
     .addEventListener('click', () =>
       adapter.execute('apply_listing_sort', { sort: snapshot.sort === cheapest ? popular : cheapest }),
     );
-  for (const button of shop.querySelectorAll('[data-product]')) {
-    button.addEventListener('click', () =>
-      adapter.execute('open_visible_product', { product_id: button.dataset.product }),
-    );
-  }
+  bindOpenButtons();
 };
 
 const renderProduct = snapshot => {
@@ -137,7 +159,7 @@ const renderShop = snapshot => {
   for (const button of document.querySelectorAll('[data-view]')) {
     button.toggleAttribute('aria-current', button.dataset.view === snapshot.page);
   }
-  if (snapshot.page === 'home') renderHome();
+  if (snapshot.page === 'home') renderHome(snapshot);
   else if (snapshot.page === 'listing') renderListing(snapshot);
   else renderProduct(snapshot);
 };

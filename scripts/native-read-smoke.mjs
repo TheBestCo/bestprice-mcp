@@ -5,6 +5,7 @@ import { createReadStream } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { pathToFileURL } from 'node:url';
+import { PAGE_TOOL_NAMES } from '../webmcp/src/contracts.js';
 import {
   makeNativeReadReceipt,
   verifyNativeReadPayload,
@@ -61,28 +62,8 @@ const sha256File = async path => {
   for await (const chunk of createReadStream(path)) hash.update(chunk);
   return hash.digest('hex');
 };
-const expected = {
-  home: ['search_bestprice'],
-  listing: [
-    'search_bestprice',
-    'get_visible_products',
-    'open_visible_product',
-    'get_listing_filters',
-    'apply_listing_filter',
-    'clear_listing_filters',
-    'get_listing_sort_options',
-    'apply_listing_sort',
-  ],
-  product: [
-    'search_bestprice',
-    'get_page_product',
-    'compare_page_offers',
-    'get_product_specifications',
-    'summarize_price_history',
-    'show_offer',
-    'show_price_history',
-  ],
-};
+/* The tools each page type must register: the published contract, not a copy of it. */
+const expected = PAGE_TOOL_NAMES;
 try {
   ensure(process.argv.includes('--live'), 'explicit_live_flag_required');
   const { chromium } = await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE).href);
