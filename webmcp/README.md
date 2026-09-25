@@ -55,7 +55,7 @@ npm test
   runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
   validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned Greek natural-language dataset
-  (v1–v9 frozen; v10, 47 cases grading contract 1.9, current) and the separate deterministic
+  (v1–v10 frozen; v11, 47 cases grading contract 1.9 as revised, current) and the separate deterministic
   and browser-agent evaluation criteria.
 
 ## Production surface
@@ -82,6 +82,14 @@ brands, collections, comparisons, stories — register `search_bestprice`,
 offers (ranked by delivered price), key specifications and price-history
 summary by `product_id`, without moving the tab; `include` picks the sections.
 `get_shopping_decision` returns the same numeric product ids as the page tools.
+Its 2026-09-25 revision narrows `search_bestprice` by price, stock, deals and
+order (`min_price_eur`, `max_price_eur`, `in_stock_only`, `deals_only`, `sort`)
+and reports what the page applied; takes one product id form everywhere, digits
+only; lets `get_product_details` move the tab to the product (`navigate`); keeps
+every description to one scannable shape of at most 250 characters; and gives
+the item page its own wording for `search_bestprice` and `get_shopping_decision`,
+so a description never names a tool its page does not register
+(`TOOL_DEFINITIONS[name].pageDescriptions`; `createTools` registers it).
 
 Contract 1.8 (2026-09-25) gives every tool an output schema — a closed `oneOf`
 of its success and its refusal — and rewrites every title and description (at
@@ -118,8 +126,8 @@ output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
-10.0.0 grades contract 1.9 and is the default; 1.0.0–9.0.0 stay frozen, with
-their runs, as the history of contracts 1.6 to 1.8
+11.0.0 grades contract 1.9 as revised and is the default; 1.0.0–10.0.0 stay
+frozen, with their runs, as the history of contracts 1.6 to 1.9
 ([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 
 The machine-readable production inventory is available at

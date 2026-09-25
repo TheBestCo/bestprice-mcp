@@ -387,6 +387,16 @@ export function createDeterministicAgent(adapter) {
                 argsValid = false;
                 break;
               }
+              if (
+                propSchema.type === 'number' &&
+                (typeof argVal !== 'number' ||
+                  !Number.isFinite(argVal) ||
+                  (propSchema.minimum !== undefined && argVal < propSchema.minimum) ||
+                  (propSchema.maximum !== undefined && argVal > propSchema.maximum))
+              ) {
+                argsValid = false;
+                break;
+              }
               if (propSchema.type === 'boolean' && typeof argVal !== 'boolean') {
                 argsValid = false;
                 break;

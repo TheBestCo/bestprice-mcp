@@ -338,6 +338,15 @@ export function gradeJourney(definition, trace) {
           (rule.pattern && !new RegExp(rule.pattern).test(value)))
       )
         return verdict('failed', `invalid string ${tool}.${key}`);
+      /* Contract 1.9's price bounds (search_bestprice.min_price_eur, max_price_eur). */
+      if (
+        rule.type === 'number' &&
+        (typeof value !== 'number' ||
+          !Number.isFinite(value) ||
+          (rule.minimum !== undefined && value < rule.minimum) ||
+          (rule.maximum !== undefined && value > rule.maximum))
+      )
+        return verdict('failed', `invalid number ${tool}.${key}`);
       /* Contract 1.7/1.8 booleans (include_all_stores, navigate, load_more) take true or false only. */
       if (rule.type === 'boolean' && typeof value !== 'boolean')
         return verdict('failed', `invalid boolean ${tool}.${key}`);

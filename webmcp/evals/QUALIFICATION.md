@@ -623,3 +623,31 @@ admitted, not yet exercised. Cases for them are new prompts, and the owner's dec
 deterministic demo, which implements both, passes 10.0.0 as it passes 9.0.0: 41 passed and the same 6
 refusals (`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-001`, `neg-009`), no failure,
 no blocked run.
+
+## Dataset 11.0.0 grades the revised contract 1.9 (2026-09-25)
+
+The storefront revised contract 1.9 the same day (bestprice.gr `971aa25d79`, `b550a849e8`;
+registration revision 2026-09-25.7) without a version change. Three revisions change what an agent may
+send, and so grading:
+
+- `search_bestprice` takes `min_price_eur`, `max_price_eur`, `sort`, `in_stock_only` and `deals_only`,
+  and reports each as applied or not (and why). 10.0.0 refuses them as unexpected arguments, so a
+  search narrowed the way the page now supports failed its case;
+- one product id form, digits only (`^\d{1,20}$`): the `bp_` form 10.0.0 still accepted for
+  `compare_page_offers` and `get_product_details` is now refused by the page;
+- `get_product_details` gained `navigate`, so it is no longer read-only.
+
+The rest — descriptions of 202 to 250 characters, the item page's own wording for the two tools it
+shares with every page (`pages[].descriptions`), descriptions that name only tools their page registers
+— changes no grading.
+
+Dataset 11.0.0 (`dataset-v11.js`, `natural-language-cases.v11.json`, `runs.v11.json`, empty) is 10.0.0 with
+argument rules regenerated from the revised contract; the grader now checks number arguments too.
+`get_product_details` stays an admitted extra read — reading a product before opening it is what it is
+for — but only as a read: where it is not an expected tool, its `navigate` rule admits `false` alone, so
+an extra call that moves the tab is an extra action and fails like any other. Prompts, chains,
+criteria, required properties and admitted reads are 10.0.0's. It is the default of `native-run.mjs`
+and `run-evidence.js`; 10.0.0 is frozen, its first-1.9 argument rules recorded in `dataset-v10.js`. The
+deterministic demo, which implements the constraints, the single id form and `navigate`, passes 11.0.0
+with 41 passed and the same 6 refusals as on every earlier graded set.
+
