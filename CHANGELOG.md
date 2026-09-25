@@ -7,6 +7,53 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-09-25
+
+WebMCP contract 2.0 (bestprice.gr `2a849a63f1`; registration revision 2026-09-25.13). The storefront
+consolidates the page surface from 16 tools to 13: four tools are removed, one is added. A major version,
+because code that calls or registers a removed tool breaks.
+
+### Migration
+
+| Removed in 2.0 | Use instead |
+| --- | --- |
+| `open_visible_product { product_id }` | `open_product { product_id }` — any product, from every page, not only a card the page shows. It answers `outcome: 'confirmed'` with the product page's facts (no `action`, no nested `product`), or `dispatched` with `unconfirmed_reason`. |
+| `get_product_details { product_id, include?, navigate? }` | `open_product { product_id }`, then the product page's own reads (`get_page_product`, `compare_page_offers`, `get_product_specifications`, `summarize_price_history`). There is no read-in-place of another product. |
+| `get_listing_sort_options {}` | `get_listing_filters {}` — its overview returns `sort_options` (`name`, `key`, `selected`) and the active `sort`. |
+| `show_price_history {}` | `summarize_price_history { show_chart: true }` — the summary plus `chart` (`opened_price_history`, `focused_price_history` or `unavailable`). |
+
+`PAGE_TOOL_NAMES` is now home 4 (`search_bestprice`, `get_visible_products`, `open_product`,
+`get_shopping_decision`), listings 8, product page 8 and every other public page 3 (`search_bestprice`,
+`open_product`, `get_shopping_decision`). The demo adapter's `readSection`/`sectionTimeoutMs` options and its
+`DETAIL_SECTIONS`, `DETAIL_SECTION_TIMEOUT_MS` and `readFixtureSection` exports are gone with
+`get_product_details`; `readPage` now backs `open_product`.
+
+### Added
+
+- **`open_product`** on every page: it reads `/item/<id>/` first and answers `confirmed` with the page's facts
+  (title, category, price, store count, rating) before the tab moves; an id BestPrice has no page for is
+  refused as `not_found` and the tab stays; an id below 2^31 — a single store's own offer — is refused as
+  `store_offer` and never loaded. The demo implements all four answers, schema-valid against the strict and
+  published contracts, with the `dispatched` fallback behind the injectable destination reader.
+- `get_listing_filters` returns the sort options and the active sort with the filters overview.
+- **Dataset 13.0.0** grades contract 2.0 and is the default (native runner, evidence audit and the
+  deterministic driver): 12.0.0's cases with each removed tool replaced by its successor in chains and required
+  properties, the removed tools dropped from admitted reads, and neg-001 — «open the id a friend sent me»,
+  which 1.x refused — graded as `open_product` succeeding (`expects_refusal: false`, read by the grader before
+  its id list, so frozen sets grade as before). 12.0.0 is frozen with its argument rules recorded;
+  `runs.v13.json` starts empty. The demo passes 13.0.0 with 42 passed and 5 refusals.
+
+### Changed
+
+- Every description is one sentence of at most 160 characters, with one wording on every page (no page
+  descriptions); only `search_bestprice` and `get_shopping_decision` name another tool, each other.
+- Output schemas: rigid boolean consts (`changed`, `store_offer`, `more_pages`, `truncated`, …) are plain
+  booleans; `next_tools` and next steps name the 2.0 tools.
+- The snapshot reads `open-product-tool.js` in place of `product-details-tool.js`; `webmcpContractToolCount`
+  is 13; the native read diagnostic no longer calls `get_listing_sort_options`.
+- The deterministic driver's scripted plans use the 2.0 tools and run dataset 13.0.0 by default; the frozen
+  datasets grade tools the demo no longer implements, and their tests use recorded results instead.
+
 ## [1.5.0] - 2026-09-25
 
 WebMCP contract 1.9 at the storefront's registration revision 2026-09-25.12 (bestprice.gr `116ed10e75`,
@@ -450,7 +497,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.5.0...v2.0.0
 [1.5.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.1...v1.4.2
