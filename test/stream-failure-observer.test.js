@@ -62,6 +62,27 @@ test('valid data remains byte-for-byte identical and reports no failure', async 
   await tick();
   assert.deepEqual(events, []);
 });
+for (const reason of [undefined, new Error('discarded')]) {
+  // The SDK cancels every 202 body with no reason. Deterministic here, where the bridge
+  // handshake only lost the race to this report from undici 7.12 (Node 24-26).
+  test(`a consumer discarding the body (reason ${reason}) is not reported as a failure`, async () => {
+    const events = [];
+    let cancelled;
+    const source = new ReadableStream({
+      start(c) {
+        c.enqueue(Buffer.from('{}'));
+      },
+      cancel(value) {
+        cancelled = value;
+      },
+    });
+    const checked = validateUtf8Response(new Response(source), { onFailure: error => events.push(error) });
+    await checked.body.cancel(reason);
+    await tick();
+    assert.deepEqual(events, []);
+    assert.equal(cancelled, reason);
+  });
+}
 test('validation error is signaled before a hanging upstream cancellation settles', async () => {
   const events = [];
   const source = new ReadableStream({

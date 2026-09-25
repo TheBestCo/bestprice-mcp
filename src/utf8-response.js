@@ -87,10 +87,34 @@ export function validateUtf8Response(response, { maxBytes = MAX_RESPONSE_BYTES, 
       }
     },
   });
+  // A consumer discarding a body is not an upstream failure: the SDK cancels every 202 Accepted,
+  // notifications/initialized included. That cancel errors the writable, so pipeTo rejects with
+  // the consumer's own reason (usually undefined). transformer.cancel cannot tell the cases apart
+  // (a source error aborts the writable through it too), so mark cancellation where only the
+  // consumer reaches it. Without this the handshake failed whenever the pipe's rejection beat
+  // its completion: not with undici 6 (Node <= 23), on every run from undici 7.12 (Node 24-26).
+  let discarded = false;
+  const reader = transform.readable.getReader();
+  const body = new ReadableStream(
+    {
+      async pull(controller) {
+        const { done, value } = await reader.read();
+        if (done) controller.close();
+        else controller.enqueue(value);
+      },
+      cancel(reason) {
+        discarded = true;
+        return reader.cancel(reason);
+      },
+    },
+    { highWaterMark: 0 },
+  );
   // Observe upstream read failures too. The same pipe/backpressure behavior as pipeThrough
   // is retained, but its normally hidden completion promise now carries request-local failure.
-  response.body.pipeTo(transform.writable).catch(notifyFailure);
-  const checked = new Response(transform.readable, {
+  response.body.pipeTo(transform.writable).catch(error => {
+    if (!discarded) notifyFailure(error);
+  });
+  const checked = new Response(body, {
     status: response.status,
     statusText: response.statusText,
     headers: response.headers,

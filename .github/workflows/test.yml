@@ -57,3 +57,23 @@ jobs:
           path: ${{ runner.temp }}/installed-package/
           if-no-files-found: warn
           retention-days: 3
+
+  # The .nvmrc Node hid a bridge regression that broke every handshake on Node 24-26: from undici
+  # 7.12 a discarded fetch body settles two microtasks sooner, and its cancellation beat handshake
+  # completion. Runtime timing is per Node line, so the current one runs the tests too; it only
+  # tests, since lint, packing and server.json do not depend on the Node version.
+  current-node:
+    name: Test on the current Node line
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 26
+          cache: npm
+      - run: npm ci
+      - run: npm test

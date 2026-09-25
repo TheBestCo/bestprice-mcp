@@ -92,6 +92,14 @@ test('single-job CI still verifies the isolated package without weakening test g
   assert.match(ci, /name: installed-package-\$\{\{ github.run_id \}\}/u);
 });
 
+test('CI also tests the current Node line, whose stream timing the .nvmrc Node cannot show', async () => {
+  const ci = await readFile(path.join(ROOT, '.github/workflows/test.yml'), 'utf8');
+  const job = ci.slice(ci.indexOf('\n  current-node:'));
+  assert.ok(job.length > 1, 'The current-Node job must remain');
+  assert.match(job, /node-version: 26\n/u);
+  assert.ok(job.indexOf('run: npm ci') < job.indexOf('run: npm test'));
+});
+
 test('failed verifier writes a negative receipt and cannot overwrite it on retry', async t => {
   const directory = await mkdtemp(path.join(tmpdir(), 'bp-negative-package-'));
   t.after(() => rm(directory, { recursive: true, force: true }));
