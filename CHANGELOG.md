@@ -9,6 +9,7 @@ in `server.json`; see the Versioning section of the README.
 
 ### Added
 
+- First full measured Claude selection benchmark: the canonical Skill improved exact positive-case routing from 67.12% to 76.71% (+9.59 pp) on the frozen 186-case corpus; full provenance is recorded in `docs/selection-results-2026-09-24.md`.
 - Matched Anthropic selection runner for tools-only versus canonical-Skill routing on the frozen 186-case corpus, using synthetic read-only tool results so the benchmark cannot create commerce side effects.
 - CI-pinned Cline Marketplace remote-MCP contribution payload for the canonical BestPrice Shopping endpoint.
 - Provider-neutral selection benchmark scorer for actual ChatGPT/Claude/Gemini/Copilot/Grok traces, reporting activation recall, false activation, exact tool routing, optional outcome-quality metrics, and latency percentiles against the frozen 186-case corpus.
