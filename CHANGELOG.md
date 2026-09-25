@@ -7,6 +7,47 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-09-25
+
+WebMCP contract 1.9 at the storefront's registration revision 2026-09-25.12 (bestprice.gr `116ed10e75`,
+`fd7b2bbb71`, `6645a4e1c1`). The contract version and the 16 tools are unchanged; several tools take new optional
+inputs.
+
+### Added
+
+- **New optional inputs.** `compare_page_offers` returns up to 12 offers (default 4) and continues with `offset`,
+  returning `offset` and `next_offset` through every offer the page ranks. `clear_listing_filters` takes `filter`
+  (and `value`) to remove one filter or one selected value (`removed_filter`, `filter_already_clear`).
+  `summarize_price_history` takes `show_chart` to open the chart with the numbers (`chart`).
+  `get_listing_sort_options` returns each option's sort `key`, and `apply_listing_sort` takes a key or a label.
+- **Confirmed navigations.** `apply_listing_filter`, `apply_listing_sort` and `clear_listing_filters` read the
+  listing they lead to before the tab moves and answer `outcome: 'confirmed'`, `applied: true` and `destination`
+  (its URL, total, applied filters, sort key and first three products); `open_visible_product` answers
+  `opened_visible_product` with the product page's own facts (`product`); a navigating `search_bestprice` or
+  `get_product_details` answers `confirmed`. `dispatched`, with an `unconfirmed_reason`, remains only where the
+  destination could not be read first.
+- The demo adapter implements all of it, schema-valid against the strict and published contracts, with an
+  injectable destination reader (`readDestination`) for the `dispatched` fallback.
+- **Dataset 12.0.0** grades the revision and is the default: 11.0.0's cases with argument rules regenerated (offer
+  `offset` and `limit` 12, single-filter removal, `show_chart`, `show_offer` without `merchant_id`);
+  `get_visible_products` and `summarize_price_history` stay admitted extra reads with `load_more`/`show_chart`
+  admitted `false` only. 11.0.0 is frozen with its argument rules recorded; `runs.v12.json` starts empty. The demo
+  passes 12.0.0 with 41 passed and the same 6 refusals.
+
+### Changed
+
+- **Input schemas from the generated document.** The storefront keeps every input schema in one module and writes
+  it into `webmcp-tools.json`; the package now takes input schemas from there too (`storefront-catalog.js`), and
+  `contracts.js` carries only each tool's annotations and pages. The parity reader checks that every page
+  registers the document's input schema (`INPUT_SCHEMAS.<name>`), and the snapshot records `input-schemas.js`.
+- `show_offer` publishes `offer_ref` and `merchant_name` only — one of them, enforced by the tool; no input schema
+  uses `anyOf` or another combinator. `merchant_id` is no longer published, and the demo refuses it.
+- `get_visible_products` (`load_more`, not idempotent) and `summarize_price_history` (`show_chart`) are no longer
+  marked read-only.
+- Every nested output object is typed; repeated offer shapes require their core fields. The published schemas are
+  about two thirds of the strict contract, and the relaxation check admits a nested shape that requires fewer
+  fields than the strict one.
+
 ## [1.4.3] - 2026-09-25
 
 WebMCP contract 1.9 at the storefront's registration revision 2026-09-25.9 (bestprice.gr `2401b434d2`). The
@@ -409,7 +450,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.3...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.0...v1.4.1
