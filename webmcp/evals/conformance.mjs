@@ -8,18 +8,23 @@ import {
   packagePageTools,
   readStorefrontSurface,
   renderStorefrontManifest,
+  STOREFRONT_PAGE_TYPES,
   surfaceIndex,
 } from '../src/contract-parity.js';
-import { createTools, PAGE_TOOL_NAMES, TOOL_NAMES, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
+import {
+  createTools,
+  PAGE_TOOL_NAMES,
+  TOOL_DEFINITIONS,
+  TOOL_NAMES,
+  WEBMCP_CONTRACT_VERSION,
+} from '../src/contracts.js';
 
 // Mandatory release check. No snapshot fallback or skip when source/PHP is absent.
 const root = resolve(process.argv[2] || DEFAULT_STOREFRONT_ROOT);
 
 /* The pages' registrations against the published contract: every field, words included. */
 const source = readStorefrontSurface(root);
-const published = surfaceIndex(
-  Object.keys(PAGE_TOOL_NAMES).flatMap(page => createTools({ page, execute: () => {} })),
-);
+const published = surfaceIndex(Object.values(TOOL_DEFINITIONS));
 assert.deepEqual(compareSurfaces(source.surface, published), []);
 
 /* The manifest the site serves (/webmcp.json), rendered by the storefront's own PHP builder: the same
@@ -45,6 +50,18 @@ assert.deepEqual(compareInputSurfaces(source.surface, served), []);
 for (const name of TOOL_NAMES) {
   for (const field of ['title', 'description', 'outputSchema']) {
     assert.deepEqual(served[name][field], published[name][field], `${name}.${field}`);
+  }
+}
+/* Each page's wording: its own (pages[].descriptions) where it has any, the tool's otherwise — what
+ * createTools registers on that page type. */
+for (const entry of webmcp.pages) {
+  const registered = createTools({ page: STOREFRONT_PAGE_TYPES[entry.page], execute: () => {} });
+  for (const tool of registered) {
+    assert.equal(
+      entry.descriptions?.[tool.name] ?? served[tool.name].description,
+      tool.description,
+      `${entry.page}: ${tool.name}.description`,
+    );
   }
 }
 console.log(

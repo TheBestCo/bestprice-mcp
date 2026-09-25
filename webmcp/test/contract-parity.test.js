@@ -36,25 +36,46 @@ import {
   STOREFRONT_TOOL_DOCUMENT,
   surfaceIndex,
 } from '../src/contract-parity.js';
-import { createTools, PAGE_TOOL_NAMES, TOOL_NAMES, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
+import {
+  createTools,
+  PAGE_TOOL_NAMES,
+  TOOL_DEFINITIONS,
+  TOOL_NAMES,
+  WEBMCP_CONTRACT_VERSION,
+} from '../src/contracts.js';
 
 const FIXTURE_PATH = fileURLToPath(new URL('./fixtures/storefront-tools.v2.json', import.meta.url));
 const fixture = JSON.parse(readFileSync(FIXTURE_PATH, 'utf8'));
 
 const noop = () => ({ ok: true });
 
-/** The published surface, read from the same `createTools` a page calls. */
-const publishedSurface = () => {
-  const definitions = Object.keys(PAGE_TOOL_NAMES).flatMap(page => createTools({ page, execute: noop }));
-  const unique = new Map(definitions.map(definition => [definition.name, definition]));
-  return surfaceIndex([...unique.values()]);
-};
+/** The published surface: every definition, with any page type's own wording. */
+const publishedSurface = () => surfaceIndex(Object.values(TOOL_DEFINITIONS));
 
 describe('contract parity with the storefront', () => {
   it('publishes every tool the storefront registers, field by field and word for word', () => {
     const differences = compareSurfaces(fixture.surface, publishedSurface());
     assert.deepEqual(differences, [], differences.join('\n'));
     assert.deepEqual([...TOOL_NAMES], fixture.tools, 'the same tools, in the storefront catalog order');
+  });
+
+  it('registers on each page type the wording the storefront registers there', () => {
+    for (const page of Object.keys(PAGE_TOOL_NAMES)) {
+      for (const tool of createTools({ page, execute: noop })) {
+        const source = fixture.surface[tool.name];
+        assert.equal(
+          tool.description,
+          source.pageDescriptions?.[page] ?? source.description,
+          `${page}: ${tool.name}`,
+        );
+        assert.equal('pageDescriptions' in tool, false, 'a registered tool carries one description');
+      }
+    }
+    /* Contract 1.9: the item page has its own wording for the two tools it shares with every page. */
+    assert.deepEqual(
+      Object.keys(fixture.surface).filter(name => fixture.surface[name].pageDescriptions),
+      ['search_bestprice', 'get_shopping_decision'],
+    );
   });
 
   it('exposes the tools each storefront page type registers, in registration order', () => {
@@ -376,8 +397,34 @@ describe('contract parity with the storefront', () => {
         inputSchema: { type: 'object' },
         annotations: { readOnlyHint: true },
         outputSchema,
+        pageDescriptions: null,
       });
       assert.match(surface.digest, /^[0-9a-f]{64}$/u);
+
+      /* A page's own wording is published by storefront page and read by package page type. */
+      write(
+        STOREFRONT_TOOL_DOCUMENT,
+        catalog({
+          read_tool: { ...entry, page_descriptions: { search: 'Reads here.', hub: 'Reads here.' } },
+        }),
+      );
+      assert.deepEqual(readStorefrontSurface(root).surface.read_tool.pageDescriptions, {
+        listing: 'Reads here.',
+      });
+      write(
+        STOREFRONT_TOOL_DOCUMENT,
+        catalog({ read_tool: { ...entry, page_descriptions: { hub: 'Other.', search: 'Reads here.' } } }),
+      );
+      assert.throws(
+        () => readStorefrontSurface(root),
+        /registers different wording from the other listing pages/u,
+      );
+      write(
+        STOREFRONT_TOOL_DOCUMENT,
+        catalog({ read_tool: { ...entry, page_descriptions: { checkout: 'x' } } }),
+      );
+      assert.throws(() => readStorefrontSurface(root), /wording for an unknown page type: checkout/u);
+      write(STOREFRONT_TOOL_DOCUMENT, catalog({ read_tool: entry }));
 
       /* A tool the catalog lists that no page registers, and one a page registers with another
        * tool's words, are both refusals — never a surface with holes. */

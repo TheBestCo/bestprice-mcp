@@ -55,6 +55,9 @@ export const STOREFRONT_SOURCES = Object.freeze([
   'js/modules/webmcp/search-tool.js',
   'js/modules/webmcp/shopping-decision-tool.js',
   'js/modules/webmcp/product-details-tool.js',
+  /* Contract 1.9 shares input fields across tools: one product id, the search constraints. */
+  'js/modules/webmcp/search-constraints.js',
+  'js/modules/webmcp/output-schemas.js',
 ]);
 
 /** Every file the surface is read from, in the order the snapshot records their digests. */
@@ -540,9 +543,16 @@ function resolveConstants(value, constants, depth = 0) {
 }
 
 /** A relative import's target among the files being read, as a repository-relative path. */
+/* The storefront bundler's aliases: `modules/…` is js/modules/…, `pages/…` is pages/…. */
+const ALIASES = Object.freeze({ 'modules/': 'js/modules/', 'pages/': 'pages/' });
+
 const resolveSpecifier = (fromPath, specifier) => {
-  if (!specifier.startsWith('./') && !specifier.startsWith('../')) return null;
-  const target = posix.normalize(posix.join(posix.dirname(fromPath), specifier));
+  const alias = Object.keys(ALIASES).find(prefix => specifier.startsWith(prefix));
+  let target;
+  if (alias) target = `${ALIASES[alias]}${specifier.slice(alias.length)}`;
+  else if (specifier.startsWith('./') || specifier.startsWith('../')) {
+    target = posix.normalize(posix.join(posix.dirname(fromPath), specifier));
+  } else return null;
   return posix.extname(target) ? target : `${target}.js`;
 };
 
@@ -558,7 +568,8 @@ function definitionsFrom(tokens, constants) {
     const name = typeof definition?.name === 'string' ? definition.name : null;
     if (!name || !definition.inputSchema || seen.has(name)) continue;
     seen.add(name);
-    const outputSchemaRef = definition.outputSchema?.$ref;
+    /* The expression the source writes (`OUTPUT_SCHEMAS.name`), before any constant resolves it. */
+    const outputSchemaRef = parsed.value?.outputSchema?.$ref;
     definitions.push({
       name,
       title: typeof definition.title === 'string' ? definition.title : undefined,
@@ -604,6 +615,8 @@ export const surfaceIndex = definitions =>
         inputSchema: definition.inputSchema ?? null,
         annotations: definition.annotations ?? null,
         outputSchema: definition.outputSchema ?? null,
+        /* Contract 1.9: the wording a page type registers instead of `description`, when it has its own. */
+        pageDescriptions: definition.pageDescriptions ?? null,
       },
     ]),
   );
@@ -615,14 +628,29 @@ function readRegisteredTools(root) {
     return { path, tokens, ...readModule(tokens) };
   });
   const byPath = new Map(modules.map(module => [module.path, module]));
+  /* A module's constants — its own and the ones it imports from another file read here, however many
+   * files away they are defined (`export const SORTS = SEARCH_SORTS` re-exports an import). */
+  const scopes = new Map();
+  const scopeOf = (path, visiting = new Set()) => {
+    if (scopes.has(path)) return scopes.get(path);
+    const module = byPath.get(path);
+    const scope = new Map();
+    if (!module || visiting.has(path)) return scope;
+    visiting.add(path);
+    for (const { imported: name, local, specifier } of module.imports) {
+      const target = resolveSpecifier(path, specifier);
+      if (!byPath.get(target)?.exported.has(name)) continue;
+      const value = scopeOf(target, visiting).get(name);
+      if (value !== undefined) scope.set(local, value);
+    }
+    for (const [name, value] of module.constants) scope.set(name, value);
+    const resolved = new Map([...scope].map(([name, value]) => [name, resolveConstants(value, scope)]));
+    scopes.set(path, resolved);
+    return resolved;
+  };
   const registered = new Map();
   for (const module of modules) {
-    const imported = new Map();
-    for (const { imported: name, local, specifier } of module.imports) {
-      const source = byPath.get(resolveSpecifier(module.path, specifier));
-      if (source?.exported.has(name)) imported.set(local, source.constants.get(name));
-    }
-    for (const definition of definitionsFrom(module.tokens, new Map([...imported, ...module.constants]))) {
+    for (const definition of definitionsFrom(module.tokens, scopeOf(module.path))) {
       if (registered.has(definition.name)) {
         throw new Error(
           `${definition.name} is defined in both ${registered.get(definition.name).path} and ${module.path}`,
@@ -675,6 +703,9 @@ export function readStorefrontSurface(root = DEFAULT_STOREFRONT_ROOT) {
       inputSchema: source.inputSchema,
       annotations: source.annotations,
       outputSchema: entry.output_schema,
+      ...(entry.page_descriptions
+        ? { pageDescriptions: packagePageDescriptions(entry.page_descriptions) }
+        : {}),
     });
   }
   if (problems.length) throw new Error(`The storefront surface could not be read:\n${problems.join('\n')}`);
@@ -730,6 +761,23 @@ export function packagePageTools(pages) {
       throw new Error(`The ${page} page registers different tools from the other ${type} pages`);
     }
     folded[type] = tools;
+  }
+  return folded;
+}
+
+/**
+ * A tool's page wording (`page_descriptions`, by storefront page) keyed by the package's page types.
+ * The listing pages are one surface, so a wording they would register differently is refused.
+ */
+export function packagePageDescriptions(pageDescriptions) {
+  const folded = {};
+  for (const [page, description] of Object.entries(pageDescriptions ?? {})) {
+    const type = STOREFRONT_PAGE_TYPES[page];
+    if (!type) throw new Error(`The storefront publishes wording for an unknown page type: ${page}`);
+    if (Object.hasOwn(folded, type) && folded[type] !== description) {
+      throw new Error(`The ${page} page registers different wording from the other ${type} pages`);
+    }
+    folded[type] = description;
   }
   return folded;
 }
@@ -872,7 +920,12 @@ export function compareSurfaces(expected, actual, only) {
         );
       }
     }
-    for (const field of ['annotations', 'outputSchema', ...(inputReported ? [] : ['inputSchema'])]) {
+    for (const field of [
+      'annotations',
+      'outputSchema',
+      'pageDescriptions',
+      ...(inputReported ? [] : ['inputSchema']),
+    ]) {
       differences.push(
         ...differingPaths(source[field] ?? null, published[field] ?? null, `${name}.${field}`),
       );

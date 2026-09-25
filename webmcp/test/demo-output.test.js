@@ -139,7 +139,8 @@ describe('demo results against the published output schemas', () => {
     adapter.setPage('site');
     const decided = await call('get_shopping_decision', { message: 'κινητό έως 750€' });
     await call('get_product_details', { product_id: decided.recommended.product_id });
-    await call('get_product_details', { product_id: 'bp_2159919913', include: ['offers'] });
+    await call('get_product_details', { product_id: '2159919913', include: ['offers'] });
+    await call('get_product_details', { product_id: 'bp_2159919913' });
     await call('get_product_details', { product_id: '9999999999' });
     await call('get_product_details', { product_id: '2159919913', include: ['reviews'] });
     await call('search_bestprice', { query: 'pixel', navigate: false });
@@ -188,13 +189,19 @@ describe('demo results against the published output schemas', () => {
     assert.equal(adapter.snapshot().page, 'home', 'the tab does not move');
 
     const offersOnly = await call('get_product_details', {
-      product_id: 'bp_2159919913',
+      product_id: '2159919913',
       include: ['offers'],
     });
     assert.deepEqual(
       Object.keys(offersOnly).filter(key => DETAIL_SECTIONS.includes(key)),
       ['offers'],
     );
+    assert.equal(offersOnly.navigated, false);
+    /* Contract 1.9: one id form everywhere; the MCP server's bp_<id> is refused with the digits to send. */
+    assert.deepEqual(await call('get_product_details', { product_id: 'bp_2159919913' }), {
+      ok: false,
+      error: 'product_id is the numeric BestPrice product id: pass 2159919913, without bp_.',
+    });
     assert.deepEqual(await call('get_product_details', { product_id: '1234567890' }), {
       ok: false,
       error: 'BestPrice has no product page for product_id 1234567890.',
@@ -211,6 +218,65 @@ describe('demo results against the published output schemas', () => {
       ),
       false,
     );
+
+    /* With navigate, the tab moves to the product once it is read. */
+    const opened = await call('get_product_details', { product_id: '2160384659', navigate: true });
+    assert.equal(opened.navigated, true);
+    assert.match(opened.next_step, /^The tab is moving to this product’s page/u);
+    assert.deepEqual(
+      [adapter.snapshot().page, adapter.snapshot().product.product_id],
+      ['product', '2160384659'],
+    );
+  });
+
+  it('narrows a search by price, stock, deals and order, and says what the page applied', async () => {
+    const adapter = createDemoAdapter();
+    const { call } = recorder(adapter);
+    const cheap = await call('search_bestprice', {
+      query: 'phone',
+      max_price_eur: 750,
+      sort: 'price_asc',
+      in_stock_only: true,
+      navigate: false,
+    });
+    assert.deepEqual(
+      cheap.products.map(product => product.current_min_price_eur),
+      [689, 729],
+    );
+    assert.deepEqual(cheap.applied, { max_price_eur: 750, sort: 'price_asc', in_stock_only: true });
+    assert.deepEqual(cheap.not_applied, []);
+
+    /* An order the results page does not offer is reported, with the ones it does. */
+    const newest = await call('search_bestprice', { query: 'phone', sort: 'newest', deals_only: true });
+    assert.deepEqual(newest.applied, { deals_only: true });
+    assert.deepEqual(newest.not_applied, [
+      { constraint: 'sort', reason: 'not_offered', offered_sorts: ['relevance', 'price_asc'] },
+    ]);
+    /* The listing the tab moved to shows what the search returned, under the same ids. */
+    assert.deepEqual(
+      (await call('get_visible_products', {})).products.map(product => product.product_id),
+      newest.products.map(product => product.product_id),
+    );
+    assert.equal((await call('clear_listing_filters', {})).action, 'cleared_listing_filters');
+
+    const none = await call('search_bestprice', { query: 'καφετιέρα', min_price_eur: 10, navigate: false });
+    assert.deepEqual(none.not_applied, [{ constraint: 'min_price_eur', reason: 'no_products' }]);
+    const plain = await call('search_bestprice', { query: 'phone', in_stock_only: false, navigate: false });
+    assert.equal(plain.applied, undefined, 'false asks for nothing, so nothing is reported');
+    for (const [args, error] of [
+      [
+        { min_price_eur: -1 },
+        'min_price_eur must be a number of euros from 0 to 10000000, the item price before shipping.',
+      ],
+      [{ min_price_eur: 500, max_price_eur: 100 }, 'min_price_eur must not be more than max_price_eur.'],
+      [
+        { sort: 'cheapest' },
+        'sort must be one of: relevance, price_asc, price_desc, biggest_price_drop, most_stores, newest.',
+      ],
+      [{ deals_only: 'yes' }, 'deals_only must be true or false.'],
+    ]) {
+      assert.deepEqual(await call('search_bestprice', { query: 'phone', ...args }), { ok: false, error });
+    }
   });
 
   it('reads what contract 1.8 added: more result pages, the named product, the unknown-shipping offer', async () => {
@@ -242,17 +308,21 @@ describe('demo results against the published output schemas', () => {
     assert.equal(read.next_tools, undefined, 'a search that did not move the tab names no next tools');
 
     await call('open_visible_product', { product_id: '2159919913' });
-    for (const productId of ['bp_2159919913', '2159919913', 2159919913]) {
+    for (const productId of ['2159919913', 2159919913]) {
       assert.equal(
         (await call('compare_page_offers', { product_id: productId })).ok,
         true,
         String(productId),
       );
     }
-    const elsewhere = await call('compare_page_offers', { product_id: 'bp_2160384659' });
+    assert.equal(
+      (await call('compare_page_offers', { product_id: 'bp_2159919913' })).error,
+      "product_id is the numeric BestPrice product id: pass 2159919913, without bp_. This page's product is 2159919913; or leave it out.",
+    );
+    const elsewhere = await call('compare_page_offers', { product_id: '2160384659' });
     assert.match(
       elsewhere.error,
-      /^product_id bp_2160384659 is not the product on this page \(bp_2159919913\)\. Open https:\/\/www\.bestprice\.gr\/item\/2160384659/u,
+      /^product_id 2160384659 is not the product on this page \(2159919913\)\. Open https:\/\/www\.bestprice\.gr\/item\/2160384659/u,
     );
     assert.equal((await call('compare_page_offers', { product_id: 'x1' })).ok, false);
 

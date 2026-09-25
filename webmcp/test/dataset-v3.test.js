@@ -92,8 +92,13 @@ describe('dataset 3.0.0', () => {
       'get_product_specifications.offset',
       'get_visible_products.load_more',
       'get_visible_products.offset',
+      'search_bestprice.deals_only',
+      'search_bestprice.in_stock_only',
       'search_bestprice.limit',
+      'search_bestprice.max_price_eur',
+      'search_bestprice.min_price_eur',
       'search_bestprice.navigate',
+      'search_bestprice.sort',
     ]);
   });
 
@@ -109,10 +114,11 @@ describe('dataset 3.0.0', () => {
     ]);
     for (const item of v3.cases)
       assert.deepEqual(item.extra_calls_allowed, [...CONTRACT_1_6_READ_ONLY_TOOLS]);
-    /* Contracts 1.8 and 1.9 published two more read-only tools; admitting them is a later version. */
+    /* Contract 1.8 published one more read-only tool; admitting it is a later version. */
     assert.deepEqual(
       readOnlyTools().filter(name => !CONTRACT_1_6_READ_ONLY_TOOLS.includes(name)),
-      ['get_product_details', 'get_shopping_decision'],
+      /* get_product_details was read-only in 1.9 as first published, until it gained `navigate`. */
+      ['get_shopping_decision'],
     );
   });
 

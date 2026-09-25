@@ -39,8 +39,8 @@ const NAVIGATION = {
 };
 
 /**
- * Reads that fetch from BestPrice rather than the rendered page — the Shopping Brain on
- * mcp.bestprice.gr, a product's own page — and change nothing, on this page or anywhere else.
+ * A read that asks BestPrice's own server rather than the rendered page — the Shopping Brain on
+ * mcp.bestprice.gr — and changes nothing, on this page or anywhere else.
  */
 const FETCHED_READ = {
   readOnlyHint: true,
@@ -72,8 +72,16 @@ const objectSchema = (properties, required = []) => ({
   additionalProperties: false,
 });
 const NUMERIC_ID = '^\\d{1,20}$';
-/* A product id as every tool accepts it: numeric, or the MCP server's bp_<id>. */
-const PRODUCT_ID_PATTERN = '^(?:bp_)?(\\d{1,20})$';
+/* One product id in every tool (contract 1.9): digits only, as every BestPrice list returns it. */
+const PRODUCT_ID = {
+  type: 'string',
+  pattern: NUMERIC_ID,
+  description:
+    'Numeric BestPrice product id (digits only), as returned by search_bestprice, get_shopping_decision and every BestPrice product list.',
+};
+/* search_bestprice's sort orders (contract 1.9); some only where the results page offers them. */
+const SEARCH_SORTS = ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'];
+const MAX_PRICE_EUR = 10_000_000;
 /* A five-digit Greek postcode, 10000–85999: the range the Shopping Brain accepts. */
 const POSTAL_CODE_PATTERN = '^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$';
 
@@ -95,6 +103,33 @@ const DEFINITIONS = [
           description:
             'Move this tab to the results page after reading it. Defaults to true; false only reads.',
         },
+        /* Contract 1.9: a constrained browse; the answer says which constraints the page applied. */
+        min_price_eur: {
+          type: 'number',
+          minimum: 0,
+          maximum: MAX_PRICE_EUR,
+          description: 'Only products from this price in euros (item price before shipping).',
+        },
+        max_price_eur: {
+          type: 'number',
+          minimum: 0.01,
+          maximum: MAX_PRICE_EUR,
+          description: 'Only products up to this price in euros (item price before shipping).',
+        },
+        sort: {
+          type: 'string',
+          enum: SEARCH_SORTS,
+          description:
+            'Order of the results. relevance is the page’s default; newest, biggest_price_drop and most_stores only where the results page offers them (the answer says).',
+        },
+        in_stock_only: {
+          type: 'boolean',
+          description: 'Only products a store has in stock now («Άμεσα διαθέσιμα»). Defaults to false.',
+        },
+        deals_only: {
+          type: 'boolean',
+          description: 'Only products priced below their earlier price («Προσφορές»). Defaults to false.',
+        },
       },
       ['query'],
     ),
@@ -103,7 +138,7 @@ const DEFINITIONS = [
     name: 'get_visible_products',
     annotations: READ_ONLY,
     inputSchema: objectSchema({
-      limit: limitSchema(8, 'Maximum products to return.'),
+      limit: limitSchema(8, 'Maximum products to return, up to 8 per call; next_offset continues.'),
       offset: offsetSchema(
         'Use next_offset from the previous result on the same page. Defaults to 0, or with load_more to the first newly loaded product.',
       ),
@@ -120,11 +155,7 @@ const DEFINITIONS = [
     annotations: NAVIGATION,
     inputSchema: objectSchema(
       {
-        product_id: {
-          type: 'string',
-          pattern: NUMERIC_ID,
-          description: 'Numeric product ID returned by get_visible_products.',
-        },
+        product_id: PRODUCT_ID,
       },
       ['product_id'],
     ),
@@ -133,21 +164,22 @@ const DEFINITIONS = [
     /* Contract 1.9: one product's offers, specifications and price history, read from its page on
      * every page but the item page, whose own tools cover the product in view. */
     name: 'get_product_details',
-    annotations: FETCHED_READ,
+    /* Contract 1.9: `navigate` can move the tab to the product, so the tool is not read-only. */
+    annotations: NAVIGATION,
     inputSchema: objectSchema(
       {
-        product_id: {
-          type: 'string',
-          pattern: PRODUCT_ID_PATTERN,
-          description:
-            'The product: its numeric id as get_visible_products, search_bestprice and get_shopping_decision return it (bp_<id> also works).',
-        },
+        product_id: PRODUCT_ID,
         include: {
           type: 'array',
           minItems: 1,
           maxItems: 3,
           items: { type: 'string', enum: ['offers', 'specifications', 'price_history'] },
           description: 'Sections to read: offers, specifications, price_history. Defaults to all three.',
+        },
+        navigate: {
+          type: 'boolean',
+          description:
+            'After reading, move this tab to the product’s BestPrice page (bestprice_url). Defaults to false: only reads. Opens no store site.',
         },
       },
       ['product_id'],
@@ -159,7 +191,7 @@ const DEFINITIONS = [
     inputSchema: objectSchema({
       group: textSchema(
         64,
-        'A filter key or name a previous call returned; returns that filter with all of its values.',
+        'A filter key or name a previous call returned; returns that filter with all of its values, including those behind «Εμφάνιση όλων».',
       ),
       offset: offsetSchema(
         'Use next_offset from the previous result with the same group, or none. Defaults to 0.',
@@ -213,13 +245,8 @@ const DEFINITIONS = [
         description:
           'First load the stores this page keeps behind «Όλες οι τιμές», as when the shopper presses it. Defaults to false.',
       },
-      /* Contract 1.8: the id a Shopping Brain answer names; another product than the page's is refused. */
-      product_id: {
-        type: 'string',
-        pattern: PRODUCT_ID_PATTERN,
-        description:
-          'Optional: the product on this page, as bp_<id> (as the BestPrice MCP server names it) or its numeric id. Another product is refused with where to find it.',
-      },
+      /* The id a Shopping Brain answer names (1.8); since 1.9 one numeric form, as every tool takes it. */
+      product_id: PRODUCT_ID,
     }),
   },
   {
@@ -266,7 +293,11 @@ const DEFINITIONS = [
         description:
           'Numeric merchant id as the page markup shows it (data-mid); compare_page_offers does not return it, so prefer offer_ref.',
       },
-      merchant_name: textSchema(68, 'Merchant name exactly as compare_page_offers returned it.', 2),
+      merchant_name: textSchema(
+        68,
+        'Merchant name exactly as compare_page_offers returned it; it must match exactly one shown offer.',
+        2,
+      ),
     }),
   },
   {
@@ -282,7 +313,7 @@ const DEFINITIONS = [
       {
         message: textSchema(
           2000,
-          'The shopper’s question as they asked it, with budget and required features, e.g. «κινητό έως 400€ με NFC».',
+          'The shopper’s question as they asked it (Greek or English), with budget and required features, e.g. «κινητό έως 400€ με NFC». Sent to the Shopping Brain on mcp.bestprice.gr.',
         ),
         postal_code: {
           type: 'string',
@@ -354,12 +385,28 @@ for (const name of Object.keys(STOREFRONT_CATALOG)) {
   }
 }
 
-/** Every definition by name: name, title, description, annotations, inputSchema, outputSchema. */
+/**
+ * Every definition by name: name, title, description, annotations, inputSchema, outputSchema, and
+ * `pageDescriptions` — the wording a page type registers in place of `description` — when it has any.
+ */
 export const TOOL_DEFINITIONS = deepFreeze(
   Object.fromEntries(
     DEFINITIONS.map(({ name, annotations, inputSchema }) => {
-      const { title, description, outputSchema } = STOREFRONT_CATALOG[name];
-      return [name, { name, title, description, annotations, inputSchema, outputSchema }];
+      const { title, description, pageDescriptions, outputSchema } = STOREFRONT_CATALOG[name];
+      return [
+        name,
+        {
+          name,
+          title,
+          description,
+          /* Contract 1.9: a page type whose tools differ registers its own wording, so a description
+           * never names a tool its page does not register (the item page has no get_product_details). */
+          ...(pageDescriptions ? { pageDescriptions } : {}),
+          annotations,
+          inputSchema,
+          outputSchema,
+        },
+      ];
     }),
   ),
 );
@@ -392,8 +439,12 @@ export function createTools({ page, execute }) {
   if (typeof execute !== 'function') throw new TypeError('WebMCP execute must be a function.');
   // The registration runtime supplies an invocation-owned signal here. Dropping the options
   // hides cancelled results but lets a cooperative page handler continue its later effects.
-  return PAGE_TOOL_NAMES[page].map(name => ({
-    ...TOOL_DEFINITIONS[name],
-    execute: (args, options) => execute(name, args, options),
-  }));
+  return PAGE_TOOL_NAMES[page].map(name => {
+    const { pageDescriptions, ...definition } = TOOL_DEFINITIONS[name];
+    return {
+      ...definition,
+      description: pageDescriptions?.[page] ?? definition.description,
+      execute: (args, options) => execute(name, args, options),
+    };
+  });
 }

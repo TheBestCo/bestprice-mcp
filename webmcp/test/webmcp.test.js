@@ -12,9 +12,10 @@ import { BRAND_FILTER, createDemoAdapter, PAGES, SORT_OPTIONS } from '../src/dem
 import { createLocalModelContext, createRegistration } from '../src/runtime.js';
 
 const noop = () => ({ ok: true });
-/* The storefront's own bound on a tool description (bestprice.gr js/modules/webmcp/output-schemas.test.js):
- * long enough to say what the tool does, when to use it, what it returns and what it changes. */
-const DESCRIPTION_LENGTH = Object.freeze({ min: 180, max: 500 });
+/* The storefront's own bound on a tool description (bestprice.gr js/modules/webmcp/tool-catalog.js
+ * MIN_/MAX_DESCRIPTION_LENGTH, pinned by output-schemas.test.js): one scannable shape — what it does,
+ * what it returns, when to use it and when not, what it changes — with the details in the schemas. */
+const DESCRIPTION_LENGTH = Object.freeze({ min: 60, max: 250 });
 
 describe('contracts', () => {
   it('publishes 16 unique contextual tools across four page types (contract 1.9)', () => {
@@ -77,6 +78,29 @@ describe('contracts', () => {
     }
   });
 
+  it('names, in any page’s wording, only tools that page registers', () => {
+    /* Contract 1.9 (the storefront's tool-mentions test): the item page has no get_product_details, so
+     * the two tools it shares with every page register its own wording there. */
+    const mentioned = text =>
+      TOOL_NAMES.filter(name => new RegExp(`(?<![a-z_])${name}(?![a-z_])`, 'u').test(text));
+    for (const page of Object.keys(PAGE_TOOL_NAMES)) {
+      for (const tool of createTools({ page, execute: noop })) {
+        for (const name of mentioned(tool.description)) {
+          assert.ok(PAGE_TOOL_NAMES[page].includes(name), `${page}: ${tool.name} names ${name}`);
+        }
+      }
+    }
+    const product = new Map(createTools({ page: 'product', execute: noop }).map(tool => [tool.name, tool]));
+    assert.equal(
+      product.get('search_bestprice').description,
+      TOOL_DEFINITIONS.search_bestprice.pageDescriptions.product,
+    );
+    assert.notEqual(
+      product.get('search_bestprice').description,
+      TOOL_DEFINITIONS.search_bestprice.description,
+    );
+  });
+
   it('marks page-changing tools as not read-only and reading tools as read-only', () => {
     const tools = new Map(createTools({ page: 'listing', execute: noop }).map(tool => [tool.name, tool]));
     assert.equal(tools.get('open_visible_product').annotations.readOnlyHint, false);
@@ -106,6 +130,10 @@ describe('contracts', () => {
     assert.equal(productTools.get('search_bestprice').annotations.readOnlyHint, false);
     assert.equal(productTools.get('get_shopping_decision').annotations.readOnlyHint, true);
     assert.equal(productTools.get('get_shopping_decision').annotations.openWorldHint, false);
+
+    /* Contract 1.9: get_product_details can move the tab to the product (navigate), so it is not a read. */
+    const listing = new Map(createTools({ page: 'listing', execute: noop }).map(tool => [tool.name, tool]));
+    assert.equal(listing.get('get_product_details').annotations.readOnlyHint, false);
   });
 
   it('binds execute to the tool name', async () => {
