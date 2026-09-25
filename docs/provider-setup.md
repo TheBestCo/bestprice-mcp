@@ -52,7 +52,7 @@ Official references: [remote MCP tools](https://developers.openai.com/api/docs/g
 
 ## Gemini
 
-The repository is tagged `gemini-cli-extension` and carries `gemini-extension.json` at its root, so it is eligible for the Gemini CLI extension gallery's automated crawler. CI also runs Google's official `gemini extensions validate .` command against the manifest.
+The repository is tagged `gemini-cli-extension` and carries `gemini-extension.json` at its root, so the Gemini CLI extension gallery's automated crawler lists it as [`bestprice-shopping`](https://geminicli.com/extensions/?name=TheBestCobestprice-mcp). CI also runs Google's official `gemini extensions validate .` command against the manifest.
 
 Gemini CLI accepts the bundled `gemini-extension.json` or a direct HTTP MCP
 configuration. The extension also carries the canonical root `skills/bestprice-shopping/SKILL.md`,

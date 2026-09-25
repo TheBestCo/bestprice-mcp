@@ -37,7 +37,8 @@ the official registry record current instead of maintaining a second Harbor payl
 
 ## Other directories
 
-Smithery currently requires an authenticated publisher namespace/API key for explicit publication.
+Smithery currently requires an authenticated publisher namespace/API key for explicit publication; the
+reserved `bestprice/shopping` entry is empty until the namespace owner publishes the remote URL into it.
 Glama already has source metadata in `glama.json`; any stale public Glama snapshot is crawler/claim
 state rather than a second BestPrice contract. Do not fork the canonical tool descriptions into
 directory-specific files unless the directory requires them.

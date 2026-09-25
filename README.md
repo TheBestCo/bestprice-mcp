@@ -198,8 +198,9 @@ evaluator, and the 47-case natural-language dataset are in [`webmcp/`](webmcp/).
   “what should I buy?”, delivered-price, and price-timing requests before a user knows BestPrice.
 - [`webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json) describes the contextual
   browser tools exposed by BestPrice pages.
-- The repository is tagged for the Gemini CLI extension gallery; Google crawls tagged public
-  extension repositories, while GitHub Agent Finder can ingest the public MCP catalog and ARD resources.
+- The repository is listed in the [Gemini CLI extension gallery](https://geminicli.com/extensions/?name=TheBestCobestprice-mcp)
+  as `bestprice-shopping` (Google crawls tagged public extension repositories), while GitHub Agent Finder
+  can ingest the public MCP catalog and ARD resources.
 - Copy-ready, CI-pinned external catalog contributions live under [`distribution/`](distribution/):
   a GitHub Agent Finder Skill entry and a Docker MCP Registry remote-server entry. Those catalogs
   require review in their own repositories; the checked-in files are submission payloads, not claims

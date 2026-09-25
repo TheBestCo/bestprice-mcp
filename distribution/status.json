@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "asOf": "2026-09-25",
   "canonical": {
     "registryId": "gr.bestprice/mcp",
@@ -16,26 +16,36 @@
       "name": "Official MCP Registry",
       "state": "published",
       "freshness": "current",
-      "url": "https://registry.modelcontextprotocol.io/?q=gr.bestprice%2Fmcp",
-      "note": "v1.8.1 published and updated 2026-09-24."
+      "url": "https://registry.modelcontextprotocol.io/v0/servers?search=gr.bestprice&version=latest",
+      "verifiedAt": "2026-09-25",
+      "evidence": "Registry API returns gr.bestprice/mcp 1.8.1 (isLatest, publishedAt 2026-09-24T12:46:42Z) with remote https://mcp.bestprice.gr/mcp; matches server.json, /.well-known/mcp.json and the live initialize serverInfo.version 1.8.1.",
+      "note": "Canonical record is current.",
+      "nextAction": "None now; republish with mcp-publisher when the hosted server version changes.",
+      "nextActionBy": "none"
     },
     {
       "id": "openai",
       "name": "OpenAI Plugins Directory",
       "state": "submitted",
-      "freshness": "current",
+      "freshness": "unverified-review",
       "url": "https://developers.openai.com/plugins/deploy/submission",
-      "note": "v1.0.1 four-tool resubmission confirmed received by OpenAI Review; do not duplicate or cancel while review is active.",
-      "nextAction": "After the current review, rescan a new version if needed so the live MCP Skill is imported as well."
+      "verifiedAt": "2026-09-25",
+      "evidence": "No public listing observed: the chatgpt.com/plugins landing viewed 2026-09-25 shows no BestPrice card in its featured categories (directory search not run). Review state is only visible in the submitter's OpenAI Platform dashboard.",
+      "note": "Earlier receipt: v1.0.1 four-tool resubmission confirmed received by OpenAI Review; do not duplicate or cancel while review is active.",
+      "nextAction": "Check review status in the OpenAI Platform dashboard; after approval, rescan so the live MCP Skill is imported too.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "claude",
       "name": "Claude Connectors Directory",
       "state": "submitted",
-      "freshness": "current",
-      "url": "https://claude.com/docs/connectors/building/submission",
-      "note": "Four-tool directory submission is with Anthropic Platform Operations.",
-      "nextAction": "Wait for Anthropic review."
+      "freshness": "unverified-review",
+      "url": "https://claude.com/marketplace/connectors-plugins",
+      "verifiedAt": "2026-09-25",
+      "evidence": "Not publicly listed: claude.com/sitemap.xml lists 840 /marketplace/connectors/* pages and none is BestPrice; /marketplace/connectors/bestprice and /bestprice-shopping return 404.",
+      "note": "Four-tool directory submission is with Anthropic for review.",
+      "nextAction": "Wait for Anthropic review; answer reviewer questions from the submission inbox.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "docker",
@@ -43,104 +53,155 @@
       "state": "submitted",
       "freshness": "current",
       "url": "https://github.com/docker/mcp-registry/pull/5228",
-      "note": "PR #5228 remains open and mergeable but blocked. As of 2026-09-25 it has no posted reviews, check runs, or status contexts; external-fork workflow/review action remains upstream-controlled.",
-      "nextAction": "Respond when Docker posts review feedback or enables the upstream checks."
+      "verifiedAt": "2026-09-25",
+      "evidence": "PR #5228 opened 2026-09-24T17:26Z from phaistonian:main (a912573): OPEN, REVIEW_REQUIRED, mergeStateStatus BLOCKED, no reviews or comments. Its two fork workflow runs (ci.yaml, Security Review Trigger) are action_required, i.e. waiting for a maintainer to approve them. The three PR files are byte-identical to distribution/docker/bestprice-shopping/.",
+      "note": "Payload is current; the blocker is upstream workflow approval and review.",
+      "nextAction": "Docker maintainers approve the fork workflows and review; respond to feedback when posted.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "toolsdk",
       "name": "ToolSDK MCP Registry",
       "state": "published",
-      "freshness": "update-prepared",
-      "url": "https://github.com/toolsdk-ai/toolsdk-mcp-registry/pull/480",
-      "note": "BestPrice is merged upstream; refreshed decision/delivered-price/license metadata is staged on phaistonian/toolsdk-mcp-registry."
+      "freshness": "stale-description",
+      "url": "https://github.com/toolsdk-ai/toolsdk-mcp-registry/blob/main/packages/search-data-extraction/bestprice-shopping.json",
+      "verifiedAt": "2026-09-25",
+      "evidence": "PR #480 merged 2026-09-15. The upstream file still describes search/offers/history only (no shopping decisions) and has no license field. toolsdk.ai search and package pages returned HTTP 500, so the rendered listing could not be seen.",
+      "note": "Refresh (decision-first description plus Apache-2.0 license) is one commit on phaistonian/toolsdk-mcp-registry branch bestprice-refresh-2026-09-25 (8a6da6b), 0 behind upstream.",
+      "nextAction": "Open a PR from phaistonian:bestprice-refresh-2026-09-25.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "awesome-mcp-servers",
       "name": "Awesome MCP Servers",
       "state": "published",
-      "freshness": "current-summary",
+      "freshness": "stale-summary",
       "url": "https://github.com/punkpeye/awesome-mcp-servers/pull/13514",
-      "note": "BestPrice contribution PR #13514 merged on 2026-09-07; the public catalog includes the official read-only shopping MCP."
+      "verifiedAt": "2026-09-25",
+      "evidence": "PR #13514 merged 2026-09-07. The live README entry reads \"product search, offer comparison, and price history\" and omits shopping decisions.",
+      "note": "One-line update is on phaistonian/awesome-mcp-servers branch bestprice-refresh-2026-09-25 (c302291); the fork was fast-forwarded to upstream first.",
+      "nextAction": "Open a PR from phaistonian:bestprice-refresh-2026-09-25.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "agentfinder",
       "name": "GitHub Agent Finder Catalog",
-      "state": "prepared",
-      "freshness": "current",
-      "url": "https://github.com/phaistonian/agentfinder-catalog",
-      "note": "Schema-valid Skill entry is staged on a fork synchronized with upstream; this GitHub integration cannot open the cross-repository PR."
+      "state": "submitted",
+      "freshness": "stale-submission",
+      "url": "https://github.com/github/agentfinder-catalog/pull/28",
+      "verifiedAt": "2026-09-25",
+      "evidence": "PR #28 has been open since 2026-08-26 with no review. It adds a server.json entry at version 1.5.0 with a three-tool description and hand-edits the generated ai-catalog.json. The corrected Skill entry (catalog/TheBestCo/bestprice-shopping.json) exists only on the fork, at phaistonian/agentfinder-catalog branch bestprice-refresh-2026-09-25 (f181523), 0 behind upstream.",
+      "note": "The PR under review is not the payload we want listed.",
+      "nextAction": "Point PR #28 at the corrected Skill entry by force-pushing f181523 to codex/bestprice-shopping, or close #28 and open a PR from bestprice-refresh-2026-09-25.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "mcpmux",
       "name": "McpMux Registry",
       "state": "published",
-      "freshness": "update-prepared",
-      "url": "https://github.com/phaistonian/mcp-servers",
-      "note": "Existing upstream BestPrice record is live; refreshed shopping-decision/delivered-price metadata is staged on a synchronized fork."
+      "freshness": "stale-description",
+      "url": "https://api.mcpmux.com/v1/servers/gr.bestprice-mcp",
+      "verifiedAt": "2026-09-25",
+      "evidence": "Live record (created 2026-09-13 from merged PR #283): endpoint https://mcp.bestprice.gr/mcp and auth none are correct, but the description lacks shopping decisions and the decision/delivered-price tags.",
+      "note": "Refresh is on phaistonian/mcp-servers branch bestprice-refresh-2026-09-25 (5a80133), 0 behind upstream.",
+      "nextAction": "Open a PR from phaistonian:bestprice-refresh-2026-09-25.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "tensorblock",
       "name": "TensorBlock Awesome MCP Servers",
       "state": "published",
-      "freshness": "update-prepared",
-      "url": "https://github.com/phaistonian/awesome-mcp-servers-tensorblock",
-      "note": "Existing BestPrice entry is live; four-tool correction is staged on a synchronized fork."
+      "freshness": "stale",
+      "url": "https://mcp-index.tensorblock.co/v1/servers/github-thebestco-bestprice-mcp-1fb49ec0",
+      "verifiedAt": "2026-09-25",
+      "evidence": "Index record (from merged PR #1985) says \"Tools: search_products, compare_offers, get_price_history\". Its tool count is null and its source is docs/search.md last updated 2026-08-26.",
+      "note": "Four-tool correction is on phaistonian/awesome-mcp-servers-tensorblock branch bestprice-refresh-2026-09-25 (e2e2a72), 0 behind upstream.",
+      "nextAction": "Open a PR from phaistonian:bestprice-refresh-2026-09-25.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "kilo",
       "name": "Kilo Marketplace",
-      "state": "prepared",
-      "freshness": "current",
-      "url": "https://github.com/phaistonian/kilo-marketplace",
-      "note": "Native zero-auth remote MCP entry plus canonical companion Skill is staged on a synchronized fork."
+      "state": "submitted",
+      "freshness": "stale-submission",
+      "url": "https://github.com/Kilo-Org/kilo-marketplace/pull/255",
+      "verifiedAt": "2026-09-25",
+      "evidence": "PR #255 has been open since 2026-08-31 with no review. Its MCP.yaml has the old search/offers/history description and no companion Skill.",
+      "note": "MCP.yaml and the companion skills/bestprice-shopping/SKILL.md, synced to the canonical Skill at 7ac8494, are on phaistonian/kilo-marketplace branch bestprice-refresh-2026-09-25 (262e25a), 0 behind upstream.",
+      "nextAction": "Update PR #255 by force-pushing 262e25a to add-bestprice-shopping-mcp, or replace it with a PR from bestprice-refresh-2026-09-25.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "awesome-remote",
       "name": "Awesome Remote MCP Servers",
-      "state": "prepared",
+      "state": "submitted",
       "freshness": "current",
-      "url": "https://github.com/phaistonian/awesome-remote-mcp-servers",
-      "note": "BestPrice Open/E-Commerce row is staged on a synchronized fork."
+      "url": "https://github.com/jaw9c/awesome-remote-mcp-servers/pull/666",
+      "verifiedAt": "2026-09-25",
+      "evidence": "PR #666 has been open since 2026-08-26 with no review or checks. Its row (BestPrice Shopping | E-Commerce | https://mcp.bestprice.gr/mcp | Open) is accurate.",
+      "note": "Nothing to change in the payload.",
+      "nextAction": "Upstream maintainer review and merge.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "yuze-awesome",
       "name": "YuzeHao Awesome MCP Servers",
-      "state": "prepared",
+      "state": "submitted",
       "freshness": "current",
-      "url": "https://github.com/phaistonian/Awesome-MCP-Servers-1",
-      "note": "Official BestPrice E-Commerce entry is staged on a synchronized fork."
+      "url": "https://github.com/YuzeHao2023/Awesome-MCP-Servers/pull/446",
+      "verifiedAt": "2026-09-25",
+      "evidence": "PR #446 has been open since 2026-08-26 and is MERGEABLE/CLEAN with no review. Its line (name, repository, endpoint) is accurate but minimal; fork main has a richer decision-first line.",
+      "note": "Payload is accurate.",
+      "nextAction": "Upstream maintainer merge.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "cline",
       "name": "Cline Marketplace",
-      "state": "prepared",
-      "freshness": "current",
-      "url": "https://github.com/TheBestCo/bestprice-mcp/tree/main/distribution/cline/bestprice-shopping",
-      "note": "Current marketplace-schema payload is CI-pinned. Submission remains gated on a truthful Cline install test and upstream contribution action."
+      "state": "submitted",
+      "freshness": "stale-submission",
+      "url": "https://github.com/cline/mcp-marketplace/issues/2403",
+      "verifiedAt": "2026-09-25",
+      "evidence": "Legacy issue submission #2403 has been open since 2026-09-02 with no response; its logo URL (submission/bestprice-mcp-logo-1024.png) now 404s. The current PR-based cline/marketplace has no BestPrice entry among its 149 registry/mcps folders, and no phaistonian fork of it exists.",
+      "note": "The CI-pinned payload distribution/cline/bestprice-shopping/entry.json follows the current marketplace schema and uses the working assets/ logo URL.",
+      "nextAction": "Fork cline/marketplace, add registry/mcps/bestprice-shopping/entry.json from distribution/cline, and open a PR. Also correct the logo URL on issue #2403 or close it in favour of the PR.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "cursor-directory",
       "name": "Cursor Directory",
       "state": "published",
-      "freshness": "usable",
+      "freshness": "stale-description",
       "url": "https://cursor.directory/plugins/bestprice-shopping",
-      "note": "Public one-click HTTP configuration points at the canonical endpoint."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Seen in a real browser (curl gets the Vercel checkpoint, HTTP 429). The install config is {\"type\":\"http\",\"url\":\"https://mcp.bestprice.gr/mcp\"}, which is correct, but the description covers search/offers/history only and omits shopping decisions. 0 likes.",
+      "note": "One-click install works against the canonical endpoint.",
+      "nextAction": "Edit the listing description to the decision-first copy from the owner cursor.directory account.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "glama",
       "name": "Glama",
       "state": "published",
-      "freshness": "mixed",
+      "freshness": "current",
       "url": "https://glama.ai/mcp/connectors/gr.bestprice/mcp",
-      "note": "Connector view has the current four-tool shopping-decision description; older repository listing remains stale. Refresh requested 2026-09-24."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Connector page: Healthy, last tested 2026-09-25 04:14, TDQS A 4.8 across 4 tools, not claimed. Repository listing (glama.ai/mcp/servers/TheBestCo/bestprice-mcp) lists all four tools and its README snapshot shows server version 1.8.1. Its generated per-integration blurbs still say search/offers/history only.",
+      "note": "No longer stale; the 2026-09-24 refresh landed.",
+      "nextAction": "Optionally claim the connector (GitHub login) to manage the listing and analytics.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "mcpservers",
       "name": "mcpservers.org",
       "state": "published",
-      "freshness": "mixed",
+      "freshness": "stale-version",
       "url": "https://mcpservers.org/servers/thebestco/bestprice-mcp",
-      "note": "Most current pages expose four tools and Shopping Brain; some cached pages/version text remain at 1.8.0 or three-tool copy."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Seen in a real browser (curl gets a Cloudflare 403). The README snapshot lists all four tools but shows \"Server version: 1.8.0\", and the headline summary covers search/offers/history only.",
+      "note": "Snapshot predates the 1.8.1 README.",
+      "nextAction": "Use the page's \"Request update\" control (a third-party form).",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "mcprepository",
@@ -148,7 +209,11 @@
       "state": "published",
       "freshness": "stale",
       "url": "https://mcprepository.com/thebestco/bestprice-mcp",
-      "note": "Listing exists but still reflects the older three-tool repository snapshot."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Page shows an old README snapshot (\"Tools: search_products, compare_offers, get_price_history\", \"only the three published read-only tools\"), 0 stars, and \"Updated 3 days ago\".",
+      "note": "Crawler snapshot; no owner-edit path found.",
+      "nextAction": "Wait for the crawler to re-snapshot the README.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "agentndx",
@@ -156,7 +221,11 @@
       "state": "published",
       "freshness": "stale",
       "url": "https://agentndx.ai/server/bestprice-mcp/",
-      "note": "Listing exists and is active but still describes three tools; owner claim/update is an external account action."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Page describes three tools (search_products, compare_offers, get_price_history) and shows \"MCP unverified\", category Web & Browser, updated 2026-08-26.",
+      "note": "Unclaimed listing.",
+      "nextAction": "Claim the listing (account) and update the description to four tools.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "apis-io",
@@ -164,23 +233,35 @@
       "state": "published",
       "freshness": "stale",
       "url": "https://apis.io/providers/bestprice/",
-      "note": "Structured profile still describes three tools. A refresh request with authoritative v1.8.1/four-tool/Skill URLs was sent 2026-09-24."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Provider profile says the server exposes \"three tools - search_products, compare_offers and get_price_history\".",
+      "note": "A refresh request with the authoritative v1.8.1 / four-tool / Skill URLs was sent 2026-09-24.",
+      "nextAction": "Wait for the APIs.io maintainers to apply the refresh.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "allmcps",
       "name": "AllMCPs",
       "state": "published",
-      "freshness": "current-tools",
+      "freshness": "current",
       "url": "https://allmcps.com/mcp/bestprice-shopping",
-      "note": "Listing exposes all four current MCP tools; cached documentation still displays server version 1.8.0 while the Official MCP Registry is at 1.8.1."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Listing shows all four tools and a README-parsed \"Server version: 1.8.1\". No 1.8.0 remains on the page.",
+      "note": "Now current.",
+      "nextAction": "None.",
+      "nextActionBy": "none"
     },
     {
       "id": "mcp-harbor",
       "name": "MCP Harbor",
       "state": "published",
-      "freshness": "registry-inherited",
-      "url": "https://mcpharbor.dev",
-      "note": "Harbor mirrors the Official MCP Registry every six hours; duplicate API submission was rejected because gr.bestprice/mcp is already published."
+      "freshness": "current",
+      "url": "https://ai.mcpharbor.dev/api/v0/servers?search=bestprice",
+      "verifiedAt": "2026-09-25",
+      "evidence": "The Harbor API returns gr.bestprice/mcp 1.8.1 with the canonical remote, mirrored from the Official MCP Registry. https://mcpharbor.dev does not answer over HTTPS from here; http redirects to ai.mcpharbor.dev.",
+      "note": "Mirrors the Official MCP Registry every six hours; a duplicate submission is rejected.",
+      "nextAction": "None; it follows the Official MCP Registry.",
+      "nextActionBy": "none"
     },
     {
       "id": "agent-plugins-directory",
@@ -188,7 +269,11 @@
       "state": "published",
       "freshness": "current",
       "url": "https://agent-plugins.directory/thebestco/bestprice-shopping",
-      "note": "Directory maintainer refreshed the listing to package v1.2.7 on 2026-09-25. It exposes the canonical Skill, remote MCP, and com.openai interface. The indexed package revision is d04407b; newer main-only routing refinements are not a new package release yet."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Page shows package v1.2.7 with plugin.json, the streamable-http MCP config for https://mcp.bestprice.gr/mcp, the canonical Skill, and the com.openai interface.",
+      "note": "Matches package.json 1.2.7.",
+      "nextAction": "None until the next package release.",
+      "nextActionBy": "none"
     },
     {
       "id": "enterprise-dna",
@@ -196,7 +281,11 @@
       "state": "published",
       "freshness": "current-summary",
       "url": "https://enterprisedna.co/directories/mcp/thebestco-bestprice-mcp/",
-      "note": "Repository indexed with shopping-decision/product-search/offer/history description and Apache-2.0."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Page lists all four tools and Apache-2.0; its metadata snapshot shows 0 stars and last updated 2026-09-07.",
+      "note": "Tool list is current; the star and date metadata are stale.",
+      "nextAction": "None.",
+      "nextActionBy": "none"
     },
     {
       "id": "awesome-mcp-tools",
@@ -204,7 +293,11 @@
       "state": "published",
       "freshness": "current-summary",
       "url": "https://awesome-mcp.tools/catalog",
-      "note": "TheBestCo/bestprice-mcp is present in the E-Commerce catalog."
+      "verifiedAt": "2026-09-25",
+      "evidence": "The catalog E-Commerce list includes TheBestCo/bestprice-mcp (name only).",
+      "note": "Name-only entry.",
+      "nextAction": "None.",
+      "nextActionBy": "none"
     },
     {
       "id": "webmcp-registry",
@@ -212,15 +305,23 @@
       "state": "published",
       "freshness": "stale-contract",
       "url": "https://webmcp-registry.dev/domain/www.bestprice.gr",
-      "note": "Domain remains verified but the public registry exposes 13 tools. It is missing canonical tool show_offer; authenticated domain-owner/API-key write access is required to refresh it."
+      "verifiedAt": "2026-09-25",
+      "evidence": "Page shows \"13 tools registered · Commerce · verified 8/27/2026\", all v0.1 and updated 8/27/2026. Canonical show_offer is missing against the 14-tool webmcp.json.",
+      "note": "Domain is verified; writes need the domain-owner API key.",
+      "nextAction": "Re-register the 14-tool contract from www.bestprice.gr/webmcp.json with the domain-owner key.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "webmcp-com",
       "name": "webmcp.com",
       "state": "published",
       "freshness": "stale-contract",
-      "url": "https://webmcp.com/",
-      "note": "Live Commerce listing exposes 12 tools. It is missing canonical tools open_visible_product and show_offer versus the 14-tool BestPrice contract."
+      "url": "https://webmcp.com/api/v1/sites/www.bestprice.gr",
+      "verifiedAt": "2026-09-25",
+      "evidence": "Site API returns bestprice.gr, category Commerce, toolCount 12 and an empty description. Canonical open_visible_product and show_offer are missing against the 14-tool contract.",
+      "note": "Crawler-populated (nekuda); no self-serve refresh found.",
+      "nextAction": "Ask the webmcp.com maintainers to rescan, or wait for the crawler to see the contextual tools.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "chrome-awesome-webmcp",
@@ -228,39 +329,59 @@
       "state": "published",
       "freshness": "current-summary",
       "url": "https://github.com/GoogleChromeLabs/webmcp-tools/blob/main/AWESOME_WEBMCP.md",
-      "note": "BestPrice.gr is listed as a live comparison-shopping WebMCP demo."
+      "verifiedAt": "2026-09-25",
+      "evidence": "AWESOME_WEBMCP.md lists BestPrice.gr as a live Greek comparison-shopping site with page-aware WebMCP tools.",
+      "note": "Summary entry, no tool count.",
+      "nextAction": "None.",
+      "nextActionBy": "none"
     },
     {
       "id": "pulse-mcp",
       "name": "PulseMCP",
       "state": "missing",
       "freshness": "n/a",
-      "url": "https://pulsemcp.com",
-      "note": "No public BestPrice listing confirmed. A third follow-up requesting official-registry ingest was sent 2026-09-24."
+      "url": "https://www.pulsemcp.com/servers?q=bestprice",
+      "verifiedAt": "2026-09-25",
+      "evidence": "A real-browser search for \"bestprice\" shows \"0 of 0 servers\". The site banner says new submissions and listing changes are paused. curl gets a Cloudflare 403, the v0beta API is sunset (410), and v0.1 needs an API key.",
+      "note": "A third follow-up asking for official-registry ingest was sent 2026-09-24.",
+      "nextAction": "Wait for PulseMCP to reopen ingest; it should pick up gr.bestprice/mcp from the Official MCP Registry. Resubmit once submissions reopen.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "smithery",
       "name": "Smithery",
       "state": "external-gate",
       "freshness": "n/a",
-      "url": "https://smithery.ai",
-      "note": "No public BestPrice listing confirmed; explicit publication requires an authenticated publisher namespace/API key."
+      "url": "https://smithery.ai/servers/bestprice/shopping",
+      "verifiedAt": "2026-09-25",
+      "evidence": "Not discoverable. Search and the registry API for \"bestprice\" return no BestPrice server, and registry.smithery.ai/servers/gr.bestprice/mcp returns 404. An empty reserved entry bestprice/shopping exists (no description, no deployments, remote false, tools null).",
+      "note": "Publication requires the authenticated owner of the bestprice namespace.",
+      "nextAction": "Log in to Smithery as the bestprice namespace owner and publish the remote URL https://mcp.bestprice.gr/mcp into bestprice/shopping with the decision-first description.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "lobehub",
       "name": "LobeHub MCP Marketplace",
-      "state": "external-gate",
-      "freshness": "payload-ready",
-      "url": "https://lobehub.com/mcp",
-      "note": "lhm.plugin.json is current at server v1.8.1 with all four tools and three resources; first publication requires LobeHub CLI browser login and GitHub ownership connection."
+      "state": "published",
+      "freshness": "stale",
+      "url": "https://lobehub.com/mcp/thebestco-bestprice-mcp",
+      "verifiedAt": "2026-09-25",
+      "evidence": "An auto-indexed, \"Unvalidated\" GitHub listing exists: version 1.0.1, dated Sep 04 2026, three tools, category Stocks & Finance.",
+      "note": "lhm.plugin.json in this repository is current (server 1.8.1, four tools, three resources).",
+      "nextAction": "Log in with the LobeHub CLI, connect GitHub ownership, and publish lhm.plugin.json to replace the crawler snapshot. Fix the category to shopping.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "gemini-gallery",
       "name": "Gemini CLI Extension Gallery",
-      "state": "external-gate",
-      "freshness": "eligible",
-      "url": "https://github.com/TheBestCo/bestprice-mcp",
-      "note": "Public repo has root gemini-extension.json, the gemini-cli-extension topic, and passes Google's validator; no public gallery listing confirmed yet."
+      "state": "published",
+      "freshness": "current",
+      "url": "https://geminicli.com/extensions/?name=TheBestCobestprice-mcp",
+      "verifiedAt": "2026-09-25",
+      "evidence": "geminicli.com/extensions/ (14 MB page) contains card data-extension-id=\"TheBestCobestprice-mcp\" named bestprice-shopping (@TheBestCo/bestprice-mcp), version 1.2.7, 5 stars, badges MCP/Context/Skills, Apache 2.0, install command \"gemini extensions install https://github.com/TheBestCo/bestprice-mcp\".",
+      "note": "Listed by Google's crawler; first confirmed 2026-09-24.",
+      "nextAction": "None; the crawler follows new tagged releases.",
+      "nextActionBy": "none"
     }
   ]
 }
