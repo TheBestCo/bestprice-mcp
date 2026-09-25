@@ -7,6 +7,27 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.4.3] - 2026-09-25
+
+WebMCP contract 1.9 at the storefront's registration revision 2026-09-25.9 (bestprice.gr `2401b434d2`). The
+contract version, the 16 tools and every input are unchanged.
+
+### Changed
+
+- **Lean output schemas.** Every tool's published output schema is the storefront's lean projection of its strict
+  contract: types, consts, enums, patterns, required fields and the success/refusal `oneOf` kept; bounds, formats,
+  `additionalProperties` and non-essential descriptions dropped; objects nested two levels deep published as their
+  type; refusals as `ok`/`error`/`reason` (search and details in full). About half the size; the package publishes
+  them exactly as the storefront does.
+- **Strictness kept in the tests.** The snapshot also records the storefront's strict contract
+  (`webmcp/test/fixtures/storefront-strict-output-schemas.json`, from the same module the published schemas come
+  from); every demo result is validated against both, and the parity test checks that each published schema only
+  relaxes the strict one.
+- The product id's input description follows the storefront's wording; the storefront reader passes
+  `essential(<text>)` through as the text it marks.
+- No new dataset: no argument rule or required result property changed; 11.0.0 stays current
+  (`webmcp/evals/QUALIFICATION.md`).
+
 ## [1.4.2] - 2026-09-25
 
 WebMCP contract 1.9 as the storefront revised it again (bestprice.gr `21bce127ae`; registration revision
@@ -388,7 +409,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.2...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.3...HEAD
+[1.4.3]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.2...v1.4.3
 [1.4.2]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.1...v1.4.2
 [1.4.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.3.0...v1.4.0
