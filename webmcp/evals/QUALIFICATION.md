@@ -600,3 +600,26 @@ admitted reads aside as `journey.js` does (8.0.0's `listing-010` and `multi-002`
 and a case that expects no call gets a scripted refusal after its admitted reads (`neg-003` from 4.0.0
 on). On 1.0.0–8.0.0 the demo now reports only the four search cases failed, as a native run on 1.8
 would.
+
+## Dataset 10.0.0 grades contract 1.9 (2026-09-25)
+
+Contract 1.9 (bestprice.gr `867fcffe5a`, `b43f47d55b`) added `get_product_details`, a read-only tool on
+the home page, listings and every other public page (not the item page), and the `site` page type:
+articles, deals, stores, brands and the rest register `search_bestprice`, `get_product_details` and
+`get_shopping_decision`. `get_shopping_decision` now returns the page tools' numeric product ids.
+
+Only the new tool changes grading. An agent that reads a product before opening it on a listing — what
+`get_product_details` is for — makes an extra call 9.0.0 does not admit, and fails the chain. So
+10.0.0 (`dataset-v10.js`, `natural-language-cases.v10.json`, `runs.v10.json`, empty) is 9.0.0 with
+`get_product_details` among every case's admitted reads (the 2026-09-15 rule) and argument rules
+regenerated from 1.9, which grade its `include` list by length and items (the grader now checks list
+arguments). No argument of a 1.8 tool changed, no required property depends on the decision's id
+format, and prompts, chains, criteria and required properties are 9.0.0's. It is the default of
+`native-run.mjs` and `run-evidence.js`; 9.0.0 is frozen, and its 1.8 argument rules are recorded in
+`dataset-v9.js` rather than read from the live contract, as 3.0.0 records 1.6's.
+
+No case starts on a `site` page or asks for a product's details by id: the new page type and tool are
+admitted, not yet exercised. Cases for them are new prompts, and the owner's decision. The
+deterministic demo, which implements both, passes 10.0.0 as it passes 9.0.0: 41 passed and the same 6
+refusals (`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-001`, `neg-009`), no failure,
+no blocked run.

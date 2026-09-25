@@ -391,6 +391,16 @@ export function createDeterministicAgent(adapter) {
                 argsValid = false;
                 break;
               }
+              if (
+                propSchema.type === 'array' &&
+                (!Array.isArray(argVal) ||
+                  (propSchema.minItems !== undefined && argVal.length < propSchema.minItems) ||
+                  (propSchema.maxItems !== undefined && argVal.length > propSchema.maxItems) ||
+                  (propSchema.items?.enum && !argVal.every(item => propSchema.items.enum.includes(item))))
+              ) {
+                argsValid = false;
+                break;
+              }
               if (propSchema.type === 'string') {
                 if (typeof argVal !== 'string') {
                   argsValid = false;

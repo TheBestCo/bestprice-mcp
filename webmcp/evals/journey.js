@@ -341,6 +341,15 @@ export function gradeJourney(definition, trace) {
       /* Contract 1.7/1.8 booleans (include_all_stores, navigate, load_more) take true or false only. */
       if (rule.type === 'boolean' && typeof value !== 'boolean')
         return verdict('failed', `invalid boolean ${tool}.${key}`);
+      /* Contract 1.9's list argument (get_product_details.include): its length and every item. */
+      if (
+        rule.type === 'array' &&
+        (!Array.isArray(value) ||
+          (rule.minItems !== undefined && value.length < rule.minItems) ||
+          (rule.maxItems !== undefined && value.length > rule.maxItems) ||
+          (rule.items?.enum && !value.every(item => rule.items.enum.includes(item))))
+      )
+        return verdict('failed', `invalid list ${tool}.${key}`);
       if (rule.enum && !rule.enum.includes(value)) return verdict('failed', `invalid value ${tool}.${key}`);
     }
     if (result?.ok) {

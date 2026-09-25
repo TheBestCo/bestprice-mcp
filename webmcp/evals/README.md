@@ -3,10 +3,14 @@
 This is the canonical home of the versioned Greek shopper prompt datasets for the
 contextual tools in [`../src/contracts.js`](../src/contracts.js):
 
-- [`natural-language-cases.v9.json`](natural-language-cases.v9.json) — current, 47 cases: 8.0.0
+- [`natural-language-cases.v10.json`](natural-language-cases.v10.json) — current, 47 cases: 9.0.0
+  graded against WebMCP contract 1.9 by [`dataset-v10.js`](dataset-v10.js) (argument rules
+  regenerated from the 1.9 contract, `get_product_details` admitted as an extra read); evidence in
+  [`runs.v10.json`](runs.v10.json). See [`QUALIFICATION.md`](QUALIFICATION.md).
+- [`natural-language-cases.v9.json`](natural-language-cases.v9.json) — frozen, 47 cases: 8.0.0
   graded against WebMCP contract 1.8 by [`dataset-v9.js`](dataset-v9.js) (argument rules and admitted
-  reads regenerated from the 1.8 contract, and the four search cases grade its structured result);
-  evidence in [`runs.v9.json`](runs.v9.json). See [`QUALIFICATION.md`](QUALIFICATION.md).
+  reads of the 1.8 contract, and the four search cases grade its structured result); evidence in
+  [`runs.v9.json`](runs.v9.json).
 - `natural-language-cases.v4.json` … `v8.json` — frozen corrections of 3.0.0 (`dataset-v4.js` …
   `dataset-v8.js`), graded against contract 1.6, each with its own `runs.v<N>.json`.
 - [`natural-language-cases.v3.json`](natural-language-cases.v3.json) — frozen, 47 cases, derived by

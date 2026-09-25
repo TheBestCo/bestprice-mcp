@@ -40,7 +40,20 @@ const STARTING_PAGES = Object.freeze({
   'neg-006': 'https://www.bestprice.gr/search?q=iphone',
 });
 
-const RULE_KEYS = Object.freeze(['type', 'minLength', 'maxLength', 'minimum', 'maximum', 'pattern', 'enum']);
+/* The rules an argument is graded by. Contract 1.9's first list argument (get_product_details.include)
+ * added its item bounds; no argument of an earlier contract has them, so 1.6–1.8 rules are unchanged. */
+const RULE_KEYS = Object.freeze([
+  'type',
+  'minLength',
+  'maxLength',
+  'minimum',
+  'maximum',
+  'pattern',
+  'enum',
+  'minItems',
+  'maxItems',
+  'items',
+]);
 
 /* The argument rules of contract 1.6, the contract 3.0.0 was derived from, recorded from
  * webmcp/src/contracts.js at faf3bc9 with `argumentRules` below. 3.0.0 is frozen, so its derivation

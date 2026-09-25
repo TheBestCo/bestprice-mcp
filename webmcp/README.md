@@ -6,7 +6,9 @@ and read the results, inspect the products and controls that are actually on the
 open page (the home page's sections included), apply a visible filter or sorting
 option, open a returned product, compare rendered offers, read specifications,
 inspect price history, move the shopper's own tab to one offer the page already
-shows, and ask the BestPrice Shopping Brain what to buy from any page.
+shows, read any product's offers, specifications and price history without
+leaving the page, and ask the BestPrice Shopping Brain what to buy — from every
+public BestPrice page, articles and stores included.
 
 The shopper stays on BestPrice and keeps the final choice. There is no checkout
 tool, no background account access, and no direct merchant URL in a tool result.
@@ -34,8 +36,8 @@ npm test
 
 ## Source map
 
-- [`src/contracts.js`](src/contracts.js) contains the 15 contextual tool
-  contracts of WebMCP contract 1.8: input and output schemas and safety
+- [`src/contracts.js`](src/contracts.js) contains the 16 contextual tool
+  contracts of WebMCP contract 1.9: input and output schemas and safety
   annotations. Each tool's title, description and output schema come from
   [`src/storefront-catalog.js`](src/storefront-catalog.js), generated from the
   storefront's own catalog.
@@ -53,7 +55,7 @@ npm test
   runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
   validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned Greek natural-language dataset
-  (v1–v8 frozen; v9, 47 cases grading contract 1.8, current) and the separate deterministic
+  (v1–v9 frozen; v10, 47 cases grading contract 1.9, current) and the separate deterministic
   and browser-agent evaluation criteria.
 
 ## Production surface
@@ -62,14 +64,24 @@ Production registers only the tools relevant to the open page:
 
 | Page | Tools |
 | --- | ---: |
-| Home | 4 |
-| Search, category, or hub listing | 9 |
+| Home | 5 |
+| Search, category, or hub listing | 10 |
 | Product page | 8 |
-| Unique contracts | 15 |
+| Any other public page (articles, deals, stores, brands, …) | 3 |
+| Unique contracts | 16 |
 
 Every page registers `search_bestprice` first and `get_shopping_decision` last.
 The product page's `show_offer` is an action verb: it scrolls to one rendered
 offer and marks it for the shopper, and it returns no merchant link.
+
+Contract 1.9 (2026-09-25) reaches every public page and every product from it.
+Pages without tools of their own — articles and guides, deals, lists, stores,
+brands, collections, comparisons, stories — register `search_bestprice`,
+`get_product_details` and `get_shopping_decision` (page type `site`).
+`get_product_details`, on every page but the item page, reads one product's
+offers (ranked by delivered price), key specifications and price-history
+summary by `product_id`, without moving the tab; `include` picks the sections.
+`get_shopping_decision` returns the same numeric product ids as the page tools.
 
 Contract 1.8 (2026-09-25) gives every tool an output schema — a closed `oneOf`
 of its success and its refusal — and rewrites every title and description (at
@@ -106,8 +118,8 @@ output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
-9.0.0 grades contract 1.8 and is the default; 1.0.0–8.0.0 stay frozen, with
-their runs, as the history of contracts 1.6 and 1.7
+10.0.0 grades contract 1.9 and is the default; 1.0.0–9.0.0 stay frozen, with
+their runs, as the history of contracts 1.6 to 1.8
 ([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 
 The machine-readable production inventory is available at
