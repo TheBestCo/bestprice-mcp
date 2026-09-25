@@ -48,7 +48,7 @@ export function validatePayloadEnvelope(payload) {
     throw new Error('Tools must declare remote mcp_server pointing to https://mcp.bestprice.gr/mcp');
   }
   const allowed = tool.allowed_tools?.[0]?.tools;
-  const expected = ['search_products', 'compare_offers', 'get_price_history'];
+  const expected = ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'];
   if (
     !Array.isArray(allowed) ||
     allowed.length !== expected.length ||
@@ -78,7 +78,7 @@ async function run() {
     console.log('Notice: GEMINI_API_KEY is not set in environment.');
     console.log('Offline envelope verification passed.');
     console.log('Target endpoint: https://mcp.bestprice.gr/mcp');
-    console.log('Tools allowed: search_products, compare_offers, get_price_history');
+    console.log('Tools allowed: get_shopping_decision, search_products, compare_offers, get_price_history');
     console.log('To run live against Gemini, set GEMINI_API_KEY and re-run.');
     return;
   }

@@ -7,6 +7,9 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+- Routing guidance now treats completed shopping decisions and lookup-only searches as terminal for their original intent, preventing redundant BestPrice tool calls while preserving explicit offer/history follow-ups.
+- Gemini Interactions envelope validation now matches the actual four-tool allowlist, with regression coverage.
+
 ### Added
 
 - First full measured Claude selection benchmark: the canonical Skill improved exact positive-case routing from 67.12% to 76.71% (+9.59 pp) on the frozen 186-case corpus; full provenance is recorded in `docs/selection-results-2026-09-24.md`.
