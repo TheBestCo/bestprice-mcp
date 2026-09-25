@@ -7,6 +7,59 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-09-25
+
+WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `e0be10690f`).
+
+### Added
+
+- **`get_shopping_decision` on every page — 15 tools.** It asks the BestPrice Shopping Brain (the public MCP
+  endpoint's tool of the same name) with the shopper's own words (`message`, 1–2000 characters) and an optional
+  Greek `postal_code` (10000–85999), and returns the outcome, the pick with its lowest price before shipping and
+  BestPrice link, up to three alternatives, reasons, tradeoffs, unknowns, and a clarifying question when one is
+  needed. It is read-only and never moves the tab.
+- **`search_bestprice` answers with its results.** New optional `limit` (1–8, default 6) and `navigate` (default
+  true; `false` only reads); the result carries the product cards, the results page and its kind, whether the tab
+  moved, and the tools the results page registers.
+- **The home page browses its sections**: it registers `get_visible_products` and `open_visible_product` too (4
+  tools). Listing pages register 9 tools and item pages 8, each with search first and the Shopping Brain last.
+- **Further result pages and named products.** `get_visible_products` takes `load_more` to load a listing's next
+  result page and reports the pages loaded; `compare_page_offers` takes the `product_id` a decision names
+  (`bp_<id>` or numeric; another product is refused with where to find it), states its `ranking_basis`, and names
+  the unknown-shipping offer it leaves out; `get_product_specifications` reads a fact by its common English name.
+- **Output schemas.** Every tool publishes the storefront's own output schema, a closed `oneOf` of its success and
+  its refusal; `createTools` returns it as `outputSchema`. `TOOL_DEFINITIONS` and `WEBMCP_CONTRACT_VERSION` are
+  exported from `webmcp/src/contracts.js`.
+- **Dataset 9.0.0**, the default evaluation set: 8.0.0 graded against contract 1.8 — argument rules and admitted
+  reads regenerated from the 1.8 contract, and `home-001`, `home-002`, `home-005` and `listing-012` check the
+  structured search result (`results_url`, `results_kind`, `products`, `navigated`) instead of `action`, which
+  1.8 no longer returns. 1.0.0–8.0.0 stay frozen with their runs; `runs.v9.json` starts empty.
+- `npm run webmcp:snapshot -- <storefront checkout>` regenerates the storefront snapshot and
+  `webmcp/src/storefront-catalog.js`, the words and output schemas the contracts publish.
+
+### Changed
+
+- Every title and description is the storefront's rewritten wording, at most 500 characters (what the tool does,
+  when to use it, what it returns, what it changes), and input field descriptions match what the pages register
+  word for word. Annotations are the storefront's exactly: every tool declares `consequentialHint: false`, and the
+  read-only page tools carry `readOnlyHint`/`consequentialHint`/`untrustedContentHint` only.
+- Contract parity now covers every field. `webmcp/src/contract-parity.js` reads each tool's words and output
+  schema from the storefront's generated `extra/mcpDiscovery/webmcp-tools.json`, its input schema and annotations
+  from the page modules that register it (template literals, regular-expression and string bounds, and imported
+  constants resolved), and each page type's tools from the manifest the storefront's PHP builder renders. The
+  committed snapshot is now `storefront-tools.v2.json`; the sibling re-check runs on a checkout that contains the
+  snapshot's source commit and names the one it lacks otherwise. The release conformance check also holds the
+  served manifest's tool order, page lists, words and output schemas to the published contract.
+- The demo adapter returns only results its tool's published output schema admits (a new test validates every
+  tool on every page, refusals included), accepts every argument the contracts declare (`show_offer.offer_ref`
+  was refused), browses the home page's section, and answers `get_shopping_decision` from its fixture or an
+  injected `decide`, never the network on its own. It passes dataset 9.0.0: 41 passed, and the same 6 refusals
+  the page makes on 2.0.0.
+- The evaluation driver sets admitted reads aside when it counts a chain, as the grader does, and a scripted run
+  of a case that expects no call ends in a refusal; the grader refuses a non-boolean boolean argument.
+- The native read smoke takes each page's expected tools from the published contract, and an evidence record's
+  implementation fingerprint also covers `webmcp/src/storefront-catalog.js`, where the tools' words now live.
+
 ## [1.2.8] - 2026-09-25
 
 ### Fixed
@@ -256,7 +309,9 @@ in `server.json`; see the Versioning section of the README.
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.7...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.8...v1.3.0
+[1.2.8]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.5...v1.2.6
 [1.2.5]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.4...v1.2.5
