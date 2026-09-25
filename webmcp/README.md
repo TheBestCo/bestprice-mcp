@@ -66,7 +66,7 @@ Production registers only the tools relevant to the open page:
 | --- | ---: |
 | Home | 5 |
 | Search, category, or hub listing | 10 |
-| Product page | 8 |
+| Product page | 9 |
 | Any other public page (articles, deals, stores, brands, …) | 3 |
 | Unique contracts | 16 |
 
@@ -78,9 +78,9 @@ Contract 1.9 (2026-09-25) reaches every public page and every product from it.
 Pages without tools of their own — articles and guides, deals, lists, stores,
 brands, collections, comparisons, stories — register `search_bestprice`,
 `get_product_details` and `get_shopping_decision` (page type `site`).
-`get_product_details`, on every page but the item page, reads one product's
-offers (ranked by delivered price), key specifications and price-history
-summary by `product_id`, without moving the tab; `include` picks the sections.
+`get_product_details`, on every page, reads one product's offers (ranked by
+delivered price), key specifications and price-history summary by
+`product_id`, without moving the tab; `include` picks the sections.
 `get_shopping_decision` returns the same numeric product ids as the page tools.
 Its 2026-09-25 revision narrows `search_bestprice` by price, stock, deals and
 order (`min_price_eur`, `max_price_eur`, `in_stock_only`, `deals_only`, `sort`)
@@ -89,7 +89,15 @@ only; lets `get_product_details` move the tab to the product (`navigate`); keeps
 every description to one scannable shape of at most 250 characters; and gives
 the item page its own wording for `search_bestprice` and `get_shopping_decision`,
 so a description never names a tool its page does not register
-(`TOOL_DEFINITIONS[name].pageDescriptions`; `createTools` registers it).
+(`TOOL_DEFINITIONS[name].pageDescriptions`; `createTools` registers it). A
+further revision (2026-09-25.8) puts `get_product_details` on the item page too
+(9 tools, with its own wording there); has every tool that moves or reloads the
+tab answer first — `outcome: 'dispatched'` with where the tab is going
+(`destination_url` or `bestprice_url`) and the `next_tools` that page registers
+— and navigate just after; answers `get_product_details` within its deadline
+with the sections it could read (the rest `null`, with why), opening the
+product when asked even if the read failed; says `results_kind: 'product'` when
+a search lands on one model's own page; and trims the output schemas.
 
 Contract 1.8 (2026-09-25) gives every tool an output schema — a closed `oneOf`
 of its success and its refusal — and rewrites every title and description (at

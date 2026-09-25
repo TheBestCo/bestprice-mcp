@@ -76,8 +76,7 @@ const NUMERIC_ID = '^\\d{1,20}$';
 const PRODUCT_ID = {
   type: 'string',
   pattern: NUMERIC_ID,
-  description:
-    'Numeric BestPrice product id (digits only), as returned by search_bestprice, get_shopping_decision and every BestPrice product list.',
+  description: 'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
 };
 /* search_bestprice's sort orders (contract 1.9); some only where the results page offers them. */
 const SEARCH_SORTS = ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'];
@@ -362,6 +361,8 @@ export const PAGE_TOOL_NAMES = deepFreeze({
   ],
   product: [
     'search_bestprice',
+    /* Since the 2026-09-25.8 revision the item page registers it too, with its own wording. */
+    'get_product_details',
     'get_page_product',
     'compare_page_offers',
     'get_product_specifications',

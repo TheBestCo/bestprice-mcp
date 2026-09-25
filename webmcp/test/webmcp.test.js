@@ -31,17 +31,22 @@ describe('contracts', () => {
       'get_shopping_decision',
     ]);
     assert.equal(PAGE_TOOL_NAMES.listing.length, 10);
-    assert.equal(PAGE_TOOL_NAMES.product.length, 8);
+    assert.equal(PAGE_TOOL_NAMES.product.length, 9);
     /* Every other public page: search, one product's details, and the Shopping Brain. */
     assert.deepEqual(PAGE_TOOL_NAMES.site, [
       'search_bestprice',
       'get_product_details',
       'get_shopping_decision',
     ]);
-    /* The item page's own tools cover the product in view; the details tool is everywhere else. */
+    /* Since the 2026-09-25.8 revision the details tool is on every page, the item page included. */
     assert.deepEqual(
       Object.keys(PAGE_TOOL_NAMES).filter(page => PAGE_TOOL_NAMES[page].includes('get_product_details')),
-      ['home', 'listing', 'site'],
+      ['home', 'listing', 'product', 'site'],
+    );
+    assert.equal(
+      PAGE_TOOL_NAMES.product[1],
+      'get_product_details',
+      'right after search, as the item page registers it',
     );
     for (const names of Object.values(PAGE_TOOL_NAMES)) {
       assert.equal(names[0], 'search_bestprice');
@@ -210,7 +215,7 @@ describe('registration runtime', () => {
     const first = registration.register(listingTools());
     const second = registration.register(createTools({ page: 'product', execute: noop }));
     assert.deepEqual(await first, { status: 'cancelled', registered: 0 });
-    assert.deepEqual(await second, { status: 'ready', registered: 8 });
+    assert.deepEqual(await second, { status: 'ready', registered: 9 });
   });
 
   it('tears down by aborting registered tools and reporting unavailable', async () => {
@@ -314,14 +319,17 @@ describe('demo adapter', () => {
     const filters = await adapter.execute('get_listing_filters', {});
     assert.equal(filters.filters[0].name, BRAND_FILTER);
 
+    /* The listing reloads after the tool has answered: the answer says where the tab is going. */
     assert.deepEqual(await adapter.execute('apply_listing_filter', { filter: 'brand', value: 'samsung' }), {
       ok: true,
-      action: 'applied_filter',
+      action: 'filter_dispatched',
       filter: BRAND_FILTER,
       value: 'Samsung',
-      applied: true,
+      applied: false,
       dispatched: true,
-      outcome: 'observed_complete',
+      outcome: 'dispatched',
+      destination_url: 'https://www.bestprice.gr/search?q=phone&brand=Samsung',
+      next_tools: PAGE_TOOL_NAMES.listing.slice(1, -1),
     });
     assert.deepEqual(
       adapter.snapshot().products.map(product => product.brand),

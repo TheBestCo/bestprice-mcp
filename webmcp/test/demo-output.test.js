@@ -14,6 +14,7 @@ import {
   DETAIL_SECTIONS,
   HOME_SECTION,
   offerRef,
+  readFixtureSection,
 } from '../src/demo-adapter.js';
 import { ANNOTATIONS, KEYWORDS, validate } from './helpers/output-schema-check.js';
 
@@ -168,7 +169,7 @@ describe('demo results against the published output schemas', () => {
     }
   });
 
-  it('reads one product from any page but the item page, without moving the tab (contract 1.9)', async () => {
+  it('reads one product from any page, without moving the tab unless asked (contract 1.9)', async () => {
     const adapter = createDemoAdapter();
     const { call } = recorder(adapter);
     const details = await call('get_product_details', { product_id: '2159919913' });
@@ -211,13 +212,11 @@ describe('demo results against the published output schemas', () => {
       (await call('get_product_details', { product_id: '2159919913', include: [] })).error,
       'include must list one or more of: offers, specifications, price_history.',
     );
-    /* The item page registers its own tools for the product in view instead. */
-    assert.equal(
-      createTools({ page: 'product', execute: adapter.execute }).some(
-        tool => tool.name === 'get_product_details',
-      ),
-      false,
+    /* Since the 2026-09-25.8 revision the item page registers it too, with its own wording. */
+    const onItemPage = createTools({ page: 'product', execute: adapter.execute }).find(
+      tool => tool.name === 'get_product_details',
     );
+    assert.equal(onItemPage.description, TOOL_DEFINITIONS.get_product_details.pageDescriptions.product);
 
     /* With navigate, the tab moves to the product once it is read. */
     const opened = await call('get_product_details', { product_id: '2160384659', navigate: true });
@@ -226,6 +225,92 @@ describe('demo results against the published output schemas', () => {
     assert.deepEqual(
       [adapter.snapshot().page, adapter.snapshot().product.product_id],
       ['product', '2160384659'],
+    );
+  });
+
+  it('answers before the tab moves, and says where it is going (revision 2026-09-25.8)', async () => {
+    const changes = [];
+    const adapter = createDemoAdapter(snapshot => changes.push(snapshot.page));
+    const { call } = recorder(adapter);
+    await call('search_bestprice', { query: 'phone' });
+    /* The answer is complete before the page it describes changes: the state moves after it. */
+    const pending = adapter.execute('open_visible_product', { product_id: '2159922965' });
+    assert.equal(adapter.snapshot().page, 'listing', 'nothing has moved while the tool is answering');
+    const opened = await pending;
+    assert.deepEqual(
+      [opened.action, opened.outcome, opened.applied, opened.dispatched],
+      ['product_open_dispatched', 'dispatched', false, true],
+    );
+    assert.deepEqual(opened.next_tools, PAGE_TOOL_NAMES.product.slice(1, -1));
+    assert.equal(adapter.snapshot().page, 'product');
+    assert.deepEqual(changes, ['listing', 'product']);
+
+    /* A search for one model by its full name lands on the product's own page. */
+    const unique = await call('search_bestprice', { query: 'Google Pixel 9 128GB', navigate: false });
+    assert.deepEqual(
+      [unique.results_kind, unique.returned, unique.results_url],
+      ['product', 1, 'https://www.bestprice.gr/item/2160384659/product.html?bpref=mcp'],
+    );
+    assert.match(unique.next_step, /^The search matched one product: get_product_details reads it here/u);
+    const narrowed = await call('search_bestprice', { query: 'Google Pixel 9 128GB', max_price_eur: 500 });
+    assert.deepEqual(narrowed.not_applied, [{ constraint: 'max_price_eur', reason: 'no_product_list' }]);
+    assert.deepEqual(narrowed.next_tools, PAGE_TOOL_NAMES.product.slice(1, -1));
+    assert.deepEqual(
+      [adapter.snapshot().page, adapter.snapshot().product.product_id],
+      ['product', '2160384659'],
+    );
+    /* Narrowed to nothing, a listing says so and names no destination tools. */
+    const nothing = await call('search_bestprice', { query: 'phone', max_price_eur: 100 });
+    assert.deepEqual([nothing.results_kind, nothing.next_tools], ['none', undefined]);
+    assert.match(nothing.next_step, /^No products match these constraints/u);
+  });
+
+  it('answers a details read in time, with what it could read, and opens the product even when it could not', async () => {
+    const hanging = () => new Promise(() => {});
+    const adapter = createDemoAdapter(undefined, {
+      readSection: (product, section) => {
+        if (section === 'price_history') return hanging();
+        if (section === 'specifications') throw new Error('unreadable');
+        return readFixtureSection(product, section);
+      },
+      sectionTimeoutMs: 50,
+    });
+    const { call } = recorder(adapter);
+    const partial = await call('get_product_details', { product_id: '2159919913' });
+    assert.equal(partial.ok, true);
+    assert.equal(partial.offers.compared, 3);
+    assert.deepEqual([partial.specifications, partial.price_history], [null, null]);
+    assert.deepEqual(partial.unavailable, {
+      specifications: 'Specifications could not be read.',
+      price_history: 'Price history did not load within 0.1 seconds.',
+    });
+
+    const failing = createDemoAdapter(undefined, {
+      readPage: () => {
+        throw new Error('the product page did not answer');
+      },
+    });
+    const failed = recorder(failing);
+    assert.deepEqual(await failed.call('get_product_details', { product_id: '2159919913' }), {
+      ok: false,
+      error: 'The product page could not be read.',
+      reason: 'upstream_unavailable',
+    });
+    const opened = await failed.call('get_product_details', { product_id: '2159919913', navigate: true });
+    assert.deepEqual(
+      [opened.ok, opened.navigated, opened.bestprice_url],
+      [false, true, 'https://www.bestprice.gr/item/2159919913/product.html?bpref=mcp'],
+    );
+    assert.equal(failing.snapshot().page, 'product', 'asked to open it, the tab still goes');
+    /* A product BestPrice does not have is never opened. */
+    const missing = createDemoAdapter(undefined, { readPage: () => null });
+    const unknown = await recorder(missing).call('get_product_details', {
+      product_id: '123',
+      navigate: true,
+    });
+    assert.deepEqual(
+      [unknown.reason, unknown.navigated, missing.snapshot().page],
+      ['not_found', undefined, 'home'],
     );
   });
 
@@ -257,7 +342,7 @@ describe('demo results against the published output schemas', () => {
       (await call('get_visible_products', {})).products.map(product => product.product_id),
       newest.products.map(product => product.product_id),
     );
-    assert.equal((await call('clear_listing_filters', {})).action, 'cleared_listing_filters');
+    assert.equal((await call('clear_listing_filters', {})).action, 'clearing_filters_dispatched');
 
     const none = await call('search_bestprice', { query: 'καφετιέρα', min_price_eur: 10, navigate: false });
     assert.deepEqual(none.not_applied, [{ constraint: 'min_price_eur', reason: 'no_products' }]);

@@ -71,10 +71,10 @@ describe('contract parity with the storefront', () => {
         assert.equal('pageDescriptions' in tool, false, 'a registered tool carries one description');
       }
     }
-    /* Contract 1.9: the item page has its own wording for the two tools it shares with every page. */
+    /* Contract 1.9: the item page has its own wording for the three tools it shares with every page. */
     assert.deepEqual(
       Object.keys(fixture.surface).filter(name => fixture.surface[name].pageDescriptions),
-      ['search_bestprice', 'get_shopping_decision'],
+      ['search_bestprice', 'get_product_details', 'get_shopping_decision'],
     );
   });
 

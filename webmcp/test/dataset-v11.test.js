@@ -132,7 +132,8 @@ describe('dataset 11.0.0', () => {
     );
     assert.deepEqual(
       Object.keys(PAGE_TOOL_NAMES).filter(page => PAGE_TOOL_NAMES[page].includes('get_product_details')),
-      ['home', 'listing', 'site'],
+      /* Every page since the 2026-09-25.8 revision; admitted as a read wherever a case starts. */
+      ['home', 'listing', 'product', 'site'],
     );
   });
 

@@ -651,3 +651,21 @@ and `run-evidence.js`; 10.0.0 is frozen, its first-1.9 argument rules recorded i
 deterministic demo, which implements the constraints, the single id form and `navigate`, passes 11.0.0
 with 41 passed and the same 6 refusals as on every earlier graded set.
 
+## Revision 2026-09-25.8 changes no grading; 11.0.0 stays current
+
+The storefront's next revision of contract 1.9 (bestprice.gr `21bce127ae`, registration revision
+2026-09-25.8) puts `get_product_details` on the item page too (9 tools there), has every tool that moves
+or reloads the tab answer first (`outcome: 'dispatched'`, `destination_url` or `bestprice_url`,
+`next_tools`) and navigate 250 ms later, time-boxes `get_product_details` (a late section is `null`
+with its reason; with `navigate: true` the tab still opens the product when the read failed), reports
+`results_kind: 'product'` when a search lands on one model's page, and trims the output schemas.
+
+None of it changes what 11.0.0 grades, so no dataset is added. No argument rule changed (only an id
+description). Every result property a case requires is still one a success carries
+(`dataset-v11.test.js` checks it against the published output schemas); the four search cases require
+`results_kind`, never a value of it. `get_product_details` was already an admitted read in every case,
+the item page's included, with `navigate` admitted `false` only. A deferred navigation changes when the
+next page registers its tools, not which calls a journey needs. The deterministic demo, which now
+answers before its tab moves, lands a unique model's search on its page and answers details reads in
+time, still passes 11.0.0 with 41 passed and the same 6 refusals.
+
