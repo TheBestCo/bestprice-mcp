@@ -7,6 +7,23 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.2.8] - 2026-09-25
+
+### Fixed
+
+- **The stdio bridge connects again on Node 24, 25 and 26.** Since 1.2.1, `node stdio.mjs` failed every handshake on
+  current Node (undici 7.12 and later): the MCP SDK cancels the empty body of the 202 that answers
+  `notifications/initialized`, and the UTF-8 response guard reported that cancellation as an upstream stream failure,
+  which aborted the shared upstream connection before `tools/list`. Hosts saw the fallback `bestprice-mcp-stdio`
+  server and "This operation was aborted" on every call. A body the consumer discards is no longer a failure; invalid
+  UTF-8, oversize and truncated bodies, and real read errors, are still reported exactly once. Node 20 to 23 were
+  unaffected.
+
+### Added
+
+- CI now also runs the full test suite on the current Node line (26), so a runtime change like undici 7.12 cannot
+  break the bridge unnoticed again.
+
 - Routing guidance now treats completed shopping decisions and lookup-only searches as terminal for their original intent, preventing redundant BestPrice tool calls while preserving explicit offer/history follow-ups.
 - Gemini Interactions envelope validation now matches the actual four-tool allowlist, with regression coverage.
 
