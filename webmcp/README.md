@@ -97,7 +97,14 @@ tab answer first — `outcome: 'dispatched'` with where the tab is going
 — and navigate just after; answers `get_product_details` within its deadline
 with the sections it could read (the rest `null`, with why), opening the
 product when asked even if the read failed; says `results_kind: 'product'` when
-a search lands on one model's own page; and trims the output schemas.
+a search lands on one model's own page; and trims the output schemas. Since
+2026-09-25.9 the published output schemas are a lean projection of the
+storefront's strict contract — types, consts, enums, patterns, required fields
+and the success/refusal split kept; bounds, formats, `additionalProperties` and
+most descriptions dropped, deeper objects published as their type — about half
+the size. The package publishes them exactly so, and its tests still validate
+every demo result against the strict contract
+(`test/fixtures/storefront-strict-output-schemas.json`).
 
 Contract 1.8 (2026-09-25) gives every tool an output schema — a closed `oneOf`
 of its success and its refusal — and rewrites every title and description (at

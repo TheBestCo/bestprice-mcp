@@ -669,3 +669,14 @@ next page registers its tools, not which calls a journey needs. The deterministi
 answers before its tab moves, lands a unique model's search on its page and answers details reads in
 time, still passes 11.0.0 with 41 passed and the same 6 refusals.
 
+## Revision 2026-09-25.9 changes no grading either
+
+The storefront's revision 2026-09-25.9 (bestprice.gr `2401b434d2`) publishes its output schemas as a
+lean projection of its strict contract (types, consts, enums, patterns, required fields and the
+success/refusal split kept; bounds, formats, `additionalProperties` and most descriptions dropped; about
+half the size), serves both manifests as compact JSON, and resolves constrained searches with a HEAD
+request. No argument rule changed, and every result property a case requires is still one a published
+success carries, so 11.0.0 stays current. Grading never read the output schemas; the demo's results are
+now validated against both the published projection and the strict contract, which the snapshot records
+from the same storefront module.
+

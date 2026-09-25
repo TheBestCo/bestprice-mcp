@@ -46,6 +46,38 @@ import {
 
 const FIXTURE_PATH = fileURLToPath(new URL('./fixtures/storefront-tools.v2.json', import.meta.url));
 const fixture = JSON.parse(readFileSync(FIXTURE_PATH, 'utf8'));
+const strictFixture = JSON.parse(
+  readFileSync(new URL('./fixtures/storefront-strict-output-schemas.json', import.meta.url), 'utf8'),
+);
+
+/**
+ * Where a published schema is not a relaxation of the strict one: a field, keyword or value the
+ * strict contract does not have. Descriptions are words, not constraints; a nested object published
+ * as its bare type keeps only a type the strict one allows.
+ */
+const relaxationViolations = (published, strict, path, found = []) => {
+  for (const [key, value] of Object.entries(published)) {
+    if (key === 'description') continue;
+    if (key === 'properties') {
+      for (const [name, child] of Object.entries(value)) {
+        if (!strict.properties?.[name]) found.push(`${path}.${name}: not in the strict contract`);
+        else relaxationViolations(child, strict.properties[name], `${path}.${name}`, found);
+      }
+    } else if (key === 'items') {
+      relaxationViolations(value, strict.items ?? {}, `${path}[]`, found);
+    } else if (key === 'oneOf' || key === 'anyOf') {
+      for (const [index, branch] of value.entries()) {
+        relaxationViolations(branch, strict[key]?.[index] ?? {}, `${path}|${index}`, found);
+      }
+    } else if (key === 'type' && strict.type === undefined) {
+      const allowed = (strict.anyOf ?? []).flatMap(branch => [branch.type ?? 'object'].flat());
+      for (const type of [value].flat()) if (!allowed.includes(type)) found.push(`${path}.type: ${type}`);
+    } else if (JSON.stringify(value) !== JSON.stringify(strict[key])) {
+      found.push(`${path}.${key}: ${JSON.stringify(value)} is not the strict ${JSON.stringify(strict[key])}`);
+    }
+  }
+  return found;
+};
 
 const noop = () => ({ ok: true });
 
@@ -101,6 +133,32 @@ describe('contract parity with the storefront', () => {
         assert.ok(fixture.surface[name]?.[field], `${name}.${field} must be in the snapshot`);
       }
     }
+  });
+
+  it('publishes lean output schemas that only relax the strict contract they were made from', () => {
+    /* Recorded from the same output-schemas.js the surface was read with. */
+    assert.equal(strictFixture.sourceCommit, fixture.sourceCommit);
+    assert.equal(
+      strictFixture.sha256,
+      fixture.extractedFrom.find(source => source.path === strictFixture.path)?.sha256,
+    );
+    assert.deepEqual(Object.keys(strictFixture.schemas), fixture.tools);
+    for (const name of fixture.tools) {
+      const violations = relaxationViolations(
+        fixture.surface[name].outputSchema,
+        strictFixture.schemas[name],
+        name,
+      );
+      assert.deepEqual(violations, [], violations.join('\n'));
+    }
+    /* The check reads what it claims: an added constraint, or a field the contract lacks, is named. */
+    const tightened = structuredClone(fixture.surface.show_offer.outputSchema);
+    tightened.oneOf[0].required = [...tightened.oneOf[0].required, 'invented'];
+    tightened.oneOf[0].properties.invented = { type: 'string' };
+    assert.deepEqual(relaxationViolations(tightened, strictFixture.schemas.show_offer, 'show_offer'), [
+      'show_offer|0.invented: not in the strict contract',
+      `show_offer|0.required: ${JSON.stringify(tightened.oneOf[0].required)} is not the strict ${JSON.stringify(strictFixture.schemas.show_offer.oneOf[0].required)}`,
+    ]);
   });
 
   it('names the field the round-4 audit found missing, on both surfaces', () => {

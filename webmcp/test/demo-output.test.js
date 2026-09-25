@@ -2,9 +2,14 @@
  * Since contract 1.8 every tool publishes an output schema. The demo adapter is what this repository
  * shows a result to be, so every result it returns — successes and refusals, on every page — must be
  * one its tool's published schema admits, checked with the same strict subset the storefront uses.
+ *
+ * Since registration revision 2026-09-25.9 the published schemas are a lean projection of the
+ * storefront's strict contract (closed and bounded): only constraints are removed. Every result is
+ * checked against both, so a published schema made lean never makes these tests lenient.
  */
 
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
 
 import { createTools, PAGE_TOOL_NAMES, TOOL_DEFINITIONS, TOOL_NAMES } from '../src/contracts.js';
@@ -18,7 +23,24 @@ import {
 } from '../src/demo-adapter.js';
 import { ANNOTATIONS, KEYWORDS, validate } from './helpers/output-schema-check.js';
 
-/** Tools for the adapter's current page, each result checked against its published output schema. */
+const STRICT = JSON.parse(
+  readFileSync(new URL('./fixtures/storefront-strict-output-schemas.json', import.meta.url), 'utf8'),
+).schemas;
+/* What the storefront's lean projection keeps of a schema (output-schemas.js `publishable`). */
+const PUBLISHED_KEYWORDS = new Set([
+  'type',
+  'const',
+  'enum',
+  'pattern',
+  'required',
+  'description',
+  'properties',
+  'items',
+  'oneOf',
+  'anyOf',
+]);
+
+/** Tools for the adapter's current page, each result checked against its published and strict schemas. */
 const recorder = adapter => {
   const calls = [];
   const call = async (name, args = {}, options) => {
@@ -27,7 +49,8 @@ const recorder = adapter => {
     );
     assert.ok(tool, `${name} is not registered on the ${adapter.snapshot().page} page`);
     const result = await tool.execute(args, options);
-    const errors = validate(tool.outputSchema, JSON.parse(JSON.stringify(result)));
+    const payload = JSON.parse(JSON.stringify(result));
+    const errors = [...validate(STRICT[name], payload), ...validate(tool.outputSchema, payload)];
     calls.push({ name, ok: result.ok, errors });
     assert.deepEqual(errors, [], `${name} ${JSON.stringify(args)} -> ${JSON.stringify(result)}`);
     return result;
@@ -46,32 +69,45 @@ const walkSchema = (schema, path, visit) => {
 };
 
 describe('demo results against the published output schemas', () => {
-  it('publishes output schemas inside the subset the checker enforces, closed on both outcomes', () => {
+  it('validates against a strict contract, closed on both outcomes, and publishes its lean projection', () => {
     for (const name of TOOL_NAMES) {
-      const schema = TOOL_DEFINITIONS[name].outputSchema;
-      walkSchema(schema, name, (node, path) => {
+      const strict = STRICT[name];
+      walkSchema(strict, name, (node, path) => {
         for (const key of Object.keys(node)) {
           assert.ok(KEYWORDS.has(key) || ANNOTATIONS.has(key), `${path}: ${key}`);
         }
       });
       assert.deepEqual(
-        schema.oneOf.map(branch => [branch.title, branch.properties.ok.const, branch.additionalProperties]),
+        strict.oneOf.map(branch => [branch.title, branch.properties.ok.const, branch.additionalProperties]),
         [
           ['Success', true, false],
           ['Refusal', false, false],
         ],
         name,
       );
+      /* The published schema keeps the success/refusal split, and only the keywords a lean copy keeps. */
+      const published = TOOL_DEFINITIONS[name].outputSchema;
+      assert.deepEqual(
+        published.oneOf.map(branch => branch.properties.ok.const),
+        [true, false],
+        name,
+      );
+      walkSchema(published, name, (node, path) => {
+        for (const key of Object.keys(node)) assert.ok(PUBLISHED_KEYWORDS.has(key), `${path}: ${key}`);
+      });
     }
-    /* The checker is strict: a field a result gains without its schema fails. */
+    /* Lean: the whole published set is about half the strict one. */
+    const size = schemas => JSON.stringify(schemas).length;
+    const published = Object.fromEntries(TOOL_NAMES.map(name => [name, TOOL_DEFINITIONS[name].outputSchema]));
+    assert.ok(size(published) < size(STRICT) * 0.6, `${size(published)} of ${size(STRICT)}`);
+    /* The strict contract is what catches a field a result gains without its schema; the published
+     * one, open, admits it. */
+    assert.notDeepEqual(validate(STRICT.show_price_history, { ok: false, error: 'x', extra: 1 }), []);
     assert.deepEqual(
-      validate(TOOL_DEFINITIONS.show_price_history.outputSchema, { ok: false, error: 'x' }),
-      [],
-    );
-    assert.notDeepEqual(
       validate(TOOL_DEFINITIONS.show_price_history.outputSchema, { ok: false, error: 'x', extra: 1 }),
       [],
     );
+    assert.deepEqual(validate(STRICT.show_price_history, { ok: false, error: 'x' }), []);
   });
 
   it('returns only admitted results for every tool on every page, successes and refusals', async () => {

@@ -67,7 +67,9 @@ describe('dataset 11.0.0', () => {
   it('only requires result properties a success of the published contract carries', () => {
     for (const item of v11.cases) {
       for (const [tool, properties] of Object.entries(item.required_result_properties ?? {})) {
-        const success = TOOL_DEFINITIONS[tool].outputSchema.oneOf.find(branch => branch.title === 'Success');
+        const success = TOOL_DEFINITIONS[tool].outputSchema.oneOf.find(
+          branch => branch.properties.ok.const === true,
+        );
         for (const property of properties) {
           assert.ok(Object.hasOwn(success.properties, property), `${item.id}: ${tool}.${property}`);
         }

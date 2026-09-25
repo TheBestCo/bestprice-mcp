@@ -76,7 +76,7 @@ const NUMERIC_ID = '^\\d{1,20}$';
 const PRODUCT_ID = {
   type: 'string',
   pattern: NUMERIC_ID,
-  description: 'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+  description: 'Numeric BestPrice product id, as any tool returns it.',
 };
 /* search_bestprice's sort orders (contract 1.9); some only where the results page offers them. */
 const SEARCH_SORTS = ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'];

@@ -110,6 +110,7 @@ const REGEX_PREFIX_KEYWORDS = new Set([
   'await',
 ]);
 const OPENERS = new Set(['(', '[', '{']);
+const PASS_THROUGH_CALLS = new Set(['Object.freeze', 'essential']);
 const CLOSERS = new Set([')', ']', '}']);
 
 /**
@@ -359,8 +360,9 @@ function parseValue(tokens, index) {
       next += 2;
     }
     if (Object.hasOwn(KNOWN_MEMBERS, name)) return { value: KNOWN_MEMBERS[name], next };
-    /* `Object.freeze(<literal>)` is the literal it freezes, as the storefront writes a shared list. */
-    if (name === 'Object.freeze' && isPunct(tokens[next], '(')) {
+    /* Calls that return their one argument: `Object.freeze(<literal>)` is the literal it freezes (a
+     * shared list), `essential(<text>)` the text it marks for the published output schemas. */
+    if (PASS_THROUGH_CALLS.has(name) && isPunct(tokens[next], '(')) {
       const frozen = parseValue(tokens, next + 1);
       if (frozen && isPunct(tokens[frozen.next], ')')) return { value: frozen.value, next: frozen.next + 1 };
     }
@@ -715,6 +717,28 @@ export function readStorefrontSurface(root = DEFAULT_STOREFRONT_ROOT) {
     definitions,
     surface: surfaceIndex(definitions),
     digest: sha256(canonicalJson(definitions)),
+  };
+}
+
+/** The storefront module that holds both copies of the output schemas. */
+export const STOREFRONT_OUTPUT_SCHEMAS = 'js/modules/webmcp/output-schemas.js';
+
+/**
+ * The storefront's output schemas, both copies: the strict contract its tests validate every result
+ * against (`STRICT_OUTPUT_SCHEMAS`: closed, bounded) and the lean projection its pages register and its
+ * manifest serves (`OUTPUT_SCHEMAS`). The module has no imports by design — the storefront's generator
+ * runs it in plain Node — so it is evaluated as it is, from its own bytes. Only the snapshot generator
+ * calls this; the tests read what it recorded.
+ */
+export async function loadStorefrontOutputSchemas(root = DEFAULT_STOREFRONT_ROOT) {
+  const source = readFileSync(join(root, STOREFRONT_OUTPUT_SCHEMAS));
+  const module = await import(`data:text/javascript;base64,${source.toString('base64')}`);
+  if (!module.OUTPUT_SCHEMAS) throw new Error(`${STOREFRONT_OUTPUT_SCHEMAS} exports no OUTPUT_SCHEMAS`);
+  return {
+    sha256: createHash('sha256').update(source).digest('hex'),
+    published: JSON.parse(JSON.stringify(module.OUTPUT_SCHEMAS)),
+    /* Before 2026-09-25.9 the published schemas were the strict ones. */
+    strict: JSON.parse(JSON.stringify(module.STRICT_OUTPUT_SCHEMAS ?? module.OUTPUT_SCHEMAS)),
   };
 }
 

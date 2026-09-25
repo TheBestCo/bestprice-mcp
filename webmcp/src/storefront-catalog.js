@@ -3,7 +3,7 @@
  *
  * The title, description (and any page type's own wording) and output schema of every BestPrice WebMCP
  * tool, as the storefront registers them: bestprice.gr `extra/mcpDiscovery/webmcp-tools.json` (its generated copy of
- * `js/modules/webmcp/tool-catalog.js` and `output-schemas.js`) at 21bce127ae, WebMCP
+ * `js/modules/webmcp/tool-catalog.js` and `output-schemas.js`) at 2401b434d2, WebMCP
  * contract 1.9. `contracts.js` publishes them as they are, and
  * `webmcp/test/contract-parity.test.js` compares every published definition with the snapshot.
  */
@@ -23,7 +23,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -36,39 +35,26 @@ export const STOREFRONT_CATALOG = {
             },
             query: {
               type: 'string',
-              minLength: 2,
-              maxLength: 120,
             },
             results_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'The page the search landed on.',
             },
             page_title: {
               type: ['string', 'null'],
-              maxLength: 120,
             },
             results_kind: {
               type: 'string',
               enum: ['listing', 'featured', 'product', 'none'],
-              description:
-                'listing: a product grid. featured: a category’s highlighted rows, no grid. product: one product’s own page (a unique model). none: no products.',
+              description: 'featured: a category’s highlighted rows. product: one product’s own page.',
             },
             applied: {
               type: 'object',
-              description:
-                'Requested constraints the results page shows applied (when nothing matched, those its address kept).',
               properties: {
                 min_price_eur: {
                   type: 'number',
-                  minimum: 0,
-                  maximum: 10000000,
                 },
                 max_price_eur: {
                   type: 'number',
-                  minimum: 0,
-                  maximum: 10000000,
                 },
                 sort: {
                   type: 'string',
@@ -90,13 +76,9 @@ export const STOREFRONT_CATALOG = {
                   const: true,
                 },
               },
-              required: [],
-              additionalProperties: false,
             },
             not_applied: {
               type: 'array',
-              maxItems: 5,
-              description: 'Requested constraints not applied, and why.',
               items: {
                 type: 'object',
                 properties: {
@@ -108,11 +90,10 @@ export const STOREFRONT_CATALOG = {
                     type: 'string',
                     enum: ['not_offered', 'not_kept', 'no_product_list', 'no_products', 'page_unreadable'],
                     description:
-                      'not_offered: no such order here (see offered_sorts). not_kept: the page dropped it. no_product_list: a category overview or one product’s page; a more specific query reaches a list. no_products: nothing to narrow. page_unreadable: results are unnarrowed.',
+                      'not_offered: see offered_sorts. no_product_list: an overview or one product’s page. page_unreadable: results unnarrowed.',
                   },
                   offered_sorts: {
                     type: 'array',
-                    maxItems: 6,
                     items: {
                       type: 'string',
                       enum: [
@@ -127,86 +108,65 @@ export const STOREFRONT_CATALOG = {
                   },
                 },
                 required: ['constraint', 'reason'],
-                additionalProperties: false,
               },
             },
             returned: {
               type: 'integer',
-              minimum: 0,
             },
             omitted_products: {
               type: 'integer',
-              minimum: 0,
-              description: 'More products on the results page.',
             },
             products: {
               type: 'array',
-              maxItems: 8,
               items: {
                 type: 'object',
                 properties: {
                   product_id: {
                     type: 'string',
                     pattern: '^\\d{1,20}$',
-                    description:
-                      'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+                    description: 'Numeric BestPrice product id, as any tool returns it.',
                   },
                   title: {
                     type: 'string',
-                    minLength: 1,
-                    maxLength: 120,
                   },
                   current_min_price_eur: {
                     type: 'number',
-                    minimum: 0,
-                    maximum: 10000000,
                     description: 'Lowest item price, before shipping.',
                   },
                   merchant_count: {
                     type: ['integer', 'null'],
-                    minimum: 0,
-                    description: 'Stores; null when the card shows none.',
                   },
                   store_offer: {
                     type: 'boolean',
                     const: true,
-                    description:
-                      'A single-store offer that links straight to the store; page tools never open it.',
+                    description: 'Links straight to its store; page tools never open it.',
                   },
                   store: {
                     type: 'string',
-                    maxLength: 40,
                   },
                   section: {
                     type: 'string',
-                    maxLength: 80,
-                    description: 'Home page or featured row, e.g. «Προσφορές της ημέρας».',
                   },
                 },
                 required: ['product_id', 'title', 'current_min_price_eur', 'merchant_count'],
-                additionalProperties: false,
               },
             },
             navigated: {
               type: 'boolean',
-              description: 'Whether the tab moves to results_url (just after this answer).',
             },
             next_step: {
               type: 'string',
-              maxLength: 400,
             },
             next_tools: {
               type: 'array',
-              maxItems: 12,
               items: {
                 type: 'string',
                 pattern: '^[a-z][a-z0-9_]{0,63}$',
               },
-              description: 'Tools the destination page registers; call them once the tab is there.',
+              description: 'The destination page’s tools.',
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: [
@@ -222,11 +182,9 @@ export const STOREFRONT_CATALOG = {
             'navigated',
             'next_step',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -234,35 +192,25 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
             query: {
               type: 'string',
-              maxLength: 120,
             },
             results_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'The plain search page, where the tab moves instead when navigated.',
             },
             navigated: {
               type: 'boolean',
             },
             next_step: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -275,7 +223,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -288,106 +235,69 @@ export const STOREFRONT_CATALOG = {
             },
             total_results: {
               type: 'integer',
-              minimum: 0,
-              description: 'Listing pages only.',
             },
             shown_products: {
               type: 'integer',
-              minimum: 0,
-              description: 'Readable cards on this page.',
-            },
-            result_pages_loaded: {
-              type: 'integer',
-              minimum: 0,
-            },
-            result_pages_total: {
-              type: 'integer',
-              minimum: 0,
             },
             more_pages: {
               type: 'boolean',
               const: true,
-              description: 'Pass load_more: true to load and read the next page.',
+              description: 'Pass load_more: true for the next page.',
             },
             returned: {
               type: 'integer',
-              minimum: 0,
-            },
-            unusable_products: {
-              type: 'integer',
-              minimum: 0,
-              description: 'Cards that cannot be offered here (hidden, inert, no link).',
             },
             products: {
               type: 'array',
-              maxItems: 8,
               items: {
                 type: 'object',
                 properties: {
                   product_id: {
                     type: 'string',
                     pattern: '^\\d{1,20}$',
-                    description:
-                      'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+                    description: 'Numeric BestPrice product id, as any tool returns it.',
                   },
                   title: {
                     type: 'string',
-                    minLength: 1,
-                    maxLength: 120,
                   },
                   current_min_price_eur: {
                     type: 'number',
-                    minimum: 0,
-                    maximum: 10000000,
                     description: 'Lowest item price, before shipping.',
                   },
                   merchant_count: {
                     type: ['integer', 'null'],
-                    minimum: 0,
-                    description: 'Stores; null when the card shows none.',
                   },
                   store_offer: {
                     type: 'boolean',
                     const: true,
-                    description:
-                      'A single-store offer that links straight to the store; page tools never open it.',
+                    description: 'Links straight to its store; page tools never open it.',
                   },
                   store: {
                     type: 'string',
-                    maxLength: 40,
                   },
                   section: {
                     type: 'string',
-                    maxLength: 80,
-                    description: 'Home page or featured row, e.g. «Προσφορές της ημέρας».',
                   },
                 },
                 required: ['product_id', 'title', 'current_min_price_eur', 'merchant_count'],
-                additionalProperties: false,
               },
             },
             offset: {
               type: 'integer',
-              minimum: 0,
             },
             omitted_products: {
               type: 'integer',
-              minimum: 0,
-              description: 'Readable cards after this result.',
             },
             next_offset: {
               type: ['integer', 'null'],
-              minimum: 0,
               description: 'Pass as offset to continue; null at the end.',
             },
             completeness: {
               type: 'string',
               enum: ['complete', 'partial'],
-              description: 'partial: more follows (next_offset).',
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: [
@@ -401,11 +311,9 @@ export const STOREFRONT_CATALOG = {
             'next_offset',
             'completeness',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -413,18 +321,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -437,7 +340,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -446,21 +348,18 @@ export const STOREFRONT_CATALOG = {
             },
             dispatched: {
               type: 'boolean',
-              description: 'Whether the page started the action.',
             },
             applied: {
               type: 'boolean',
-              description: 'True only when the page itself showed the result.',
+              description: 'Shown by the page itself.',
             },
             outcome: {
               type: 'string',
               enum: ['observed_complete', 'dispatched', 'unconfirmed'],
-              description:
-                'observed_complete: the page shows it. dispatched: the tab is moving (just after this answer) to destination_url or bestprice_url. unconfirmed: started, not yet shown; read the page before retrying.',
+              description: 'dispatched: the tab moves after this answer. unconfirmed: read the page again.',
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
             action: {
               type: 'string',
@@ -469,27 +368,21 @@ export const STOREFRONT_CATALOG = {
             product_id: {
               type: 'string',
               pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
             },
             title: {
               type: 'string',
-              maxLength: 220,
             },
             bestprice_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'The product page being opened.',
             },
             next_tools: {
               type: 'array',
-              maxItems: 12,
               items: {
                 type: 'string',
                 pattern: '^[a-z][a-z0-9_]{0,63}$',
               },
-              description: 'Tools the destination page registers; call them once the tab is there.',
+              description: 'The destination page’s tools.',
             },
           },
           required: [
@@ -502,11 +395,9 @@ export const STOREFRONT_CATALOG = {
             'title',
             'bestprice_url',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -514,57 +405,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
-            },
-            applied: {
-              type: 'boolean',
-              description: 'True only when the page itself showed the result.',
-            },
-            dispatched: {
-              type: 'boolean',
-              description: 'Whether the page started the action.',
-            },
-            outcome: {
-              type: 'string',
-              enum: [
-                'observed_complete',
-                'dispatched',
-                'unconfirmed',
-                'not_dispatched',
-                'cancelled',
-                'superseded',
-              ],
-            },
-            action: {
-              type: 'string',
-              enum: ['opened_visible_product', 'product_open_dispatched'],
-            },
-            product_id: {
-              type: 'string',
-              pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
-            },
-            title: {
-              type: 'string',
-              maxLength: 220,
-            },
-            bestprice_url: {
-              type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'The product page being opened.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -581,7 +428,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -595,72 +441,47 @@ export const STOREFRONT_CATALOG = {
             product_id: {
               type: 'string',
               pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
-            },
-            requested_product_id: {
-              type: 'string',
-              pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id: the id asked for, when BestPrice now lists that product as product_id.',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
             },
             title: {
               type: 'string',
-              maxLength: 120,
             },
             category: {
               type: 'string',
-              maxLength: 120,
             },
             current_min_price_eur: {
               type: ['number', 'null'],
-              minimum: 0,
-              maximum: 10000000,
-              description: 'Lowest item price, before shipping; null when not shown.',
             },
             offer_count: {
               type: 'integer',
-              minimum: 0,
-              description: 'Stores with an offer.',
             },
             rating: {
               type: ['number', 'null'],
-              minimum: 0,
-              maximum: 5,
             },
             rating_count: {
               type: 'integer',
-              minimum: 0,
             },
             bestprice_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'Canonical product page.',
             },
             offers: {
-              description: 'Up to four offers, ranked as the product page ranks them; null when unreadable.',
+              description: 'Up to 4, known delivered price first; each: store, prices, availability, rating.',
               anyOf: [
                 {
                   type: 'object',
                   properties: {
                     compared: {
                       type: 'integer',
-                      minimum: 0,
                     },
                     stores_total: {
                       type: ['integer', 'null'],
-                      minimum: 0,
                     },
                     stores_considered: {
                       type: 'integer',
-                      minimum: 0,
-                      description: 'Stores the product page rendered and ranked.',
                     },
                     completeness: {
                       type: 'string',
                       enum: ['complete', 'partial'],
-                      description: 'partial: more stores behind «Όλες οι τιμές» there.',
                     },
                     price_basis: {
                       type: 'string',
@@ -676,110 +497,15 @@ export const STOREFRONT_CATALOG = {
                     },
                     items: {
                       type: 'array',
-                      minItems: 1,
-                      maxItems: 4,
                       items: {
                         type: 'object',
-                        properties: {
-                          merchant: {
-                            type: 'string',
-                            maxLength: 100,
-                          },
-                          product: {
-                            type: 'string',
-                            maxLength: 160,
-                            description: 'The offer’s own title; it can name a variant.',
-                          },
-                          item_price_eur: {
-                            type: 'number',
-                            minimum: 0,
-                            maximum: 10000000,
-                          },
-                          shipping_eur: {
-                            type: ['number', 'null'],
-                            minimum: 0,
-                            maximum: 10000000,
-                            description: 'null: unknown, never free.',
-                          },
-                          delivered_price_eur: {
-                            type: ['number', 'null'],
-                            minimum: 0,
-                            maximum: 10000000,
-                            description: 'Item + shipping; null when shipping is unknown.',
-                          },
-                          availability: {
-                            type: 'string',
-                            maxLength: 120,
-                          },
-                          merchant_rating: {
-                            type: ['number', 'null'],
-                            minimum: 1,
-                            maximum: 5,
-                            description: 'null: not rated.',
-                          },
-                          certified: {
-                            type: 'boolean',
-                          },
-                          sponsored: {
-                            type: 'boolean',
-                          },
-                          unpriced_rows: {
-                            type: 'integer',
-                            minimum: 0,
-                            description: 'Store rows with no usable price.',
-                          },
-                          product_truncated: {
-                            type: 'boolean',
-                            const: true,
-                          },
-                          merchant_truncated: {
-                            type: 'boolean',
-                            const: true,
-                          },
-                        },
-                        required: [
-                          'merchant',
-                          'product',
-                          'item_price_eur',
-                          'shipping_eur',
-                          'delivered_price_eur',
-                          'availability',
-                          'merchant_rating',
-                          'certified',
-                          'sponsored',
-                        ],
-                        additionalProperties: false,
                       },
                     },
                     omitted_offers: {
                       type: 'integer',
-                      minimum: 0,
                     },
                     excluded_unknown_shipping: {
                       type: 'object',
-                      description:
-                        'Offers left out for unknown shipping, and the store of the cheapest by item price.',
-                      properties: {
-                        count: {
-                          type: 'integer',
-                          minimum: 0,
-                        },
-                        lowest_item_price_eur: {
-                          type: 'number',
-                          minimum: 0,
-                          maximum: 10000000,
-                        },
-                        may_be_cheapest: {
-                          type: 'boolean',
-                          const: true,
-                        },
-                        cheapest_merchant: {
-                          type: 'string',
-                          maxLength: 100,
-                        },
-                      },
-                      required: ['count', 'lowest_item_price_eur', 'cheapest_merchant'],
-                      additionalProperties: false,
                     },
                   },
                   required: [
@@ -792,7 +518,6 @@ export const STOREFRONT_CATALOG = {
                     'payment_cost_status',
                     'items',
                   ],
-                  additionalProperties: false,
                 },
                 {
                   type: 'null',
@@ -800,55 +525,28 @@ export const STOREFRONT_CATALOG = {
               ],
             },
             specifications: {
-              description: 'Key rows; the product page lists them all. null when unreadable.',
               anyOf: [
                 {
                   type: 'object',
                   properties: {
                     returned: {
                       type: 'integer',
-                      minimum: 0,
                     },
                     total_facts: {
                       type: 'integer',
-                      minimum: 0,
                     },
                     completeness: {
                       type: 'string',
                       enum: ['complete', 'partial'],
-                      description: 'partial: more follows (next_offset).',
                     },
                     rows: {
                       type: 'array',
-                      maxItems: 12,
                       items: {
                         type: 'object',
-                        properties: {
-                          section: {
-                            type: 'string',
-                            maxLength: 48,
-                          },
-                          name: {
-                            type: 'string',
-                            maxLength: 72,
-                          },
-                          value: {
-                            type: 'string',
-                            maxLength: 1500,
-                          },
-                          truncated: {
-                            type: 'boolean',
-                            const: true,
-                            description: 'Ask for this fact by name for all of it.',
-                          },
-                        },
-                        required: ['section', 'name', 'value'],
-                        additionalProperties: false,
                       },
                     },
                   },
                   required: ['returned', 'total_facts', 'completeness', 'rows'],
-                  additionalProperties: false,
                 },
                 {
                   type: 'null',
@@ -856,138 +554,41 @@ export const STOREFRONT_CATALOG = {
               ],
             },
             price_history: {
-              description: 'As the product page computes it; null when unreadable.',
-              anyOf: [
-                {
-                  type: 'object',
-                  properties: {
-                    observations: {
-                      type: 'integer',
-                      minimum: 0,
-                      description: 'Daily minimum prices in the series.',
-                    },
-                    period: {
-                      type: 'object',
-                      properties: {
-                        from: {
-                          type: 'string',
-                          format: 'date',
-                        },
-                        to: {
-                          type: 'string',
-                          format: 'date',
-                        },
-                      },
-                      required: ['from', 'to'],
-                      additionalProperties: false,
-                    },
-                    current_min_price_eur: {
-                      type: ['number', 'null'],
-                      minimum: 0,
-                      maximum: 10000000,
-                      description: 'Before shipping.',
-                    },
-                    current_price_source: {
-                      type: 'string',
-                      enum: ['page_quote', 'latest_history'],
-                    },
-                    historical_low_eur: {
-                      type: ['number', 'null'],
-                      minimum: 0,
-                      maximum: 10000000,
-                      description: 'Lowest recorded daily minimum.',
-                    },
-                    historical_high_eur: {
-                      type: ['number', 'null'],
-                      minimum: 0,
-                      maximum: 10000000,
-                      description: 'Highest recorded daily minimum.',
-                    },
-                    change_from_first_pct: {
-                      type: ['number', 'null'],
-                      description: 'null when withheld.',
-                    },
-                    direction_from_first: {
-                      type: 'string',
-                      enum: ['up', 'down', 'stable', 'uncertain'],
-                    },
-                    latest_change_pct: {
-                      type: ['number', 'null'],
-                      description: 'null when withheld.',
-                    },
-                    latest_direction: {
-                      type: 'string',
-                      enum: ['up', 'down', 'stable', 'uncertain'],
-                    },
-                    latest_change_since: {
-                      type: ['string', 'null'],
-                      format: 'date',
-                    },
-                    trend_uncertainty_reason: {
-                      type: 'string',
-                      const: 'flagged_observations_kept_raw',
-                    },
-                  },
-                  required: [
-                    'observations',
-                    'period',
-                    'current_min_price_eur',
-                    'current_price_source',
-                    'historical_low_eur',
-                    'historical_high_eur',
-                    'change_from_first_pct',
-                    'direction_from_first',
-                    'latest_change_pct',
-                    'latest_direction',
-                    'latest_change_since',
-                  ],
-                  additionalProperties: false,
-                },
-                {
-                  type: 'null',
-                },
-              ],
+              description:
+                'Price history: period, current, lowest, highest, directions; null when unreadable.',
+              type: ['object', 'null'],
             },
             unavailable: {
               type: 'object',
-              description: 'Why each requested section that is null was not read (late or failed).',
+              description: 'Why a requested section is null.',
               properties: {
                 offers: {
                   type: 'string',
-                  maxLength: 300,
                 },
                 specifications: {
                   type: 'string',
-                  maxLength: 300,
                 },
                 price_history: {
                   type: 'string',
-                  maxLength: 300,
                 },
               },
-              required: [],
-              additionalProperties: false,
             },
             navigated: {
               type: 'boolean',
-              description: 'Whether the tab moves to bestprice_url (navigate: true).',
             },
             next_tools: {
               type: 'array',
-              maxItems: 12,
               items: {
                 type: 'string',
                 pattern: '^[a-z][a-z0-9_]{0,63}$',
               },
-              description: 'Tools the destination page registers; call them once the tab is there.',
+              description: 'The destination page’s tools.',
             },
             next_step: {
               type: 'string',
-              maxLength: 400,
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: [
@@ -1005,11 +606,9 @@ export const STOREFRONT_CATALOG = {
             'next_step',
             'note',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -1017,14 +616,10 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
             navigated: {
               type: 'boolean',
@@ -1032,26 +627,21 @@ export const STOREFRONT_CATALOG = {
             },
             bestprice_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'Where the tab is going; it moves just after this answer.',
+              description: 'Where the tab moves, after this answer.',
             },
             next_tools: {
               type: 'array',
-              maxItems: 12,
               items: {
                 type: 'string',
                 pattern: '^[a-z][a-z0-9_]{0,63}$',
               },
-              description: 'Tools the destination page registers; call them once the tab is there.',
+              description: 'The destination page’s tools.',
             },
             next_step: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -1064,7 +654,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -1077,21 +666,12 @@ export const STOREFRONT_CATALOG = {
             },
             total_results: {
               type: 'integer',
-              minimum: 0,
-            },
-            unreadable_groups: {
-              type: 'integer',
-              minimum: 0,
-              description: 'Rendered groups that cannot be read from here.',
             },
             total_groups: {
               type: 'integer',
-              minimum: 0,
             },
             total_values: {
               type: 'integer',
-              minimum: 0,
-              description: 'Values of the requested group.',
             },
             filters: {
               type: 'array',
@@ -1100,84 +680,60 @@ export const STOREFRONT_CATALOG = {
                 properties: {
                   key: {
                     type: 'string',
-                    maxLength: 40,
-                    description: 'Pass it (or name) as group or filter.',
                   },
                   name: {
                     type: 'string',
-                    maxLength: 64,
                   },
                   selected_values: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      maxLength: 72,
                     },
                   },
                   available_values: {
                     type: 'array',
                     items: {
                       type: 'string',
-                      maxLength: 72,
                     },
                   },
                   ambiguous_values: {
                     type: 'integer',
-                    minimum: 0,
-                    description: 'Labels two destinations share; they cannot be named.',
                   },
                   collapsed_values: {
                     type: 'integer',
-                    minimum: 0,
-                    description: 'Behind «Εμφάνιση όλων»; still applicable.',
                   },
                   omitted_values: {
                     type: 'integer',
-                    minimum: 0,
-                    description: 'Pass group to read them.',
                   },
                 },
                 required: ['key', 'name', 'selected_values'],
-                additionalProperties: false,
               },
             },
             returned: {
               type: 'integer',
-              minimum: 0,
             },
             offset: {
               type: 'integer',
-              minimum: 0,
             },
             next_offset: {
               type: ['integer', 'null'],
-              minimum: 0,
               description: 'Pass as offset to continue; null at the end.',
-            },
-            omitted_groups: {
-              type: 'integer',
-              minimum: 0,
             },
             omitted_values: {
               type: 'integer',
-              minimum: 0,
             },
             completeness: {
               type: 'string',
               enum: ['complete', 'partial'],
-              description: 'partial: more follows (next_offset).',
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: ['ok', 'source', 'total_results', 'filters', 'returned', 'offset', 'next_offset'],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -1185,18 +741,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -1209,7 +760,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -1222,52 +772,42 @@ export const STOREFRONT_CATALOG = {
             },
             filter: {
               type: 'string',
-              maxLength: 64,
             },
             value: {
               type: 'string',
-              maxLength: 72,
             },
             applied: {
               type: 'boolean',
-              description: 'True only when the page itself showed the result.',
+              description: 'Shown by the page itself.',
             },
             dispatched: {
               type: 'boolean',
-              description: 'Whether the page started the action.',
             },
             outcome: {
               type: 'string',
               enum: ['observed_complete', 'dispatched', 'unconfirmed'],
-              description:
-                'observed_complete: the page shows it. dispatched: the tab is moving (just after this answer) to destination_url or bestprice_url. unconfirmed: started, not yet shown; read the page before retrying.',
+              description: 'dispatched: the tab moves after this answer. unconfirmed: read the page again.',
             },
             destination_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'Where the tab is going; it moves just after this answer.',
+              description: 'Where the tab moves, after this answer.',
             },
             next_tools: {
               type: 'array',
-              maxItems: 12,
               items: {
                 type: 'string',
                 pattern: '^[a-z][a-z0-9_]{0,63}$',
               },
-              description: 'Tools the destination page registers; call them once the tab is there.',
+              description: 'The destination page’s tools.',
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: ['ok', 'action', 'filter', 'value'],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -1275,37 +815,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
-            },
-            applied: {
-              type: 'boolean',
-              const: false,
-            },
-            dispatched: {
-              type: 'boolean',
-              description: 'Whether the page started the action.',
-            },
-            outcome: {
-              type: 'string',
-              enum: [
-                'observed_complete',
-                'dispatched',
-                'unconfirmed',
-                'not_dispatched',
-                'cancelled',
-                'superseded',
-              ],
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -1318,7 +834,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -1332,48 +847,39 @@ export const STOREFRONT_CATALOG = {
             changed: {
               type: 'boolean',
               const: false,
-              description: 'Nothing was filtered.',
             },
             applied: {
               type: 'boolean',
-              description: 'True only when the page itself showed the result.',
+              description: 'Shown by the page itself.',
             },
             dispatched: {
               type: 'boolean',
-              description: 'Whether the page started the action.',
             },
             outcome: {
               type: 'string',
               enum: ['observed_complete', 'dispatched', 'unconfirmed'],
-              description:
-                'observed_complete: the page shows it. dispatched: the tab is moving (just after this answer) to destination_url or bestprice_url. unconfirmed: started, not yet shown; read the page before retrying.',
+              description: 'dispatched: the tab moves after this answer. unconfirmed: read the page again.',
             },
             destination_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'Where the tab is going; it moves just after this answer.',
+              description: 'Where the tab moves, after this answer.',
             },
             next_tools: {
               type: 'array',
-              maxItems: 12,
               items: {
                 type: 'string',
                 pattern: '^[a-z][a-z0-9_]{0,63}$',
               },
-              description: 'Tools the destination page registers; call them once the tab is there.',
+              description: 'The destination page’s tools.',
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: ['ok', 'action'],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -1381,37 +887,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
-            },
-            applied: {
-              type: 'boolean',
-              const: false,
-            },
-            dispatched: {
-              type: 'boolean',
-              description: 'Whether the page started the action.',
-            },
-            outcome: {
-              type: 'string',
-              enum: [
-                'observed_complete',
-                'dispatched',
-                'unconfirmed',
-                'not_dispatched',
-                'cancelled',
-                'superseded',
-              ],
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -1424,7 +906,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -1437,7 +918,6 @@ export const STOREFRONT_CATALOG = {
             },
             returned: {
               type: 'integer',
-              minimum: 0,
             },
             sorting: {
               type: 'array',
@@ -1446,23 +926,19 @@ export const STOREFRONT_CATALOG = {
                 properties: {
                   name: {
                     type: 'string',
-                    maxLength: 72,
                   },
                   selected: {
                     type: 'boolean',
                   },
                 },
                 required: ['name', 'selected'],
-                additionalProperties: false,
               },
             },
           },
           required: ['ok', 'source', 'returned', 'sorting'],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -1470,18 +946,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -1494,7 +965,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -1507,48 +977,39 @@ export const STOREFRONT_CATALOG = {
             },
             sort: {
               type: 'string',
-              maxLength: 72,
             },
             applied: {
               type: 'boolean',
-              description: 'True only when the page itself showed the result.',
+              description: 'Shown by the page itself.',
             },
             dispatched: {
               type: 'boolean',
-              description: 'Whether the page started the action.',
             },
             outcome: {
               type: 'string',
               enum: ['observed_complete', 'dispatched', 'unconfirmed'],
-              description:
-                'observed_complete: the page shows it. dispatched: the tab is moving (just after this answer) to destination_url or bestprice_url. unconfirmed: started, not yet shown; read the page before retrying.',
+              description: 'dispatched: the tab moves after this answer. unconfirmed: read the page again.',
             },
             destination_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'Where the tab is going; it moves just after this answer.',
+              description: 'Where the tab moves, after this answer.',
             },
             next_tools: {
               type: 'array',
-              maxItems: 12,
               items: {
                 type: 'string',
                 pattern: '^[a-z][a-z0-9_]{0,63}$',
               },
-              description: 'Tools the destination page registers; call them once the tab is there.',
+              description: 'The destination page’s tools.',
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: ['ok', 'action', 'sort'],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -1556,37 +1017,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
-            },
-            applied: {
-              type: 'boolean',
-              const: false,
-            },
-            dispatched: {
-              type: 'boolean',
-              description: 'Whether the page started the action.',
-            },
-            outcome: {
-              type: 'string',
-              enum: [
-                'observed_complete',
-                'dispatched',
-                'unconfirmed',
-                'not_dispatched',
-                'cancelled',
-                'superseded',
-              ],
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -1599,7 +1036,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -1613,42 +1049,28 @@ export const STOREFRONT_CATALOG = {
             product_id: {
               type: 'string',
               pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
             },
             title: {
               type: 'string',
-              maxLength: 120,
             },
             category: {
               type: 'string',
-              maxLength: 120,
             },
             current_min_price_eur: {
               type: ['number', 'null'],
-              minimum: 0,
-              maximum: 10000000,
-              description: 'Lowest item price, before shipping; null when not shown.',
             },
             offer_count: {
               type: 'integer',
-              minimum: 0,
-              description: 'Stores with an offer.',
             },
             rating: {
               type: ['number', 'null'],
-              minimum: 0,
-              maximum: 5,
             },
             rating_count: {
               type: 'integer',
-              minimum: 0,
             },
             bestprice_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'Canonical product page.',
             },
           },
           required: [
@@ -1663,11 +1085,9 @@ export const STOREFRONT_CATALOG = {
             'rating_count',
             'bestprice_url',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -1675,18 +1095,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -1699,7 +1114,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -1713,36 +1127,24 @@ export const STOREFRONT_CATALOG = {
             product_id: {
               type: 'string',
               pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
             },
             compared: {
               type: 'integer',
-              minimum: 0,
             },
             stores_total: {
               type: ['integer', 'null'],
-              minimum: 0,
             },
             stores_considered: {
               type: 'integer',
-              minimum: 0,
-              description: 'Stores this page rendered and ranked.',
             },
             completeness: {
               type: 'string',
               const: 'partial',
-              description: 'More stores exist than were ranked.',
             },
             all_stores: {
               type: 'string',
               enum: ['unavailable', 'cancelled', 'failed', 'timeout'],
-              description: 'Why include_all_stores could not load the rest.',
-            },
-            omitted_offers: {
-              type: 'integer',
-              minimum: 0,
-              description: 'Left out to keep the answer bounded.',
             },
             price_basis: {
               type: 'string',
@@ -1751,8 +1153,6 @@ export const STOREFRONT_CATALOG = {
             ranking_basis: {
               type: 'string',
               const: 'known_delivered_first_then_item_price',
-              description:
-                'Known delivered price first, then unknown shipping by item price; unknown is never free.',
             },
             payment_cost_status: {
               type: 'string',
@@ -1760,45 +1160,30 @@ export const STOREFRONT_CATALOG = {
             },
             offers: {
               type: 'array',
-              maxItems: 4,
               items: {
                 type: 'object',
                 properties: {
                   merchant: {
                     type: 'string',
-                    maxLength: 100,
                   },
                   product: {
                     type: 'string',
-                    maxLength: 160,
-                    description: 'The offer’s own title; it can name a variant.',
                   },
                   item_price_eur: {
                     type: 'number',
-                    minimum: 0,
-                    maximum: 10000000,
                   },
                   shipping_eur: {
                     type: ['number', 'null'],
-                    minimum: 0,
-                    maximum: 10000000,
                     description: 'null: unknown, never free.',
                   },
                   delivered_price_eur: {
                     type: ['number', 'null'],
-                    minimum: 0,
-                    maximum: 10000000,
-                    description: 'Item + shipping; null when shipping is unknown.',
                   },
                   availability: {
                     type: 'string',
-                    maxLength: 120,
                   },
                   merchant_rating: {
                     type: ['number', 'null'],
-                    minimum: 1,
-                    maximum: 5,
-                    description: 'null: not rated.',
                   },
                   certified: {
                     type: 'boolean',
@@ -1808,13 +1193,10 @@ export const STOREFRONT_CATALOG = {
                   },
                   offer_ref: {
                     type: ['string', 'null'],
-                    maxLength: 40,
-                    description: 'For show_offer, while this quote holds.',
+                    description: 'For show_offer.',
                   },
                   unpriced_rows: {
                     type: 'integer',
-                    minimum: 0,
-                    description: 'Store rows with no usable price.',
                   },
                   product_truncated: {
                     type: 'boolean',
@@ -1837,113 +1219,30 @@ export const STOREFRONT_CATALOG = {
                   'sponsored',
                   'offer_ref',
                 ],
-                additionalProperties: false,
               },
             },
             excluded_unknown_shipping: {
               type: 'object',
-              description:
-                'Offers left out for unknown shipping; the cheapest by item price, so it is never silently dropped.',
+              description: 'Offers left out for unknown shipping; cheapest is shaped like offers[].',
               properties: {
                 count: {
                   type: 'integer',
-                  minimum: 0,
                 },
                 lowest_item_price_eur: {
                   type: 'number',
-                  minimum: 0,
-                  maximum: 10000000,
                 },
                 may_be_cheapest: {
                   type: 'boolean',
                   const: true,
-                  description: 'Its item price alone is below the cheapest delivered price returned.',
                 },
                 cheapest: {
                   type: 'object',
-                  properties: {
-                    merchant: {
-                      type: 'string',
-                      maxLength: 100,
-                    },
-                    product: {
-                      type: 'string',
-                      maxLength: 160,
-                      description: 'The offer’s own title; it can name a variant.',
-                    },
-                    item_price_eur: {
-                      type: 'number',
-                      minimum: 0,
-                      maximum: 10000000,
-                    },
-                    shipping_eur: {
-                      type: ['number', 'null'],
-                      minimum: 0,
-                      maximum: 10000000,
-                      description: 'null: unknown, never free.',
-                    },
-                    delivered_price_eur: {
-                      type: ['number', 'null'],
-                      minimum: 0,
-                      maximum: 10000000,
-                      description: 'Item + shipping; null when shipping is unknown.',
-                    },
-                    availability: {
-                      type: 'string',
-                      maxLength: 120,
-                    },
-                    merchant_rating: {
-                      type: ['number', 'null'],
-                      minimum: 1,
-                      maximum: 5,
-                      description: 'null: not rated.',
-                    },
-                    certified: {
-                      type: 'boolean',
-                    },
-                    sponsored: {
-                      type: 'boolean',
-                    },
-                    offer_ref: {
-                      type: ['string', 'null'],
-                      maxLength: 40,
-                      description: 'For show_offer, while this quote holds.',
-                    },
-                    unpriced_rows: {
-                      type: 'integer',
-                      minimum: 0,
-                      description: 'Store rows with no usable price.',
-                    },
-                    product_truncated: {
-                      type: 'boolean',
-                      const: true,
-                    },
-                    merchant_truncated: {
-                      type: 'boolean',
-                      const: true,
-                    },
-                  },
-                  required: [
-                    'merchant',
-                    'product',
-                    'item_price_eur',
-                    'shipping_eur',
-                    'delivered_price_eur',
-                    'availability',
-                    'merchant_rating',
-                    'certified',
-                    'sponsored',
-                    'offer_ref',
-                  ],
-                  additionalProperties: false,
                 },
               },
               required: ['count', 'lowest_item_price_eur', 'cheapest'],
-              additionalProperties: false,
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: [
@@ -1958,11 +1257,9 @@ export const STOREFRONT_CATALOG = {
             'payment_cost_status',
             'offers',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -1970,18 +1267,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -1994,7 +1286,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -2008,98 +1299,69 @@ export const STOREFRONT_CATALOG = {
             product_id: {
               type: 'string',
               pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
             },
             product_title: {
               type: 'string',
-              maxLength: 120,
             },
             requested_section: {
               type: 'string',
-              maxLength: 48,
             },
             requested_fact: {
               type: 'string',
-              maxLength: 72,
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
             returned: {
               type: 'integer',
-              minimum: 0,
             },
             omitted_facts: {
               type: 'integer',
-              minimum: 0,
             },
             total_facts: {
               type: 'integer',
-              minimum: 0,
             },
             offset: {
               type: 'integer',
-              minimum: 0,
             },
             next_offset: {
               type: ['integer', 'null'],
-              minimum: 0,
               description: 'Pass as offset to continue; null at the end.',
-            },
-            truncated_values: {
-              type: 'integer',
-              minimum: 0,
             },
             completeness: {
               type: 'string',
               enum: ['complete', 'partial'],
-              description: 'partial: more follows (next_offset).',
             },
             sections: {
               type: 'array',
-              maxItems: 8,
               items: {
                 type: 'string',
-                maxLength: 48,
               },
-              description: 'Sections to ask for next.',
-            },
-            sections_omitted: {
-              type: 'integer',
-              minimum: 0,
             },
             continuation: {
               type: 'string',
-              maxLength: 400,
             },
             specifications: {
               type: 'array',
-              maxItems: 16,
               items: {
                 type: 'object',
                 properties: {
                   section: {
                     type: 'string',
-                    maxLength: 48,
                   },
                   name: {
                     type: 'string',
-                    maxLength: 72,
                   },
                   value: {
                     type: 'string',
-                    maxLength: 1500,
                   },
                   truncated: {
                     type: 'boolean',
                     const: true,
-                    description: 'Ask for this fact by name for all of it.',
                   },
                 },
                 required: ['section', 'name', 'value'],
-                additionalProperties: false,
               },
             },
           },
@@ -2114,11 +1376,9 @@ export const STOREFRONT_CATALOG = {
             'completeness',
             'specifications',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -2126,18 +1386,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -2150,7 +1405,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -2164,38 +1418,28 @@ export const STOREFRONT_CATALOG = {
             product_id: {
               type: 'string',
               pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
             },
             product_title: {
               type: 'string',
-              maxLength: 120,
             },
             observations: {
               type: 'integer',
-              minimum: 0,
-              description: 'Daily minimum prices in the series.',
             },
             period: {
               type: 'object',
               properties: {
                 from: {
                   type: 'string',
-                  format: 'date',
                 },
                 to: {
                   type: 'string',
-                  format: 'date',
                 },
               },
               required: ['from', 'to'],
-              additionalProperties: false,
             },
             current_min_price_eur: {
               type: ['number', 'null'],
-              minimum: 0,
-              maximum: 10000000,
-              description: 'Before shipping.',
             },
             current_price_source: {
               type: 'string',
@@ -2203,23 +1447,15 @@ export const STOREFRONT_CATALOG = {
             },
             current_price_observed_at: {
               type: ['string', 'null'],
-              format: 'date',
             },
             historical_low_eur: {
               type: ['number', 'null'],
-              minimum: 0,
-              maximum: 10000000,
-              description: 'Lowest recorded daily minimum.',
             },
             historical_high_eur: {
               type: ['number', 'null'],
-              minimum: 0,
-              maximum: 10000000,
-              description: 'Highest recorded daily minimum.',
             },
             change_from_first_pct: {
               type: ['number', 'null'],
-              description: 'null when withheld.',
             },
             direction_from_first: {
               type: 'string',
@@ -2227,7 +1463,6 @@ export const STOREFRONT_CATALOG = {
             },
             latest_change_pct: {
               type: ['number', 'null'],
-              description: 'null when withheld.',
             },
             latest_direction: {
               type: 'string',
@@ -2235,31 +1470,9 @@ export const STOREFRONT_CATALOG = {
             },
             latest_change_since: {
               type: ['string', 'null'],
-              format: 'date',
             },
             outliers_excluded: {
               type: 'integer',
-              minimum: 0,
-            },
-            outliers_flagged: {
-              type: 'integer',
-              minimum: 0,
-            },
-            outlier_policy: {
-              type: 'string',
-              enum: ['reported', 'reported_series_kept_raw'],
-            },
-            historical_extrema_basis: {
-              type: 'string',
-              enum: ['accepted_observations', 'raw_including_flagged'],
-            },
-            trend_uncertainty_reason: {
-              type: 'string',
-              const: 'flagged_observations_kept_raw',
-            },
-            future_observations_ignored: {
-              type: 'integer',
-              minimum: 0,
             },
           },
           required: [
@@ -2281,11 +1494,9 @@ export const STOREFRONT_CATALOG = {
             'latest_change_since',
             'outliers_excluded',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -2293,26 +1504,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
-            },
-            retryable: {
-              type: 'boolean',
-              description: 'Trying again later may work.',
-            },
-            future_observations_ignored: {
-              type: 'integer',
-              minimum: 0,
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -2325,7 +1523,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -2338,103 +1535,24 @@ export const STOREFRONT_CATALOG = {
             },
             offer_visible: {
               type: ['boolean', 'null'],
-              description: 'Whether the offer ended in the shopper’s view; null when unmeasurable.',
             },
             offer: {
               type: 'object',
-              properties: {
-                merchant: {
-                  type: 'string',
-                  maxLength: 100,
-                },
-                product: {
-                  type: 'string',
-                  maxLength: 160,
-                  description: 'The offer’s own title; it can name a variant.',
-                },
-                item_price_eur: {
-                  type: 'number',
-                  minimum: 0,
-                  maximum: 10000000,
-                },
-                shipping_eur: {
-                  type: ['number', 'null'],
-                  minimum: 0,
-                  maximum: 10000000,
-                  description: 'null: unknown, never free.',
-                },
-                delivered_price_eur: {
-                  type: ['number', 'null'],
-                  minimum: 0,
-                  maximum: 10000000,
-                  description: 'Item + shipping; null when shipping is unknown.',
-                },
-                availability: {
-                  type: 'string',
-                  maxLength: 120,
-                },
-                merchant_rating: {
-                  type: ['number', 'null'],
-                  minimum: 1,
-                  maximum: 5,
-                  description: 'null: not rated.',
-                },
-                certified: {
-                  type: 'boolean',
-                },
-                sponsored: {
-                  type: 'boolean',
-                },
-                offer_ref: {
-                  type: ['string', 'null'],
-                  maxLength: 40,
-                  description: 'For show_offer, while this quote holds.',
-                },
-                unpriced_rows: {
-                  type: 'integer',
-                  minimum: 0,
-                  description: 'Store rows with no usable price.',
-                },
-                product_truncated: {
-                  type: 'boolean',
-                  const: true,
-                },
-                merchant_truncated: {
-                  type: 'boolean',
-                  const: true,
-                },
-              },
-              required: [
-                'merchant',
-                'product',
-                'item_price_eur',
-                'shipping_eur',
-                'delivered_price_eur',
-                'availability',
-                'merchant_rating',
-                'certified',
-                'sponsored',
-                'offer_ref',
-              ],
-              additionalProperties: false,
+              description: 'As compare_page_offers returns it.',
             },
             product_id: {
               type: 'string',
               pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: ['ok', 'action', 'offer_visible', 'offer', 'product_id', 'note'],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -2442,18 +1560,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -2466,7 +1579,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -2480,16 +1592,13 @@ export const STOREFRONT_CATALOG = {
             product_id: {
               type: 'string',
               pattern: '^\\d{1,20}$',
-              description:
-                'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
             },
           },
           required: ['ok', 'action', 'product_id'],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -2497,18 +1606,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
@@ -2525,7 +1629,6 @@ export const STOREFRONT_CATALOG = {
       type: 'object',
       oneOf: [
         {
-          title: 'Success',
           type: 'object',
           properties: {
             ok: {
@@ -2546,17 +1649,12 @@ export const STOREFRONT_CATALOG = {
             },
             reason: {
               type: ['string', 'null'],
-              maxLength: 160,
-              description: 'Code for a no_match or clarification.',
             },
             summary: {
               type: 'string',
-              maxLength: 800,
             },
             clarifying_question: {
               type: ['string', 'null'],
-              maxLength: 400,
-              description: 'Ask the shopper this, then call again with their answer in message.',
             },
             recommended: {
               anyOf: [
@@ -2566,57 +1664,24 @@ export const STOREFRONT_CATALOG = {
                     product_id: {
                       type: 'string',
                       pattern: '^\\d{1,20}$',
-                      description:
-                        'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+                      description: 'Numeric BestPrice product id, as any tool returns it.',
                     },
                     title: {
                       type: 'string',
-                      maxLength: 220,
                     },
                     price_from_eur: {
                       type: ['number', 'null'],
-                      minimum: 0,
-                      maximum: 10000000,
-                      description: 'Lowest item price before shipping; not a quote.',
+                      description: 'Before shipping; not a quote.',
                     },
                     bestprice_url: {
                       type: 'string',
-                      format: 'uri',
-                      maxLength: 2048,
-                      description: 'Signed, short-lived BestPrice landing; relay it verbatim or open it.',
+                      description: 'Signed; relay it verbatim.',
                     },
                     offer: {
                       type: 'object',
-                      description: 'The offer recommended for it.',
-                      properties: {
-                        merchant: {
-                          type: 'string',
-                          maxLength: 100,
-                        },
-                        item_price_eur: {
-                          type: 'number',
-                          minimum: 0,
-                          maximum: 10000000,
-                        },
-                        shipping_eur: {
-                          type: ['number', 'null'],
-                          minimum: 0,
-                          maximum: 10000000,
-                          description: 'null: unknown, never free.',
-                        },
-                        delivered_total_eur: {
-                          type: ['number', 'null'],
-                          minimum: 0,
-                          maximum: 10000000,
-                          description: 'null when shipping is unknown.',
-                        },
-                      },
-                      required: ['merchant', 'item_price_eur', 'shipping_eur', 'delivered_total_eur'],
-                      additionalProperties: false,
                     },
                   },
                   required: ['product_id', 'title', 'price_from_eur', 'bestprice_url'],
-                  additionalProperties: false,
                 },
                 {
                   type: 'null',
@@ -2625,79 +1690,59 @@ export const STOREFRONT_CATALOG = {
             },
             alternatives: {
               type: 'array',
-              maxItems: 3,
               items: {
                 type: 'object',
                 properties: {
                   product_id: {
                     type: 'string',
                     pattern: '^\\d{1,20}$',
-                    description:
-                      'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
+                    description: 'Numeric BestPrice product id, as any tool returns it.',
                   },
                   title: {
                     type: 'string',
-                    maxLength: 220,
                   },
                   price_from_eur: {
                     type: ['number', 'null'],
-                    minimum: 0,
-                    maximum: 10000000,
-                    description: 'Lowest item price before shipping; not a quote.',
+                    description: 'Before shipping; not a quote.',
                   },
                   bestprice_url: {
                     type: 'string',
-                    format: 'uri',
-                    maxLength: 2048,
-                    description: 'Signed, short-lived BestPrice landing; relay it verbatim or open it.',
+                    description: 'Signed; relay it verbatim.',
                   },
                   label: {
                     type: 'string',
-                    maxLength: 240,
-                    description: 'Why it is an alternative, e.g. what it saves.',
                   },
                   tradeoff: {
                     type: ['string', 'null'],
-                    maxLength: 300,
                   },
                 },
                 required: ['product_id', 'title', 'price_from_eur', 'bestprice_url'],
-                additionalProperties: false,
               },
             },
             reasons: {
               type: 'array',
-              maxItems: 4,
               items: {
                 type: 'string',
-                maxLength: 300,
               },
             },
             tradeoffs: {
               type: 'array',
-              maxItems: 3,
               items: {
                 type: 'string',
-                maxLength: 300,
               },
             },
             unknowns: {
               type: 'array',
-              maxItems: 3,
               items: {
                 type: 'string',
-                maxLength: 300,
               },
-              description: 'What BestPrice could not verify.',
             },
             price_verdict: {
               type: ['string', 'null'],
               enum: ['good', 'typical', 'high', 'insufficient_evidence', null],
-              description: 'Current price against its 180-day history.',
             },
             basket: {
               type: 'object',
-              description: 'The preferred basket plan.',
               properties: {
                 plan: {
                   type: 'string',
@@ -2705,18 +1750,12 @@ export const STOREFRONT_CATALOG = {
                 },
                 merchant_count: {
                   type: 'integer',
-                  minimum: 0,
                 },
                 item_subtotal_eur: {
                   type: 'number',
-                  minimum: 0,
-                  maximum: 10000000,
                 },
                 total_eur: {
                   type: ['number', 'null'],
-                  minimum: 0,
-                  maximum: 10000000,
-                  description: 'Delivered; null when any shipping is unknown.',
                 },
                 shipping_status: {
                   type: 'string',
@@ -2724,70 +1763,20 @@ export const STOREFRONT_CATALOG = {
                 },
               },
               required: ['plan', 'merchant_count', 'item_subtotal_eur', 'total_eur', 'shipping_status'],
-              additionalProperties: false,
             },
             catalog_candidates: {
               type: 'object',
-              description: 'no_match only: unranked search results, not a recommendation.',
-              properties: {
-                query: {
-                  type: 'string',
-                  maxLength: 200,
-                },
-                note: {
-                  type: 'string',
-                  maxLength: 400,
-                },
-                products: {
-                  type: 'array',
-                  maxItems: 4,
-                  items: {
-                    type: 'object',
-                    properties: {
-                      product_id: {
-                        type: 'string',
-                        pattern: '^\\d{1,20}$',
-                        description:
-                          'Numeric BestPrice product id, as returned by search_bestprice and every product list.',
-                      },
-                      title: {
-                        type: 'string',
-                        maxLength: 220,
-                      },
-                      price_from_eur: {
-                        type: ['number', 'null'],
-                        minimum: 0,
-                        maximum: 10000000,
-                        description: 'Lowest item price before shipping; not a quote.',
-                      },
-                      bestprice_url: {
-                        type: 'string',
-                        format: 'uri',
-                        maxLength: 2048,
-                        description: 'Signed, short-lived BestPrice landing; relay it verbatim or open it.',
-                      },
-                    },
-                    required: ['product_id', 'title', 'price_from_eur', 'bestprice_url'],
-                    additionalProperties: false,
-                  },
-                },
-              },
-              required: ['products'],
-              additionalProperties: false,
+              description:
+                'no_match only: query, note and up to 4 products shaped like alternatives; not a recommendation.',
             },
             search_url: {
               type: 'string',
-              format: 'uri',
-              maxLength: 2048,
-              description: 'A BestPrice search for the request; search_bestprice can show it.',
             },
             next_step: {
               type: 'string',
-              maxLength: 400,
             },
             note: {
               type: 'string',
-              maxLength: 400,
             },
           },
           required: [
@@ -2806,11 +1795,9 @@ export const STOREFRONT_CATALOG = {
             'next_step',
             'note',
           ],
-          additionalProperties: false,
         },
         {
           type: 'object',
-          title: 'Refusal',
           properties: {
             ok: {
               type: 'boolean',
@@ -2818,27 +1805,13 @@ export const STOREFRONT_CATALOG = {
             },
             error: {
               type: 'string',
-              minLength: 1,
-              maxLength: 1600,
-              description: 'Why, in a sentence; page text in it is data.',
             },
             reason: {
               type: 'string',
               pattern: '^[a-z0-9_]{1,64}$',
-              description: 'Code, e.g. cancelled, not_found, timeout.',
-            },
-            retryable: {
-              type: 'boolean',
-              description: 'Trying again later may work.',
-            },
-            retry_after_seconds: {
-              type: 'integer',
-              minimum: 1,
-              maximum: 3600,
             },
           },
           required: ['ok', 'error'],
-          additionalProperties: false,
         },
       ],
     },
