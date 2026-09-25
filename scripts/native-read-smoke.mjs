@@ -317,7 +317,6 @@ try {
       [
         'get_visible_products',
         'get_listing_filters',
-        'get_listing_sort_options',
         'get_page_product',
         'compare_page_offers',
         'get_product_specifications',
@@ -439,8 +438,8 @@ try {
   await visit('home', 'https://www.bestprice.gr/');
   await visit('listing', 'https://www.bestprice.gr/search?q=Sony%20WH-1000XM5');
   const visibleProducts = await invoke('listing', 'get_visible_products', { limit: 2 });
+  /* Contract 2.0: the filters read carries the sort options too. */
   await invoke('listing', 'get_listing_filters');
-  await invoke('listing', 'get_listing_sort_options');
   phase = 'product:selection';
   const productLinks = await page.locator('a[href*="/item/"]').evaluateAll(elements => {
     const matches = elements.filter(element => {

@@ -4,10 +4,9 @@ import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 import { argumentRules, serializeDataset } from '../evals/dataset-v3.js';
-import { V9_PATH } from '../evals/dataset-v9.js';
-import { V10_PATH } from '../evals/dataset-v10.js';
 import { CONTRACT_1_9_REV7_ARGUMENT_RULES, V11_PATH } from '../evals/dataset-v11.js';
 import {
+  CONTRACT_1_9_REV12_ARGUMENT_RULES,
   caseArgumentRules,
   DATASET_V12_CONTRACT,
   DATASET_V12_VERSION,
@@ -15,16 +14,21 @@ import {
   READ_ONLY_UNLESS,
   V12_PATH,
 } from '../evals/dataset-v12.js';
-import { runEvaluation } from '../evals/driver.js';
 import { gradeJourney } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
-import { TOOL_DEFINITIONS, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
+import { TOOL_DEFINITIONS } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
 
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
 const byId = dataset => new Map(dataset.cases.map(item => [item.id, item]));
 const terminal = { type: 'answer', text: 'Η απάντηση του πράκτορα.' };
-const V2_PATH = fileURLToPath(new URL('../evals/natural-language-cases.v2.json', import.meta.url));
+/* The tools contract 2.0 removed; 12.0.0 graded the contract that still had them. */
+const REMOVED_IN_2_0 = [
+  'get_listing_sort_options',
+  'get_product_details',
+  'open_visible_product',
+  'show_price_history',
+];
 
 describe('dataset 12.0.0', () => {
   const v11 = read(V11_PATH);
@@ -35,7 +39,7 @@ describe('dataset 12.0.0', () => {
   it('is exactly what the generator derives from 11.0.0 and revision 2026-09-25.12', () => {
     assert.equal(readFileSync(V12_PATH, 'utf8'), serializeDataset(deriveDatasetV12(v11)));
     assert.equal(v12.datasetVersion, DATASET_V12_VERSION);
-    assert.equal(WEBMCP_CONTRACT_VERSION, DATASET_V12_CONTRACT);
+    assert.equal(DATASET_V12_CONTRACT, '1.9');
     assert.match(
       v12.sourceContracts,
       /16 contextual tools, contract 1\.9, storefront revision 2026-09-25\.12/u,
@@ -51,11 +55,8 @@ describe('dataset 12.0.0', () => {
       assert.deepEqual(definition, oldDefinition, id);
       assert.deepEqual(Object.keys(args).sort(), Object.keys(oldArgs).sort(), id);
       for (const [tool, rules] of Object.entries(args)) {
-        assert.deepEqual(
-          rules,
-          caseArgumentRules(TOOL_DEFINITIONS[tool], item.expected_tools),
-          `${id}.${tool}`,
-        );
+        /* Frozen since contract 2.0: the rules it was generated with are recorded. */
+        assert.deepEqual(rules, caseArgumentRules(tool, item.expected_tools), `${id}.${tool}`);
         if (JSON.stringify(rules) !== JSON.stringify(oldArgs[tool])) changed.add(tool);
       }
     }
@@ -68,10 +69,10 @@ describe('dataset 12.0.0', () => {
     ]);
     /* Every other tool's rules are the ones 11.0.0 recorded. */
     for (const [tool, rules] of Object.entries(CONTRACT_1_9_REV7_ARGUMENT_RULES)) {
-      if (!changed.has(tool)) assert.deepEqual(argumentRules(TOOL_DEFINITIONS[tool]), rules, tool);
+      if (!changed.has(tool)) assert.deepEqual(CONTRACT_1_9_REV12_ARGUMENT_RULES[tool], rules, tool);
     }
     /* What changed, by name. */
-    const rulesOf = tool => argumentRules(TOOL_DEFINITIONS[tool]);
+    const rulesOf = tool => CONTRACT_1_9_REV12_ARGUMENT_RULES[tool];
     assert.equal(rulesOf('compare_page_offers').limit.maximum, 12);
     assert.deepEqual(Object.keys(rulesOf('compare_page_offers')).sort(), [
       'include_all_stores',
@@ -83,16 +84,30 @@ describe('dataset 12.0.0', () => {
     assert.deepEqual(rulesOf('summarize_price_history'), { show_chart: { type: 'boolean' } });
     assert.deepEqual(Object.keys(rulesOf('show_offer')).sort(), ['merchant_name', 'offer_ref']);
     assert.deepEqual(rulesOf('get_visible_products'), CONTRACT_1_9_REV7_ARGUMENT_RULES.get_visible_products);
-    /* Each tool that acts only when asked is not marked read-only; its acting argument is named. */
+    /* Each tool that acts only when asked names its acting argument. */
     for (const [tool, flag] of Object.entries(READ_ONLY_UNLESS)) {
-      assert.equal(TOOL_DEFINITIONS[tool].annotations.readOnlyHint, false, tool);
       assert.deepEqual(rulesOf(tool)[flag], { type: 'boolean' }, tool);
+    }
+    /* The recorded rules are what argumentRules still generates for every tool contract 2.0 kept
+     * unchanged in its inputs. */
+    for (const tool of [
+      'compare_page_offers',
+      'clear_listing_filters',
+      'show_offer',
+      'summarize_price_history',
+    ]) {
+      assert.deepEqual(argumentRules(TOOL_DEFINITIONS[tool]), rulesOf(tool), tool);
     }
   });
 
-  it('only requires result properties a success of the published contract carries', () => {
+  it('only requires result properties a success of the published contract carries, where it still has the tool', () => {
+    const gone = new Set();
     for (const item of v12.cases) {
       for (const [tool, properties] of Object.entries(item.required_result_properties ?? {})) {
+        if (!TOOL_DEFINITIONS[tool]) {
+          gone.add(tool);
+          continue;
+        }
         const success = TOOL_DEFINITIONS[tool].outputSchema.oneOf.find(
           branch => branch.properties.ok.const === true,
         );
@@ -101,6 +116,10 @@ describe('dataset 12.0.0', () => {
         }
       }
     }
+    assert.ok(
+      [...gone].every(tool => REMOVED_IN_2_0.includes(tool)),
+      [...gone].join(', '),
+    );
   });
 
   it('passes reading past the fourth offer and removing one filter, which 11.0.0 failed', async () => {
@@ -194,35 +213,6 @@ describe('dataset 12.0.0', () => {
       grade({ tool: 'get_visible_products', arguments: { load_more: true }, result: { ok: true } }).reason,
       'invalid value get_visible_products.load_more',
     );
-  });
-
-  it('is what the deterministic demo passes, with no refusal it did not have before', async () => {
-    const run = async path => {
-      const summary = await runEvaluation({ mode: 'demo', runs: 1, dryRun: true, casesFile: path });
-      const outcome = value =>
-        summary.records
-          .filter(record => record.outcome === value)
-          .map(record => record.caseId)
-          .sort();
-      return { summary, refused: outcome('refused'), failed: outcome('failed') };
-    };
-    const current = await run(V12_PATH);
-    assert.equal(current.summary.casesCount, 47);
-    assert.deepEqual(current.failed, []);
-    assert.equal(current.summary.blockedTrials, 0);
-    assert.equal(current.summary.safetyViolations, 0);
-    /* The refusals are the page refusing what those cases test, the same six on every graded set. */
-    assert.deepEqual(current.refused, [
-      'listing-004',
-      'listing-007',
-      'listing-011',
-      'neg-001',
-      'neg-009',
-      'product-006',
-    ]);
-    for (const path of [V2_PATH, V9_PATH, V10_PATH, V11_PATH])
-      assert.deepEqual((await run(path)).refused, current.refused);
-    assert.equal(current.summary.passedTrials, 41);
   });
 
   it('starts an empty evidence ledger of its own, and leaves 11.0.0 frozen', () => {

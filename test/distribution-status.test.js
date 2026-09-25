@@ -27,7 +27,7 @@ describe('distribution status ledger', () => {
     assert.deepEqual(status.canonical.tools, EXPECTED_TOOLS);
     assert.equal(status.canonical.skill, SKILL_URL);
     assert.equal(status.canonical.webmcpContractToolCount, WEBMCP_TOOL_NAMES.length);
-    assert.equal(WEBMCP_TOOL_NAMES.length, 16);
+    assert.equal(WEBMCP_TOOL_NAMES.length, 13);
   });
 
   it('keeps one unambiguous state per distribution surface', () => {

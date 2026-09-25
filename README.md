@@ -182,11 +182,11 @@ Queries work in Greek or English. Result summaries, catalog data and merchant na
 
 ## Browser-native WebMCP
 
-BestPrice pages register 16 contextual WebMCP tools (contract 1.9) in compatible browsers, covering
-search with structured results (narrowed by price, stock, deals and order), the visible products, filters and sorting, product facts, offers,
-specifications and price history, one visible-offer action, any product's details read in place, and
-the BestPrice Shopping Brain — on every public page, articles and stores included — while leaving the
-merchant choice to the shopper. Every tool publishes an input and an output
+BestPrice pages register 13 contextual WebMCP tools (contract 2.0) in compatible browsers, covering
+search with structured results (narrowed by price, stock, deals and order), the visible products, filters and sorting, opening
+any product by id (read before the tab moves), product facts, offers, specifications and price history
+(with its chart), one visible-offer action, and the BestPrice Shopping Brain — on every public page,
+articles and stores included — while leaving the merchant choice to the shopper. Every tool publishes an input and an output
 schema. The contracts, fail-closed runtime, deterministic evaluator, and the 47-case natural-language
 dataset are in [`webmcp/`](webmcp/).
 

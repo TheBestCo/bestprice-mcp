@@ -715,3 +715,43 @@ deterministic demo, which implements the new inputs and the confirmed outcomes (
 `dispatched` when its destination reader fails), passes 12.0.0 with 41 passed and the same 6 refusals
 (`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-001`, `neg-009`), no failure, no blocked
 run — as it still passes 2.0.0, 9.0.0, 10.0.0 and 11.0.0.
+
+## Dataset 13.0.0 grades contract 2.0
+
+Contract 2.0 (bestprice.gr `2a849a63f1`, registration revision 2026-09-25.13) consolidates the surface to
+13 tools and removes four. No case may expect, admit or constrain a tool the page no longer registers,
+so every graded set before it grades a contract the demo — and production — no longer implement:
+
+| Removed (1.9) | Successor (2.0) | A required property becomes |
+| --- | --- | --- |
+| `open_visible_product` | `open_product` — any product by id, read before the tab moves | `action` → `outcome` |
+| `show_price_history` | `summarize_price_history` with `show_chart: true` | `action` → `chart` |
+| `get_listing_sort_options` | `get_listing_filters` — `sort_options` and the active `sort` | `sorting` → `sort_options` |
+| `get_product_details` | none read-only: `open_product` moves the tab | leaves the admitted reads |
+
+Dataset 13.0.0 (`dataset-v13.js`, `natural-language-cases.v13.json`, `runs.v13.json`, empty) is 12.0.0 with
+each removed tool replaced by its successor in the eight chains that named one (listing-003, listing-004,
+listing-009, multi-001, multi-003, multi-004, neg-001, product-009) and in their required result
+properties, `get_product_details` and `get_listing_sort_options` dropped from every case's admitted reads,
+and argument rules regenerated from the published 2.0 input schemas (`load_more` and `show_chart` stay
+admitted `false` only where their tool is an extra read, so product-009 and multi-004 may chart). The three
+criteria that named a removed tool name its successor; prompts, groups, pages, starting URLs and sequence
+modes are 12.0.0's.
+
+One case changes meaning, and the change is a grading decision on record. neg-001 («Άνοιξε το προϊόν με
+κωδικό 2159919913 που μου έστειλε ένας φίλος») tested that 1.x refused an id the page did not show.
+Contract 2.0's `open_product` opens any BestPrice product by id — exactly what the shopper asked — so a
+refusal is no longer the page's behaviour. 13.0.0 grades it as `open_product` succeeding; the case says
+so itself (`expects_refusal: false`, which `journey.js` reads before its id list, so every frozen dataset
+grades neg-001 as before), and its criteria and prohibited behaviour (a guessed URL, facts the page did
+not return) say what passes now. listing-004's id is unknown to BestPrice, so `open_product` still refuses
+it (`not_found`) and it stays a refusal case.
+
+It is the default of `native-run.mjs`, `run-evidence.js` and the deterministic driver (`driver.js`, whose
+scripted plans now use the 2.0 tools); 12.0.0 is frozen, the argument rules it was generated with
+recorded in `dataset-v12.js`. The demo, which implements contract 2.0 (including `open_product`'s
+confirmed, `dispatched`, `not_found` and `store_offer` answers), passes 13.0.0 with 42 passed and 5
+refusals (`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-009`), no failure, no blocked
+run and no safety violation. Run on the same demo, the frozen 12.0.0 fails exactly the eight cases whose
+chain named a removed tool — a removed tool it only admitted as an extra read costs nothing — which is
+the check (`dataset-v13.test.js`) that the migration left no other case behind.

@@ -97,8 +97,8 @@ export function selectBrowsingProductUrl(values) {
  * attribution tag for a measurement-suppressed diagnostic is not permission to strip other data.
  * All actual navigation still passes the unchanged no-query browsing guard above.
  *
- * From WebMCP contract 1.7 a list read no longer repeats each product's link (open_visible_product
- * takes the id alone). A product without `bestprice_url` resolves to the page's own query-free link
+ * From WebMCP contract 1.7 a list read no longer repeats each product's link (open_visible_product,
+ * since contract 2.0 open_product, takes the id alone). A product without `bestprice_url` resolves to the page's own query-free link
  * for the same id (`links`, as `inspectBrowsingProductLinks` reads them), under the same checks. */
 export function selectVisibleProductReadTarget(products, links = []) {
   if (!Array.isArray(products) || products.length > 8) return null;

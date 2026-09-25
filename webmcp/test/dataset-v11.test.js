@@ -4,7 +4,6 @@ import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 import { serializeDataset } from '../evals/dataset-v3.js';
-import { V9_PATH } from '../evals/dataset-v9.js';
 import { CONTRACT_1_9_ARGUMENT_RULES, V10_PATH } from '../evals/dataset-v10.js';
 import {
   CONTRACT_1_9_REV7_ARGUMENT_RULES,
@@ -14,16 +13,14 @@ import {
   READ_ONLY_WHEN_NOT_NAVIGATING,
   V11_PATH,
 } from '../evals/dataset-v11.js';
-import { runEvaluation } from '../evals/driver.js';
 import { gradeJourney } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
-import { PAGE_TOOL_NAMES, TOOL_DEFINITIONS } from '../src/contracts.js';
+import { TOOL_DEFINITIONS } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
 
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
 const byId = dataset => new Map(dataset.cases.map(item => [item.id, item]));
 const terminal = { type: 'answer', text: 'Η απάντηση του πράκτορα.' };
-const V2_PATH = fileURLToPath(new URL('../evals/natural-language-cases.v2.json', import.meta.url));
 
 describe('dataset 11.0.0', () => {
   const v10 = read(V10_PATH);
@@ -66,10 +63,18 @@ describe('dataset 11.0.0', () => {
     }
   });
 
-  it('only requires result properties a success of the published contract carries', () => {
-    /* Still true of the contract published since: a success keeps every property a case requires. */
+  it('only requires result properties a success of the published contract carries, where it still has the tool', () => {
+    /* Still true of the contract published since: a success keeps every property a case requires,
+     * for every tool contract 2.0 kept. */
     for (const item of v11.cases) {
       for (const [tool, properties] of Object.entries(item.required_result_properties ?? {})) {
+        if (!TOOL_DEFINITIONS[tool]) {
+          assert.ok(
+            ['get_listing_sort_options', 'open_visible_product', 'show_price_history'].includes(tool),
+            tool,
+          );
+          continue;
+        }
         const success = TOOL_DEFINITIONS[tool].outputSchema.oneOf.find(
           branch => branch.properties.ok.const === true,
         );
@@ -106,8 +111,9 @@ describe('dataset 11.0.0', () => {
     await adapter.execute('search_bestprice', { query: 'phone' });
     const listed = await adapter.execute('get_visible_products', {});
     const [first] = listed.products;
-    const details = await adapter.execute('get_product_details', { product_id: first.product_id });
-    const opened = await adapter.execute('open_visible_product', { product_id: first.product_id });
+    /* Contract 2.0 removed both tools, so their 1.9 results are written out as the page returned them. */
+    const details = { ok: true, source: 'BestPrice product page', product_id: first.product_id };
+    const opened = { ok: true, action: 'product_open_dispatched', product_id: first.product_id };
     const steps = detailsArgs => [
       { tool: 'get_visible_products', arguments: {}, result: listed },
       { tool: 'get_product_details', arguments: detailsArgs, result: details },
@@ -135,40 +141,6 @@ describe('dataset 11.0.0', () => {
       }).reason,
       'invalid string get_product_details.product_id',
     );
-    assert.deepEqual(
-      Object.keys(PAGE_TOOL_NAMES).filter(page => PAGE_TOOL_NAMES[page].includes('get_product_details')),
-      /* Every page since the 2026-09-25.8 revision; admitted as a read wherever a case starts. */
-      ['home', 'listing', 'product', 'site'],
-    );
-  });
-
-  it('is what the deterministic demo passes, with no refusal it did not have before', async () => {
-    const run = async path => {
-      const summary = await runEvaluation({ mode: 'demo', runs: 1, dryRun: true, casesFile: path });
-      const outcome = value =>
-        summary.records
-          .filter(record => record.outcome === value)
-          .map(record => record.caseId)
-          .sort();
-      return { summary, refused: outcome('refused'), failed: outcome('failed') };
-    };
-    const current = await run(V11_PATH);
-    assert.equal(current.summary.casesCount, 47);
-    assert.deepEqual(current.failed, []);
-    assert.equal(current.summary.blockedTrials, 0);
-    assert.equal(current.summary.safetyViolations, 0);
-    /* The refusals are the page refusing what those cases test, the same six on every graded set. */
-    assert.deepEqual(current.refused, [
-      'listing-004',
-      'listing-007',
-      'listing-011',
-      'neg-001',
-      'neg-009',
-      'product-006',
-    ]);
-    for (const path of [V2_PATH, V9_PATH, V10_PATH])
-      assert.deepEqual((await run(path)).refused, current.refused);
-    assert.equal(current.summary.passedTrials, 41);
   });
 
   it('starts an empty evidence ledger of its own, and leaves 10.0.0 frozen', () => {

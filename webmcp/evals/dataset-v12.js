@@ -20,13 +20,16 @@
  * schemas. Prompts, chains, criteria, required properties and admitted reads are 11.0.0's. 11.0.0 is
  * not rewritten; it stays frozen with its runs as the history of revisions .7 to .9.
  *
+ * 12.0.0 is frozen in turn: contract 2.0 (bestprice.gr 2a849a63f1, 2026-09-25) removed four tools and
+ * added open_product — which dataset 13.0.0 grades (dataset-v13.js). So the argument rules 12.0.0 was
+ * generated with (release 1.5.0) are recorded below rather than read from the live contract.
+ *
  *   node webmcp/evals/dataset-v12.js   # rewrites natural-language-cases.v12.json from v11
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-import { createTools, PAGE_TOOL_NAMES, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
-import { argumentRules, serializeDataset } from './dataset-v3.js';
+import { serializeDataset } from './dataset-v3.js';
 import { V11_PATH } from './dataset-v11.js';
 
 export const DATASET_V12_VERSION = '12.0.0';
@@ -42,38 +45,226 @@ export const READ_ONLY_UNLESS = Object.freeze({
   summarize_price_history: 'show_chart',
 });
 
-const publishedDefinitions = () => {
-  const byName = new Map();
-  for (const page of Object.keys(PAGE_TOOL_NAMES)) {
-    for (const definition of createTools({ page, execute: () => {} }))
-      byName.set(definition.name, definition);
+const deepFreeze = value => {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    Object.freeze(value);
+    for (const child of Object.values(value)) deepFreeze(child);
   }
-  return byName;
+  return value;
 };
 
+/* The argument rules of contract 1.9 at registration revision 2026-09-25.12 (bestprice.gr 6645a4e1c1,
+ * release 1.5.0), as `argumentRules` generated them from webmcp/src/contracts.js at 2c26397; each
+ * acting argument as generated, before an extra read's restriction. */
+export const CONTRACT_1_9_REV12_ARGUMENT_RULES = deepFreeze({
+  apply_listing_filter: {
+    filter: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    value: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  apply_listing_sort: {
+    sort: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  clear_listing_filters: {
+    filter: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    value: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  compare_page_offers: {
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 12,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+    include_all_stores: {
+      type: 'boolean',
+    },
+    product_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+  },
+  get_listing_filters: {
+    group: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+  },
+  get_listing_sort_options: {},
+  get_page_product: {},
+  get_product_details: {
+    product_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+    include: {
+      type: 'array',
+      minItems: 1,
+      maxItems: 3,
+      items: {
+        type: 'string',
+        enum: ['offers', 'specifications', 'price_history'],
+      },
+    },
+    navigate: {
+      type: 'boolean',
+    },
+  },
+  get_product_specifications: {
+    section: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 48,
+    },
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 16,
+    },
+    fact: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+  },
+  get_shopping_decision: {
+    message: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 2000,
+    },
+    postal_code: {
+      type: 'string',
+      pattern: '^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$',
+    },
+  },
+  get_visible_products: {
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 8,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+    load_more: {
+      type: 'boolean',
+    },
+  },
+  open_visible_product: {
+    product_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+  },
+  search_bestprice: {
+    query: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 120,
+    },
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 8,
+    },
+    navigate: {
+      type: 'boolean',
+    },
+    min_price_eur: {
+      type: 'number',
+      minimum: 0,
+      maximum: 10000000,
+    },
+    max_price_eur: {
+      type: 'number',
+      minimum: 0.01,
+      maximum: 10000000,
+    },
+    sort: {
+      type: 'string',
+      enum: ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'],
+    },
+    in_stock_only: {
+      type: 'boolean',
+    },
+    deals_only: {
+      type: 'boolean',
+    },
+  },
+  show_offer: {
+    offer_ref: {
+      type: 'string',
+      minLength: 8,
+      maxLength: 40,
+    },
+    merchant_name: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 68,
+    },
+  },
+  show_price_history: {},
+  summarize_price_history: {
+    show_chart: {
+      type: 'boolean',
+    },
+  },
+});
+
 /** One tool's argument rules in one case: an admitted extra read may not use the argument that acts. */
-export const caseArgumentRules = (definition, expectedTools) => {
-  const generated = argumentRules(definition);
-  const flag = READ_ONLY_UNLESS[definition.name];
-  if (flag && !expectedTools.includes(definition.name) && generated[flag]) {
+export const caseArgumentRules = (tool, expectedTools, rules = CONTRACT_1_9_REV12_ARGUMENT_RULES) => {
+  const generated = structuredClone(rules[tool]);
+  const flag = READ_ONLY_UNLESS[tool];
+  if (flag && !expectedTools.includes(tool) && generated[flag]) {
     generated[flag] = { ...generated[flag], enum: [false] };
   }
   return generated;
 };
 
 export function deriveDatasetV12(v11 = JSON.parse(readFileSync(V11_PATH, 'utf8'))) {
-  if (WEBMCP_CONTRACT_VERSION !== DATASET_V12_CONTRACT) {
-    throw new Error(
-      `dataset ${DATASET_V12_VERSION} grades contract ${DATASET_V12_CONTRACT}; the published contract is ${WEBMCP_CONTRACT_VERSION}`,
-    );
-  }
-  const definitions = publishedDefinitions();
   const cases = v11.cases.map(item => {
     const tools = [...new Set([...item.expected_tools, ...item.extra_calls_allowed])].sort();
     return {
       ...item,
       allowed_args: Object.fromEntries(
-        tools.map(tool => [tool, caseArgumentRules(definitions.get(tool), item.expected_tools)]),
+        tools.map(tool => [tool, caseArgumentRules(tool, item.expected_tools)]),
       ),
       runs: [],
     };
@@ -82,7 +273,7 @@ export function deriveDatasetV12(v11 = JSON.parse(readFileSync(V11_PATH, 'utf8')
     ...v11,
     datasetVersion: DATASET_V12_VERSION,
     generatedAt: '2026-09-25T16:00:00+03:00',
-    sourceContracts: `bestprice-mcp/webmcp/src/contracts.js (${definitions.size} contextual tools, contract ${DATASET_V12_CONTRACT}, storefront revision ${DATASET_V12_REVISION})`,
+    sourceContracts: `bestprice-mcp/webmcp/src/contracts.js (${Object.keys(CONTRACT_1_9_REV12_ARGUMENT_RULES).length} contextual tools, contract ${DATASET_V12_CONTRACT}, storefront revision ${DATASET_V12_REVISION})`,
     derivedFrom:
       'natural-language-cases.v11.json + webmcp/src/contracts.js (WebMCP contract 1.9, revision 2026-09-25.12), by webmcp/evals/dataset-v12.js — argument rules regenerated (offer offset and limit 12, single-filter removal, show_chart, show_offer without merchant_id; load_more and show_chart admitted false only as extra reads)',
     cases,

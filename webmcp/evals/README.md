@@ -3,11 +3,17 @@
 This is the canonical home of the versioned Greek shopper prompt datasets for the
 contextual tools in [`../src/contracts.js`](../src/contracts.js):
 
-- [`natural-language-cases.v12.json`](natural-language-cases.v12.json) — current, 47 cases: 11.0.0
+- [`natural-language-cases.v13.json`](natural-language-cases.v13.json) — current, 47 cases: 12.0.0
+  graded against contract 2.0 by [`dataset-v13.js`](dataset-v13.js) (the four removed tools replaced by
+  their successors — `open_product`, `summarize_price_history` with `show_chart`, `get_listing_filters`
+  — and dropped from admitted reads; neg-001 graded as `open_product` succeeding); evidence in
+  [`runs.v13.json`](runs.v13.json). The deterministic driver runs it by default. See
+  [`QUALIFICATION.md`](QUALIFICATION.md).
+- [`natural-language-cases.v12.json`](natural-language-cases.v12.json) — frozen, 47 cases: 11.0.0
   graded against contract 1.9 at registration revision 2026-09-25.12 by [`dataset-v12.js`](dataset-v12.js)
   (offer `offset` and `limit` up to 12, single-filter removal, `show_chart`, `show_offer` without
   `merchant_id`; `load_more` and `show_chart` admitted `false` only in extra reads); evidence in
-  [`runs.v12.json`](runs.v12.json). See [`QUALIFICATION.md`](QUALIFICATION.md).
+  [`runs.v12.json`](runs.v12.json).
 - [`natural-language-cases.v11.json`](natural-language-cases.v11.json) — frozen, 47 cases: 10.0.0
   graded against contract 1.9 as revised on 2026-09-25 (revisions .7 to .9) by
   [`dataset-v11.js`](dataset-v11.js) (search constraints, digits-only product ids, `get_product_details`

@@ -34,7 +34,7 @@
  *     --agent-name 'Model Context Tool Inspector' --agent-model 'gpt-5.2' \
  *     [--language el] [--max-steps 8] [--cases home-001,multi-001] [--dry-run]
  *
- * A real run appends to runs.v12.json (runs.v<N>.json with --dataset=v<N>) and writes artifacts/, so
+ * A real run appends to runs.v13.json (runs.v<N>.json with --dataset=v<N>) and writes artifacts/, so
  * `node webmcp/evals/run-evidence.js --strict` validates it like any other
  * release evidence. `--dry-run` judges and prints without writing anything.
  */
@@ -60,8 +60,8 @@ import {
 } from './run-evidence.js';
 
 const EVAL_DIR = fileURLToPath(new URL('./', import.meta.url));
-/* Dataset 12.0.0 is current: it grades contract 1.9 at registration revision 2026-09-25.12 (see
- * dataset-v12.js). `--dataset=v2` … `--dataset=v11` still run a frozen set into its own ledger. A run's dataset version is read from the file, never
+/* Dataset 13.0.0 is current: it grades contract 2.0 (see dataset-v13.js). `--dataset=v2` …
+ * `--dataset=v12` still run a frozen set into its own ledger. A run's dataset version is read from the file, never
  * assumed. */
 const DATASETS = Object.freeze({
   v2: { cases: join(EVAL_DIR, 'natural-language-cases.v2.json'), ledger: join(EVAL_DIR, 'runs.v2.json') },
@@ -90,6 +90,10 @@ const DATASETS = Object.freeze({
    * show_chart, show_offer without merchant_id, load_more/show_chart false as extra reads; see
    * dataset-v12.js. 11.0.0 stays frozen. */
   v12: { cases: join(EVAL_DIR, 'natural-language-cases.v12.json'), ledger: join(EVAL_DIR, 'runs.v12.json') },
+  /* 12.0.0 graded against contract 2.0: the removed tools replaced by their successors (open_product,
+   * summarize_price_history show_chart, get_listing_filters), neg-001 graded as open_product
+   * succeeding; see dataset-v13.js. 12.0.0 stays frozen. */
+  v13: { cases: join(EVAL_DIR, 'natural-language-cases.v13.json'), ledger: join(EVAL_DIR, 'runs.v13.json') },
 });
 const SHELL_TIMEOUT_MS = 180_000;
 /* A journey budget, not a target: a case that needs more is `blocked` with that reason, and the
@@ -216,7 +220,7 @@ const main = async () => {
   const maxSteps = Number.parseInt(options.maxSteps, 10);
   if (!Number.isInteger(maxSteps) || maxSteps < 1) throw new Error('--max-steps must be a positive integer');
 
-  const selectedDataset = DATASETS[options.dataset ?? 'v12'];
+  const selectedDataset = DATASETS[options.dataset ?? 'v13'];
   if (!selectedDataset) throw new Error(`--dataset must be one of ${Object.keys(DATASETS).join(', ')}`);
   const dataset = JSON.parse(readFileSync(selectedDataset.cases, 'utf8'));
   const DATASET_VERSION = dataset.datasetVersion;

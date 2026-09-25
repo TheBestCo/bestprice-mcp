@@ -56,7 +56,9 @@ export const STOREFRONT_SOURCES = Object.freeze([
   'pages/search/webmcp/shared-tools.js',
   'js/modules/webmcp/search-tool.js',
   'js/modules/webmcp/shopping-decision-tool.js',
-  'js/modules/webmcp/product-details-tool.js',
+  /* Contract 2.0: open_product, on every page (it replaced get_product_details, and with it
+   * product-details-tool.js, and open_visible_product). */
+  'js/modules/webmcp/open-product-tool.js',
   /* Contract 1.9 shares input fields across tools: one product id, the search constraints. */
   'js/modules/webmcp/search-constraints.js',
   /* Revision 2026-09-25.12: every input schema's one source, which the generated document carries. */

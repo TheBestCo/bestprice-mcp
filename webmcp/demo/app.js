@@ -23,20 +23,17 @@ let refreshQueued = false;
 const samples = snapshot => ({
   search_bestprice: { query: 'phone', limit: 3 },
   get_visible_products: { limit: 3 },
-  open_visible_product: { product_id: snapshot.products[0]?.product_id ?? '0' },
+  open_product: { product_id: snapshot.homeProducts[1]?.product_id ?? '0' },
   get_listing_filters: {},
   apply_listing_filter: { filter: BRAND_FILTER, value: 'Samsung' },
   clear_listing_filters: {},
-  get_listing_sort_options: {},
   apply_listing_sort: { sort: SORT_OPTIONS[1] },
   get_page_product: {},
   compare_page_offers: { limit: 3 },
   get_product_specifications: { section: 'all', limit: 6 },
-  summarize_price_history: {},
+  summarize_price_history: { show_chart: true },
   show_offer: { offer_ref: offerRef(snapshot.product.product_id, 0) },
-  show_price_history: {},
   get_shopping_decision: { message: 'κινητό έως 750€ με 5G', postal_code: '10431' },
-  get_product_details: { product_id: snapshot.homeProducts[1]?.product_id ?? '0', include: ['offers'] },
 });
 
 const escapeHtml = value =>
@@ -73,7 +70,7 @@ const productRows = products =>
 const bindOpenButtons = () => {
   for (const button of shop.querySelectorAll('[data-product]')) {
     button.addEventListener('click', () =>
-      adapter.execute('open_visible_product', { product_id: button.dataset.product }),
+      adapter.execute('open_product', { product_id: button.dataset.product }),
     );
   }
 };

@@ -1,9 +1,9 @@
 {
   "what": "The strict output contract of every BestPrice WebMCP tool (closed and bounded), which the published output schemas relax; the tests validate every demo result against it.",
   "sourceOfTruth": "bestprice.gr",
-  "sourceCommit": "6645a4e1c14cd2e4036fd55b6e770bf5695aeabc",
+  "sourceCommit": "2a849a63f1d72ec3c6ce52d0601adca41c1b3f81",
   "path": "js/modules/webmcp/output-schemas.js",
-  "sha256": "6cd21443871f16786278363b2114350f02b3a25e7d632a1961333ba264f4a04c",
+  "sha256": "600655c769061a69c0c10aab3f7ebda4836c3286c48005e9408e540cc1246599",
   "schemas": {
     "search_bestprice": {
       "type": "object",
@@ -66,12 +66,10 @@
                   ]
                 },
                 "in_stock_only": {
-                  "type": "boolean",
-                  "const": true
+                  "type": "boolean"
                 },
                 "deals_only": {
-                  "type": "boolean",
-                  "const": true
+                  "type": "boolean"
                 }
               },
               "required": [],
@@ -151,7 +149,6 @@
                   },
                   "store_offer": {
                     "type": "boolean",
-                    "const": true,
                     "description": "Links straight to its store; page tools never open it."
                   },
                   "store": {
@@ -290,7 +287,6 @@
             },
             "more_pages": {
               "type": "boolean",
-              "const": true,
               "description": "Pass load_more: true for the next page."
             },
             "returned": {
@@ -331,7 +327,6 @@
                   },
                   "store_offer": {
                     "type": "boolean",
-                    "const": true,
                     "description": "Links straight to its store; page tools never open it."
                   },
                   "store": {
@@ -410,7 +405,7 @@
         }
       ]
     },
-    "open_visible_product": {
+    "open_product": {
       "type": "object",
       "oneOf": [
         {
@@ -421,200 +416,10 @@
               "type": "boolean",
               "const": true
             },
-            "dispatched": {
-              "type": "boolean",
-              "description": "Whether the page started the action."
-            },
-            "applied": {
-              "type": "boolean",
-              "description": "Shown by the page itself."
-            },
             "outcome": {
               "type": "string",
-              "enum": ["confirmed", "observed_complete", "dispatched", "unconfirmed"],
-              "description": "The result, in one field. confirmed: read from the destination before the tab moved; no follow-up read. observed_complete: shown here. dispatched: the tab moves, destination unread (unconfirmed_reason). unconfirmed: read the page again."
-            },
-            "note": {
-              "type": "string",
-              "maxLength": 400
-            },
-            "action": {
-              "type": "string",
-              "enum": ["opened_visible_product", "product_open_dispatched"]
-            },
-            "product_id": {
-              "type": "string",
-              "pattern": "^\\d{1,20}$",
-              "description": "Numeric BestPrice product id, as any tool returns it."
-            },
-            "title": {
-              "type": "string",
-              "maxLength": 220
-            },
-            "bestprice_url": {
-              "type": "string",
-              "format": "uri",
-              "maxLength": 2048,
-              "description": "The product page being opened."
-            },
-            "product": {
-              "type": "object",
-              "description": "The product page, read before the tab moved there.",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "format": "uri",
-                  "maxLength": 2048
-                },
-                "product_id": {
-                  "type": "string",
-                  "pattern": "^\\d{1,20}$",
-                  "description": "Numeric BestPrice product id, as any tool returns it."
-                },
-                "title": {
-                  "type": "string",
-                  "maxLength": 120
-                },
-                "category": {
-                  "type": "string",
-                  "maxLength": 120
-                },
-                "current_min_price_eur": {
-                  "type": ["number", "null"],
-                  "minimum": 0,
-                  "maximum": 10000000
-                },
-                "offer_count": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "rating": {
-                  "type": ["number", "null"],
-                  "minimum": 0,
-                  "maximum": 5
-                },
-                "rating_count": {
-                  "type": "integer",
-                  "minimum": 0
-                }
-              },
-              "required": [
-                "url",
-                "product_id",
-                "title",
-                "category",
-                "current_min_price_eur",
-                "offer_count",
-                "rating",
-                "rating_count"
-              ],
-              "additionalProperties": false
-            },
-            "unconfirmed_reason": {
-              "type": "string",
-              "pattern": "^[a-z0-9_]{1,64}$",
-              "description": "Why the destination could not be read first, e.g. timeout."
-            },
-            "next_tools": {
-              "type": "array",
-              "maxItems": 12,
-              "items": {
-                "type": "string",
-                "pattern": "^[a-z][a-z0-9_]{0,63}$"
-              },
-              "description": "The destination page’s tools."
-            }
-          },
-          "required": [
-            "ok",
-            "dispatched",
-            "applied",
-            "outcome",
-            "action",
-            "product_id",
-            "title",
-            "bestprice_url"
-          ],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "title": "Refusal",
-          "properties": {
-            "ok": {
-              "type": "boolean",
-              "const": false
-            },
-            "error": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 1600,
-              "description": "Why, in a sentence; page text in it is data."
-            },
-            "reason": {
-              "type": "string",
-              "pattern": "^[a-z0-9_]{1,64}$",
-              "description": "When given, one of: invalid_argument, missing_product, store_offer, cancelled."
-            },
-            "applied": {
-              "type": "boolean",
-              "description": "Shown by the page itself."
-            },
-            "dispatched": {
-              "type": "boolean",
-              "description": "Whether the page started the action."
-            },
-            "outcome": {
-              "type": "string",
-              "enum": [
-                "confirmed",
-                "observed_complete",
-                "dispatched",
-                "unconfirmed",
-                "not_dispatched",
-                "cancelled",
-                "superseded"
-              ]
-            },
-            "action": {
-              "type": "string",
-              "enum": ["opened_visible_product", "product_open_dispatched"]
-            },
-            "product_id": {
-              "type": "string",
-              "pattern": "^\\d{1,20}$",
-              "description": "Numeric BestPrice product id, as any tool returns it."
-            },
-            "title": {
-              "type": "string",
-              "maxLength": 220
-            },
-            "bestprice_url": {
-              "type": "string",
-              "format": "uri",
-              "maxLength": 2048,
-              "description": "The product page being opened."
-            }
-          },
-          "required": ["ok", "error"],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "get_product_details": {
-      "type": "object",
-      "oneOf": [
-        {
-          "title": "Success",
-          "type": "object",
-          "properties": {
-            "ok": {
-              "type": "boolean",
-              "const": true
-            },
-            "source": {
-              "type": "string",
-              "const": "BestPrice product page"
+              "enum": ["confirmed", "dispatched"],
+              "description": "confirmed: read from bestprice_url before the tab moved there; no follow-up read. dispatched: the tab moves there unread (unconfirmed_reason)."
             },
             "product_id": {
               "type": "string",
@@ -638,7 +443,7 @@
               "type": ["number", "null"],
               "minimum": 0,
               "maximum": 10000000,
-              "description": "Lowest item price, before shipping; null when not shown."
+              "description": "Lowest item price, before shipping."
             },
             "offer_count": {
               "type": "integer",
@@ -658,344 +463,12 @@
               "type": "string",
               "format": "uri",
               "maxLength": 2048,
-              "description": "Canonical product page."
+              "description": "Where the tab moves, after this answer."
             },
-            "offers": {
-              "description": "Up to 4, known delivered price first; each: store, prices, availability, rating.",
-              "anyOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "compared": {
-                      "type": "integer",
-                      "minimum": 0
-                    },
-                    "stores_total": {
-                      "type": ["integer", "null"],
-                      "minimum": 0
-                    },
-                    "stores_considered": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "description": "Stores the product page rendered and ranked."
-                    },
-                    "completeness": {
-                      "type": "string",
-                      "enum": ["complete", "partial"],
-                      "description": "partial: more stores behind «Όλες οι τιμές» there."
-                    },
-                    "price_basis": {
-                      "type": "string",
-                      "const": "item_plus_shipping"
-                    },
-                    "ranking_basis": {
-                      "type": "string",
-                      "const": "known_delivered_first_then_item_price"
-                    },
-                    "payment_cost_status": {
-                      "type": "string",
-                      "const": "not_included"
-                    },
-                    "items": {
-                      "type": "array",
-                      "minItems": 1,
-                      "maxItems": 4,
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "merchant": {
-                            "type": "string",
-                            "maxLength": 100
-                          },
-                          "product": {
-                            "type": "string",
-                            "maxLength": 160,
-                            "description": "The offer’s own title; it can name a variant."
-                          },
-                          "item_price_eur": {
-                            "type": "number",
-                            "minimum": 0,
-                            "maximum": 10000000
-                          },
-                          "shipping_eur": {
-                            "type": ["number", "null"],
-                            "minimum": 0,
-                            "maximum": 10000000,
-                            "description": "null: unknown, never free."
-                          },
-                          "delivered_price_eur": {
-                            "type": ["number", "null"],
-                            "minimum": 0,
-                            "maximum": 10000000,
-                            "description": "Item + shipping; null when shipping is unknown."
-                          },
-                          "availability": {
-                            "type": "string",
-                            "maxLength": 120
-                          },
-                          "merchant_rating": {
-                            "type": ["number", "null"],
-                            "minimum": 1,
-                            "maximum": 5,
-                            "description": "null: not rated."
-                          },
-                          "certified": {
-                            "type": "boolean"
-                          },
-                          "sponsored": {
-                            "type": "boolean"
-                          },
-                          "unpriced_rows": {
-                            "type": "integer",
-                            "minimum": 0,
-                            "description": "Store rows with no usable price."
-                          },
-                          "product_truncated": {
-                            "type": "boolean",
-                            "const": true
-                          },
-                          "merchant_truncated": {
-                            "type": "boolean",
-                            "const": true
-                          }
-                        },
-                        "required": [
-                          "merchant",
-                          "product",
-                          "item_price_eur",
-                          "shipping_eur",
-                          "delivered_price_eur",
-                          "availability",
-                          "merchant_rating",
-                          "certified",
-                          "sponsored"
-                        ],
-                        "additionalProperties": false
-                      }
-                    },
-                    "omitted_offers": {
-                      "type": "integer",
-                      "minimum": 0
-                    },
-                    "excluded_unknown_shipping": {
-                      "type": "object",
-                      "description": "Offers left out for unknown shipping, and the store of the cheapest by item price.",
-                      "properties": {
-                        "count": {
-                          "type": "integer",
-                          "minimum": 0
-                        },
-                        "lowest_item_price_eur": {
-                          "type": "number",
-                          "minimum": 0,
-                          "maximum": 10000000
-                        },
-                        "may_be_cheapest": {
-                          "type": "boolean",
-                          "const": true
-                        },
-                        "cheapest_merchant": {
-                          "type": "string",
-                          "maxLength": 100
-                        }
-                      },
-                      "required": ["count", "lowest_item_price_eur", "cheapest_merchant"],
-                      "additionalProperties": false
-                    }
-                  },
-                  "required": [
-                    "compared",
-                    "stores_total",
-                    "stores_considered",
-                    "completeness",
-                    "price_basis",
-                    "ranking_basis",
-                    "payment_cost_status",
-                    "items"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "specifications": {
-              "description": "Key rows; the product page lists them all. null when unreadable.",
-              "anyOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "returned": {
-                      "type": "integer",
-                      "minimum": 0
-                    },
-                    "total_facts": {
-                      "type": "integer",
-                      "minimum": 0
-                    },
-                    "completeness": {
-                      "type": "string",
-                      "enum": ["complete", "partial"],
-                      "description": "partial: more follows (next_offset)."
-                    },
-                    "rows": {
-                      "type": "array",
-                      "maxItems": 12,
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "section": {
-                            "type": "string",
-                            "maxLength": 48
-                          },
-                          "name": {
-                            "type": "string",
-                            "maxLength": 72
-                          },
-                          "value": {
-                            "type": "string",
-                            "maxLength": 1500
-                          },
-                          "truncated": {
-                            "type": "boolean",
-                            "const": true,
-                            "description": "Ask for this fact by name for all of it."
-                          }
-                        },
-                        "required": ["section", "name", "value"],
-                        "additionalProperties": false
-                      }
-                    }
-                  },
-                  "required": ["returned", "total_facts", "completeness", "rows"],
-                  "additionalProperties": false
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "price_history": {
-              "description": "Price history: period, current, lowest, highest, directions; null when unreadable.",
-              "anyOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "observations": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "description": "Daily minimum prices in the series."
-                    },
-                    "period": {
-                      "type": "object",
-                      "properties": {
-                        "from": {
-                          "type": "string",
-                          "format": "date"
-                        },
-                        "to": {
-                          "type": "string",
-                          "format": "date"
-                        }
-                      },
-                      "required": ["from", "to"],
-                      "additionalProperties": false
-                    },
-                    "current_min_price_eur": {
-                      "type": ["number", "null"],
-                      "minimum": 0,
-                      "maximum": 10000000,
-                      "description": "Before shipping."
-                    },
-                    "current_price_source": {
-                      "type": "string",
-                      "enum": ["page_quote", "latest_history"]
-                    },
-                    "historical_low_eur": {
-                      "type": ["number", "null"],
-                      "minimum": 0,
-                      "maximum": 10000000,
-                      "description": "Lowest recorded daily minimum."
-                    },
-                    "historical_high_eur": {
-                      "type": ["number", "null"],
-                      "minimum": 0,
-                      "maximum": 10000000,
-                      "description": "Highest recorded daily minimum."
-                    },
-                    "change_from_first_pct": {
-                      "type": ["number", "null"],
-                      "description": "null when withheld."
-                    },
-                    "direction_from_first": {
-                      "type": "string",
-                      "enum": ["up", "down", "stable", "uncertain"]
-                    },
-                    "latest_change_pct": {
-                      "type": ["number", "null"],
-                      "description": "null when withheld."
-                    },
-                    "latest_direction": {
-                      "type": "string",
-                      "enum": ["up", "down", "stable", "uncertain"]
-                    },
-                    "latest_change_since": {
-                      "type": ["string", "null"],
-                      "format": "date"
-                    },
-                    "trend_uncertainty_reason": {
-                      "type": "string",
-                      "const": "flagged_observations_kept_raw"
-                    }
-                  },
-                  "required": [
-                    "observations",
-                    "period",
-                    "current_min_price_eur",
-                    "current_price_source",
-                    "historical_low_eur",
-                    "historical_high_eur",
-                    "change_from_first_pct",
-                    "direction_from_first",
-                    "latest_change_pct",
-                    "latest_direction",
-                    "latest_change_since"
-                  ],
-                  "additionalProperties": false
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "unavailable": {
-              "type": "object",
-              "description": "Why a requested section is null.",
-              "properties": {
-                "offers": {
-                  "type": "string",
-                  "maxLength": 300
-                },
-                "specifications": {
-                  "type": "string",
-                  "maxLength": 300
-                },
-                "price_history": {
-                  "type": "string",
-                  "maxLength": 300
-                }
-              },
-              "required": [],
-              "additionalProperties": false
-            },
-            "navigated": {
-              "type": "boolean",
-              "description": "The result, in one field: whether the tab moves to bestprice_url."
-            },
-            "outcome": {
+            "unconfirmed_reason": {
               "type": "string",
-              "const": "confirmed"
+              "pattern": "^[a-z0-9_]{1,64}$",
+              "description": "Why the destination could not be read first, e.g. timeout."
             },
             "next_tools": {
               "type": "array",
@@ -1006,30 +479,12 @@
               },
               "description": "The destination page’s tools."
             },
-            "next_step": {
-              "type": "string",
-              "maxLength": 400
-            },
             "note": {
               "type": "string",
               "maxLength": 400
             }
           },
-          "required": [
-            "ok",
-            "source",
-            "product_id",
-            "title",
-            "category",
-            "current_min_price_eur",
-            "offer_count",
-            "rating",
-            "rating_count",
-            "bestprice_url",
-            "navigated",
-            "next_step",
-            "note"
-          ],
+          "required": ["ok", "outcome", "product_id", "bestprice_url", "next_tools"],
           "additionalProperties": false
         },
         {
@@ -1049,34 +504,7 @@
             "reason": {
               "type": "string",
               "pattern": "^[a-z0-9_]{1,64}$",
-              "description": "When given, one of: invalid_argument, not_found, timeout, upstream_unavailable, cancelled, unexpected_error."
-            },
-            "navigated": {
-              "type": "boolean",
-              "const": true
-            },
-            "outcome": {
-              "type": "string",
-              "const": "dispatched"
-            },
-            "bestprice_url": {
-              "type": "string",
-              "format": "uri",
-              "maxLength": 2048,
-              "description": "Where the tab moves, after this answer."
-            },
-            "next_tools": {
-              "type": "array",
-              "maxItems": 12,
-              "items": {
-                "type": "string",
-                "pattern": "^[a-z][a-z0-9_]{0,63}$"
-              },
-              "description": "The destination page’s tools."
-            },
-            "next_step": {
-              "type": "string",
-              "maxLength": 400
+              "description": "When given, one of: invalid_argument, store_offer, not_found, cancelled."
             }
           },
           "required": ["ok", "error"],
@@ -1190,6 +618,41 @@
               "type": "string",
               "enum": ["complete", "partial"],
               "description": "partial: more follows (next_offset)."
+            },
+            "sort": {
+              "type": "string",
+              "maxLength": 72,
+              "description": "The active sort: its key, or its label when it has none."
+            },
+            "sort_options": {
+              "type": "array",
+              "maxItems": 10,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "maxLength": 72
+                  },
+                  "key": {
+                    "type": "string",
+                    "enum": [
+                      "relevance",
+                      "price_asc",
+                      "price_desc",
+                      "biggest_price_drop",
+                      "most_stores",
+                      "newest"
+                    ],
+                    "description": "Pass it, or name, as apply_listing_sort’s sort."
+                  },
+                  "selected": {
+                    "type": "boolean"
+                  }
+                },
+                "required": ["name", "selected"],
+                "additionalProperties": false
+              }
             },
             "note": {
               "type": "string",
@@ -1328,7 +791,6 @@
                       },
                       "store_offer": {
                         "type": "boolean",
-                        "const": true,
                         "description": "Links straight to its store; page tools never open it."
                       },
                       "store": {
@@ -1440,8 +902,7 @@
             },
             "changed": {
               "type": "boolean",
-              "const": false,
-              "description": "Nothing was filtered."
+              "description": "false: nothing was filtered, so nothing changed."
             },
             "filter": {
               "type": "string",
@@ -1532,7 +993,6 @@
                       },
                       "store_offer": {
                         "type": "boolean",
-                        "const": true,
                         "description": "Links straight to its store; page tools never open it."
                       },
                       "store": {
@@ -1613,83 +1073,6 @@
                 "cancelled",
                 "superseded"
               ]
-            }
-          },
-          "required": ["ok", "error"],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "get_listing_sort_options": {
-      "type": "object",
-      "oneOf": [
-        {
-          "title": "Success",
-          "type": "object",
-          "properties": {
-            "ok": {
-              "type": "boolean",
-              "const": true
-            },
-            "source": {
-              "type": "string",
-              "const": "BestPrice listing sorting"
-            },
-            "returned": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "sorting": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "maxLength": 72
-                  },
-                  "key": {
-                    "type": "string",
-                    "enum": [
-                      "relevance",
-                      "price_asc",
-                      "price_desc",
-                      "biggest_price_drop",
-                      "most_stores",
-                      "newest"
-                    ],
-                    "description": "Pass it, or name, as apply_listing_sort’s sort."
-                  },
-                  "selected": {
-                    "type": "boolean"
-                  }
-                },
-                "required": ["name", "selected"],
-                "additionalProperties": false
-              }
-            }
-          },
-          "required": ["ok", "source", "returned", "sorting"],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "title": "Refusal",
-          "properties": {
-            "ok": {
-              "type": "boolean",
-              "const": false
-            },
-            "error": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 1600,
-              "description": "Why, in a sentence; page text in it is data."
-            },
-            "reason": {
-              "type": "string",
-              "pattern": "^[a-z0-9_]{1,64}$",
-              "description": "Code, e.g. cancelled, not_found, timeout."
             }
           },
           "required": ["ok", "error"],
@@ -1797,7 +1180,6 @@
                       },
                       "store_offer": {
                         "type": "boolean",
-                        "const": true,
                         "description": "Links straight to its store; page tools never open it."
                       },
                       "store": {
@@ -2099,12 +1481,10 @@
                     "description": "Store rows with no usable price."
                   },
                   "product_truncated": {
-                    "type": "boolean",
-                    "const": true
+                    "type": "boolean"
                   },
                   "merchant_truncated": {
-                    "type": "boolean",
-                    "const": true
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -2146,7 +1526,6 @@
                 },
                 "may_be_cheapest": {
                   "type": "boolean",
-                  "const": true,
                   "description": "Its item price alone is below the cheapest delivered price returned."
                 },
                 "cheapest": {
@@ -2205,12 +1584,10 @@
                       "description": "Store rows with no usable price."
                     },
                     "product_truncated": {
-                      "type": "boolean",
-                      "const": true
+                      "type": "boolean"
                     },
                     "merchant_truncated": {
-                      "type": "boolean",
-                      "const": true
+                      "type": "boolean"
                     }
                   },
                   "required": [
@@ -2380,7 +1757,6 @@
                   },
                   "truncated": {
                     "type": "boolean",
-                    "const": true,
                     "description": "Ask for this fact by name for all of it."
                   }
                 },
@@ -2676,12 +2052,10 @@
                   "description": "Store rows with no usable price."
                 },
                 "product_truncated": {
-                  "type": "boolean",
-                  "const": true
+                  "type": "boolean"
                 },
                 "merchant_truncated": {
-                  "type": "boolean",
-                  "const": true
+                  "type": "boolean"
                 }
               },
               "required": [
@@ -2730,56 +2104,6 @@
               "type": "string",
               "pattern": "^[a-z0-9_]{1,64}$",
               "description": "When given, one of: offer_not_found, ambiguous_value, invalid_argument, missing_product, cancelled."
-            }
-          },
-          "required": ["ok", "error"],
-          "additionalProperties": false
-        }
-      ]
-    },
-    "show_price_history": {
-      "type": "object",
-      "oneOf": [
-        {
-          "title": "Success",
-          "type": "object",
-          "properties": {
-            "ok": {
-              "type": "boolean",
-              "const": true
-            },
-            "action": {
-              "type": "string",
-              "enum": ["opened_price_history", "focused_price_history"],
-              "description": "The result, in one field."
-            },
-            "product_id": {
-              "type": "string",
-              "pattern": "^\\d{1,20}$",
-              "description": "Numeric BestPrice product id, as any tool returns it."
-            }
-          },
-          "required": ["ok", "action", "product_id"],
-          "additionalProperties": false
-        },
-        {
-          "type": "object",
-          "title": "Refusal",
-          "properties": {
-            "ok": {
-              "type": "boolean",
-              "const": false
-            },
-            "error": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 1600,
-              "description": "Why, in a sentence; page text in it is data."
-            },
-            "reason": {
-              "type": "string",
-              "pattern": "^[a-z0-9_]{1,64}$",
-              "description": "When given, one of: insufficient_history, missing_product, invalid_argument."
             }
           },
           "required": ["ok", "error"],

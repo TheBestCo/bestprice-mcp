@@ -63,7 +63,7 @@ describe('dataset 3.0.0', () => {
     assert.ok(byId(v3).get('product-005').allowed_args.get_product_specifications.fact);
   });
 
-  /* The frozen datasets grade against 1.6. What contracts 1.7 to 1.9 published since is named here,
+  /* The frozen datasets grade against 1.6. What contracts 1.7 to 2.0 published since is named here,
    * so the gap is a decision on record (a dataset that admits it is the next version) and never drift. */
   it('names exactly the arguments and tools published after contract 1.6', () => {
     const published = new Map(
@@ -87,7 +87,14 @@ describe('dataset 3.0.0', () => {
       }
       for (const name of Object.keys(rules)) if (!(name in frozen)) since.push(`${tool}.${name}`);
     }
-    assert.deepEqual(newTools.sort(), ['get_product_details', 'get_shopping_decision']);
+    assert.deepEqual(newTools.sort(), ['get_shopping_decision', 'open_product']);
+    /* Contract 2.0 removed three of 1.6's tools (and 1.9's get_product_details). */
+    assert.deepEqual(
+      Object.keys(CONTRACT_1_6_ARGUMENT_RULES)
+        .filter(tool => !published.has(tool))
+        .sort(),
+      ['get_listing_sort_options', 'open_visible_product', 'show_price_history'],
+    );
     /* Registration revision 2026-09-25.12: up to 12 offers a call, and show_offer's merchant_id no
      * longer published (the page still takes it). Everything else 1.6 published is unchanged. */
     assert.deepEqual(changed, ['compare_page_offers.limit']);
@@ -133,10 +140,11 @@ describe('dataset 3.0.0', () => {
       /* get_product_details was read-only in 1.9 as first published, until it gained `navigate`. */
       ['get_shopping_decision'],
     );
-    /* Revision 2026-09-25.12: two of 1.6's reads act when asked (load_more, show_chart). */
+    /* Revision 2026-09-25.12: two of 1.6's reads act when asked (load_more, show_chart); contract 2.0
+     * folded get_listing_sort_options into get_listing_filters. */
     assert.deepEqual(
       CONTRACT_1_6_READ_ONLY_TOOLS.filter(name => !readOnlyTools().includes(name)),
-      ['get_visible_products', 'summarize_price_history'],
+      ['get_listing_sort_options', 'get_visible_products', 'summarize_price_history'],
     );
   });
 

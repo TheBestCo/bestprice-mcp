@@ -7,8 +7,8 @@ const ensure = (condition, code) => {
 const record = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const READ_TOOLS = new Set([
   'get_visible_products',
+  /* Contract 2.0: it also returns the sort options (get_listing_sort_options is gone). */
   'get_listing_filters',
-  'get_listing_sort_options',
   'get_page_product',
   'compare_page_offers',
   'get_product_specifications',

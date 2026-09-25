@@ -61,11 +61,9 @@ describe('dataset 10.0.0', () => {
     await adapter.execute('search_bestprice', { query: 'phone' });
     const listed = await adapter.execute('get_visible_products', {});
     const [first] = listed.products;
-    const details = await adapter.execute('get_product_details', {
-      product_id: first.product_id,
-      include: ['offers'],
-    });
-    const opened = await adapter.execute('open_visible_product', { product_id: first.product_id });
+    /* Contract 2.0 removed both tools, so their 1.9 results are written out as the page returned them. */
+    const details = { ok: true, source: 'BestPrice product page', product_id: first.product_id };
+    const opened = { ok: true, action: 'product_open_dispatched', product_id: first.product_id };
     /* listing-003: read the list, open the first product. Reading that product first is what
      * get_product_details is for, and an extra read 9.0.0 does not admit. */
     const steps = include => [

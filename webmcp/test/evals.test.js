@@ -34,7 +34,6 @@ import {
   validateEvidenceFile,
   validateRunRecord,
 } from '../evals/run-evidence.js';
-import { PAGE_TOOL_NAMES, TOOL_NAMES } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
 
 const read = version =>
@@ -71,6 +70,32 @@ const DATASETS = [
   },
 ];
 const GROUP_PAGES = { homepage: 'home', listing: 'listing', product: 'product' };
+/* The page lists of contract 1.6 (webmcp/src/contracts.js at 33f887f), which datasets 1.0.0 and 2.0.0
+ * were written against. They name tools contract 2.0 removed, so they are checked against the contract
+ * they grade, not the one published now. */
+const CONTRACT_1_6_PAGE_TOOL_NAMES = Object.freeze({
+  home: ['search_bestprice'],
+  listing: [
+    'search_bestprice',
+    'get_visible_products',
+    'open_visible_product',
+    'get_listing_filters',
+    'apply_listing_filter',
+    'clear_listing_filters',
+    'get_listing_sort_options',
+    'apply_listing_sort',
+  ],
+  product: [
+    'search_bestprice',
+    'get_page_product',
+    'compare_page_offers',
+    'get_product_specifications',
+    'summarize_price_history',
+    'show_offer',
+    'show_price_history',
+  ],
+});
+const CONTRACT_1_6_TOOL_NAMES = [...new Set(Object.values(CONTRACT_1_6_PAGE_TOOL_NAMES).flat())];
 const groupCounts = dataset => {
   const counts = {};
   for (const item of dataset.cases) counts[item.group] = (counts[item.group] ?? 0) + 1;
@@ -149,19 +174,19 @@ describe('natural-language evaluation dataset', () => {
       }
     });
 
-    it(`v${version} only references tools that exist and that the starting page exposes`, () => {
+    it(`v${version} only references tools contract 1.6 had, on the page that exposed them`, () => {
       for (const item of dataset.cases) {
         for (const name of item.expected_tools) {
-          assert.ok(TOOL_NAMES.includes(name), `${item.id} expects unknown tool ${name}`);
+          assert.ok(CONTRACT_1_6_TOOL_NAMES.includes(name), `${item.id} expects unknown tool ${name}`);
         }
         if (item.group in GROUP_PAGES) {
-          const exposed = PAGE_TOOL_NAMES[GROUP_PAGES[item.group]];
+          const exposed = CONTRACT_1_6_PAGE_TOOL_NAMES[GROUP_PAGES[item.group]];
           for (const name of item.expected_tools) {
             assert.ok(exposed.includes(name), `${item.id} expects ${name}, not exposed on ${item.group}`);
           }
         }
         for (const name of Object.keys(item.allowed_args ?? {})) {
-          assert.ok(TOOL_NAMES.includes(name), `${item.id} constrains unknown tool ${name}`);
+          assert.ok(CONTRACT_1_6_TOOL_NAMES.includes(name), `${item.id} constrains unknown tool ${name}`);
         }
       }
     });
@@ -344,8 +369,10 @@ describe('evaluation harness and test driver', () => {
     assert.equal(negativeGroup.totalTrials, 9);
     /* Every negative case ends in one of the two honest verdicts: the safe call completed, or the
      * page refused it. Neither may be `blocked` (an unfinished journey) or `failed` (a violation). */
-    assert.equal(negativeGroup.refusedTrials, 2, 'neg-001 and neg-009 are refusal-expected journeys');
-    assert.equal(negativeGroup.passedTrials, 7);
+    /* Dataset 13.0.0 (contract 2.0): neg-001's id opens by open_product, so neg-009 is the one
+     * refusal-expected journey left. */
+    assert.equal(negativeGroup.refusedTrials, 1, 'neg-009 is the refusal-expected journey');
+    assert.equal(negativeGroup.passedTrials, 8);
     assert.equal(negativeGroup.passedTrials + negativeGroup.refusedTrials, 9);
     assert.equal(negativeGroup.failedTrials, 0);
     assert.equal(negativeGroup.blockedTrials, 0);
@@ -508,6 +535,8 @@ describe('evaluation harness and test driver', () => {
         runs: 1,
         record: true,
         filter: 'home-001',
+        /* The record is audited against 2.0.0's case digests; home-001 runs the same on contract 2.0. */
+        casesFile: fileURLToPath(new URL('../evals/natural-language-cases.v2.json', import.meta.url)),
         runsFile: tempRunsFile,
         artifactsDir,
       });
@@ -576,6 +605,7 @@ describe('evaluation harness and test driver', () => {
       { runsFile: fileURLToPath(new URL('../evals/runs.v10.json', import.meta.url)) },
       { runsFile: fileURLToPath(new URL('../evals/runs.v11.json', import.meta.url)) },
       { runsFile: fileURLToPath(new URL('../evals/runs.v12.json', import.meta.url)) },
+      { runsFile: fileURLToPath(new URL('../evals/runs.v13.json', import.meta.url)) },
       /* A version that does not exist yet. The list of ledgers used to be hand-extended, and 4.0.0's
        * was added too late: this very test then wrote 94 demo records into runs.v4.json. The
        * refusal is now by shape, so it must already hold for a ledger nobody has created. The

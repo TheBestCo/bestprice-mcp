@@ -4,11 +4,11 @@ BestPrice adds page-local WebMCP tools to the shopping journey at
 [`www.bestprice.gr`](https://www.bestprice.gr/). A compatible agent can search
 and read the results, inspect the products and controls that are actually on the
 open page (the home page's sections included), apply a visible filter or sorting
-option, open a returned product, compare rendered offers, read specifications,
-inspect price history, move the shopper's own tab to one offer the page already
-shows, read any product's offers, specifications and price history without
-leaving the page, and ask the BestPrice Shopping Brain what to buy — from every
-public BestPrice page, articles and stores included.
+option, open any product by id (its page read before the tab moves), compare
+rendered offers, read specifications, inspect price history and open its chart,
+move the shopper's own tab to one offer the page already shows, and ask the
+BestPrice Shopping Brain what to buy — from every public BestPrice page, articles
+and stores included.
 
 The shopper stays on BestPrice and keeps the final choice. There is no checkout
 tool, no background account access, and no direct merchant URL in a tool result.
@@ -36,9 +36,9 @@ npm test
 
 ## Source map
 
-- [`src/contracts.js`](src/contracts.js) contains the 16 contextual tool
-  contracts of WebMCP contract 1.9: input and output schemas and safety
-  annotations. Each tool's title, description and output schema come from
+- [`src/contracts.js`](src/contracts.js) contains the 13 contextual tool
+  contracts of WebMCP contract 2.0: input and output schemas and safety
+  annotations. Each tool's title, description, input and output schema come from
   [`src/storefront-catalog.js`](src/storefront-catalog.js), generated from the
   storefront's own catalog.
 - [`src/contract-parity.js`](src/contract-parity.js) reads the storefront's
@@ -55,7 +55,7 @@ npm test
   runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
   validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned Greek natural-language dataset
-  (v1–v10 frozen; v11, 47 cases grading contract 1.9 as revised, current) and the separate deterministic
+  (v1–v12 frozen; v13, 47 cases grading contract 2.0, current) and the separate deterministic
   and browser-agent evaluation criteria.
 
 ## Production surface
@@ -64,17 +64,42 @@ Production registers only the tools relevant to the open page:
 
 | Page | Tools |
 | --- | ---: |
-| Home | 5 |
-| Search, category, or hub listing | 10 |
-| Product page | 9 |
+| Home | 4 |
+| Search, category, or hub listing | 8 |
+| Product page | 8 |
 | Any other public page (articles, deals, stores, brands, …) | 3 |
-| Unique contracts | 16 |
+| Unique contracts | 13 |
 
-Every page registers `search_bestprice` first and `get_shopping_decision` last.
-The product page's `show_offer` is an action verb: it scrolls to one rendered
-offer and marks it for the shopper, and it returns no merchant link.
+Every page registers `search_bestprice` first, `open_product` among its own tools,
+and `get_shopping_decision` last. The product page's `show_offer` is an action
+verb: it scrolls to one rendered offer and marks it for the shopper, and it
+returns no merchant link.
 
-Contract 1.9 (2026-09-25) reaches every public page and every product from it.
+Contract 2.0 (2026-09-25, registration revision 2026-09-25.13) consolidates the
+surface to 13 tools. `open_product` opens any BestPrice product by `product_id`
+from every page — a search result, a card, the Shopping Brain's pick: it reads
+the product page first and answers `outcome: 'confirmed'` with its facts (title,
+category, price, store count, rating), then moves the tab; an id BestPrice has no
+page for is refused (`not_found`) and one below 2^31, a single store's own offer,
+is refused as `store_offer` and never loaded. `get_listing_filters` also returns
+the listing's `sort_options` (each with its sort `key`) and the active `sort`;
+`summarize_price_history`'s `show_chart` is the one way to open the chart. Four
+tools are gone:
+
+| Contract 1.9 | Contract 2.0 |
+| --- | --- |
+| `open_visible_product` | `open_product` (any product, not only a visible card) |
+| `get_product_details` | `open_product`, then the product page's own reads |
+| `get_listing_sort_options` | `get_listing_filters` (`sort_options`, `sort`) |
+| `show_price_history` | `summarize_price_history` with `show_chart: true` |
+
+Every description is one sentence of at most 160 characters — what the tool does,
+what it returns, what it changes — and names no other tool, except that
+`search_bestprice` (a named product) and `get_shopping_decision` (advice) point at
+each other; one wording serves every page. Rigid boolean consts in the output
+schemas are plain booleans.
+
+Contract 1.9 (2026-09-25) reached every public page and every product from it.
 Pages without tools of their own — articles and guides, deals, lists, stores,
 brands, collections, comparisons, stories — register `search_bestprice`,
 `get_product_details` and `get_shopping_decision` (page type `site`).
@@ -162,9 +187,9 @@ output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
-12.0.0 grades contract 1.9 at revision 2026-09-25.12 and is the default;
-1.0.0–11.0.0 stay frozen, with their runs, as the history of contracts 1.6 to
-1.9 ([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
+13.0.0 grades contract 2.0 and is the default; 1.0.0–12.0.0 stay frozen, with
+their runs, as the history of contracts 1.6 to 1.9
+([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 
 The machine-readable production inventory is available at
 [`/.well-known/webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json).
@@ -179,7 +204,9 @@ self-contained evaluator for it.
 
 ## Safety choices
 
-- IDs and URLs must match a product that is currently visible.
+- A product opens only by an id BestPrice has a page for, and only after that
+  page is read; a single store's own offer (an id below 2^31) is refused and never
+  loaded, and no tool takes a URL.
 - Navigation tools can only use first-party controls that are already on the
   page.
 - Read tools return bounded structured output.
