@@ -1,12 +1,17 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-09-24",
+  "asOf": "2026-09-25",
   "canonical": {
     "registryId": "gr.bestprice/mcp",
     "serverVersion": "1.8.1",
     "packageVersion": "1.2.7",
     "endpoint": "https://mcp.bestprice.gr/mcp",
-    "tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
+    "tools": [
+      "get_shopping_decision",
+      "search_products",
+      "compare_offers",
+      "get_price_history"
+    ],
     "skill": "https://github.com/TheBestCo/bestprice-mcp/blob/main/skills/bestprice-shopping/SKILL.md",
     "webmcpContractToolCount": 14
   },
@@ -43,8 +48,8 @@
       "state": "submitted",
       "freshness": "current",
       "url": "https://github.com/docker/mcp-registry/pull/5228",
-      "note": "PR #5228 is open and mergeable; external-fork workflows require upstream approval.",
-      "nextAction": "Respond to Docker review or workflow approval when it arrives."
+      "note": "PR #5228 remains open and mergeable but blocked. As of 2026-09-25 it has no posted reviews, check runs, or status contexts; external-fork workflow/review action remains upstream-controlled.",
+      "nextAction": "Respond when Docker posts review feedback or enables the upstream checks."
     },
     {
       "id": "toolsdk",
@@ -53,6 +58,14 @@
       "freshness": "update-prepared",
       "url": "https://github.com/toolsdk-ai/toolsdk-mcp-registry/pull/480",
       "note": "BestPrice is merged upstream; refreshed decision/delivered-price/license metadata is staged on phaistonian/toolsdk-mcp-registry."
+    },
+    {
+      "id": "awesome-mcp-servers",
+      "name": "Awesome MCP Servers",
+      "state": "published",
+      "freshness": "current-summary",
+      "url": "https://github.com/punkpeye/awesome-mcp-servers/pull/13514",
+      "note": "BestPrice contribution PR #13514 merged on 2026-09-07; the public catalog includes the official read-only shopping MCP."
     },
     {
       "id": "agentfinder",
@@ -164,7 +177,7 @@
       "state": "published",
       "freshness": "current-tools",
       "url": "https://allmcps.com/mcp/bestprice-shopping",
-      "note": "Listing exposes all four current tools; some cached documentation still displays server version 1.8.0."
+      "note": "Listing exposes all four current MCP tools; cached documentation still displays server version 1.8.0 while the Official MCP Registry is at 1.8.1."
     },
     {
       "id": "mcp-harbor",
@@ -178,9 +191,9 @@
       "id": "agent-plugins-directory",
       "name": "Agent Plugins Directory",
       "state": "published",
-      "freshness": "stale",
+      "freshness": "current",
       "url": "https://agent-plugins.directory/thebestco/bestprice-shopping",
-      "note": "Installable Agent Plugin is indexed, but the directory still shows package v1.2.0 instead of 1.2.7 and does not reflect the newest Skill package. Refresh requested 2026-09-24."
+      "note": "Directory maintainer refreshed the listing to package v1.2.7 on 2026-09-25. It exposes the canonical Skill, remote MCP, and com.openai interface. The indexed package revision is d04407b; newer main-only routing refinements are not a new package release yet."
     },
     {
       "id": "enterprise-dna",
@@ -204,7 +217,7 @@
       "state": "published",
       "freshness": "stale-contract",
       "url": "https://webmcp-registry.dev/domain/www.bestprice.gr",
-      "note": "Domain verified; registry currently exposes 13 tools versus the canonical 14-tool contract."
+      "note": "Domain remains verified but the public registry exposes 13 tools. It is missing canonical tool show_offer; authenticated domain-owner/API-key write access is required to refresh it."
     },
     {
       "id": "webmcp-com",
@@ -212,7 +225,7 @@
       "state": "published",
       "freshness": "stale-contract",
       "url": "https://webmcp.com/",
-      "note": "Live Commerce listing currently reports 12 tools versus the canonical 14-tool contract."
+      "note": "Live Commerce listing exposes 12 tools. It is missing canonical tools open_visible_product and show_offer versus the 14-tool BestPrice contract."
     },
     {
       "id": "chrome-awesome-webmcp",
