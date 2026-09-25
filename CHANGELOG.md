@@ -7,6 +7,32 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-09-25
+
+WebMCP contract 2.2 (bestprice.gr `8d040a161a`, live on www): `open_search_results` opens the address a search
+returned. The 15 tools and the page lists are unchanged; every tool is at `2.2.0`.
+
+### Migration
+
+| Contract 2.1 | Contract 2.2 |
+| --- | --- |
+| `open_search_results { query, min_price_eur?, max_price_eur?, sort?, in_stock_only?, deals_only? }` | `search_bestprice { query, …constraints }`, then `open_search_results { results_url }` with the `results_url` it returned (it carries the constraints). Any other argument is refused. |
+| `open_search_results` receipt `query`, `applied`, `not_applied` | Read them from the `search_bestprice` result; the receipt is `{ ok, outcome, results_url, page_title, results_kind, unconfirmed_reason, next_tools, next_step, note }`. |
+| — | `open_search_results` refuses another origin, a non-results path (anything but `/search`, `/cat/`, `/b/`, `/hub/`, `/item/`) and a single-store `/item/<id below 2^31>` link (`store_offer`). |
+
+### Changed
+
+- `open_search_results` takes one input, `results_url` (required); it reads that page first (`confirmed`) or
+  opens it unread (`dispatched`, with `unconfirmed_reason`). The demo implements it: search results addresses
+  now carry their applied constraints, and it opens search, category, brand, hub and product addresses with the
+  storefront's refusals.
+- New descriptions for `search_bestprice` (and its `query`: a product name, brand, model or category) and
+  `get_shopping_decision` (and its `message`: a described need or budget).
+- **Dataset 15.0.0** grades contract 2.2 and is the default: multi-001 and multi-002 search first and open the
+  `results_url` the search returned (the driver's plans do the same). 14.0.0 is frozen with its argument rules
+  recorded; `runs.v15.json` starts empty. The demo passes 15.0.0 with 42 passed and 5 refusals.
+- A new search in the demo starts in the results page's default order instead of the current listing's.
+
 ## [2.1.0] - 2026-09-25
 
 WebMCP contract 2.1 (bestprice.gr `8e13c733ab`; registration revision 2026-09-25.14): every tool reads or acts,
@@ -542,7 +568,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.5.0...v2.0.0
 [1.5.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.3...v1.5.0
