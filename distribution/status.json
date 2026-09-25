@@ -303,13 +303,13 @@
       "id": "webmcp-registry",
       "name": "WebMCP Registry",
       "state": "published",
-      "freshness": "stale-contract",
+      "freshness": "current",
       "url": "https://webmcp-registry.dev/domain/www.bestprice.gr",
       "verifiedAt": "2026-09-25",
-      "evidence": "Page shows \"14 tools registered · Commerce · verified 8/27/2026\"; all 14 canonical tools, including show_offer, were re-registered from webmcp.json and show Updated 9/25/2026.",
+      "evidence": "Page shows \"15 tools registered · Commerce · verified 8/27/2026\" after re-registering the live contract 1.8 document (www release e0be10690f) on 2026-09-25, including get_shopping_decision.",
       "note": "Domain is verified by the DNS TXT record webmcp-verify; writes need the domain-owner API key.",
-      "nextAction": "Re-register the 15-tool contract 1.8 from www.bestprice.gr/webmcp.json (it adds get_shopping_decision and an output schema for every tool); the listing still shows the 14-tool registration.",
-      "nextActionBy": "us-external-login"
+      "nextAction": "Re-register from https://www.bestprice.gr/webmcp.json whenever the WebMCP contract changes.",
+      "nextActionBy": "none"
     },
     {
       "id": "webmcp-com",
@@ -318,10 +318,10 @@
       "freshness": "stale-contract",
       "url": "https://webmcp.com/api/v1/sites/www.bestprice.gr",
       "verifiedAt": "2026-09-25",
-      "evidence": "The public site API still serves the verified 2026-08-26 scan: 12 tools over /, a category page and an item page (open_visible_product and show_offer missing). A rescan requested on 2026-09-25 loaded only / and graded B- (1 tool, 11 \"removed\"); the listing refreshes only after their review.",
-      "note": "Crawler-populated by nekuda; the rescan form takes an email for the report and no page list. Category and item pages answer 200 to a headless Chrome user agent, so the one-page scan is on the crawler side.",
-      "nextAction": "Ask founders@nekuda.ai to keep the multi-page listing and rescan the home, listing and item pages, which expose the 15 contextual tools of contract 1.8 (the home page alone now registers 4).",
-      "nextActionBy": "upstream"
+      "evidence": "A rescan of the live contract 1.8 (release e0be10690f) graded B+ (up from B-): 4 tools on 1 scanned page (/). The scanner cites precise schemas and explicit success and refusal branches, and flags a product_id format mismatch (get_shopping_decision returned bp_ ids) and no product-page tools, because it never reached an item page. The listing refreshes after their review.",
+      "note": "Crawler-populated by nekuda. The rescan form takes only an email address. Pages beyond / appear to follow sitemap order, and our sitemap index starts with blog posts, which registered no tools.",
+      "nextAction": "Ship site-wide WebMCP tools on every page and one numeric product_id format, then rescan.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "chrome-awesome-webmcp",
