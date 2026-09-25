@@ -7,6 +7,36 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-09-25
+
+WebMCP contract 1.9, as the BestPrice.gr storefront registers it (bestprice.gr `b43f47d55b`, after `867fcffe5a`).
+
+### Added
+
+- **`get_product_details` — 16 tools.** On the home page, listings and every other public page (not the item
+  page, whose own tools cover the product in view), it reads one product by `product_id` — numeric, or `bp_<id>` —
+  without moving the tab: its facts, up to four offers ranked by delivered price, key specifications and the
+  price-history summary; `include` picks the sections. It is read-only.
+- **The `site` page type.** Every other public BestPrice page — articles and guides, deals, lists, stores, brands,
+  collections, comparisons, stories — registers `search_bestprice`, `get_product_details` and
+  `get_shopping_decision`. `PAGE_TOOL_NAMES.site` and `createTools({ page: 'site' })` publish it; the home page now
+  registers 5 tools and listings 10.
+- **Dataset 10.0.0**, the default evaluation set: 9.0.0 graded against contract 1.9 — `get_product_details` admitted
+  as an extra read in every case (reading a product before opening it no longer fails a chain), and argument rules
+  regenerated from 1.9, whose `include` list the grader now checks by length and items. 9.0.0 stays frozen, with
+  its 1.8 argument rules recorded; `runs.v10.json` starts empty. No case starts on a `site` page yet.
+
+### Changed
+
+- `get_shopping_decision` returns the page tools' numeric product ids instead of the MCP server's `bp_<id>`, and
+  `search_bestprice` names `get_product_details` among the tools its results page offers; the words and output
+  schemas follow the storefront's.
+- The demo implements both from its fixture, within the published output schemas: `get_product_details` for any
+  fixture product, and an article page with the site-wide tools. It passes 10.0.0 with 41 passed and the same 6
+  refusals as before.
+- The storefront reader follows the tool into `product-details-tool.js` and reads `Object.freeze([...])` lists and
+  list spreads (`enum: [...DETAIL_SECTIONS]`); the page lists fold the storefront's `site` page type.
+
 ## [1.3.0] - 2026-09-25
 
 WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `e0be10690f`).
@@ -309,7 +339,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.8...v1.3.0
 [1.2.8]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.2.6...v1.2.7
