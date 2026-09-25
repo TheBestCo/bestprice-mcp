@@ -30,7 +30,7 @@ for (const [value, reason] of [
 }
 
 test('first approved product remains the selection; diagnostics account for every bounded input', () => {
-  const values = [safe + '?action=1', safe, 'https://www.bestprice.gr/item/4294967295/other.html', 'bad'];
+  const values = [`${safe}?action=1`, safe, 'https://www.bestprice.gr/item/4294967295/other.html', 'bad'];
   const { selected, diagnostics } = inspectBrowsingProductLinks(values);
   assert.equal(selected, safe);
   assert.equal(selectBrowsingProductUrl(values), safe);
