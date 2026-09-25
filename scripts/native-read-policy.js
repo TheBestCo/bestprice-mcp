@@ -139,8 +139,7 @@ export function selectVisibleProductReadTarget(products, links = []) {
  * POST (and its one CORS preflight), not an origin-wide RPC exemption. */
 export function allowPriceHistoryRead(request, resourceType, permit, now) {
   if (
-    !permit ||
-    permit.tool !== 'summarize_price_history' ||
+    permit?.tool !== 'summarize_price_history' ||
     permit.used ||
     !Number.isFinite(now) ||
     !Number.isFinite(permit.expiresAt) ||
