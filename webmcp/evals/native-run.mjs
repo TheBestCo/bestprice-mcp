@@ -34,7 +34,7 @@
  *     --agent-name 'Model Context Tool Inspector' --agent-model 'gpt-5.2' \
  *     [--language el] [--max-steps 8] [--cases home-001,multi-001] [--dry-run]
  *
- * A real run appends to runs.v3.json (runs.v2.json with --dataset=v2) and writes artifacts/, so
+ * A real run appends to runs.v9.json (runs.v<N>.json with --dataset=v<N>) and writes artifacts/, so
  * `node webmcp/evals/run-evidence.js --strict` validates it like any other
  * release evidence. `--dry-run` judges and prints without writing anything.
  */
@@ -60,8 +60,9 @@ import {
 } from './run-evidence.js';
 
 const EVAL_DIR = fileURLToPath(new URL('./', import.meta.url));
-/* Dataset 3.0.0 is current (see dataset-v3.js); `--dataset=v2` still runs the frozen 2.0.0 cases
- * into their own ledger. A run's dataset version is read from the file, never assumed. */
+/* Dataset 9.0.0 is current: it grades contract 1.8 (see dataset-v9.js). `--dataset=v2` … `--dataset=v8`
+ * still run a frozen set into its own ledger. A run's dataset version is read from the file, never
+ * assumed. */
 const DATASETS = Object.freeze({
   v2: { cases: join(EVAL_DIR, 'natural-language-cases.v2.json'), ledger: join(EVAL_DIR, 'runs.v2.json') },
   v3: { cases: join(EVAL_DIR, 'natural-language-cases.v3.json'), ledger: join(EVAL_DIR, 'runs.v3.json') },
@@ -76,6 +77,9 @@ const DATASETS = Object.freeze({
   v7: { cases: join(EVAL_DIR, 'natural-language-cases.v7.json'), ledger: join(EVAL_DIR, 'runs.v7.json') },
   /* 7.0.0 with listing-010 and neg-007 corrected; see dataset-v8.js. */
   v8: { cases: join(EVAL_DIR, 'natural-language-cases.v8.json'), ledger: join(EVAL_DIR, 'runs.v8.json') },
+  /* 8.0.0 graded against contract 1.8: its argument rules, reads and structured search result; see
+   * dataset-v9.js. The versions before it stay frozen with their runs as 1.6/1.7 history. */
+  v9: { cases: join(EVAL_DIR, 'natural-language-cases.v9.json'), ledger: join(EVAL_DIR, 'runs.v9.json') },
 });
 const SHELL_TIMEOUT_MS = 180_000;
 /* A journey budget, not a target: a case that needs more is `blocked` with that reason, and the
@@ -202,7 +206,7 @@ const main = async () => {
   const maxSteps = Number.parseInt(options.maxSteps, 10);
   if (!Number.isInteger(maxSteps) || maxSteps < 1) throw new Error('--max-steps must be a positive integer');
 
-  const selectedDataset = DATASETS[options.dataset ?? 'v8'];
+  const selectedDataset = DATASETS[options.dataset ?? 'v9'];
   if (!selectedDataset) throw new Error(`--dataset must be one of ${Object.keys(DATASETS).join(', ')}`);
   const dataset = JSON.parse(readFileSync(selectedDataset.cases, 'utf8'));
   const DATASET_VERSION = dataset.datasetVersion;

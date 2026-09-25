@@ -338,6 +338,9 @@ export function gradeJourney(definition, trace) {
           (rule.pattern && !new RegExp(rule.pattern).test(value)))
       )
         return verdict('failed', `invalid string ${tool}.${key}`);
+      /* Contract 1.7/1.8 booleans (include_all_stores, navigate, load_more) take true or false only. */
+      if (rule.type === 'boolean' && typeof value !== 'boolean')
+        return verdict('failed', `invalid boolean ${tool}.${key}`);
       if (rule.enum && !rule.enum.includes(value)) return verdict('failed', `invalid value ${tool}.${key}`);
     }
     if (result?.ok) {

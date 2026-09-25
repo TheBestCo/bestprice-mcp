@@ -569,15 +569,34 @@ The evidence test that treats uncited artifacts as demo leaks listed its ledgers
 gained 7.0.0's, so it read 940 published artifacts as leaks once they were committed; it now finds
 every `runs.v<N>.json` by shape, like the quarantine beside it.
 
-## Contract 1.8 outgrows the frozen datasets (2026-09-25)
+## Dataset 9.0.0 grades contract 1.8 (2026-09-25, owner's decision)
 
-Contract 1.8 (bestprice.gr `5fdf23cee7`) publishes an output schema for every tool, and
-`search_bestprice` now answers with its results — `results_url`, `results_kind`, the product cards,
-`navigated` — in a closed schema with no `action` field. Four cases in every dataset from 1.0.0 to
-8.0.0 (`home-001`, `home-002`, `home-005`, `listing-012`) require `action` from `search_bestprice`, so
-they fail on a 1.8 result that did what the shopper asked. The deterministic demo, whose results now
-fit the published output schemas, shows exactly that: 37 passed, 4 failed (those four), 6 refused, where
-1.7 gave 41, 0 and 6. The frozen `allowed_args` also predate `search_bestprice.limit` and `navigate`,
-and the admitted extras predate the new read-only `get_shopping_decision` (`dataset-v3.test.js` names
-both). Frozen cases are not edited: a dataset that grades 1.8 results is the next version, and the
-owner's decision.
+Contract 1.8 (bestprice.gr `5fdf23cee7`, then `e0be10690f`) publishes an output schema for every tool,
+and `search_bestprice` now answers with its results — `results_url`, `results_kind`, the product cards,
+`navigated` — in a closed schema with no `action` field. Four cases in every dataset from 1.0.0 to 8.0.0
+(`home-001`, `home-002`, `home-005`, `listing-012`) require `action` from `search_bestprice`, so on 1.8
+they fail a search that did what the shopper asked. Their argument rules also predate
+`search_bestprice.limit`/`navigate`, `get_visible_products.load_more` and
+`compare_page_offers.product_id`, and their admitted reads predate `get_shopping_decision`.
+
+Frozen cases are not edited: 1.0.0–8.0.0 and their runs stay as they are, the history of contracts 1.6
+and 1.7. Dataset 9.0.0 (`dataset-v9.js`, `natural-language-cases.v9.json`, `runs.v9.json`, empty) is 8.0.0
+graded against 1.8, and the default of `native-run.mjs` and `run-evidence.js`:
+
+- the four search cases require `query`, `results_url`, `results_kind`, `products` and `navigated` from
+  `search_bestprice` in place of `action`; every property any case requires is one a 1.8 success
+  carries (`dataset-v9.test.js` checks it against the published output schemas);
+- `allowed_args` are regenerated from the 1.8 input schemas, booleans included (the grader now refuses
+  a non-boolean `navigate`, `load_more` or `include_all_stores`);
+- `get_shopping_decision`, the one read-only tool 1.8 added, joins every case's admitted reads under the
+  2026-09-15 rule; home-005's own additions stay;
+- prompts, chains, criteria and every other required property are 8.0.0's.
+
+The deterministic demo, whose results fit the published output schemas, passes it: 41 passed, 6 refused
+(`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-001`, `neg-009` — the page refusing
+what those cases test, the same six as on 2.0.0 under 1.7), no failure, no blocked run. Two demo-harness
+gaps were closed on the way, neither of which changes 2.0.0: the driver's own chain count now sets
+admitted reads aside as `journey.js` does (8.0.0's `listing-010` and `multi-002` failed only on that),
+and a case that expects no call gets a scripted refusal after its admitted reads (`neg-003` from 4.0.0
+on). On 1.0.0–8.0.0 the demo now reports only the four search cases failed, as a native run on 1.8
+would.

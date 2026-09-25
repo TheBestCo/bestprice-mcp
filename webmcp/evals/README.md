@@ -3,9 +3,15 @@
 This is the canonical home of the versioned Greek shopper prompt datasets for the
 contextual tools in [`../src/contracts.js`](../src/contracts.js):
 
-- [`natural-language-cases.v3.json`](natural-language-cases.v3.json) — current, 47 cases, derived by
-  [`dataset-v3.js`](dataset-v3.js) from v2 and the published contract (argument rules generated from
-  `src/contracts.js`, admitted extra read-only calls, concrete starting pages); evidence in
+- [`natural-language-cases.v9.json`](natural-language-cases.v9.json) — current, 47 cases: 8.0.0
+  graded against WebMCP contract 1.8 by [`dataset-v9.js`](dataset-v9.js) (argument rules and admitted
+  reads regenerated from the 1.8 contract, and the four search cases grade its structured result);
+  evidence in [`runs.v9.json`](runs.v9.json). See [`QUALIFICATION.md`](QUALIFICATION.md).
+- `natural-language-cases.v4.json` … `v8.json` — frozen corrections of 3.0.0 (`dataset-v4.js` …
+  `dataset-v8.js`), graded against contract 1.6, each with its own `runs.v<N>.json`.
+- [`natural-language-cases.v3.json`](natural-language-cases.v3.json) — frozen, 47 cases, derived by
+  [`dataset-v3.js`](dataset-v3.js) from v2 and the published contract 1.6 (argument rules generated
+  from `src/contracts.js`, admitted extra read-only calls, concrete starting pages); evidence in
   [`runs.v3.json`](runs.v3.json)
 - [`natural-language-cases.v2.json`](natural-language-cases.v2.json) — frozen, 47 cases
   covering all 14 contextual tools of its time, including the item-page `show_offer` action verb.
@@ -154,7 +160,7 @@ enforces all four, and `npm test` runs the same check on the checked-in ledger:
 | --- | --- |
 | `evidenceLayer` | the execution modality: `native` and nothing else. A deterministic, in-memory, simulated or fixture-driven run is not evidence and is rejected here |
 | `caseDigest` | sha256 of the case's frozen definition in the referenced dataset (its empty `runs` excluded) |
-| `implementationRevision` / `implementationFingerprint` | the revision the run names, and the sha256 manifest of `webmcp/src/contracts.js` + `webmcp/src/runtime.js`; a record naming the revision currently checked out must carry that revision's manifest |
+| `implementationRevision` / `implementationFingerprint` | the revision the run names, and the sha256 manifest of `webmcp/src/contracts.js` + `webmcp/src/storefront-catalog.js` + `webmcp/src/runtime.js` (the catalog since contract 1.8); a record naming the revision currently checked out must carry that revision's manifest |
 | `startedAt` / `date` | the instant of the execution (ISO-8601 UTC) and its calendar day |
 | `evidence` / `evidenceDigest` | a committed file under `webmcp/evals/artifacts/` and the sha256 of its exact bytes |
 | `agent` / `model` / `browser` | the real tool/host, model and versioned browser engine that ran; `browser` must match `/^(Chromium\|Chrome\|Google Chrome\|Microsoft Edge\|Firefox\|Safari)\b.*\d/u` |

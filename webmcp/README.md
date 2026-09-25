@@ -53,7 +53,7 @@ npm test
   runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
   validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned Greek natural-language dataset
-  (v1: 43 cases, frozen; v2: 47 cases, current) and the separate deterministic
+  (v1–v8 frozen; v9, 47 cases grading contract 1.8, current) and the separate deterministic
   and browser-agent evaluation criteria.
 
 ## Production surface
@@ -72,8 +72,9 @@ The product page's `show_offer` is an action verb: it scrolls to one rendered
 offer and marks it for the shopper, and it returns no merchant link.
 
 Contract 1.8 (2026-09-25) gives every tool an output schema — a closed `oneOf`
-of its success and its refusal — and rewrites every title and description to
-say what the tool does, when to use it, what it returns and what it changes.
+of its success and its refusal — and rewrites every title and description (at
+most 500 characters) to say what the tool does, when to use it, what it returns
+and what it changes.
 `search_bestprice` reads the results before it moves the tab: it takes an
 optional `limit` (1–8) and `navigate` (false only reads) and returns the
 product cards, the results page and whether the tab moved. The home page
@@ -82,7 +83,11 @@ its sections show. `get_shopping_decision`, on every page, asks the BestPrice
 Shopping Brain (the public MCP endpoint's tool of the same name) with the
 shopper's own words and an optional Greek postcode, and returns the pick,
 alternatives, reasons, tradeoffs and unknowns; it is read-only and does not
-move the tab. Every tool declares `consequentialHint: false`.
+move the tab. `get_visible_products` can load a listing's next result page
+(`load_more`), `compare_page_offers` accepts the product id a decision names
+(`product_id`, as `bp_<id>` or numeric) and names an unknown-shipping offer it
+leaves out, and `get_product_specifications` reads a fact by its common English
+name. Every tool declares `consequentialHint: false`.
 
 Contract 1.7 (2026-09-22) makes every bounded read continuable and says how
 much of the page it covered: `get_visible_products`, `get_listing_filters` and
@@ -100,11 +105,10 @@ the schemas its pages register against the manifest it serves,
 output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
-`www.bestprice.gr` and `mcp.bestprice.gr` as one document. The evaluation
-datasets up to 8.0.0 grade against contract 1.6; `test/dataset-v3.test.js`
-names the arguments and tools published since, and
-[`evals/QUALIFICATION.md`](evals/QUALIFICATION.md) records the four frozen
-cases that expect the 1.6 search result.
+`www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
+9.0.0 grades contract 1.8 and is the default; 1.0.0–8.0.0 stay frozen, with
+their runs, as the history of contracts 1.6 and 1.7
+([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 
 The machine-readable production inventory is available at
 [`/.well-known/webmcp.json`](https://www.bestprice.gr/.well-known/webmcp.json).

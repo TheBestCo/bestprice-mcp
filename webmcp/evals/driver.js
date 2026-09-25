@@ -291,7 +291,7 @@ export async function initializeAdapterFromCase(adapter, caseDef) {
  * runner observed — a refusal where the page refused, a tool sequence completion otherwise — and
  * never paraphrases a result it did not read.
  */
-function defaultTerminal(trajectory) {
+function defaultTerminal(trajectory, caseDef) {
   if (trajectory.length === 0) {
     return { type: 'refusal', text: 'No tool was called for this case.' };
   }
@@ -300,6 +300,14 @@ function defaultTerminal(trajectory) {
     return {
       type: 'refusal',
       text: `The page refused ${last.tool}: ${last.result.error ?? 'no reason given'}.`,
+    };
+  }
+  /* A case that expects no call asks the agent to decline (neg-003 from dataset 4.0.0 on); the reads
+   * a plan made first are admitted extras, and the terminal says what was read, nothing more. */
+  if (Array.isArray(caseDef?.expected_tools) && caseDef.expected_tools.length === 0) {
+    return {
+      type: 'refusal',
+      text: `Declined: no tool does what the case asks. Read ${trajectory.map(step => step.tool).join(' → ')} only.`,
     };
   }
   return {
@@ -337,7 +345,7 @@ export function createDeterministicAgent(adapter) {
       }
 
       deriveJourney(caseDef);
-      const terminal = readTerminal({ terminal: caseDef.terminal }) ?? defaultTerminal(trajectory);
+      const terminal = readTerminal({ terminal: caseDef.terminal }) ?? defaultTerminal(trajectory, caseDef);
       const graded = gradeJourney(caseDef, { steps: trajectory, terminal });
       const { sequence } = graded;
 
@@ -346,10 +354,14 @@ export function createDeterministicAgent(adapter) {
       let toolsMatched = true;
       if (caseDef.sequence_mode === 'ordered' || caseDef.sequence_mode === 'unordered') {
         const expected = caseDef.expected_tools ?? [];
+        /* Admitted extra reads (dataset 3.0.0 on) are set aside before counting, as journey.js does
+         * before matching the chain; any other extra call still breaks the count. */
+        const extras = new Set(caseDef.extra_calls_allowed ?? []);
+        const counted = toolsCalled.filter(tool => expected.includes(tool) || !extras.has(tool));
         toolsMatched =
           expected.length === 0
             ? sequence === 'complete'
-            : sequence === 'complete' && toolsCalled.length === expected.length;
+            : sequence === 'complete' && counted.length === expected.length;
       } else if (caseDef.sequence_mode === 'any_of') {
         toolsMatched = sequence === 'complete';
       }
@@ -372,6 +384,10 @@ export function createDeterministicAgent(adapter) {
                   (propSchema.minimum !== undefined && argVal < propSchema.minimum) ||
                   (propSchema.maximum !== undefined && argVal > propSchema.maximum))
               ) {
+                argsValid = false;
+                break;
+              }
+              if (propSchema.type === 'boolean' && typeof argVal !== 'boolean') {
                 argsValid = false;
                 break;
               }
