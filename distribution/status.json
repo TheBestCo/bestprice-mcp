@@ -303,13 +303,13 @@
       "id": "webmcp-registry",
       "name": "WebMCP Registry",
       "state": "published",
-      "freshness": "stale-contract",
+      "freshness": "current",
       "url": "https://webmcp-registry.dev/domain/www.bestprice.gr",
       "verifiedAt": "2026-09-25",
-      "evidence": "Page shows \"13 tools registered · Commerce · verified 8/27/2026\", all v0.1 and updated 8/27/2026. Canonical show_offer is missing against the 14-tool webmcp.json.",
-      "note": "Domain is verified; writes need the domain-owner API key.",
-      "nextAction": "Re-register the 14-tool contract from www.bestprice.gr/webmcp.json with the domain-owner key.",
-      "nextActionBy": "us-external-login"
+      "evidence": "Page shows \"14 tools registered · Commerce · verified 8/27/2026\"; all 14 canonical tools, including show_offer, were re-registered from webmcp.json and show Updated 9/25/2026.",
+      "note": "Domain is verified by the DNS TXT record webmcp-verify; writes need the domain-owner API key.",
+      "nextAction": "None until the WebMCP contract changes; then re-register from www.bestprice.gr/webmcp.json.",
+      "nextActionBy": "none"
     },
     {
       "id": "webmcp-com",
@@ -318,9 +318,9 @@
       "freshness": "stale-contract",
       "url": "https://webmcp.com/api/v1/sites/www.bestprice.gr",
       "verifiedAt": "2026-09-25",
-      "evidence": "Site API returns bestprice.gr, category Commerce, toolCount 12 and an empty description. Canonical open_visible_product and show_offer are missing against the 14-tool contract.",
-      "note": "Crawler-populated (nekuda); no self-serve refresh found.",
-      "nextAction": "Ask the webmcp.com maintainers to rescan, or wait for the crawler to see the contextual tools.",
+      "evidence": "The public site API still serves the verified 2026-08-26 scan: 12 tools over /, a category page and an item page (open_visible_product and show_offer missing). A rescan requested on 2026-09-25 loaded only / and graded B- (1 tool, 11 \"removed\"); the listing refreshes only after their review.",
+      "note": "Crawler-populated by nekuda; the rescan form takes an email for the report and no page list. Category and item pages answer 200 to a headless Chrome user agent, so the one-page scan is on the crawler side.",
+      "nextAction": "Ask founders@nekuda.ai to keep the multi-page listing and rescan listing and item pages, which expose the 13 contextual tools.",
       "nextActionBy": "upstream"
     },
     {
@@ -354,22 +354,22 @@
       "freshness": "n/a",
       "url": "https://smithery.ai/servers/bestprice/shopping",
       "verifiedAt": "2026-09-25",
-      "evidence": "Not discoverable. Search and the registry API for \"bestprice\" return no BestPrice server, and registry.smithery.ai/servers/gr.bestprice/mcp returns 404. An empty reserved entry bestprice/shopping exists (no description, no deployments, remote false, tools null).",
-      "note": "Publication requires the authenticated owner of the bestprice namespace.",
-      "nextAction": "Log in to Smithery as the bestprice namespace owner and publish the remote URL https://mcp.bestprice.gr/mcp into bestprice/shopping with the decision-first description.",
-      "nextActionBy": "us-external-login"
+      "evidence": "The owner republished https://mcp.bestprice.gr/mcp?via=smithery into bestprice/shopping on 2026-09-25; the scan still fails with \"Initialization failed with status 500\". New Relic shows SmitheryBot initialize answered 200 (text/event-stream, 20 ms) and no follow-up request; the official TS SDK 1.30 and /.well-known/mcp/server-card.json both work.",
+      "note": "The failure is inside the Smithery gateway. Support was emailed at contact@smithery.ai on 2026-09-25.",
+      "nextAction": "Wait for Smithery support, then republish and confirm the scan lists four tools.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "lobehub",
       "name": "LobeHub MCP Marketplace",
       "state": "published",
-      "freshness": "stale",
+      "freshness": "current",
       "url": "https://lobehub.com/mcp/thebestco-bestprice-mcp",
       "verifiedAt": "2026-09-25",
-      "evidence": "An auto-indexed, \"Unvalidated\" GitHub listing exists: version 1.0.1, dated Sep 04 2026, three tools, category Stocks & Finance.",
-      "note": "lhm.plugin.json in this repository is current (server 1.8.1, four tools, three resources).",
-      "nextAction": "Log in with the LobeHub CLI, connect GitHub ownership, and publish lhm.plugin.json to replace the crawler snapshot. Fix the category to shopping.",
-      "nextActionBy": "us-external-login"
+      "evidence": "Claimed by the owner and updated from lhm.plugin.json on 2026-09-25: the market API returns version 1.8.1, four tools, three resources, category lifestyle, the current README, and deployments http https://mcp.bestprice.gr/mcp plus stdio node stdio.mjs.",
+      "note": "Repository enrichment also infers an npm artifact bestprice-mcp 1.2.7, a name that is not published on npm. The lobehub.com page cache lagged the market API at verification time.",
+      "nextAction": "Run `lhm plugin update` from this directory whenever lhm.plugin.json changes.",
+      "nextActionBy": "none"
     },
     {
       "id": "gemini-gallery",
