@@ -8,7 +8,7 @@
     "endpoint": "https://mcp.bestprice.gr/mcp",
     "tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
     "skill": "https://github.com/TheBestCo/bestprice-mcp/blob/main/skills/bestprice-shopping/SKILL.md",
-    "webmcpContractToolCount": 13
+    "webmcpContractToolCount": 15
   },
   "surfaces": [
     {
@@ -308,7 +308,7 @@
       "verifiedAt": "2026-09-25",
       "evidence": "Page shows \"15 tools registered · Commerce · verified 8/27/2026\" after re-registering the live contract 1.8 document (www release e0be10690f) on 2026-09-25, including get_shopping_decision.",
       "note": "Domain is verified by the DNS TXT record webmcp-verify; writes need the domain-owner API key.",
-      "nextAction": "Re-register the 13-tool contract 2.0 from https://www.bestprice.gr/webmcp.json once it serves revision 2026-09-25.13: open_product on every page (replacing open_visible_product and get_product_details), sort options in get_listing_filters, the chart in summarize_price_history, one-sentence descriptions.",
+      "nextAction": "Re-register the 15-tool contract 2.1 from https://www.bestprice.gr/webmcp.json once it serves revision 2026-09-25.14: every tool reads or acts (search_bestprice reads, open_search_results moves the tab; get_visible_products reads, load_more_products loads), receipts for open_product and the listing actions, short one-sentence descriptions, tools at 2.1.0.",
       "nextActionBy": "us-external-login"
     },
     {
@@ -320,7 +320,7 @@
       "verifiedAt": "2026-09-25",
       "evidence": "A rescan of the live contract 1.8 (release e0be10690f) graded B+ (up from B-): 4 tools on 1 scanned page (/). The scanner cites precise schemas and explicit success and refusal branches, and flags a product_id format mismatch (get_shopping_decision returned bp_ ids) and no product-page tools, because it never reached an item page. The listing refreshes after their review.",
       "note": "Crawler-populated by nekuda. The rescan form takes only an email address. Pages beyond / appear to follow sitemap order, and our sitemap index starts with blog posts, which registered no tools.",
-      "nextAction": "Request a rescan of contract 2.0: every public page registers search_bestprice, open_product and get_shopping_decision (13 tools in all), and get_shopping_decision returns the page tools' numeric product ids.",
+      "nextAction": "Request a rescan of contract 2.1: /.well-known/webmcp.json now lists scanner pages (a search, a category, a product, a hub, deals) beyond /, and every tool reads or acts, never both (15 tools).",
       "nextActionBy": "us-external-login"
     },
     {

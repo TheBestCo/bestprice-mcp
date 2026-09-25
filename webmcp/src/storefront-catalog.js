@@ -3,18 +3,17 @@
  *
  * The title, description (and any page type's own wording), input schema and output schema of every
  * BestPrice WebMCP tool, as the storefront registers them: bestprice.gr `extra/mcpDiscovery/webmcp-tools.json` (its generated copy of
- * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 2a849a63f1, WebMCP
- * contract 2.0. `contracts.js` publishes them as they are, and
+ * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 8e13c733ab, WebMCP
+ * contract 2.1. `contracts.js` publishes them as they are, and
  * `webmcp/test/contract-parity.test.js` compares every published definition with the snapshot.
  */
 
-export const WEBMCP_CONTRACT_VERSION = '2.0';
+export const WEBMCP_CONTRACT_VERSION = '2.1';
 
 export const STOREFRONT_CATALOG = {
   search_bestprice: {
     title: 'Search BestPrice products',
-    description:
-      'Finds products by name and optional limits; returns them and opens the results in this tab. For advice on what to buy, use get_shopping_decision.',
+    description: 'Searches BestPrice’s whole catalog and returns matching products; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -29,11 +28,6 @@ export const STOREFRONT_CATALOG = {
           minimum: 1,
           maximum: 8,
           description: 'Maximum results to return, from 1 to 8. Defaults to 6.',
-        },
-        navigate: {
-          type: 'boolean',
-          description:
-            'Move this tab to the results page after reading it. Defaults to true; false only reads.',
         },
         min_price_eur: {
           type: 'number',
@@ -51,15 +45,15 @@ export const STOREFRONT_CATALOG = {
           type: 'string',
           enum: ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'],
           description:
-            'Sorting of the results. relevance is the page’s default; newest, biggest_price_drop and most_stores only where the results page offers them (the answer says).',
+            'Result order. relevance is the default; newest, biggest_price_drop and most_stores only where offered.',
         },
         in_stock_only: {
           type: 'boolean',
-          description: 'Only products a store has in stock now («Άμεσα διαθέσιμα»). Defaults to false.',
+          description: 'Only products a store has in stock now. Defaults to false.',
         },
         deals_only: {
           type: 'boolean',
-          description: 'Only products priced below their earlier price («Προσφορές»). Defaults to false.',
+          description: 'Only products priced below their earlier price. Defaults to false.',
         },
       },
       required: ['query'],
@@ -134,7 +128,7 @@ export const STOREFRONT_CATALOG = {
                     type: 'string',
                     enum: ['not_offered', 'not_kept', 'no_product_list', 'no_products', 'page_unreadable'],
                     description:
-                      'not_offered: see offered_sorts. no_product_list: an overview or one product’s page. page_unreadable: results unnarrowed.',
+                      'not_offered: see offered_sorts. no_product_list: an overview or product page. page_unreadable: unnarrowed.',
                   },
                   offered_sorts: {
                     type: 'array',
@@ -194,24 +188,8 @@ export const STOREFRONT_CATALOG = {
                 required: ['product_id', 'title', 'current_min_price_eur', 'merchant_count'],
               },
             },
-            navigated: {
-              type: 'boolean',
-              description: 'The result, in one field: whether the tab moves to results_url.',
-            },
-            outcome: {
-              type: 'string',
-              const: 'confirmed',
-            },
             next_step: {
               type: 'string',
-            },
-            next_tools: {
-              type: 'array',
-              items: {
-                type: 'string',
-                pattern: '^[a-z][a-z0-9_]{0,63}$',
-              },
-              description: 'The destination page’s tools.',
             },
             note: {
               type: 'string',
@@ -227,7 +205,6 @@ export const STOREFRONT_CATALOG = {
             'returned',
             'omitted_products',
             'products',
-            'navigated',
             'next_step',
           ],
         },
@@ -247,21 +224,182 @@ export const STOREFRONT_CATALOG = {
               description:
                 'When given, one of: invalid_argument, timeout, upstream_unavailable, cancelled, unexpected_error.',
             },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
+  open_search_results: {
+    title: 'Open search results',
+    description: 'Opens BestPrice’s search results page for a query in this tab.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        query: {
+          type: 'string',
+          minLength: 2,
+          maxLength: 120,
+          description: 'Product, brand, model, or shopping need to search for, in Greek or English.',
+        },
+        min_price_eur: {
+          type: 'number',
+          minimum: 0,
+          maximum: 10000000,
+          description: 'Only products from this price in euros (item price before shipping).',
+        },
+        max_price_eur: {
+          type: 'number',
+          minimum: 0.01,
+          maximum: 10000000,
+          description: 'Only products up to this price in euros (item price before shipping).',
+        },
+        sort: {
+          type: 'string',
+          enum: ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'],
+          description:
+            'Result order. relevance is the default; newest, biggest_price_drop and most_stores only where offered.',
+        },
+        in_stock_only: {
+          type: 'boolean',
+          description: 'Only products a store has in stock now. Defaults to false.',
+        },
+        deals_only: {
+          type: 'boolean',
+          description: 'Only products priced below their earlier price. Defaults to false.',
+        },
+      },
+      required: ['query'],
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            outcome: {
+              type: 'string',
+              enum: ['confirmed', 'dispatched'],
+              description:
+                'confirmed: results_url was read before the tab moved there. dispatched: it moves there unread.',
+            },
             query: {
               type: 'string',
             },
             results_url: {
               type: 'string',
+              description: 'Where the tab moves, after this answer.',
             },
-            navigated: {
-              type: 'boolean',
+            page_title: {
+              type: ['string', 'null'],
             },
-            outcome: {
+            results_kind: {
               type: 'string',
-              const: 'dispatched',
+              enum: ['listing', 'featured', 'product', 'none'],
+              description: 'featured: a category’s highlighted rows. product: one product’s own page.',
+            },
+            applied: {
+              type: 'object',
+              properties: {
+                min_price_eur: {
+                  type: 'number',
+                },
+                max_price_eur: {
+                  type: 'number',
+                },
+                sort: {
+                  type: 'string',
+                  enum: [
+                    'relevance',
+                    'price_asc',
+                    'price_desc',
+                    'biggest_price_drop',
+                    'most_stores',
+                    'newest',
+                  ],
+                },
+                in_stock_only: {
+                  type: 'boolean',
+                },
+                deals_only: {
+                  type: 'boolean',
+                },
+              },
+            },
+            not_applied: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  constraint: {
+                    type: 'string',
+                    enum: ['min_price_eur', 'max_price_eur', 'sort', 'in_stock_only', 'deals_only'],
+                  },
+                  reason: {
+                    type: 'string',
+                    enum: ['not_offered', 'not_kept', 'no_product_list', 'no_products', 'page_unreadable'],
+                    description:
+                      'not_offered: see offered_sorts. no_product_list: an overview or product page. page_unreadable: unnarrowed.',
+                  },
+                  offered_sorts: {
+                    type: 'array',
+                    items: {
+                      type: 'string',
+                      enum: [
+                        'relevance',
+                        'price_asc',
+                        'price_desc',
+                        'biggest_price_drop',
+                        'most_stores',
+                        'newest',
+                      ],
+                    },
+                  },
+                },
+                required: ['constraint', 'reason'],
+              },
+            },
+            unconfirmed_reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description: 'Why the destination could not be read first, e.g. timeout.',
+            },
+            next_tools: {
+              type: 'array',
+              items: {
+                type: 'string',
+                pattern: '^[a-z][a-z0-9_]{0,63}$',
+              },
+              description: 'The destination page’s tools.',
             },
             next_step: {
               type: 'string',
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: ['ok', 'outcome', 'query', 'results_url', 'next_step'],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description: 'When given, one of: invalid_argument, cancelled.',
             },
           },
           required: ['ok', 'error'],
@@ -271,8 +409,7 @@ export const STOREFRONT_CATALOG = {
   },
   get_visible_products: {
     title: 'Products on this page',
-    description:
-      'Reads the products shown on this listing or home page and returns their ids, titles, prices and store counts; load_more loads the next page of results.',
+    description: 'Lists the product cards shown on this page; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -286,13 +423,7 @@ export const STOREFRONT_CATALOG = {
           type: 'integer',
           minimum: 0,
           maximum: 9007199254740991,
-          description:
-            'Use next_offset from the previous result on the same page. Defaults to 0, or with load_more to the first newly loaded product.',
-        },
-        load_more: {
-          type: 'boolean',
-          description:
-            'Listing pages: first load the next result page into this listing, as the shopper’s scroll does, then read from its first new product. Use it when more_pages is true. The only argument that changes the page.',
+          description: 'Use next_offset from the previous result on this page. Defaults to 0.',
         },
       },
       additionalProperties: false,
@@ -319,7 +450,7 @@ export const STOREFRONT_CATALOG = {
             },
             more_pages: {
               type: 'boolean',
-              description: 'Pass load_more: true for the next page.',
+              description: 'More result pages exist than this page has loaded.',
             },
             returned: {
               type: 'integer',
@@ -408,10 +539,79 @@ export const STOREFRONT_CATALOG = {
       ],
     },
   },
+  load_more_products: {
+    title: 'Load more products',
+    description: 'Loads the next page of results into this listing, as scrolling does.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            outcome: {
+              type: 'string',
+              const: 'observed_complete',
+            },
+            shown_products: {
+              type: 'integer',
+            },
+            new_products: {
+              type: 'integer',
+            },
+            next_offset: {
+              type: ['integer', 'null'],
+              description: 'The first new product: pass it as get_visible_products’ offset.',
+            },
+            result_pages_loaded: {
+              type: 'integer',
+            },
+            result_pages_total: {
+              type: 'integer',
+            },
+            more_pages: {
+              type: 'boolean',
+              description: 'More result pages exist than this page has loaded.',
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: ['ok', 'outcome', 'shown_products', 'new_products', 'next_offset', 'more_pages'],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description:
+                'When given, one of: not_available, upstream_unavailable, cancelled, invalid_argument.',
+            },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
   open_product: {
     title: 'Open a product',
-    description:
-      'Opens a BestPrice product by product_id in this tab after reading its page, and returns its title, price, store count and rating.',
+    description: 'Opens a product’s BestPrice page in this tab by product_id.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -438,7 +638,7 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
               enum: ['confirmed', 'dispatched'],
               description:
-                'confirmed: read from bestprice_url before the tab moved there; no follow-up read. dispatched: the tab moves there unread (unconfirmed_reason).',
+                'confirmed: bestprice_url was read before the tab moved there. dispatched: it moves there unread.',
             },
             product_id: {
               type: 'string',
@@ -447,22 +647,6 @@ export const STOREFRONT_CATALOG = {
             },
             title: {
               type: 'string',
-            },
-            category: {
-              type: 'string',
-            },
-            current_min_price_eur: {
-              type: ['number', 'null'],
-              description: 'Lowest item price, before shipping.',
-            },
-            offer_count: {
-              type: 'integer',
-            },
-            rating: {
-              type: ['number', 'null'],
-            },
-            rating_count: {
-              type: 'integer',
             },
             bestprice_url: {
               type: 'string',
@@ -510,8 +694,7 @@ export const STOREFRONT_CATALOG = {
   },
   get_listing_filters: {
     title: 'Filters and sort options',
-    description:
-      'Reads this listing’s filters and sort options and returns each filter’s values, the sort keys and what is selected; changes nothing.',
+    description: 'Lists this listing’s filters, their values and its sort options; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -520,7 +703,7 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 64,
           description:
-            'A filter key or name a previous call returned; returns that filter with all of its values, including those behind «Εμφάνιση όλων».',
+            'A filter key or name from a previous call; returns that filter with all of its values.',
         },
         offset: {
           type: 'integer',
@@ -667,8 +850,7 @@ export const STOREFRONT_CATALOG = {
   },
   apply_listing_filter: {
     title: 'Apply a filter',
-    description:
-      'Applies one filter value to this listing, reloads it and returns the filter, the total and the first products the new page shows.',
+    description: 'Applies one filter value to this listing and reloads it.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -682,8 +864,7 @@ export const STOREFRONT_CATALOG = {
           type: 'string',
           minLength: 1,
           maxLength: 72,
-          description:
-            'A value exactly as get_listing_filters returned it; a unique part of it also works; an ambiguous one is refused.',
+          description: 'A value as get_listing_filters returned it; a unique part of it also works.',
         },
       },
       required: ['filter', 'value'],
@@ -699,28 +880,17 @@ export const STOREFRONT_CATALOG = {
               type: 'boolean',
               const: true,
             },
-            action: {
+            outcome: {
               type: 'string',
-              enum: ['applied_filter', 'filter_already_applied', 'filter_dispatched'],
+              enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed', 'unchanged'],
+              description:
+                'confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read.',
             },
             filter: {
               type: 'string',
             },
             value: {
               type: 'string',
-            },
-            applied: {
-              type: 'boolean',
-              description: 'Shown by the page itself.',
-            },
-            dispatched: {
-              type: 'boolean',
-            },
-            outcome: {
-              type: 'string',
-              enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed'],
-              description:
-                'The result, in one field. confirmed: read from the destination before the tab moved; no follow-up read. observed_complete: shown here. dispatched: the tab moves, destination unread (unconfirmed_reason). unconfirmed: read the page again.',
             },
             destination_url: {
               type: 'string',
@@ -729,7 +899,7 @@ export const STOREFRONT_CATALOG = {
             destination: {
               type: 'object',
               description:
-                'What the destination page shows, read before the tab moved there: its filters, sort, total and first products.',
+                'The destination as read before the tab moved: its filters, sort, total and first products.',
               properties: {
                 url: {
                   type: 'string',
@@ -799,7 +969,7 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
             },
           },
-          required: ['ok', 'action', 'filter', 'value'],
+          required: ['ok', 'outcome', 'filter', 'value'],
         },
         {
           type: 'object',
@@ -825,8 +995,7 @@ export const STOREFRONT_CATALOG = {
   },
   clear_listing_filters: {
     title: 'Remove filters',
-    description:
-      'Removes one filter value, one filter or all filters from this listing, reloads it and returns what the new page shows.',
+    description: 'Removes one filter value, one filter or every filter from this listing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -835,7 +1004,7 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 64,
           description:
-            'Remove only this filter (name or key as get_listing_filters returned it). Without it, every filter goes.',
+            'Remove only this filter (name or key from get_listing_filters). Without it, every filter goes.',
         },
         value: {
           type: 'string',
@@ -856,38 +1025,17 @@ export const STOREFRONT_CATALOG = {
               type: 'boolean',
               const: true,
             },
-            action: {
+            outcome: {
               type: 'string',
-              enum: [
-                'cleared_listing_filters',
-                'clearing_filters_dispatched',
-                'filters_already_clear',
-                'removed_filter',
-                'filter_removal_dispatched',
-                'filter_already_clear',
-              ],
-            },
-            changed: {
-              type: 'boolean',
+              enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed', 'unchanged'],
+              description:
+                'confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read.',
             },
             filter: {
               type: 'string',
             },
             value: {
               type: 'string',
-            },
-            applied: {
-              type: 'boolean',
-              description: 'Shown by the page itself.',
-            },
-            dispatched: {
-              type: 'boolean',
-            },
-            outcome: {
-              type: 'string',
-              enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed'],
-              description:
-                'The result, in one field. confirmed: read from the destination before the tab moved; no follow-up read. observed_complete: shown here. dispatched: the tab moves, destination unread (unconfirmed_reason). unconfirmed: read the page again.',
             },
             destination_url: {
               type: 'string',
@@ -896,7 +1044,7 @@ export const STOREFRONT_CATALOG = {
             destination: {
               type: 'object',
               description:
-                'What the destination page shows, read before the tab moved there: its filters, sort, total and first products.',
+                'The destination as read before the tab moved: its filters, sort, total and first products.',
               properties: {
                 url: {
                   type: 'string',
@@ -966,7 +1114,7 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
             },
           },
-          required: ['ok', 'action'],
+          required: ['ok', 'outcome'],
         },
         {
           type: 'object',
@@ -992,8 +1140,7 @@ export const STOREFRONT_CATALOG = {
   },
   apply_listing_sort: {
     title: 'Sort this listing',
-    description:
-      'Sorts this listing by a sort key or label, reloads it and returns the sort, the total and the first products the new page shows.',
+    description: 'Sorts this listing by a sort key or option label.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -1002,7 +1149,7 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 72,
           description:
-            'A sort key get_listing_filters returned (relevance, price_asc, price_desc, biggest_price_drop, most_stores, newest) or an option’s label; one unambiguous partial label also works.',
+            'A sort key or option label from get_listing_filters; a unique part of a label also works.',
         },
       },
       required: ['sort'],
@@ -1018,25 +1165,14 @@ export const STOREFRONT_CATALOG = {
               type: 'boolean',
               const: true,
             },
-            action: {
+            outcome: {
               type: 'string',
-              enum: ['applied_sorting', 'sorting_already_applied', 'sorting_dispatched'],
+              enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed', 'unchanged'],
+              description:
+                'confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read.',
             },
             sort: {
               type: 'string',
-            },
-            applied: {
-              type: 'boolean',
-              description: 'Shown by the page itself.',
-            },
-            dispatched: {
-              type: 'boolean',
-            },
-            outcome: {
-              type: 'string',
-              enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed'],
-              description:
-                'The result, in one field. confirmed: read from the destination before the tab moved; no follow-up read. observed_complete: shown here. dispatched: the tab moves, destination unread (unconfirmed_reason). unconfirmed: read the page again.',
             },
             destination_url: {
               type: 'string',
@@ -1045,7 +1181,7 @@ export const STOREFRONT_CATALOG = {
             destination: {
               type: 'object',
               description:
-                'What the destination page shows, read before the tab moved there: its filters, sort, total and first products.',
+                'The destination as read before the tab moved: its filters, sort, total and first products.',
               properties: {
                 url: {
                   type: 'string',
@@ -1115,7 +1251,7 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
             },
           },
-          required: ['ok', 'action', 'sort'],
+          required: ['ok', 'outcome', 'sort'],
         },
         {
           type: 'object',
@@ -1141,7 +1277,7 @@ export const STOREFRONT_CATALOG = {
   get_page_product: {
     title: 'Product on this page',
     description:
-      'Reads the product on this page and returns its id, title, category, lowest price before shipping, store count and rating; changes nothing.',
+      'Reads the product on this page: id, title, lowest price, store count and rating; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {},
@@ -1223,8 +1359,7 @@ export const STOREFRONT_CATALOG = {
   },
   compare_page_offers: {
     title: 'Compare store offers',
-    description:
-      'Ranks this product’s store offers by delivered price, 12 per call, and returns store, price, shipping, availability and offer_ref for each; changes nothing.',
+    description: 'Ranks this product’s store offers by delivered price, item plus shipping; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -1232,8 +1367,7 @@ export const STOREFRONT_CATALOG = {
           type: 'integer',
           minimum: 1,
           maximum: 12,
-          description:
-            'Offers to return, from 1 to 12. Defaults to 4. Lowest known delivered price first, then unknown shipping by item price.',
+          description: 'Offers to return, from 1 to 12. Defaults to 4.',
         },
         offset: {
           type: 'integer',
@@ -1244,7 +1378,7 @@ export const STOREFRONT_CATALOG = {
         include_all_stores: {
           type: 'boolean',
           description:
-            'First load the stores this page keeps behind «Όλες οι τιμές», as when the shopper presses it. Defaults to false.',
+            'First load every store this page holds back, as its all-prices button does. Defaults to false.',
         },
         product_id: {
           type: 'string',
@@ -1461,8 +1595,7 @@ export const STOREFRONT_CATALOG = {
   },
   get_product_specifications: {
     title: 'Product specifications',
-    description:
-      'Reads this product’s specifications, all or one section or fact, and returns section, name and value rows; changes nothing.',
+    description: 'Reads this product’s specifications, all or by section or fact; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -1484,14 +1617,14 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 72,
           description:
-            'A specification fact name, such as one a previous call returned, or a common English name (refresh rate, screen size, weight, energy class…) matched to the product’s own Greek one. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section.',
+            'A fact name a previous call returned, or a common English one such as screen size or weight.',
         },
         offset: {
           type: 'integer',
           minimum: 0,
           maximum: 9007199254740991,
           description:
-            'Use next_offset from the previous result, keeping the same product and section. Defaults to 0. Do not combine with fact.',
+            'Use next_offset from the previous result with the same section. Defaults to 0; not with fact.',
         },
       },
       additionalProperties: false,
@@ -1612,8 +1745,7 @@ export const STOREFRONT_CATALOG = {
   },
   summarize_price_history: {
     title: 'Price history',
-    description:
-      'Summarizes this product’s price history and returns the current, lowest and highest prices and the trend; show_chart also opens the chart.',
+    description: 'Summarizes this product’s price history and trend; show_chart also shows the chart.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -1746,8 +1878,7 @@ export const STOREFRONT_CATALOG = {
   },
   show_offer: {
     title: 'Show a store offer',
-    description:
-      'Scrolls this page to one store offer and highlights it so the shopper can open that store, and returns the offer; opens no store site.',
+    description: 'Scrolls to one store offer on this page and highlights it; opens no store site.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -1756,14 +1887,14 @@ export const STOREFRONT_CATALOG = {
           minLength: 8,
           maxLength: 40,
           description:
-            'Pass offer_ref (from compare_page_offers) or, failing that, merchant_name. Exact, and the only selector that can separate two stores with the same displayed name; a reference names one quote and is refused once the page state, the merchant, the variant or any price or shipping amount changes: read the offers again.',
+            'Pass offer_ref (from compare_page_offers) or, failing that, merchant_name. Refused once that offer changes.',
         },
         merchant_name: {
           type: 'string',
           minLength: 2,
           maxLength: 68,
           description:
-            'Only without offer_ref: the merchant name exactly as compare_page_offers returned it; it must match exactly one shown offer.',
+            'Only without offer_ref: the store name exactly as compare_page_offers returned it, for one offer.',
         },
       },
       additionalProperties: false,
@@ -1860,7 +1991,7 @@ export const STOREFRONT_CATALOG = {
   get_shopping_decision: {
     title: 'Get a shopping decision',
     description:
-      'Asks the Shopping Brain what to buy for a need and returns a pick, alternatives and reasons; changes nothing. To find a named product, use search_bestprice.',
+      'Recommends what to buy for a shopper’s need, with alternatives and reasons; changes nothing.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -1869,13 +2000,13 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 2000,
           description:
-            'The shopper’s question as they asked it (Greek or English), with budget and required features, e.g. «κινητό έως 400€ με NFC». Sent to the Shopping Brain on mcp.bestprice.gr.',
+            'The shopper’s question as asked, with budget and must-have features, e.g. phone under 400€ with NFC.',
         },
         postal_code: {
           type: 'string',
           pattern: '^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$',
           description:
-            'Optional five-digit Greek delivery postcode the shopper gave (10000–85999); adds shipping and delivered totals.',
+            'Optional five-digit Greek delivery postcode the shopper gave; adds shipping and delivered totals.',
         },
       },
       required: ['message'],

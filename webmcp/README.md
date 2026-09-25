@@ -2,9 +2,10 @@
 
 BestPrice adds page-local WebMCP tools to the shopping journey at
 [`www.bestprice.gr`](https://www.bestprice.gr/). A compatible agent can search
-and read the results, inspect the products and controls that are actually on the
-open page (the home page's sections included), apply a visible filter or sorting
-option, open any product by id (its page read before the tab moves), compare
+and read the results or show them in the tab, inspect the products and controls
+that are actually on the open page (the home page's sections included) and load
+more of a listing, apply a visible filter or sorting option, open any product by
+id (its page read before the tab moves), compare
 rendered offers, read specifications, inspect price history and open its chart,
 move the shopper's own tab to one offer the page already shows, and ask the
 BestPrice Shopping Brain what to buy — from every public BestPrice page, articles
@@ -36,8 +37,8 @@ npm test
 
 ## Source map
 
-- [`src/contracts.js`](src/contracts.js) contains the 13 contextual tool
-  contracts of WebMCP contract 2.0: input and output schemas and safety
+- [`src/contracts.js`](src/contracts.js) contains the 15 contextual tool
+  contracts of WebMCP contract 2.1: input and output schemas and safety
   annotations. Each tool's title, description, input and output schema come from
   [`src/storefront-catalog.js`](src/storefront-catalog.js), generated from the
   storefront's own catalog.
@@ -55,7 +56,7 @@ npm test
   runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
   validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned Greek natural-language dataset
-  (v1–v12 frozen; v13, 47 cases grading contract 2.0, current) and the separate deterministic
+  (v1–v13 frozen; v14, 47 cases grading contract 2.1, current) and the separate deterministic
   and browser-agent evaluation criteria.
 
 ## Production surface
@@ -64,18 +65,43 @@ Production registers only the tools relevant to the open page:
 
 | Page | Tools |
 | --- | ---: |
-| Home | 4 |
-| Search, category, or hub listing | 8 |
-| Product page | 8 |
-| Any other public page (articles, deals, stores, brands, …) | 3 |
-| Unique contracts | 13 |
+| Home | 5 |
+| Search, category, or hub listing | 10 |
+| Product page | 9 |
+| Any other public page (articles, deals, stores, brands, …) | 4 |
+| Unique contracts | 15 |
 
-Every page registers `search_bestprice` first, `open_product` among its own tools,
-and `get_shopping_decision` last. The product page's `show_offer` is an action
-verb: it scrolls to one rendered offer and marks it for the shopper, and it
-returns no merchant link.
+Every page registers `search_bestprice` first, `open_search_results` second,
+`open_product` among its own tools, and `get_shopping_decision` last. The
+product page's `show_offer` is an action verb: it scrolls to one rendered offer
+and marks it for the shopper, and it returns no merchant link.
 
-Contract 2.0 (2026-09-25, registration revision 2026-09-25.13) consolidates the
+Contract 2.1 (2026-09-25, registration revision 2026-09-25.14) makes every tool
+read or act, never both. `search_bestprice` only reads — `navigate` is gone and
+the tab never moves (an older agent's `navigate` is tolerated and ignored) — and
+`open_search_results` (every page) shows the same search, constraints included,
+in the tab: it reads the results page first and answers with a receipt
+(`outcome`, `results_url`, what applied), never the products.
+`get_visible_products` only reads, and `load_more_products` (listings) loads the
+next result page and answers with how many products it added and where they
+start (`next_offset`). `open_product` answers with a receipt — `outcome`,
+`product_id`, `title`, `bestprice_url` — and the product page's
+`get_page_product` has its facts. The listing actions report one status field,
+`outcome` (`confirmed`, `observed_complete`, `dispatched`, `unconfirmed` or
+`unchanged`), in place of `action`, `applied`, `dispatched` and `changed`. Every
+description is one short plain sentence (at least 40 characters) that names no
+tool; a read ends «changes nothing». Every tool is at version `2.1.0`, and
+`/.well-known/webmcp.json` carries a `pages` list of paths for scanners, after
+`updated_at` and before `tools`.
+
+| Contract 2.0 | Contract 2.1 |
+| --- | --- |
+| `search_bestprice` (moved the tab unless `navigate: false`) | `search_bestprice` (reads) and `open_search_results` (moves the tab) |
+| `get_visible_products { load_more: true }` | `load_more_products`, then `get_visible_products` from its `next_offset` |
+| `open_product` facts (category, price, stores, rating) | `get_page_product` on the page it opened |
+| listing `action`, `applied`, `dispatched`, `changed` | `outcome` (`unchanged` for an `*_already_*` action) |
+
+Contract 2.0 (2026-09-25, registration revision 2026-09-25.13) consolidated the
 surface to 13 tools. `open_product` opens any BestPrice product by `product_id`
 from every page — a search result, a card, the Shopping Brain's pick: it reads
 the product page first and answers `outcome: 'confirmed'` with its facts (title,
@@ -187,8 +213,8 @@ output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
-13.0.0 grades contract 2.0 and is the default; 1.0.0–12.0.0 stay frozen, with
-their runs, as the history of contracts 1.6 to 1.9
+14.0.0 grades contract 2.1 and is the default; 1.0.0–13.0.0 stay frozen, with
+their runs, as the history of contracts 1.6 to 2.0
 ([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 
 The machine-readable production inventory is available at

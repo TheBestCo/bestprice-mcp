@@ -87,7 +87,12 @@ describe('dataset 3.0.0', () => {
       }
       for (const name of Object.keys(rules)) if (!(name in frozen)) since.push(`${tool}.${name}`);
     }
-    assert.deepEqual(newTools.sort(), ['get_shopping_decision', 'open_product']);
+    assert.deepEqual(newTools.sort(), [
+      'get_shopping_decision',
+      'load_more_products',
+      'open_product',
+      'open_search_results',
+    ]);
     /* Contract 2.0 removed three of 1.6's tools (and 1.9's get_product_details). */
     assert.deepEqual(
       Object.keys(CONTRACT_1_6_ARGUMENT_RULES)
@@ -109,14 +114,12 @@ describe('dataset 3.0.0', () => {
       'get_listing_filters.group',
       'get_listing_filters.offset',
       'get_product_specifications.offset',
-      'get_visible_products.load_more',
       'get_visible_products.offset',
       'search_bestprice.deals_only',
       'search_bestprice.in_stock_only',
       'search_bestprice.limit',
       'search_bestprice.max_price_eur',
       'search_bestprice.min_price_eur',
-      'search_bestprice.navigate',
       'search_bestprice.sort',
       'summarize_price_history.show_chart',
     ]);
@@ -137,14 +140,16 @@ describe('dataset 3.0.0', () => {
     /* Contract 1.8 published one more read-only tool; admitting it is a later version. */
     assert.deepEqual(
       readOnlyTools().filter(name => !CONTRACT_1_6_READ_ONLY_TOOLS.includes(name)),
-      /* get_product_details was read-only in 1.9 as first published, until it gained `navigate`. */
-      ['get_shopping_decision'],
+      /* get_product_details was read-only in 1.9 as first published, until it gained `navigate`;
+       * search_bestprice is read-only since contract 2.1, which moved `navigate` to open_search_results. */
+      ['get_shopping_decision', 'search_bestprice'],
     );
-    /* Revision 2026-09-25.12: two of 1.6's reads act when asked (load_more, show_chart); contract 2.0
-     * folded get_listing_sort_options into get_listing_filters. */
+    /* summarize_price_history acts when asked (show_chart, revision 2026-09-25.12); contract 2.0
+     * folded get_listing_sort_options into get_listing_filters; contract 2.1 made get_visible_products a
+     * read again, its load_more now load_more_products. */
     assert.deepEqual(
       CONTRACT_1_6_READ_ONLY_TOOLS.filter(name => !readOnlyTools().includes(name)),
-      ['get_listing_sort_options', 'get_visible_products', 'summarize_price_history'],
+      ['get_listing_sort_options', 'summarize_price_history'],
     );
   });
 

@@ -1,5 +1,5 @@
 /**
- * WebMCP tool contracts for BestPrice pages (contract 2.0).
+ * WebMCP tool contracts for BestPrice pages (contract 2.1).
  *
  * Each contract is a plain description (name, title, description, annotations, JSON Schema input and
  * output). `createTools` binds the contracts a page exposes to an `execute` function supplied by the
@@ -26,6 +26,11 @@ export { WEBMCP_CONTRACT_VERSION };
  * assume the worst. Every result carries catalog or page text, so every one is untrusted content.
  */
 
+/*
+ * The storefront's annotation sets (js/modules/webmcp/annotations.js since contract 2.1, where every
+ * tool reads or acts, never both).
+ */
+
 /** Tools that only read what is already rendered on the page. */
 const READ_ONLY = { readOnlyHint: true, consequentialHint: false, untrustedContentHint: true };
 
@@ -39,8 +44,17 @@ const NAVIGATION = {
   untrustedContentHint: true,
 };
 
-/** A read that can load more into the page (get_visible_products' `load_more`): not idempotent. */
-const LOADING = { ...NAVIGATION, idempotentHint: false };
+/** An action that adds to what the page shows (load_more_products): each call loads another page. */
+const LOADS_MORE = { ...NAVIGATION, idempotentHint: false };
+
+/** search_bestprice (contract 2.1): a read of BestPrice's own results; asking again reads again. */
+const SEARCH_READ = {
+  readOnlyHint: true,
+  idempotentHint: true,
+  openWorldHint: false,
+  consequentialHint: false,
+  untrustedContentHint: true,
+};
 
 /**
  * A read that asks BestPrice's own server rather than the rendered page — the Shopping Brain on
@@ -65,13 +79,18 @@ const FETCHED_READ = {
  * (2026-09-25) consolidates the surface to 13 tools: open_product opens any product by id from every
  * page, replacing open_visible_product and get_product_details; get_listing_filters also returns the
  * sort options, replacing get_listing_sort_options; summarize_price_history's `show_chart` replaces
- * show_price_history.
+ * show_price_history. Contract 2.1 (2026-09-25) splits every tool that both read and acted: search reads
+ * and open_search_results moves the tab (15 tools); get_visible_products reads and load_more_products
+ * loads; open_product and the listing actions answer with a receipt.
  */
 const DEFINITIONS = [
-  { name: 'search_bestprice', annotations: NAVIGATION },
-  /* `load_more` loads the listing's next result page into it: not read-only, not idempotent. */
-  { name: 'get_visible_products', annotations: LOADING },
-  /* Contract 2.0: reads the product page, then moves the tab there. */
+  /* Contract 2.1: search reads only; open_search_results shows the same results in this tab. */
+  { name: 'search_bestprice', annotations: SEARCH_READ },
+  { name: 'open_search_results', annotations: NAVIGATION },
+  /* Contract 2.1: reading the cards and loading the next result page are two tools. */
+  { name: 'get_visible_products', annotations: READ_ONLY },
+  { name: 'load_more_products', annotations: LOADS_MORE },
+  /* Contract 2.0: reads the product page, then moves the tab there (a receipt since 2.1). */
   { name: 'open_product', annotations: NAVIGATION },
   { name: 'get_listing_filters', annotations: READ_ONLY },
   { name: 'apply_listing_filter', annotations: NAVIGATION },
@@ -101,10 +120,18 @@ const deepFreeze = value => {
  * brands, collections, comparisons, stories.
  */
 export const PAGE_TOOL_NAMES = deepFreeze({
-  home: ['search_bestprice', 'get_visible_products', 'open_product', 'get_shopping_decision'],
+  home: [
+    'search_bestprice',
+    'open_search_results',
+    'get_visible_products',
+    'open_product',
+    'get_shopping_decision',
+  ],
   listing: [
     'search_bestprice',
+    'open_search_results',
     'get_visible_products',
+    'load_more_products',
     'open_product',
     'get_listing_filters',
     'apply_listing_filter',
@@ -114,6 +141,7 @@ export const PAGE_TOOL_NAMES = deepFreeze({
   ],
   product: [
     'search_bestprice',
+    'open_search_results',
     'open_product',
     'get_page_product',
     'compare_page_offers',
@@ -122,7 +150,7 @@ export const PAGE_TOOL_NAMES = deepFreeze({
     'show_offer',
     'get_shopping_decision',
   ],
-  site: ['search_bestprice', 'open_product', 'get_shopping_decision'],
+  site: ['search_bestprice', 'open_search_results', 'open_product', 'get_shopping_decision'],
 });
 
 /* Fail at module load if a definition has no storefront catalog entry, or the catalog one without a

@@ -63,6 +63,8 @@ export const STOREFRONT_SOURCES = Object.freeze([
   'js/modules/webmcp/search-constraints.js',
   /* Revision 2026-09-25.12: every input schema's one source, which the generated document carries. */
   'js/modules/webmcp/input-schemas.js',
+  /* Contract 2.1: the annotation sets every page registers (READ_ONLY, LOADS_MORE, NAVIGATION). */
+  'js/modules/webmcp/annotations.js',
   'js/modules/webmcp/output-schemas.js',
 ]);
 
@@ -447,6 +449,8 @@ function readModule(tokens) {
   const constants = new Map();
   const exported = new Set();
   const imports = [];
+  /* `export { local as name }`: the name another module imports, and the binding it is here. */
+  const aliases = new Map();
   let depth = 0;
   for (let index = 0; index < tokens.length; index += 1) {
     const token = tokens[index];
@@ -458,6 +462,18 @@ function readModule(tokens) {
     if (depth !== 0 || token.type !== 'identifier') continue;
     if (token.value === 'import') {
       imports.push(...readImport(tokens, index + 1));
+      continue;
+    }
+    /* Contract 2.1: `export { NAVIGATION, READ_ONLY };` passes on bindings the module imported, and
+     * `export { a as b } from './x'` re-exports another file's; both are exports a page imports. */
+    if (token.value === 'export' && tokens[index + 1]?.value === '{') {
+      const list = readExportList(tokens, index + 1);
+      for (const { local, name } of list.names) {
+        exported.add(name);
+        if (list.specifier) imports.push({ imported: local, local: name, specifier: list.specifier });
+        else if (local !== name) aliases.set(name, local);
+      }
+      index = list.next - 1;
       continue;
     }
     const isConst =
@@ -475,7 +491,28 @@ function readModule(tokens) {
     constants.set(name, parsed.value);
     if (tokens[index - 1]?.value === 'export') exported.add(name);
   }
-  return { constants, exported, imports };
+  return { constants, exported, imports, aliases };
+}
+
+/** `export { a, b as c } [from 'specifier'];` from its `{` → `{ names: [{ local, name }], specifier, next }`. */
+function readExportList(tokens, index) {
+  const names = [];
+  let cursor = index + 1;
+  while (cursor < tokens.length && tokens[cursor].value !== '}') {
+    if (tokens[cursor].type === 'identifier') {
+      const local = tokens[cursor].value;
+      const renamed = tokens[cursor + 1]?.value === 'as' && tokens[cursor + 2]?.type === 'identifier';
+      names.push({ local, name: renamed ? tokens[cursor + 2].value : local });
+      cursor += renamed ? 3 : 1;
+      continue;
+    }
+    cursor += 1;
+  }
+  cursor += 1;
+  if (tokens[cursor]?.value === 'from' && tokens[cursor + 1]?.type === 'string') {
+    return { names, specifier: tokens[cursor + 1].value, next: cursor + 2 };
+  }
+  return { names, specifier: null, next: cursor };
 }
 
 /** `import [Default,] { a, b as c } from 'specifier'` → `[{ imported, local, specifier }]`. */
@@ -654,6 +691,7 @@ function readRegisteredTools(root) {
       if (value !== undefined) scope.set(local, value);
     }
     for (const [name, value] of module.constants) scope.set(name, value);
+    for (const [name, local] of module.aliases) if (scope.has(local)) scope.set(name, scope.get(local));
     const resolved = new Map([...scope].map(([name, value]) => [name, resolveConstants(value, scope)]));
     scopes.set(path, resolved);
     return resolved;

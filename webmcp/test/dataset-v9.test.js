@@ -86,7 +86,8 @@ describe('dataset 9.0.0', () => {
   it('passes a 1.8 search that 8.0.0 failed, and still fails one that breaks a bound', async () => {
     const adapter = createDemoAdapter();
     const args = { query: 'iPhone 16 128GB', navigate: false };
-    const result = await adapter.execute('search_bestprice', args);
+    /* Contract 2.1's search reads only and carries no `navigated`; the 1.8 result this set grades did. */
+    const result = { ...(await adapter.execute('search_bestprice', args)), navigated: false };
     const steps = [{ tool: 'search_bestprice', arguments: args, result }];
     assert.equal(gradeJourney(before.get('home-001'), { steps, terminal }).outcome, 'failed');
     const graded = gradeJourney(after.get('home-001'), { steps, terminal });

@@ -1,9 +1,9 @@
 {
   "what": "The strict output contract of every BestPrice WebMCP tool (closed and bounded), which the published output schemas relax; the tests validate every demo result against it.",
   "sourceOfTruth": "bestprice.gr",
-  "sourceCommit": "2a849a63f1d72ec3c6ce52d0601adca41c1b3f81",
+  "sourceCommit": "8e13c733abbbe5b63def45472c078a006d5fcbb9",
   "path": "js/modules/webmcp/output-schemas.js",
-  "sha256": "600655c769061a69c0c10aab3f7ebda4836c3286c48005e9408e540cc1246599",
+  "sha256": "d6e94cfc56484c5afea3e5899f0345f17933ab67b11c839fcd16b107e2fb189d",
   "schemas": {
     "search_bestprice": {
       "type": "object",
@@ -89,7 +89,7 @@
                   "reason": {
                     "type": "string",
                     "enum": ["not_offered", "not_kept", "no_product_list", "no_products", "page_unreadable"],
-                    "description": "not_offered: see offered_sorts. no_product_list: an overview or one product’s page. page_unreadable: results unnarrowed."
+                    "description": "not_offered: see offered_sorts. no_product_list: an overview or product page. page_unreadable: unnarrowed."
                   },
                   "offered_sorts": {
                     "type": "array",
@@ -165,26 +165,9 @@
                 "additionalProperties": false
               }
             },
-            "navigated": {
-              "type": "boolean",
-              "description": "The result, in one field: whether the tab moves to results_url."
-            },
-            "outcome": {
-              "type": "string",
-              "const": "confirmed"
-            },
             "next_step": {
               "type": "string",
               "maxLength": 400
-            },
-            "next_tools": {
-              "type": "array",
-              "maxItems": 12,
-              "items": {
-                "type": "string",
-                "pattern": "^[a-z][a-z0-9_]{0,63}$"
-              },
-              "description": "The destination page’s tools."
             },
             "note": {
               "type": "string",
@@ -201,7 +184,6 @@
             "returned",
             "omitted_products",
             "products",
-            "navigated",
             "next_step"
           ],
           "additionalProperties": false
@@ -224,27 +206,164 @@
               "type": "string",
               "pattern": "^[a-z0-9_]{1,64}$",
               "description": "When given, one of: invalid_argument, timeout, upstream_unavailable, cancelled, unexpected_error."
+            }
+          },
+          "required": ["ok", "error"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "open_search_results": {
+      "type": "object",
+      "oneOf": [
+        {
+          "title": "Success",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean",
+              "const": true
+            },
+            "outcome": {
+              "type": "string",
+              "enum": ["confirmed", "dispatched"],
+              "description": "confirmed: results_url was read before the tab moved there. dispatched: it moves there unread."
             },
             "query": {
               "type": "string",
+              "minLength": 2,
               "maxLength": 120
             },
             "results_url": {
               "type": "string",
               "format": "uri",
               "maxLength": 2048,
-              "description": "The plain search page, where the tab moves instead when navigated."
+              "description": "Where the tab moves, after this answer."
             },
-            "navigated": {
-              "type": "boolean"
+            "page_title": {
+              "type": ["string", "null"],
+              "maxLength": 120
             },
-            "outcome": {
+            "results_kind": {
               "type": "string",
-              "const": "dispatched"
+              "enum": ["listing", "featured", "product", "none"],
+              "description": "featured: a category’s highlighted rows. product: one product’s own page."
+            },
+            "applied": {
+              "type": "object",
+              "description": "Requested constraints the results page shows applied (when nothing matched, those its address kept).",
+              "properties": {
+                "min_price_eur": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 10000000
+                },
+                "max_price_eur": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 10000000
+                },
+                "sort": {
+                  "type": "string",
+                  "enum": [
+                    "relevance",
+                    "price_asc",
+                    "price_desc",
+                    "biggest_price_drop",
+                    "most_stores",
+                    "newest"
+                  ]
+                },
+                "in_stock_only": {
+                  "type": "boolean"
+                },
+                "deals_only": {
+                  "type": "boolean"
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            },
+            "not_applied": {
+              "type": "array",
+              "maxItems": 5,
+              "description": "Requested constraints not applied, and why.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "constraint": {
+                    "type": "string",
+                    "enum": ["min_price_eur", "max_price_eur", "sort", "in_stock_only", "deals_only"]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "enum": ["not_offered", "not_kept", "no_product_list", "no_products", "page_unreadable"],
+                    "description": "not_offered: see offered_sorts. no_product_list: an overview or product page. page_unreadable: unnarrowed."
+                  },
+                  "offered_sorts": {
+                    "type": "array",
+                    "maxItems": 6,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "relevance",
+                        "price_asc",
+                        "price_desc",
+                        "biggest_price_drop",
+                        "most_stores",
+                        "newest"
+                      ]
+                    }
+                  }
+                },
+                "required": ["constraint", "reason"],
+                "additionalProperties": false
+              }
+            },
+            "unconfirmed_reason": {
+              "type": "string",
+              "pattern": "^[a-z0-9_]{1,64}$",
+              "description": "Why the destination could not be read first, e.g. timeout."
+            },
+            "next_tools": {
+              "type": "array",
+              "maxItems": 12,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{0,63}$"
+              },
+              "description": "The destination page’s tools."
             },
             "next_step": {
               "type": "string",
               "maxLength": 400
+            },
+            "note": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": ["ok", "outcome", "query", "results_url", "next_step"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "title": "Refusal",
+          "properties": {
+            "ok": {
+              "type": "boolean",
+              "const": false
+            },
+            "error": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1600,
+              "description": "Why, in a sentence; page text in it is data."
+            },
+            "reason": {
+              "type": "string",
+              "pattern": "^[a-z0-9_]{1,64}$",
+              "description": "When given, one of: invalid_argument, cancelled."
             }
           },
           "required": ["ok", "error"],
@@ -287,7 +406,7 @@
             },
             "more_pages": {
               "type": "boolean",
-              "description": "Pass load_more: true for the next page."
+              "description": "More result pages exist than this page has loaded."
             },
             "returned": {
               "type": "integer",
@@ -405,6 +524,80 @@
         }
       ]
     },
+    "load_more_products": {
+      "type": "object",
+      "oneOf": [
+        {
+          "title": "Success",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean",
+              "const": true
+            },
+            "outcome": {
+              "type": "string",
+              "const": "observed_complete"
+            },
+            "shown_products": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Readable cards on this page now."
+            },
+            "new_products": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "next_offset": {
+              "type": ["integer", "null"],
+              "minimum": 0,
+              "description": "The first new product: pass it as get_visible_products’ offset."
+            },
+            "result_pages_loaded": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "result_pages_total": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "more_pages": {
+              "type": "boolean",
+              "description": "More result pages exist than this page has loaded."
+            },
+            "note": {
+              "type": "string",
+              "maxLength": 400
+            }
+          },
+          "required": ["ok", "outcome", "shown_products", "new_products", "next_offset", "more_pages"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "title": "Refusal",
+          "properties": {
+            "ok": {
+              "type": "boolean",
+              "const": false
+            },
+            "error": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1600,
+              "description": "Why, in a sentence; page text in it is data."
+            },
+            "reason": {
+              "type": "string",
+              "pattern": "^[a-z0-9_]{1,64}$",
+              "description": "When given, one of: not_available, upstream_unavailable, cancelled, invalid_argument."
+            }
+          },
+          "required": ["ok", "error"],
+          "additionalProperties": false
+        }
+      ]
+    },
     "open_product": {
       "type": "object",
       "oneOf": [
@@ -419,7 +612,7 @@
             "outcome": {
               "type": "string",
               "enum": ["confirmed", "dispatched"],
-              "description": "confirmed: read from bestprice_url before the tab moved there; no follow-up read. dispatched: the tab moves there unread (unconfirmed_reason)."
+              "description": "confirmed: bestprice_url was read before the tab moved there. dispatched: it moves there unread."
             },
             "product_id": {
               "type": "string",
@@ -434,30 +627,6 @@
             "title": {
               "type": "string",
               "maxLength": 120
-            },
-            "category": {
-              "type": "string",
-              "maxLength": 120
-            },
-            "current_min_price_eur": {
-              "type": ["number", "null"],
-              "minimum": 0,
-              "maximum": 10000000,
-              "description": "Lowest item price, before shipping."
-            },
-            "offer_count": {
-              "type": "integer",
-              "minimum": 0,
-              "description": "Stores with an offer."
-            },
-            "rating": {
-              "type": ["number", "null"],
-              "minimum": 0,
-              "maximum": 5
-            },
-            "rating_count": {
-              "type": "integer",
-              "minimum": 0
             },
             "bestprice_url": {
               "type": "string",
@@ -698,9 +867,10 @@
               "type": "boolean",
               "const": true
             },
-            "action": {
+            "outcome": {
               "type": "string",
-              "enum": ["applied_filter", "filter_already_applied", "filter_dispatched"]
+              "enum": ["confirmed", "observed_complete", "dispatched", "unconfirmed", "unchanged"],
+              "description": "confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read."
             },
             "filter": {
               "type": "string",
@@ -710,19 +880,6 @@
               "type": "string",
               "maxLength": 72
             },
-            "applied": {
-              "type": "boolean",
-              "description": "Shown by the page itself."
-            },
-            "dispatched": {
-              "type": "boolean",
-              "description": "Whether the page started the action."
-            },
-            "outcome": {
-              "type": "string",
-              "enum": ["confirmed", "observed_complete", "dispatched", "unconfirmed"],
-              "description": "The result, in one field. confirmed: read from the destination before the tab moved; no follow-up read. observed_complete: shown here. dispatched: the tab moves, destination unread (unconfirmed_reason). unconfirmed: read the page again."
-            },
             "destination_url": {
               "type": "string",
               "format": "uri",
@@ -731,7 +888,7 @@
             },
             "destination": {
               "type": "object",
-              "description": "What the destination page shows, read before the tab moved there: its filters, sort, total and first products.",
+              "description": "The destination as read before the tab moved: its filters, sort, total and first products.",
               "properties": {
                 "url": {
                   "type": "string",
@@ -830,7 +987,7 @@
               "maxLength": 400
             }
           },
-          "required": ["ok", "action", "filter", "value"],
+          "required": ["ok", "outcome", "filter", "value"],
           "additionalProperties": false
         },
         {
@@ -852,25 +1009,9 @@
               "pattern": "^[a-z0-9_]{1,64}$",
               "description": "When given, one of: invalid_argument, not_found, ambiguous_value, not_available, cancelled."
             },
-            "applied": {
-              "type": "boolean",
-              "const": false
-            },
-            "dispatched": {
-              "type": "boolean",
-              "description": "Whether the page started the action."
-            },
             "outcome": {
               "type": "string",
-              "enum": [
-                "confirmed",
-                "observed_complete",
-                "dispatched",
-                "unconfirmed",
-                "not_dispatched",
-                "cancelled",
-                "superseded"
-              ]
+              "enum": ["not_dispatched", "cancelled", "superseded"]
             }
           },
           "required": ["ok", "error"],
@@ -889,20 +1030,10 @@
               "type": "boolean",
               "const": true
             },
-            "action": {
+            "outcome": {
               "type": "string",
-              "enum": [
-                "cleared_listing_filters",
-                "clearing_filters_dispatched",
-                "filters_already_clear",
-                "removed_filter",
-                "filter_removal_dispatched",
-                "filter_already_clear"
-              ]
-            },
-            "changed": {
-              "type": "boolean",
-              "description": "false: nothing was filtered, so nothing changed."
+              "enum": ["confirmed", "observed_complete", "dispatched", "unconfirmed", "unchanged"],
+              "description": "confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read."
             },
             "filter": {
               "type": "string",
@@ -912,19 +1043,6 @@
               "type": "string",
               "maxLength": 72
             },
-            "applied": {
-              "type": "boolean",
-              "description": "Shown by the page itself."
-            },
-            "dispatched": {
-              "type": "boolean",
-              "description": "Whether the page started the action."
-            },
-            "outcome": {
-              "type": "string",
-              "enum": ["confirmed", "observed_complete", "dispatched", "unconfirmed"],
-              "description": "The result, in one field. confirmed: read from the destination before the tab moved; no follow-up read. observed_complete: shown here. dispatched: the tab moves, destination unread (unconfirmed_reason). unconfirmed: read the page again."
-            },
             "destination_url": {
               "type": "string",
               "format": "uri",
@@ -933,7 +1051,7 @@
             },
             "destination": {
               "type": "object",
-              "description": "What the destination page shows, read before the tab moved there: its filters, sort, total and first products.",
+              "description": "The destination as read before the tab moved: its filters, sort, total and first products.",
               "properties": {
                 "url": {
                   "type": "string",
@@ -1032,7 +1150,7 @@
               "maxLength": 400
             }
           },
-          "required": ["ok", "action"],
+          "required": ["ok", "outcome"],
           "additionalProperties": false
         },
         {
@@ -1054,25 +1172,9 @@
               "pattern": "^[a-z0-9_]{1,64}$",
               "description": "When given, one of: invalid_argument, not_found, ambiguous_value, not_available, cancelled."
             },
-            "applied": {
-              "type": "boolean",
-              "const": false
-            },
-            "dispatched": {
-              "type": "boolean",
-              "description": "Whether the page started the action."
-            },
             "outcome": {
               "type": "string",
-              "enum": [
-                "confirmed",
-                "observed_complete",
-                "dispatched",
-                "unconfirmed",
-                "not_dispatched",
-                "cancelled",
-                "superseded"
-              ]
+              "enum": ["not_dispatched", "cancelled", "superseded"]
             }
           },
           "required": ["ok", "error"],
@@ -1091,26 +1193,14 @@
               "type": "boolean",
               "const": true
             },
-            "action": {
+            "outcome": {
               "type": "string",
-              "enum": ["applied_sorting", "sorting_already_applied", "sorting_dispatched"]
+              "enum": ["confirmed", "observed_complete", "dispatched", "unconfirmed", "unchanged"],
+              "description": "confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read."
             },
             "sort": {
               "type": "string",
               "maxLength": 72
-            },
-            "applied": {
-              "type": "boolean",
-              "description": "Shown by the page itself."
-            },
-            "dispatched": {
-              "type": "boolean",
-              "description": "Whether the page started the action."
-            },
-            "outcome": {
-              "type": "string",
-              "enum": ["confirmed", "observed_complete", "dispatched", "unconfirmed"],
-              "description": "The result, in one field. confirmed: read from the destination before the tab moved; no follow-up read. observed_complete: shown here. dispatched: the tab moves, destination unread (unconfirmed_reason). unconfirmed: read the page again."
             },
             "destination_url": {
               "type": "string",
@@ -1120,7 +1210,7 @@
             },
             "destination": {
               "type": "object",
-              "description": "What the destination page shows, read before the tab moved there: its filters, sort, total and first products.",
+              "description": "The destination as read before the tab moved: its filters, sort, total and first products.",
               "properties": {
                 "url": {
                   "type": "string",
@@ -1219,7 +1309,7 @@
               "maxLength": 400
             }
           },
-          "required": ["ok", "action", "sort"],
+          "required": ["ok", "outcome", "sort"],
           "additionalProperties": false
         },
         {
@@ -1241,25 +1331,9 @@
               "pattern": "^[a-z0-9_]{1,64}$",
               "description": "When given, one of: not_found, not_available, invalid_argument, cancelled."
             },
-            "applied": {
-              "type": "boolean",
-              "const": false
-            },
-            "dispatched": {
-              "type": "boolean",
-              "description": "Whether the page started the action."
-            },
             "outcome": {
               "type": "string",
-              "enum": [
-                "confirmed",
-                "observed_complete",
-                "dispatched",
-                "unconfirmed",
-                "not_dispatched",
-                "cancelled",
-                "superseded"
-              ]
+              "enum": ["not_dispatched", "cancelled", "superseded"]
             }
           },
           "required": ["ok", "error"],
@@ -2366,7 +2440,7 @@
               "type": "string",
               "format": "uri",
               "maxLength": 2048,
-              "description": "A BestPrice search for the request; search_bestprice can show it."
+              "description": "A BestPrice search for the request; open_search_results can show it."
             },
             "next_step": {
               "type": "string",

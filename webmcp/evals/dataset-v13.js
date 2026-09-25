@@ -27,13 +27,17 @@
  * tool is an extra read. 12.0.0 is not rewritten; it stays frozen with its runs as the history of
  * 1.9's last revision.
  *
+ * 13.0.0 is frozen in turn: contract 2.1 (bestprice.gr 8e13c733ab) splits every tool that both read and
+ * acted — search_bestprice loses `navigate`, get_visible_products `load_more` — which dataset 14.0.0
+ * grades (dataset-v14.js). So the argument rules 13.0.0 was generated with (release 2.0.0) are recorded
+ * below rather than read from the live contract.
+ *
  *   node webmcp/evals/dataset-v13.js   # rewrites natural-language-cases.v13.json from v12
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-import { TOOL_DEFINITIONS, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
-import { argumentRules, serializeDataset } from './dataset-v3.js';
+import { serializeDataset } from './dataset-v3.js';
 import { V12_PATH } from './dataset-v12.js';
 
 export const DATASET_V13_VERSION = '13.0.0';
@@ -91,9 +95,192 @@ const REWORDED = Object.freeze({
   },
 });
 
+const deepFreeze = value => {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    Object.freeze(value);
+    for (const child of Object.values(value)) deepFreeze(child);
+  }
+  return value;
+};
+
+/* The argument rules of contract 2.0 (bestprice.gr 2a849a63f1, release 2.0.0), as `argumentRules`
+ * generated them from webmcp/src/contracts.js at 796e5bb; each acting argument as generated, before an
+ * extra read's restriction. */
+export const CONTRACT_2_0_ARGUMENT_RULES = deepFreeze({
+  apply_listing_filter: {
+    filter: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    value: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  apply_listing_sort: {
+    sort: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  clear_listing_filters: {
+    filter: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    value: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  compare_page_offers: {
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 12,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+    include_all_stores: {
+      type: 'boolean',
+    },
+    product_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+  },
+  get_listing_filters: {
+    group: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+  },
+  get_page_product: {},
+  get_product_specifications: {
+    section: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 48,
+    },
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 16,
+    },
+    fact: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+  },
+  get_shopping_decision: {
+    message: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 2000,
+    },
+    postal_code: {
+      type: 'string',
+      pattern: '^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$',
+    },
+  },
+  get_visible_products: {
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 8,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+    load_more: {
+      type: 'boolean',
+    },
+  },
+  open_product: {
+    product_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+  },
+  search_bestprice: {
+    query: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 120,
+    },
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 8,
+    },
+    navigate: {
+      type: 'boolean',
+    },
+    min_price_eur: {
+      type: 'number',
+      minimum: 0,
+      maximum: 10000000,
+    },
+    max_price_eur: {
+      type: 'number',
+      minimum: 0.01,
+      maximum: 10000000,
+    },
+    sort: {
+      type: 'string',
+      enum: ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'],
+    },
+    in_stock_only: {
+      type: 'boolean',
+    },
+    deals_only: {
+      type: 'boolean',
+    },
+  },
+  show_offer: {
+    offer_ref: {
+      type: 'string',
+      minLength: 8,
+      maxLength: 40,
+    },
+    merchant_name: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 68,
+    },
+  },
+  summarize_price_history: {
+    show_chart: {
+      type: 'boolean',
+    },
+  },
+});
+
 /** One tool's argument rules in one case: an admitted extra read may not use the argument that acts. */
 export const caseArgumentRules = (tool, expectedTools) => {
-  const generated = argumentRules(TOOL_DEFINITIONS[tool]);
+  const generated = structuredClone(CONTRACT_2_0_ARGUMENT_RULES[tool]);
   const flag = READ_ONLY_UNLESS[tool];
   if (flag && !expectedTools.includes(tool) && generated[flag]) {
     generated[flag] = { ...generated[flag], enum: [false] };
@@ -126,11 +313,6 @@ const requiredOf = item =>
   );
 
 export function deriveDatasetV13(v12 = JSON.parse(readFileSync(V12_PATH, 'utf8'))) {
-  if (WEBMCP_CONTRACT_VERSION !== DATASET_V13_CONTRACT) {
-    throw new Error(
-      `dataset ${DATASET_V13_VERSION} grades contract ${DATASET_V13_CONTRACT}; the published contract is ${WEBMCP_CONTRACT_VERSION}`,
-    );
-  }
   const cases = v12.cases.map(item => {
     const expected = chainOf(item);
     const extras = item.extra_calls_allowed.filter(tool => successorOf(tool) === undefined);
@@ -149,7 +331,7 @@ export function deriveDatasetV13(v12 = JSON.parse(readFileSync(V12_PATH, 'utf8')
     ...v12,
     datasetVersion: DATASET_V13_VERSION,
     generatedAt: '2026-09-25T17:30:00+03:00',
-    sourceContracts: `bestprice-mcp/webmcp/src/contracts.js (${Object.keys(TOOL_DEFINITIONS).length} contextual tools, contract ${DATASET_V13_CONTRACT}, storefront revision ${DATASET_V13_REVISION})`,
+    sourceContracts: `bestprice-mcp/webmcp/src/contracts.js (${Object.keys(CONTRACT_2_0_ARGUMENT_RULES).length} contextual tools, contract ${DATASET_V13_CONTRACT}, storefront revision ${DATASET_V13_REVISION})`,
     schema: {
       ...v12.schema,
       expects_refusal:

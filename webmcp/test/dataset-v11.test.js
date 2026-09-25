@@ -17,6 +17,7 @@ import { gradeJourney } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
 import { TOOL_DEFINITIONS } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
+import { unaccountedRequirements } from './helpers/contract-history.js';
 
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
 const byId = dataset => new Map(dataset.cases.map(item => [item.id, item]));
@@ -63,32 +64,17 @@ describe('dataset 11.0.0', () => {
     }
   });
 
-  it('only requires result properties a success of the published contract carries, where it still has the tool', () => {
-    /* Still true of the contract published since: a success keeps every property a case requires,
-     * for every tool contract 2.0 kept. */
-    for (const item of v11.cases) {
-      for (const [tool, properties] of Object.entries(item.required_result_properties ?? {})) {
-        if (!TOOL_DEFINITIONS[tool]) {
-          assert.ok(
-            ['get_listing_sort_options', 'open_visible_product', 'show_price_history'].includes(tool),
-            tool,
-          );
-          continue;
-        }
-        const success = TOOL_DEFINITIONS[tool].outputSchema.oneOf.find(
-          branch => branch.properties.ok.const === true,
-        );
-        for (const property of properties) {
-          assert.ok(Object.hasOwn(success.properties, property), `${item.id}: ${tool}.${property}`);
-        }
-      }
-    }
+  it('only requires result properties a success of the published contract carries, or that later contracts removed', () => {
+    /* Frozen: a requirement is either still in a success of the published contract, or recorded as
+     * taken out since (test/helpers/contract-history.js). */
+    assert.deepEqual(unaccountedRequirements(v11, TOOL_DEFINITIONS), []);
   });
 
   it('passes a constrained search that 10.0.0 failed, and fails a bound it breaks', async () => {
     const adapter = createDemoAdapter();
     const args = { query: 'iPhone 16 128GB', max_price_eur: 900, sort: 'price_asc', navigate: false };
-    const result = await adapter.execute('search_bestprice', args);
+    /* Contract 2.1's search reads only and carries no `navigated`; the 1.9 result this set grades did. */
+    const result = { ...(await adapter.execute('search_bestprice', args)), navigated: false };
     const steps = call => [{ tool: 'search_bestprice', arguments: call, result }];
     assert.equal(
       gradeJourney(before.get('home-001'), { steps: steps(args), terminal }).reason,

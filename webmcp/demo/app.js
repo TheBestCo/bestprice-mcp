@@ -22,7 +22,9 @@ let refreshQueued = false;
 /** Safe sample arguments for the "Run" buttons in the inspector. */
 const samples = snapshot => ({
   search_bestprice: { query: 'phone', limit: 3 },
+  open_search_results: { query: 'phone', max_price_eur: 800 },
   get_visible_products: { limit: 3 },
+  load_more_products: {},
   open_product: { product_id: snapshot.homeProducts[1]?.product_id ?? '0' },
   get_listing_filters: {},
   apply_listing_filter: { filter: BRAND_FILTER, value: 'Samsung' },
@@ -95,7 +97,8 @@ const renderHome = snapshot => {
     <div class="products">${productRows(snapshot.homeProducts)}</div>`;
   shop.querySelector('form').addEventListener('submit', event => {
     event.preventDefault();
-    runTool('search_bestprice', { query: new FormData(event.currentTarget).get('query') });
+    /* Contract 2.1: the search that shows its results in this tab. */
+    runTool('open_search_results', { query: new FormData(event.currentTarget).get('query') });
   });
   bindOpenButtons();
 };

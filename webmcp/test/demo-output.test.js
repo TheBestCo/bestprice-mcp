@@ -105,7 +105,8 @@ describe('demo results against the published output schemas', () => {
   });
 
   it('returns only admitted results for every tool on every page, successes and refusals', async () => {
-    const adapter = createDemoAdapter();
+    /* Listings of two products a result page, so load_more_products has a page to load. */
+    const adapter = createDemoAdapter(() => {}, { resultPageSize: 2 });
     const { call, calls } = recorder(adapter);
 
     /* Home: the section's products, a search that only reads, and the Shopping Brain. */
@@ -113,14 +114,19 @@ describe('demo results against the published output schemas', () => {
     assert.equal(home.source, 'BestPrice home page');
     assert.ok(home.products.every(product => product.section === HOME_SECTION));
     assert.deepEqual([home.returned, home.omitted_products, home.completeness], [2, 1, 'partial']);
-    const read = await call('search_bestprice', { query: 'galaxy', navigate: false, limit: 2 });
-    assert.deepEqual([read.navigated, read.results_kind, read.returned], [false, 'listing', 1]);
-    assert.equal(adapter.snapshot().page, 'home', 'navigate: false only reads');
-    await call('search_bestprice', { query: 'καφετιέρα', navigate: false });
+    /* Contract 2.1: search_bestprice only reads — no navigated, outcome or next_tools. */
+    const read = await call('search_bestprice', { query: 'galaxy', limit: 2 });
+    assert.deepEqual(
+      [read.results_kind, read.returned, 'navigated' in read, 'next_tools' in read],
+      ['listing', 1, false, false],
+    );
+    assert.equal(adapter.snapshot().page, 'home', 'a search only reads');
+    await call('search_bestprice', { query: 'καφετιέρα' });
     /* Contract 2.0: open_product refuses an id BestPrice has no page for, and a single-store offer's. */
     await call('open_product', { product_id: '9999999999' });
     await call('open_product', { product_id: '2147483647' });
     await call('search_bestprice', { query: 'x' });
+    await call('open_search_results', { query: 'x' });
     await call('get_shopping_decision', { message: 'κινητό έως 750€' });
     await call('get_shopping_decision', { message: 'κινητό έως 750€', postal_code: '10431' });
     await call('get_shopping_decision', { message: 'iPhone 16 ή Galaxy S24;' });
@@ -129,12 +135,18 @@ describe('demo results against the published output schemas', () => {
     await call('get_shopping_decision', { message: 'κινητό', postal_code: '99999' });
     await call('get_shopping_decision', { message: '   ' });
 
-    /* Listing: search, read, filter, sort, open. */
-    const search = await call('search_bestprice', { query: 'phone' });
+    /* Listing: the results shown in the tab, read, loaded further, filtered, sorted, opened. */
+    const shown = await call('open_search_results', { query: 'phone' });
     assert.equal(adapter.snapshot().page, 'listing');
-    assert.equal(search.navigated, true);
-    await call('get_visible_products', {});
+    assert.deepEqual([shown.outcome, 'products' in shown], ['confirmed', false]);
+    const firstPage = await call('get_visible_products', {});
+    assert.deepEqual([firstPage.shown_products, firstPage.more_pages], [2, true]);
     await call('get_visible_products', { offset: 9 });
+    /* Contract 2.1: loading the next result page is its own action; the read then continues from it. */
+    const loaded = await call('load_more_products', {});
+    assert.deepEqual([loaded.new_products, loaded.next_offset, loaded.more_pages], [1, 2, false]);
+    assert.equal((await call('get_visible_products', { offset: loaded.next_offset })).returned, 1);
+    assert.equal((await call('load_more_products', {})).reason, 'not_available');
     await call('get_listing_filters', {});
     await call('get_listing_filters', { group: 'brand', offset: 1 });
     await call('get_listing_filters', { group: 'Χρώμα' });
@@ -205,7 +217,7 @@ describe('demo results against the published output schemas', () => {
     const decided = await call('get_shopping_decision', { message: 'κινητό έως 750€' });
     await call('open_product', { product_id: 'bp_2159919913' });
     await call('open_product', { product_id: '9999999999' });
-    await call('search_bestprice', { query: 'pixel', navigate: false });
+    await call('search_bestprice', { query: 'pixel' });
     assert.equal(adapter.snapshot().page, 'site');
     /* The Shopping Brain's pick opens by the id it returned. */
     const picked = await call('open_product', { product_id: decided.recommended.product_id });
@@ -216,10 +228,20 @@ describe('demo results against the published output schemas', () => {
     );
     adapter.setPage('site');
     await call('search_bestprice', { query: 'iPhone 16 128GB', limit: 8 });
+    /* A unique model's results are its own page: the tab moves there. */
+    const model = await call('open_search_results', { query: 'Google Pixel 9 128GB' });
+    assert.deepEqual([model.results_kind, adapter.snapshot().page], ['product', 'product']);
 
     /* Every tool was exercised, and both outcomes of the tools that can refuse. */
     assert.deepEqual([...new Set(calls.map(entry => entry.name))].sort(), [...TOOL_NAMES].sort());
-    for (const name of ['search_bestprice', 'get_shopping_decision', 'show_offer', 'open_product']) {
+    for (const name of [
+      'search_bestprice',
+      'open_search_results',
+      'load_more_products',
+      'get_shopping_decision',
+      'show_offer',
+      'open_product',
+    ]) {
       assert.deepEqual(
         [...new Set(calls.filter(entry => entry.name === name).map(entry => entry.ok))].sort(),
         [false, true],
@@ -228,7 +250,7 @@ describe('demo results against the published output schemas', () => {
     }
   });
 
-  it('opens any product by id from every page, with what its page shows (contract 2.0)', async () => {
+  it('opens any product by id from every page, with a receipt of what it confirmed (contract 2.1)', async () => {
     for (const page of Object.keys(PAGE_TOOL_NAMES)) {
       const adapter = createDemoAdapter();
       const { call } = recorder(adapter);
@@ -236,21 +258,15 @@ describe('demo results against the published output schemas', () => {
       const opened = await call('open_product', { product_id: '2159919913' });
       assert.deepEqual(
         [opened.outcome, opened.product_id, opened.bestprice_url, opened.next_tools],
-        ['confirmed', '2159919913', productUrl('2159919913'), PAGE_TOOL_NAMES.product.slice(1, -1)],
+        ['confirmed', '2159919913', productUrl('2159919913'), PAGE_TOOL_NAMES.product.slice(2, -1)],
         page,
       );
-      /* What it read is what the product page's own read then says. */
-      const facts = await call('get_page_product', {});
-      for (const key of [
-        'title',
-        'category',
-        'current_min_price_eur',
-        'offer_count',
-        'rating',
-        'rating_count',
-      ]) {
-        assert.deepEqual(opened[key], facts[key], `${page}: ${key}`);
+      /* A receipt: the product's facts are the product page's own read. */
+      for (const key of ['category', 'current_min_price_eur', 'offer_count', 'rating', 'rating_count']) {
+        assert.equal(key in opened, false, `${page}: ${key}`);
       }
+      const facts = await call('get_page_product', {});
+      assert.deepEqual([facts.product_id, facts.title], [opened.product_id, opened.title], page);
     }
     /* The id is the digit string the tools return; a number, or no id, is refused as on the storefront. */
     const adapter = createDemoAdapter();
@@ -264,38 +280,44 @@ describe('demo results against the published output schemas', () => {
     const changes = [];
     const adapter = createDemoAdapter(snapshot => changes.push(snapshot.page));
     const { call } = recorder(adapter);
-    await call('search_bestprice', { query: 'phone' });
+    await call('open_search_results', { query: 'phone' });
     /* The answer is complete before the page it describes changes: the state moves after it. */
     const pending = adapter.execute('open_product', { product_id: '2159922965' });
     assert.equal(adapter.snapshot().page, 'listing', 'nothing has moved while the tool is answering');
     const opened = await pending;
-    /* The product page is read first, so the answer is `confirmed` and carries its facts. */
+    /* The product page is read first, so the answer is `confirmed`. */
     assert.deepEqual(
       [opened.outcome, opened.product_id, opened.bestprice_url],
       ['confirmed', '2159922965', 'https://www.bestprice.gr/item/2159922965/product.html?bpref=mcp'],
     );
-    assert.deepEqual(opened.next_tools, PAGE_TOOL_NAMES.product.slice(1, -1));
+    assert.deepEqual(opened.next_tools, PAGE_TOOL_NAMES.product.slice(2, -1));
     assert.equal(adapter.snapshot().page, 'product');
     assert.deepEqual(changes, ['listing', 'product']);
 
     /* A search for one model by its full name lands on the product's own page. */
-    const unique = await call('search_bestprice', { query: 'Google Pixel 9 128GB', navigate: false });
+    const unique = await call('search_bestprice', { query: 'Google Pixel 9 128GB' });
     assert.deepEqual(
       [unique.results_kind, unique.returned, unique.results_url],
       ['product', 1, 'https://www.bestprice.gr/item/2160384659/product.html?bpref=mcp'],
     );
-    assert.match(unique.next_step, /^The search matched one product: open_product opens its page/u);
-    const narrowed = await call('search_bestprice', { query: 'Google Pixel 9 128GB', max_price_eur: 500 });
+    assert.match(
+      unique.next_step,
+      /^The search matched one product and the tab did not move: open_product opens its page/u,
+    );
+    /* Shown in the tab, the same search moves it there, with the product page's tools. */
+    const narrowed = await call('open_search_results', { query: 'Google Pixel 9 128GB', max_price_eur: 500 });
     assert.deepEqual(narrowed.not_applied, [{ constraint: 'max_price_eur', reason: 'no_product_list' }]);
-    assert.deepEqual(narrowed.next_tools, PAGE_TOOL_NAMES.product.slice(1, -1));
+    assert.deepEqual(narrowed.next_tools, PAGE_TOOL_NAMES.product.slice(2, -1));
     assert.deepEqual(
       [adapter.snapshot().page, adapter.snapshot().product.product_id],
       ['product', '2160384659'],
     );
     /* Narrowed to nothing, a listing says so and names no destination tools. */
-    const nothing = await call('search_bestprice', { query: 'phone', max_price_eur: 100 });
+    const nothing = await call('open_search_results', { query: 'phone', max_price_eur: 100 });
     assert.deepEqual([nothing.results_kind, nothing.next_tools], ['none', undefined]);
     assert.match(nothing.next_step, /^No products match these constraints/u);
+    const read = await call('search_bestprice', { query: 'phone', max_price_eur: 100 });
+    assert.deepEqual([read.results_kind, read.returned], ['none', 0]);
   });
 
   it('says dispatched, with why, wherever a destination cannot be read first (revision 2026-09-25.12)', async () => {
@@ -305,7 +327,24 @@ describe('demo results against the published output schemas', () => {
       },
     });
     const { call } = recorder(adapter);
-    await call('search_bestprice', { query: 'phone' });
+    /* Contract 2.1: an unreadable search still opens, on the plain search page, with why. */
+    const opened = await call('open_search_results', { query: 'phone', max_price_eur: 750 });
+    assert.deepEqual(
+      [
+        opened.outcome,
+        opened.unconfirmed_reason,
+        opened.results_url,
+        opened.not_applied,
+        adapter.snapshot().page,
+      ],
+      [
+        'dispatched',
+        'upstream_unavailable',
+        'https://www.bestprice.gr/search?q=phone',
+        [{ constraint: 'max_price_eur', reason: 'page_unreadable' }],
+        'listing',
+      ],
+    );
     const dispatched = [
       await call('apply_listing_filter', { filter: 'brand', value: 'Samsung' }),
       await call('clear_listing_filters', { filter: 'brand', value: 'Samsung' }),
@@ -314,20 +353,40 @@ describe('demo results against the published output schemas', () => {
       await call('apply_listing_sort', { sort: 'price_asc' }),
     ];
     assert.deepEqual(
-      dispatched.map(result => [result.action, result.outcome, result.applied, result.unconfirmed_reason]),
+      dispatched.map(result => [result.outcome, result.unconfirmed_reason, result.note]),
       [
-        ['filter_dispatched', 'dispatched', false, 'upstream_unavailable'],
-        ['filter_removal_dispatched', 'dispatched', false, 'upstream_unavailable'],
-        ['filter_dispatched', 'dispatched', false, 'upstream_unavailable'],
-        ['clearing_filters_dispatched', 'dispatched', false, 'upstream_unavailable'],
-        ['sorting_dispatched', 'dispatched', false, 'upstream_unavailable'],
+        [
+          'dispatched',
+          'upstream_unavailable',
+          'The listing started that change; read the page again to confirm the filtered result.',
+        ],
+        [
+          'dispatched',
+          'upstream_unavailable',
+          'The listing started removing that filter; read the page again to confirm the result.',
+        ],
+        [
+          'dispatched',
+          'upstream_unavailable',
+          'The listing started that change; read the page again to confirm the filtered result.',
+        ],
+        [
+          'dispatched',
+          'upstream_unavailable',
+          'The listing started clearing its filters; read the page again to confirm the unfiltered result.',
+        ],
+        [
+          'dispatched',
+          'upstream_unavailable',
+          'The listing started that change; read the page again to confirm the new order.',
+        ],
       ],
     );
-    assert.ok(dispatched.every(result => !('destination' in result)));
+    assert.ok(dispatched.every(result => !('destination' in result) && !('action' in result)));
     const [first] = adapter.snapshot().products;
-    const opened = await call('open_product', { product_id: first.product_id });
+    const product = await call('open_product', { product_id: first.product_id });
     assert.deepEqual(
-      [opened.outcome, opened.unconfirmed_reason, 'title' in opened],
+      [product.outcome, product.unconfirmed_reason, 'title' in product],
       ['dispatched', 'upstream_unavailable', false],
     );
     assert.equal(adapter.snapshot().page, 'product', 'the tab still moves');
@@ -341,7 +400,6 @@ describe('demo results against the published output schemas', () => {
       max_price_eur: 750,
       sort: 'price_asc',
       in_stock_only: true,
-      navigate: false,
     });
     assert.deepEqual(
       cheap.products.map(product => product.current_min_price_eur),
@@ -356,17 +414,19 @@ describe('demo results against the published output schemas', () => {
     assert.deepEqual(newest.not_applied, [
       { constraint: 'sort', reason: 'not_offered', offered_sorts: ['relevance', 'price_asc'] },
     ]);
-    /* The listing the tab moved to shows what the search returned, under the same ids. */
+    /* Shown in the tab, the listing shows what the search returned, under the same ids. */
+    const shown = await call('open_search_results', { query: 'phone', sort: 'newest', deals_only: true });
+    assert.deepEqual([shown.applied, shown.not_applied], [newest.applied, newest.not_applied]);
     assert.deepEqual(
       (await call('get_visible_products', {})).products.map(product => product.product_id),
       newest.products.map(product => product.product_id),
     );
     const cleared = await call('clear_listing_filters', {});
-    assert.deepEqual([cleared.action, cleared.outcome], ['cleared_listing_filters', 'confirmed']);
+    assert.deepEqual([cleared.outcome, 'action' in cleared], ['confirmed', false]);
 
-    const none = await call('search_bestprice', { query: 'καφετιέρα', min_price_eur: 10, navigate: false });
+    const none = await call('search_bestprice', { query: 'καφετιέρα', min_price_eur: 10 });
     assert.deepEqual(none.not_applied, [{ constraint: 'min_price_eur', reason: 'no_products' }]);
-    const plain = await call('search_bestprice', { query: 'phone', in_stock_only: false, navigate: false });
+    const plain = await call('search_bestprice', { query: 'phone', in_stock_only: false });
     assert.equal(plain.applied, undefined, 'false asks for nothing, so nothing is reported');
     for (const [args, error] of [
       [
@@ -387,16 +447,18 @@ describe('demo results against the published output schemas', () => {
   it('reads what contract 1.8 added: more result pages, the named product, the unknown-shipping offer', async () => {
     const adapter = createDemoAdapter();
     const { call } = recorder(adapter);
+    /* Contract 2.1: get_visible_products only reads; 2.0's load_more is refused, naming the action
+     * that loads more where there is one. */
     assert.deepEqual(await call('get_visible_products', { load_more: true }), {
       ok: false,
-      reason: 'not_available',
+      reason: 'invalid_argument',
       error:
-        'This page does not load more results in place; every product it shows is readable from offset: 0.',
+        'load_more is not accepted: get_visible_products only reads, and this page has no further result pages.',
     });
-    const search = await call('search_bestprice', { query: 'phone' });
+    const search = await call('open_search_results', { query: 'phone' });
     assert.deepEqual(
       search.next_tools,
-      PAGE_TOOL_NAMES.listing.slice(1, -1),
+      PAGE_TOOL_NAMES.listing.slice(2, -1),
       'the tools the results page registers',
     );
     const listing = await call('get_visible_products', {});
@@ -404,13 +466,17 @@ describe('demo results against the published output schemas', () => {
       [listing.result_pages_loaded, listing.result_pages_total, listing.more_pages],
       [1, 1, undefined],
     );
-    assert.equal((await call('get_visible_products', { load_more: true })).reason, 'not_available');
     assert.equal(
       (await call('get_visible_products', { load_more: 'yes' })).error,
-      'load_more must be true or false.',
+      'load_more is not accepted: get_visible_products only reads. Call load_more_products to load the next result page, then read from its next_offset.',
     );
-    const read = await call('search_bestprice', { query: 'phone', navigate: false });
-    assert.equal(read.next_tools, undefined, 'a search that did not move the tab names no next tools');
+    assert.deepEqual(await call('load_more_products', {}), {
+      ok: false,
+      reason: 'not_available',
+      error: 'This listing has no more result pages: all 3 loaded products are readable from offset: 0.',
+    });
+    const read = await call('search_bestprice', { query: 'phone' });
+    assert.equal(read.next_tools, undefined, 'a search never moves the tab, so it names no next tools');
 
     await call('open_product', { product_id: '2159919913' });
     for (const productId of ['2159919913', 2159919913]) {
@@ -449,19 +515,25 @@ describe('demo results against the published output schemas', () => {
     const adapter = createDemoAdapter();
     const search = await adapter.execute('search_bestprice', { query: 'phone', limit: 8 });
     assert.equal(search.results_url, 'https://www.bestprice.gr/search?q=phone');
-    assert.equal(search.next_step.startsWith('The tab now shows these results'), true);
+    assert.equal(search.next_step.startsWith('The tab did not move'), true);
+    const shown = await adapter.execute('open_search_results', { query: 'phone' });
+    assert.equal(shown.results_url, search.results_url);
     const listing = await adapter.execute('get_visible_products', { limit: 8 });
     assert.deepEqual(
       search.products.map(product => product.product_id),
       listing.products.map(product => product.product_id),
     );
-    assert.deepEqual(await adapter.execute('search_bestprice', { query: 'phone', navigate: 'yes' }), {
-      ok: false,
-      error: 'navigate must be true or false.',
-    });
+    /* 2.0's navigate is tolerated and ignored, as on the storefront: the tab never moves on a search. */
+    const legacy = await adapter.execute('search_bestprice', { query: 'galaxy', navigate: true });
+    assert.deepEqual([legacy.ok, legacy.results_kind, adapter.snapshot().query], [true, 'listing', 'phone']);
     assert.deepEqual(await adapter.execute('search_bestprice', { query: 'phone', limit: 9 }), {
       ok: false,
       error: 'limit must be a whole number from 1 to 8.',
+    });
+    /* open_search_results reads no products, so it takes no limit. */
+    assert.deepEqual(await adapter.execute('open_search_results', { query: 'phone', limit: 3 }), {
+      ok: false,
+      error: 'Unexpected argument: limit.',
     });
   });
 

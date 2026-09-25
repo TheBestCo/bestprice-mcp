@@ -18,17 +18,11 @@ import { gradeJourney } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
 import { TOOL_DEFINITIONS } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
+import { unaccountedRequirements } from './helpers/contract-history.js';
 
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
 const byId = dataset => new Map(dataset.cases.map(item => [item.id, item]));
 const terminal = { type: 'answer', text: 'Η απάντηση του πράκτορα.' };
-/* The tools contract 2.0 removed; 12.0.0 graded the contract that still had them. */
-const REMOVED_IN_2_0 = [
-  'get_listing_sort_options',
-  'get_product_details',
-  'open_visible_product',
-  'show_price_history',
-];
 
 describe('dataset 12.0.0', () => {
   const v11 = read(V11_PATH);
@@ -100,26 +94,10 @@ describe('dataset 12.0.0', () => {
     }
   });
 
-  it('only requires result properties a success of the published contract carries, where it still has the tool', () => {
-    const gone = new Set();
-    for (const item of v12.cases) {
-      for (const [tool, properties] of Object.entries(item.required_result_properties ?? {})) {
-        if (!TOOL_DEFINITIONS[tool]) {
-          gone.add(tool);
-          continue;
-        }
-        const success = TOOL_DEFINITIONS[tool].outputSchema.oneOf.find(
-          branch => branch.properties.ok.const === true,
-        );
-        for (const property of properties) {
-          assert.ok(Object.hasOwn(success.properties, property), `${item.id}: ${tool}.${property}`);
-        }
-      }
-    }
-    assert.ok(
-      [...gone].every(tool => REMOVED_IN_2_0.includes(tool)),
-      [...gone].join(', '),
-    );
+  it('only requires result properties a success of the published contract carries, or that later contracts removed', () => {
+    /* Frozen: a requirement is either still in a success of the published contract, or recorded as
+     * taken out since (test/helpers/contract-history.js). */
+    assert.deepEqual(unaccountedRequirements(v12, TOOL_DEFINITIONS), []);
   });
 
   it('passes reading past the fourth offer and removing one filter, which 11.0.0 failed', async () => {

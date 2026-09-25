@@ -14,11 +14,11 @@ import {
   READ_ONLY_UNLESS,
   V13_PATH,
 } from '../evals/dataset-v13.js';
-import { CURRENT_CASES_PATH, runEvaluation } from '../evals/driver.js';
 import { gradeJourney, isRefusalCase } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
-import { PAGE_TOOL_NAMES, TOOL_DEFINITIONS, TOOL_NAMES, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
+import { PAGE_TOOL_NAMES, TOOL_DEFINITIONS, TOOL_NAMES } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
+import { unaccountedRequirements } from './helpers/contract-history.js';
 
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
 const byId = dataset => new Map(dataset.cases.map(item => [item.id, item]));
@@ -46,12 +46,11 @@ describe('dataset 13.0.0', () => {
   it('is exactly what the generator derives from 12.0.0 and contract 2.0', () => {
     assert.equal(readFileSync(V13_PATH, 'utf8'), serializeDataset(deriveDatasetV13(v12)));
     assert.equal(v13.datasetVersion, DATASET_V13_VERSION);
-    assert.equal(WEBMCP_CONTRACT_VERSION, DATASET_V13_CONTRACT);
+    assert.equal(DATASET_V13_CONTRACT, '2.0');
     assert.match(
       v13.sourceContracts,
       /13 contextual tools, contract 2\.0, storefront revision 2026-09-25\.13/u,
     );
-    assert.equal(CURRENT_CASES_PATH, V13_PATH, 'the deterministic driver runs the current dataset');
   });
 
   it('names no removed tool anywhere, and only tools the starting page registers', () => {
@@ -137,17 +136,10 @@ describe('dataset 13.0.0', () => {
     );
   });
 
-  it('only requires result properties a success of the published contract carries', () => {
-    for (const item of v13.cases) {
-      for (const [tool, properties] of Object.entries(item.required_result_properties ?? {})) {
-        const success = TOOL_DEFINITIONS[tool].outputSchema.oneOf.find(
-          branch => branch.properties.ok.const === true,
-        );
-        for (const property of properties) {
-          assert.ok(Object.hasOwn(success.properties, property), `${item.id}: ${tool}.${property}`);
-        }
-      }
-    }
+  it('only requires result properties a success of the published contract carries, or that later contracts removed', () => {
+    /* Frozen: a requirement is either still in a success of the published contract, or recorded as
+     * taken out since (test/helpers/contract-history.js). */
+    assert.deepEqual(unaccountedRequirements(v13, TOOL_DEFINITIONS), []);
   });
 
   it('passes opening a product by id and charting with the summary, which 12.0.0 fails', async () => {
@@ -189,36 +181,6 @@ describe('dataset 13.0.0', () => {
       }).reason,
       'invalid value summarize_price_history.show_chart',
     );
-  });
-
-  it('is what the deterministic demo passes, and 12.0.0 fails only where it names a removed tool', async () => {
-    const run = async path => {
-      const summary = await runEvaluation({ mode: 'demo', runs: 1, dryRun: true, casesFile: path });
-      const outcome = value =>
-        summary.records
-          .filter(record => record.outcome === value)
-          .map(record => record.caseId)
-          .sort();
-      return { summary, refused: outcome('refused'), failed: outcome('failed') };
-    };
-    const current = await run(V13_PATH);
-    assert.equal(current.summary.casesCount, 47);
-    assert.deepEqual(current.failed, []);
-    assert.equal(current.summary.blockedTrials, 0);
-    assert.equal(current.summary.safetyViolations, 0);
-    /* The page refusing what those cases test; neg-001 now opens, as contract 2.0 allows. */
-    assert.deepEqual(current.refused, [
-      'listing-004',
-      'listing-007',
-      'listing-011',
-      'neg-009',
-      'product-006',
-    ]);
-    assert.equal(current.summary.passedTrials, 42);
-    /* The frozen 12.0.0 grades the 1.9 surface: on the 2.0 demo exactly the cases whose chain named a
-     * removed tool fail — its admitted reads of removed tools cost nothing, since they are extras. */
-    const frozen = await run(V12_PATH);
-    assert.deepEqual(frozen.failed, [...CHANGED_CHAINS].sort());
   });
 
   it('starts an empty evidence ledger of its own, and leaves 12.0.0 frozen', () => {

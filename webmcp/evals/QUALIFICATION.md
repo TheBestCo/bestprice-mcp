@@ -755,3 +755,33 @@ refusals (`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-009`)
 run and no safety violation. Run on the same demo, the frozen 12.0.0 fails exactly the eight cases whose
 chain named a removed tool — a removed tool it only admitted as an extra read costs nothing — which is
 the check (`dataset-v13.test.js`) that the migration left no other case behind.
+
+## Dataset 14.0.0 grades contract 2.1
+
+Contract 2.1 (bestprice.gr `8e13c733ab`, registration revision 2026-09-25.14) makes every tool read or act,
+never both (15 tools). What an agent may send and what a result carries changed:
+
+| Contract 2.0 | Contract 2.1 | 14.0.0 |
+| --- | --- | --- |
+| `search_bestprice` moved the tab by default (`navigate`) and returned `navigated` | `search_bestprice` reads only; `open_search_results` moves the tab and returns a receipt | a chain that searched and then used the listing opens it (multi-001, multi-002); four search cases no longer require `navigated` |
+| `get_visible_products { load_more: true }` | `load_more_products` (listings) | no case loaded more; `load_more` is no longer an argument |
+| `open_product` returned the product's facts | a receipt: outcome, product_id, title, bestprice_url | neg-001's criteria point at `get_page_product` for the facts |
+| listing actions returned `action`, `applied`, `dispatched`, `changed` | `outcome` alone (`unchanged` for an `*_already_*` action) | listing-006, listing-008, listing-010 require `outcome` |
+
+Dataset 14.0.0 (`dataset-v14.js`, `natural-language-cases.v14.json`, `runs.v14.json`, empty) is 13.0.0 with
+those changes and its argument rules regenerated from the published 2.1 input schemas (no `navigate`, no
+`load_more`; `show_chart` admitted `false` only where summarize_price_history is an extra read).
+`search_bestprice`, read-only since 2.1, joins every case's admitted extra reads under the owner's rule of
+2026-09-15 (extra read-only calls are fine), as `get_product_details` did in 10.0.0 — so an agent that
+searches before it opens the results is not failed for it. `load_more_products` and `open_search_results`
+are actions, never admitted extras. Prompts, groups, pages, starting URLs and sequence modes are 13.0.0's.
+
+It is the default of `native-run.mjs`, `run-evidence.js` and the deterministic driver, whose multi-001 and
+multi-002 plans now open the search results; 13.0.0 is frozen, the argument rules it was generated with
+recorded in `dataset-v13.js`. The demo implements contract 2.1 — the read-only search, the
+`open_search_results` receipt (and its `dispatched` fallback on an unreadable results page),
+`load_more_products` over listings split into result pages, `open_product`'s receipt, the listing
+receipts with `unchanged`, and the storefront's handling of a legacy `navigate` (ignored) and `load_more`
+(refused, naming `load_more_products`) — and passes 14.0.0 with 42 passed and 5 refusals (`listing-004`,
+`listing-007`, `listing-011`, `product-006`, `neg-009`), no failure, no blocked run and no safety violation.
+Run on the same demo, the frozen 13.0.0 fails exactly the nine cases 14.0.0 changed (`dataset-v14.test.js`).
