@@ -7,6 +7,51 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-09-25
+
+WebMCP contract 2.1 (bestprice.gr `8e13c733ab`; registration revision 2026-09-25.14): every tool reads or acts,
+never both. Two tools are added (15), none removed; tools that both read and acted are split, and action
+results become receipts.
+
+### Migration
+
+| Contract 2.0 | Contract 2.1 |
+| --- | --- |
+| `search_bestprice { query, navigate: true }` (the default) — read the results, then moved the tab | `open_search_results { query, …constraints }` moves the tab and answers with a receipt (`outcome`, `results_url`, `results_kind`, `applied`/`not_applied`, `next_tools`), never the products; read them there with `get_visible_products`. |
+| `search_bestprice { query, navigate: false }` | `search_bestprice { query }` — it only reads now. `navigate` is gone from the schema (the storefront, and the demo, tolerate and ignore it). |
+| `search_bestprice` result `navigated`, `outcome`, `next_tools` | Gone; `next_step` names `open_product` and `open_search_results`. |
+| `get_visible_products { load_more: true }` | `load_more_products {}` (listing pages), then `get_visible_products { offset: <its next_offset> }`. A `load_more` argument is refused with `invalid_argument`. |
+| `open_product` result `category`, `current_min_price_eur`, `offer_count`, `rating`, `rating_count` | `get_page_product` on the page it opened; `open_product` returns `outcome`, `product_id`, `title`, `bestprice_url`, `next_tools`, `note`. |
+| Listing action `action`, `applied`, `dispatched`, `changed` | `outcome`: `confirmed`, `observed_complete`, `dispatched`, `unconfirmed`, or `unchanged` for every former `*_already_*` action. |
+
+`get_visible_products` and `search_bestprice` are now `readOnlyHint: true`; `load_more_products` is the one
+non-idempotent action. `PAGE_TOOL_NAMES`: home 5, listings 10, product page 9, every other public page 4
+(`open_search_results` second on every page; `load_more_products` right after `get_visible_products` on
+listings).
+
+### Added
+
+- **`open_search_results`** on every page, and **`load_more_products`** on listings — both implemented by the demo,
+  schema-valid against the strict and published contracts: the receipt and its `dispatched` fallback on an
+  unreadable results page, and a new `resultPageSize` option that splits a listing into result pages to load.
+- **Dataset 14.0.0** grades contract 2.1 and is the default (native runner, evidence audit, deterministic
+  driver): a search whose listing the chain uses becomes `open_search_results` (multi-001, multi-002); cases no
+  longer require `navigated`, `open_product`'s facts or the listing actions' `action` (they require `outcome`);
+  `search_bestprice`, read-only now, is an admitted extra read; no `navigate` or `load_more` argument. 13.0.0 is
+  frozen with its argument rules recorded; `runs.v14.json` starts empty. The demo passes 14.0.0 with 42 passed and
+  5 refusals.
+- `conformance.mjs` also checks `/.well-known/webmcp.json`: the same tools, words and schemas, every tool at the
+  contract's version, and the scanner `pages` hint placed after `updated_at` and before `tools`.
+
+### Changed
+
+- Descriptions are one short plain sentence (49–97 characters; the minimum is now 40) that names no tool; a read
+  ends «changes nothing». Every tool is at version `2.1.0`.
+- The snapshot reads `js/modules/webmcp/annotations.js`, where the storefront keeps its annotation sets, and the
+  source reader follows `export { a, b }` lists and `export { a } from` re-exports to them.
+- Frozen datasets' tests check required result properties against what later contracts removed
+  (`test/helpers/contract-history.js`) instead of the live contract alone; `webmcpContractToolCount` is 15.
+
 ## [2.0.0] - 2026-09-25
 
 WebMCP contract 2.0 (bestprice.gr `2a849a63f1`; registration revision 2026-09-25.13). The storefront
@@ -497,7 +542,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.5.0...v2.0.0
 [1.5.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.3...v1.5.0
 [1.4.3]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.4.2...v1.4.3
