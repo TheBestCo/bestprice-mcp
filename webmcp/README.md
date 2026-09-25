@@ -105,6 +105,27 @@ most descriptions dropped, deeper objects published as their type — about half
 the size. The package publishes them exactly so, and its tests still validate
 every demo result against the strict contract
 (`test/fixtures/storefront-strict-output-schemas.json`).
+Revision 2026-09-25.12 reads a navigation's destination before the tab moves:
+`apply_listing_filter`, `apply_listing_sort` and `clear_listing_filters` answer
+`outcome: 'confirmed'` with the `destination` listing (its URL, total, applied
+filters, sort key and first three products), `open_visible_product` with the
+`product` page's facts, and a navigating `search_bestprice` or
+`get_product_details` with `confirmed` — `dispatched`, with an
+`unconfirmed_reason`, only when the destination could not be read first. It
+also adds optional inputs: `compare_page_offers` returns up to 12 offers and
+continues with `offset`/`next_offset`; `get_listing_sort_options` returns each
+option's sort `key`, which `apply_listing_sort` takes as well as a label;
+`clear_listing_filters` removes one `filter` (or one `value` of it);
+`summarize_price_history` opens the chart too with `show_chart`; and
+`show_offer` publishes `offer_ref` or `merchant_name` — one of them, checked by
+the tool, with no `anyOf` in any input schema (`merchant_id` is no longer
+published). `get_visible_products` (`load_more`) and `summarize_price_history`
+(`show_chart`) are no longer marked read-only. Input schemas now have one
+source on the storefront, and the package takes them, like the words and output
+schemas, from its generated document (`src/storefront-catalog.js`);
+`src/contracts.js` adds only each tool's annotations and pages. Every nested
+output object is typed, so the lean published schemas are about two thirds of
+the strict ones.
 
 Contract 1.8 (2026-09-25) gives every tool an output schema — a closed `oneOf`
 of its success and its refusal — and rewrites every title and description (at

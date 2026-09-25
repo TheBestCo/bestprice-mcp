@@ -96,10 +96,11 @@ describe('demo results against the published output schemas', () => {
         for (const key of Object.keys(node)) assert.ok(PUBLISHED_KEYWORDS.has(key), `${path}: ${key}`);
       });
     }
-    /* Lean: the whole published set is about half the strict one. */
+    /* Lean: the whole published set stays well under the strict one. Revision 2026-09-25.12 types
+     * every nested object and states each navigation's destination, so it is about two thirds now. */
     const size = schemas => JSON.stringify(schemas).length;
     const published = Object.fromEntries(TOOL_NAMES.map(name => [name, TOOL_DEFINITIONS[name].outputSchema]));
-    assert.ok(size(published) < size(STRICT) * 0.6, `${size(published)} of ${size(STRICT)}`);
+    assert.ok(size(published) < size(STRICT) * 0.7, `${size(published)} of ${size(STRICT)}`);
     /* The strict contract is what catches a field a result gains without its schema; the published
      * one, open, admits it. */
     assert.notDeepEqual(validate(STRICT.show_price_history, { ok: false, error: 'x', extra: 1 }), []);
@@ -145,11 +146,17 @@ describe('demo results against the published output schemas', () => {
     await call('apply_listing_filter', { filter: 'brand', value: 'Samsung' });
     await call('apply_listing_filter', { filter: 'brand', value: 'Samsung' });
     await call('apply_listing_filter', { filter: 'price', value: '100' });
+    /* Revision 2026-09-25.12: one filter or one selected value of it, and sort keys. */
+    await call('clear_listing_filters', { filter: 'brand', value: 'Apple' });
+    await call('clear_listing_filters', { value: 'Apple' });
+    await call('clear_listing_filters', { filter: 'Χρώμα' });
+    await call('clear_listing_filters', { filter: 'brand' });
+    await call('apply_listing_filter', { filter: 'brand', value: 'Samsung' });
     await call('clear_listing_filters', {});
     await call('clear_listing_filters', {});
     await call('get_listing_sort_options', {});
     await call('apply_listing_sort', { sort: 'Φθηνότερα' });
-    await call('apply_listing_sort', { sort: 'Φθηνότερα' });
+    await call('apply_listing_sort', { sort: 'price_asc' });
     await call('apply_listing_sort', { sort: 'Newest' });
     await call('get_shopping_decision', { message: 'Pixel 9' });
     const [cheapest] = (await call('get_visible_products', { limit: 1 })).products;
@@ -165,6 +172,23 @@ describe('demo results against the published output schemas', () => {
     await call('get_product_specifications', { fact: 'Μέγεθος' });
     await call('get_product_specifications', { section: 'Battery' });
     await call('summarize_price_history', {});
+    /* Revision 2026-09-25.12: every ranked offer through offset, the chart with the numbers, and
+     * another product's details from this page. */
+    const next = await call('compare_page_offers', { limit: 1, offset: 1 });
+    assert.deepEqual(
+      [next.offset, next.compared, next.offers[0].offer_ref, next.next_offset],
+      [1, 1, offers.offers[1].offer_ref, offers.offers.length > 2 ? 2 : null],
+    );
+    assert.equal(offers.next_offset, null, 'four offers read the whole two-store ranking');
+    await call('compare_page_offers', { offset: 99 });
+    const charted = await call('summarize_price_history', { show_chart: true });
+    assert.equal(charted.chart, 'opened_price_history');
+    await call('summarize_price_history', { show_chart: 'yes' });
+    await call('get_product_details', { product_id: '2160384659', include: ['offers'] });
+    await call('show_offer', {
+      offer_ref: offers.offers[0].offer_ref,
+      merchant_name: offers.offers[1].merchant,
+    });
     await call('show_offer', { offer_ref: offers.offers[0].offer_ref });
     await call('show_offer', { merchant_name: offers.offers[0].merchant });
     await call('show_offer', { merchant_id: '42' });
@@ -264,7 +288,7 @@ describe('demo results against the published output schemas', () => {
     );
   });
 
-  it('answers before the tab moves, and says where it is going (revision 2026-09-25.8)', async () => {
+  it('answers before the tab moves, with what the destination shows (revisions 2026-09-25.8 and .12)', async () => {
     const changes = [];
     const adapter = createDemoAdapter(snapshot => changes.push(snapshot.page));
     const { call } = recorder(adapter);
@@ -273,9 +297,14 @@ describe('demo results against the published output schemas', () => {
     const pending = adapter.execute('open_visible_product', { product_id: '2159922965' });
     assert.equal(adapter.snapshot().page, 'listing', 'nothing has moved while the tool is answering');
     const opened = await pending;
+    /* Revision .12: the product page is read first, so the answer is `confirmed` and carries it. */
     assert.deepEqual(
       [opened.action, opened.outcome, opened.applied, opened.dispatched],
-      ['product_open_dispatched', 'dispatched', false, true],
+      ['opened_visible_product', 'confirmed', true, true],
+    );
+    assert.deepEqual(
+      [opened.product.product_id, opened.product.url],
+      ['2159922965', 'https://www.bestprice.gr/item/2159922965/product.html?bpref=mcp'],
     );
     assert.deepEqual(opened.next_tools, PAGE_TOOL_NAMES.product.slice(1, -1));
     assert.equal(adapter.snapshot().page, 'product');
@@ -299,6 +328,38 @@ describe('demo results against the published output schemas', () => {
     const nothing = await call('search_bestprice', { query: 'phone', max_price_eur: 100 });
     assert.deepEqual([nothing.results_kind, nothing.next_tools], ['none', undefined]);
     assert.match(nothing.next_step, /^No products match these constraints/u);
+  });
+
+  it('says dispatched, with why, wherever a destination cannot be read first (revision 2026-09-25.12)', async () => {
+    const adapter = createDemoAdapter(() => {}, {
+      readDestination: url => {
+        throw Object.assign(new Error(`unreadable ${url}`), { reason: 'upstream_unavailable' });
+      },
+    });
+    const { call } = recorder(adapter);
+    await call('search_bestprice', { query: 'phone' });
+    const dispatched = [
+      await call('apply_listing_filter', { filter: 'brand', value: 'Samsung' }),
+      await call('clear_listing_filters', { filter: 'brand', value: 'Samsung' }),
+      await call('apply_listing_filter', { filter: 'brand', value: 'Apple' }),
+      await call('clear_listing_filters', {}),
+      await call('apply_listing_sort', { sort: 'price_asc' }),
+    ];
+    assert.deepEqual(
+      dispatched.map(result => [result.action, result.outcome, result.applied, result.unconfirmed_reason]),
+      [
+        ['filter_dispatched', 'dispatched', false, 'upstream_unavailable'],
+        ['filter_removal_dispatched', 'dispatched', false, 'upstream_unavailable'],
+        ['filter_dispatched', 'dispatched', false, 'upstream_unavailable'],
+        ['clearing_filters_dispatched', 'dispatched', false, 'upstream_unavailable'],
+        ['sorting_dispatched', 'dispatched', false, 'upstream_unavailable'],
+      ],
+    );
+    assert.ok(dispatched.every(result => !('destination' in result)));
+    const [first] = adapter.snapshot().products;
+    const opened = await call('open_visible_product', { product_id: first.product_id });
+    assert.deepEqual([opened.action, opened.outcome], ['product_open_dispatched', 'dispatched']);
+    assert.equal(adapter.snapshot().page, 'product', 'the tab still moves');
   });
 
   it('answers a details read in time, with what it could read, and opens the product even when it could not', async () => {
@@ -378,7 +439,8 @@ describe('demo results against the published output schemas', () => {
       (await call('get_visible_products', {})).products.map(product => product.product_id),
       newest.products.map(product => product.product_id),
     );
-    assert.equal((await call('clear_listing_filters', {})).action, 'clearing_filters_dispatched');
+    const cleared = await call('clear_listing_filters', {});
+    assert.deepEqual([cleared.action, cleared.outcome], ['cleared_listing_filters', 'confirmed']);
 
     const none = await call('search_bestprice', { query: 'καφετιέρα', min_price_eur: 10, navigate: false });
     assert.deepEqual(none.not_applied, [{ constraint: 'min_price_eur', reason: 'no_products' }]);

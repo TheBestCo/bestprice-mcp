@@ -73,19 +73,31 @@ describe('dataset 3.0.0', () => {
     );
     const since = [];
     const newTools = [];
+    const changed = [];
+    const removed = [];
     for (const [tool, rules] of published) {
       const frozen = CONTRACT_1_6_ARGUMENT_RULES[tool];
       if (!frozen) {
         newTools.push(tool);
         continue;
       }
-      for (const [name, rule] of Object.entries(frozen))
-        assert.deepEqual(rules[name], rule, `${tool}.${name}`);
+      for (const [name, rule] of Object.entries(frozen)) {
+        if (!(name in rules)) removed.push(`${tool}.${name}`);
+        else if (JSON.stringify(rules[name]) !== JSON.stringify(rule)) changed.push(`${tool}.${name}`);
+      }
       for (const name of Object.keys(rules)) if (!(name in frozen)) since.push(`${tool}.${name}`);
     }
     assert.deepEqual(newTools.sort(), ['get_product_details', 'get_shopping_decision']);
+    /* Registration revision 2026-09-25.12: up to 12 offers a call, and show_offer's merchant_id no
+     * longer published (the page still takes it). Everything else 1.6 published is unchanged. */
+    assert.deepEqual(changed, ['compare_page_offers.limit']);
+    assert.equal(published.get('compare_page_offers').limit.maximum, 12);
+    assert.deepEqual(removed, ['show_offer.merchant_id']);
     assert.deepEqual(since.sort(), [
+      'clear_listing_filters.filter',
+      'clear_listing_filters.value',
       'compare_page_offers.include_all_stores',
+      'compare_page_offers.offset',
       'compare_page_offers.product_id',
       'get_listing_filters.group',
       'get_listing_filters.offset',
@@ -99,6 +111,7 @@ describe('dataset 3.0.0', () => {
       'search_bestprice.min_price_eur',
       'search_bestprice.navigate',
       'search_bestprice.sort',
+      'summarize_price_history.show_chart',
     ]);
   });
 
@@ -119,6 +132,11 @@ describe('dataset 3.0.0', () => {
       readOnlyTools().filter(name => !CONTRACT_1_6_READ_ONLY_TOOLS.includes(name)),
       /* get_product_details was read-only in 1.9 as first published, until it gained `navigate`. */
       ['get_shopping_decision'],
+    );
+    /* Revision 2026-09-25.12: two of 1.6's reads act when asked (load_more, show_chart). */
+    assert.deepEqual(
+      CONTRACT_1_6_READ_ONLY_TOOLS.filter(name => !readOnlyTools().includes(name)),
+      ['get_visible_products', 'summarize_price_history'],
     );
   });
 

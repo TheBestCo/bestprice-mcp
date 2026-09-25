@@ -5,17 +5,18 @@
  * output). `createTools` binds the contracts a page exposes to an `execute` function supplied by the
  * page.
  *
- * The storefront is the source of truth. Each tool's title, description and output schema come from
- * `storefront-catalog.js`, generated from the storefront's own catalog; the input schemas and
- * annotations below are written out, and `webmcp/test/contract-parity.test.js` compares every field of
- * every definition — words included — with the committed storefront snapshot.
+ * The storefront is the source of truth. Each tool's title, description, page wording, input schema
+ * and output schema come from `storefront-catalog.js`, generated from the storefront's own single
+ * sources (its catalog, `input-schemas.js` since registration revision 2026-09-25.12, and
+ * `output-schemas.js`); the annotations below are written out, since the storefront publishes them
+ * only on the tools its pages register. `webmcp/test/contract-parity.test.js` compares every field of
+ * every definition — words included — with the committed storefront snapshot, and the snapshot with
+ * the storefront itself.
  */
 
 import { STOREFRONT_CATALOG, WEBMCP_CONTRACT_VERSION } from './storefront-catalog.js';
 
 export { WEBMCP_CONTRACT_VERSION };
-
-const EMPTY_SCHEMA = { type: 'object', properties: {}, additionalProperties: false };
 
 /*
  * Annotations, as the storefront registers them. `consequentialHint` (Chrome 154 ToolAnnotations) marks
@@ -38,6 +39,9 @@ const NAVIGATION = {
   untrustedContentHint: true,
 };
 
+/** A read that can load more into the page (get_visible_products' `load_more`): not idempotent. */
+const LOADING = { ...NAVIGATION, idempotentHint: false };
+
 /**
  * A read that asks BestPrice's own server rather than the rendered page — the Shopping Brain on
  * mcp.bestprice.gr — and changes nothing, on this page or anywhere else.
@@ -51,279 +55,37 @@ const FETCHED_READ = {
   untrustedContentHint: true,
 };
 
-const limitSchema = (maximum, description) => ({ type: 'integer', minimum: 1, maximum, description });
-/* A continuation. The bound is the storefront's `Number.MAX_SAFE_INTEGER`. */
-const offsetSchema = description => ({
-  type: 'integer',
-  minimum: 0,
-  maximum: Number.MAX_SAFE_INTEGER,
-  description,
-});
-const textSchema = (maxLength, description, minLength = 1) => ({
-  type: 'string',
-  minLength,
-  maxLength,
-  description,
-});
-const objectSchema = (properties, required = []) => ({
-  type: 'object',
-  properties,
-  ...(required.length ? { required } : {}),
-  additionalProperties: false,
-});
-const NUMERIC_ID = '^\\d{1,20}$';
-/* One product id in every tool (contract 1.9): digits only, as every BestPrice list returns it. */
-const PRODUCT_ID = {
-  type: 'string',
-  pattern: NUMERIC_ID,
-  description: 'Numeric BestPrice product id, as any tool returns it.',
-};
-/* search_bestprice's sort orders (contract 1.9); some only where the results page offers them. */
-const SEARCH_SORTS = ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'];
-const MAX_PRICE_EUR = 10_000_000;
-/* A five-digit Greek postcode, 10000–85999: the range the Shopping Brain accepts. */
-const POSTAL_CODE_PATTERN = '^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$';
-
+/*
+ * Every tool, in the storefront catalog's order, with its annotations. History the inputs carry:
+ * show_offer's `offer_ref` was published after round 4 found this contract without it (the parity
+ * test asserts it by name); contract 1.7 made every bounded read continuable (`offset`); contract 1.8
+ * added get_shopping_decision and search_bestprice's `limit`/`navigate`; contract 1.9 added
+ * get_product_details and the site page type, one digits-only product id, search constraints, and —
+ * at revision 2026-09-25.12 — compare_page_offers' `offset` (and `limit` up to 12),
+ * clear_listing_filters' `filter`/`value`, summarize_price_history's `show_chart`, sort keys, and a
+ * show_offer that takes offer_ref or merchant_name (merchant_id is no longer published).
+ */
 const DEFINITIONS = [
-  {
-    name: 'search_bestprice',
-    annotations: NAVIGATION,
-    inputSchema: objectSchema(
-      {
-        query: textSchema(
-          120,
-          'Product, brand, model, or shopping need to search for, in Greek or English.',
-          2,
-        ),
-        /* Contract 1.8: the search answers with its results, and moving the tab is optional. */
-        limit: limitSchema(8, 'Maximum results to return, from 1 to 8. Defaults to 6.'),
-        navigate: {
-          type: 'boolean',
-          description:
-            'Move this tab to the results page after reading it. Defaults to true; false only reads.',
-        },
-        /* Contract 1.9: a constrained browse; the answer says which constraints the page applied. */
-        min_price_eur: {
-          type: 'number',
-          minimum: 0,
-          maximum: MAX_PRICE_EUR,
-          description: 'Only products from this price in euros (item price before shipping).',
-        },
-        max_price_eur: {
-          type: 'number',
-          minimum: 0.01,
-          maximum: MAX_PRICE_EUR,
-          description: 'Only products up to this price in euros (item price before shipping).',
-        },
-        sort: {
-          type: 'string',
-          enum: SEARCH_SORTS,
-          description:
-            'Order of the results. relevance is the page’s default; newest, biggest_price_drop and most_stores only where the results page offers them (the answer says).',
-        },
-        in_stock_only: {
-          type: 'boolean',
-          description: 'Only products a store has in stock now («Άμεσα διαθέσιμα»). Defaults to false.',
-        },
-        deals_only: {
-          type: 'boolean',
-          description: 'Only products priced below their earlier price («Προσφορές»). Defaults to false.',
-        },
-      },
-      ['query'],
-    ),
-  },
-  {
-    name: 'get_visible_products',
-    annotations: READ_ONLY,
-    inputSchema: objectSchema({
-      limit: limitSchema(8, 'Maximum products to return, up to 8 per call; next_offset continues.'),
-      offset: offsetSchema(
-        'Use next_offset from the previous result on the same page. Defaults to 0, or with load_more to the first newly loaded product.',
-      ),
-      /* Contract 1.8: a listing's further result pages, loaded as the shopper's scroll does. */
-      load_more: {
-        type: 'boolean',
-        description:
-          'Listing pages: first load the next result page into this listing, as the shopper’s scroll does, then read from its first new product. Use it when more_pages is true.',
-      },
-    }),
-  },
-  {
-    name: 'open_visible_product',
-    annotations: NAVIGATION,
-    inputSchema: objectSchema(
-      {
-        product_id: PRODUCT_ID,
-      },
-      ['product_id'],
-    ),
-  },
-  {
-    /* Contract 1.9: one product's offers, specifications and price history, read from its page on
-     * every page but the item page, whose own tools cover the product in view. */
-    name: 'get_product_details',
-    /* Contract 1.9: `navigate` can move the tab to the product, so the tool is not read-only. */
-    annotations: NAVIGATION,
-    inputSchema: objectSchema(
-      {
-        product_id: PRODUCT_ID,
-        include: {
-          type: 'array',
-          minItems: 1,
-          maxItems: 3,
-          items: { type: 'string', enum: ['offers', 'specifications', 'price_history'] },
-          description: 'Sections to read: offers, specifications, price_history. Defaults to all three.',
-        },
-        navigate: {
-          type: 'boolean',
-          description:
-            'After reading, move this tab to the product’s BestPrice page (bestprice_url). Defaults to false: only reads. Opens no store site.',
-        },
-      },
-      ['product_id'],
-    ),
-  },
-  {
-    name: 'get_listing_filters',
-    annotations: READ_ONLY,
-    inputSchema: objectSchema({
-      group: textSchema(
-        64,
-        'A filter key or name a previous call returned; returns that filter with all of its values, including those behind «Εμφάνιση όλων».',
-      ),
-      offset: offsetSchema(
-        'Use next_offset from the previous result with the same group, or none. Defaults to 0.',
-      ),
-    }),
-  },
-  {
-    name: 'apply_listing_filter',
-    annotations: NAVIGATION,
-    inputSchema: objectSchema(
-      {
-        filter: textSchema(64, 'Visible filter name or key.'),
-        value: textSchema(72, 'Visible filter value or unique partial label.'),
-      },
-      ['filter', 'value'],
-    ),
-  },
-  {
-    name: 'clear_listing_filters',
-    annotations: NAVIGATION,
-    inputSchema: EMPTY_SCHEMA,
-  },
-  {
-    name: 'get_listing_sort_options',
-    annotations: READ_ONLY,
-    inputSchema: EMPTY_SCHEMA,
-  },
-  {
-    name: 'apply_listing_sort',
-    annotations: NAVIGATION,
-    inputSchema: objectSchema({ sort: textSchema(72, 'Visible sorting option or unique partial label.') }, [
-      'sort',
-    ]),
-  },
-  {
-    name: 'get_page_product',
-    annotations: READ_ONLY,
-    inputSchema: EMPTY_SCHEMA,
-  },
-  {
-    name: 'compare_page_offers',
-    annotations: READ_ONLY,
-    inputSchema: objectSchema({
-      limit: limitSchema(
-        4,
-        'Number of offers to return, from 1 to 4: lowest known delivered price first, then offers with unknown shipping by item price.',
-      ),
-      /* Contract 1.7: the page's own «Όλες οι τιμές» request, as when the shopper presses it. */
-      include_all_stores: {
-        type: 'boolean',
-        description:
-          'First load the stores this page keeps behind «Όλες οι τιμές», as when the shopper presses it. Defaults to false.',
-      },
-      /* The id a Shopping Brain answer names (1.8); since 1.9 one numeric form, as every tool takes it. */
-      product_id: PRODUCT_ID,
-    }),
-  },
-  {
-    name: 'get_product_specifications',
-    annotations: READ_ONLY,
-    inputSchema: objectSchema({
-      section: textSchema(
-        48,
-        'Use all or a section name shown on this product, such as Οθόνη, Ισχύς, or Διαστάσεις.',
-      ),
-      limit: limitSchema(16, 'Maximum number of specification facts to return, from 1 to 16.'),
-      /* Contract 1.6: the exact continuation for a value a previous call marked truncated. */
-      fact: textSchema(
-        72,
-        'A specification fact name, such as one a previous call returned, or a common English name (refresh rate, screen size, weight, energy class…) matched to the product’s own Greek one. Returns that fact in full, from whichever section lists it; pass its section too when the name appears in more than one section.',
-      ),
-      offset: offsetSchema(
-        'Use next_offset from the previous result, keeping the same product and section. Defaults to 0. Do not combine with fact.',
-      ),
-    }),
-  },
-  {
-    name: 'summarize_price_history',
-    annotations: READ_ONLY,
-    inputSchema: EMPTY_SCHEMA,
-  },
-  {
-    name: 'show_offer',
-    annotations: NAVIGATION,
-    inputSchema: objectSchema({
-      /* The page-local reference compare_page_offers returns, and the only selector that can separate
-       * two stores with the same displayed name. The storefront's item page has advertised it since
-       * the action verb landed; this contract — and every consumer of it — declared only the merchant
-       * selectors, so a reference the page itself called exact was invalid here. Parity is asserted
-       * field by field in `webmcp/test/contract-parity.test.js`. */
-      offer_ref: textSchema(
-        40,
-        'Page-local offer reference from compare_page_offers. Exact, and the only selector that can separate two stores with the same displayed name. A reference names one quote: it is refused once the page state, the merchant, the variant or any price or shipping amount changes; read the offers again.',
-        8,
-      ),
-      merchant_id: {
-        type: 'string',
-        pattern: NUMERIC_ID,
-        description:
-          'Numeric merchant id as the page markup shows it (data-mid); compare_page_offers does not return it, so prefer offer_ref.',
-      },
-      merchant_name: textSchema(
-        68,
-        'Merchant name exactly as compare_page_offers returned it; it must match exactly one shown offer.',
-        2,
-      ),
-    }),
-  },
-  {
-    name: 'show_price_history',
-    annotations: NAVIGATION,
-    inputSchema: EMPTY_SCHEMA,
-  },
-  {
-    /* Contract 1.8: the Shopping Brain on every page, asked with the shopper's own words. */
-    name: 'get_shopping_decision',
-    annotations: FETCHED_READ,
-    inputSchema: objectSchema(
-      {
-        message: textSchema(
-          2000,
-          'The shopper’s question as they asked it (Greek or English), with budget and required features, e.g. «κινητό έως 400€ με NFC». Sent to the Shopping Brain on mcp.bestprice.gr.',
-        ),
-        postal_code: {
-          type: 'string',
-          pattern: POSTAL_CODE_PATTERN,
-          description:
-            'Optional five-digit Greek delivery postcode the shopper gave (10000–85999); adds shipping and delivered totals.',
-        },
-      },
-      ['message'],
-    ),
-  },
+  { name: 'search_bestprice', annotations: NAVIGATION },
+  /* Not read-only since revision .12: `load_more` loads the listing's next result page into it. */
+  { name: 'get_visible_products', annotations: LOADING },
+  { name: 'open_visible_product', annotations: NAVIGATION },
+  /* `navigate` can move the tab to the product, so the tool is not read-only. */
+  { name: 'get_product_details', annotations: NAVIGATION },
+  { name: 'get_listing_filters', annotations: READ_ONLY },
+  { name: 'apply_listing_filter', annotations: NAVIGATION },
+  { name: 'clear_listing_filters', annotations: NAVIGATION },
+  { name: 'get_listing_sort_options', annotations: READ_ONLY },
+  { name: 'apply_listing_sort', annotations: NAVIGATION },
+  { name: 'get_page_product', annotations: READ_ONLY },
+  { name: 'compare_page_offers', annotations: READ_ONLY },
+  { name: 'get_product_specifications', annotations: READ_ONLY },
+  /* Not read-only since revision .12: `show_chart` opens the chart for the shopper too. */
+  { name: 'summarize_price_history', annotations: NAVIGATION },
+  { name: 'show_offer', annotations: NAVIGATION },
+  { name: 'show_price_history', annotations: NAVIGATION },
+  /* Contract 1.8: the Shopping Brain on every page, asked with the shopper's own words. */
+  { name: 'get_shopping_decision', annotations: FETCHED_READ },
 ];
 
 const deepFreeze = value => {
@@ -392,8 +154,8 @@ for (const name of Object.keys(STOREFRONT_CATALOG)) {
  */
 export const TOOL_DEFINITIONS = deepFreeze(
   Object.fromEntries(
-    DEFINITIONS.map(({ name, annotations, inputSchema }) => {
-      const { title, description, pageDescriptions, outputSchema } = STOREFRONT_CATALOG[name];
+    DEFINITIONS.map(({ name, annotations }) => {
+      const { title, description, pageDescriptions, inputSchema, outputSchema } = STOREFRONT_CATALOG[name];
       return [
         name,
         {

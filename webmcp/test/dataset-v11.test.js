@@ -3,10 +3,11 @@ import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
-import { argumentRules, serializeDataset } from '../evals/dataset-v3.js';
+import { serializeDataset } from '../evals/dataset-v3.js';
 import { V9_PATH } from '../evals/dataset-v9.js';
 import { CONTRACT_1_9_ARGUMENT_RULES, V10_PATH } from '../evals/dataset-v10.js';
 import {
+  CONTRACT_1_9_REV7_ARGUMENT_RULES,
   DATASET_V11_CONTRACT,
   DATASET_V11_VERSION,
   deriveDatasetV11,
@@ -16,7 +17,7 @@ import {
 import { runEvaluation } from '../evals/driver.js';
 import { gradeJourney } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
-import { PAGE_TOOL_NAMES, TOOL_DEFINITIONS, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
+import { PAGE_TOOL_NAMES, TOOL_DEFINITIONS } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
 
 const read = path => JSON.parse(readFileSync(path, 'utf8'));
@@ -33,7 +34,7 @@ describe('dataset 11.0.0', () => {
   it('is exactly what the generator derives from 10.0.0 and the revised contract 1.9', () => {
     assert.equal(readFileSync(V11_PATH, 'utf8'), serializeDataset(deriveDatasetV11(v10)));
     assert.equal(v11.datasetVersion, DATASET_V11_VERSION);
-    assert.equal(WEBMCP_CONTRACT_VERSION, DATASET_V11_CONTRACT);
+    assert.equal(DATASET_V11_CONTRACT, '1.9');
     assert.match(
       v11.sourceContracts,
       /16 contextual tools, contract 1\.9, storefront revision 2026-09-25\.7/u,
@@ -49,7 +50,8 @@ describe('dataset 11.0.0', () => {
       assert.deepEqual(definition, oldDefinition, id);
       assert.deepEqual(Object.keys(args).sort(), Object.keys(oldArgs).sort(), id);
       for (const [tool, rules] of Object.entries(args)) {
-        const expected = argumentRules(TOOL_DEFINITIONS[tool]);
+        /* Frozen since revision 2026-09-25.12: the rules it was generated with are recorded. */
+        const expected = structuredClone(CONTRACT_1_9_REV7_ARGUMENT_RULES[tool]);
         const flag = READ_ONLY_WHEN_NOT_NAVIGATING[tool];
         if (flag && !item.expected_tools.includes(tool))
           expected[flag] = { ...expected[flag], enum: [false] };
@@ -60,11 +62,12 @@ describe('dataset 11.0.0', () => {
     assert.deepEqual([...changed].sort(), ['compare_page_offers', 'get_product_details', 'search_bestprice']);
     /* Every other tool's rules are 1.9's as first published. */
     for (const [tool, rules] of Object.entries(CONTRACT_1_9_ARGUMENT_RULES)) {
-      if (!changed.has(tool)) assert.deepEqual(argumentRules(TOOL_DEFINITIONS[tool]), rules, tool);
+      if (!changed.has(tool)) assert.deepEqual(CONTRACT_1_9_REV7_ARGUMENT_RULES[tool], rules, tool);
     }
   });
 
   it('only requires result properties a success of the published contract carries', () => {
+    /* Still true of the contract published since: a success keeps every property a case requires. */
     for (const item of v11.cases) {
       for (const [tool, properties] of Object.entries(item.required_result_properties ?? {})) {
         const success = TOOL_DEFINITIONS[tool].outputSchema.oneOf.find(

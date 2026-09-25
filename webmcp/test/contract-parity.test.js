@@ -53,7 +53,8 @@ const strictFixture = JSON.parse(
 /**
  * Where a published schema is not a relaxation of the strict one: a field, keyword or value the
  * strict contract does not have. Descriptions are words, not constraints; a nested object published
- * as its bare type keeps only a type the strict one allows.
+ * as its bare type keeps only a type the strict one allows; a nested shape published by its core
+ * fields (revision 2026-09-25.12) requires only fields the strict one requires.
  */
 const relaxationViolations = (published, strict, path, found = []) => {
   for (const [key, value] of Object.entries(published)) {
@@ -68,6 +69,11 @@ const relaxationViolations = (published, strict, path, found = []) => {
     } else if (key === 'oneOf' || key === 'anyOf') {
       for (const [index, branch] of value.entries()) {
         relaxationViolations(branch, strict[key]?.[index] ?? {}, `${path}|${index}`, found);
+      }
+    } else if (key === 'required' && Array.isArray(strict.required)) {
+      for (const name of value) {
+        if (!strict.required.includes(name))
+          found.push(`${path}.required: ${name} is not required by the strict contract`);
       }
     } else if (key === 'type' && strict.type === undefined) {
       const allowed = (strict.anyOf ?? []).flatMap(branch => [branch.type ?? 'object'].flat());
@@ -157,30 +163,32 @@ describe('contract parity with the storefront', () => {
     tightened.oneOf[0].properties.invented = { type: 'string' };
     assert.deepEqual(relaxationViolations(tightened, strictFixture.schemas.show_offer, 'show_offer'), [
       'show_offer|0.invented: not in the strict contract',
-      `show_offer|0.required: ${JSON.stringify(tightened.oneOf[0].required)} is not the strict ${JSON.stringify(strictFixture.schemas.show_offer.oneOf[0].required)}`,
+      'show_offer|0.required: invented is not required by the strict contract',
     ]);
+    /* Requiring fewer fields than the strict contract is a relaxation, as the core-field shapes do. */
+    const core = structuredClone(fixture.surface.show_offer.outputSchema);
+    core.oneOf[0].required = core.oneOf[0].required.slice(0, 1);
+    assert.deepEqual(relaxationViolations(core, strictFixture.schemas.show_offer, 'show_offer'), []);
   });
 
   it('names the field the round-4 audit found missing, on both surfaces', () => {
     const showOfferFixture = fixture.surface.show_offer.inputSchema;
     const showOfferPublished = publishedSurface().show_offer.inputSchema;
 
-    /* The two surfaces that disagreed: the page's selector set has three fields, the published
-     * contract had two. This is asserted by name, not by count. */
-    assert.deepEqual(Object.keys(showOfferFixture.properties).sort(), [
-      'merchant_id',
-      'merchant_name',
-      'offer_ref',
-    ]);
-    assert.deepEqual(Object.keys(showOfferPublished.properties).sort(), [
-      'merchant_id',
-      'merchant_name',
-      'offer_ref',
-    ]);
+    /* The two surfaces that disagreed: the page's selector set had offer_ref, the published contract
+     * did not. Since revision 2026-09-25.12 both publish offer_ref and merchant_name only (the page
+     * still takes merchant_id at runtime, unpublished). Asserted by name, not by count. */
+    assert.deepEqual(Object.keys(showOfferFixture.properties).sort(), ['merchant_name', 'offer_ref']);
+    assert.deepEqual(Object.keys(showOfferPublished.properties).sort(), ['merchant_name', 'offer_ref']);
     assert.equal(showOfferFixture.additionalProperties, false);
     assert.equal(showOfferPublished.additionalProperties, false);
-    assert.equal(showOfferFixture.required, undefined, 'the page lets any selector identify the offer');
+    /* One of the two is needed; the tool enforces it and the words say it, with no anyOf (some hosts
+     * reject combinators in an input schema). */
+    assert.equal(showOfferFixture.required, undefined, 'the page lets either selector identify the offer');
     assert.equal(showOfferPublished.required, undefined);
+    for (const combinator of ['anyOf', 'oneOf', 'allOf', 'not', 'if']) {
+      assert.equal(combinator in showOfferPublished, false, combinator);
+    }
     assert.deepEqual(showOfferPublished.properties.offer_ref, {
       type: 'string',
       minLength: 8,
@@ -232,21 +240,21 @@ describe('contract parity with the storefront', () => {
   it('fails on a changed type or bound, not only on a missing field', () => {
     const published = publishedSurface();
     const mutated = structuredClone(fixture.surface);
-    mutated.show_offer.inputSchema.properties.merchant_id.type = 'integer';
+    mutated.show_offer.inputSchema.properties.merchant_name.type = 'integer';
     assert.deepEqual(compareInputSurfaces(mutated, published, ['show_offer']), [
-      'show_offer.merchant_id.type: "string" != "integer"',
+      'show_offer.merchant_name.type: "string" != "integer"',
     ]);
 
     const bounded = structuredClone(fixture.surface);
     bounded.compare_page_offers.inputSchema.properties.limit.maximum = 8;
     assert.deepEqual(compareInputSurfaces(bounded, published, ['compare_page_offers']), [
-      'compare_page_offers.limit.maximum: 4 != 8',
+      'compare_page_offers.limit.maximum: 12 != 8',
     ]);
 
     const patterned = structuredClone(fixture.surface);
-    patterned.show_offer.inputSchema.properties.merchant_id.pattern = '^\\d{1,10}$';
-    assert.deepEqual(compareInputSurfaces(patterned, published, ['show_offer']), [
-      'show_offer.merchant_id.pattern: "^\\\\d{1,20}$" != "^\\\\d{1,10}$"',
+    patterned.compare_page_offers.inputSchema.properties.product_id.pattern = '^\\d{1,10}$';
+    assert.deepEqual(compareInputSurfaces(patterned, published, ['compare_page_offers']), [
+      'compare_page_offers.product_id.pattern: "^\\\\d{1,20}$" != "^\\\\d{1,10}$"',
     ]);
 
     const opened = structuredClone(fixture.surface);
@@ -258,9 +266,9 @@ describe('contract parity with the storefront', () => {
     /* The storefront expresses most requirements as `minLength`; an identifier-shaped field has
      * none, so requiring it in the published contract is a constraint the page does not state. */
     const overrequired = structuredClone(published);
-    overrequired.show_offer.inputSchema.required = ['merchant_id'];
-    assert.deepEqual(compareInputSurfaces(fixture.surface, overrequired, ['show_offer']), [
-      'show_offer: published contract requires merchant_id, the source of truth does not',
+    overrequired.compare_page_offers.inputSchema.required = ['product_id'];
+    assert.deepEqual(compareInputSurfaces(fixture.surface, overrequired, ['compare_page_offers']), [
+      'compare_page_offers: published contract requires product_id, the source of truth does not',
     ]);
     /* ... and a `minLength` requirement is the same constraint written differently, so it is not a
      * difference: the storefront's `offer_ref` is required by construction. */
@@ -349,7 +357,7 @@ describe('contract parity with the storefront', () => {
     assert.equal(quoted.inputSchema.properties.a.pattern, '^\\d+$');
 
     /* The regex literal in the storefront's own pattern must not swallow the rest of the file. */
-    assert.ok(fixture.surface.show_offer.inputSchema.properties.merchant_id.pattern);
+    assert.ok(fixture.surface.compare_page_offers.inputSchema.properties.product_id.pattern);
 
     /* Contract 1.7 bounds every continuation offset with `Number.MAX_SAFE_INTEGER`: the reader
      * resolves that one member expression, and leaves any other as a named hole. */
@@ -482,6 +490,24 @@ describe('contract parity with the storefront', () => {
         catalog({ read_tool: { ...entry, page_descriptions: { checkout: 'x' } } }),
       );
       assert.throws(() => readStorefrontSurface(root), /wording for an unknown page type: checkout/u);
+      write(STOREFRONT_TOOL_DOCUMENT, catalog({ read_tool: entry }));
+
+      /* Revision 2026-09-25.12: the document carries the input schema, and the page registers it by
+       * name (or writes the same schema); a page that registers another one is refused. */
+      const inputSchema = { type: 'object', properties: { show_chart: { type: 'boolean' } } };
+      write(STOREFRONT_TOOL_DOCUMENT, catalog({ read_tool: { ...entry, input_schema: inputSchema } }));
+      assert.throws(
+        () => readStorefrontSurface(root),
+        /read_tool: pages\/search\/webmcp\/tools\.js does not register the input schema/u,
+      );
+      write(
+        'pages/search/webmcp/tools.js',
+        [
+          "import { READ_ONLY as SHARED } from './shared-tools';",
+          "export default () => [{ name: 'read_tool', ...toolText('read_tool'), inputSchema: INPUT_SCHEMAS.read_tool, annotations: SHARED }];",
+        ].join('\n'),
+      );
+      assert.deepEqual(readStorefrontSurface(root).surface.read_tool.inputSchema, inputSchema);
       write(STOREFRONT_TOOL_DOCUMENT, catalog({ read_tool: entry }));
 
       /* A tool the catalog lists that no page registers, and one a page registers with another

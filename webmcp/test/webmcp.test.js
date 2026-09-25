@@ -8,7 +8,14 @@ import {
   TOOL_NAMES,
   WEBMCP_CONTRACT_VERSION,
 } from '../src/contracts.js';
-import { BRAND_FILTER, createDemoAdapter, PAGES, SORT_OPTIONS } from '../src/demo-adapter.js';
+import {
+  BRAND_FILTER,
+  CONFIRMED_NOTE,
+  createDemoAdapter,
+  PAGES,
+  productUrl,
+  SORT_OPTIONS,
+} from '../src/demo-adapter.js';
 import { createLocalModelContext, createRegistration } from '../src/runtime.js';
 
 const noop = () => ({ ok: true });
@@ -70,7 +77,8 @@ describe('contracts', () => {
         assert.equal(tool.annotations.untrustedContentHint, true, tool.name);
         if (!tool.annotations.readOnlyHint) {
           assert.equal(tool.annotations.destructiveHint, false, tool.name);
-          assert.equal(tool.annotations.idempotentHint, true, tool.name);
+          /* Revision 2026-09-25.12: load_more appends the next result page on every call. */
+          assert.equal(tool.annotations.idempotentHint, tool.name !== 'get_visible_products', tool.name);
           assert.equal(tool.annotations.openWorldHint, false, tool.name);
         }
         assert.equal(tool.inputSchema.additionalProperties, false);
@@ -109,7 +117,12 @@ describe('contracts', () => {
   it('marks page-changing tools as not read-only and reading tools as read-only', () => {
     const tools = new Map(createTools({ page: 'listing', execute: noop }).map(tool => [tool.name, tool]));
     assert.equal(tools.get('open_visible_product').annotations.readOnlyHint, false);
-    assert.equal(tools.get('get_visible_products').annotations.readOnlyHint, true);
+    /* Revision 2026-09-25.12: load_more loads the next result page into the listing, so the tool that
+     * can do it is no longer marked read-only (nor idempotent); without it, it only reads. */
+    assert.equal(tools.get('get_visible_products').annotations.readOnlyHint, false);
+    assert.equal(tools.get('get_visible_products').annotations.idempotentHint, false);
+    assert.equal(tools.get('get_listing_filters').annotations.readOnlyHint, true);
+    assert.equal(tools.get('get_listing_sort_options').annotations.readOnlyHint, true);
 
     /* The item page's one action verb: it moves the shopper's own tab to an offer
      * the page already shows and never returns a merchant link. */
@@ -121,15 +134,16 @@ describe('contracts', () => {
     assert.equal(showOffer.annotations.openWorldHint, false);
     /* The item page has returned an `offer_ref` since the action verb landed and tells the agent to
      * prefer it; the published contract has to advertise the same selector set, or a reference the
-     * page calls exact is invalid here. Parity with the storefront is asserted field by field in
-     * `contract-parity.test.js`. */
-    assert.deepEqual(Object.keys(showOffer.inputSchema.properties).sort(), [
-      'merchant_id',
-      'merchant_name',
-      'offer_ref',
-    ]);
+     * page calls exact is invalid here. Revision 2026-09-25.12 publishes offer_ref and merchant_name
+     * only. Parity with the storefront is asserted field by field in `contract-parity.test.js`. */
+    assert.deepEqual(Object.keys(showOffer.inputSchema.properties).sort(), ['merchant_name', 'offer_ref']);
     assert.equal(showOffer.inputSchema.additionalProperties, false);
     assert.equal(productTools.get('show_price_history').annotations.readOnlyHint, false);
+    /* show_chart opens the chart the shopper sees; the other item-page reads stay reads. */
+    assert.equal(productTools.get('summarize_price_history').annotations.readOnlyHint, false);
+    for (const name of ['get_page_product', 'compare_page_offers', 'get_product_specifications']) {
+      assert.equal(productTools.get(name).annotations.readOnlyHint, true, name);
+    }
 
     /* Contract 1.8: searching moves the tab unless told not to; the Shopping Brain only reads. */
     assert.equal(productTools.get('search_bestprice').annotations.readOnlyHint, false);
@@ -292,25 +306,34 @@ describe('demo adapter', () => {
     const adapter = createDemoAdapter();
     adapter.setPage('product');
 
+    /* Revision 2026-09-25.12: one of offer_ref or merchant_name, enforced by the tool (no anyOf). */
     assert.deepEqual(await adapter.execute('show_offer', {}), {
       ok: false,
-      error: 'Provide offer_ref from compare_page_offers, or merchant_name.',
+      error: 'Pass offer_ref (from compare_page_offers) or, failing that, merchant_name.',
+      reason: 'invalid_argument',
     });
     assert.deepEqual(await adapter.execute('show_offer', { merchant_name: 'Invented Merchant' }), {
       ok: false,
       error: 'That merchant is not currently shown on this page.',
     });
-    assert.deepEqual(await adapter.execute('show_offer', { merchant_id: 'not-a-number' }), {
-      ok: false,
-      error: 'merchant_id must be the numeric id shown on this page.',
-    });
-    /* The fixture exposes no merchant ids, exactly like compare_page_offers output,
-     * so an id-only call cannot resolve and must refuse rather than guess. */
+    /* merchant_id is no longer published, so the demo — which takes what the contract publishes —
+     * refuses it rather than guess. */
     assert.deepEqual(await adapter.execute('show_offer', { merchant_id: '42' }), {
       ok: false,
-      error: 'That merchant is not currently shown on this page.',
+      error: 'Unexpected argument: merchant_id.',
     });
+    /* A name alongside a reference must describe the same offer. */
+    const [first, second] = (await adapter.execute('compare_page_offers', { limit: 2 })).offers;
+    assert.deepEqual(
+      await adapter.execute('show_offer', { offer_ref: first.offer_ref, merchant_name: second.merchant }),
+      { ok: false, error: 'offer_ref and merchant_name do not describe the same shown offer.' },
+    );
     assert.equal(adapter.snapshot().focusedOffer, null, 'a refused call focuses nothing');
+    const agreed = await adapter.execute('show_offer', {
+      offer_ref: first.offer_ref,
+      merchant_name: first.merchant,
+    });
+    assert.equal(agreed.action, 'focused_offer');
   });
 
   it('filters and sorts with the labels the listing renders', async () => {
@@ -319,30 +342,138 @@ describe('demo adapter', () => {
     const filters = await adapter.execute('get_listing_filters', {});
     assert.equal(filters.filters[0].name, BRAND_FILTER);
 
-    /* The listing reloads after the tool has answered: the answer says where the tab is going. */
+    /* The listing reloads after the tool has answered. Revision 2026-09-25.12: the destination is read
+     * first, so the answer states what that page shows (`confirmed`) and needs no follow-up read. */
+    const url = 'https://www.bestprice.gr/search?q=phone&brand=Samsung';
     assert.deepEqual(await adapter.execute('apply_listing_filter', { filter: 'brand', value: 'samsung' }), {
       ok: true,
-      action: 'filter_dispatched',
+      action: 'applied_filter',
       filter: BRAND_FILTER,
       value: 'Samsung',
-      applied: false,
+      applied: true,
       dispatched: true,
-      outcome: 'dispatched',
-      destination_url: 'https://www.bestprice.gr/search?q=phone&brand=Samsung',
+      outcome: 'confirmed',
+      destination_url: url,
       next_tools: PAGE_TOOL_NAMES.listing.slice(1, -1),
+      destination: {
+        url,
+        total_results: 1,
+        applied_filters: ['Samsung'],
+        sort: 'relevance',
+        products: [
+          {
+            product_id: '2159922965',
+            title: 'Samsung Galaxy S24 256GB',
+            current_min_price_eur: 689,
+            merchant_count: 14,
+          },
+        ],
+      },
+      note: CONFIRMED_NOTE,
     });
     assert.deepEqual(
       adapter.snapshot().products.map(product => product.brand),
       ['Samsung'],
     );
 
-    await adapter.execute('clear_listing_filters', {});
-    await adapter.execute('apply_listing_sort', { sort: SORT_OPTIONS[1] });
+    /* One filter, or one selected value of it; a value not selected is already clear. */
+    assert.deepEqual(await adapter.execute('clear_listing_filters', { filter: 'brand', value: 'Apple' }), {
+      ok: true,
+      action: 'filter_already_clear',
+      filter: BRAND_FILTER,
+      value: 'Apple',
+      changed: false,
+    });
+    assert.deepEqual(await adapter.execute('clear_listing_filters', { value: 'Samsung' }), {
+      ok: false,
+      error: 'value must come with its filter.',
+      reason: 'invalid_argument',
+    });
+    const removed = await adapter.execute('clear_listing_filters', {
+      filter: BRAND_FILTER,
+      value: 'samsung',
+    });
+    assert.deepEqual(
+      [removed.action, removed.value, removed.outcome, removed.destination.applied_filters],
+      ['removed_filter', 'Samsung', 'confirmed', []],
+    );
+    assert.equal(adapter.snapshot().brand, null);
+    assert.deepEqual(await adapter.execute('clear_listing_filters', {}), {
+      ok: true,
+      action: 'filters_already_clear',
+      changed: false,
+    });
+
+    /* Each option's key is the key search_bestprice sorts by, and apply_listing_sort takes it. */
+    const sorting = await adapter.execute('get_listing_sort_options', {});
+    assert.deepEqual(sorting.sorting, [
+      { name: SORT_OPTIONS[0], key: 'relevance', selected: true },
+      { name: SORT_OPTIONS[1], key: 'price_asc', selected: false },
+    ]);
+    const sorted = await adapter.execute('apply_listing_sort', { sort: 'price_asc' });
+    assert.deepEqual(
+      [sorted.action, sorted.sort, sorted.destination.sort],
+      ['applied_sorting', SORT_OPTIONS[1], 'price_asc'],
+    );
     const prices = adapter.snapshot().products.map(product => product.current_min_price_eur);
     assert.deepEqual(
       prices,
       [...prices].sort((a, b) => a - b),
     );
+    assert.deepEqual(
+      sorted.destination.products.map(product => product.current_min_price_eur),
+      prices.slice(0, 3),
+      'the destination is what the tab then shows',
+    );
+    /* ... and a label, as before. */
+    const relabelled = await adapter.execute('apply_listing_sort', { sort: SORT_OPTIONS[0] });
+    assert.equal(relabelled.destination.sort, 'relevance');
+  });
+
+  it('falls back to dispatched, with why, when the destination cannot be read first', async () => {
+    const unreadable = Object.assign(new Error('late'), { reason: 'timeout' });
+    const adapter = createDemoAdapter(() => {}, {
+      readDestination: () => {
+        throw unreadable;
+      },
+    });
+    await adapter.execute('search_bestprice', { query: 'phone' });
+    assert.deepEqual(await adapter.execute('apply_listing_filter', { filter: 'brand', value: 'Apple' }), {
+      ok: true,
+      action: 'filter_dispatched',
+      filter: BRAND_FILTER,
+      value: 'Apple',
+      applied: false,
+      dispatched: true,
+      outcome: 'dispatched',
+      destination_url: 'https://www.bestprice.gr/search?q=phone&brand=Apple',
+      next_tools: PAGE_TOOL_NAMES.listing.slice(1, -1),
+      unconfirmed_reason: 'timeout',
+    });
+    const productId = adapter.snapshot().products[0].product_id;
+    const opened = await adapter.execute('open_visible_product', { product_id: productId });
+    assert.deepEqual(
+      [opened.action, opened.outcome, opened.applied, opened.unconfirmed_reason, 'product' in opened],
+      ['product_open_dispatched', 'dispatched', false, 'timeout', false],
+    );
+    /* The tab still moves once the answer is out. */
+    await Promise.resolve();
+    assert.equal(adapter.snapshot().page, 'product');
+  });
+
+  it('opens a visible product with what its page shows, read before the tab moves', async () => {
+    const adapter = createDemoAdapter();
+    await adapter.execute('search_bestprice', { query: 'phone' });
+    const [shown] = adapter.snapshot().products;
+    const opened = await adapter.execute('open_visible_product', { product_id: shown.product_id });
+    assert.deepEqual(
+      [opened.action, opened.outcome, opened.applied, opened.dispatched, opened.note],
+      ['opened_visible_product', 'confirmed', true, true, CONFIRMED_NOTE],
+    );
+    assert.equal(opened.product.url, productUrl(shown.product_id));
+    assert.equal(opened.product.product_id, shown.product_id);
+    /* The tab moves once the answer is out (demo-output.test.js checks the order). */
+    assert.equal(adapter.snapshot().page, 'product');
   });
 
   it('refuses to open a hidden or invented listing product', async () => {
@@ -364,7 +495,8 @@ describe('demo adapter', () => {
       [['search_bestprice', { query: 'x' }], 'query must contain 2 to 120 characters.'],
       [['get_visible_products', { limit: 0 }], 'limit must be a whole number from 1 to 8.'],
       [['get_visible_products', { limit: 9 }], 'limit must be a whole number from 1 to 8.'],
-      [['compare_page_offers', { limit: 1.5 }], 'limit must be a whole number from 1 to 4.'],
+      [['compare_page_offers', { limit: 1.5 }], 'limit must be a whole number from 1 to 12.'],
+      [['compare_page_offers', { offset: -1 }], 'offset must be a whole number from 0.'],
       [['get_product_specifications', { limit: 17 }], 'limit must be a whole number from 1 to 16.'],
       [
         ['apply_listing_filter', { filter: 'price', value: '100' }],
@@ -374,7 +506,10 @@ describe('demo adapter', () => {
         ['apply_listing_filter', { filter: 'brand', value: 'Nokia' }],
         "The visible value 'Nokia' was not found.",
       ],
-      [['apply_listing_sort', { sort: 'Newest' }], "The sorting option 'Newest' was not found."],
+      [
+        ['apply_listing_sort', { sort: 'Newest' }],
+        `The sorting option 'Newest' was not found. Visible options: ${SORT_OPTIONS[0]} (relevance), ${SORT_OPTIONS[1]} (price_asc).`,
+      ],
       [['get_product_specifications', { section: 'Battery' }], "No specifications matched 'Battery'."],
       [['place_order', {}], 'Unknown tool: place_order.'],
     ];

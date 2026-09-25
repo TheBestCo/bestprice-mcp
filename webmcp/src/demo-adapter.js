@@ -35,7 +35,8 @@ const DEFAULT_LIMITS = {
 const MAX_LIMITS = {
   search_bestprice: 8,
   get_visible_products: 8,
-  compare_page_offers: 4,
+  /* Revision 2026-09-25.12: up to 12 offers a call, continued with offset. */
+  compare_page_offers: 12,
   get_product_specifications: 16,
 };
 const MAX_MESSAGE_LENGTH = 2000;
@@ -66,6 +67,10 @@ export const SEARCH_SORTS = Object.freeze([
   'newest',
 ]);
 const SORT_LABELS = Object.freeze({ relevance: 'Δημοφιλέστερα', price_asc: 'Φθηνότερα' });
+/* The key of each sorting option the fixture's listing renders (get_listing_sort_options). */
+const SORT_KEYS = Object.freeze(
+  Object.fromEntries(Object.entries(SORT_LABELS).map(([key, label]) => [label, key])),
+);
 const OFFERED_SORTS = Object.freeze(Object.keys(SORT_LABELS));
 const MAX_PRICE_EUR = 10_000_000;
 const MIN_MAX_PRICE_EUR = 0.01;
@@ -300,8 +305,15 @@ const readLimit = (args, tool) => {
 };
 
 /* A tool that moves or reloads the tab answers first, and says where the tab is going (contract 1.9,
- * registration revision 2026-09-25.8): the page reports `dispatched`, never a result it did not show. */
+ * registration revision 2026-09-25.8). Since revision .12 it reads the destination first: the answer
+ * states what that page shows (`confirmed`); a destination that cannot be read leaves `dispatched`,
+ * with why. Either way the tab moves after the answer. */
 const DISPATCHED = Object.freeze({ applied: false, dispatched: true, outcome: 'dispatched' });
+const CONFIRMED = Object.freeze({ applied: true, dispatched: true, outcome: 'confirmed' });
+export const CONFIRMED_NOTE =
+  'Read from the destination page before the tab moved there: destination shows the result; no need to read the page again.';
+/* The first products a confirmed listing destination names. */
+const DESTINATION_PRODUCTS = 3;
 
 /** The listing a filter, sort or search leaves the tab on. */
 const listingUrl = ({ query, brand, sort }) => {
@@ -309,6 +321,12 @@ const listingUrl = ({ query, brand, sort }) => {
   if (brand) url.searchParams.set('brand', brand);
   if (sort === 'Φθηνότερα') url.searchParams.set('o', 'price_asc');
   return url.href;
+};
+
+/** A product page, as a tool that opens it reads it first. */
+const productState = product => {
+  const { bestprice_url: url, ...facts } = productFacts(product);
+  return { url, ...facts };
 };
 
 /** One product card, as listings, the home page and search results publish it. */
@@ -343,7 +361,7 @@ const productFacts = product => ({
  * shipping after, by item price, never free — cut to `limit`, with the cheapest unknown-shipping
  * offer that was cut named rather than dropped.
  */
-const rankedOffers = (product, limit, withReference = true) => {
+const rankedOffers = (product, limit, withReference = true, offset = 0) => {
   const ranked = product.offers
     .map((_, index) => publicOffer(product, index))
     .sort(
@@ -353,8 +371,10 @@ const rankedOffers = (product, limit, withReference = true) => {
           (right.delivered_price_eur ?? right.item_price_eur),
     )
     .map(offer => (withReference ? offer : (({ offer_ref: _ref, ...rest }) => rest)(offer)));
-  const offers = ranked.slice(0, limit);
-  const excluded = ranked.slice(limit).filter(offer => offer.delivered_price_eur === null);
+  const offers = ranked.slice(offset, offset + limit);
+  /* The cheapest unknown-shipping offer left out is named on the first page only. */
+  const excluded =
+    offset === 0 ? ranked.slice(limit).filter(offer => offer.delivered_price_eur === null) : [];
   const cheapestDelivered = Math.min(
     ...offers.filter(offer => offer.delivered_price_eur !== null).map(offer => offer.delivered_price_eur),
   );
@@ -676,11 +696,14 @@ const readDecisionArguments = args => {
  * @param {(snapshot: object) => void} [onChange] called after every state change with the new snapshot.
  * @param {{
  *   decide?: (request: { message: string, postalCode?: string }, options?: { signal?: AbortSignal }) => unknown,
+ *   readDestination?: (url: string, state: object) => object,
  *   readPage?: (productId: string) => object | null,
  *   readSection?: (product: object, section: 'offers' | 'specifications' | 'price_history') => unknown,
  *   sectionTimeoutMs?: number,
  * }} [options]
  *   `decide` answers get_shopping_decision instead of the fixture, after the arguments are validated.
+ *   `readDestination(url, state)` is how a navigating tool reads its destination before the tab moves
+ *   (the fixture's own state by default); one that throws leaves the answer `dispatched`, with why.
  *   `readPage` and `readSection` read get_product_details' product page and its sections instead of the
  *   fixture — a reader that throws or outlasts `sectionTimeoutMs` gives a partial answer, as on the
  *   storefront; `readPage` returning null is a product BestPrice does not have.
@@ -689,6 +712,7 @@ export function createDemoAdapter(
   onChange = () => {},
   {
     decide = decideFromFixture,
+    readDestination = (_url, state) => state,
     readPage = productId => PRODUCTS.find(row => row.product_id === productId) ?? null,
     readSection = readFixtureSection,
     sectionTimeoutMs = DETAIL_SECTION_TIMEOUT_MS,
@@ -735,6 +759,64 @@ export function createDemoAdapter(
       move();
       changed();
     });
+  /* Opens the price-history chart, or scrolls to it once open: what it did. */
+  const showHistory = () => {
+    const action = state.historyVisible ? 'focused_price_history' : 'opened_price_history';
+    state.historyVisible = true;
+    changed();
+    return action;
+  };
+  /* What a listing shows for a given state: the destination a filter, sort or clear reads first. */
+  const listingState = next => {
+    const rows = ordered(
+      filtered(matching(next.query), next.filters).filter(
+        product => !next.brand || product.brand === next.brand,
+      ),
+      next.sort,
+    );
+    return {
+      url: listingUrl(next),
+      total_results: rows.length,
+      applied_filters: next.brand ? [next.brand] : [],
+      sort: SORT_KEYS[next.sort] ?? null,
+      products: rows.slice(0, DESTINATION_PRODUCTS).map(product => card(product)),
+    };
+  };
+  /* Read the destination, then move after the answer: `confirmed` with what it shows, or `dispatched`. */
+  const confirmThenMove = (url, state, move) => {
+    afterAnswer(move);
+    try {
+      return { outcome: 'confirmed', state: readDestination(url, state) };
+    } catch (error) {
+      return {
+        outcome: 'dispatched',
+        reason: typeof error?.reason === 'string' ? error.reason : 'upstream_unavailable',
+      };
+    }
+  };
+  /* A listing action's answer: what its destination shows when it was read, else where the tab goes. */
+  const listingAction = (confirmed, dispatched, next, move) => {
+    const url = listingUrl(next);
+    const receipt = confirmThenMove(url, listingState(next), move);
+    return receipt.outcome === 'confirmed'
+      ? {
+          ok: true,
+          ...confirmed,
+          ...CONFIRMED,
+          destination_url: url,
+          next_tools: [...LISTING_PAGE_TOOLS],
+          destination: receipt.state,
+          note: CONFIRMED_NOTE,
+        }
+      : {
+          ok: true,
+          ...dispatched,
+          ...DISPATCHED,
+          destination_url: url,
+          next_tools: [...LISTING_PAGE_TOOLS],
+          unconfirmed_reason: receipt.reason,
+        };
+  };
 
   const setPage = page => {
     if (!PAGES.includes(page)) throw new TypeError(`Unknown page: ${page}`);
@@ -808,6 +890,8 @@ export function createDemoAdapter(
         omitted_products: rows.length - products.length,
         products,
         navigated,
+        /* Revision .12: the page the tab moves to is the page these results were read from. */
+        ...(navigated ? { outcome: 'confirmed' } : {}),
         ...(requested.length ? { applied, not_applied: notApplied } : {}),
         next_step: nextStep,
         /* The tools the destination page registers once the tab is there. */
@@ -858,17 +942,22 @@ export function createDemoAdapter(
       const productId = clean(args.product_id);
       const product = shownProducts().find(row => row.product_id === productId);
       if (!product) return fail(`Product ${productId} is not currently visible on this page.`);
-      afterAnswer(() => {
+      const url = productUrl(product.product_id);
+      const receipt = confirmThenMove(url, productState(product), () => {
         state.activeProductId = product.product_id;
         state.page = 'product';
       });
+      const confirmed = receipt.outcome === 'confirmed';
       return {
         ok: true,
-        ...DISPATCHED,
-        action: 'product_open_dispatched',
+        ...(confirmed ? CONFIRMED : DISPATCHED),
+        ...(confirmed ? { note: CONFIRMED_NOTE } : {}),
+        action: confirmed ? 'opened_visible_product' : 'product_open_dispatched',
         product_id: product.product_id,
         title: product.title,
-        bestprice_url: productUrl(product.product_id),
+        bestprice_url: url,
+        /* What the product page shows, read before the tab moved there. */
+        ...(confirmed ? { product: receipt.state } : { unconfirmed_reason: receipt.reason }),
         next_tools: [...ITEM_PAGE_TOOLS],
       };
     },
@@ -926,35 +1015,52 @@ export function createDemoAdapter(
           applied: true,
         };
       }
-      afterAnswer(() => {
-        state.brand = brand;
-      });
-      return {
-        ok: true,
-        action: 'filter_dispatched',
-        filter: BRAND_FILTER,
-        value: brand,
-        ...DISPATCHED,
-        destination_url: listingUrl({ ...state, brand }),
-        next_tools: [...LISTING_PAGE_TOOLS],
-      };
+      return listingAction(
+        { action: 'applied_filter', filter: BRAND_FILTER, value: brand },
+        { action: 'filter_dispatched', filter: BRAND_FILTER, value: brand },
+        { ...state, brand },
+        () => {
+          state.brand = brand;
+        },
+      );
     },
 
-    clear_listing_filters() {
-      if (!state.brand && !Object.keys(state.filters).length) {
-        return { ok: true, action: 'filters_already_clear', changed: false };
+    /* Revision .12: every filter, or only one filter (`filter`), or one selected value of it (`value`). */
+    clear_listing_filters(args) {
+      if (args.value !== undefined && args.filter === undefined) {
+        return { ...fail('value must come with its filter.'), reason: 'invalid_argument' };
       }
-      afterAnswer(() => {
-        state.brand = null;
-        state.filters = {};
-      });
-      return {
-        ok: true,
-        action: 'clearing_filters_dispatched',
-        ...DISPATCHED,
-        destination_url: listingUrl({ ...state, brand: null }),
-        next_tools: [...LISTING_PAGE_TOOLS],
-      };
+      if (args.filter === undefined) {
+        if (!state.brand && !Object.keys(state.filters).length) {
+          return { ok: true, action: 'filters_already_clear', changed: false };
+        }
+        return listingAction(
+          { action: 'cleared_listing_filters' },
+          { action: 'clearing_filters_dispatched' },
+          { ...state, brand: null, filters: {} },
+          () => {
+            state.brand = null;
+            state.filters = {};
+          },
+        );
+      }
+      const filter = normalize(args.filter);
+      if (filter !== normalize(BRAND_FILTER) && filter !== 'brand') {
+        return fail(`The filter '${clean(args.filter)}' was not found on this listing.`);
+      }
+      const value = args.value === undefined ? null : clean(args.value);
+      const named = { filter: BRAND_FILTER, ...(value ? { value } : {}) };
+      const selected = state.brand && (!value || normalize(state.brand).includes(normalize(value)));
+      if (!selected) return { ok: true, action: 'filter_already_clear', ...named, changed: false };
+      if (value) named.value = state.brand;
+      return listingAction(
+        { action: 'removed_filter', ...named },
+        { action: 'filter_removal_dispatched', ...named },
+        { ...state, brand: null },
+        () => {
+          state.brand = null;
+        },
+      );
     },
 
     get_listing_sort_options() {
@@ -962,32 +1068,45 @@ export function createDemoAdapter(
         ok: true,
         source: 'BestPrice listing sorting',
         returned: SORT_OPTIONS.length,
-        sorting: SORT_OPTIONS.map(value => ({ name: value, selected: value === state.sort })),
+        /* Revision .12: each option's key, which apply_listing_sort takes as well as its label. */
+        sorting: SORT_OPTIONS.map(value => ({
+          name: value,
+          key: SORT_KEYS[value],
+          selected: value === state.sort,
+        })),
       };
     },
 
     apply_listing_sort(args) {
-      const sort = SORT_OPTIONS.find(value => normalize(value) === normalize(args.sort));
-      if (!sort) return fail(`The sorting option '${clean(args.sort)}' was not found.`);
+      const requested = clean(args.sort);
+      const keyed = SEARCH_SORTS.includes(requested)
+        ? SORT_OPTIONS.filter(value => SORT_KEYS[value] === requested)
+        : [];
+      const exact = SORT_OPTIONS.filter(value => normalize(value) === normalize(requested));
+      const loose = SORT_OPTIONS.filter(value => normalize(value).includes(normalize(requested)));
+      const candidates = keyed.length ? keyed : exact.length ? exact : loose;
+      if (candidates.length !== 1) {
+        const shown = SORT_OPTIONS.map(value => `${value} (${SORT_KEYS[value]})`).join(', ');
+        return fail(`The sorting option '${requested}' was not found. Visible options: ${shown}.`);
+      }
+      const [sort] = candidates;
       if (state.sort === sort) return { ok: true, action: 'sorting_already_applied', sort, applied: true };
-      afterAnswer(() => {
-        state.sort = sort;
-      });
-      return {
-        ok: true,
-        action: 'sorting_dispatched',
-        sort,
-        ...DISPATCHED,
-        destination_url: listingUrl({ ...state, sort }),
-        next_tools: [...LISTING_PAGE_TOOLS],
-      };
+      return listingAction(
+        { action: 'applied_sorting', sort },
+        { action: 'sorting_dispatched', sort },
+        { ...state, sort },
+        () => {
+          state.sort = sort;
+        },
+      );
     },
 
     get_page_product() {
       return { ok: true, source: 'BestPrice item page', ...productFacts(activeProduct()) };
     },
 
-    /* Contract 1.9: any fixture product by id, from any page but the item page — without moving it. */
+    /* Contract 1.9: any fixture product by id, from any page (the item page: another product) — without
+     * moving the tab unless asked. */
     async get_product_details(args) {
       if (args.navigate !== undefined && typeof args.navigate !== 'boolean') {
         return fail('navigate must be true or false.');
@@ -1025,6 +1144,8 @@ export function createDemoAdapter(
         return {
           ...refusal,
           navigated: true,
+          /* Moving to a page that could not be read: not confirmed. */
+          outcome: 'dispatched',
           bestprice_url: productUrl(id),
           next_tools: [...ITEM_PAGE_TOOLS],
           next_step: DETAILS_FAILED_NAVIGATED_NEXT_STEP,
@@ -1064,7 +1185,8 @@ export function createDemoAdapter(
         ),
         ...(Object.keys(unavailable).length ? { unavailable } : {}),
         navigated: navigate,
-        ...(navigate ? { next_tools: [...ITEM_PAGE_TOOLS] } : {}),
+        /* The page the tab moves to is the page just read. */
+        ...(navigate ? { outcome: 'confirmed', next_tools: [...ITEM_PAGE_TOOLS] } : {}),
         next_step: navigate ? DETAILS_NAVIGATED_NEXT_STEP : DETAILS_NEXT_STEP,
         note: DETAILS_NOTE,
       };
@@ -1073,6 +1195,8 @@ export function createDemoAdapter(
     compare_page_offers(args) {
       const { limit, error } = readLimit(args, 'compare_page_offers');
       if (error) return error;
+      const offset = args.offset ?? 0;
+      if (!Number.isSafeInteger(offset) || offset < 0) return fail('offset must be a whole number from 0.');
       if (args.include_all_stores !== undefined && typeof args.include_all_stores !== 'boolean') {
         return fail('include_all_stores must be true or false.');
       }
@@ -1095,7 +1219,16 @@ export function createDemoAdapter(
           );
         }
       }
-      const { offers, excludedUnknownShipping } = rankedOffers(product, limit);
+      /* Revision .12: offset continues the same ranking, through every offer the page ranks. */
+      const considered = product.offers.length;
+      if (offset > 0 && offset >= considered) {
+        return {
+          ...fail(`offset is beyond the ${considered} offers this page ranks; start again from 0.`),
+          reason: 'invalid_argument',
+        };
+      }
+      const { offers, excludedUnknownShipping } = rankedOffers(product, limit, true, offset);
+      const next = offset + offers.length;
       /* The fixture renders every store, so there is never a «Όλες οι τιμές» to press. */
       return {
         ok: true,
@@ -1110,6 +1243,8 @@ export function createDemoAdapter(
         offers,
         ...(excludedUnknownShipping ? { excluded_unknown_shipping: excludedUnknownShipping } : {}),
         note: 'Unknown shipping remains unknown. The shopper chooses the merchant.',
+        offset,
+        next_offset: next < considered ? next : null,
       };
     },
 
@@ -1164,9 +1299,12 @@ export function createDemoAdapter(
       };
     },
 
-    summarize_price_history() {
+    summarize_price_history(args) {
+      if (args.show_chart !== undefined && typeof args.show_chart !== 'boolean') {
+        return { ...fail('show_chart must be true or false.'), reason: 'invalid_argument' };
+      }
       const product = activeProduct();
-      return {
+      const summary = {
         ok: true,
         source: 'BestPrice price history',
         product_id: product.product_id,
@@ -1174,30 +1312,40 @@ export function createDemoAdapter(
         ...historySummary(product),
         outliers_excluded: 0,
       };
+      if (args.show_chart !== true) return summary;
+      /* Revision .12: the numbers and the chart in one call (show_price_history stays the UI-only one). */
+      return { ...summary, chart: showHistory() };
     },
 
+    /* Revision .12: offer_ref, or failing that merchant_name — one of them, checked here (the input
+     * schema says so in words: no anyOf). merchant_id is no longer published, so it is refused. */
     show_offer(args) {
       const reference = clean(args.offer_ref);
-      const merchantId = clean(args.merchant_id);
       const merchantName = clean(args.merchant_name);
-      if (!reference && !merchantId && !merchantName) {
-        return fail('Provide offer_ref from compare_page_offers, or merchant_name.');
-      }
-      if (merchantId && !/^\d{1,20}$/u.test(merchantId)) {
-        return fail('merchant_id must be the numeric id shown on this page.');
+      if (!reference && !merchantName) {
+        return {
+          ...fail('Pass offer_ref (from compare_page_offers) or, failing that, merchant_name.'),
+          reason: 'invalid_argument',
+        };
       }
       const product = activeProduct();
       const offers = product.offers.map((_, index) => publicOffer(product, index));
-      /* offer_ref is exact. Demo offers carry no merchant ids, and compare_page_offers does not
-       * return them, so an id-only call cannot resolve; a name must match exactly one offer. */
-      let matches = [];
-      if (reference) matches = offers.filter(offer => offer.offer_ref === reference);
-      else if (!merchantId)
-        matches = offers.filter(offer => normalize(offer.merchant) === normalize(merchantName));
-      if (matches.length > 1)
-        return fail('More than one shown offer has that merchant name; pass its offer_ref.');
+      const named = offer => normalize(offer.merchant) === normalize(merchantName);
+      /* offer_ref is exact; a name alongside it must describe the same offer, and a name alone must
+       * match exactly one shown offer. */
+      const matches = reference
+        ? offers.filter(offer => offer.offer_ref === reference)
+        : offers.filter(named);
+      if (matches.length > 1) {
+        return fail(
+          'More than one shown offer matches that merchant name; use the offer_ref that compare_page_offers returned.',
+        );
+      }
       const [offer] = matches;
       if (!offer) return fail('That merchant is not currently shown on this page.');
+      if (reference && merchantName && !named(offer)) {
+        return fail('offer_ref and merchant_name do not describe the same shown offer.');
+      }
       state.focusedOffer = offer.merchant;
       changed();
       return {
@@ -1211,10 +1359,7 @@ export function createDemoAdapter(
     },
 
     show_price_history() {
-      const action = state.historyVisible ? 'focused_price_history' : 'opened_price_history';
-      state.historyVisible = true;
-      changed();
-      return { ok: true, action, product_id: activeProduct().product_id };
+      return { ok: true, action: showHistory(), product_id: activeProduct().product_id };
     },
 
     get_shopping_decision(args, options) {

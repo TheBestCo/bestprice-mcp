@@ -10,11 +10,13 @@
  * The storefront is the source of truth for what a page registers, and it lives in another repository.
  * Since contract 1.8 it keeps a tool's words and output in one place and generates a JSON copy of them:
  *
- * - `extra/mcpDiscovery/webmcp-tools.json` — each tool's title, description and output schema, written
- *   by `tools/scripts/webmcp-tools-json.mjs` from `js/modules/webmcp/tool-catalog.js` and
- *   `output-schemas.js` (the storefront's own test fails while it is stale). It is read as JSON;
- * - the page modules that register the tools (`STOREFRONT_SOURCES`) — each tool's input schema and
- *   annotations, which the JSON does not carry. They are read by the reader below;
+ * - `extra/mcpDiscovery/webmcp-tools.json` — each tool's title, description, page wording, output
+ *   schema and (since registration revision 2026-09-25.12) input schema, written by
+ *   `tools/scripts/webmcp-tools-json.mjs` from `js/modules/webmcp/tool-catalog.js`, `input-schemas.js`
+ *   and `output-schemas.js` (the storefront's own test fails while it is stale). It is read as JSON;
+ * - the page modules that register the tools (`STOREFRONT_SOURCES`) — each tool's annotations, which
+ *   the JSON does not carry, and that each page registers the document's schemas and words by name.
+ *   They are read by the reader below;
  * - `tools/scripts/mcp_discovery_json.php` — the manifest the site serves, rendered by the real PHP
  *   builder, for the tools each page type registers (`renderStorefrontPages`). The storefront's
  *   `manifest-parity.test.js` checks that manifest against what the pages register.
@@ -57,6 +59,8 @@ export const STOREFRONT_SOURCES = Object.freeze([
   'js/modules/webmcp/product-details-tool.js',
   /* Contract 1.9 shares input fields across tools: one product id, the search constraints. */
   'js/modules/webmcp/search-constraints.js',
+  /* Revision 2026-09-25.12: every input schema's one source, which the generated document carries. */
+  'js/modules/webmcp/input-schemas.js',
   'js/modules/webmcp/output-schemas.js',
 ]);
 
@@ -572,6 +576,7 @@ function definitionsFrom(tokens, constants) {
     seen.add(name);
     /* The expression the source writes (`OUTPUT_SCHEMAS.name`), before any constant resolves it. */
     const outputSchemaRef = parsed.value?.outputSchema?.$ref;
+    const inputSchemaRef = parsed.value?.inputSchema?.$ref;
     definitions.push({
       name,
       title: typeof definition.title === 'string' ? definition.title : undefined,
@@ -580,6 +585,7 @@ function definitionsFrom(tokens, constants) {
       annotations: definition.annotations,
       ...(Object.hasOwn(definition, TEXT_FROM) ? { textFrom: definition[TEXT_FROM] } : {}),
       ...(typeof outputSchemaRef === 'string' ? { outputSchemaRef } : {}),
+      ...(typeof inputSchemaRef === 'string' ? { inputSchemaRef } : {}),
     });
   }
   return definitions;
@@ -698,11 +704,23 @@ export function readStorefrontSurface(root = DEFAULT_STOREFRONT_ROOT) {
     if (source.outputSchemaRef !== undefined && source.outputSchemaRef !== `OUTPUT_SCHEMAS.${name}`) {
       problems.push(`${name}: ${source.path} registers ${source.outputSchemaRef} as its output schema`);
     }
+    /* Since registration revision 2026-09-25.12 the input schemas are single-sourced too
+     * (js/modules/webmcp/input-schemas.js → the generated document): the page must register the
+     * document's schema by name, or write the same schema out. Before, the page's literal is the source. */
+    if (
+      entry.input_schema &&
+      source.inputSchemaRef !== `INPUT_SCHEMAS.${name}` &&
+      canonicalJson(source.inputSchema) !== canonicalJson(entry.input_schema)
+    ) {
+      problems.push(
+        `${name}: ${source.path} does not register the input schema ${STOREFRONT_TOOL_DOCUMENT} publishes`,
+      );
+    }
     definitions.push({
       name,
       title: entry.title,
       description: entry.description,
-      inputSchema: source.inputSchema,
+      inputSchema: entry.input_schema ?? source.inputSchema,
       annotations: source.annotations,
       outputSchema: entry.output_schema,
       ...(entry.page_descriptions
