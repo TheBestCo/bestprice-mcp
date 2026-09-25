@@ -9,8 +9,8 @@ Use BestPrice Shopping when the user is shopping for safe physical products avai
 
 ## Route by shopper intent
 
-- For “what should I buy?”, recommendations, needs, budgets, required features, trade-offs, comparisons, or a read-only basket plan, call `get_shopping_decision` with the current request as written. Preserve its selected product, constraints, evidence, trade-offs, and explicit unknowns instead of creating a second ranking.
-- When the user names a product, model, category, or barcode, or you need a canonical BestPrice `product_id`, use `search_products`.
+- For “what should I buy?”, recommendations, needs, budgets, required features, trade-offs, comparisons, or a read-only basket plan, call `get_shopping_decision` with the current request as written. Preserve its selected product, constraints, evidence, trade-offs, and explicit unknowns instead of creating a second ranking. When it returns a completed recommendation, comparison, or basket, answer from that result; do not call another BestPrice tool unless the original request separately asks for offers or price history.
+- When the user names a product, model, category, or barcode, or you need a canonical BestPrice `product_id`, use `search_products`. For a lookup-only request, a matching result is terminal; continue to `compare_offers` or `get_price_history` only when the original request asks for offers, delivered cost, or price history.
 - When the user asks where a known product is cheapest, wants current Greek merchant offers, shipping, or delivered total, use `compare_offers` with an exact returned `product_id`. Supply a user-provided Greek postcode when delivered cost is required.
 - When the user asks “is this price good?”, whether today’s price is low, typical, or high, whether it recently became cheaper, or wants historical pricing, use `get_price_history` for an exact returned `product_id`.
 
