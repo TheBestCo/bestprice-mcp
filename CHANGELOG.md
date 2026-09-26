@@ -7,6 +7,49 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [2.6.0] - 2026-09-26
+
+WebMCP contracts 2.3 to 2.6 (bestprice.gr `7210e5e554`, `1bd0f2299f`, `b4981c7d10`, `762f0a4bc7`) in one release:
+the product page's shopper actions and the reads of the shopper's list and comparisons, and a Shopping Brain with
+structured inputs that only recommends. 22 tools (15 before); pages home 6, listings 11, product 16, every other
+page 5; every tool at `2.6.0`.
+
+### Migration
+
+| Contract 2.2 | Contract 2.6 |
+| --- | --- |
+| — (2.3) | `add_to_shopping_list`, `add_to_comparison`, `open_price_alert` on the product page, for its product (`product_id` optional and must be it). Outcomes `added`/`unchanged` and `awaiting_shopper`; a full list or comparison is refused as `limit_reached`. Annotations: not read-only, idempotent, not destructive, not consequential, `untrustedContentHint: false`. |
+| — (2.4) | `remove_from_shopping_list`, `remove_from_comparison`: outcomes `removed`/`unchanged`, `destructiveHint: true`. |
+| — (2.5) | `get_shopping_list` (every page, `limit` 1–20, `offset`) and `get_comparison` (product page, `offset`, three categories a call), both read-only. |
+| `get_shopping_decision` result `status` | `outcome` alone: `clarification` (ask `clarifying_question`), `no_match`, or the kind of answer. |
+| A budget or must-haves written into `get_shopping_decision`'s `message` | `max_price_eur` (0.01–10,000,000) and `must_have` (1–6 features, 1–40 characters, no repeats); the tool writes them into the message as «<message>. Budget: up to <max> €. Must have: a, b.». Argument refusals carry `reason: invalid_argument`. |
+| `get_shopping_decision` result `catalog_candidates`, `search_url` (2.6) | Gone: a `no_match` says nothing fit and names `search_bestprice`. |
+
+`PAGE_TOOL_NAMES.product` lists `get_shopping_list`, `add_to_shopping_list`, `remove_from_shopping_list`,
+`get_comparison`, `add_to_comparison`, `remove_from_comparison` and `open_price_alert` between `show_offer` and
+`get_shopping_decision`; every other page lists `get_shopping_list` right before `get_shopping_decision`.
+
+### Added
+
+- The seven tools, implemented by the demo as the storefront runs them, schema-valid against the strict and
+  published contracts: a shopping list of 40 and one comparison of 6 per category, read before and after each
+  change (`unchanged` both ways, never a toggle), `limit_reached`, `missing_product` off a product page, another
+  page's `product_id` refused (pointing at `open_product`); the price-drop alert dialog opened once and never
+  saved; the paged reads. New options `shoppingList`, `comparisons` and `signedIn` seed and word them.
+- The source reader follows tool factories — `const make = (name, run, annotations = SET) => ({ name, … })`
+  called `make('add_to_shopping_list', …)` — which is how the storefront registers the shopper actions; the
+  snapshot also records `js/modules/webmcp/shopping-list-tool.js`.
+- **Dataset 16.0.0** grades contract 2.6 and is the default: `get_shopping_list` and `get_comparison` join the
+  admitted extra reads, and `get_shopping_decision`'s argument rules take `max_price_eur` and `must_have`. 15.0.0
+  is frozen with its argument rules recorded; `runs.v16.json` starts empty. The demo passes 16.0.0 (and 15.0.0)
+  with 42 passed and 5 refusals.
+
+### Changed
+
+- The demo's `get_shopping_decision` composes the budget and must-haves into the message as the storefront does,
+  returns one `outcome`, no `catalog_candidates`, and refuses bad arguments with `reason: invalid_argument`.
+- Descriptions follow the storefront's plain-English rewording (2.6); `webmcpContractToolCount` is 22.
+
 ## [2.2.0] - 2026-09-25
 
 WebMCP contract 2.2 (bestprice.gr `8d040a161a`, live on www): `open_search_results` opens the address a search
@@ -568,7 +611,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.6.0...HEAD
+[2.6.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.2.0...v2.6.0
 [2.2.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v1.5.0...v2.0.0

@@ -4,7 +4,7 @@
   "canonical": {
     "registryId": "gr.bestprice/mcp",
     "serverVersion": "1.8.1",
-    "packageVersion": "2.2.0",
+    "packageVersion": "2.6.0",
     "endpoint": "https://mcp.bestprice.gr/mcp",
     "tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
     "skill": "https://github.com/TheBestCo/bestprice-mcp/blob/main/skills/bestprice-shopping/SKILL.md",
@@ -271,8 +271,8 @@
       "url": "https://agent-plugins.directory/thebestco/bestprice-shopping",
       "verifiedAt": "2026-09-25",
       "evidence": "Page shows package v1.2.7 with plugin.json, the streamable-http MCP config for https://mcp.bestprice.gr/mcp, the canonical Skill, and the com.openai interface.",
-      "note": "Ten releases behind: 1.2.8 (2026-09-25) fixes the stdio bridge on Node 24+, 1.3.0 publishes WebMCP contract 1.8, 1.4.0 contract 1.9, 1.4.1 to 1.5.0 its revisions, and 2.0.0, 2.1.0 and 2.2.0 contracts 2.0 to 2.2; the remote MCP config it lists is unaffected.",
-      "nextAction": "Confirm the directory re-indexes v2.2.0 from the repository.",
+      "note": "Eleven releases behind: 1.2.8 (2026-09-25) fixes the stdio bridge on Node 24+, 1.3.0 publishes WebMCP contract 1.8, 1.4.0 contract 1.9, 1.4.1 to 1.5.0 its revisions, 2.0.0 to 2.2.0 contracts 2.0 to 2.2, and 2.6.0 contracts 2.3 to 2.6; the remote MCP config it lists is unaffected.",
+      "nextAction": "Confirm the directory re-indexes v2.6.0 from the repository.",
       "nextActionBy": "upstream"
     },
     {
