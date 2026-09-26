@@ -3,11 +3,15 @@
 This is the canonical home of the versioned Greek shopper prompt datasets for the
 contextual tools in [`../src/contracts.js`](../src/contracts.js):
 
-- [`natural-language-cases.v15.json`](natural-language-cases.v15.json) — current, 47 cases: 14.0.0
+- [`natural-language-cases.v16.json`](natural-language-cases.v16.json) — current, 47 cases: 15.0.0
+  graded against contract 2.6 by [`dataset-v16.js`](dataset-v16.js) (`get_shopping_list` and
+  `get_comparison` admitted as extra reads; `get_shopping_decision`'s `max_price_eur` and `must_have`
+  in its argument rules); evidence in [`runs.v16.json`](runs.v16.json). The deterministic driver runs
+  it by default. See [`QUALIFICATION.md`](QUALIFICATION.md).
+- [`natural-language-cases.v15.json`](natural-language-cases.v15.json) — frozen, 47 cases: 14.0.0
   graded against contract 2.2 by [`dataset-v15.js`](dataset-v15.js) (`open_search_results` opens the
   `results_url` a search returned, so multi-001 and multi-002 search first); evidence in
-  [`runs.v15.json`](runs.v15.json). The deterministic driver runs it by default. See
-  [`QUALIFICATION.md`](QUALIFICATION.md).
+  [`runs.v15.json`](runs.v15.json).
 - [`natural-language-cases.v14.json`](natural-language-cases.v14.json) — frozen, 47 cases: 13.0.0
   graded against contract 2.1 by [`dataset-v14.js`](dataset-v14.js) (a search whose listing the chain
   uses opens it with `open_search_results`; no `navigated`, `open_product` facts or listing `action`

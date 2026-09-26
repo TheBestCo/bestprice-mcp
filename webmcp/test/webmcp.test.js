@@ -18,6 +18,15 @@ import {
 } from '../src/demo-adapter.js';
 import { createLocalModelContext, createRegistration } from '../src/runtime.js';
 
+/* The tools a page registers besides the ones on every page (search, its results, the shopper's list
+ * and the Shopping Brain): the `next_tools` a tool that moves the tab there names. */
+const destinationTools = page =>
+  PAGE_TOOL_NAMES[page].filter(
+    name =>
+      !['search_bestprice', 'open_search_results', 'get_shopping_list', 'get_shopping_decision'].includes(
+        name,
+      ),
+  );
 const noop = () => ({ ok: true });
 /* The results_url the demo's search for «phone» returns (contract 2.2: open_search_results opens it). */
 const PHONE_RESULTS = 'https://www.bestprice.gr/search?q=phone';
@@ -27,14 +36,14 @@ const PHONE_RESULTS = 'https://www.bestprice.gr/search?q=phone';
 const DESCRIPTION_LENGTH = Object.freeze({ min: 40, max: 160, field: 110 });
 
 describe('contracts', () => {
-  it('publishes 15 unique contextual tools across four page types (contract 2.2)', () => {
-    assert.equal(WEBMCP_CONTRACT_VERSION, '2.2');
+  it('publishes 22 unique contextual tools across four page types (contract 2.6)', () => {
+    assert.equal(WEBMCP_CONTRACT_VERSION, '2.6');
     /* Contract 2.2: open_search_results opens one thing, the results_url a search returned. */
     assert.deepEqual(TOOL_DEFINITIONS.open_search_results.inputSchema.required, ['results_url']);
     assert.deepEqual(Object.keys(TOOL_DEFINITIONS.open_search_results.inputSchema.properties), [
       'results_url',
     ]);
-    assert.equal(TOOL_NAMES.length, 15);
+    assert.equal(TOOL_NAMES.length, 22);
     assert.deepEqual(new Set(Object.values(PAGE_TOOL_NAMES).flat()), new Set(TOOL_NAMES));
     /* Search first, the Shopping Brain last, on every page; the home page browses its sections. */
     assert.deepEqual(PAGE_TOOL_NAMES.home, [
@@ -42,16 +51,55 @@ describe('contracts', () => {
       'open_search_results',
       'get_visible_products',
       'open_product',
+      'get_shopping_list',
       'get_shopping_decision',
     ]);
-    assert.equal(PAGE_TOOL_NAMES.listing.length, 10);
-    assert.equal(PAGE_TOOL_NAMES.product.length, 9);
-    /* Every other public page: search, its results in the tab, a product by id, and the Shopping Brain. */
+    assert.equal(PAGE_TOOL_NAMES.listing.length, 11);
+    assert.equal(PAGE_TOOL_NAMES.product.length, 16);
+    /* Every other public page: search, its results in the tab, a product by id, the shopper's list and
+     * the Shopping Brain. */
     assert.deepEqual(PAGE_TOOL_NAMES.site, [
       'search_bestprice',
       'open_search_results',
       'open_product',
+      'get_shopping_list',
       'get_shopping_decision',
+    ]);
+    /* Contract 2.5: the shopper's list on every page, right before the Shopping Brain. */
+    for (const names of Object.values(PAGE_TOOL_NAMES)) {
+      assert.ok(names.includes('get_shopping_list'));
+    }
+    /* Contracts 2.3–2.5: the product page's shopper actions, each read right before its add, each
+     * removal right after its add. */
+    assert.deepEqual(PAGE_TOOL_NAMES.product.slice(8, -1), [
+      'get_shopping_list',
+      'add_to_shopping_list',
+      'remove_from_shopping_list',
+      'get_comparison',
+      'add_to_comparison',
+      'remove_from_comparison',
+      'open_price_alert',
+    ]);
+    for (const tool of [
+      'add_to_shopping_list',
+      'remove_from_shopping_list',
+      'get_comparison',
+      'add_to_comparison',
+      'remove_from_comparison',
+      'open_price_alert',
+    ]) {
+      assert.deepEqual(
+        Object.keys(PAGE_TOOL_NAMES).filter(page => PAGE_TOOL_NAMES[page].includes(tool)),
+        ['product'],
+        tool,
+      );
+    }
+    /* Contract 2.4: the Shopping Brain takes a budget and must-haves beside the shopper's words. */
+    assert.deepEqual(Object.keys(TOOL_DEFINITIONS.get_shopping_decision.inputSchema.properties), [
+      'message',
+      'max_price_eur',
+      'must_have',
+      'postal_code',
     ]);
     /* Contract 2.1: every tool reads or acts. The search that shows its results, and the product that
      * opens by id, are on every page; loading more results only on listings, right after reading them. */
@@ -105,13 +153,16 @@ describe('contracts', () => {
           tool.annotations.readOnlyHint === true,
           `${tool.name} says whether it reads`,
         );
-        /* Every tool says it is not consequential and that its results are untrusted content; a tool
-         * that changes the page also says it is not destructive and stays on BestPrice. */
+        /* Every tool says it is not consequential, and whether its results carry page or catalog text:
+         * all do but the shopper actions (contract 2.3), whose receipts are ids, counts and BestPrice's
+         * own wording. A tool that changes the page stays on BestPrice, and destroys nothing but a
+         * removal from a list the shopper keeps (2.4). */
+        const shopperAction = /^(?:add_to|remove_from)_|^open_price_alert$/u.test(tool.name);
         assert.equal(typeof tool.annotations.readOnlyHint, 'boolean', tool.name);
         assert.equal(tool.annotations.consequentialHint, false, tool.name);
-        assert.equal(tool.annotations.untrustedContentHint, true, tool.name);
+        assert.equal(tool.annotations.untrustedContentHint, !shopperAction, tool.name);
         if (!tool.annotations.readOnlyHint) {
-          assert.equal(tool.annotations.destructiveHint, false, tool.name);
+          assert.equal(tool.annotations.destructiveHint, tool.name.startsWith('remove_from_'), tool.name);
           /* load_more_products appends the next result page on every call. */
           assert.equal(tool.annotations.idempotentHint, tool.name !== 'load_more_products', tool.name);
           assert.equal(tool.annotations.openWorldHint, false, tool.name);
@@ -214,7 +265,7 @@ describe('registration runtime', () => {
     const result = await registration.register(listingTools());
 
     assert.deepEqual(result, { status: 'degraded', registered: 0 });
-    assert.equal(signals.length, 10);
+    assert.equal(signals.length, 11);
     assert.ok(signals.every(signal => signal.aborted));
     assert.deepEqual(states.at(-1), { status: 'degraded', registered: 0 });
   });
@@ -223,8 +274,8 @@ describe('registration runtime', () => {
     const modelContext = createLocalModelContext();
     const states = [];
     const registration = createRegistration({ modelContext, onState: state => states.push(state) });
-    assert.deepEqual(await registration.register(listingTools()), { status: 'ready', registered: 10 });
-    assert.equal(modelContext.tools.size, 10);
+    assert.deepEqual(await registration.register(listingTools()), { status: 'ready', registered: 11 });
+    assert.equal(modelContext.tools.size, 11);
     /* What the page registers is the whole published contract, output schema included. */
     const registered = modelContext.tools.get('get_shopping_decision');
     for (const field of ['title', 'description', 'annotations', 'inputSchema', 'outputSchema']) {
@@ -257,7 +308,7 @@ describe('registration runtime', () => {
     const first = registration.register(listingTools());
     const second = registration.register(createTools({ page: 'product', execute: noop }));
     assert.deepEqual(await first, { status: 'cancelled', registered: 0 });
-    assert.deepEqual(await second, { status: 'ready', registered: 9 });
+    assert.deepEqual(await second, { status: 'ready', registered: 16 });
   });
 
   it('tears down by aborting registered tools and reporting unavailable', async () => {
@@ -386,7 +437,7 @@ describe('demo adapter', () => {
       filter: BRAND_FILTER,
       value: 'Samsung',
       destination_url: url,
-      next_tools: PAGE_TOOL_NAMES.listing.slice(2, -1),
+      next_tools: destinationTools('listing'),
       destination: {
         url,
         total_results: 1,
@@ -495,7 +546,7 @@ describe('demo adapter', () => {
       filter: BRAND_FILTER,
       value: 'Apple',
       destination_url: 'https://www.bestprice.gr/search?q=phone&brand=Apple',
-      next_tools: PAGE_TOOL_NAMES.listing.slice(2, -1),
+      next_tools: destinationTools('listing'),
       unconfirmed_reason: 'timeout',
       note: 'The listing started that change; read the page again to confirm the filtered result.',
     });
@@ -507,7 +558,7 @@ describe('demo adapter', () => {
       product_id: productId,
       bestprice_url: productUrl(productId),
       unconfirmed_reason: 'timeout',
-      next_tools: PAGE_TOOL_NAMES.product.slice(2, -1),
+      next_tools: destinationTools('product'),
       note: 'The product page could not be read first; call get_page_product there to read it.',
     });
     /* The tab still moves once the answer is out. */
@@ -525,7 +576,7 @@ describe('demo adapter', () => {
       product_id: '2160384659',
       title: 'Google Pixel 9 128GB',
       bestprice_url: productUrl('2160384659'),
-      next_tools: PAGE_TOOL_NAMES.product.slice(2, -1),
+      next_tools: destinationTools('product'),
       note: 'Confirmed from the product page before the tab moved there; there, get_page_product reads its price, stores and rating.',
     });
     /* The receipt names what it confirmed; the product page's own read has the facts. */

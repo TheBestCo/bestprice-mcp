@@ -12,10 +12,10 @@ import {
   deriveDatasetV15,
   V15_PATH,
 } from '../evals/dataset-v15.js';
-import { CURRENT_CASES_PATH, DETERMINISTIC_PLANS, runEvaluation } from '../evals/driver.js';
+import { DETERMINISTIC_PLANS, runEvaluation } from '../evals/driver.js';
 import { gradeJourney } from '../evals/journey.js';
 import { caseDigestIndex, validateEvidenceFile } from '../evals/run-evidence.js';
-import { TOOL_DEFINITIONS, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
+import { TOOL_DEFINITIONS } from '../src/contracts.js';
 import { createDemoAdapter } from '../src/demo-adapter.js';
 import { unaccountedRequirements } from './helpers/contract-history.js';
 
@@ -34,9 +34,8 @@ describe('dataset 15.0.0', () => {
   it('is exactly what the generator derives from 14.0.0 and contract 2.2', () => {
     assert.equal(readFileSync(V15_PATH, 'utf8'), serializeDataset(deriveDatasetV15(v14)));
     assert.equal(v15.datasetVersion, DATASET_V15_VERSION);
-    assert.equal(WEBMCP_CONTRACT_VERSION, DATASET_V15_CONTRACT);
+    assert.equal(DATASET_V15_CONTRACT, '2.2');
     assert.match(v15.sourceContracts, /15 contextual tools, contract 2\.2, bestprice\.gr 8d040a161a/u);
-    assert.equal(CURRENT_CASES_PATH, V15_PATH, 'the deterministic driver runs the current dataset');
   });
 
   it('searches before it opens search results, and changes nothing else', () => {

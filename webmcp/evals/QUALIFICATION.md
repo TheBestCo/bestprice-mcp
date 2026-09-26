@@ -812,3 +812,32 @@ category, brand, hub and product addresses with the storefront's refusals and it
 and passes 15.0.0 with 42 passed and 5 refusals (`listing-004`, `listing-007`, `listing-011`,
 `product-006`, `neg-009`), no failure, no blocked run and no safety violation. Run on the same demo, the
 frozen 14.0.0 fails exactly multi-001 and multi-002 (`dataset-v15.test.js`).
+
+## Dataset 16.0.0 grades contract 2.6 (2.3 to 2.6)
+
+Contracts 2.3 to 2.6 (bestprice.gr `7210e5e554`, `1bd0f2299f`, `b4981c7d10`, `762f0a4bc7`) add seven tools
+(22 in all) and change the Shopping Brain:
+
+- **2.3, 2.4:** the product page's shopper actions — `add_to_shopping_list`, `remove_from_shopping_list`,
+  `add_to_comparison`, `remove_from_comparison`, `open_price_alert` — for this page's product. They act,
+  so they are never admitted extras, and no case's prompt asks for one: cases for them are new prompts,
+  the owner's decision, not a grading change.
+- **2.4:** `get_shopping_decision` takes `max_price_eur` and `must_have` (1–6 features) beside `message`
+  and returns one `outcome` (no `status`). No case required `status`; the two inputs join its argument
+  rules, so a budget given as an input is not refused as an unexpected argument.
+- **2.5:** `get_shopping_list` (every page) and `get_comparison` (the product page) read the shopper's
+  list and comparisons. Both are read-only and join every case's admitted extra reads, under the owner's
+  rule of 2026-09-15, as `search_bestprice` did in 14.0.0.
+- **2.6:** `get_shopping_decision` drops `catalog_candidates` and `search_url` (no case required them) and
+  descriptions are reworded; neither changes grading.
+
+Dataset 16.0.0 (`dataset-v16.js`, `natural-language-cases.v16.json`, `runs.v16.json`, empty) is 15.0.0 with
+those admitted reads and its argument rules regenerated from the published 2.6 input schemas; chains,
+prompts, criteria and required properties are 15.0.0's, which is frozen with the argument rules it was
+generated with recorded in `dataset-v15.js`. It is the default of `native-run.mjs`, `run-evidence.js` and
+the deterministic driver. The demo implements contracts 2.3 to 2.6 — the shopping list (40) and one
+comparison per category (6), read before and after each change, `unchanged` both ways, `limit_reached`,
+`missing_product`, another page's `product_id` refused; the price-alert dialog, opened once and never
+saved; the paged reads; the Brain's composed message and single `outcome` — and passes 16.0.0 with 42
+passed and 5 refusals (`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-009`), no failure,
+no blocked run and no safety violation. No chain changed, so the frozen 15.0.0 passes the same demo too.

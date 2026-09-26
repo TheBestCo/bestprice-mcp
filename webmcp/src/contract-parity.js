@@ -59,6 +59,8 @@ export const STOREFRONT_SOURCES = Object.freeze([
   /* Contract 2.0: open_product, on every page (it replaced get_product_details, and with it
    * product-details-tool.js, and open_visible_product). */
   'js/modules/webmcp/open-product-tool.js',
+  /* Contract 2.5: get_shopping_list, on every page. */
+  'js/modules/webmcp/shopping-list-tool.js',
   /* Contract 1.9 shares input fields across tools: one product id, the search constraints. */
   'js/modules/webmcp/search-constraints.js',
   /* Revision 2026-09-25.12: every input schema's one source, which the generated document carries. */
@@ -601,14 +603,148 @@ const resolveSpecifier = (fromPath, specifier) => {
   return posix.extname(target) ? target : `${target}.js`;
 };
 
+/** The index of the punctuation that closes the opener at `index`, or -1. */
+function closingIndex(tokens, index) {
+  let depth = 0;
+  for (let cursor = index; cursor < tokens.length; cursor += 1) {
+    const { type, value } = tokens[cursor];
+    if (type !== 'punct') continue;
+    if (OPENERS.has(value)) depth += 1;
+    else if (CLOSERS.has(value)) {
+      depth -= 1;
+      if (depth === 0) return cursor;
+    }
+  }
+  return -1;
+}
+
+/** The comma-separated items between an opener at `open` and its closer at `close`, as token lists. */
+function itemsBetween(tokens, open, close) {
+  const items = [];
+  let start = open + 1;
+  let depth = 0;
+  for (let cursor = open + 1; cursor < close; cursor += 1) {
+    const { type, value } = tokens[cursor];
+    if (type === 'punct' && OPENERS.has(value)) depth += 1;
+    else if (type === 'punct' && CLOSERS.has(value)) depth -= 1;
+    else if (depth === 0 && isPunct(tokens[cursor], ',')) {
+      items.push(tokens.slice(start, cursor));
+      start = cursor + 1;
+    }
+  }
+  if (start < close) items.push(tokens.slice(start, close));
+  return items;
+}
+
+/*
+ * Tool factories (contract 2.3's shopper actions): `const make = (name, run, annotations = SET) =>
+ * ({ name, ...toolText(name), inputSchema: INPUT_SCHEMAS[name], annotations, … })`, called
+ * `make('add_to_shopping_list', addToShoppingList)`. Each call is read as the object literal the
+ * factory returns, with its parameters bound to that call's arguments (or their defaults).
+ */
+function readFactories(tokens) {
+  const factories = new Map();
+  for (let index = 0; index + 3 < tokens.length; index += 1) {
+    if (tokens[index].value !== 'const' || tokens[index + 1].type !== 'identifier') continue;
+    if (!isPunct(tokens[index + 2], '=') || !isPunct(tokens[index + 3], '(')) continue;
+    const paramsClose = closingIndex(tokens, index + 3);
+    if (paramsClose === -1) continue;
+    const params = [];
+    let simple = true;
+    for (const item of itemsBetween(tokens, index + 3, paramsClose)) {
+      if (item[0]?.type !== 'identifier' || (item.length > 1 && !isPunct(item[1], '='))) simple = false;
+      else params.push({ name: item[0].value, fallback: item.slice(2) });
+    }
+    const arrow = paramsClose + 1;
+    if (!simple || !params.length || !isPunct(tokens[arrow], '=') || !isPunct(tokens[arrow + 1], '>'))
+      continue;
+    if (!isPunct(tokens[arrow + 2], '(') || !isPunct(tokens[arrow + 3], '{')) continue;
+    const bodyClose = closingIndex(tokens, arrow + 3);
+    if (bodyClose === -1) continue;
+    const body = tokens.slice(arrow + 3, bodyClose + 1);
+    if (!body.some(token => token.type === 'identifier' && token.value === 'inputSchema')) continue;
+    factories.set(tokens[index + 1].value, { params, body });
+  }
+  return factories;
+}
+
+/** A factory's object literal for one call: shorthand spelled out, parameters bound, `X['k']` as `X.k`. */
+function boundBody({ params, body }, args) {
+  const bound = new Map(params.map((param, position) => [param.name, args[position] ?? param.fallback]));
+  const spelled = [];
+  let depth = 0;
+  for (let cursor = 0; cursor < body.length; cursor += 1) {
+    const token = body[cursor];
+    if (token.type === 'punct' && OPENERS.has(token.value)) depth += 1;
+    if (token.type === 'punct' && CLOSERS.has(token.value)) depth -= 1;
+    const previous = body[cursor - 1];
+    const next = body[cursor + 1];
+    const shorthand =
+      depth === 1 &&
+      token.type === 'identifier' &&
+      (isPunct(previous, '{') || isPunct(previous, ',')) &&
+      (isPunct(next, ',') || isPunct(next, '}'));
+    if (shorthand) spelled.push(token, { type: 'punct', value: ':' });
+    spelled.push(token);
+  }
+  const substituted = [];
+  for (let cursor = 0; cursor < spelled.length; cursor += 1) {
+    const token = spelled[cursor];
+    const isKey = isPunct(spelled[cursor + 1], ':') && !isPunct(spelled[cursor - 1], '?');
+    const isMember = isPunct(spelled[cursor - 1], '.');
+    if (token.type === 'identifier' && bound.has(token.value) && !isKey && !isMember) {
+      substituted.push(...bound.get(token.value));
+    } else substituted.push(token);
+  }
+  const collapsed = [];
+  for (let cursor = 0; cursor < substituted.length; cursor += 1) {
+    const [token, open, key, close] = substituted.slice(cursor, cursor + 4);
+    if (
+      token?.type === 'identifier' &&
+      isPunct(open, '[') &&
+      key?.type === 'string' &&
+      IDENTIFIER.test(key.value) &&
+      isPunct(close, ']')
+    ) {
+      collapsed.push(token, { type: 'punct', value: '.' }, { type: 'identifier', value: key.value });
+      cursor += 3;
+    } else collapsed.push(token);
+  }
+  return collapsed;
+}
+
+/** The object literals a module's factory calls produce, one token list each. */
+function factoryCalls(tokens) {
+  const factories = readFactories(tokens);
+  const produced = [];
+  if (!factories.size) return produced;
+  for (let index = 0; index + 1 < tokens.length; index += 1) {
+    const factory = tokens[index].type === 'identifier' ? factories.get(tokens[index].value) : undefined;
+    if (!factory || !isPunct(tokens[index + 1], '(')) continue;
+    const close = closingIndex(tokens, index + 1);
+    if (close === -1) continue;
+    const args = itemsBetween(tokens, index + 1, close);
+    if (args[0]?.length !== 1 || args[0][0].type !== 'string') continue;
+    produced.push(boundBody(factory, args));
+  }
+  return produced;
+}
+
 /** The definitions a module's object literals declare, with its constants (own and imported) resolved. */
 function definitionsFrom(tokens, constants) {
   const definitions = [];
   const seen = new Set();
+  const literals = [];
   for (let index = 0; index < tokens.length; index += 1) {
     if (tokens[index].value !== '{') continue;
     const parsed = parseValue(tokens, index);
-    if (!parsed) continue;
+    if (parsed) literals.push(parsed);
+  }
+  for (const body of factoryCalls(tokens)) {
+    const parsed = parseValue(body, 0);
+    if (parsed) literals.push(parsed);
+  }
+  for (const parsed of literals) {
     const definition = resolveConstants(parsed.value, constants);
     const name = typeof definition?.name === 'string' ? definition.name : null;
     if (!name || !definition.inputSchema || seen.has(name)) continue;

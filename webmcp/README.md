@@ -37,8 +37,8 @@ npm test
 
 ## Source map
 
-- [`src/contracts.js`](src/contracts.js) contains the 15 contextual tool
-  contracts of WebMCP contract 2.2: input and output schemas and safety
+- [`src/contracts.js`](src/contracts.js) contains the 22 contextual tool
+  contracts of WebMCP contract 2.6: input and output schemas and safety
   annotations. Each tool's title, description, input and output schema come from
   [`src/storefront-catalog.js`](src/storefront-catalog.js), generated from the
   storefront's own catalog.
@@ -56,7 +56,7 @@ npm test
   runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
   validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned Greek natural-language dataset
-  (v1–v14 frozen; v15, 47 cases grading contract 2.2, current) and the separate deterministic
+  (v1–v15 frozen; v16, 47 cases grading contract 2.6, current) and the separate deterministic
   and browser-agent evaluation criteria.
 
 ## Production surface
@@ -65,16 +65,41 @@ Production registers only the tools relevant to the open page:
 
 | Page | Tools |
 | --- | ---: |
-| Home | 5 |
-| Search, category, or hub listing | 10 |
-| Product page | 9 |
-| Any other public page (articles, deals, stores, brands, …) | 4 |
-| Unique contracts | 15 |
+| Home | 6 |
+| Search, category, or hub listing | 11 |
+| Product page | 16 |
+| Any other public page (articles, deals, stores, brands, …) | 5 |
+| Unique contracts | 22 |
 
 Every page registers `search_bestprice` first, `open_search_results` second,
 `open_product` among its own tools, and `get_shopping_decision` last. The
 product page's `show_offer` is an action verb: it scrolls to one rendered offer
 and marks it for the shopper, and it returns no merchant link.
+
+Contracts 2.3 to 2.6 (2026-09-25/26, bestprice.gr `7210e5e554` … `762f0a4bc7`)
+give the shopper's own lists to agents. The product page runs its own buttons
+for its product (an optional `product_id` must be it): `add_to_shopping_list`
+and `remove_from_shopping_list` (the list keeps 40, is in this browser and the
+shopper's account), `add_to_comparison` and `remove_from_comparison` (one
+comparison per category, 6 each; a full one is refused as `limit_reached`, never
+made room in), and `open_price_alert`, which opens the price-drop alert dialog
+(`awaiting_shopper`) and never saves or types — the shopper sets the alert. Each
+reads the list first and again before it changes it, so an add never removes and
+a removal never adds: `added`/`removed`, or `unchanged`. The removals say
+`destructiveHint: true`; none is consequential. `get_shopping_list` (every page)
+and `get_comparison` (the product page) read them back, paged.
+`get_shopping_decision` takes a budget (`max_price_eur`) and features
+(`must_have`, 1–6) beside `message` — written into it as «… Budget: up to 400 €.
+Must have: NFC, 5G.» — returns one `outcome` (no `status`), and since 2.6 only
+recommends: no `catalog_candidates` or `search_url`; a `no_match` points at
+`search_bestprice`. Every tool is at version `2.6.0`.
+
+| Contract 2.2 | Contract 2.6 |
+| --- | --- |
+| — | `get_shopping_list`, `add_to_shopping_list`, `remove_from_shopping_list`, `get_comparison`, `add_to_comparison`, `remove_from_comparison`, `open_price_alert` |
+| `get_shopping_decision` `status` | `outcome` (`clarification`, `no_match`, or the kind of answer) |
+| a budget or features written into `message` | `max_price_eur`, `must_have` |
+| `get_shopping_decision` `catalog_candidates`, `search_url` | `search_bestprice` |
 
 Contract 2.2 (2026-09-25, bestprice.gr `8d040a161a`) gives `open_search_results`
 exactly one input, `results_url` — the address a `search_bestprice` result
@@ -229,8 +254,8 @@ output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
-15.0.0 grades contract 2.2 and is the default; 1.0.0–14.0.0 stay frozen, with
-their runs, as the history of contracts 1.6 to 2.1
+16.0.0 grades contract 2.6 and is the default; 1.0.0–15.0.0 stay frozen, with
+their runs, as the history of contracts 1.6 to 2.2
 ([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 
 The machine-readable production inventory is available at

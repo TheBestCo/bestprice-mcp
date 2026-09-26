@@ -154,8 +154,8 @@ export const FORBIDDEN_TOOL_NAMES = Object.freeze(
 export const EXPECTED_REFUSAL_CASES = JOURNEY_REFUSAL_CASES;
 
 /**
- * Deterministic execution plan for all 47 cases, in the tools of contract 2.2 — the contract the demo
- * adapter implements, graded by dataset 15.0.0 (the default case file). Since 2.0 a product opens by id
+ * Deterministic execution plan for all 47 cases, in the tools of contract 2.6 — the contract the demo
+ * adapter implements, graded by dataset 16.0.0 (the default case file). Since 2.0 a product opens by id
  * (open_product), the sort options come with the filters (get_listing_filters) and the chart opens with
  * the summary (summarize_price_history, show_chart); since 2.1 search_bestprice only reads; since 2.2 a
  * search whose listing the next step uses is opened in the tab by the results_url it returned
@@ -163,7 +163,7 @@ export const EXPECTED_REFUSAL_CASES = JOURNEY_REFUSAL_CASES;
  * something it can pass: it grades another contract.
  */
 export const CURRENT_CASES_PATH = fileURLToPath(
-  new URL('./natural-language-cases.v15.json', import.meta.url),
+  new URL('./natural-language-cases.v16.json', import.meta.url),
 );
 /* The results_url the demo's search_bestprice returns for a plain query. */
 const resultsUrl = query => `https://www.bestprice.gr/search?q=${encodeURIComponent(query)}`;

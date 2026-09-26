@@ -13,11 +13,30 @@ import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
 
 import { createTools, PAGE_TOOL_NAMES, TOOL_DEFINITIONS, TOOL_NAMES } from '../src/contracts.js';
-import { createDemoAdapter, DECISION_NOTE, HOME_SECTION, offerRef, productUrl } from '../src/demo-adapter.js';
+import {
+  COMPARISON_MAX,
+  composeDecisionMessage,
+  createDemoAdapter,
+  DECISION_NOTE,
+  HOME_SECTION,
+  offerRef,
+  PRODUCT_CATEGORY_ID,
+  productUrl,
+  SHOPPING_LIST_MAX,
+} from '../src/demo-adapter.js';
 import { ANNOTATIONS, KEYWORDS, validate } from './helpers/output-schema-check.js';
 
 /* The results_url the demo's search for «phone» returns (contract 2.2: open_search_results opens it). */
 const PHONE_RESULTS = 'https://www.bestprice.gr/search?q=phone';
+/* The tools a page registers besides the ones on every page (search, its results, the shopper's list
+ * and the Shopping Brain): the `next_tools` a tool that moves the tab there names. */
+const destinationTools = page =>
+  PAGE_TOOL_NAMES[page].filter(
+    name =>
+      !['search_bestprice', 'open_search_results', 'get_shopping_list', 'get_shopping_decision'].includes(
+        name,
+      ),
+  );
 const STRICT = JSON.parse(
   readFileSync(new URL('./fixtures/storefront-strict-output-schemas.json', import.meta.url), 'utf8'),
 ).schemas;
@@ -128,6 +147,9 @@ describe('demo results against the published output schemas', () => {
     await call('open_product', { product_id: '9999999999' });
     await call('open_product', { product_id: '2147483647' });
     await call('search_bestprice', { query: 'x' });
+    /* Contract 2.5: the shopper's list is on every page, empty until something is added. */
+    assert.equal((await call('get_shopping_list', {})).list_count, 0);
+    await call('get_shopping_list', { limit: 21 });
     /* Contract 2.2: only a BestPrice results address, never another site or a single-store offer. */
     await call('open_search_results', { results_url: 'https://example.com/search?q=x' });
     assert.equal(
@@ -215,6 +237,27 @@ describe('demo results against the published output schemas', () => {
       (await call('summarize_price_history', { show_chart: true })).chart,
       'focused_price_history',
     );
+    /* Contracts 2.3–2.5: the page's own buttons for its product — the list, the comparison, the
+     * price-drop alert — and their reads. */
+    assert.equal((await call('add_to_shopping_list', {})).outcome, 'added');
+    assert.equal((await call('add_to_shopping_list', {})).outcome, 'unchanged');
+    assert.equal(
+      (await call('add_to_shopping_list', { product_id: '2160384659' })).reason,
+      'invalid_argument',
+    );
+    assert.equal((await call('get_shopping_list', {})).list_count, 1);
+    assert.equal((await call('get_comparison', {})).total_comparisons, 0);
+    assert.equal((await call('add_to_comparison', {})).compared_count, 1);
+    assert.equal((await call('get_comparison', {})).comparisons[0].category_id, PRODUCT_CATEGORY_ID);
+    await call('get_comparison', { offset: 5 });
+    assert.equal((await call('remove_from_comparison', {})).outcome, 'removed');
+    assert.equal((await call('remove_from_comparison', {})).outcome, 'unchanged');
+    assert.equal((await call('remove_from_comparison', { product_id: 'bp_1' })).reason, 'invalid_argument');
+    assert.equal((await call('add_to_comparison', { product_id: 'bp_1' })).reason, 'invalid_argument');
+    assert.equal((await call('open_price_alert', {})).outcome, 'awaiting_shopper');
+    await call('open_price_alert', { product_id: '9999999999' });
+    assert.equal((await call('remove_from_shopping_list', {})).outcome, 'removed');
+    await call('remove_from_shopping_list', { product_id: 'x' });
     /* Another product, from this one's page. */
     await call('open_product', { product_id: '2160384659' });
     assert.equal(adapter.snapshot().product.product_id, '2160384659');
@@ -249,6 +292,13 @@ describe('demo results against the published output schemas', () => {
       'get_shopping_decision',
       'show_offer',
       'open_product',
+      'get_shopping_list',
+      'add_to_shopping_list',
+      'remove_from_shopping_list',
+      'get_comparison',
+      'add_to_comparison',
+      'remove_from_comparison',
+      'open_price_alert',
     ]) {
       assert.deepEqual(
         [...new Set(calls.filter(entry => entry.name === name).map(entry => entry.ok))].sort(),
@@ -266,7 +316,7 @@ describe('demo results against the published output schemas', () => {
       const opened = await call('open_product', { product_id: '2159919913' });
       assert.deepEqual(
         [opened.outcome, opened.product_id, opened.bestprice_url, opened.next_tools],
-        ['confirmed', '2159919913', productUrl('2159919913'), PAGE_TOOL_NAMES.product.slice(2, -1)],
+        ['confirmed', '2159919913', productUrl('2159919913'), destinationTools('product')],
         page,
       );
       /* A receipt: the product's facts are the product page's own read. */
@@ -298,7 +348,7 @@ describe('demo results against the published output schemas', () => {
       [opened.outcome, opened.product_id, opened.bestprice_url],
       ['confirmed', '2159922965', 'https://www.bestprice.gr/item/2159922965/product.html?bpref=mcp'],
     );
-    assert.deepEqual(opened.next_tools, PAGE_TOOL_NAMES.product.slice(2, -1));
+    assert.deepEqual(opened.next_tools, destinationTools('product'));
     assert.equal(adapter.snapshot().page, 'product');
     assert.deepEqual(changes, ['listing', 'product']);
 
@@ -321,7 +371,7 @@ describe('demo results against the published output schemas', () => {
       { constraint: 'max_price_eur', reason: 'no_product_list' },
     ]);
     const narrowed = await call('open_search_results', { results_url: narrowedSearch.results_url });
-    assert.deepEqual(narrowed.next_tools, PAGE_TOOL_NAMES.product.slice(2, -1));
+    assert.deepEqual(narrowed.next_tools, destinationTools('product'));
     assert.equal('not_applied' in narrowed, false, 'the search said what applied');
     assert.deepEqual(
       [adapter.snapshot().page, adapter.snapshot().product.product_id],
@@ -463,11 +513,7 @@ describe('demo results against the published output schemas', () => {
         'load_more is not accepted: get_visible_products only reads, and this page has no further result pages.',
     });
     const search = await call('open_search_results', { results_url: PHONE_RESULTS });
-    assert.deepEqual(
-      search.next_tools,
-      PAGE_TOOL_NAMES.listing.slice(2, -1),
-      'the tools the results page registers',
-    );
+    assert.deepEqual(search.next_tools, destinationTools('listing'), 'the tools the results page registers');
     const listing = await call('get_visible_products', {});
     assert.deepEqual(
       [listing.result_pages_loaded, listing.result_pages_total, listing.more_pages],
@@ -549,6 +595,68 @@ describe('demo results against the published output schemas', () => {
     });
   });
 
+  it('adds to and removes from the shopper’s list and comparison only for this page, and never the other way (contracts 2.3–2.5)', async () => {
+    /* A list of 40 and a comparison of 6 already kept: an add is refused, never made room for. */
+    const listed = Array.from({ length: SHOPPING_LIST_MAX }, (_, index) => ({
+      product_id: String(2170000000 + index),
+      title: `Listed product ${index + 1}`,
+      price_from_eur: 100 + index,
+    }));
+    const compared = Array.from({ length: COMPARISON_MAX }, (_, index) => ({
+      product_id: String(2180000000 + index),
+      title: `Compared phone ${index + 1}`,
+    }));
+    const adapter = createDemoAdapter(() => {}, {
+      shoppingList: listed,
+      comparisons: {
+        [PRODUCT_CATEGORY_ID]: compared,
+        1000: [{ product_id: '2190000000', title: 'A laptop' }],
+      },
+      signedIn: true,
+    });
+    const { call } = recorder(adapter);
+    /* Every page reads the list, twenty at most a call. */
+    const first = await call('get_shopping_list', { limit: 20 });
+    assert.deepEqual(
+      [first.list_count, first.returned, first.next_offset, first.completeness],
+      [40, 20, 20, 'partial'],
+    );
+    assert.match(first.note, /synced with the shopper’s BestPrice account/u);
+    const last = await call('get_shopping_list', { limit: 20, offset: first.next_offset });
+    assert.deepEqual([last.returned, last.next_offset], [20, null]);
+    assert.equal((await call('get_shopping_list', { offset: 40 })).reason, 'invalid_argument');
+
+    /* The product page: its actions are for its product only. */
+    adapter.setPage('product');
+    const full = await call('add_to_shopping_list', {});
+    assert.deepEqual([full.reason, full.list_count, full.max_items], ['limit_reached', 40, 40]);
+    const fullComparison = await call('add_to_comparison', {});
+    assert.deepEqual([fullComparison.reason, fullComparison.compared_count], ['limit_reached', 6]);
+    /* A product not there is `unchanged` by a removal: nothing is added. */
+    const absent = await call('remove_from_shopping_list', {});
+    assert.deepEqual([absent.outcome, absent.list_count], ['unchanged', 40]);
+    /* One comparison per category, this page's first, with its title. */
+    const comparisons = await call('get_comparison', {});
+    assert.deepEqual(
+      comparisons.comparisons.map(entry => [entry.category_id, entry.category_title, entry.compared_count]),
+      [
+        [PRODUCT_CATEGORY_ID, 'Κινητά τηλέφωνα', 6],
+        [1000, undefined, 1],
+      ],
+    );
+    assert.equal(
+      comparisons.comparisons[0].comparison_url,
+      `https://www.bestprice.gr/compare/${compared.map(entry => entry.product_id).join('-')}`,
+    );
+    /* Another page's product is refused, pointing at open_product; the tools are the product page's. */
+    assert.match(
+      (await call('open_price_alert', { product_id: '2160384659' })).error,
+      /open_product opens that product’s page; call open_price_alert there\.$/u,
+    );
+    adapter.setPage('listing');
+    assert.equal((await adapter.execute('add_to_shopping_list', {})).reason, 'missing_product');
+  });
+
   it('decides from the fixture without a network, and refuses bad arguments before deciding', async () => {
     const fetch = globalThis.fetch;
     globalThis.fetch = () => {
@@ -584,12 +692,22 @@ describe('demo results against the published output schemas', () => {
       });
       assert.deepEqual(delivered.unknowns, []);
 
+      /* Contract 2.4: one result field, outcome; 2.6: a no_match names no products and points at the
+       * search. */
       const none = await adapter.execute('get_shopping_decision', { message: 'κινητό έως 300€' });
-      assert.deepEqual([none.outcome, none.status, none.recommended], ['no_match', 'no_match', null]);
-      assert.equal(none.catalog_candidates.products.length, 3);
+      assert.deepEqual([none.outcome, none.recommended, 'status' in none], ['no_match', null, false]);
+      assert.equal('catalog_candidates' in none || 'search_url' in none, false);
+      assert.match(none.next_step, /search_bestprice finds products by name/u);
       const unclear = await adapter.execute('get_shopping_decision', { message: 'μια καφετιέρα' });
-      assert.deepEqual([unclear.outcome, unclear.status], ['clarification', 'needs_input']);
+      assert.deepEqual([unclear.outcome, 'status' in unclear], ['clarification', false]);
       assert.ok(unclear.clarifying_question);
+      /* Contract 2.4: a budget and must-haves beside the words, written into the one message. */
+      const budgeted = await adapter.execute('get_shopping_decision', {
+        message: 'ένα κινητό',
+        max_price_eur: 300,
+        must_have: ['NFC'],
+      });
+      assert.equal(budgeted.outcome, 'no_match', 'the budget reaches the decision');
       const compared = await adapter.execute('get_shopping_decision', { message: 'iPhone 16 ή Galaxy S24;' });
       assert.equal(compared.outcome, 'comparison');
 
@@ -624,11 +742,44 @@ describe('demo results against the published output schemas', () => {
       ok: false,
       error: 'Unexpected argument: zip.',
     });
+    /* Contract 2.4: argument refusals name their reason, and none reaches the host. */
     assert.deepEqual(await adapter.execute('get_shopping_decision', { message: 42 }), {
       ok: false,
       error: 'message must be the shopper’s question as a string.',
+      reason: 'invalid_argument',
     });
-    assert.deepEqual(requests, [[{ message: 'κινητό', postalCode: '85100' }, true]]);
+    for (const [args, error] of [
+      [
+        { message: 'κινητό', max_price_eur: 0 },
+        'max_price_eur must be a number of euros from 0.01 to 10000000, the item price before shipping.',
+      ],
+      [
+        { message: 'κινητό', must_have: [] },
+        'must_have must be a list of 1 to 6 features, each 1 to 40 characters.',
+      ],
+      [{ message: 'κινητό', must_have: ['NFC', 'nfc'] }, 'must_have must not list the same feature twice.'],
+      [
+        { message: 'x'.repeat(1990), max_price_eur: 400 },
+        'message, max_price_eur and must_have together must stay within 2000 characters; shorten message.',
+      ],
+    ]) {
+      assert.deepEqual(await adapter.execute('get_shopping_decision', args), {
+        ok: false,
+        error,
+        reason: 'invalid_argument',
+      });
+    }
+    /* The storefront's form, measured against mcp.bestprice.gr: trailing punctuation off, two decimals. */
+    await tool.execute({
+      message: 'Κινητό για τη μητέρα μου;',
+      max_price_eur: 399.5,
+      must_have: [' NFC. ', '5G'],
+    });
+    assert.deepEqual(requests, [
+      [{ message: 'κινητό', postalCode: '85100' }, true],
+      [{ message: 'Κινητό για τη μητέρα μου. Budget: up to 399.5 €. Must have: NFC, 5G.' }, false],
+    ]);
+    assert.equal(composeDecisionMessage('phone', { maxPriceEur: 400.004 }), 'phone. Budget: up to 400 €.');
   });
 
   it('accepts exactly the arguments each published input schema declares', async () => {

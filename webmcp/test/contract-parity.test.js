@@ -434,6 +434,58 @@ describe('contract parity with the storefront', () => {
     assert.equal(definition.description, undefined);
   });
 
+  it('reads the tools a factory makes, one per call, with its parameters bound (contract 2.3)', () => {
+    /* pages/item/webmcp/tools.js registers the shopper actions through one factory. */
+    const source = [
+      'const SHOPPER_ACTION = { readOnlyHint: false, destructiveHint: false };',
+      'const SHOPPER_REMOVAL = { ...SHOPPER_ACTION, destructiveHint: true };',
+      "const INPUT_SCHEMAS = { add_it: { type: 'object', properties: {} }, remove_it: { type: 'object', properties: { id: { type: 'string' } } } };",
+      'export default ({ track }) => {',
+      '  const shopperAction = (name, run, annotations = SHOPPER_ACTION) => ({',
+      '    name,',
+      '    ...toolText(name),',
+      '    inputSchema: INPUT_SCHEMAS[name],',
+      '    annotations,',
+      '    execute: measured(name, track, async args => run(args)),',
+      '  });',
+      '  /* A helper with a destructured parameter is no factory. */',
+      '  const noteFor = ({ empty }) => ({ note: empty });',
+      '  return [',
+      "    shopperAction('add_it', addIt),",
+      "    shopperAction('remove_it', removeIt, SHOPPER_REMOVAL),",
+      '  ];',
+      '};',
+    ].join('\n');
+    const definitions = extractToolDefinitions(source);
+    assert.deepEqual(
+      definitions.map(({ name, inputSchema, annotations, textFrom }) => ({
+        name,
+        inputSchema,
+        annotations,
+        textFrom,
+      })),
+      [
+        {
+          name: 'add_it',
+          inputSchema: { type: 'object', properties: {} },
+          annotations: { readOnlyHint: false, destructiveHint: false },
+          textFrom: 'add_it',
+        },
+        {
+          name: 'remove_it',
+          inputSchema: { type: 'object', properties: { id: { type: 'string' } } },
+          annotations: { readOnlyHint: false, destructiveHint: true },
+          textFrom: 'remove_it',
+        },
+      ],
+    );
+    /* The expression each call writes, as the reader checks the registered schema against it. */
+    assert.deepEqual(
+      definitions.map(definition => definition.inputSchemaRef),
+      ['INPUT_SCHEMAS.add_it', 'INPUT_SCHEMAS.remove_it'],
+    );
+  });
+
   it('joins the generated catalog with the registering modules, and refuses a surface it cannot join', () => {
     const root = mkdtempSync(join(tmpdir(), 'storefront-surface-'));
     const write = (path, text) => {

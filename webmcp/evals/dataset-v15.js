@@ -15,13 +15,17 @@
  * budget) change no grading. Prompts, groups, pages, starting URLs, sequence modes and every other case are
  * 14.0.0's. 14.0.0 is not rewritten; it stays frozen with its runs as the history of contract 2.1.
  *
+ * 15.0.0 is frozen in turn: contracts 2.3 to 2.6 (bestprice.gr 7210e5e554 … 762f0a4bc7) add the product
+ * page's shopper actions and the reads of the shopping list and comparisons, and give the Shopping Brain
+ * structured inputs — which dataset 16.0.0 grades (dataset-v16.js). So the argument rules 15.0.0 was
+ * generated with (release 2.2.0) are recorded below rather than read from the live contract.
+ *
  *   node webmcp/evals/dataset-v15.js   # rewrites natural-language-cases.v15.json from v14
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-import { TOOL_DEFINITIONS, WEBMCP_CONTRACT_VERSION } from '../src/contracts.js';
-import { argumentRules, serializeDataset } from './dataset-v3.js';
+import { serializeDataset } from './dataset-v3.js';
 import { V14_PATH } from './dataset-v14.js';
 
 export const DATASET_V15_VERSION = '15.0.0';
@@ -44,9 +48,195 @@ const REWORDED = Object.freeze({
   },
 });
 
+const deepFreeze = value => {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    Object.freeze(value);
+    for (const child of Object.values(value)) deepFreeze(child);
+  }
+  return value;
+};
+
+/* Contract 2.2's tools; load_more_products takes no argument and no case admits it, so it has no rule. */
+export const CONTRACT_2_2_TOOL_COUNT = 15;
+/* The argument rules of contract 2.2 (bestprice.gr 8d040a161a, release 2.2.0), as `argumentRules`
+ * generated them from webmcp/src/contracts.js at cc2528e; show_chart as generated, before an extra
+ * read's restriction. */
+export const CONTRACT_2_2_ARGUMENT_RULES = deepFreeze({
+  apply_listing_filter: {
+    filter: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    value: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  apply_listing_sort: {
+    sort: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  clear_listing_filters: {
+    filter: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    value: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+  },
+  compare_page_offers: {
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 12,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+    include_all_stores: {
+      type: 'boolean',
+    },
+    product_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+  },
+  get_listing_filters: {
+    group: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 64,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+  },
+  get_page_product: {},
+  get_product_specifications: {
+    section: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 48,
+    },
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 16,
+    },
+    fact: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 72,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+  },
+  get_shopping_decision: {
+    message: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 2000,
+    },
+    postal_code: {
+      type: 'string',
+      pattern: '^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$',
+    },
+  },
+  get_visible_products: {
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 8,
+    },
+    offset: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 9007199254740991,
+    },
+  },
+  open_product: {
+    product_id: {
+      type: 'string',
+      pattern: '^\\d{1,20}$',
+    },
+  },
+  open_search_results: {
+    results_url: {
+      type: 'string',
+      minLength: 1,
+      maxLength: 2048,
+    },
+  },
+  search_bestprice: {
+    query: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 120,
+    },
+    limit: {
+      type: 'integer',
+      minimum: 1,
+      maximum: 8,
+    },
+    min_price_eur: {
+      type: 'number',
+      minimum: 0,
+      maximum: 10000000,
+    },
+    max_price_eur: {
+      type: 'number',
+      minimum: 0.01,
+      maximum: 10000000,
+    },
+    sort: {
+      type: 'string',
+      enum: ['relevance', 'price_asc', 'price_desc', 'biggest_price_drop', 'most_stores', 'newest'],
+    },
+    in_stock_only: {
+      type: 'boolean',
+    },
+    deals_only: {
+      type: 'boolean',
+    },
+  },
+  show_offer: {
+    offer_ref: {
+      type: 'string',
+      minLength: 8,
+      maxLength: 40,
+    },
+    merchant_name: {
+      type: 'string',
+      minLength: 2,
+      maxLength: 68,
+    },
+  },
+  summarize_price_history: {
+    show_chart: {
+      type: 'boolean',
+    },
+  },
+});
+
 /** One tool's argument rules in one case: an admitted extra read may not use the argument that acts. */
 export const caseArgumentRules = (tool, expectedTools) => {
-  const generated = argumentRules(TOOL_DEFINITIONS[tool]);
+  const generated = structuredClone(CONTRACT_2_2_ARGUMENT_RULES[tool]);
   const flag = READ_ONLY_UNLESS[tool];
   if (flag && !expectedTools.includes(tool) && generated[flag]) {
     generated[flag] = { ...generated[flag], enum: [false] };
@@ -63,11 +253,6 @@ export const chainOf = item =>
   );
 
 export function deriveDatasetV15(v14 = JSON.parse(readFileSync(V14_PATH, 'utf8'))) {
-  if (WEBMCP_CONTRACT_VERSION !== DATASET_V15_CONTRACT) {
-    throw new Error(
-      `dataset ${DATASET_V15_VERSION} grades contract ${DATASET_V15_CONTRACT}; the published contract is ${WEBMCP_CONTRACT_VERSION}`,
-    );
-  }
   const cases = v14.cases.map(item => {
     const expected = chainOf(item);
     const tools = [...new Set([...expected, ...item.extra_calls_allowed])].sort();
@@ -83,7 +268,7 @@ export function deriveDatasetV15(v14 = JSON.parse(readFileSync(V14_PATH, 'utf8')
     ...v14,
     datasetVersion: DATASET_V15_VERSION,
     generatedAt: '2026-09-25T19:45:00+03:00',
-    sourceContracts: `bestprice-mcp/webmcp/src/contracts.js (${Object.keys(TOOL_DEFINITIONS).length} contextual tools, contract ${DATASET_V15_CONTRACT}, bestprice.gr ${DATASET_V15_SOURCE})`,
+    sourceContracts: `bestprice-mcp/webmcp/src/contracts.js (${CONTRACT_2_2_TOOL_COUNT} contextual tools, contract ${DATASET_V15_CONTRACT}, bestprice.gr ${DATASET_V15_SOURCE})`,
     derivedFrom:
       'natural-language-cases.v14.json + webmcp/src/contracts.js (WebMCP contract 2.2), by webmcp/evals/dataset-v15.js — open_search_results opens the results_url a search returned, so multi-001 and multi-002 search first; argument rules regenerated',
     cases,

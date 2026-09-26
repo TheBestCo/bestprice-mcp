@@ -1,5 +1,5 @@
 /**
- * WebMCP tool contracts for BestPrice pages (contract 2.2).
+ * WebMCP tool contracts for BestPrice pages (contract 2.6).
  *
  * Each contract is a plain description (name, title, description, annotations, JSON Schema input and
  * output). `createTools` binds the contracts a page exposes to an `execute` function supplied by the
@@ -47,6 +47,23 @@ const NAVIGATION = {
 /** An action that adds to what the page shows (load_more_products): each call loads another page. */
 const LOADS_MORE = { ...NAVIGATION, idempotentHint: false };
 
+/**
+ * The product page's shopper actions (contract 2.3): the page's own buttons, for this page's product —
+ * the shopping list, the comparison, the price-alert dialog. Reversible and confined to BestPrice; what
+ * they return is this page's own state, not catalog text.
+ */
+const SHOPPER_ACTION = {
+  readOnlyHint: false,
+  destructiveHint: false,
+  idempotentHint: true,
+  openWorldHint: false,
+  consequentialHint: false,
+  untrustedContentHint: false,
+};
+
+/** Their removals (contract 2.4): the same, taking a product out of a list the shopper keeps. */
+const SHOPPER_REMOVAL = { ...SHOPPER_ACTION, destructiveHint: true };
+
 /** search_bestprice (contract 2.1): a read of BestPrice's own results; asking again reads again. */
 const SEARCH_READ = {
   readOnlyHint: true,
@@ -82,7 +99,11 @@ const FETCHED_READ = {
  * show_price_history. Contract 2.1 (2026-09-25) splits every tool that both read and acted: search reads
  * and open_search_results moves the tab (15 tools); get_visible_products reads and load_more_products
  * loads; open_product and the listing actions answer with a receipt. Contract 2.2 has open_search_results
- * open the results_url a search returned (its one input), as open_product opens a product_id.
+ * open the results_url a search returned (its one input), as open_product opens a product_id. Contract
+ * 2.3 adds the product page's shopper actions (the shopping list, the comparison, the price alert), 2.4
+ * their removals and the Shopping Brain's structured inputs, and 2.5 the reads of the shopping list
+ * (every page) and the comparisons (the product page): 22 tools. Contract 2.6 has the Shopping Brain
+ * only recommend (no catalog_candidates or search_url) and rewords descriptions.
  */
 const DEFINITIONS = [
   /* Contract 2.1: search reads only; since 2.2 open_search_results opens the results_url it returned. */
@@ -103,7 +124,17 @@ const DEFINITIONS = [
   /* `show_chart` opens the chart for the shopper too, so it is not read-only. */
   { name: 'summarize_price_history', annotations: NAVIGATION },
   { name: 'show_offer', annotations: NAVIGATION },
-  /* The Shopping Brain on every page, asked with the shopper's own words. */
+  /* Contract 2.5: the shopper's list on every page; the comparisons on the product page. */
+  { name: 'get_shopping_list', annotations: READ_ONLY },
+  /* Contract 2.3: the product page's shopper actions, and (2.4) their removals. */
+  { name: 'add_to_shopping_list', annotations: SHOPPER_ACTION },
+  { name: 'remove_from_shopping_list', annotations: SHOPPER_REMOVAL },
+  { name: 'get_comparison', annotations: READ_ONLY },
+  { name: 'add_to_comparison', annotations: SHOPPER_ACTION },
+  { name: 'remove_from_comparison', annotations: SHOPPER_REMOVAL },
+  { name: 'open_price_alert', annotations: SHOPPER_ACTION },
+  /* The Shopping Brain on every page, asked with the shopper's own words (and, since 2.4, a budget and
+   * must-haves). */
   { name: 'get_shopping_decision', annotations: FETCHED_READ },
 ];
 
@@ -126,6 +157,7 @@ export const PAGE_TOOL_NAMES = deepFreeze({
     'open_search_results',
     'get_visible_products',
     'open_product',
+    'get_shopping_list',
     'get_shopping_decision',
   ],
   listing: [
@@ -138,6 +170,7 @@ export const PAGE_TOOL_NAMES = deepFreeze({
     'apply_listing_filter',
     'clear_listing_filters',
     'apply_listing_sort',
+    'get_shopping_list',
     'get_shopping_decision',
   ],
   product: [
@@ -149,9 +182,22 @@ export const PAGE_TOOL_NAMES = deepFreeze({
     'get_product_specifications',
     'summarize_price_history',
     'show_offer',
+    'get_shopping_list',
+    'add_to_shopping_list',
+    'remove_from_shopping_list',
+    'get_comparison',
+    'add_to_comparison',
+    'remove_from_comparison',
+    'open_price_alert',
     'get_shopping_decision',
   ],
-  site: ['search_bestprice', 'open_search_results', 'open_product', 'get_shopping_decision'],
+  site: [
+    'search_bestprice',
+    'open_search_results',
+    'open_product',
+    'get_shopping_list',
+    'get_shopping_decision',
+  ],
 });
 
 /* Fail at module load if a definition has no storefront catalog entry, or the catalog one without a

@@ -34,7 +34,7 @@
  *     --agent-name 'Model Context Tool Inspector' --agent-model 'gpt-5.2' \
  *     [--language el] [--max-steps 8] [--cases home-001,multi-001] [--dry-run]
  *
- * A real run appends to runs.v15.json (runs.v<N>.json with --dataset=v<N>) and writes artifacts/, so
+ * A real run appends to runs.v16.json (runs.v<N>.json with --dataset=v<N>) and writes artifacts/, so
  * `node webmcp/evals/run-evidence.js --strict` validates it like any other
  * release evidence. `--dry-run` judges and prints without writing anything.
  */
@@ -60,8 +60,8 @@ import {
 } from './run-evidence.js';
 
 const EVAL_DIR = fileURLToPath(new URL('./', import.meta.url));
-/* Dataset 15.0.0 is current: it grades contract 2.2 (see dataset-v15.js). `--dataset=v2` …
- * `--dataset=v14` still run a frozen set into its own ledger. A run's dataset version is read from the file, never
+/* Dataset 16.0.0 is current: it grades contract 2.6 (see dataset-v16.js). `--dataset=v2` …
+ * `--dataset=v15` still run a frozen set into its own ledger. A run's dataset version is read from the file, never
  * assumed. */
 const DATASETS = Object.freeze({
   v2: { cases: join(EVAL_DIR, 'natural-language-cases.v2.json'), ledger: join(EVAL_DIR, 'runs.v2.json') },
@@ -101,6 +101,9 @@ const DATASETS = Object.freeze({
   /* 14.0.0 graded against contract 2.2: open_search_results opens the results_url a search returned, so
    * multi-001 and multi-002 search first; see dataset-v15.js. 14.0.0 stays frozen. */
   v15: { cases: join(EVAL_DIR, 'natural-language-cases.v15.json'), ledger: join(EVAL_DIR, 'runs.v15.json') },
+  /* 15.0.0 graded against contract 2.6 (2.3 to 2.6): the list and comparison reads admitted as extra
+   * reads, the Shopping Brain's structured inputs; see dataset-v16.js. 15.0.0 stays frozen. */
+  v16: { cases: join(EVAL_DIR, 'natural-language-cases.v16.json'), ledger: join(EVAL_DIR, 'runs.v16.json') },
 });
 const SHELL_TIMEOUT_MS = 180_000;
 /* A journey budget, not a target: a case that needs more is `blocked` with that reason, and the
@@ -227,7 +230,7 @@ const main = async () => {
   const maxSteps = Number.parseInt(options.maxSteps, 10);
   if (!Number.isInteger(maxSteps) || maxSteps < 1) throw new Error('--max-steps must be a positive integer');
 
-  const selectedDataset = DATASETS[options.dataset ?? 'v15'];
+  const selectedDataset = DATASETS[options.dataset ?? 'v16'];
   if (!selectedDataset) throw new Error(`--dataset must be one of ${Object.keys(DATASETS).join(', ')}`);
   const dataset = JSON.parse(readFileSync(selectedDataset.cases, 'utf8'));
   const DATASET_VERSION = dataset.datasetVersion;

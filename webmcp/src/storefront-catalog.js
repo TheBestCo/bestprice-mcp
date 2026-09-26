@@ -3,12 +3,12 @@
  *
  * The title, description (and any page type's own wording), input schema and output schema of every
  * BestPrice WebMCP tool, as the storefront registers them: bestprice.gr `extra/mcpDiscovery/webmcp-tools.json` (its generated copy of
- * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 8d040a161a, WebMCP
- * contract 2.2. `contracts.js` publishes them as they are, and
+ * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 762f0a4bc7, WebMCP
+ * contract 2.6. `contracts.js` publishes them as they are, and
  * `webmcp/test/contract-parity.test.js` compares every published definition with the snapshot.
  */
 
-export const WEBMCP_CONTRACT_VERSION = '2.2';
+export const WEBMCP_CONTRACT_VERSION = '2.6';
 
 export const STOREFRONT_CATALOG = {
   search_bestprice: {
@@ -85,7 +85,8 @@ export const STOREFRONT_CATALOG = {
             results_kind: {
               type: 'string',
               enum: ['listing', 'featured', 'product', 'none'],
-              description: 'featured: a category’s highlighted rows. product: one product’s own page.',
+              description:
+                'listing: a product grid. featured: a category’s highlighted rows. product: one product’s page.',
             },
             applied: {
               type: 'object',
@@ -128,7 +129,7 @@ export const STOREFRONT_CATALOG = {
                     type: 'string',
                     enum: ['not_offered', 'not_kept', 'no_product_list', 'no_products', 'page_unreadable'],
                     description:
-                      'not_offered: see offered_sorts. no_product_list: an overview or product page. page_unreadable: unnarrowed.',
+                      'not_offered: the page lacks this sort (see offered_sorts). The others: the page could not be narrowed.',
                   },
                   offered_sorts: {
                     type: 'array',
@@ -272,7 +273,8 @@ export const STOREFRONT_CATALOG = {
             results_kind: {
               type: 'string',
               enum: ['listing', 'featured', 'product', 'none'],
-              description: 'featured: a category’s highlighted rows. product: one product’s own page.',
+              description:
+                'listing: a product grid. featured: a category’s highlighted rows. product: one product’s page.',
             },
             unconfirmed_reason: {
               type: 'string',
@@ -723,7 +725,7 @@ export const STOREFRONT_CATALOG = {
                       'most_stores',
                       'newest',
                     ],
-                    description: 'Pass it, or name, as apply_listing_sort’s sort.',
+                    description: 'Pass this key, or the name, as apply_listing_sort’s sort.',
                   },
                   selected: {
                     type: 'boolean',
@@ -794,7 +796,7 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
               enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed', 'unchanged'],
               description:
-                'confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read.',
+                'confirmed: new page read first. observed_complete: applied here. unchanged: already so. Others: read again.',
             },
             filter: {
               type: 'string',
@@ -939,7 +941,7 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
               enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed', 'unchanged'],
               description:
-                'confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read.',
+                'confirmed: new page read first. observed_complete: applied here. unchanged: already so. Others: read again.',
             },
             filter: {
               type: 'string',
@@ -1079,7 +1081,7 @@ export const STOREFRONT_CATALOG = {
               type: 'string',
               enum: ['confirmed', 'observed_complete', 'dispatched', 'unconfirmed', 'unchanged'],
               description:
-                'confirmed: read before the tab moved. observed_complete: shown here. unchanged: already so. Else re-read.',
+                'confirmed: new page read first. observed_complete: applied here. unchanged: already so. Others: read again.',
             },
             sort: {
               type: 'string',
@@ -1381,7 +1383,7 @@ export const STOREFRONT_CATALOG = {
                   },
                   offer_ref: {
                     type: ['string', 'null'],
-                    description: 'For show_offer.',
+                    description: 'Pass it to show_offer to highlight this offer.',
                   },
                   unpriced_rows: {
                     type: 'integer',
@@ -1416,7 +1418,8 @@ export const STOREFRONT_CATALOG = {
             },
             excluded_unknown_shipping: {
               type: 'object',
-              description: 'Offers left out for unknown shipping; cheapest is shaped like offers[].',
+              description:
+                'Offers left out because their shipping is unknown; cheapest has the same fields as offers.',
               properties: {
                 count: {
                   type: 'integer',
@@ -1448,7 +1451,7 @@ export const STOREFRONT_CATALOG = {
                     },
                     offer_ref: {
                       type: ['string', 'null'],
-                      description: 'For show_offer.',
+                      description: 'Pass it to show_offer to highlight this offer.',
                     },
                   },
                   required: [
@@ -1514,7 +1517,7 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 48,
           description:
-            'Use all or a section name shown on this product, such as Οθόνη, Ισχύς, or Διαστάσεις.',
+            'all, or a section name a previous call returned; names are in Greek, e.g. Οθόνη (display).',
         },
         limit: {
           type: 'integer',
@@ -1743,7 +1746,8 @@ export const STOREFRONT_CATALOG = {
             chart: {
               type: 'string',
               enum: ['opened_price_history', 'focused_price_history', 'unavailable'],
-              description: 'With show_chart: what the chart did.',
+              description:
+                'With show_chart: whether the chart was opened, scrolled into view, or unavailable.',
             },
           },
           required: [
@@ -1825,7 +1829,7 @@ export const STOREFRONT_CATALOG = {
             },
             offer_visible: {
               type: ['boolean', 'null'],
-              description: 'The result, in one field: true once the offer is in the shopper’s view.',
+              description: 'True once the offer is scrolled into the shopper’s view and highlighted.',
             },
             offer: {
               type: 'object',
@@ -1851,7 +1855,7 @@ export const STOREFRONT_CATALOG = {
                 },
                 offer_ref: {
                   type: ['string', 'null'],
-                  description: 'For show_offer.',
+                  description: 'Pass it to show_offer to highlight this offer.',
                 },
               },
               required: [
@@ -1898,6 +1902,587 @@ export const STOREFRONT_CATALOG = {
       ],
     },
   },
+  get_shopping_list: {
+    title: 'Shopping list',
+    description: 'Lists the products in the shopper’s shopping list; changes nothing.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        limit: {
+          type: 'integer',
+          minimum: 1,
+          maximum: 20,
+          description: 'Products to return, from 1 to 20. Defaults to 10.',
+        },
+        offset: {
+          type: 'integer',
+          minimum: 0,
+          maximum: 9007199254740991,
+          description: 'Use next_offset from the previous result to read on. Defaults to 0.',
+        },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            source: {
+              type: 'string',
+              const: 'BestPrice shopping list',
+            },
+            list_count: {
+              type: 'integer',
+            },
+            max_items: {
+              type: 'integer',
+            },
+            products: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  product_id: {
+                    type: 'string',
+                    pattern: '^\\d{1,20}$',
+                    description: 'Numeric BestPrice product id, as any tool returns it.',
+                  },
+                  title: {
+                    type: 'string',
+                  },
+                  price_from_eur: {
+                    type: 'number',
+                    description: 'Lowest item price the list holds, before shipping; may predate today’s.',
+                  },
+                  bestprice_url: {
+                    type: 'string',
+                  },
+                  store_offer: {
+                    type: 'boolean',
+                    description: 'Links straight to its store; page tools never open it.',
+                  },
+                },
+                required: ['product_id', 'title'],
+              },
+            },
+            returned: {
+              type: 'integer',
+            },
+            offset: {
+              type: 'integer',
+            },
+            next_offset: {
+              type: ['integer', 'null'],
+              description: 'Pass as offset to continue; null at the end.',
+            },
+            completeness: {
+              type: 'string',
+              enum: ['complete', 'partial'],
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: [
+            'ok',
+            'source',
+            'list_count',
+            'max_items',
+            'products',
+            'returned',
+            'offset',
+            'next_offset',
+            'completeness',
+            'note',
+          ],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description: 'When given, one of: invalid_argument, not_available, cancelled.',
+            },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
+  add_to_shopping_list: {
+    title: 'Add to shopping list',
+    description: 'Adds this page’s product to the shopper’s shopping list; never removes one.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        product_id: {
+          type: 'string',
+          pattern: '^\\d{1,20}$',
+          description: 'Numeric BestPrice product id, as any tool returns it.',
+        },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            outcome: {
+              type: 'string',
+              enum: ['added', 'unchanged'],
+              description: 'added: read back in the list. unchanged: it already was; nothing was removed.',
+            },
+            product_id: {
+              type: 'string',
+              pattern: '^\\d{1,20}$',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
+            },
+            list_count: {
+              type: 'integer',
+            },
+            max_items: {
+              type: 'integer',
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: ['ok', 'outcome', 'product_id', 'note'],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description:
+                'When given, one of: invalid_argument, missing_product, not_available, limit_reached, not_confirmed, cancelled.',
+            },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
+  remove_from_shopping_list: {
+    title: 'Remove from shopping list',
+    description: 'Removes this page’s product from the shopper’s shopping list; never adds one.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        product_id: {
+          type: 'string',
+          pattern: '^\\d{1,20}$',
+          description: 'Numeric BestPrice product id, as any tool returns it.',
+        },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            outcome: {
+              type: 'string',
+              enum: ['removed', 'unchanged'],
+              description: 'removed: read back as gone. unchanged: it was not there; nothing was added.',
+            },
+            product_id: {
+              type: 'string',
+              pattern: '^\\d{1,20}$',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
+            },
+            list_count: {
+              type: 'integer',
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: ['ok', 'outcome', 'product_id', 'note'],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description:
+                'When given, one of: invalid_argument, missing_product, not_available, not_confirmed, cancelled.',
+            },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
+  get_comparison: {
+    title: 'Product comparisons',
+    description: 'Lists the products in the shopper’s comparisons, per category; changes nothing.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        offset: {
+          type: 'integer',
+          minimum: 0,
+          maximum: 9007199254740991,
+          description: 'Use next_offset from the previous result to read more categories. Defaults to 0.',
+        },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            source: {
+              type: 'string',
+              const: 'BestPrice product comparison',
+            },
+            total_comparisons: {
+              type: 'integer',
+            },
+            comparisons: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  category_id: {
+                    type: 'integer',
+                  },
+                  category_title: {
+                    type: 'string',
+                  },
+                  compared_count: {
+                    type: 'integer',
+                  },
+                  max_items: {
+                    type: 'integer',
+                  },
+                  comparison_url: {
+                    type: 'string',
+                  },
+                  products: {
+                    type: 'array',
+                    items: {
+                      type: 'object',
+                      properties: {
+                        product_id: {
+                          type: 'string',
+                          pattern: '^\\d{1,20}$',
+                          description: 'Numeric BestPrice product id, as any tool returns it.',
+                        },
+                        title: {
+                          type: 'string',
+                        },
+                      },
+                      required: ['product_id', 'title'],
+                    },
+                  },
+                },
+                required: ['category_id', 'compared_count', 'max_items', 'comparison_url', 'products'],
+              },
+            },
+            returned: {
+              type: 'integer',
+            },
+            offset: {
+              type: 'integer',
+            },
+            next_offset: {
+              type: ['integer', 'null'],
+              description: 'Pass as offset to continue; null at the end.',
+            },
+            completeness: {
+              type: 'string',
+              enum: ['complete', 'partial'],
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: [
+            'ok',
+            'source',
+            'total_comparisons',
+            'comparisons',
+            'returned',
+            'offset',
+            'next_offset',
+            'completeness',
+            'note',
+          ],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description: 'When given, one of: invalid_argument, not_available, cancelled.',
+            },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
+  add_to_comparison: {
+    title: 'Add to comparison',
+    description:
+      'Adds this page’s product to the shopper’s side-by-side comparison for its category; never removes one.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        product_id: {
+          type: 'string',
+          pattern: '^\\d{1,20}$',
+          description: 'Numeric BestPrice product id, as any tool returns it.',
+        },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            outcome: {
+              type: 'string',
+              enum: ['added', 'unchanged'],
+              description: 'added: read back in the list. unchanged: it already was; nothing was removed.',
+            },
+            product_id: {
+              type: 'string',
+              pattern: '^\\d{1,20}$',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
+            },
+            compared_count: {
+              type: 'integer',
+            },
+            max_items: {
+              type: 'integer',
+            },
+            comparison_url: {
+              type: 'string',
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: ['ok', 'outcome', 'product_id', 'compared_count', 'max_items', 'comparison_url', 'note'],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description:
+                'When given, one of: invalid_argument, missing_product, not_available, limit_reached, not_confirmed, cancelled.',
+            },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
+  remove_from_comparison: {
+    title: 'Remove from comparison',
+    description:
+      'Removes this page’s product from the shopper’s side-by-side comparison for its category; never adds one.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        product_id: {
+          type: 'string',
+          pattern: '^\\d{1,20}$',
+          description: 'Numeric BestPrice product id, as any tool returns it.',
+        },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            outcome: {
+              type: 'string',
+              enum: ['removed', 'unchanged'],
+              description: 'removed: read back as gone. unchanged: it was not there; nothing was added.',
+            },
+            product_id: {
+              type: 'string',
+              pattern: '^\\d{1,20}$',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
+            },
+            compared_count: {
+              type: 'integer',
+            },
+            comparison_url: {
+              type: 'string',
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: ['ok', 'outcome', 'product_id', 'compared_count', 'note'],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description:
+                'When given, one of: invalid_argument, missing_product, not_available, not_confirmed, cancelled.',
+            },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
+  open_price_alert: {
+    title: 'Open a price-drop alert',
+    description: 'Opens this product’s price-drop alert dialog; the shopper sets and saves the alert there.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        product_id: {
+          type: 'string',
+          pattern: '^\\d{1,20}$',
+          description: 'Numeric BestPrice product id, as any tool returns it.',
+        },
+      },
+      additionalProperties: false,
+    },
+    outputSchema: {
+      type: 'object',
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: true,
+            },
+            outcome: {
+              type: 'string',
+              const: 'awaiting_shopper',
+              description: 'The dialog is open; nothing is saved until the shopper confirms it.',
+            },
+            product_id: {
+              type: 'string',
+              pattern: '^\\d{1,20}$',
+              description: 'Numeric BestPrice product id, as any tool returns it.',
+            },
+            note: {
+              type: 'string',
+            },
+          },
+          required: ['ok', 'outcome', 'product_id', 'note'],
+        },
+        {
+          type: 'object',
+          properties: {
+            ok: {
+              type: 'boolean',
+              const: false,
+            },
+            error: {
+              type: 'string',
+            },
+            reason: {
+              type: 'string',
+              pattern: '^[a-z0-9_]{1,64}$',
+              description:
+                'When given, one of: invalid_argument, missing_product, no_price, not_available, cancelled.',
+            },
+          },
+          required: ['ok', 'error'],
+        },
+      ],
+    },
+  },
   get_shopping_decision: {
     title: 'Get a shopping decision',
     description:
@@ -1910,7 +2495,24 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 2000,
           description:
-            'The shopper’s need in their own words, with budget and must-haves, e.g. phone under 400€ with NFC.',
+            'The shopper’s need in their own words, e.g. a phone for photos; budget and must-haves go in their own fields.',
+        },
+        max_price_eur: {
+          type: 'number',
+          minimum: 0.01,
+          maximum: 10000000,
+          description: 'Highest item price in euros the shopper will pay.',
+        },
+        must_have: {
+          type: 'array',
+          minItems: 1,
+          maxItems: 6,
+          items: {
+            type: 'string',
+            minLength: 1,
+            maxLength: 40,
+          },
+          description: 'Features the pick must have, one per item, e.g. NFC.',
         },
         postal_code: {
           type: 'string',
@@ -1939,10 +2541,8 @@ export const STOREFRONT_CATALOG = {
             outcome: {
               type: 'string',
               enum: ['recommendation', 'comparison', 'basket', 'clarification', 'no_match', 'answer'],
-            },
-            status: {
-              type: 'string',
-              enum: ['ready', 'no_match', 'needs_input'],
+              description:
+                'clarification: ask clarifying_question; no_match: nothing fits; otherwise the kind of answer.',
             },
             reason: {
               type: ['string', 'null'],
@@ -2077,47 +2677,6 @@ export const STOREFRONT_CATALOG = {
               },
               required: ['plan', 'merchant_count', 'item_subtotal_eur', 'total_eur', 'shipping_status'],
             },
-            catalog_candidates: {
-              type: 'object',
-              description: 'no_match only: unranked search results, not a recommendation.',
-              properties: {
-                query: {
-                  type: 'string',
-                },
-                note: {
-                  type: 'string',
-                },
-                products: {
-                  type: 'array',
-                  items: {
-                    type: 'object',
-                    properties: {
-                      product_id: {
-                        type: 'string',
-                        pattern: '^\\d{1,20}$',
-                        description: 'Numeric BestPrice product id, as any tool returns it.',
-                      },
-                      title: {
-                        type: 'string',
-                      },
-                      price_from_eur: {
-                        type: ['number', 'null'],
-                        description: 'Before shipping; not a quote.',
-                      },
-                      bestprice_url: {
-                        type: 'string',
-                        description: 'Signed; relay it verbatim.',
-                      },
-                    },
-                    required: ['product_id', 'title', 'price_from_eur', 'bestprice_url'],
-                  },
-                },
-              },
-              required: ['products'],
-            },
-            search_url: {
-              type: 'string',
-            },
             next_step: {
               type: 'string',
             },
@@ -2129,7 +2688,6 @@ export const STOREFRONT_CATALOG = {
             'ok',
             'source',
             'outcome',
-            'status',
             'reason',
             'clarifying_question',
             'recommended',
