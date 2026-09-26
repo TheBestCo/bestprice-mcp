@@ -7,6 +7,29 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [2.8.0] - 2026-09-26
+
+WebMCP contract 2.8 (bestprice.gr `1a601f6b16`, live on www): specification sections in English. The 22 tools and
+the page lists are 2.6's; every tool is at `2.8.0`. Contract 2.7 was a storefront trial it reverted, and has no
+package release.
+
+### Migration
+
+| Contract 2.6 | Contract 2.8 |
+| --- | --- |
+| `get_product_specifications { section: "Οθόνη" }` (Greek titles only) | `section` also takes an English name from the storefront's 40-section table: `Display`, `screen`, `weight` (→ Διαστάσεις), `energy` (both energy labels) … in any case; «&», «and» and «και» alike. |
+| Rows `{ section, name, value, truncated? }` | Rows `{ section, section_en?, name, value, truncated? }`: `section_en` where the table knows the section; none is guessed for one outside it. |
+| A partial read's `sections: ["Οθόνη", "Μνήμη", …]` (strings) | `sections: [{ "section": "Οθόνη", "section_en": "Display" }, { "section": "Μνήμη", "section_en": "Memory" }, …]` — **a shape change**: read `entry.section` (and `entry.section_en`) instead of the string. |
+| Refusals naming sections `Οθόνη, Μνήμη` | `Οθόνη (Display), Μνήμη (Memory)` |
+
+### Changed
+
+- The demo resolves English section names with the storefront's table, returns `section_en` on rows, lists a
+  partial read's sections as objects (it listed none before), and names sections in both languages when it refuses.
+- The `section` input's description is the storefront's: «all, or a section name in English or Greek as a previous
+  call returned it, e.g. Display or Οθόνη.»
+- No new dataset: no argument rule or required result property changed, so 16.0.0 grades contract 2.8 as it is.
+
 ## [2.6.0] - 2026-09-26
 
 WebMCP contracts 2.3 to 2.6 (bestprice.gr `7210e5e554`, `1bd0f2299f`, `b4981c7d10`, `762f0a4bc7`) in one release:
@@ -611,7 +634,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.6.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.8.0...HEAD
+[2.8.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.6.0...v2.8.0
 [2.6.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.2.0...v2.6.0
 [2.2.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.0.0...v2.1.0
