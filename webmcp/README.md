@@ -38,7 +38,7 @@ npm test
 ## Source map
 
 - [`src/contracts.js`](src/contracts.js) contains the 22 contextual tool
-  contracts of WebMCP contract 2.6: input and output schemas and safety
+  contracts of WebMCP contract 2.8: input and output schemas and safety
   annotations. Each tool's title, description, input and output schema come from
   [`src/storefront-catalog.js`](src/storefront-catalog.js), generated from the
   storefront's own catalog.
@@ -56,7 +56,7 @@ npm test
   runtime, and the full fixture journey; [`test/evals.test.js`](test/evals.test.js)
   validates the dataset below against the contracts.
 - [`evals/`](evals/) contains the versioned Greek natural-language dataset
-  (v1–v15 frozen; v16, 47 cases grading contract 2.6, current) and the separate deterministic
+  (v1–v15 frozen; v16, 47 cases grading contracts 2.6 and 2.8, current) and the separate deterministic
   and browser-agent evaluation criteria.
 
 ## Production surface
@@ -76,6 +76,22 @@ Every page registers `search_bestprice` first, `open_search_results` second,
 product page's `show_offer` is an action verb: it scrolls to one rendered offer
 and marks it for the shopper, and it returns no merchant link.
 
+Contract 2.8 (2026-09-26, bestprice.gr `1a601f6b16`; 2.7 was a trial the
+storefront reverted) gives specification sections English names.
+`get_product_specifications` takes a section's Greek title or an English name
+from the storefront's table of the 40 sections BestPrice spec sheets use
+(`Display` or `Οθόνη`; `screen`, `weight`, `energy` and a few other names too),
+and every row carries `section_en` beside `section` where the table has it —
+none is guessed for a section outside it. A partial read's `sections` list is
+now `{ section, section_en? }` objects (it was strings), and a refusal names
+sections as «Οθόνη (Display)». Every tool is at version `2.8.0`.
+
+| Contract 2.6 | Contract 2.8 |
+| --- | --- |
+| `get_product_specifications` `section` in Greek | Greek or English (`Display`, `screen`, …) |
+| a partial read's `sections: ["Οθόνη", …]` | `sections: [{ "section": "Οθόνη", "section_en": "Display" }, …]` |
+| rows `{ section, name, value }` | rows `{ section, section_en?, name, value }` |
+
 Contracts 2.3 to 2.6 (2026-09-25/26, bestprice.gr `7210e5e554` … `762f0a4bc7`)
 give the shopper's own lists to agents. The product page runs its own buttons
 for its product (an optional `product_id` must be it): `add_to_shopping_list`
@@ -92,7 +108,7 @@ and `get_comparison` (the product page) read them back, paged.
 (`must_have`, 1–6) beside `message` — written into it as «… Budget: up to 400 €.
 Must have: NFC, 5G.» — returns one `outcome` (no `status`), and since 2.6 only
 recommends: no `catalog_candidates` or `search_url`; a `no_match` points at
-`search_bestprice`. Every tool is at version `2.6.0`.
+`search_bestprice`.
 
 | Contract 2.2 | Contract 2.6 |
 | --- | --- |
@@ -254,7 +270,7 @@ output schemas included — and each page's tool list against a committed
 snapshot of those pages (`npm run webmcp:snapshot -- <storefront>`
 regenerates it), and the submission canary compares the manifests on
 `www.bestprice.gr` and `mcp.bestprice.gr` as one document. Evaluation dataset
-16.0.0 grades contract 2.6 and is the default; 1.0.0–15.0.0 stay frozen, with
+16.0.0 grades contracts 2.6 and 2.8 and is the default; 1.0.0–15.0.0 stay frozen, with
 their runs, as the history of contracts 1.6 to 2.2
 ([`evals/QUALIFICATION.md`](evals/QUALIFICATION.md)).
 

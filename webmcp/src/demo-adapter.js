@@ -517,6 +517,98 @@ const OPEN_PRODUCT_NOTE =
 const OPEN_PRODUCT_DISPATCHED_NOTE =
   'The product page could not be read first; call get_page_product there to read it.';
 
+/*
+ * Specification sections in English (contract 2.8): the storefront's table
+ * (pages/item/webmcp/spec-sections.js) of the sections BestPrice spec sheets use, each with its English
+ * name and a few other English names a caller may use. Reads return the English name beside the Greek
+ * one (`section_en`) where the table has it, and `section` takes either; no name is guessed for a
+ * section outside it (the fixture's «Αποθήκευση» has none).
+ */
+const SPEC_SECTIONS = Object.freeze([
+  { el: 'Τύπος', en: 'Type', also: ['kind'] },
+  { el: 'Τροφοδοσία', en: 'Power supply', also: ['power source'] },
+  { el: 'Διαστάσεις', en: 'Dimensions', also: ['size', 'weight'] },
+  { el: 'Απόδοση', en: 'Performance', also: ['power', 'output'] },
+  { el: 'Οθόνη', en: 'Display', also: ['screen'] },
+  { el: 'Ανάλυση', en: 'Resolution' },
+  { el: 'Επεξεργαστής', en: 'Processor', also: ['cpu'] },
+  { el: 'Κάρτα Γραφικών', en: 'Graphics card', also: ['graphics', 'gpu'] },
+  { el: 'Μνήμη', en: 'Memory', also: ['ram'] },
+  { el: 'Μπαταρία', en: 'Battery' },
+  { el: 'Αποθηκευτικός Χώρος', en: 'Storage', also: ['disk'] },
+  { el: 'Κάμερα', en: 'Camera' },
+  { el: 'Selfie Κάμερα', en: 'Selfie camera', also: ['front camera'] },
+  { el: 'Φακός', en: 'Lens' },
+  { el: 'Αισθητήρες', en: 'Sensors' },
+  { el: 'Ήχος', en: 'Audio', also: ['sound'] },
+  { el: 'Θύρες', en: 'Ports' },
+  { el: 'Συνδεσιμότητα', en: 'Connectivity', also: ['connections'] },
+  { el: 'Δικτύωση', en: 'Networking', also: ['network'] },
+  { el: 'Δέκτης', en: 'Receiver', also: ['tuner'] },
+  { el: 'Λογισμικό', en: 'Software', also: ['operating system', 'os'] },
+  { el: 'Απαιτήσεις', en: 'Requirements', also: ['system requirements'] },
+  { el: 'Κινητό', en: 'Phone features', also: ['mobile', 'phone'] },
+  { el: 'Μέσα', en: 'Media' },
+  { el: 'Μέσα Ανάγνωσης', en: 'Drives and card readers', also: ['optical drive', 'card reader'] },
+  { el: 'Εκτύπωση', en: 'Printing' },
+  { el: 'Σάρωση', en: 'Scanning' },
+  { el: 'Εστίες', en: 'Cooking zones', also: ['hob', 'hobs'] },
+  { el: 'Φούρνος', en: 'Oven' },
+  { el: 'Χωρητικότητα', en: 'Capacity' },
+  { el: 'Κατανάλωση', en: 'Consumption', also: ['energy consumption', 'power consumption'] },
+  { el: 'Ισχύς και Κατανάλωση', en: 'Power and consumption', also: ['power', 'consumption'] },
+  { el: 'Επίπεδα Θορύβου', en: 'Noise levels', also: ['noise'] },
+  { el: 'Ενεργειακή Ετικέτα', en: 'Energy label', also: ['energy', 'energy class'] },
+  { el: 'Νέα Ενεργειακή Ετικέτα', en: 'New energy label', also: ['energy', 'energy label', 'energy class'] },
+  { el: 'Δυνατότητες & Λειτουργίες', en: 'Features and functions', also: ['features', 'functions'] },
+  { el: 'Ηλικία', en: 'Age' },
+  { el: 'Γενικά Χαρακτηριστικά', en: 'General features', also: ['general'] },
+  { el: 'Γενικά', en: 'General' },
+  { el: 'Χαρακτηριστικά', en: 'Specifications', also: ['characteristics'] },
+]);
+/* Accent-free and lower-case, punctuation as spaces, with «&», «and» and «και» alike. */
+const SECTION_CONJUNCTIONS = new Set(['and', 'και']);
+const sectionKey = value =>
+  String(value ?? '')
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')
+    .trim()
+    .split(' ')
+    .filter(word => !SECTION_CONJUNCTIONS.has(word))
+    .join(' ');
+const SECTION_ENGLISH = new Map(SPEC_SECTIONS.map(section => [sectionKey(section.el), section.en]));
+const SECTION_GREEK = new Map();
+for (const section of SPEC_SECTIONS) {
+  for (const name of [section.en, ...(section.also ?? [])]) {
+    const key = sectionKey(name);
+    SECTION_GREEK.set(key, [...(SECTION_GREEK.get(key) ?? []), sectionKey(section.el)]);
+  }
+}
+/** The English name of the section titled `title`, or null when the table has none. */
+export const sectionEnglish = title => SECTION_ENGLISH.get(sectionKey(title)) ?? null;
+/** Whether the section titled `title` is one the English `request` names. */
+const englishNames = (request, title) =>
+  (SECTION_GREEK.get(sectionKey(request)) ?? []).includes(sectionKey(title));
+/* A specification row, with its section's English name where the table has one. */
+const specRow = row => {
+  const english = sectionEnglish(row.section);
+  return {
+    section: row.section,
+    ...(english ? { section_en: english } : {}),
+    name: row.name,
+    value: row.value,
+  };
+};
+/* A section named for the caller, «Οθόνη (Display)», and the partial read's `sections` entries. */
+const sectionEntry = title => {
+  const english = sectionEnglish(title);
+  return { section: title, ...(english ? { section_en: english } : {}) };
+};
+const sectionText = entry => (entry.section_en ? `${entry.section} (${entry.section_en})` : entry.section);
+const SECTION_LIST_LIMIT = 8;
+
 /* The product page's shopper actions (contract 2.3, removals 2.4) and their reads (2.5), in the
  * storefront's words: the shopping list (apps/Shortlist, MAX_PRODUCTS), one comparison per category
  * (apps/Comparison, MAX_PRODUCTS_TO_COMPARE), and the price-drop alert dialog. */
@@ -1505,9 +1597,15 @@ export function createDemoAdapter(
       const product = activeProduct();
       const requested = clean(args.section ?? 'all');
       const section = normalize(requested);
+      /* Contract 2.8: the Greek title, a part of it, or an English name from the table. */
       const inSection = product.specifications.filter(
-        row => section === 'all' || normalize(row.section).includes(section),
+        row =>
+          section === 'all' ||
+          normalize(row.section).includes(section) ||
+          englishNames(requested, row.section),
       );
+      /* Every section a caller can select, each with its English name where the table has one. */
+      const sectionNames = [...new Set(product.specifications.map(row => row.section))].map(sectionEntry);
       const about = {
         ok: true,
         source: 'BestPrice product specifications',
@@ -1523,7 +1621,7 @@ export function createDemoAdapter(
         const sections = [...new Set(named.map(row => row.section))];
         if (sections.length > 1) {
           return fail(
-            `More than one section has the fact '${clean(args.fact)}'. Pass one of these sections: ${sections.join(', ')}.`,
+            `More than one section has the fact '${clean(args.fact)}'. Pass one of these sections: ${sections.map(title => sectionText(sectionEntry(title))).join(', ')}.`,
           );
         }
         if (!named.length) return fail(`The specification fact '${clean(args.fact)}' was not found.`);
@@ -1533,20 +1631,34 @@ export function createDemoAdapter(
           returned: named.length,
           omitted_facts: 0,
           completeness: 'complete',
-          specifications: named,
+          specifications: named.map(specRow),
         };
       }
-      if (!inSection.length) return fail(`No specifications matched '${clean(args.section)}'.`);
+      if (!inSection.length) {
+        return fail(
+          `No specifications matched.${sectionNames.length ? ` Available sections: ${sectionNames.slice(0, SECTION_LIST_LIMIT).map(sectionText).join(', ')}.` : ''}`,
+        );
+      }
       const { offset, error: offsetError } = readOffset(args, inSection.length);
       if (offsetError) return offsetError;
       const rows = inSection.slice(offset, offset + limit);
+      const omitted = inSection.length - offset - rows.length;
+      /* A partial read of every section names the sections to ask for next (contract 2.8: as
+       * `{ section, section_en? }`, where they were strings). */
+      const allSections = section === 'all';
       return {
         ...about,
         returned: rows.length,
-        omitted_facts: inSection.length - offset - rows.length,
+        omitted_facts: omitted,
         total_facts: inSection.length,
         ...continuation(offset, rows.length, inSection.length),
-        specifications: rows,
+        ...(omitted > 0 && allSections
+          ? {
+              sections: sectionNames.slice(0, SECTION_LIST_LIMIT),
+              sections_omitted: Math.max(0, sectionNames.length - SECTION_LIST_LIMIT),
+            }
+          : {}),
+        specifications: rows.map(specRow),
       };
     },
 

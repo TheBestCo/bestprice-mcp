@@ -8,6 +8,7 @@ import { CONTRACT_2_2_ARGUMENT_RULES, V15_PATH } from '../evals/dataset-v15.js';
 import {
   CONTRACT_2_5_ADDED_READS,
   caseArgumentRules,
+  DATASET_V16_ALSO_GRADES,
   DATASET_V16_CONTRACT,
   DATASET_V16_VERSION,
   deriveDatasetV16,
@@ -41,7 +42,9 @@ describe('dataset 16.0.0', () => {
   it('is exactly what the generator derives from 15.0.0 and contract 2.6', () => {
     assert.equal(readFileSync(V16_PATH, 'utf8'), serializeDataset(deriveDatasetV16(v15)));
     assert.equal(v16.datasetVersion, DATASET_V16_VERSION);
-    assert.equal(WEBMCP_CONTRACT_VERSION, DATASET_V16_CONTRACT);
+    /* Contract 2.8 changed no argument rule: 16.0.0 grades it as it is. */
+    assert.ok([DATASET_V16_CONTRACT, ...DATASET_V16_ALSO_GRADES].includes(WEBMCP_CONTRACT_VERSION));
+    assert.deepEqual(DATASET_V16_ALSO_GRADES, ['2.8']);
     assert.match(v16.sourceContracts, /22 contextual tools, contract 2\.6, bestprice\.gr 762f0a4bc7/u);
     assert.equal(CURRENT_CASES_PATH, V16_PATH, 'the deterministic driver runs the current dataset');
   });

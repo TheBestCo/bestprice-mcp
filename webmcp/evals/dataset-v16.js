@@ -19,6 +19,11 @@
  * only where summarize_price_history is an extra read. Chains, prompts, criteria and required properties
  * are 15.0.0's. 15.0.0 is not rewritten; it stays frozen with its runs as the history of contract 2.2.
  *
+ * Contract 2.8 (bestprice.gr 1a601f6b16; 2.7 was a reverted trial) changes no grading: get_product_
+ * specifications takes English section names too, and its rows and partial reads carry them, but no
+ * input's rule changes (only the `section` description) and no case requires what changed. 16.0.0
+ * grades it as it is, and its generator reproduces it under either contract.
+ *
  *   node webmcp/evals/dataset-v16.js   # rewrites natural-language-cases.v16.json from v15
  */
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -31,6 +36,8 @@ import { V15_PATH } from './dataset-v15.js';
 export const DATASET_V16_VERSION = '16.0.0';
 /* The contract this dataset grades, and the storefront release of it. */
 export const DATASET_V16_CONTRACT = '2.6';
+/* Later contracts this dataset grades unchanged: their argument rules are 2.6's. */
+export const DATASET_V16_ALSO_GRADES = Object.freeze(['2.8']);
 export const DATASET_V16_SOURCE = '762f0a4bc7';
 export const V16_PATH = fileURLToPath(new URL('./natural-language-cases.v16.json', import.meta.url));
 
@@ -51,7 +58,7 @@ export const caseArgumentRules = (tool, expectedTools) => {
 };
 
 export function deriveDatasetV16(v15 = JSON.parse(readFileSync(V15_PATH, 'utf8'))) {
-  if (WEBMCP_CONTRACT_VERSION !== DATASET_V16_CONTRACT) {
+  if (![DATASET_V16_CONTRACT, ...DATASET_V16_ALSO_GRADES].includes(WEBMCP_CONTRACT_VERSION)) {
     throw new Error(
       `dataset ${DATASET_V16_VERSION} grades contract ${DATASET_V16_CONTRACT}; the published contract is ${WEBMCP_CONTRACT_VERSION}`,
     );

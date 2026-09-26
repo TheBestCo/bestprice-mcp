@@ -1,9 +1,9 @@
 {
   "what": "The strict output contract of every BestPrice WebMCP tool (closed and bounded), which the published output schemas relax; the tests validate every demo result against it.",
   "sourceOfTruth": "bestprice.gr",
-  "sourceCommit": "762f0a4bc76e771b0038c0c7b22c164345310deb",
+  "sourceCommit": "1a601f6b161ae9ac9857c832efad0a4884b5e730",
   "path": "js/modules/webmcp/output-schemas.js",
-  "sha256": "6bba964406996d91f26b1348fdb940f2c5120ea3269a05df9675c89d17f93be7",
+  "sha256": "ee21505abd6124f80de122628954175f40e25447de6dda1807a4e5a55fd71465",
   "schemas": {
     "search_bestprice": {
       "type": "object",
@@ -1722,8 +1722,20 @@
               "type": "array",
               "maxItems": 8,
               "items": {
-                "type": "string",
-                "maxLength": 48
+                "type": "object",
+                "properties": {
+                  "section": {
+                    "type": "string",
+                    "maxLength": 48
+                  },
+                  "section_en": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "description": "The section’s English name; section accepts it or the Greek one."
+                  }
+                },
+                "required": ["section"],
+                "additionalProperties": false
               },
               "description": "Sections to ask for next."
             },
@@ -1744,6 +1756,11 @@
                   "section": {
                     "type": "string",
                     "maxLength": 48
+                  },
+                  "section_en": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "description": "The section’s English name; section accepts it or the Greek one."
                   },
                   "name": {
                     "type": "string",

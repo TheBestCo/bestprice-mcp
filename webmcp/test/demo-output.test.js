@@ -657,6 +657,49 @@ describe('demo results against the published output schemas', () => {
     assert.equal((await adapter.execute('add_to_shopping_list', {})).reason, 'missing_product');
   });
 
+  it('reads specifications by an English or Greek section name, and names each section in both (contract 2.8)', async () => {
+    const adapter = createDemoAdapter();
+    const { call } = recorder(adapter);
+    adapter.setPage('product');
+    /* The English name, another English name for it, and the Greek title select the same section. */
+    for (const section of ['Display', 'screen', 'Οθόνη', 'οθονη']) {
+      const read = await call('get_product_specifications', { section });
+      assert.deepEqual(
+        read.specifications.map(row => [row.section, row.section_en, row.name]),
+        [['Οθόνη', 'Display', 'Μέγεθος']],
+        section,
+      );
+    }
+    /* A section outside the storefront's table keeps its Greek name alone: none is guessed. */
+    const all = await call('get_product_specifications', {});
+    assert.deepEqual(
+      all.specifications.map(row => row.section_en ?? null),
+      ['Display', null, 'Connectivity'],
+    );
+    /* A partial read of every section names them as { section, section_en? } (they were strings). */
+    const partial = await call('get_product_specifications', { limit: 1 });
+    assert.deepEqual(partial.sections, [
+      { section: 'Οθόνη', section_en: 'Display' },
+      { section: 'Αποθήκευση' },
+      { section: 'Συνδεσιμότητα', section_en: 'Connectivity' },
+    ]);
+    assert.equal(partial.sections_omitted, 0);
+    assert.equal(
+      'sections' in (await call('get_product_specifications', { section: 'Display', limit: 1 })),
+      false,
+    );
+    /* A section the table knows but this product lacks is refused, naming the ones it has in both. */
+    assert.equal(
+      (await call('get_product_specifications', { section: 'Battery' })).error,
+      'No specifications matched. Available sections: Οθόνη (Display), Αποθήκευση, Συνδεσιμότητα (Connectivity).',
+    );
+    assert.equal(
+      (await call('get_product_specifications', { section: 'connectivity', fact: 'Δίκτυο' }))
+        .specifications[0].section_en,
+      'Connectivity',
+    );
+  });
+
   it('decides from the fixture without a network, and refuses bad arguments before deciding', async () => {
     const fetch = globalThis.fetch;
     globalThis.fetch = () => {

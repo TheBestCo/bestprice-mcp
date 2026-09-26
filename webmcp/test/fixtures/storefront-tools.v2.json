@@ -2,12 +2,12 @@
   "fixtureVersion": 2,
   "what": "The WebMCP tool surface the BestPrice.gr storefront registers, read from the source of truth in the bestprice.gr repository.",
   "sourceOfTruth": "bestprice.gr",
-  "sourceCommit": "762f0a4bc76e771b0038c0c7b22c164345310deb",
-  "contractVersion": "2.6",
+  "sourceCommit": "1a601f6b161ae9ac9857c832efad0a4884b5e730",
+  "contractVersion": "2.8",
   "extractedFrom": [
     {
       "path": "extra/mcpDiscovery/webmcp-tools.json",
-      "sha256": "828f924f56ae8ff8932ad7dd265937a00b299e4137d63b703fde6a0c61a7d133"
+      "sha256": "5a81b276f7f2f8693757bb97820c919abb3fe2a8f6f22f7a9507a0b0009ccecf"
     },
     {
       "path": "pages/item/webmcp/tools.js",
@@ -43,7 +43,7 @@
     },
     {
       "path": "js/modules/webmcp/input-schemas.js",
-      "sha256": "864925fd4c393958965224c37f6d09a9399db41a64ed347906a557eb427b16d9"
+      "sha256": "aed285386efd75c84c5d5732c2d7a505d1b6c558129944f112ee0d627753dff0"
     },
     {
       "path": "js/modules/webmcp/annotations.js",
@@ -51,12 +51,12 @@
     },
     {
       "path": "js/modules/webmcp/output-schemas.js",
-      "sha256": "6bba964406996d91f26b1348fdb940f2c5120ea3269a05df9675c89d17f93be7"
+      "sha256": "ee21505abd6124f80de122628954175f40e25447de6dda1807a4e5a55fd71465"
     }
   ],
   "extraction": "webmcp/src/contract-parity.js readStorefrontSurface: title, description and output schema from extra/mcpDiscovery/webmcp-tools.json; input schema and annotations from the object literals the page modules register, with module and imported constants resolved",
   "pagesFrom": "tools/scripts/mcp_discovery_json.php webmcp.pages: the manifest the site serves, which the storefront checks against the tools each page registers",
-  "definitionsDigest": "a48939f6a27a856cb01d30d4c73f9d6924b742c21c018a5f572ecb95d8ae7b32",
+  "definitionsDigest": "780d98ece3786584c9ce292c1f28f0679be7d0941a5a3ed3a89235f16ef8a87d",
   "tools": [
     "search_bestprice",
     "open_search_results",
@@ -1730,7 +1730,7 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 48,
-            "description": "all, or a section name a previous call returned; names are in Greek, e.g. Οθόνη (display)."
+            "description": "all, or a section name in English or Greek as a previous call returned it, e.g. Display or Οθόνη."
           },
           "limit": {
             "type": "integer",
@@ -1812,7 +1812,17 @@
               "sections": {
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "type": "object",
+                  "properties": {
+                    "section": {
+                      "type": "string"
+                    },
+                    "section_en": {
+                      "type": "string",
+                      "description": "The section’s English name; section accepts it or the Greek one."
+                    }
+                  },
+                  "required": ["section"]
                 }
               },
               "continuation": {
@@ -1825,6 +1835,10 @@
                   "properties": {
                     "section": {
                       "type": "string"
+                    },
+                    "section_en": {
+                      "type": "string",
+                      "description": "The section’s English name; section accepts it or the Greek one."
                     },
                     "name": {
                       "type": "string"

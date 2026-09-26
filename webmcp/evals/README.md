@@ -4,7 +4,7 @@ This is the canonical home of the versioned Greek shopper prompt datasets for th
 contextual tools in [`../src/contracts.js`](../src/contracts.js):
 
 - [`natural-language-cases.v16.json`](natural-language-cases.v16.json) — current, 47 cases: 15.0.0
-  graded against contract 2.6 by [`dataset-v16.js`](dataset-v16.js) (`get_shopping_list` and
+  graded against contract 2.6 — and 2.8, which changes no argument rule — by [`dataset-v16.js`](dataset-v16.js) (`get_shopping_list` and
   `get_comparison` admitted as extra reads; `get_shopping_decision`'s `max_price_eur` and `must_have`
   in its argument rules); evidence in [`runs.v16.json`](runs.v16.json). The deterministic driver runs
   it by default. See [`QUALIFICATION.md`](QUALIFICATION.md).

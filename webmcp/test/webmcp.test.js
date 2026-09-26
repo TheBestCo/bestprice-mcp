@@ -36,8 +36,8 @@ const PHONE_RESULTS = 'https://www.bestprice.gr/search?q=phone';
 const DESCRIPTION_LENGTH = Object.freeze({ min: 40, max: 160, field: 110 });
 
 describe('contracts', () => {
-  it('publishes 22 unique contextual tools across four page types (contract 2.6)', () => {
-    assert.equal(WEBMCP_CONTRACT_VERSION, '2.6');
+  it('publishes 22 unique contextual tools across four page types (contract 2.8)', () => {
+    assert.equal(WEBMCP_CONTRACT_VERSION, '2.8');
     /* Contract 2.2: open_search_results opens one thing, the results_url a search returned. */
     assert.deepEqual(TOOL_DEFINITIONS.open_search_results.inputSchema.required, ['results_url']);
     assert.deepEqual(Object.keys(TOOL_DEFINITIONS.open_search_results.inputSchema.properties), [
@@ -633,7 +633,11 @@ describe('demo adapter', () => {
         ['apply_listing_sort', { sort: 'Newest' }],
         `The sorting option 'Newest' was not found. Visible options: ${SORT_OPTIONS[0]} (relevance), ${SORT_OPTIONS[1]} (price_asc).`,
       ],
-      [['get_product_specifications', { section: 'Battery' }], "No specifications matched 'Battery'."],
+      /* Contract 2.8: an English name the table knows, for a section this product does not have. */
+      [
+        ['get_product_specifications', { section: 'Battery' }],
+        'No specifications matched. Available sections: Οθόνη (Display), Αποθήκευση, Συνδεσιμότητα (Connectivity).',
+      ],
       [['place_order', {}], 'Unknown tool: place_order.'],
     ];
     for (const [[name, args], error] of cases) {

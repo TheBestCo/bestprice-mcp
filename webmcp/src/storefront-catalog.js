@@ -3,12 +3,12 @@
  *
  * The title, description (and any page type's own wording), input schema and output schema of every
  * BestPrice WebMCP tool, as the storefront registers them: bestprice.gr `extra/mcpDiscovery/webmcp-tools.json` (its generated copy of
- * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 762f0a4bc7, WebMCP
- * contract 2.6. `contracts.js` publishes them as they are, and
+ * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 1a601f6b16, WebMCP
+ * contract 2.8. `contracts.js` publishes them as they are, and
  * `webmcp/test/contract-parity.test.js` compares every published definition with the snapshot.
  */
 
-export const WEBMCP_CONTRACT_VERSION = '2.6';
+export const WEBMCP_CONTRACT_VERSION = '2.8';
 
 export const STOREFRONT_CATALOG = {
   search_bestprice: {
@@ -1517,7 +1517,7 @@ export const STOREFRONT_CATALOG = {
           minLength: 1,
           maxLength: 48,
           description:
-            'all, or a section name a previous call returned; names are in Greek, e.g. Οθόνη (display).',
+            'all, or a section name in English or Greek as a previous call returned it, e.g. Display or Οθόνη.',
         },
         limit: {
           type: 'integer',
@@ -1596,7 +1596,17 @@ export const STOREFRONT_CATALOG = {
             sections: {
               type: 'array',
               items: {
-                type: 'string',
+                type: 'object',
+                properties: {
+                  section: {
+                    type: 'string',
+                  },
+                  section_en: {
+                    type: 'string',
+                    description: 'The section’s English name; section accepts it or the Greek one.',
+                  },
+                },
+                required: ['section'],
               },
             },
             continuation: {
@@ -1609,6 +1619,10 @@ export const STOREFRONT_CATALOG = {
                 properties: {
                   section: {
                     type: 'string',
+                  },
+                  section_en: {
+                    type: 'string',
+                    description: 'The section’s English name; section accepts it or the Greek one.',
                   },
                   name: {
                     type: 'string',

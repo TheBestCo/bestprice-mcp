@@ -308,7 +308,7 @@
       "verifiedAt": "2026-09-25",
       "evidence": "Page shows \"15 tools registered · Commerce · verified 8/27/2026\" after re-registering the live contract 1.8 document (www release e0be10690f) on 2026-09-25, including get_shopping_decision.",
       "note": "Domain is verified by the DNS TXT record webmcp-verify; writes need the domain-owner API key.",
-      "nextAction": "Re-register the 22-tool contract 2.6 from https://www.bestprice.gr/webmcp.json once it serves release 762f0a4bc7: the product page's shopper actions and their removals, the shopping list and comparison reads, a Shopping Brain that only recommends; tools at 2.6.0.",
+      "nextAction": "Re-register the 22-tool contract 2.8 from https://www.bestprice.gr/webmcp.json (live since release 1a601f6b16): English specification section names beside the Greek ones, on top of 2.6's shopper actions, list and comparison reads and a Shopping Brain that only recommends; tools at 2.8.0.",
       "nextActionBy": "us-external-login"
     },
     {
@@ -320,7 +320,7 @@
       "verifiedAt": "2026-09-25",
       "evidence": "A rescan of the live contract 1.8 (release e0be10690f) graded B+ (up from B-): 4 tools on 1 scanned page (/). The scanner cites precise schemas and explicit success and refusal branches, and flags a product_id format mismatch (get_shopping_decision returned bp_ ids) and no product-page tools, because it never reached an item page. The listing refreshes after their review.",
       "note": "Crawler-populated by nekuda. The rescan form takes only an email address. Pages beyond / appear to follow sitemap order, and our sitemap index starts with blog posts, which registered no tools.",
-      "nextAction": "Request a rescan of contract 2.6: the Shopping Brain no longer returns catalog candidates or a search address (the search/decision overlap every review since 2.0 named), and descriptions are in plain English.",
+      "nextAction": "Request a rescan of contract 2.8: specification sections have English names (the Greek-only labels the 2.7 review named), and the Shopping Brain only recommends.",
       "nextActionBy": "us-external-login"
     },
     {

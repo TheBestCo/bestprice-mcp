@@ -841,3 +841,14 @@ comparison per category (6), read before and after each change, `unchanged` both
 saved; the paged reads; the Brain's composed message and single `outcome` — and passes 16.0.0 with 42
 passed and 5 refusals (`listing-004`, `listing-007`, `listing-011`, `product-006`, `neg-009`), no failure,
 no blocked run and no safety violation. No chain changed, so the frozen 15.0.0 passes the same demo too.
+
+## Contract 2.8 changes no grading; 16.0.0 stays current
+
+Contract 2.8 (bestprice.gr `1a601f6b16`; 2.7 was a trial the storefront reverted, never published here)
+gives specification sections English names: `get_product_specifications` takes a section's Greek title or
+an English name from the storefront's table of 40 sections, every row carries `section_en` where the table
+has it, and a partial read lists its `sections` as `{ section, section_en? }` objects instead of strings.
+No input's rule changes — only the `section` description — and no case requires a row's or a partial read's
+fields, so no dataset is added: 16.0.0 grades 2.8 as it is (`dataset-v16.js` reproduces it under either
+contract). The demo implements the table and the English resolution, schema-valid against both published
+contracts, and still passes 16.0.0 with 42 passed and the same 5 refusals.
