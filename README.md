@@ -11,6 +11,14 @@ and price history. No account or API key is needed.
 
 ![BestPrice MCP: products, offers and price history for AI assistants](https://www.bestprice.gr/extra/mcpLanding/assets/bestprice-mcp-share.png)
 
+## Start shopping
+
+- [Open BestPrice Shopping in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981) and add the published plugin.
+- [Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp) using the prefilled connector form.
+- See the [shopping guide](https://www.bestprice.gr/en/mcp) for examples and other assistants.
+
+For developer integrations, the public endpoint is:
+
 ```text
 https://mcp.bestprice.gr/mcp
 ```
@@ -78,7 +86,7 @@ Measured against the live endpoint on 24 September 2026.
 - **Authentication.** None. There is deliberately no `/.well-known/oauth-protected-resource`
   document: clients that probe for one get `404` and connect without OAuth.
 
-## Quick start
+## Developer quick start
 
 Every client below connects to the same endpoint. Detailed, provider-specific
 instructions including OpenAI, Grok, GitHub Copilot, and Microsoft Copilot Studio are in

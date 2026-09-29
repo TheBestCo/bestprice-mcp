@@ -1,5 +1,9 @@
 # Connect BestPrice Shopping
 
+For shoppers, [open the published BestPrice Shopping plugin in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981)
+or [open the prefilled Claude connector form](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp).
+The instructions below cover developer and manual connections.
+
 BestPrice exposes one public, read-only MCP server for every compatible provider:
 
 ```text
@@ -37,8 +41,9 @@ const response = await client.responses.create({
 });
 ```
 
-For ChatGPT, add the same URL as a custom connector in developer mode. Public
-directory availability is a separate review and publishing process.
+For ordinary ChatGPT use, open the [published BestPrice Shopping plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981)
+and add it there. Developer mode can also use this endpoint as a custom
+connector on accounts that support custom connectors; that is a separate setup path.
 
 The live server also publishes the canonical BestPrice Shopping Skill through the final MCP Skills
 extension (`io.modelcontextprotocol/skills`) on protocol `2026-07-28`. A Skills-aware scanner can
