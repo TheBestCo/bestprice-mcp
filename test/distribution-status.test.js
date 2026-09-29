@@ -60,6 +60,7 @@ describe('distribution status ledger', () => {
     }
     for (const id of [
       'official-mcp-registry',
+      'openai',
       'mcp-harbor',
       'cursor-directory',
       'gemini-gallery',
@@ -67,7 +68,7 @@ describe('distribution status ledger', () => {
     ]) {
       assert.equal(byId.get(id)?.state, 'published', id);
     }
-    for (const id of ['openai', 'claude', 'docker', 'agentfinder', 'kilo', 'cline']) {
+    for (const id of ['claude', 'docker', 'agentfinder', 'kilo', 'cline']) {
       assert.equal(byId.get(id)?.state, 'submitted', id);
     }
     for (const surface of status.surfaces.filter(s => s.state !== 'published')) {
