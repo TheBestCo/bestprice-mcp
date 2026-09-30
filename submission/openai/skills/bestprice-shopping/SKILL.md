@@ -3,9 +3,9 @@ name: bestprice-shopping
 description: Use for physical-product shopping in Greece without naming BestPrice: what to buy, known products, cheapest delivered price, or whether a price is good/history; not travel/services.
 ---
 
-# BestPrice Shopping
+# BestPrice
 
-Use BestPrice Shopping when the user is shopping for safe physical products available in Greece, even when they do not name BestPrice.
+Use BestPrice when the user is shopping for safe physical products available in Greece, even when they do not name BestPrice.
 
 ## Route by shopper intent
 

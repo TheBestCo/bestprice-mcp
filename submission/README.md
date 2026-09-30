@@ -1,6 +1,6 @@
 # OpenAI plugin release 1.2.0
 
-`openai/` is the replacement ZIP source for the existing BestPrice Shopping
+`openai/` is the replacement ZIP source for the existing BestPrice
 plugin, preserving its assigned package identity and public MCP URL. This
 plugin version is independent of the distribution/WebMCP package version.
 
