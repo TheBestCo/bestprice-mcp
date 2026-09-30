@@ -15,7 +15,9 @@ anonymous and read-only. OAuth is limited to `events:subscribe`.
 - Verify the deployed native workspace with the production canary.
 - Promote BestPrice.gr OAuth build 18151 (body fix) to production and verify discovery.
 - Qualify real ChatGPT account linking, Events subscription and callback.
-- Replace qualification screenshots with final production screenshots.
+- Final v5 screenshots now come from the development connection to the same
+  native UI using live production catalog data. The released 1.0.1 host remains
+  cached until replacement publication; verify the published host after release.
 - Supply a reviewer-accessible demo recording and dedicated reviewer access
   for OAuth. Never include reviewer credentials or gateway secrets in the ZIP.
 - Freeze a ZIP from `openai/` only, cancel the superseded review, upload the
@@ -30,3 +32,10 @@ families, 406 sellers and 246 brands. All 20 representative PDPs and 20 images
 returned HTTP 200 under browser-UA HEAD checks; full crawler qualification is
 not claimed. A local export bundle is saved as
 `/Users/gp/Downloads/bestprice-acp-css-2026-09-30.zip`. It is outside the plugin ZIP.
+
+Backend `3199380c5b2` passed Jenkins 28260 and is live with BestPrice/v5
+metadata. Website `8e21467bb8` syncs this card and the styled/body-correct consent
+page; staging-to-production promotion is still required. The strict canary
+currently refuses cross-host AI Catalog parity. OAuth ingress follow-up
+`08956f457cc` supplies protected-resource metadata under the proven `/mcp/*`
+proxy path; its first build was superseded while waiting, not test-failed.
