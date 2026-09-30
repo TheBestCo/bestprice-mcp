@@ -23,9 +23,11 @@ The sampler fix `57e38dbdd8e` removes an unnecessary child-worker heap reservati
 
 ## Remaining release gates
 
+- The corrected **1.2.0 ZIP is uploaded** as draft `appsub_6abd16a16bb4819193e6e6bdc6337af1`. Downloading that draft confirms all seven files match the source, including the new notes and review cases in `extensions.com.openai`. The legacy Review information drawer still shows the saved 1.1.0 materials after reload. OpenAI documents that explicit scalar values are reapplied on submission; the final applied materials remain unverified.
+- Complete optional OAuth configuration on the public associated app. The portal still displays **No authentication** and says individual connection details are unavailable. Its separate package-declared server shows **Connection unknown** without a Connect/Reconnect control. Real OAuth and native Events qualification currently belongs to the separate test connector. The [support request draft](openai-support-draft.md) records the actual UI findings; it has not been sent.
 - Verify deployed sampler reliability. Native subscription, the signed verification challenge, the first live price observation and actual-host cancellation are confirmed. A genuine threshold-crossing notification remains unobserved. No fabricated catalog change or notification has been used.
 - Complete the private OAuth reviewer login details for the account selected by the owner. Credentials must remain outside the ZIP and public repository.
-- Freeze and upload the replacement ZIP, inspect the new MCP scan and review details, then complete submission. Cancel the superseded 1.1.0 review only when the concrete replacement is ready. Version 1.2.0 is **not submitted**.
+- The superseded **1.1.0 review is canceled**. The current `get_shopping_decision` finding is the generic **further review required** hold, with the earlier definition still live; it no longer contains the specific conversation-history warning. The metadata finding flags the established BestPrice brand as a superlative. Finish the applicable review and policy attestations; version 1.2.0 is **not submitted**.
 - After approval and publication, verify the released host and the **BestPrice** listing name. The released 1.0.1 connection still reflects its older cached metadata.
 
 ## Separate ACP deliverable

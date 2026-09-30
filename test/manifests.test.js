@@ -44,6 +44,25 @@ const security = read('SECURITY.md');
 const contributing = read('CONTRIBUTING.md');
 const changelog = read('CHANGELOG.md');
 
+describe('OpenAI review package', () => {
+  it('declares review and publication in the importer namespace while preserving the assigned identity', () => {
+    const release = readJson('submission/openai/.codex-plugin/plugin.json');
+    assert.equal(release.name, 'app-6a8d8ed6e2bc8191b3caaf7214f3c981');
+    assert.equal(release.interface.displayName, 'BestPrice');
+    assert.equal(release.review, undefined, 'root review fields are not imported');
+    assert.equal(release.publication, undefined, 'root publication fields are not imported');
+    const openai = release.extensions['com.openai'];
+    assert.equal(openai.review.test_cases.positive.length, 5);
+    assert.equal(openai.review.test_cases.negative.length, 3);
+    assert.ok(openai.review.demo_recording_url.startsWith(`${REPOSITORY}/`));
+    assert.ok(openai.publication.release_notes.startsWith(`Version ${release.version} `));
+    assert.deepEqual(openai.publication.countries, ['GR']);
+    assert.ok(openai.publication.translations['el-GR'].description.includes('ειδοποιήσεις'));
+    assert.equal(read('submission/openai/skills/bestprice-shopping/SKILL.md'), canonicalSkill);
+    for (const key of ['apps', 'hooks']) assert.equal(key in release, false, key);
+  });
+});
+
 describe('package identity', () => {
   it('names the package after the repository with corporate authorship and a license', () => {
     assert.equal(pkg.name, 'bestprice-mcp');

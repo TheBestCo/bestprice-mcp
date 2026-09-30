@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-09-30T14:00:28.641465+00:00",
+  "checkedAt": "2026-09-30T14:11:42.717368+00:00",
   "status": "passed",
-  "scope": "Frozen review ZIP structure, official branding and genuine current native history capture. Does not claim live threshold-crossing notification, deployed sampler or final submission.",
+  "scope": "Corrected review ZIP structure and OpenAI review/publication namespace, official branding and genuine native screenshot. Portal import still needs verification; no final submission or live matching notification is claimed.",
   "archive": {
     "name": "bestprice-plugin-1.2.0-review-draft.zip",
-    "bytes": 168417,
-    "sha256": "986ed2d7839a239548c33c601549c52245f481ddeaded5a9ce754d3a025b30af",
+    "bytes": 168561,
+    "sha256": "9da1ede7334aa008489c381802a5dd2f210f34117fc30c8a91aa885058a5a306",
     "files": [
       ".codex-plugin/plugin.json",
       ".mcp.json",
@@ -171,6 +171,26 @@
     {
       "name": "archive_source_byte_parity",
       "passed": true
+    },
+    {
+      "name": "codex_review_and_publication_under_openai_extension",
+      "passed": true,
+      "details": "Confirmed against the official Codex compatibility manifest example in OpenAI submission documentation; top-level review/publication are absent."
     }
-  ]
+  ],
+  "portalRoundTrip": {
+    "checkedAt": "2026-09-30T14:25:29.439506+00:00",
+    "draftId": "appsub_6abd16a16bb4819193e6e6bdc6337af1",
+    "packageVersion": "1.2.0",
+    "exportedArchiveSha256": "ab45d38503c5ff4922aae4b1cdbfea0ab76c87c419faee2dd8df3e5d29d83e22",
+    "allSevenFilesMatchSource": true,
+    "correctOpenaiReviewAndPublicationRetained": true,
+    "reviewDrawerStillShowsLegacy1_1_0": true,
+    "submissionStatus": "not submitted"
+  },
+  "tests": {
+    "manifestContractsPassed": 26,
+    "manifestContractsFailed": 0,
+    "biomeChangedManifestAndTest": "passed"
+  }
 }

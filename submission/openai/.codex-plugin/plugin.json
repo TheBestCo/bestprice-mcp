@@ -31,66 +31,70 @@
   "skills": "./skills",
   "version": "1.2.0",
   "mcpServers": "./.mcp.json",
-  "review": {
-    "test_cases": {
-      "positive": [
-        {
-          "description": "Need-based recommendation",
-          "prompt": "Ποιο κινητό να πάρω μέχρι 500€ με NFC και 5G;",
-          "tools_triggered": "get_shopping_decision",
-          "expected_behavior": "Return the bounded decision or an honest clarification. Use only current-task preferences. Do not invent prices or call extra shopping tools for a completed decision."
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Need-based recommendation",
+              "prompt": "Ποιο κινητό να πάρω μέχρι 500€ με NFC και 5G;",
+              "tools_triggered": "get_shopping_decision",
+              "expected_behavior": "Return the bounded decision or an honest clarification. Use only current-task preferences. Do not invent prices or call extra shopping tools for a completed decision."
+            },
+            {
+              "description": "Search current catalog",
+              "prompt": "Βρες Sony WH-1000XM5 κάτω από 300€ στο BestPrice.",
+              "tools_triggered": "search_products",
+              "expected_behavior": "Return matching catalog products with item prices excluding shipping and exact returned product IDs. The native home is available from the global/thread entrypoint and the results card uses only returned catalog data."
+            },
+            {
+              "description": "Delivered offers",
+              "prompt": "Σύγκρινε προσφορές για bp_2157591869 στον ΤΚ 11527.",
+              "tools_triggered": "compare_offers",
+              "expected_behavior": "Show ad-free offers with shipping status and delivered totals where verified; unknown shipping is not free. Link to BestPrice."
+            },
+            {
+              "description": "Observed price history",
+              "prompt": "Δείξε ιστορικό τιμής 180 ημερών για bp_2157591869.",
+              "tools_triggered": "get_price_history",
+              "expected_behavior": "Show observed minimum-price history with coverage and current price. Do not predict future prices."
+            },
+            {
+              "description": "Explicit price-drop subscription and cancellation",
+              "prompt": "Ειδοποίησέ με αν το Sony WH-1000XM5 μαύρο πέσει στα 170€ ή χαμηλότερα, χωρίς μεταφορικά. Μετά ακύρωσε την ειδοποίηση όταν το ζητήσω.",
+              "tools_triggered": "search_products (only if the canonical product is not already known)",
+              "expected_behavior": "After explicit BestPrice account linking, use advertised MCP Events price.dropped with the exact returned product_id, threshold 17000 integer cents and currency EUR. Never invent a target price or use a shopping tool to create alerts. Report success only after events/subscribe succeeds, and use events/unsubscribe on an explicit cancellation request. If Events is unavailable or authorization fails, clearly report that no alert was created."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated request",
+              "prompt": "What is the weather in Athens tomorrow?"
+            },
+            {
+              "description": "Unsupported checkout",
+              "prompt": "Buy the cheapest headphones and pay for them."
+            },
+            {
+              "description": "Prohibited nicotine product",
+              "prompt": "Find a vape or electronic cigarette."
+            }
+          ]
         },
-        {
-          "description": "Search current catalog",
-          "prompt": "Βρες Sony WH-1000XM5 κάτω από 300€ στο BestPrice.",
-          "tools_triggered": "search_products",
-          "expected_behavior": "Return matching catalog products with item prices excluding shipping and exact returned product IDs. The native home is available from the global/thread entrypoint and the results card uses only returned catalog data."
-        },
-        {
-          "description": "Delivered offers",
-          "prompt": "Σύγκρινε προσφορές για bp_2157591869 στον ΤΚ 11527.",
-          "tools_triggered": "compare_offers",
-          "expected_behavior": "Show ad-free offers with shipping status and delivered totals where verified; unknown shipping is not free. Link to BestPrice."
-        },
-        {
-          "description": "Observed price history",
-          "prompt": "Δείξε ιστορικό τιμής 180 ημερών για bp_2157591869.",
-          "tools_triggered": "get_price_history",
-          "expected_behavior": "Show observed minimum-price history with coverage and current price. Do not predict future prices."
-        },
-        {
-          "description": "Explicit price-drop subscription and cancellation",
-          "prompt": "Ειδοποίησέ με αν το Sony WH-1000XM5 μαύρο πέσει στα 170€ ή χαμηλότερα, χωρίς μεταφορικά. Μετά ακύρωσε την ειδοποίηση όταν το ζητήσω.",
-          "tools_triggered": "search_products (only if the canonical product is not already known)",
-          "expected_behavior": "After explicit BestPrice account linking, use advertised MCP Events price.dropped with the exact returned product_id, threshold 17000 integer cents and currency EUR. Never invent a target price or use a shopping tool to create alerts. Report success only after events/subscribe succeeds, and use events/unsubscribe on an explicit cancellation request. If Events is unavailable or authorization fails, clearly report that no alert was created."
+        "commerce": true,
+        "commerce_description": "Read-only comparison of physical products from Greek stores, with links to BestPrice. No checkout, payment, cart, ordering or direct merchant transaction.",
+        "demo_recording_url": "https://github.com/TheBestCo/bestprice-mcp/blob/main/submission/evidence/native-workspace-demo-2026-09-30.mp4"
+      },
+      "publication": {
+        "countries": ["GR"],
+        "release_notes": "Version 1.2.0 adds the native BestPrice shopping workspace, preserves the four anonymous read-only shopping tools and existing cards, removes conversation-transcript inputs, and adds OAuth-bound price.dropped Events for explicitly selected products and thresholds. BestPrice is the established brand and verified business identity, not a ranking or a price guarantee. Orders, payments and account history remain outside the integration.",
+        "translations": {
+          "el-GR": {
+            "subtitle": "Σύγκρινε τιμές στην Ελλάδα",
+            "description": "Βρες προϊόντα και σύγκρινε τιμές από καταστήματα στην Ελλάδα με το BestPrice. Ζήτησε πρόταση με βάση τις ανάγκες και τον προϋπολογισμό σου, αναζήτησε συγκεκριμένο μοντέλο, σύγκρινε τρέχουσες προσφορές χωρίς χορηγούμενα αποτελέσματα ή δες έως 180 ημέρες ιστορικού τιμών. Όταν τα μεταφορικά δεν μπορούν να επαληθευτούν, εμφανίζονται ως άγνωστα. Οι σύνδεσμοι οδηγούν στο BestPrice για να εξετάσεις τα καταστήματα πριν επιλέξεις αν θα αγοράσεις. Η αναζήτηση και η σύγκριση δεν απαιτούν λογαριασμό και δεν πραγματοποιούν παραγγελίες ή πληρωμές. Η προαιρετική σύνδεση λογαριασμού αφορά μόνο ειδοποιήσεις πτώσης τιμής για προϊόντα και όρια τιμής που επιλέγεις εσύ. Δεν παρέχει πρόσβαση στο ιστορικό του λογαριασμού ή στις παραγγελίες σου."
+          }
         }
-      ],
-      "negative": [
-        {
-          "description": "Unrelated request",
-          "prompt": "What is the weather in Athens tomorrow?"
-        },
-        {
-          "description": "Unsupported checkout",
-          "prompt": "Buy the cheapest headphones and pay for them."
-        },
-        {
-          "description": "Prohibited nicotine product",
-          "prompt": "Find a vape or electronic cigarette."
-        }
-      ]
-    },
-    "commerce": true,
-    "commerce_description": "Read-only comparison of physical products from Greek stores, with links to BestPrice. No checkout, payment, cart, ordering or direct merchant transaction.",
-    "demo_recording_url": "https://github.com/TheBestCo/bestprice-mcp/blob/main/submission/evidence/native-workspace-demo-2026-09-30.mp4"
-  },
-  "publication": {
-    "countries": ["GR"],
-    "release_notes": "Native shopping workspace with global and thread entrypoints, preserved shopping cards, task-specific inputs, and durable OAuth-bound price-drop Events. Shopping remains anonymous and read-only.",
-    "translations": {
-      "el-GR": {
-        "subtitle": "Σύγκρινε τιμές στην Ελλάδα",
-        "description": "Βρες προϊόντα και σύγκρινε τιμές από καταστήματα στην Ελλάδα με το BestPrice. Ζήτησε πρόταση με βάση τις ανάγκες και τον προϋπολογισμό σου, αναζήτησε συγκεκριμένο μοντέλο, σύγκρινε τρέχουσες προσφορές χωρίς χορηγούμενα αποτελέσματα ή δες έως 180 ημέρες ιστορικού τιμών. Όταν τα μεταφορικά δεν μπορούν να επαληθευτούν, εμφανίζονται ως άγνωστα. Οι σύνδεσμοι οδηγούν στο BestPrice για να εξετάσεις τα καταστήματα πριν επιλέξεις αν θα αγοράσεις. Η αναζήτηση και η σύγκριση δεν απαιτούν λογαριασμό και δεν πραγματοποιούν παραγγελίες ή πληρωμές. Η προαιρετική σύνδεση λογαριασμού αφορά μόνο ειδοποιήσεις πτώσης τιμής για προϊόντα και όρια τιμής που επιλέγεις εσύ. Δεν παρέχει πρόσβαση στο ιστορικό του λογαριασμού ή στις παραγγελίες σου."
       }
     }
   }
