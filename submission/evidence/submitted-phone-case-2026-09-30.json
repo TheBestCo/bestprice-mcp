@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-09-30T15:28:58.988Z",
+  "case": "submitted_phone_500_nfc_5g",
+  "httpStatus": 200,
+  "revision": "d4cb1416904e97727d92e561e3e3559ec31f3f3e",
+  "outcome": "recommendation",
+  "productCount": 3,
+  "recommendedProductId": "bp_2162373534",
+  "products": [
+    {
+      "product_id": "bp_2162373534",
+      "price_from": 162,
+      "features": [
+        {
+          "key": "nfc",
+          "status": "known",
+          "value": true,
+          "evidenceClaimCount": 1,
+          "evidenceSourceCount": 1
+        },
+        {
+          "key": "network_5g",
+          "status": "known",
+          "value": true,
+          "evidenceClaimCount": 1,
+          "evidenceSourceCount": 1
+        }
+      ]
+    },
+    {
+      "product_id": "bp_2163461420",
+      "price_from": 241.88,
+      "features": [
+        {
+          "key": "nfc",
+          "status": "known",
+          "value": true,
+          "evidenceClaimCount": 1,
+          "evidenceSourceCount": 1
+        },
+        {
+          "key": "network_5g",
+          "status": "known",
+          "value": true,
+          "evidenceClaimCount": 1,
+          "evidenceSourceCount": 1
+        }
+      ]
+    },
+    {
+      "product_id": "bp_2162588426",
+      "price_from": 430,
+      "features": [
+        {
+          "key": "nfc",
+          "status": "known",
+          "value": true,
+          "evidenceClaimCount": 1,
+          "evidenceSourceCount": 1
+        },
+        {
+          "key": "network_5g",
+          "status": "known",
+          "value": true,
+          "evidenceClaimCount": 1,
+          "evidenceSourceCount": 1
+        }
+      ]
+    }
+  ],
+  "blockingConstraintCount": 0,
+  "clarificationCount": 0,
+  "predictsFuturePrice": false,
+  "passed": true,
+  "scope": "One exact positive case from the submitted bundle; public catalog arguments only. Signed links, private request identifiers and account data excluded."
+}

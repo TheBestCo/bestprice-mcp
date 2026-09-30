@@ -18,6 +18,8 @@ MCP endpoint: `https://mcp.bestprice.gr/mcp`
 
 Protected resource metadata: `https://mcp.bestprice.gr/.well-known/oauth-protected-resource`
 
+A fresh MCP scan at 15:27:32 UTC on 30 September reports no issues; all four shopping tools, including get_shopping_decision, are now Live. The new public decision definition has no history input, and the 51-check production canary passes.
+
 The package display name is BestPrice, our established brand and verified business identity. The metadata check flags it as a ranking, superlative or guarantee; please review it as a proper brand name. We do not make a lowest-price guarantee.
 
 No reviewer credentials, account identifier, authorization code, token, callback URL or webhook signing secret are included in this request. The portal confirms that 1.2.0 is In review; the published 1.0.1 release remains live. The package-declared server still shows Connection unknown after submission.

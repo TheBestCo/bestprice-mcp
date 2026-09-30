@@ -1114,13 +1114,6 @@
     "reviewStatus": "in review",
     "reviewDrawer": "The uploaded draft export contains the current 1.2.0 notes, five positive cases, three negative cases, native demo and Greek translation. Before submission the legacy drawer showed 1.1.0 materials. After submission Review information / Review details is not exposed in the inspected 1.2.0 controls, so the final applied reviewer materials remain unverified.",
     "metadataFinding": "Remove rankings, superlatives, or guarantees from the plugin name. BestPrice is the established brand and verified business identity; brand rationale is in release notes.",
-    "heldToolFinding": {
-      "tool": "get_shopping_decision",
-      "reviewedAt": "2026-09-30T14:05:53Z",
-      "message": "This tool update needs further review before it can go live.",
-      "availability": "Earlier version live",
-      "specificConversationHistoryWarningPresent": false
-    },
     "publicOAuthSetup": {
       "associatedAppAuthentication": "No authentication",
       "connectionSettings": "Connection details for individual MCP servers are unavailable.",
@@ -1132,6 +1125,53 @@
     "supportRequestSent": false,
     "submissionAcceptedVerified": true,
     "policyAttestations": "All six declarations explicitly approved by the owner at action time and accepted in the portal.",
-    "portalEvidence": "Review status In review; Metadata & skills version 1.2.0 · In review; 1.0.1 remains published."
+    "portalEvidence": "Review status In review; Metadata & skills version 1.2.0 · In review; 1.0.1 remains published.",
+    "previousHeldToolFinding": {
+      "tool": "get_shopping_decision",
+      "reviewedAt": "2026-09-30T14:05:53Z",
+      "message": "This tool update needs further review before it can go live.",
+      "availability": "Earlier version live",
+      "specificConversationHistoryWarningPresent": false
+    },
+    "latestMcpScan": {
+      "reviewedAt": "2026-09-30T15:27:32Z",
+      "tool": "get_shopping_decision",
+      "issuesFound": 0,
+      "definitionShown": "Live definition",
+      "availabilityAfterReload": "Live",
+      "allFourShoppingToolsLive": true,
+      "serverInstructionsLive": true,
+      "message": "No issues found in the latest MCP scan."
+    }
+  },
+  "shopping_decision_live_privacy": {
+    "report": "shopping-decision-live-definition-2026-09-30.json",
+    "protocols": ["2024-11-05", "2026-07-28"],
+    "advertisedInputFields": ["message", "postal_code", "evidence_detail"],
+    "advertisesConversationHistory": false,
+    "unknownFieldRejectionVerified": true,
+    "legacyHistoryLimitRejectionVerified": true,
+    "nativeEmptyLaunchVerified": true,
+    "scope": "Legacy cached clients retain bounded recent-turn compatibility; new definitions do not ask for history. No account-history access."
+  },
+  "submitted_shopping_canary": {
+    "report": "submitted-shopping-canary-2026-09-30.json",
+    "checkedAt": "2026-09-30T15:27:39.731Z",
+    "revision": "d4cb1416904e97727d92e561e3e3559ec31f3f3e",
+    "passed": 51,
+    "failed": 0,
+    "stableResponses": 43,
+    "requestsSent": 60,
+    "requestBudget": 90,
+    "rateLimitRetries": 0
+  },
+  "submitted_phone_case": {
+    "report": "submitted-phone-case-2026-09-30.json",
+    "checkedAt": "2026-09-30T15:28:58.988Z",
+    "outcome": "recommendation",
+    "productCount": 3,
+    "allProductsWithin500": true,
+    "allProductsHaveNfcAnd5gEvidence": true,
+    "predictsFuturePrice": false
   }
 }
