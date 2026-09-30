@@ -2,7 +2,7 @@
   "author": {
     "name": "BestPrice"
   },
-  "description": "Find physical products and compare prices from shops in Greece with BestPrice. Ask what to buy for your needs and budget, search for a specific model, compare current non-sponsored offers with shipping and availability, or check up to 180 days of price history. Shipping that cannot be verified is shown as unknown, not free. BestPrice links take you to product pages where you can review shops before choosing whether to buy. The plugin is read-only: it cannot place orders, add items to a cart, or complete checkout. No BestPrice account is required.",
+  "description": "Find physical products and compare prices from shops in Greece with BestPrice. Ask what to buy for your needs and budget, search for a specific model, compare current non-sponsored offers with shipping and availability, or check up to 180 days of price history. Shipping that cannot be verified is shown as unknown, not free. BestPrice links take you to product pages where you can review shops before choosing whether to buy. Shopping tools are read-only: they cannot place orders, add items to a cart, or complete checkout. No BestPrice account is required for shopping.",
   "interface": {
     "capabilities": [],
     "category": "Other",
@@ -13,7 +13,7 @@
     ],
     "developerName": "BestPrice",
     "displayName": "BestPrice",
-    "longDescription": "Find physical products and compare prices from shops in Greece with BestPrice. Ask what to buy for your needs and budget, search for a specific model, compare current non-sponsored offers with shipping and availability, or check up to 180 days of price history. Shipping that cannot be verified is shown as unknown, not free. BestPrice links take you to product pages where you can review shops before choosing whether to buy. The plugin is read-only: it cannot place orders, add items to a cart, or complete checkout. No BestPrice account is required. Open the native shopping workspace to search products, compare offers and view price history. Optional account linking is reserved for price-drop event subscriptions; it does not grant access to your account history or orders.",
+    "longDescription": "Find physical products and compare prices from shops in Greece with BestPrice. Ask what to buy for your needs and budget, search for a specific model, compare current non-sponsored offers with shipping and availability, or check up to 180 days of price history. Shipping that cannot be verified is shown as unknown, not free. BestPrice links take you to product pages where you can review shops before choosing whether to buy. Shopping tools are read-only: they cannot place orders, add items to a cart, or complete checkout. No BestPrice account is required for shopping. Open the native shopping workspace to search products, compare offers and view price history. Optional account linking is reserved for price-drop event subscriptions; it does not grant access to your account history or orders.",
     "privacyPolicyURL": "https://www.bestprice.gr/policies/privacy",
     "shortDescription": "Compare prices in Greece",
     "supportURL": "https://www.bestprice.gr/contact",
@@ -65,6 +65,12 @@
           "prompt": "Open the BestPrice workspace.",
           "tools_triggered": "get_shopping_decision",
           "expected_behavior": "The global/thread entrypoint supplies exactly {} and displays the anonymous search home. Search, offers and history remain usable above the host composer."
+        },
+        {
+          "description": "Explicit price-drop subscription and cancellation",
+          "prompt": "Ειδοποίησέ με αν το Sony WH-1000XM5 μαύρο πέσει στα 170€ ή χαμηλότερα, χωρίς μεταφορικά. Μετά ακύρωσε την ειδοποίηση όταν το ζητήσω.",
+          "tools_triggered": "search_products (only if the canonical product is not already known)",
+          "expected_behavior": "After explicit BestPrice account linking, use advertised MCP Events price.dropped with the exact returned product_id, threshold 17000 integer cents and currency EUR. Never invent a target price or use a shopping tool to create alerts. Report success only after events/subscribe succeeds, and use events/unsubscribe on an explicit cancellation request. If Events is unavailable or authorization fails, clearly report that no alert was created."
         }
       ],
       "negative": [

@@ -2,7 +2,7 @@
 
 `openai/` is the replacement ZIP source for the existing BestPrice plugin. It preserves the assigned package identity and public MCP URL. Its version is independent of the distribution/WebMCP package version.
 
-The draft uses **BestPrice** branding, native-workspace screenshots, the existing brand asset, current-task-only shopping instructions, and six positive/four negative review cases. Ordinary shopping remains anonymous and read-only. Optional OAuth is limited to `events:subscribe`.
+The draft uses **BestPrice** branding, native-workspace screenshots, the existing brand asset, current-task-only shopping instructions, and seven positive/four negative review cases. Ordinary shopping remains anonymous and read-only. Optional OAuth is limited to `events:subscribe`.
 
 ## Verified in production
 
@@ -12,6 +12,7 @@ The draft uses **BestPrice** branding, native-workspace screenshots, the existin
 - The new optional-OAuth connection successfully connects with **Use without an account**. Its production native workspace completes live product search, offer comparison, expansion of other stores, and observed price history.
 - The [reviewer demo](https://github.com/TheBestCo/bestprice-mcp/blob/main/submission/evidence/native-workspace-demo-2026-09-30.mp4) records these interactions in the actual ChatGPT host. It contains public catalog data, excludes the account avatar, and does not claim OAuth or Events delivery.
 - The real OAuth flow exposed ChatGPT's `ui_locales` display hint. Website fix `44c6b439f2` removes this bounded hint before strict grant validation. Seven HTTP regression checks passed, including malformed input, foreign callbacks, consent and CSRF binding. Jenkins 18162 and production promotion 24451 passed. Public authorization controls with and without the locale hint now both reach sign-in. The real ChatGPT flow reaches the BestPrice consent page; approval is pending.
+- The browser then displayed `access_denied` on the first-party consent endpoint. A real Chrome form control reproduces `Origin: null` under `no-referrer`, which the exact-origin check correctly rejects. Website fix `9900764b4e` uses `strict-origin` for the consent HTML only, preserving query privacy and keeping `no-referrer` on callback/token responses. Four regression tests pass, including rejection of missing/null/foreign origins. Build 18164 and production promotion are pending; account linking is not yet verified.
 
 [Qualification evidence](evidence/live-qualification-2026-09-30.json) records the current results and preserves the earlier canary. Anonymous shopping checks do not prove OAuth grants or Events delivery.
 
@@ -20,7 +21,7 @@ The draft uses **BestPrice** branding, native-workspace screenshots, the existin
 - Complete real ChatGPT account linking after approval at the first-party consent page.
 - Qualify Events subscription and signed callback delivery before activation.
 - Supply dedicated OAuth reviewer access. Credentials and gateway secrets must stay outside the ZIP.
-- Update Events guidance and review cases, freeze the ZIP from `openai/` only, cancel the superseded review, upload the replacement, check the MCP scan, and complete the final submission.
+- The draft Events guidance requires an explicit user-selected product and item-price threshold, advertised Events support and account linking. Qualify this review case, freeze the ZIP from `openai/` only, cancel the superseded review, upload the replacement, check the MCP scan, and complete the final submission.
 - Verify the released host after publication. The published 1.0.1 connection remains cached until the replacement is released.
 
 The downloaded 1.1.0 package and portal review supplied the existing listing identity. The earlier review has not been cancelled. Events remains disabled and 1.2.0 remains unsubmitted until the integration gates pass.
