@@ -14,7 +14,7 @@
       "public_client": true,
       "no_store": true
     },
-    "account_linking_verified": false,
+    "account_linking_verified": true,
     "events_activated": false
   },
   "authorization_entry": {
@@ -99,10 +99,10 @@
     "backend_build_28275": "SUCCESS",
     "website_build_18155": "SUCCESS; promotion verified through live cross-host parity",
     "website_discovery_name": "BestPrice; live AI Catalog and ARD parity passed",
-    "real_chatgpt_account_linking": "not verified; callback policy fixed and promoted; real cancellation return to ChatGPT passed; fresh consent awaits user approval",
+    "real_chatgpt_account_linking": "VERIFIED: approved consent returned to ChatGPT; connected account displayed; one authorization code consumed and one access/refresh token pair issued",
     "events_delivery": "not verified; production gate disabled",
     "plugin_1_2_0_submission": "not submitted",
-    "browser_handoff": "Fresh BestPrice consent reached after verified production cancellation return; action-time approval requested before creating a grant.",
+    "browser_handoff": "Real linked qualification account ready for Events host verification; activation commit/hook qualification in progress.",
     "oauth_edge_issue": "https://github.com/TheBestCo/Operations/issues/498; CLOSED after GET/HEAD/OPTIONS qualification of both metadata paths",
     "website_oauth_locale_fix": "44c6b439f2; seven HTTP regression checks pass; Jenkins 18162 SUCCESS; Deploy_BP 24451 SUCCESS; public locale/no-locale authorization controls both reach first-party sign-in",
     "events_activation_preparation": "Three Nomad defaults prepared locally; 71 focused checks pass; local HCL validation passes (driver validation unavailable); not committed or deployed",
@@ -966,5 +966,16 @@
     ],
     "grantCreated": false,
     "accountLinkingVerified": false
+  },
+  "oauth_account_linking": {
+    "checkedAt": "2026-09-30T12:27:43.410140+00:00",
+    "appId": "asdk_app_6abceaba5d2881919a388c0950e5dc07",
+    "browserLinkedAccountDisplayed": true,
+    "authorizationCodesConsumed": 1,
+    "accessTokensIssued": 1,
+    "refreshTokensIssued": 1,
+    "scope": "events:subscribe",
+    "accountLinkingVerified": true,
+    "privacy": "Only aggregate credential counts are recorded; no account identity, authorization code, token or session value is included."
   }
 }
