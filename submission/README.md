@@ -13,7 +13,11 @@ anonymous and read-only. OAuth is limited to `events:subscribe`.
 ## Finish before submission
 
 - Verify the deployed native workspace with the production canary.
-- Promote BestPrice.gr OAuth build 18151 (body fix) to production and verify discovery.
+- Deploy the CIMD transport correction `8ef33b78bdd` and verify that a valid
+  authorization request reaches sign-in or consent. Production issuer and
+  protected-resource discovery now return HTTP 200 with the expected metadata.
+- Promote website `9ec574b5d0` (Jenkins 18155 passed) to align the AI Catalog
+  and ARD display names, then rerun the strict cross-host canary.
 - Qualify real ChatGPT account linking, Events subscription and callback.
 - Final v5 screenshots now come from the development connection to the same
   native UI using live production catalog data. The released 1.0.1 host remains
@@ -33,9 +37,12 @@ returned HTTP 200 under browser-UA HEAD checks; full crawler qualification is
 not claimed. A local export bundle is saved as
 `/Users/gp/Downloads/bestprice-acp-css-2026-09-30.zip`. It is outside the plugin ZIP.
 
-Backend `3199380c5b2` passed Jenkins 28260 and is live with BestPrice/v5
-metadata. Website `8e21467bb8` syncs this card and the styled/body-correct consent
-page; staging-to-production promotion is still required. The strict canary
-currently refuses cross-host AI Catalog parity. OAuth ingress follow-up
-`08956f457cc` supplies protected-resource metadata under the proven `/mcp/*`
-proxy path; its first build was superseded while waiting, not test-failed.
+Production now serves BestPrice/v5 metadata and the OAuth ingress correction
+through `/mcp/oauth-protected-resource`. Website `8e21467bb8` is serving the
+styled, body-correct OAuth responses; the isolated discovery checks passed on
+2026-09-30. The strict canary found one remaining AI Catalog/ARD display-name
+mismatch, corrected by `9ec574b5d0`. A valid live authorization request also
+exposed compressed CIMD metadata decoding failure; `8ef33b78bdd` pairs fetch
+with its installed Undici Agent. Its ten OAuth tests and the normal pre-push
+closure of 227 files passed. Deployment and real account linking remain gates;
+Events is still disabled and the replacement ZIP has not been submitted.
