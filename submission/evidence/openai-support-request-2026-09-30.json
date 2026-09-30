@@ -8,8 +8,8 @@
   "requestVisibleAsSentMessage": true,
   "existingOpenAiAccountLoginCompleted": true,
   "supportLoginAcknowledged": true,
-  "verifiedAt": "2026-09-30T16:20:43Z",
-  "humanEscalationConfirmed": false,
+  "verifiedAt": "2026-09-30T16:29:45Z",
+  "humanEscalationConfirmed": true,
   "ticketId": null,
   "resolutionConfirmed": false,
   "topics": [
@@ -31,5 +31,7 @@
     "https://developers.openai.com/plugins/build/mcp-events",
     "https://developers.openai.com/plugins/build/auth"
   ],
-  "latestConfirmedStatus": "Request received in authenticated Support chat; AI-assisted reply received; human specialist requested; ticket and human handoff not yet confirmed."
+  "latestConfirmedStatus": "Official Support confirmed escalation to a support specialist. Replies will appear in the conversation and via email; a response may take several days.",
+  "humanEscalationConfirmedAt": "2026-09-30T16:29:45Z",
+  "ticketReferenceVisible": false
 }
