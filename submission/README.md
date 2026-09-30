@@ -1,10 +1,14 @@
 # OpenAI plugin release 1.2.0
 
+Use the [current release matrix](current-release-matrix.md) for deployed revisions,
+live gates and host qualification. The sections below retain the timestamped
+implementation and submission history.
+
 `openai/` is the replacement ZIP source for the existing BestPrice plugin. It preserves the assigned package identity and public MCP URL. Its version is independent of the distribution/WebMCP package version.
 
 The package uses **BestPrice** throughout, the official square BestPrice logo for light and dark themes, Greek listing text, and three genuine native-workspace screenshots matched to the three starter prompts. Screenshots are JPEG/PNG files, each 706 pixels wide and 400–860 pixels high. The review contains five positive and three negative cases. Additional cases are retained in the evidence directory outside the ZIP.
 
-Shopping remains anonymous and read-only. Optional account linking is limited to `events:subscribe`; it does not grant account-history, order, checkout or payment access. Shopping requests contain only the current task and relevant preferences, never conversation transcripts.
+Shopping remains anonymous and read-only. Optional account linking is limited to `events:subscribe`; it does not grant account-history, order, checkout or payment access. The advertised decision inputs contain the current task and relevant preferences. Cached clients retain a bounded legacy input adapter; no full conversation history is requested or required.
 
 ## Verified in production
 

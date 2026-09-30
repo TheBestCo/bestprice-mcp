@@ -11,7 +11,7 @@ describe('external catalog contribution payloads', () => {
   it('pins a valid GitHub Agent Finder Skill entry to the canonical Skill', () => {
     const entry = JSON.parse(read('distribution/agentfinder/bestprice-shopping.json'));
     assert.equal(entry.identifier, 'urn:ai:github.com:TheBestCo:bestprice-mcp:bestprice-shopping');
-    assert.equal(entry.displayName, 'BestPrice Shopping');
+    assert.equal(entry.displayName, 'BestPrice');
     assert.equal(entry.mediaType, 'application/ai-skill');
     assert.equal(entry.url, SKILL_URL);
     assert.equal(entry.metadata.sourceSet, 'TheBestCo/bestprice-mcp');
@@ -34,7 +34,7 @@ describe('external catalog contribution payloads', () => {
     assert.equal(entry.$schema, '../../../schemas/mcp.schema.json');
     assert.equal(entry.id, 'bestprice-shopping');
     assert.equal(entry.type, 'mcp');
-    assert.equal(entry.name, 'BestPrice Shopping');
+    assert.equal(entry.name, 'BestPrice');
     assert.deepEqual(entry.tags, ['business', 'research']);
     assert.equal(entry.license, 'Apache-2.0');
     assert.equal(entry.verified, false);

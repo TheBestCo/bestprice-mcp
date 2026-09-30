@@ -269,7 +269,7 @@ describe('endpoint manifests', () => {
       'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json',
     );
     assert.equal(registry.name, 'gr.bestprice/mcp');
-    assert.equal(registry.title, 'BestPrice Shopping');
+    assert.equal(registry.title, 'BestPrice');
     assert.match(registry.version, SEMVER);
     assert.deepEqual(registry.repository, { url: REPOSITORY, source: 'github' });
     assert.equal(registry.websiteUrl, HOMEPAGE);
@@ -280,7 +280,7 @@ describe('endpoint manifests', () => {
 
   it('ships a LobeHub manifest for the exact hosted public surface', () => {
     assert.equal(lobeHub.identifier, 'thebestco-bestprice-mcp');
-    assert.equal(lobeHub.name, 'BestPrice Shopping');
+    assert.equal(lobeHub.name, 'BestPrice');
     assert.equal(lobeHub.version, registry.version);
     assert.equal(lobeHub.author, 'BestPrice');
     assert.equal(lobeHub.authorUrl, 'https://www.bestprice.gr/');

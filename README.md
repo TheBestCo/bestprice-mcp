@@ -23,15 +23,18 @@ For developer integrations, the public endpoint is:
 https://mcp.bestprice.gr/mcp
 ```
 
-- Transport: Streamable HTTP over HTTPS, no authentication
+- Transport: Streamable HTTP over HTTPS; anonymous shopping, optional OAuth for Events
 - Official Registry ID: `gr.bestprice/mcp`
-- Server version: `1.8.1`
+- Server version: `1.8.3`
 - Public guide: <https://www.bestprice.gr/mcp>
 - Support: <https://www.bestprice.gr/contact>
 
 This repository holds everything that lives outside the hosted service: the install
 manifests for each AI client, a local stdio bridge for hosts that cannot speak HTTP, and
 the browser-native WebMCP layer. The server itself is not in this repository.
+
+The [current release matrix](submission/current-release-matrix.md) records the
+live gateway, UI, OAuth/Events, plugin review and separate ACP qualification.
 
 ## Tools
 

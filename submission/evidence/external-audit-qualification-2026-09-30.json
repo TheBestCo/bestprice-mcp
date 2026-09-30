@@ -1,0 +1,621 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-30",
+  "scope": "External audit fixes, selected live gateway checks and separate host/release gates",
+  "versions": {
+    "mcp": "1.8.3",
+    "workspace": "v7",
+    "distribution": "2.8.0",
+    "webmcp": "2.8",
+    "submittedPlugin": "1.2.0",
+    "publishedPlugin": "1.0.1"
+  },
+  "gatewayCanary": {
+    "generatedAt": "2026-09-30T18:07:24.748Z",
+    "deployment": {
+      "scope": "mcp_gateway",
+      "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+      "responses": 49,
+      "stable": true
+    },
+    "status": "passed",
+    "summary": {
+      "passed": 55,
+      "failed": 0,
+      "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
+      "checkoutTools": 0,
+      "merchantRedirectsFollowed": 0,
+      "rateLimitRetries": 0,
+      "requestsSent": 66,
+      "requestBudget": 90
+    },
+    "trafficKind": "synthetic",
+    "visibleHostRenderProven": false
+  },
+  "endpointChecks": {
+    "observedAt": "2026-09-30T18:06:32.368Z",
+    "retries": 0,
+    "endpoints": [
+      {
+        "url": "https://mcp.bestprice.gr/healthz",
+        "status": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "version": "1.8.3"
+      },
+      {
+        "url": "https://mcp.bestprice.gr/mcp/server-card",
+        "status": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "version": "1.8.3"
+      },
+      {
+        "url": "https://mcp.bestprice.gr/mcp/oauth-protected-resource",
+        "status": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "version": null
+      },
+      {
+        "url": "https://mcp.bestprice.gr/.well-known/oauth-protected-resource",
+        "status": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "version": null
+      },
+      {
+        "url": "https://www.bestprice.gr/.well-known/oauth-authorization-server",
+        "status": 200,
+        "revision": null,
+        "version": null
+      },
+      {
+        "url": "https://www.bestprice.gr/.well-known/mcp.json",
+        "status": 200,
+        "revision": null,
+        "version": "1.8.3"
+      },
+      {
+        "url": "https://www.bestprice.gr/webmcp.json",
+        "status": 200,
+        "revision": null,
+        "version": "2.8"
+      },
+      {
+        "url": "https://www.bestprice.gr/mcp",
+        "status": 200,
+        "revision": null,
+        "version": null
+      }
+    ]
+  },
+  "initialExactCases": {
+    "observedAt": "2026-09-30T17:47:55.217Z",
+    "expectedRevision": "a473d55d66bd9ff06228ecec8f1647a76cd46a28",
+    "requestsSent": 2,
+    "requestLimit": 8,
+    "retries": 0,
+    "trafficKind": "synthetic",
+    "merchantRedirectsFollowed": 0,
+    "cases": [
+      {
+        "caseName": "collective_monitor_basket",
+        "tool": "get_shopping_decision",
+        "httpStatus": 200,
+        "revision": "a473d55d66bd9ff06228ecec8f1647a76cd46a28",
+        "latencyMs": 4332,
+        "passed": true,
+        "outputKeys": [
+          "schema_version",
+          "as_of",
+          "currency",
+          "locale",
+          "warnings",
+          "brain",
+          "outcome",
+          "status",
+          "answer",
+          "reason",
+          "message",
+          "blocking_constraints",
+          "recommended_product_id",
+          "alternatives",
+          "products",
+          "constraints",
+          "reasons",
+          "tradeoffs",
+          "offer_summary",
+          "comparison",
+          "basket",
+          "basket_request",
+          "clarifications",
+          "price_verdict",
+          "next_action",
+          "ranking_policy",
+          "retrieval",
+          "shopping_context",
+          "evidence",
+          "uncertainty"
+        ],
+        "outcome": "basket",
+        "families": ["laptop", "monitor"],
+        "quantities": [1, 1],
+        "budgetEur": 1000,
+        "plans": 2,
+        "unresolvedEvidence": 0
+      },
+      {
+        "caseName": "unsupported_chair_basket",
+        "tool": "get_shopping_decision",
+        "httpStatus": 200,
+        "revision": "a473d55d66bd9ff06228ecec8f1647a76cd46a28",
+        "latencyMs": 458,
+        "passed": false
+      }
+    ],
+    "status": "failed",
+    "failure": "unsupported_chair_basket: capability error"
+  },
+  "remainingChairFix": {
+    "commit": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+    "normalHooksPassed": true,
+    "affectedTestFilesQualified": 458,
+    "jenkinsBuild": 28372,
+    "jenkinsResult": "SUCCESS",
+    "productionReplay": "passed",
+    "localDefaultProof": {
+      "observedAt": "2026-09-30T17:57:52.136Z",
+      "defaultModel": true,
+      "defaultTools": true,
+      "sharedCacheDisabled": true,
+      "sourceState": "fix applied locally before final commit",
+      "outcome": "clarification",
+      "families": ["laptop", "chair"],
+      "quantities": [1, 1],
+      "totalBudgetEur": 1000,
+      "postalCode": "71305",
+      "unresolvedReasons": ["basket_incomplete", "unsupported_category"],
+      "toolNames": [],
+      "completed": true
+    },
+    "jenkinsEvidence": {
+      "observedAt": "2026-09-30T18:06:33.119Z",
+      "build": {
+        "number": 28372,
+        "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/28372/",
+        "result": "SUCCESS",
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "building": false,
+        "startedAt": "2026-09-30T18:01:35.428Z",
+        "durationSeconds": 251
+      }
+    },
+    "gatewayRevision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39"
+  },
+  "checks": {
+    "secondPassNormalHookClosure": {
+      "files": 577,
+      "failedPhases": 0
+    },
+    "basketReaderClosure": {
+      "tests": 348,
+      "failed": 0,
+      "overlapWithHookClosure": true
+    },
+    "publicDistribution": {
+      "tests": 1089,
+      "failed": 0
+    }
+  },
+  "eventsAggregate": {
+    "observedAt": "2026-09-30T18:08:30.234Z",
+    "subscriptions": [
+      {
+        "status": "stopped",
+        "count": 2
+      }
+    ],
+    "activeGrantHealth": [
+      {
+        "active_unexpired": 0,
+        "missing_grant": null,
+        "revoked_grant": null,
+        "expired_grant": null
+      }
+    ],
+    "deliveries": [],
+    "scheduler": [
+      {
+        "job": "agent_commerce_events",
+        "last_success_at": "2026-09-30T18:08:19.914Z",
+        "updated_at": "2026-09-30T18:08:19.914Z"
+      }
+    ],
+    "fleet": [
+      {
+        "is_cron": 0,
+        "revision": "d3f2124",
+        "instances": 5,
+        "newest_heartbeat": "2026-09-30T18:05:18.000Z"
+      },
+      {
+        "is_cron": 1,
+        "revision": "a473d55",
+        "instances": 1,
+        "newest_heartbeat": "2026-09-30T18:04:02.000Z"
+      },
+      {
+        "is_cron": 1,
+        "revision": "a9e6e31",
+        "instances": 1,
+        "newest_heartbeat": "2026-09-30T18:08:11.000Z"
+      }
+    ],
+    "genuineCrossingObserved": false,
+    "matchingNotificationProcessedByChatGpt": false,
+    "zeroActiveDenominatorImpliesNoGrantFailureRate": true,
+    "mixedCronRevisionsObserved": true,
+    "eventsAndOAuthSourceParity": {
+      "revisions": ["a473d55d66bd9ff06228ecec8f1647a76cd46a28", "d3f2124c2a324690206ca3b0e03b7aefa47a1c39"],
+      "identical": true
+    }
+  },
+  "frozenBundleRecheck": {
+    "checkedAt": "2026-09-30",
+    "archives": [
+      {
+        "name": "bestprice-plugin-1.2.0-review-draft.zip",
+        "bytes": 168561,
+        "sha256": "9da1ede7334aa008489c381802a5dd2f210f34117fc30c8a91aa885058a5a306",
+        "files": 7,
+        "sourceParity": true,
+        "nameInManifest": "app-6a8d8ed6e2bc8191b3caaf7214f3c981",
+        "version": "1.2.0",
+        "manifestKeys": [
+          "author",
+          "description",
+          "interface",
+          "name",
+          "skills",
+          "version",
+          "mcpServers",
+          "extensions"
+        ],
+        "privateAccountEmailPresent": false
+      },
+      {
+        "name": "app-6a8d8ed6e2bc8191b3caaf7214f3c981-1.2.0.zip",
+        "bytes": 168561,
+        "sha256": "ab45d38503c5ff4922aae4b1cdbfea0ab76c87c419faee2dd8df3e5d29d83e22",
+        "files": 7,
+        "sourceParity": true,
+        "nameInManifest": "app-6a8d8ed6e2bc8191b3caaf7214f3c981",
+        "version": "1.2.0",
+        "manifestKeys": [
+          "author",
+          "description",
+          "interface",
+          "name",
+          "skills",
+          "version",
+          "mcpServers",
+          "extensions"
+        ],
+        "privateAccountEmailPresent": false
+      }
+    ]
+  },
+  "hostGates": {
+    "freshV7VisibleFollowups": "pending browser unlock",
+    "freshFinalMcpRescan": "pending browser unlock",
+    "publicPluginOAuthMigration": "unverified",
+    "appliedReviewerMaterials": "unverified",
+    "plugin12ApprovalPublication": "In review",
+    "cleanAccountDiscovery": "unverified",
+    "registry183ReceivingConfirmation": "pending",
+    "acpPartnerIngestion": "unqualified"
+  },
+  "privacy": {
+    "accountIdentifiersIncluded": false,
+    "credentialsIncluded": false,
+    "callbackUrlsIncluded": false,
+    "webhookSecretsIncluded": false,
+    "privateConversationUrlsIncluded": false,
+    "signedMerchantDestinationsIncluded": false
+  },
+  "priorGatewayCanary": {
+    "generatedAt": "2026-09-30T17:47:06.350Z",
+    "deployment": {
+      "scope": "mcp_gateway",
+      "revision": "a473d55d66bd9ff06228ecec8f1647a76cd46a28",
+      "responses": 49,
+      "stable": true
+    },
+    "status": "passed",
+    "summary": {
+      "passed": 55,
+      "failed": 0,
+      "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
+      "checkoutTools": 0,
+      "merchantRedirectsFollowed": 0,
+      "rateLimitRetries": 0,
+      "requestsSent": 66,
+      "requestBudget": 90
+    },
+    "trafficKind": "synthetic",
+    "visibleHostRenderProven": false
+  },
+  "finalExactCases": {
+    "observedAt": "2026-09-30T18:06:32.369Z",
+    "expectedRevision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+    "requestsSent": 7,
+    "requestLimit": 8,
+    "retries": 0,
+    "trafficKind": "synthetic",
+    "merchantRedirectsFollowed": 0,
+    "cases": [
+      {
+        "caseName": "collective_monitor_basket",
+        "tool": "get_shopping_decision",
+        "httpStatus": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "latencyMs": 3760,
+        "passed": true,
+        "outputKeys": [
+          "schema_version",
+          "as_of",
+          "currency",
+          "locale",
+          "warnings",
+          "brain",
+          "outcome",
+          "status",
+          "answer",
+          "reason",
+          "message",
+          "blocking_constraints",
+          "recommended_product_id",
+          "alternatives",
+          "products",
+          "constraints",
+          "reasons",
+          "tradeoffs",
+          "offer_summary",
+          "comparison",
+          "basket",
+          "basket_request",
+          "clarifications",
+          "price_verdict",
+          "next_action",
+          "ranking_policy",
+          "retrieval",
+          "shopping_context",
+          "evidence",
+          "uncertainty"
+        ],
+        "outcome": "basket",
+        "families": ["laptop", "monitor"],
+        "quantities": [1, 1],
+        "budgetEur": 1000,
+        "plans": 2,
+        "unresolvedEvidence": 0
+      },
+      {
+        "caseName": "unsupported_chair_basket",
+        "tool": "get_shopping_decision",
+        "httpStatus": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "latencyMs": 365,
+        "passed": true,
+        "outputKeys": [
+          "schema_version",
+          "as_of",
+          "currency",
+          "locale",
+          "warnings",
+          "brain",
+          "outcome",
+          "status",
+          "answer",
+          "reason",
+          "message",
+          "blocking_constraints",
+          "recommended_product_id",
+          "alternatives",
+          "products",
+          "constraints",
+          "reasons",
+          "tradeoffs",
+          "offer_summary",
+          "comparison",
+          "basket",
+          "basket_request",
+          "clarifications",
+          "price_verdict",
+          "next_action",
+          "ranking_policy",
+          "retrieval",
+          "shopping_context",
+          "evidence",
+          "uncertainty"
+        ],
+        "outcome": "clarification",
+        "families": ["laptop", "chair"],
+        "destinationPreserved": true,
+        "budgetPreserved": true
+      },
+      {
+        "caseName": "exact_model_unverified_runtime_recovery",
+        "tool": "get_shopping_decision",
+        "httpStatus": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "latencyMs": 4747,
+        "passed": true,
+        "outputKeys": [
+          "schema_version",
+          "as_of",
+          "currency",
+          "locale",
+          "warnings",
+          "brain",
+          "outcome",
+          "status",
+          "answer",
+          "reason",
+          "message",
+          "blocking_constraints",
+          "recommended_product_id",
+          "alternatives",
+          "products",
+          "constraints",
+          "reasons",
+          "tradeoffs",
+          "offer_summary",
+          "comparison",
+          "basket",
+          "basket_request",
+          "clarifications",
+          "price_verdict",
+          "next_action",
+          "ranking_policy",
+          "retrieval",
+          "shopping_context",
+          "search_handoff",
+          "evidence",
+          "uncertainty"
+        ],
+        "outcome": "no_match",
+        "unresolvedEvidence": 0,
+        "falseBudgetPromise": false
+      },
+      {
+        "caseName": "exact_search_limit_1",
+        "tool": "search_products",
+        "httpStatus": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "latencyMs": 355,
+        "passed": true,
+        "outputKeys": [
+          "schema_version",
+          "as_of",
+          "currency",
+          "locale",
+          "warnings",
+          "requested_query",
+          "interpreted_query",
+          "search_mode",
+          "applied_filters",
+          "suggested_queries",
+          "total_matches",
+          "products"
+        ],
+        "products": 1,
+        "relationships": ["variant"],
+        "offerCountsPreserved": true
+      },
+      {
+        "caseName": "exact_search_limit_2",
+        "tool": "search_products",
+        "httpStatus": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "latencyMs": 284,
+        "passed": true,
+        "outputKeys": [
+          "schema_version",
+          "as_of",
+          "currency",
+          "locale",
+          "warnings",
+          "requested_query",
+          "interpreted_query",
+          "search_mode",
+          "applied_filters",
+          "suggested_queries",
+          "total_matches",
+          "products"
+        ],
+        "products": 2,
+        "relationships": ["variant", "accessory"],
+        "offerCountsPreserved": true
+      },
+      {
+        "caseName": "offer_facts_and_delivery_scope",
+        "tool": "compare_offers",
+        "httpStatus": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "latencyMs": 157,
+        "passed": true,
+        "outputKeys": [
+          "schema_version",
+          "as_of",
+          "currency",
+          "locale",
+          "warnings",
+          "product",
+          "postal_code",
+          "objective",
+          "catalog_price_from",
+          "quoted_lowest_item_price",
+          "quoted_lowest_total_price",
+          "catalog_min_unquoted_reason",
+          "offers"
+        ],
+        "offers": 5,
+        "itemMinimumPreserved": true,
+        "unknownShippingNotZero": true,
+        "serviceScopeExplicit": true
+      },
+      {
+        "caseName": "history_facts",
+        "tool": "get_price_history",
+        "httpStatus": 200,
+        "revision": "d3f2124c2a324690206ca3b0e03b7aefa47a1c39",
+        "latencyMs": 163,
+        "passed": true,
+        "outputKeys": [
+          "schema_version",
+          "as_of",
+          "currency",
+          "locale",
+          "warnings",
+          "product_id",
+          "product_title",
+          "decision_id",
+          "bestprice_url",
+          "period_days",
+          "current_price",
+          "current_price_source",
+          "source_last_observed_at",
+          "window_stats",
+          "price_delta_vs_180d_median_pct",
+          "deal_classification",
+          "methodology_id",
+          "quality",
+          "data_gaps",
+          "series"
+        ],
+        "windows": [30, 90, 180],
+        "seriesPoints": 64,
+        "classification": "typical_price"
+      }
+    ],
+    "status": "passed"
+  },
+  "brainTelemetry": {
+    "scope": "ShoppingBrainExecution; channel=mcp; commitHash=d3f2124; preceding 10 minutes",
+    "executions": 5,
+    "errors": 0,
+    "selectedQaEvidenceOnly": true,
+    "productionFailureRateEstimate": false,
+    "observedDate": "2026-09-30"
+  },
+  "registryCheck": {
+    "date": "2026-09-30",
+    "currentReceivingVersion": "unverified",
+    "attempts": 3,
+    "outcomes": [
+      "Node request timed out after 15 seconds",
+      "Web reader could not access endpoint",
+      "IPv4 curl request timed out after 15 seconds"
+    ],
+    "earlierConfirmedVersion": "1.8.1",
+    "earlierConfirmedAt": "2026-09-25"
+  }
+}

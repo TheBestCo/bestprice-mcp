@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "asOf": "2026-09-29",
+  "asOf": "2026-09-30",
   "canonical": {
     "registryId": "gr.bestprice/mcp",
-    "serverVersion": "1.8.1",
+    "serverVersion": "1.8.3",
     "packageVersion": "2.8.0",
     "endpoint": "https://mcp.bestprice.gr/mcp",
     "tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
@@ -15,24 +15,24 @@
       "id": "official-mcp-registry",
       "name": "Official MCP Registry",
       "state": "published",
-      "freshness": "current",
+      "freshness": "host-version-refresh-pending",
       "url": "https://registry.modelcontextprotocol.io/v0/servers?search=gr.bestprice&version=latest",
       "verifiedAt": "2026-09-25",
-      "evidence": "Registry API returns gr.bestprice/mcp 1.8.1 (isLatest, publishedAt 2026-09-24T12:46:42Z) with remote https://mcp.bestprice.gr/mcp; matches server.json, /.well-known/mcp.json and the live initialize serverInfo.version 1.8.1.",
-      "note": "Canonical record is current.",
-      "nextAction": "None now; republish with mcp-publisher when the hosted server version changes.",
-      "nextActionBy": "none"
+      "evidence": "The September 25 check confirmed registry 1.8.1. The current hosted-version refresh is 1.8.3; its publication is verified separately in submission/current-release-matrix.md.",
+      "note": "An older published registry entry does not establish publication of the newer hosted version.",
+      "nextAction": "Publish the prepared 1.8.3 record through the existing registry workflow and verify the receiving registry.",
+      "nextActionBy": "us-here"
     },
     {
       "id": "openai",
       "name": "OpenAI Plugins Directory",
       "state": "published",
-      "freshness": "current-v1.0.1-v1.1-review",
+      "freshness": "published-v1.0.1-v1.2-review",
       "url": "https://developers.openai.com/plugins/deploy/submission",
-      "verifiedAt": "2026-09-29",
-      "evidence": "BestPrice Shopping v1.0.1 is live in the ChatGPT Plugins Directory as of 2026-09-29; BestPrice v1.1.0 is a separate submission still under review.",
-      "note": "Keep the live v1.0.1 listing distinct from the pending v1.1.0 revision.",
-      "nextAction": "Monitor the v1.1.0 review and verify that revision after it is approved and published.",
+      "verifiedAt": "2026-09-30",
+      "evidence": "The portal shows published 1.0.1 and BestPrice 1.2.0 In review. The superseded 1.1.0 review was canceled. The uploaded draft's seven files match the source.",
+      "note": "Current-account directory search returned no matches while the installed connector stayed callable. Public OAuth migration and applied reviewer details remain unverified; OpenAI support has escalated the request.",
+      "nextAction": "Resolve the associated-app OAuth migration, verify applied reviewer materials, and qualify clean-account discovery and the released BestPrice listing after approval/publication.",
       "nextActionBy": "upstream"
     },
     {
