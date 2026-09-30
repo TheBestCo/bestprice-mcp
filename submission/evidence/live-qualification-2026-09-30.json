@@ -99,13 +99,14 @@
     "backend_build_28275": "SUCCESS",
     "website_build_18155": "SUCCESS; promotion verified through live cross-host parity",
     "website_discovery_name": "BestPrice; live AI Catalog and ARD parity passed",
-    "real_chatgpt_account_linking": "not verified; first-party consent POST failed; browser-origin fix awaiting build and production promotion",
+    "real_chatgpt_account_linking": "not verified; deployed browser-origin fix and fresh consent ready; user grant approval pending",
     "events_delivery": "not verified; production gate disabled",
     "plugin_1_2_0_submission": "not submitted",
-    "browser_handoff": "Real consent page reached, then access_denied observed on the first-party endpoint. Browser form Origin:null regression reproduced and fixed; website build 18164 on exact fix is running. No verified OAuth grant.",
+    "browser_handoff": "Fresh real ChatGPT consent page reached after successful origin fix promotion. Existing qualification app still shows no account linked. User approval pending.",
     "oauth_edge_issue": "https://github.com/TheBestCo/Operations/issues/498; CLOSED after GET/HEAD/OPTIONS qualification of both metadata paths",
     "website_oauth_locale_fix": "44c6b439f2; seven HTTP regression checks pass; Jenkins 18162 SUCCESS; Deploy_BP 24451 SUCCESS; public locale/no-locale authorization controls both reach first-party sign-in",
-    "events_activation_preparation": "Three Nomad defaults prepared locally; 71 focused checks pass; local HCL validation passes (driver validation unavailable); not committed or deployed"
+    "events_activation_preparation": "Three Nomad defaults prepared locally; 71 focused checks pass; local HCL validation passes (driver validation unavailable); not committed or deployed",
+    "website_oauth_origin_fix": "9900764b4e; four HTTP/secret tests and actual consent HTML/header browser controls pass; master18164 SUCCESS; Deploy_BP24452 SUCCESS; anonymous sign-in and rejected token privacy controls pass"
   },
   "public_shopping_release_canary": {
     "schemaVersion": "1.1",
@@ -851,7 +852,48 @@
     "untrustedOriginsStillRejected": true,
     "callbackAndTokenPolicy": "no-referrer",
     "consentHtmlPolicy": "strict-origin",
-    "productionPromotion": "pending",
+    "productionPromotion": "Deploy_BP24452 SUCCESS after master18164 SUCCESS on exact commit",
+    "accountLinkingVerified": false,
+    "realPageBrowserControl": [
+      {
+        "policy": "no-referrer",
+        "origin": "null",
+        "referer": null,
+        "grantIssued": false
+      },
+      {
+        "policy": "strict-origin",
+        "origin": "http://127.0.0.1:8880",
+        "referer": "http://127.0.0.1:8880/",
+        "grantIssued": false
+      }
+    ]
+  },
+  "oauth_origin_production_controls": {
+    "checkedAt": "2026-09-30T11:49:09.008551+00:00",
+    "websiteCommit": "9900764b4ecafce8e64da805fc4be31cfdf99fd1",
+    "build": {
+      "master18164": "SUCCESS",
+      "Deploy_BP24452": "SUCCESS"
+    },
+    "checks": [
+      {
+        "name": "anonymous_authorization",
+        "status": 303,
+        "noStore": true,
+        "referrerPolicy": "no-referrer",
+        "bodyBytes": 0,
+        "locationPath": "/login"
+      },
+      {
+        "name": "invalid_token_request",
+        "status": 400,
+        "noStore": true,
+        "referrerPolicy": "no-referrer",
+        "bodyBytes": 27
+      }
+    ],
+    "grantCreated": false,
     "accountLinkingVerified": false
   }
 }
