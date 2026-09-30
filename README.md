@@ -83,8 +83,10 @@ Measured against the live endpoint on 24 September 2026.
   affected. A browser page may call the endpoint from an allowlisted AI-host origin, from
   bestprice.gr, or from `localhost` (so MCP Inspector works in direct mode); any other origin
   gets `403`.
-- **Authentication.** None. There is deliberately no `/.well-known/oauth-protected-resource`
-  document: clients that probe for one get `404` and connect without OAuth.
+- **Authentication.** The four shopping tools work without an account. Optional account
+  linking is scoped to `events:subscribe`; protected-resource metadata is available at
+  `/.well-known/oauth-protected-resource` and `/mcp/oauth-protected-resource`.
+  Events remains disabled during end-to-end qualification.
 
 ## Developer quick start
 

@@ -99,14 +99,15 @@
     "backend_build_28275": "SUCCESS",
     "website_build_18155": "SUCCESS; promotion verified through live cross-host parity",
     "website_discovery_name": "BestPrice; live AI Catalog and ARD parity passed",
-    "real_chatgpt_account_linking": "not verified; deployed browser-origin fix and fresh consent ready; user grant approval pending",
+    "real_chatgpt_account_linking": "not verified; user reported access_denied again; production cancellation validation returned 303, but Chrome blocked the callback under form-action self; callback-policy fix 5abf4d6335 pushed, build/promotion pending",
     "events_delivery": "not verified; production gate disabled",
     "plugin_1_2_0_submission": "not submitted",
-    "browser_handoff": "Fresh real ChatGPT consent page reached after successful origin fix promotion. Existing qualification app still shows no account linked. User approval pending.",
+    "browser_handoff": "Real account linking remains incomplete. Do not retry the expired consent page; restart only after callback-policy promotion.",
     "oauth_edge_issue": "https://github.com/TheBestCo/Operations/issues/498; CLOSED after GET/HEAD/OPTIONS qualification of both metadata paths",
     "website_oauth_locale_fix": "44c6b439f2; seven HTTP regression checks pass; Jenkins 18162 SUCCESS; Deploy_BP 24451 SUCCESS; public locale/no-locale authorization controls both reach first-party sign-in",
     "events_activation_preparation": "Three Nomad defaults prepared locally; 71 focused checks pass; local HCL validation passes (driver validation unavailable); not committed or deployed",
-    "website_oauth_origin_fix": "9900764b4e; four HTTP/secret tests and actual consent HTML/header browser controls pass; master18164 SUCCESS; Deploy_BP24452 SUCCESS; anonymous sign-in and rejected token privacy controls pass"
+    "website_oauth_origin_fix": "9900764b4e; four HTTP/secret tests and actual consent HTML/header browser controls pass; master18164 SUCCESS; Deploy_BP24452 SUCCESS; anonymous sign-in and rejected token privacy controls pass",
+    "website_oauth_callback_policy_fix": "5abf4d6335; three Node/PHP suites pass after rebase; normal commit/push hooks passed; Jenkins master18166 queued"
   },
   "public_shopping_release_canary": {
     "schemaVersion": "1.1",
@@ -895,5 +896,34 @@
     ],
     "grantCreated": false,
     "accountLinkingVerified": false
+  },
+  "oauth_callback_browser_regression": {
+    "checkedAt": "2026-09-30T12:10:00Z",
+    "websiteCommit": "5abf4d6335d549b46e022f2a9b6888d6599897e2",
+    "productionDenialControl": {
+      "status": 303,
+      "grantIssued": false,
+      "callbackBlockedByCsp": true
+    },
+    "localRealSourceControl": {
+      "serviceWorkerControlled": true,
+      "originPreserved": true,
+      "consentCookiePresent": true,
+      "guardStatus": 303,
+      "callbackReachedWithExactAllowance": true,
+      "serviceWorkerChangeRequired": false,
+      "grantIssued": false
+    },
+    "scope": "Controlled cancellation, with a local callback standing in for the official ChatGPT callback. No real account linking or Events delivery is claimed.",
+    "productionPromotion": "pending",
+    "accountLinkingVerified": false,
+    "liveGrantAggregate": {
+      "windowStart": "2026-09-30T11:49:00Z",
+      "grantsCreated": 1,
+      "codesConsumed": 0,
+      "codesUnconsumed": 1,
+      "note": "A real consent was accepted; the authorization code was not exchanged. No account identity, credential, code or token is included.",
+      "tokensIssued": 0
+    }
   }
 }
