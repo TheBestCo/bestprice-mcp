@@ -2,31 +2,27 @@
 
 `openai/` is the replacement ZIP source for the existing BestPrice plugin. It preserves the assigned package identity and public MCP URL. Its version is independent of the distribution/WebMCP package version.
 
-The draft uses **BestPrice** branding, native-workspace screenshots, the existing brand asset, current-task-only shopping instructions, and seven positive/four negative review cases. Ordinary shopping remains anonymous and read-only. Optional OAuth is limited to `events:subscribe`.
+The package uses **BestPrice** throughout, the official square BestPrice logo for light and dark themes, Greek listing text, and three genuine native-workspace screenshots matched to the three starter prompts. Screenshots are JPEG files, each 706 pixels wide and 400–860 pixels high. The review contains five positive and three negative cases. Additional cases are retained in the evidence directory outside the ZIP.
+
+Shopping remains anonymous and read-only. Optional account linking is limited to `events:subscribe`; it does not grant account-history, order, checkout or payment access. Shopping requests contain only the current task and relevant preferences, never conversation transcripts.
 
 ## Verified in production
 
-- The public shopping/native canary passed all 51 checks on revision `6e5a2865de8`, including modern and legacy transport, the four public tools, native launch, compatibility resources, and cross-host AI Catalog/ARD parity.
-- Both `/.well-known/oauth-protected-resource` and `/mcp/oauth-protected-resource` return the canonical metadata. GET/HEAD return 200 and OPTIONS returns 204. [Operations #498](https://github.com/TheBestCo/Operations/issues/498) is closed after these acceptance checks passed.
-- ChatGPT automatically discovers the official CIMD client, exact callback, PKCE S256, issuer, resource, and single Events scope. No manual callback exception is needed.
-- The new optional-OAuth connection successfully connects with **Use without an account**. Its production native workspace completes live product search, offer comparison, expansion of other stores, and observed price history.
-- The [reviewer demo](https://github.com/TheBestCo/bestprice-mcp/blob/main/submission/evidence/native-workspace-demo-2026-09-30.mp4) records these interactions in the actual ChatGPT host. It contains public catalog data, excludes the account avatar, and does not claim OAuth or Events delivery.
-- The real OAuth flow exposed ChatGPT's `ui_locales` display hint. Website fix `44c6b439f2` removes this bounded hint before strict grant validation. Seven HTTP regression checks passed, including malformed input, foreign callbacks, consent and CSRF binding. Jenkins 18162 and production promotion 24451 passed. Public authorization controls with and without the locale hint now both reach sign-in. The real ChatGPT flow reaches the BestPrice consent page; approval is pending.
-- The browser then displayed `access_denied` on the first-party consent endpoint. A real Chrome form control reproduces `Origin: null` under `no-referrer`, which the exact-origin check correctly rejects. Website fix `9900764b4e` uses `strict-origin` for the consent HTML only, preserving query privacy and keeping `no-referrer` on callback/token responses. Four regression tests pass, including rejection of missing/null/foreign origins. Build 18164 and production promotion 24452 passed. Live anonymous authorization and rejected-token controls preserve `no-store` and `no-referrer`. A later retry still reported `access_denied`; account linking is not yet verified.
+- The post-Events shopping/native canary passed all **51 checks** on revision `0aa5ae3114d9c3548839f6f92c2c6d2e2503747c`, with 43 stable gateway responses, 60 requests within the 90-request budget, and zero retries. It covers modern and legacy transport, the four public tools, native launch, compatibility resources, and cross-host AI Catalog/ARD parity.
+- Both protected-resource discovery paths return canonical metadata: GET/HEAD 200 and OPTIONS 204. [Operations #498](https://github.com/TheBestCo/Operations/issues/498) is closed after these acceptance checks passed.
+- ChatGPT discovers the official CIMD client, exact callback, PKCE S256, issuer, resource and Events scope. Anonymous use succeeds through **Use without an account**.
+- The actual ChatGPT native workspace completes live product search, offer comparison, expansion of other stores and observed 180-day price history. The [reviewer demo](https://github.com/TheBestCo/bestprice-mcp/blob/main/submission/evidence/native-workspace-demo-2026-09-30.mp4) contains public catalog data, excludes the account avatar and demonstrates anonymous shopping.
+- Real BestPrice account linking is verified: approved consent returns to ChatGPT and displays a linked account. A live database aggregate confirms one consumed authorization code and one access/refresh token pair. Website callback fix `5abf4d6335` passed three regression checks, Jenkins 18166 and production promotion 24456. Earlier locale and form-origin fixes are preserved in the timestamped evidence; they are no longer open account-linking blockers.
+- OAuth-bound price-drop Events is activated in production. Commit `0aa5ae3114d9c3548839f6f92c2c6d2e2503747c` passed normal hooks, including the 223-file affected test closure, and Jenkins main28315. Live discovery advertises Events. Production telemetry records one authenticated Events-list request.
 
-- A production cancellation POST returned 303, proving the consent guard passed, but Chrome blocked the return under `form-action 'self'`. The real consent page and unchanged service worker reproduce this locally; allowing the exact callback reaches the isolated callback. Website fix `5abf4d6335` permits only the server-validated ChatGPT callback. Three regression tests pass after rebase; Jenkins 18166 and production promotion 24456 passed. Production rejects foreign callbacks and invalid token requests while preserving privacy headers. A fresh real cancellation flow now returns to ChatGPT with its expected denial notice. The approved consent now returns to ChatGPT and displays a linked account. A live database aggregate confirms one consumed code and one access/refresh token pair. Real account linking is verified. No service-worker change is needed. A read-only production aggregate finds one newly created grant and zero consumed codes, consistent with accepted consent followed by a blocked callback.
+[Qualification evidence](evidence/live-qualification-2026-09-30.json) records current results and timestamped earlier checks. Anonymous canary results and authenticated Events discovery do not prove a ChatGPT subscription or delivered notification.
 
-[Qualification evidence](evidence/live-qualification-2026-09-30.json) records the current results and preserves the earlier canary. Anonymous shopping checks do not prove OAuth grants or Events delivery.
+## Remaining release gates
 
-## Finish before submission
-
-- Real ChatGPT account linking is verified; proceed with Events activation and host qualification.
-- Qualify Events subscription and signed callback delivery before activation.
-- Supply dedicated OAuth reviewer access. Credentials and gateway secrets must stay outside the ZIP.
-- The draft Events guidance requires an explicit user-selected product and item-price threshold, advertised Events support and account linking. Qualify this review case, freeze the ZIP from `openai/` only, cancel the superseded review, upload the replacement, check the MCP scan, and complete the final submission.
-- Verify the released host after publication. The published 1.0.1 connection remains cached until the replacement is released.
-
-The downloaded 1.1.0 package and portal review supplied the existing listing identity. The earlier review has not been cancelled. Events remains disabled and 1.2.0 remains unsubmitted until the integration gates pass.
+- Complete the actual ChatGPT Events subscription and cancellation checks and verify signed callback delivery. The first host attempt reported no available webhook events and created no alert. Connector tools were refreshed and a new chat request was sent; its result still needs verification. The latest live database aggregate contains zero subscriptions and zero deliveries.
+- Supply a dedicated BestPrice OAuth reviewer account. Enter credentials only in OpenAI's secure review form; they must remain outside the ZIP and public repository.
+- Freeze and upload the replacement ZIP, inspect the new MCP scan and review details, then complete submission. Cancel the superseded 1.1.0 review only when the concrete replacement is ready. Version 1.2.0 is **not submitted**.
+- After approval and publication, verify the released host and the **BestPrice** listing name. The released 1.0.1 connection still reflects its older cached metadata.
 
 ## Separate ACP deliverable
 

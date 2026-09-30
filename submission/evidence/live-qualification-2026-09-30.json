@@ -15,7 +15,7 @@
       "no_store": true
     },
     "account_linking_verified": true,
-    "events_activated": false
+    "events_activated": true
   },
   "authorization_entry": {
     "checked_at": "2026-09-30T08:17:42.001480+00:00",
@@ -100,12 +100,12 @@
     "website_build_18155": "SUCCESS; promotion verified through live cross-host parity",
     "website_discovery_name": "BestPrice; live AI Catalog and ARD parity passed",
     "real_chatgpt_account_linking": "VERIFIED: approved consent returned to ChatGPT; connected account displayed; one authorization code consumed and one access/refresh token pair issued",
-    "events_delivery": "not verified; production gate disabled",
+    "events_delivery": "not yet verified in ChatGPT; production protocol gate active",
     "plugin_1_2_0_submission": "not submitted",
-    "browser_handoff": "Real linked qualification account ready for Events host verification; activation commit/hook qualification in progress.",
+    "browser_handoff": "Chrome browser-control connection became unavailable before the fresh normal-chat Events result could be verified. The first host request reported no available webhook events. Connector Refresh tools completed. No subscription or delivery is claimed.",
     "oauth_edge_issue": "https://github.com/TheBestCo/Operations/issues/498; CLOSED after GET/HEAD/OPTIONS qualification of both metadata paths",
     "website_oauth_locale_fix": "44c6b439f2; seven HTTP regression checks pass; Jenkins 18162 SUCCESS; Deploy_BP 24451 SUCCESS; public locale/no-locale authorization controls both reach first-party sign-in",
-    "events_activation_preparation": "Three Nomad defaults prepared locally; 71 focused checks pass; local HCL validation passes (driver validation unavailable); not committed or deployed",
+    "events_activation_preparation": "COMPLETED: 0aa5ae3114d9c3548839f6f92c2c6d2e2503747c pushed through normal hooks; affected closure 223 files passed; Jenkins main28315 SUCCESS; live gateway advertises Events",
     "website_oauth_origin_fix": "9900764b4e; four HTTP/secret tests and actual consent HTML/header browser controls pass; master18164 SUCCESS; Deploy_BP24452 SUCCESS; anonymous sign-in and rejected token privacy controls pass",
     "website_oauth_callback_policy_fix": "5abf4d6335; three Node/PHP tests pass after rebase; normal hooks passed; master18166 SUCCESS; Deploy_BP24456 SUCCESS; live foreign-callback and rejected-token privacy controls pass"
   },
@@ -977,5 +977,26 @@
     "scope": "events:subscribe",
     "accountLinkingVerified": true,
     "privacy": "Only aggregate credential counts are recorded; no account identity, authorization code, token or session value is included."
+  },
+  "post_events_canary": {
+    "report": "post-events-shopping-canary-2026-09-30.json",
+    "revision": "0aa5ae3114d9c3548839f6f92c2c6d2e2503747c",
+    "passed": 51,
+    "failed": 0,
+    "stableResponses": 43,
+    "requestsSent": 60,
+    "requestBudget": 90
+  },
+  "events_host_qualification": {
+    "checkedAt": "2026-09-30T12:59:54.021824+00:00",
+    "firstHostResponse": "This connector has no available webhook events",
+    "toolsRefreshed": true,
+    "freshNormalChatRequestSent": true,
+    "freshNormalChatResultVerified": false,
+    "authenticatedListRequestsLast30Minutes": 1,
+    "subscriptionCount": 0,
+    "deliveryCount": 0,
+    "observationCount": 0,
+    "scope": "Live aggregate counts only. No identity, token, callback secret or private request is included."
   }
 }

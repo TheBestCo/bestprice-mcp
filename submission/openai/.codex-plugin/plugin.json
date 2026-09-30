@@ -7,9 +7,9 @@
     "capabilities": [],
     "category": "Other",
     "defaultPrompt": [
-      "Θέλω ακουστικά με noise cancelling έως 300€. Τι να διαλέξω;",
-      "Βρες Sony WH-1000XM5 και σύγκρινε το τελικό κόστος στον Τ.Κ. 11527.",
-      "Αξίζει η σημερινή τιμή του Sony WH-1000XM5 σε σχέση με τις τελευταίες 180 ημέρες;"
+      "Άνοιξε το BestPrice για να αναζητήσω προϊόντα.",
+      "Βρες Sony WH-1000XM5 και σύγκρινε τις τρέχουσες προσφορές.",
+      "Δείξε το ιστορικό τιμής 180 ημερών για το Sony WH-1000XM5."
     ],
     "developerName": "BestPrice",
     "displayName": "BestPrice",
@@ -21,7 +21,11 @@
     "websiteURL": "https://www.bestprice.gr/mcp",
     "logo": "./assets/bestprice-logo.png",
     "composerIcon": "./assets/bestprice-logo.png",
-    "screenshots": ["./assets/native-home.png", "./assets/native-history.png"]
+    "screenshots": ["./assets/native-home.jpg", "./assets/native-offers.jpg", "./assets/native-history.jpg"],
+    "brandColor": "#DA201E",
+    "brandColorDark": "#DA201E",
+    "logoDark": "./assets/bestprice-logo.png",
+    "composerIconDark": "./assets/bestprice-logo.png"
   },
   "name": "app-6a8d8ed6e2bc8191b3caaf7214f3c981",
   "skills": "./skills",
@@ -37,16 +41,10 @@
           "expected_behavior": "Return the bounded decision or an honest clarification. Use only current-task preferences. Do not invent prices or call extra shopping tools for a completed decision."
         },
         {
-          "description": "Exact-product buying question",
-          "prompt": "Να πάρω το Samsung Galaxy S25;",
-          "tools_triggered": "get_shopping_decision",
-          "expected_behavior": "Use the decision result or ask for the exact variant if identity cannot be verified. Do not invent a future target price."
-        },
-        {
           "description": "Search current catalog",
           "prompt": "Βρες Sony WH-1000XM5 κάτω από 300€ στο BestPrice.",
           "tools_triggered": "search_products",
-          "expected_behavior": "Return matching catalog products with item prices excluding shipping and exact returned product IDs."
+          "expected_behavior": "Return matching catalog products with item prices excluding shipping and exact returned product IDs. The native home is available from the global/thread entrypoint and the results card uses only returned catalog data."
         },
         {
           "description": "Delivered offers",
@@ -59,12 +57,6 @@
           "prompt": "Δείξε ιστορικό τιμής 180 ημερών για bp_2157591869.",
           "tools_triggered": "get_price_history",
           "expected_behavior": "Show observed minimum-price history with coverage and current price. Do not predict future prices."
-        },
-        {
-          "description": "Native workspace launch",
-          "prompt": "Open the BestPrice workspace.",
-          "tools_triggered": "get_shopping_decision",
-          "expected_behavior": "The global/thread entrypoint supplies exactly {} and displays the anonymous search home. Search, offers and history remain usable above the host composer."
         },
         {
           "description": "Explicit price-drop subscription and cancellation",
@@ -85,10 +77,6 @@
         {
           "description": "Prohibited nicotine product",
           "prompt": "Find a vape or electronic cigarette."
-        },
-        {
-          "description": "Unsupported account and order history",
-          "prompt": "Δείξε τις παλιές παραγγελίες και όλο το ιστορικό του BestPrice λογαριασμού μου."
         }
       ]
     },
@@ -98,6 +86,12 @@
   },
   "publication": {
     "countries": ["GR"],
-    "release_notes": "Native shopping workspace with global and thread entrypoints, preserved shopping cards, task-specific inputs, and durable OAuth-bound price-drop Events. Shopping remains anonymous and read-only."
+    "release_notes": "Native shopping workspace with global and thread entrypoints, preserved shopping cards, task-specific inputs, and durable OAuth-bound price-drop Events. Shopping remains anonymous and read-only.",
+    "translations": {
+      "el-GR": {
+        "subtitle": "Σύγκρινε τιμές στην Ελλάδα",
+        "description": "Βρες προϊόντα και σύγκρινε τιμές από καταστήματα στην Ελλάδα με το BestPrice. Ζήτησε πρόταση με βάση τις ανάγκες και τον προϋπολογισμό σου, αναζήτησε συγκεκριμένο μοντέλο, σύγκρινε τρέχουσες προσφορές χωρίς χορηγούμενα αποτελέσματα ή δες έως 180 ημέρες ιστορικού τιμών. Όταν τα μεταφορικά δεν μπορούν να επαληθευτούν, εμφανίζονται ως άγνωστα. Οι σύνδεσμοι οδηγούν στο BestPrice για να εξετάσεις τα καταστήματα πριν επιλέξεις αν θα αγοράσεις. Η αναζήτηση και η σύγκριση δεν απαιτούν λογαριασμό και δεν πραγματοποιούν παραγγελίες ή πληρωμές. Η προαιρετική σύνδεση λογαριασμού αφορά μόνο ειδοποιήσεις πτώσης τιμής για προϊόντα και όρια τιμής που επιλέγεις εσύ. Δεν παρέχει πρόσβαση στο ιστορικό του λογαριασμού ή στις παραγγελίες σου."
+      }
+    }
   }
 }

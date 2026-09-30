@@ -1,0 +1,67 @@
+{
+  "note": "Additional internal review cases; the portal package uses its required five positive and three negative cases.",
+  "test_cases": {
+    "positive": [
+      {
+        "description": "Need-based recommendation",
+        "prompt": "Ποιο κινητό να πάρω μέχρι 500€ με NFC και 5G;",
+        "tools_triggered": "get_shopping_decision",
+        "expected_behavior": "Return the bounded decision or an honest clarification. Use only current-task preferences. Do not invent prices or call extra shopping tools for a completed decision."
+      },
+      {
+        "description": "Exact-product buying question",
+        "prompt": "Να πάρω το Samsung Galaxy S25;",
+        "tools_triggered": "get_shopping_decision",
+        "expected_behavior": "Use the decision result or ask for the exact variant if identity cannot be verified. Do not invent a future target price."
+      },
+      {
+        "description": "Search current catalog",
+        "prompt": "Βρες Sony WH-1000XM5 κάτω από 300€ στο BestPrice.",
+        "tools_triggered": "search_products",
+        "expected_behavior": "Return matching catalog products with item prices excluding shipping and exact returned product IDs."
+      },
+      {
+        "description": "Delivered offers",
+        "prompt": "Σύγκρινε προσφορές για bp_2157591869 στον ΤΚ 11527.",
+        "tools_triggered": "compare_offers",
+        "expected_behavior": "Show ad-free offers with shipping status and delivered totals where verified; unknown shipping is not free. Link to BestPrice."
+      },
+      {
+        "description": "Observed price history",
+        "prompt": "Δείξε ιστορικό τιμής 180 ημερών για bp_2157591869.",
+        "tools_triggered": "get_price_history",
+        "expected_behavior": "Show observed minimum-price history with coverage and current price. Do not predict future prices."
+      },
+      {
+        "description": "Native workspace launch",
+        "prompt": "Open the BestPrice workspace.",
+        "tools_triggered": "get_shopping_decision",
+        "expected_behavior": "The global/thread entrypoint supplies exactly {} and displays the anonymous search home. Search, offers and history remain usable above the host composer."
+      },
+      {
+        "description": "Explicit price-drop subscription and cancellation",
+        "prompt": "Ειδοποίησέ με αν το Sony WH-1000XM5 μαύρο πέσει στα 170€ ή χαμηλότερα, χωρίς μεταφορικά. Μετά ακύρωσε την ειδοποίηση όταν το ζητήσω.",
+        "tools_triggered": "search_products (only if the canonical product is not already known)",
+        "expected_behavior": "After explicit BestPrice account linking, use advertised MCP Events price.dropped with the exact returned product_id, threshold 17000 integer cents and currency EUR. Never invent a target price or use a shopping tool to create alerts. Report success only after events/subscribe succeeds, and use events/unsubscribe on an explicit cancellation request. If Events is unavailable or authorization fails, clearly report that no alert was created."
+      }
+    ],
+    "negative": [
+      {
+        "description": "Unrelated request",
+        "prompt": "What is the weather in Athens tomorrow?"
+      },
+      {
+        "description": "Unsupported checkout",
+        "prompt": "Buy the cheapest headphones and pay for them."
+      },
+      {
+        "description": "Prohibited nicotine product",
+        "prompt": "Find a vape or electronic cigarette."
+      },
+      {
+        "description": "Unsupported account and order history",
+        "prompt": "Δείξε τις παλιές παραγγελίες και όλο το ιστορικό του BestPrice λογαριασμού μου."
+      }
+    ]
+  }
+}
