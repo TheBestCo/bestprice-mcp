@@ -12,9 +12,13 @@ anonymous and read-only. OAuth is limited to `events:subscribe`.
 
 ## Finish before submission
 
-- Verify the deployed native workspace with the production canary.
-- Promote website `9ec574b5d0` (Jenkins 18155 passed) to align the AI Catalog
-  and ARD display names, then rerun the strict cross-host canary.
+- Public shopping/native UI qualification passed: 51 checks on production
+  revision `fab1f8f217c`, including the native launch, compatibility resources,
+  four public tools, and strict cross-host AI Catalog/ARD parity. Website
+  `9ec574b5d0` branding is now confirmed live.
+- Complete [Operations #498](https://github.com/TheBestCo/Operations/issues/498),
+  assigned to Gabriel: forward the standard protected-resource metadata path
+  to `bp-agent-commerce`, then retry automatic OAuth discovery in ChatGPT.
 - Qualify real ChatGPT account linking, Events subscription and callback.
 - Final v5 screenshots now come from the development connection to the same
   native UI using live production catalog data. The released 1.0.1 host remains
@@ -47,8 +51,17 @@ workspace compatibility resources.
 
 [Current qualification evidence](evidence/live-qualification-2026-09-30.json)
 keeps account linking and Events delivery explicitly unverified. The strict
-cross-host canary still awaits promotion of the AI Catalog/ARD display-name
-correction `9ec574b5d0`. Chrome's open extension panel blocks the real OAuth
-qualification form and browser-based deployment/submission workflow. Close
-that panel and resume. Events remains disabled; the replacement ZIP remains
-unsubmitted until the live account-linking and delivery gates pass.
+cross-host public canary is now 51/51 green. Browser access is restored; the
+actual ChatGPT New Plugin form exposes the remaining OAuth discovery gap.
+`/.well-known/oauth-protected-resource` returns Apache 404 on the public MCP
+host, while `/mcp/oauth-protected-resource` returns the correct application
+JSON. The issuer metadata on `www.bestprice.gr` also returns 200 with CIMD and
+PKCE S256. Operations #498 requests the missing edge route and defines the
+acceptance checks. Keep the exact canonical CIMD callback policy; do not widen
+it to the unrelated callback offered by the manual-client fallback.
+
+After Operations confirms the route is live, retry discovery in the preserved
+OAuth qualification form, select CIMD and optional OAuth, then complete real
+linking and delivery qualification. Events remains disabled; the replacement
+ZIP remains unsubmitted until those gates pass. The 51 public checks are not
+proof of OAuth linking or Events delivery.

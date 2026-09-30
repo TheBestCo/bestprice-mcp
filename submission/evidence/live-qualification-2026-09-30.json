@@ -97,11 +97,362 @@
   },
   "release_gates": {
     "backend_build_28275": "SUCCESS",
-    "website_build_18155": "SUCCESS; production promotion pending",
-    "website_discovery_name": "BestPrice Shopping; corrected source 9ec574b5d0 pending promotion",
+    "website_build_18155": "SUCCESS; promotion verified through live cross-host parity",
+    "website_discovery_name": "BestPrice; live AI Catalog and ARD parity passed",
     "real_chatgpt_account_linking": "not verified",
     "events_delivery": "not verified; production gate disabled",
     "plugin_1_2_0_submission": "not submitted",
-    "browser_handoff": "Close the extension panel blocking the OAuth qualification form, then resume."
+    "browser_handoff": "Browser access restored. Actual ChatGPT OAuth discovery fails while the standard protected-resource metadata route returns Apache 404.",
+    "oauth_edge_issue": "https://github.com/TheBestCo/Operations/issues/498; OPEN, assigned gabrieltz, high priority"
+  },
+  "public_shopping_release_canary": {
+    "schemaVersion": "1.1",
+    "caseProfile": "school_laptop_600_verified_ram",
+    "deployment": {
+      "scope": "mcp_gateway",
+      "revision": "fab1f8f217cfef6af966534d4004ce8002e15f24",
+      "responses": 43,
+      "stable": true
+    },
+    "generatedAt": "2026-09-30T08:43:10.299Z",
+    "endpoint": "https://mcp.bestprice.gr/mcp",
+    "status": "passed",
+    "summary": {
+      "passed": 51,
+      "failed": 0,
+      "publishedTools": [
+        "compare_offers",
+        "get_price_history",
+        "get_shopping_decision",
+        "search_products"
+      ],
+      "checkoutTools": 0,
+      "merchantRedirectsFollowed": 0,
+      "rateLimitRetries": 0,
+      "requestsSent": 60,
+      "requestBudget": 90
+    },
+    "checks": [
+      {
+        "name": "health",
+        "passed": true,
+        "latencyMs": 54
+      },
+      {
+        "name": "streamable_http_event_channel",
+        "passed": true,
+        "latencyMs": 12
+      },
+      {
+        "name": "browser_connector_cors_preflight",
+        "passed": true
+      },
+      {
+        "name": "legacy_http_discovery",
+        "passed": true,
+        "latencyMs": 169
+      },
+      {
+        "name": "cross_host_legacy_card_parity",
+        "passed": true
+      },
+      {
+        "name": "modern_http_discovery",
+        "passed": true,
+        "latencyMs": 8
+      },
+      {
+        "name": "ai_catalog_discovery",
+        "passed": true,
+        "latencyMs": 219
+      },
+      {
+        "name": "cross_host_ai_catalog_parity",
+        "passed": true
+      },
+      {
+        "name": "ard_discovery",
+        "passed": true,
+        "latencyMs": 148
+      },
+      {
+        "name": "cross_host_ard_parity",
+        "passed": true
+      },
+      {
+        "name": "apis_json_discovery",
+        "passed": true,
+        "latencyMs": 22
+      },
+      {
+        "name": "registry_manifest_discovery",
+        "passed": true,
+        "latencyMs": 232
+      },
+      {
+        "name": "webmcp_manifest_discovery",
+        "passed": true,
+        "latencyMs": 27
+      },
+      {
+        "name": "cross_host_webmcp_parity",
+        "passed": true
+      },
+      {
+        "name": "well_known_webmcp_registry_parity",
+        "passed": true,
+        "transportStatus": 200,
+        "latencyMs": 22
+      },
+      {
+        "name": "initialize",
+        "passed": true,
+        "latencyMs": 32
+      },
+      {
+        "name": "modern_protocol_discovery",
+        "passed": true,
+        "protocolVersion": "2026-07-28",
+        "latencyMs": 32
+      },
+      {
+        "name": "modern_tool_inventory",
+        "passed": true,
+        "toolCount": 4
+      },
+      {
+        "name": "modern_tool_call",
+        "passed": true,
+        "resultCount": 2,
+        "latencyMs": 775
+      },
+      {
+        "name": "modern_header_body_mismatch_rejected",
+        "passed": true
+      },
+      {
+        "name": "tool_inventory_and_annotations",
+        "passed": true,
+        "toolCount": 4
+      },
+      {
+        "name": "mcp_skills_extension",
+        "passed": true,
+        "skillBytes": 3054
+      },
+      {
+        "name": "mcp_apps_ui",
+        "passed": true,
+        "bytes": 181103
+      },
+      {
+        "name": "native_workspace_launch_and_cached_resources",
+        "passed": true
+      },
+      {
+        "name": "claude_mcp_apps_ui_domain",
+        "passed": true
+      },
+      {
+        "name": "mcp_server_card_resource",
+        "passed": true
+      },
+      {
+        "name": "shared_shopping_brain",
+        "passed": true,
+        "latencyMs": 2301,
+        "decisionVersion": "bestprice_decision_v1",
+        "returnedProducts": 3,
+        "evidenceClaims": 31
+      },
+      {
+        "name": "positive_exact_model_search",
+        "passed": true,
+        "resultCount": 5,
+        "productId": "bp_2157591869",
+        "latencyMs": 201
+      },
+      {
+        "name": "positive_budget_discovery",
+        "passed": true,
+        "resultCount": 5,
+        "latencyMs": 301
+      },
+      {
+        "name": "positive_contextual_search",
+        "passed": true,
+        "searchMode": "broadened_category",
+        "resultCount": 5,
+        "latencyMs": 287
+      },
+      {
+        "name": "positive_expanded_physical_scope",
+        "passed": true,
+        "resultCount": 3,
+        "latencyMs": 1243
+      },
+      {
+        "name": "positive_delivered_offer_comparison",
+        "passed": true,
+        "resultCount": 10,
+        "latencyMs": 70
+      },
+      {
+        "name": "positive_merchant_quality_comparison",
+        "passed": true,
+        "resultCount": 10,
+        "latencyMs": 80
+      },
+      {
+        "name": "positive_observed_price_history",
+        "passed": true,
+        "classification": "typical_price",
+        "latencyMs": 102
+      },
+      {
+        "name": "negative_invalid_product_identity",
+        "passed": true
+      },
+      {
+        "name": "negative_prohibited_tobacco_scope",
+        "passed": true,
+        "resultCount": 0
+      },
+      {
+        "name": "negative_prohibited_adult_scope",
+        "passed": true,
+        "resultCount": 0
+      },
+      {
+        "name": "negative_prohibited_digital_scope",
+        "passed": true,
+        "resultCount": 0
+      },
+      {
+        "name": "negative_prohibited_gift_card_scope",
+        "passed": true,
+        "resultCount": 5
+      },
+      {
+        "name": "negative_prohibited_alcohol_scope",
+        "passed": true,
+        "resultCount": 0
+      },
+      {
+        "name": "negative_mixed_digital_search_bp_2157315082",
+        "passed": true
+      },
+      {
+        "name": "negative_mixed_digital_search_bp_2163636328",
+        "passed": true
+      },
+      {
+        "name": "negative_mixed_digital_search_bp_2154329660",
+        "passed": true
+      },
+      {
+        "name": "negative_direct_product_scope_bp_2157315082",
+        "passed": true
+      },
+      {
+        "name": "negative_direct_product_scope_bp_2163636328",
+        "passed": true
+      },
+      {
+        "name": "negative_direct_product_scope_bp_2154329660",
+        "passed": true
+      },
+      {
+        "name": "negative_digital_history_scope",
+        "passed": true
+      },
+      {
+        "name": "negative_catalog_dump_bound",
+        "passed": true
+      },
+      {
+        "name": "negative_unpublished_write_or_basket_surface",
+        "passed": true
+      },
+      {
+        "name": "signed_bestprice_landing",
+        "passed": true,
+        "status": 303,
+        "merchantRedirectFollowed": false
+      },
+      {
+        "name": "landing_machine_fetch_probe",
+        "passed": true,
+        "status": 303,
+        "merchantRedirectFollowed": false
+      }
+    ],
+    "privacy": "Signed URLs, cookies, merchant destinations, prompts, and internal request/trace/session identifiers are omitted.",
+    "note": "51 checks qualify the public shopping/native UI surface at the recorded revision; they do not qualify real OAuth account linking or MCP Events delivery."
+  },
+  "oauth_edge_route": {
+    "checkedAt": "2026-09-30T08:45:28.798Z",
+    "results": [
+      {
+        "path": "/.well-known/oauth-protected-resource",
+        "method": "GET",
+        "userAgent": "Mozilla/5.0",
+        "status": 404,
+        "type": "text/html; charset=iso-8859-1",
+        "revision": null,
+        "body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body></html>\n"
+      },
+      {
+        "path": "/.well-known/oauth-protected-resource",
+        "method": "GET",
+        "userAgent": "ModelContextProtocol/1.0",
+        "status": 404,
+        "type": "text/html; charset=iso-8859-1",
+        "revision": null,
+        "body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL was not found on this server.</p>\n</body></html>\n"
+      },
+      {
+        "path": "/mcp/oauth-protected-resource",
+        "method": "GET",
+        "userAgent": "ModelContextProtocol/1.0",
+        "status": 200,
+        "type": "application/json; charset=utf-8",
+        "revision": "2889061dc4dc122485afd027d0c49ef3d1e3bd8f",
+        "body": "{\"resource\":\"https://mcp.bestprice.gr\",\"authorization_servers\":[\"https://www.bestprice.gr\"],\"scopes_supported\":[\"events:subscribe\"],\"resource_documentation\":\"https://www.bestprice.gr/mcp\",\"resource_policy_uri\":\"https://www.bestprice.gr/policies/privacy\"}"
+      },
+      {
+        "path": "/mcp/oauth-protected-resource",
+        "method": "HEAD",
+        "userAgent": "ModelContextProtocol/1.0",
+        "status": 200,
+        "type": "application/json; charset=utf-8",
+        "revision": "2889061dc4dc122485afd027d0c49ef3d1e3bd8f"
+      },
+      {
+        "path": "/mcp/oauth-protected-resource",
+        "method": "OPTIONS",
+        "userAgent": "ModelContextProtocol/1.0",
+        "status": 204,
+        "type": null,
+        "revision": "2889061dc4dc122485afd027d0c49ef3d1e3bd8f"
+      },
+      {
+        "path": "/healthz",
+        "method": "GET",
+        "userAgent": "ModelContextProtocol/1.0",
+        "status": 200,
+        "type": "application/json; charset=utf-8",
+        "revision": "2889061dc4dc122485afd027d0c49ef3d1e3bd8f"
+      },
+      {
+        "url": "https://www.bestprice.gr/.well-known/oauth-authorization-server",
+        "status": 200,
+        "issuer": "https://www.bestprice.gr",
+        "cimd": true,
+        "pkce": [
+          "S256"
+        ]
+      }
+    ]
   }
 }
