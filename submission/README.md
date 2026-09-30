@@ -1,67 +1,32 @@
 # OpenAI plugin release 1.2.0
 
-`openai/` is the replacement ZIP source for the existing BestPrice
-plugin, preserving its assigned package identity and public MCP URL. This
-plugin version is independent of the distribution/WebMCP package version.
+`openai/` is the replacement ZIP source for the existing BestPrice plugin. It preserves the assigned package identity and public MCP URL. Its version is independent of the distribution/WebMCP package version.
 
-The draft includes native-workspace screenshots, the existing brand asset,
-current-task-only shopping instructions, and six positive/three negative
-review cases. The baseline backend release is `b5182ac5b9f`; follow-up `3199380c5b2` adds
-BestPrice branding, v5 workspace compatibility and the OAuth activation default; ordinary shopping remains
-anonymous and read-only. OAuth is limited to `events:subscribe`.
+The draft uses **BestPrice** branding, native-workspace screenshots, the existing brand asset, current-task-only shopping instructions, and six positive/three negative review cases. Ordinary shopping remains anonymous and read-only. Optional OAuth is limited to `events:subscribe`.
+
+## Verified in production
+
+- The public shopping/native canary passed all 51 checks on revision `6e5a2865de8`, including modern and legacy transport, the four public tools, native launch, compatibility resources, and cross-host AI Catalog/ARD parity.
+- Both `/.well-known/oauth-protected-resource` and `/mcp/oauth-protected-resource` return the canonical metadata. GET/HEAD return 200 and OPTIONS returns 204. [Operations #498](https://github.com/TheBestCo/Operations/issues/498) is closed after these acceptance checks passed.
+- ChatGPT automatically discovers the official CIMD client, exact callback, PKCE S256, issuer, resource, and single Events scope. No manual callback exception is needed.
+- The new optional-OAuth connection successfully connects with **Use without an account**. Its production native workspace completes live product search, offer comparison, expansion of other stores, and observed price history.
+- The [reviewer demo](https://github.com/TheBestCo/bestprice-mcp/blob/main/submission/evidence/native-workspace-demo-2026-09-30.mp4) records these interactions in the actual ChatGPT host. It contains public catalog data, excludes the account avatar, and does not claim OAuth or Events delivery.
+- The real OAuth flow exposed ChatGPT's `ui_locales` display hint. Website fix `44c6b439f2` removes this bounded hint before strict grant validation. Seven HTTP regression checks passed, including malformed input, foreign callbacks, consent and CSRF binding. Jenkins 18162 is building the fix.
+
+[Qualification evidence](evidence/live-qualification-2026-09-30.json) records the current results and preserves the earlier canary. Anonymous shopping checks do not prove OAuth grants or Events delivery.
 
 ## Finish before submission
 
-- Public shopping/native UI qualification passed: 51 checks on production
-  revision `fab1f8f217c`, including the native launch, compatibility resources,
-  four public tools, and strict cross-host AI Catalog/ARD parity. Website
-  `9ec574b5d0` branding is now confirmed live.
-- Complete [Operations #498](https://github.com/TheBestCo/Operations/issues/498),
-  assigned to Gabriel: forward the standard protected-resource metadata path
-  to `bp-agent-commerce`, then retry automatic OAuth discovery in ChatGPT.
-- Qualify real ChatGPT account linking, Events subscription and callback.
-- Final v5 screenshots now come from the development connection to the same
-  native UI using live production catalog data. The released 1.0.1 host remains
-  cached until replacement publication; verify the published host after release.
-- Supply a reviewer-accessible demo recording and dedicated reviewer access
-  for OAuth. Never include reviewer credentials or gateway secrets in the ZIP.
-- Freeze a ZIP from `openai/` only, cancel the superseded review, upload the
-  replacement, check the live scan and complete the final submission.
+- Promote the qualified website fix and complete real ChatGPT account linking.
+- Qualify Events subscription and signed callback delivery before activation.
+- Supply dedicated OAuth reviewer access. Credentials and gateway secrets must stay outside the ZIP.
+- Update Events guidance and review cases, freeze the ZIP from `openai/` only, cancel the superseded review, upload the replacement, check the MCP scan, and complete the final submission.
+- Verify the released host after publication. The published 1.0.1 connection remains cached until the replacement is released.
 
-The downloaded 1.1.0 package and portal review served as the listing source.
-No existing review was cancelled during preparation. The ACP deliverable is
-the separately validated offline 10,000-product export; no feed is uploaded.
+The downloaded 1.1.0 package and portal review supplied the existing listing identity. The earlier review has not been cancelled. Events remains disabled and 1.2.0 remains unsubmitted until the integration gates pass.
 
-The separate CSS-backed sample is now validated: 10,000 items, 20 represented
-families, 406 sellers and 246 brands. All 20 representative PDPs and 20 images
-returned HTTP 200 under browser-UA HEAD checks; full crawler qualification is
-not claimed. A local export bundle is saved as
-`/Users/gp/Downloads/bestprice-acp-css-2026-09-30.zip`. It is outside the plugin ZIP.
+## Separate ACP deliverable
 
-Production serves BestPrice/v5 metadata and the OAuth ingress correction
-through `/mcp/oauth-protected-resource`. Website `8e21467bb8` serves the styled,
-body-correct OAuth responses. The issuer discovery checks pass, and a valid
-ChatGPT authorization request now returns HTTP 303 to first-party sign-in.
-The CIMD fetch/Agent pairing is corrected by `8ef33b78bdd`; controlled metadata
-failure descriptions are in `697ce242319`, deployed by successful Jenkins
-28275. The normal pre-push closure of 227 files passed. Twelve live checks on
-that exact revision pass across modern and legacy MCP, covering the anonymous
-home, four read-only tools, absence of conversation-history input, and native
-workspace compatibility resources.
+The CSS-backed offline export contains 10,000 items across 20 families, 406 sellers and 246 brands. Twenty representative PDPs and twenty images returned HTTP 200 under browser-UA HEAD checks; full crawler qualification is not claimed. The local bundle is `/Users/gp/Downloads/bestprice-acp-css-2026-09-30.zip`.
 
-[Current qualification evidence](evidence/live-qualification-2026-09-30.json)
-keeps account linking and Events delivery explicitly unverified. The strict
-cross-host public canary is now 51/51 green. Browser access is restored; the
-actual ChatGPT New Plugin form exposes the remaining OAuth discovery gap.
-`/.well-known/oauth-protected-resource` returns Apache 404 on the public MCP
-host, while `/mcp/oauth-protected-resource` returns the correct application
-JSON. The issuer metadata on `www.bestprice.gr` also returns 200 with CIMD and
-PKCE S256. Operations #498 requests the missing edge route and defines the
-acceptance checks. Keep the exact canonical CIMD callback policy; do not widen
-it to the unrelated callback offered by the manual-client fallback.
-
-After Operations confirms the route is live, retry discovery in the preserved
-OAuth qualification form, select CIMD and optional OAuth, then complete real
-linking and delivery qualification. Events remains disabled; the replacement
-ZIP remains unsubmitted until those gates pass. The 51 public checks are not
-proof of OAuth linking or Events delivery.
+The ACP export is outside the plugin ZIP. No feed has been uploaded or accepted by an external commerce partner.
