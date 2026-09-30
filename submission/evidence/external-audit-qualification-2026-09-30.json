@@ -205,7 +205,7 @@
     }
   },
   "eventsAggregate": {
-    "observedAt": "2026-09-30T18:08:30.234Z",
+    "observedAt": "2026-09-30T18:15:12.938Z",
     "subscriptions": [
       {
         "status": "stopped",
@@ -224,8 +224,8 @@
     "scheduler": [
       {
         "job": "agent_commerce_events",
-        "last_success_at": "2026-09-30T18:08:19.914Z",
-        "updated_at": "2026-09-30T18:08:19.914Z"
+        "last_success_at": "2026-09-30T18:15:08.799Z",
+        "updated_at": "2026-09-30T18:15:08.799Z"
       }
     ],
     "fleet": [
@@ -233,29 +233,26 @@
         "is_cron": 0,
         "revision": "d3f2124",
         "instances": 5,
-        "newest_heartbeat": "2026-09-30T18:05:18.000Z"
+        "newest_heartbeat": "2026-09-30T18:15:10.000Z"
       },
       {
         "is_cron": 1,
         "revision": "a473d55",
-        "instances": 1,
-        "newest_heartbeat": "2026-09-30T18:04:02.000Z"
-      },
-      {
-        "is_cron": 1,
-        "revision": "a9e6e31",
-        "instances": 1,
-        "newest_heartbeat": "2026-09-30T18:08:11.000Z"
+        "instances": 2,
+        "newest_heartbeat": "2026-09-30T18:14:02.000Z"
       }
     ],
     "genuineCrossingObserved": false,
     "matchingNotificationProcessedByChatGpt": false,
     "zeroActiveDenominatorImpliesNoGrantFailureRate": true,
-    "mixedCronRevisionsObserved": true,
     "eventsAndOAuthSourceParity": {
       "revisions": ["a473d55d66bd9ff06228ecec8f1647a76cd46a28", "d3f2124c2a324690206ca3b0e03b7aefa47a1c39"],
       "identical": true
-    }
+    },
+    "earlierMixedCronRevisionsObserved": true,
+    "currentObservedCronRevisions": ["a473d55"],
+    "observedCronInstances": 2,
+    "olderCronRevisionsInFiveMinuteWindow": 0
   },
   "frozenBundleRecheck": {
     "checkedAt": "2026-09-30",
@@ -309,7 +306,7 @@
     "appliedReviewerMaterials": "unverified",
     "plugin12ApprovalPublication": "In review",
     "cleanAccountDiscovery": "unverified",
-    "registry183ReceivingConfirmation": "pending",
+    "registry183ReceivingConfirmation": "publisher accepted 1.8.3; fresh receiving GET unverified",
     "acpPartnerIngestion": "unqualified"
   },
   "privacy": {
@@ -609,13 +606,28 @@
   "registryCheck": {
     "date": "2026-09-30",
     "currentReceivingVersion": "unverified",
-    "attempts": 3,
+    "attempts": 4,
     "outcomes": [
       "Node request timed out after 15 seconds",
       "Web reader could not access endpoint",
       "IPv4 curl request timed out after 15 seconds"
     ],
     "earlierConfirmedVersion": "1.8.1",
-    "earlierConfirmedAt": "2026-09-25"
+    "earlierConfirmedAt": "2026-09-25",
+    "publishedVersion": "1.8.3",
+    "publishedAt": "2026-09-30T18:12:47Z",
+    "publisherReceipt": "Server gr.bestprice/mcp version 1.8.3; Successfully published",
+    "workflow": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/36756874645",
+    "sourceRevision": "f681bc745a58c7ed9d6c447de1fdde9335053159",
+    "conclusion": "success",
+    "currentReceivingGet": "unverified"
+  },
+  "publicDistributionCi": {
+    "sourceRevision": "f681bc745a58c7ed9d6c447de1fdde9335053159",
+    "workflow": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/36756874709",
+    "conclusion": "success",
+    "isolatedInstalledTarballPassed": true,
+    "manifestPublisherValidationPassed": true,
+    "currentNodeLinePassed": true
   }
 }
