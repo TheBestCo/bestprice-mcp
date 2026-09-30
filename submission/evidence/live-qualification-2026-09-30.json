@@ -101,7 +101,7 @@
     "website_discovery_name": "BestPrice; live AI Catalog and ARD parity passed",
     "real_chatgpt_account_linking": "VERIFIED: approved consent returned to ChatGPT; connected account displayed; one authorization code consumed and one access/refresh token pair issued",
     "events_delivery": "Native subscription, signed callback challenge, first live catalog observation and actual-host cancellation verified. A genuine matching threshold-crossing notification remains unobserved.",
-    "plugin_1_2_0_submission": "Corrected 1.2.0 ZIP uploaded; portal export matches all seven source files. Not submitted. Legacy reviewer drawer and public OAuth configuration remain unresolved.",
+    "plugin_1_2_0_submission": "SUBMITTED: Portal confirms version 1.2.0 In review. All seven exported package files match source. Public OAuth configuration and final application of reviewer materials remain unverified.",
     "browser_handoff": "Native Chrome controls recovered the workflow. Actual Events creation/cancellation and the final genuine 706x830 PNG history capture are verified.",
     "oauth_edge_issue": "https://github.com/TheBestCo/Operations/issues/498; CLOSED after GET/HEAD/OPTIONS qualification of both metadata paths",
     "website_oauth_locale_fix": "44c6b439f2; seven HTTP regression checks pass; Jenkins 18162 SUCCESS; Deploy_BP 24451 SUCCESS; public locale/no-locale authorization controls both reach first-party sign-in",
@@ -1079,15 +1079,18 @@
       "prePushResult": "passed, including automatic isolated rerun of one failed shard test"
     },
     "pushed": true,
-    "deployedVerified": false,
+    "deployedVerified": true,
     "deploymentStatus": {
-      "checkedAt": "2026-09-30T13:58:28.426484+00:00",
-      "originalJenkinsRun": 28332,
-      "originalRunOutcome": "Superseded by newer main push, not a code/test failure",
-      "laterSuccessfulBuild": 28337,
-      "runtimeCronRevision": "40d06aa",
-      "reason": "Normal cron release batching retained 40d06aa; console reports next batch in 2307 seconds at 13:53:51Z.",
-      "deployedVerified": false
+      "checkedAt": "2026-09-30T15:17:02Z",
+      "runtimeCronRevision": "2226ba5de8bc5ca520ad82baf8353e1c9c89e369",
+      "containsFixCommit": "57e38dbdd8e10eaabcc5fad1ea2f8da4b119b0a9",
+      "fixAncestryVerified": true,
+      "runtimeSourceWorker": false,
+      "fixFileUnchangedSinceFix": true,
+      "lastSuccessAt": "2026-09-30T15:17:02.403Z",
+      "deployedVerified": true,
+      "scope": "Live cron image hashes, source at that image and current success ledger. No matching price-drop notification is claimed.",
+      "liveCronHostCount": 2
     }
   },
   "native_review_history_capture": {
@@ -1101,15 +1104,15 @@
     "privacy": "Public catalog data only, no account identity or user chrome."
   },
   "plugin_1_2_0_submission": {
-    "checkedAt": "2026-09-30T14:25:29.439506+00:00",
+    "checkedAt": "2026-09-30T15:17:02Z",
     "draftId": "appsub_6abd16a16bb4819193e6e6bdc6337af1",
     "uploadedVersion": "1.2.0",
     "uploadedArchiveSha256": "9da1ede7334aa008489c381802a5dd2f210f34117fc30c8a91aa885058a5a306",
     "portalExportAllFilesMatchSource": true,
     "superseded1_1_0Review": "canceled",
     "publishedVersion": "1.0.1",
-    "reviewStatus": "not submitted",
-    "reviewDrawer": "Still shows legacy 1.1.0 notes, cases, recording and translation after corrected ZIP upload and page reload. Documentation says declared scalar values are reapplied on submission; actual final import remains unverified.",
+    "reviewStatus": "in review",
+    "reviewDrawer": "The uploaded draft export contains the current 1.2.0 notes, five positive cases, three negative cases, native demo and Greek translation. Before submission the legacy drawer showed 1.1.0 materials. After submission Review information / Review details is not exposed in the inspected 1.2.0 controls, so the final applied reviewer materials remain unverified.",
     "metadataFinding": "Remove rankings, superlatives, or guarantees from the plugin name. BestPrice is the established brand and verified business identity; brand rationale is in release notes.",
     "heldToolFinding": {
       "tool": "get_shopping_decision",
@@ -1122,9 +1125,13 @@
       "associatedAppAuthentication": "No authentication",
       "connectionSettings": "Connection details for individual MCP servers are unavailable.",
       "packageDeclaredServer": "Complete MCP setup / Connection unknown; no Connect or Reconnect action available in the inspected view.",
-      "qualifiedTestConnector": "OAuth linking, native subscription, signed challenge and cancellation verified on the separate qualification connector. Public-app OAuth qualification remains pending."
+      "qualifiedTestConnector": "OAuth linking, native subscription, signed challenge and cancellation verified on the separate qualification connector. Public-app OAuth qualification remains pending.",
+      "postSubmissionPackageServer": "Still Complete MCP setup / Connection unknown; no Connect or Reconnect control exposed in the inspected submitted view."
     },
     "supportDraft": "../openai-support-draft.md",
-    "supportRequestSent": false
+    "supportRequestSent": false,
+    "submissionAcceptedVerified": true,
+    "policyAttestations": "All six declarations explicitly approved by the owner at action time and accepted in the portal.",
+    "portalEvidence": "Review status In review; Metadata & skills version 1.2.0 · In review; 1.0.1 remains published."
   }
 }
