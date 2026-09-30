@@ -1,0 +1,144 @@
+{
+  "date": "2026-09-30",
+  "scope": "Deployed Events implementation, isolated SQL qualification and actual ChatGPT qualification connector; public-plugin OAuth remains unverified.",
+  "unitAndProtocolChecks": {
+    "passed": 72,
+    "failed": 0,
+    "files": [
+      "services/agent-commerce/mcp-events.test.js",
+      "services/agent-commerce/event-webhook.test.js",
+      "services/agent-commerce/event-rpc-provider.test.js",
+      "apis/agent-commerce/oauth/_lib/service.test.js"
+    ]
+  },
+  "isolatedMySqlQualification": {
+    "passed": true,
+    "commit": "f88b56757c72",
+    "pullRequest": "https://github.com/TheBestCo/bp-backend-node/pull/1665",
+    "pullRequestStatus": "ready for review",
+    "jenkinsBranchCheck": "SUCCESS",
+    "jenkinsBranchCheckAt": "2026-09-30T16:06:17Z",
+    "checks": [
+      "Encrypted secret persistence and restart",
+      "Account-wide verification and subscription quota locking",
+      "Atomic checkpoint and outbox insertion",
+      "Exact-threshold equality",
+      "Nonmatching decreases above the threshold",
+      "No repeated alerts below the threshold",
+      "Rearming after a price rise",
+      "Four concurrent identical observations enqueue exactly one crossing",
+      "First below-threshold sample establishes a baseline",
+      "A baseline older than 24 hours suppresses a crossing",
+      "Cancellation stops all 19 queued fixture recipients",
+      "Concurrent delivery leases and stale-worker fencing",
+      "Three signed fixture deliveries without duplication",
+      "Revocation suppresses new enqueues",
+      "Failed outbox insertion preserves the prior checkpoint",
+      "Retention preserves pending and leased work"
+    ],
+    "remainingQualificationTables": 0,
+    "cleanupCheckedAt": "2026-09-30T16:07:10.099Z",
+    "productionCatalogPricesModified": false,
+    "syntheticEventsSentToChatGpt": false,
+    "sender": "Controlled fixture sender verifying Standard Webhooks signatures; not real ChatGPT notification proof",
+    "normalCommitAndPushHooksPassed": true
+  },
+  "deployedSourceParity": {
+    "cronRevision": "488fecb",
+    "files": [
+      {
+        "path": "apis/agent-commerce/events/_lib/producer.js",
+        "sameAsQualifiedSource": true,
+        "sha256": "991d9b5f52e82e4c51c67fbd3228bc90212d4e8d85f51d13a824ce89fee00270"
+      },
+      {
+        "path": "apis/agent-commerce/events/_lib/store.js",
+        "sameAsQualifiedSource": true,
+        "sha256": "767509ab96c89da525d33c5bc1c21b9747a83bafa7592f807c5b7fb5c5f16e8f"
+      },
+      {
+        "path": "apis/agent-commerce/events/_lib/worker.job.js",
+        "sameAsQualifiedSource": true,
+        "sha256": "d24f2f23c3c28c5704f443d237f18e07e200b64f17ca91fc1fedcb16483edd65"
+      },
+      {
+        "path": "services/agent-commerce/mcp-events.js",
+        "sameAsQualifiedSource": true,
+        "sha256": "48a472b9d13c811707cc2ce1b72e87e6e83fa818d530b2dcf7b534880d728e41"
+      },
+      {
+        "path": "services/agent-commerce/event-webhook.js",
+        "sameAsQualifiedSource": true,
+        "sha256": "41a674da700af1175a530cbbd0243d90f43329398f610035de6e434d9eb97c89"
+      }
+    ]
+  },
+  "realCatalogSampling": {
+    "productId": "bp_2157591869",
+    "thresholdCents": 17000,
+    "currency": "EUR",
+    "resumeVerifiedInChatGpt": true,
+    "manualSamplerCheck": {
+      "completedAt": "2026-09-30T15:53:58.854Z",
+      "checked": 1,
+      "unavailable": 0,
+      "enqueued": 0,
+      "delivered": 0
+    },
+    "scheduledSamples": [
+      {
+        "observedAt": "2026-09-30T15:55:26.781Z",
+        "cronSuccessAt": "2026-09-30T15:55:26.908Z",
+        "priceCents": 18588
+      },
+      {
+        "observedAt": "2026-09-30T16:01:05.069Z",
+        "cronSuccessAt": "2026-09-30T16:01:05.159Z",
+        "priceCents": 18588
+      }
+    ],
+    "scheduledExecutionIndependentOfManualCheck": true,
+    "scheduledGapObservedDuringCronRollout": true,
+    "gapCauseEstablished": false,
+    "instantNotificationClaim": false,
+    "pauseVerifiedInChatGpt": true,
+    "finalProductionCheckAt": "2026-09-30T16:07:10.099Z",
+    "activeSubscriptionsAfterPause": 0,
+    "stoppedSubscriptionsAfterPause": 2,
+    "productionDeliveryRows": 0,
+    "genuineCrossingObserved": false,
+    "chatGptMatchingNotificationDelivered": false
+  },
+  "nativeUiWithCspEnforced": {
+    "enforcementEnabled": true,
+    "actualHost": "ChatGPT qualification connector",
+    "freshSearchPassed": true,
+    "productImagesVisible": true,
+    "offersNavigationPassed": true,
+    "priceHistoryNavigationPassed": true,
+    "priceHistoryObservedRange": {
+      "from": "2026-04-04",
+      "to": "2026-09-30",
+      "minimumCents": 18490,
+      "maximumCents": 20308
+    }
+  },
+  "portalRecheck": {
+    "reviewStatus": "In review",
+    "publishedVersion": "1.0.1",
+    "publicAssociatedAppAuthentication": "No authentication",
+    "publicOAuthQualified": false,
+    "allFourToolsLive": true,
+    "latestMcpScanIssues": 0,
+    "reviewerMaterialsApplied": "unverified",
+    "supportRequestSent": true,
+    "supportReceipt": "openai-support-request-2026-09-30.json"
+  },
+  "privacy": {
+    "accountIdentifiersIncluded": false,
+    "credentialsIncluded": false,
+    "callbackUrlsIncluded": false,
+    "webhookSecretsIncluded": false,
+    "privateConversationUrlsIncluded": false
+  }
+}

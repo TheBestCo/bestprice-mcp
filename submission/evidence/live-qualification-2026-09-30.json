@@ -1173,5 +1173,17 @@
     "allProductsWithin500": true,
     "allProductsHaveNfcAnd5gEvidence": true,
     "predictsFuturePrice": false
+  },
+  "events_deep_qualification": {
+    "date": "2026-09-30",
+    "receipt": "events-deep-qualification-2026-09-30.json",
+    "unitAndProtocolChecksPassed": 72,
+    "isolatedMySqlQualificationPassed": true,
+    "scheduledRealCatalogObservationsVerified": true,
+    "nativeUiWithCspEnforced": true,
+    "activeSubscriptionsAfterPause": 0,
+    "genuineMatchingNotificationDelivered": false,
+    "publicOAuthQualified": false,
+    "regressionCoveragePullRequest": "https://github.com/TheBestCo/bp-backend-node/pull/1665"
   }
 }

@@ -12,7 +12,7 @@ We uploaded the corrected Codex compatibility ZIP with presentation fields at th
 
 The existing associated app shows Authentication: No authentication, with the message “Connection details for individual MCP servers are unavailable.” We need optional OAuth account linking limited to `events:subscribe`; public shopping remains anonymous. The MCP server picker also lists the package-declared BestPrice server at the same public URL, but this selection shows “Complete MCP setup” / “Connection unknown” without a Connect or Reconnect control.
 
-Which supported migration or setup step changes this existing public integration to optional OAuth while preserving its plugin ID and shopping access? A separate private qualification connector has already completed real account linking, native `price.dropped` subscription, signed callback verification and cancellation against the same server.
+Which supported migration or setup step changes this existing public integration to optional OAuth while preserving its plugin ID and shopping access? A separate private qualification connector has already completed real account linking, native `price.dropped` subscription, signed callback verification, Resume, periodic production catalog observations and Pause against the same server. Native search, offers and history also work with CSP enforcement enabled. No genuine threshold-crossing notification has yet been observed.
 
 MCP endpoint: `https://mcp.bestprice.gr/mcp`
 
