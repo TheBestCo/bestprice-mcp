@@ -1,0 +1,107 @@
+{
+  "oauth_discovery": {
+    "checked_at": "2026-09-30T08:04:34.602977+00:00",
+    "endpoint": "https://www.bestprice.gr/.well-known/oauth-authorization-server",
+    "status": 200,
+    "checks": {
+      "issuer": true,
+      "authorization_endpoint": true,
+      "token_endpoint": true,
+      "pkce_s256": true,
+      "cimd": true,
+      "iss_response": true,
+      "events_scope": true,
+      "public_client": true,
+      "no_store": true
+    },
+    "account_linking_verified": false,
+    "events_activated": false
+  },
+  "authorization_entry": {
+    "checked_at": "2026-09-30T08:17:42.001480+00:00",
+    "name": "valid authorization reaches sign-in",
+    "status": 303,
+    "location_path": "/login",
+    "cache_control": "no-store",
+    "body_bytes": 0,
+    "grant_created": false,
+    "account_linking_verified": false
+  },
+  "anonymous_native_transport": {
+    "checked_at": "2026-09-30T08:22:52.584202+00:00",
+    "revision": "697ce242319f9b42050c3714ac77efa2f82862e7",
+    "checks": [
+      {
+        "protocol": "2026-07-28",
+        "name": "BestPrice_identity",
+        "passed": true
+      },
+      {
+        "protocol": "2026-07-28",
+        "name": "exact_four_read_only_tools",
+        "passed": true
+      },
+      {
+        "protocol": "2026-07-28",
+        "name": "no_conversation_history_input",
+        "passed": true
+      },
+      {
+        "protocol": "2026-07-28",
+        "name": "native_workspace_and_compatibility_resources",
+        "passed": true
+      },
+      {
+        "protocol": "2026-07-28",
+        "name": "anonymous_native_home",
+        "passed": true
+      },
+      {
+        "protocol": "2026-07-28",
+        "name": "native_workspace_HTML",
+        "passed": true
+      },
+      {
+        "protocol": "2024-11-05",
+        "name": "BestPrice_identity",
+        "passed": true
+      },
+      {
+        "protocol": "2024-11-05",
+        "name": "exact_four_read_only_tools",
+        "passed": true
+      },
+      {
+        "protocol": "2024-11-05",
+        "name": "no_conversation_history_input",
+        "passed": true
+      },
+      {
+        "protocol": "2024-11-05",
+        "name": "native_workspace_and_compatibility_resources",
+        "passed": true
+      },
+      {
+        "protocol": "2024-11-05",
+        "name": "anonymous_native_home",
+        "passed": true
+      },
+      {
+        "protocol": "2024-11-05",
+        "name": "native_workspace_HTML",
+        "passed": true
+      }
+    ],
+    "passed": 12,
+    "scope": "Anonymous MCP transport and native-home qualification. Cross-host release canary, account linking and Events delivery remain separate gates."
+  },
+  "release_gates": {
+    "backend_build_28275": "SUCCESS",
+    "website_build_18155": "SUCCESS; production promotion pending",
+    "website_discovery_name": "BestPrice Shopping; corrected source 9ec574b5d0 pending promotion",
+    "real_chatgpt_account_linking": "not verified",
+    "events_delivery": "not verified; production gate disabled",
+    "plugin_1_2_0_submission": "not submitted",
+    "browser_handoff": "Close the extension panel blocking the OAuth qualification form, then resume."
+  }
+}

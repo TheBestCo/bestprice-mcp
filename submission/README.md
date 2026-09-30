@@ -13,9 +13,6 @@ anonymous and read-only. OAuth is limited to `events:subscribe`.
 ## Finish before submission
 
 - Verify the deployed native workspace with the production canary.
-- Deploy the CIMD transport correction `8ef33b78bdd` and verify that a valid
-  authorization request reaches sign-in or consent. Production issuer and
-  protected-resource discovery now return HTTP 200 with the expected metadata.
 - Promote website `9ec574b5d0` (Jenkins 18155 passed) to align the AI Catalog
   and ARD display names, then rerun the strict cross-host canary.
 - Qualify real ChatGPT account linking, Events subscription and callback.
@@ -37,12 +34,21 @@ returned HTTP 200 under browser-UA HEAD checks; full crawler qualification is
 not claimed. A local export bundle is saved as
 `/Users/gp/Downloads/bestprice-acp-css-2026-09-30.zip`. It is outside the plugin ZIP.
 
-Production now serves BestPrice/v5 metadata and the OAuth ingress correction
-through `/mcp/oauth-protected-resource`. Website `8e21467bb8` is serving the
-styled, body-correct OAuth responses; the isolated discovery checks passed on
-2026-09-30. The strict canary found one remaining AI Catalog/ARD display-name
-mismatch, corrected by `9ec574b5d0`. A valid live authorization request also
-exposed compressed CIMD metadata decoding failure; `8ef33b78bdd` pairs fetch
-with its installed Undici Agent. Its ten OAuth tests and the normal pre-push
-closure of 227 files passed. Deployment and real account linking remain gates;
-Events is still disabled and the replacement ZIP has not been submitted.
+Production serves BestPrice/v5 metadata and the OAuth ingress correction
+through `/mcp/oauth-protected-resource`. Website `8e21467bb8` serves the styled,
+body-correct OAuth responses. The issuer discovery checks pass, and a valid
+ChatGPT authorization request now returns HTTP 303 to first-party sign-in.
+The CIMD fetch/Agent pairing is corrected by `8ef33b78bdd`; controlled metadata
+failure descriptions are in `697ce242319`, deployed by successful Jenkins
+28275. The normal pre-push closure of 227 files passed. Twelve live checks on
+that exact revision pass across modern and legacy MCP, covering the anonymous
+home, four read-only tools, absence of conversation-history input, and native
+workspace compatibility resources.
+
+[Current qualification evidence](evidence/live-qualification-2026-09-30.json)
+keeps account linking and Events delivery explicitly unverified. The strict
+cross-host canary still awaits promotion of the AI Catalog/ARD display-name
+correction `9ec574b5d0`. Chrome's open extension panel blocks the real OAuth
+qualification form and browser-based deployment/submission workflow. Close
+that panel and resume. Events remains disabled; the replacement ZIP remains
+unsubmitted until the live account-linking and delivery gates pass.
