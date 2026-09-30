@@ -99,12 +99,13 @@
     "backend_build_28275": "SUCCESS",
     "website_build_18155": "SUCCESS; promotion verified through live cross-host parity",
     "website_discovery_name": "BestPrice; live AI Catalog and ARD parity passed",
-    "real_chatgpt_account_linking": "not verified",
+    "real_chatgpt_account_linking": "Real consent page reached; action-time approval pending; no OAuth grant issued yet",
     "events_delivery": "not verified; production gate disabled",
     "plugin_1_2_0_submission": "not submitted",
     "browser_handoff": "Automatic CIMD discovery succeeds. Optional anonymous connection and production native search, offers and history verified in ChatGPT. Real OAuth grant awaits locale compatibility deployment.",
     "oauth_edge_issue": "https://github.com/TheBestCo/Operations/issues/498; CLOSED after GET/HEAD/OPTIONS qualification of both metadata paths",
-    "website_oauth_locale_fix": "44c6b439f2; real ChatGPT ui_locales display hint removed before strict grant validation; seven HTTP regression checks pass; Jenkins 18162 pending"
+    "website_oauth_locale_fix": "44c6b439f2; seven HTTP regression checks pass; Jenkins 18162 SUCCESS; Deploy_BP 24451 SUCCESS; public locale/no-locale authorization controls both reach first-party sign-in",
+    "events_activation_preparation": "Three Nomad defaults prepared locally; 71 focused checks pass; local HCL validation passes (driver validation unavailable); not committed or deployed"
   },
   "public_shopping_release_canary": {
     "schemaVersion": "1.1",
@@ -121,12 +122,7 @@
     "summary": {
       "passed": 51,
       "failed": 0,
-      "publishedTools": [
-        "compare_offers",
-        "get_price_history",
-        "get_shopping_decision",
-        "search_products"
-      ],
+      "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
       "checkoutTools": 0,
       "merchantRedirectsFollowed": 0,
       "rateLimitRetries": 0,
@@ -539,12 +535,7 @@
     "summary": {
       "passed": 51,
       "failed": 0,
-      "publishedTools": [
-        "compare_offers",
-        "get_price_history",
-        "get_shopping_decision",
-        "search_products"
-      ],
+      "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
       "checkoutTools": 0,
       "merchantRedirectsFollowed": 0,
       "rateLimitRetries": 0,
@@ -822,5 +813,25 @@
       "180-day observed price history"
     ],
     "oauth_grant_created": false
+  },
+  "oauth_locale_production": {
+    "checkedAt": "2026-09-30T11:21:39.434803+00:00",
+    "grantCreated": false,
+    "checks": [
+      {
+        "localeHint": false,
+        "status": 303,
+        "locationPath": "/login",
+        "noStore": true,
+        "bytes": 0
+      },
+      {
+        "localeHint": true,
+        "status": 303,
+        "locationPath": "/login",
+        "noStore": true,
+        "bytes": 0
+      }
+    ]
   }
 }
