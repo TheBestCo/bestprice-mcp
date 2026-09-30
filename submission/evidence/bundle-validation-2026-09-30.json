@@ -1,20 +1,21 @@
 {
-  "checkedAt": "2026-09-30T13:01:16.394740+00:00",
+  "checkedAt": "2026-09-30T14:00:28.641465+00:00",
   "status": "passed",
-  "scope": "Branding and replacement ZIP structure. Does not claim ChatGPT Events subscription, delivery, OAuth reviewer account or submission.",
+  "scope": "Frozen review ZIP structure, official branding and genuine current native history capture. Does not claim live threshold-crossing notification, deployed sampler or final submission.",
   "archive": {
     "name": "bestprice-plugin-1.2.0-review-draft.zip",
-    "bytes": 108394,
-    "sha256": "c150a3e9d8098d571a3c83d88c15d0fe76ddc853144a174cb3c32e0a86ee2418",
+    "bytes": 168417,
+    "sha256": "986ed2d7839a239548c33c601549c52245f481ddeaded5a9ce754d3a025b30af",
     "files": [
       ".codex-plugin/plugin.json",
       ".mcp.json",
       "assets/bestprice-logo.png",
-      "assets/native-history.jpg",
+      "assets/native-history.png",
       "assets/native-home.jpg",
       "assets/native-offers.jpg",
       "skills/bestprice-shopping/SKILL.md"
     ],
+    "readyForReviewUpload": true,
     "readyForFinalSubmission": false
   },
   "checks": [
@@ -129,13 +130,13 @@
       }
     },
     {
-      "name": "./assets/native-history.jpg_submission_dimensions",
+      "name": "./assets/native-history.png_submission_dimensions",
       "passed": true,
       "details": {
-        "format": "jpeg",
+        "format": "png",
         "width": 706,
         "height": 830,
-        "bytes": 52374
+        "bytes": 107484
       }
     },
     {
@@ -149,7 +150,7 @@
         ".codex-plugin/plugin.json",
         ".mcp.json",
         "assets/bestprice-logo.png",
-        "assets/native-history.jpg",
+        "assets/native-history.png",
         "assets/native-home.jpg",
         "assets/native-offers.jpg",
         "skills/bestprice-shopping/SKILL.md"

@@ -100,14 +100,17 @@
     "website_build_18155": "SUCCESS; promotion verified through live cross-host parity",
     "website_discovery_name": "BestPrice; live AI Catalog and ARD parity passed",
     "real_chatgpt_account_linking": "VERIFIED: approved consent returned to ChatGPT; connected account displayed; one authorization code consumed and one access/refresh token pair issued",
-    "events_delivery": "not yet verified in ChatGPT; production protocol gate active",
+    "events_delivery": "Native subscription, signed callback challenge, first live catalog observation and actual-host cancellation verified. A genuine matching threshold-crossing notification remains unobserved.",
     "plugin_1_2_0_submission": "not submitted",
-    "browser_handoff": "Chrome browser-control connection became unavailable before the fresh normal-chat Events result could be verified. The first host request reported no available webhook events. Connector Refresh tools completed. No subscription or delivery is claimed.",
+    "browser_handoff": "Native Chrome controls recovered the workflow. Actual Events creation/cancellation and the final genuine 706x830 PNG history capture are verified.",
     "oauth_edge_issue": "https://github.com/TheBestCo/Operations/issues/498; CLOSED after GET/HEAD/OPTIONS qualification of both metadata paths",
     "website_oauth_locale_fix": "44c6b439f2; seven HTTP regression checks pass; Jenkins 18162 SUCCESS; Deploy_BP 24451 SUCCESS; public locale/no-locale authorization controls both reach first-party sign-in",
     "events_activation_preparation": "COMPLETED: 0aa5ae3114d9c3548839f6f92c2c6d2e2503747c pushed through normal hooks; affected closure 223 files passed; Jenkins main28315 SUCCESS; live gateway advertises Events",
     "website_oauth_origin_fix": "9900764b4e; four HTTP/secret tests and actual consent HTML/header browser controls pass; master18164 SUCCESS; Deploy_BP24452 SUCCESS; anonymous sign-in and rejected token privacy controls pass",
-    "website_oauth_callback_policy_fix": "5abf4d6335; three Node/PHP tests pass after rebase; normal hooks passed; master18166 SUCCESS; Deploy_BP24456 SUCCESS; live foreign-callback and rejected-token privacy controls pass"
+    "website_oauth_callback_policy_fix": "5abf4d6335; three Node/PHP tests pass after rebase; normal hooks passed; master18166 SUCCESS; Deploy_BP24456 SUCCESS; live foreign-callback and rejected-token privacy controls pass",
+    "reviewer_account": "The owner selected an account for private OAuth review. Its identifier and credentials are intentionally excluded from this public evidence.",
+    "native_history_screenshot": "Verified: genuine current renderer capture, 706x830 PNG, readable navigation.",
+    "events_actual_host": "Native subscription, signed verification, real price observation and actual-host cancellation verified; a genuine matching threshold-crossing notification remains unobserved."
   },
   "public_shopping_release_canary": {
     "schemaVersion": "1.1",
@@ -997,7 +1000,8 @@
     "subscriptionCount": 0,
     "deliveryCount": 0,
     "observationCount": 0,
-    "scope": "Live aggregate counts only. No identity, token, callback secret or private request is included."
+    "scope": "Live aggregate counts only. No identity, token, callback secret or private request is included.",
+    "historicalBeforeWorkMode": true
   },
   "native_navigation_polish": {
     "backendCommit": "a547b43c773eca8fd8e4c5f8974c98b808b945f9",
@@ -1007,5 +1011,93 @@
     "liveMetadataChecksPassed": 5,
     "evidence": "native-polish-production-2026-09-30.json",
     "actualChatgptRecapture": "pending browser-control restoration; the current history screenshot predates the label polish"
+  },
+  "events_native_monitor_qualification": {
+    "checkedAt": "2026-09-30T13:35:18Z",
+    "host": "ChatGPT Work",
+    "eventDefinitionVisible": true,
+    "subscriptionCreated": true,
+    "productionSubscriptionCount": 1,
+    "productionStatus": "active",
+    "arguments": {
+      "product_id": "bp_2157591869",
+      "below_item_price_cents": 17000,
+      "currency": "EUR"
+    },
+    "refreshBefore": "2026-10-01T13:21:30.262Z",
+    "nativeTask": {
+      "name": "Sony XM5 price drop",
+      "trigger": "BestPrice OAuth qualification",
+      "event": "price.dropped",
+      "status": "Monitoring"
+    },
+    "productionTelemetry": {
+      "subscribe_attempted": 1,
+      "subscribed": 1,
+      "timestampMs": 1790774491412
+    },
+    "callbackVerification": {
+      "result": "passed",
+      "evidence": "The live subscribe succeeded and persisted the active row after the production signed challenge verification gate. No callback URL or signing secret is retained here."
+    },
+    "catalogObservation": {
+      "product_id": "bp_2157591869",
+      "price_cents": 18588,
+      "checked_at_ms": 1790775227259
+    },
+    "deliveryCount": 0,
+    "deliveredNotificationVerified": false,
+    "cancellationVerified": true,
+    "thresholdCrossingObserved": false,
+    "regularChatAttempt": "The regular Chat flow reported the event-subscription action unavailable. A fresh Work flow successfully created the actual event monitor.",
+    "scope": "Sanitized public catalog arguments and aggregate production evidence. Account identifiers, credentials, callback secrets, private conversation URLs and screenshots are excluded.",
+    "subscriptionStatus": "stopped",
+    "activeSubscriptionCountAfterPause": 0,
+    "cancellationCheckedAt": "2026-09-30T13:58:28.426484+00:00",
+    "cancellationEvidence": "Actual ChatGPT Edit task Pause changed to Resume, task shows Paused; production aggregate confirms one stopped subscription and zero active subscriptions.",
+    "cancellationTelemetry": {
+      "outcome": "unsubscribed",
+      "count": 1,
+      "timestampMs": 1790776332950
+    }
+  },
+  "events_sampler_release": {
+    "revision": "57e38dbdd8e10eaabcc5fad1ea2f8da4b119b0a9",
+    "reason": "Live CronJobSkipped telemetry showed worker memory/heap admission refusals; the last success initially remained at 13:04 UTC, then a real sample completed at 13:33:50 UTC on the older image before this fix deployed.",
+    "change": "Run the bounded serial I/O sampler in the existing cron process; preserve per-product RPC deadlines, 20 products per pass, 110-second job deadline and pool utilization below 60% with zero pending acquires.",
+    "tests": {
+      "scheduler": {
+        "passed": 71,
+        "failed": 0
+      },
+      "eventsLifecycle": {
+        "passed": 19,
+        "failed": 0
+      },
+      "normalPreCommit": "passed",
+      "normalPrePushAffectedFiles": 494,
+      "prePushResult": "passed, including automatic isolated rerun of one failed shard test"
+    },
+    "pushed": true,
+    "deployedVerified": false,
+    "deploymentStatus": {
+      "checkedAt": "2026-09-30T13:58:28.426484+00:00",
+      "originalJenkinsRun": 28332,
+      "originalRunOutcome": "Superseded by newer main push, not a code/test failure",
+      "laterSuccessfulBuild": 28337,
+      "runtimeCronRevision": "40d06aa",
+      "reason": "Normal cron release batching retained 40d06aa; console reports next batch in 2307 seconds at 13:53:51Z.",
+      "deployedVerified": false
+    }
+  },
+  "native_review_history_capture": {
+    "checkedAt": "2026-09-30T13:58:28.426484+00:00",
+    "actualHost": "ChatGPT Work native workspace",
+    "image": "../openai/assets/native-history.png",
+    "width": 706,
+    "height": 830,
+    "format": "PNG",
+    "readableNavigationVerified": true,
+    "privacy": "Public catalog data only, no account identity or user chrome."
   }
 }

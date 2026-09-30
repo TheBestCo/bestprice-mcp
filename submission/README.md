@@ -2,7 +2,7 @@
 
 `openai/` is the replacement ZIP source for the existing BestPrice plugin. It preserves the assigned package identity and public MCP URL. Its version is independent of the distribution/WebMCP package version.
 
-The package uses **BestPrice** throughout, the official square BestPrice logo for light and dark themes, Greek listing text, and three genuine native-workspace screenshots matched to the three starter prompts. Screenshots are JPEG files, each 706 pixels wide and 400–860 pixels high. The review contains five positive and three negative cases. Additional cases are retained in the evidence directory outside the ZIP.
+The package uses **BestPrice** throughout, the official square BestPrice logo for light and dark themes, Greek listing text, and three genuine native-workspace screenshots matched to the three starter prompts. Screenshots are JPEG/PNG files, each 706 pixels wide and 400–860 pixels high. The review contains five positive and three negative cases. Additional cases are retained in the evidence directory outside the ZIP.
 
 Shopping remains anonymous and read-only. Optional account linking is limited to `events:subscribe`; it does not grant account-history, order, checkout or payment access. Shopping requests contain only the current task and relevant preferences, never conversation transcripts.
 
@@ -13,17 +13,18 @@ Shopping remains anonymous and read-only. Optional account linking is limited to
 - ChatGPT discovers the official CIMD client, exact callback, PKCE S256, issuer, resource and Events scope. Anonymous use succeeds through **Use without an account**.
 - The actual ChatGPT native workspace completes live product search, offer comparison, expansion of other stores and observed 180-day price history. The [reviewer demo](https://github.com/TheBestCo/bestprice-mcp/blob/main/submission/evidence/native-workspace-demo-2026-09-30.mp4) contains public catalog data, excludes the account avatar and demonstrates anonymous shopping.
 - Real BestPrice account linking is verified: approved consent returns to ChatGPT and displays a linked account. A live database aggregate confirms one consumed authorization code and one access/refresh token pair. Website callback fix `5abf4d6335` passed three regression checks, Jenkins 18166 and production promotion 24456. Earlier locale and form-origin fixes are preserved in the timestamped evidence; they are no longer open account-linking blockers.
-- OAuth-bound price-drop Events is activated in production. Commit `0aa5ae3114d9c3548839f6f92c2c6d2e2503747c` passed normal hooks, including the 223-file affected test closure, and Jenkins main28315. Live discovery advertises Events. Production telemetry records one authenticated Events-list request.
+- OAuth-bound price-drop Events is activated in production. Commit `0aa5ae3114d9c3548839f6f92c2c6d2e2503747c` passed normal hooks, including the 223-file affected test closure, and Jenkins main28315. Live discovery advertises Events. A fresh ChatGPT Work request created the actual `price.dropped` monitor. Production confirmed the exact product and €170 threshold; the signed callback challenge passed and the sampler recorded the actual €185.88 price. ChatGPT Pause then stopped the subscription: the task shows Paused and production confirms zero active subscriptions.
 
-- Native navigation no longer falls back to internal product IDs. Commit `a547b43c773` passed 85 existing native UI tests and the normal 213-file pre-push closure. Five live metadata checks confirm the four public tools, current/older workspace resources and Events discovery on the new production revision. Actual-host recapture remains pending.
+- Native navigation no longer falls back to internal product IDs. Commit `a547b43c773` passed 85 existing native UI tests and the normal 213-file pre-push closure. Five live metadata checks confirm the four public tools, current/older workspace resources and Events discovery on the new production revision. A fresh actual-host history view verifies readable navigation; the final 706×830 PNG review image captures the current renderer with readable controls.
 
-[Qualification evidence](evidence/live-qualification-2026-09-30.json) records current results and timestamped earlier checks. Anonymous canary results and authenticated Events discovery do not prove a ChatGPT subscription or delivered notification.
+[Qualification evidence](evidence/live-qualification-2026-09-30.json) records current results and timestamped earlier checks. The actual native monitor and production row prove subscription creation. No real matching price drop or delivered ChatGPT notification has yet been observed.
+
+The sampler fix `57e38dbdd8e` removes an unnecessary child-worker heap reservation after live admission refusals. Existing scheduler tests (71), Events lifecycle tests (19) and the normal 494-file affected pre-push closure passed. Deployed sampler verification is still pending: Jenkins 28332 was superseded; successful later builds retained the preceding cron image under the normal hourly batch policy. This is a deployment wait, not a reported test failure.
 
 ## Remaining release gates
 
-- Complete the actual ChatGPT Events subscription and cancellation checks and verify signed callback delivery. The first host attempt reported no available webhook events and created no alert. Connector tools were refreshed and a new chat request was sent; its result still needs verification. The latest live database aggregate contains zero subscriptions and zero deliveries.
-- Recapture the final history screenshot from the deployed navigation polish after browser control is restored.
-- Supply a dedicated BestPrice OAuth reviewer account. Enter credentials only in OpenAI's secure review form; they must remain outside the ZIP and public repository.
+- Verify deployed sampler reliability. Native subscription, the signed verification challenge, the first live price observation and actual-host cancellation are confirmed. A genuine threshold-crossing notification remains unobserved. No fabricated catalog change or notification has been used.
+- Complete the private OAuth reviewer login details for the account selected by the owner. Credentials must remain outside the ZIP and public repository.
 - Freeze and upload the replacement ZIP, inspect the new MCP scan and review details, then complete submission. Cancel the superseded 1.1.0 review only when the concrete replacement is ready. Version 1.2.0 is **not submitted**.
 - After approval and publication, verify the released host and the **BestPrice** listing name. The released 1.0.1 connection still reflects its older cached metadata.
 
