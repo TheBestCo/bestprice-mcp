@@ -15,11 +15,14 @@ Shopping remains anonymous and read-only. Optional account linking is limited to
 - Real BestPrice account linking is verified: approved consent returns to ChatGPT and displays a linked account. A live database aggregate confirms one consumed authorization code and one access/refresh token pair. Website callback fix `5abf4d6335` passed three regression checks, Jenkins 18166 and production promotion 24456. Earlier locale and form-origin fixes are preserved in the timestamped evidence; they are no longer open account-linking blockers.
 - OAuth-bound price-drop Events is activated in production. Commit `0aa5ae3114d9c3548839f6f92c2c6d2e2503747c` passed normal hooks, including the 223-file affected test closure, and Jenkins main28315. Live discovery advertises Events. Production telemetry records one authenticated Events-list request.
 
+- Native navigation no longer falls back to internal product IDs. Commit `a547b43c773` passed 85 existing native UI tests and the normal 213-file pre-push closure. Five live metadata checks confirm the four public tools, current/older workspace resources and Events discovery on the new production revision. Actual-host recapture remains pending.
+
 [Qualification evidence](evidence/live-qualification-2026-09-30.json) records current results and timestamped earlier checks. Anonymous canary results and authenticated Events discovery do not prove a ChatGPT subscription or delivered notification.
 
 ## Remaining release gates
 
 - Complete the actual ChatGPT Events subscription and cancellation checks and verify signed callback delivery. The first host attempt reported no available webhook events and created no alert. Connector tools were refreshed and a new chat request was sent; its result still needs verification. The latest live database aggregate contains zero subscriptions and zero deliveries.
+- Recapture the final history screenshot from the deployed navigation polish after browser control is restored.
 - Supply a dedicated BestPrice OAuth reviewer account. Enter credentials only in OpenAI's secure review form; they must remain outside the ZIP and public repository.
 - Freeze and upload the replacement ZIP, inspect the new MCP scan and review details, then complete submission. Cancel the superseded 1.1.0 review only when the concrete replacement is ready. Version 1.2.0 is **not submitted**.
 - After approval and publication, verify the released host and the **BestPrice** listing name. The released 1.0.1 connection still reflects its older cached metadata.

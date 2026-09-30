@@ -988,7 +988,7 @@
     "requestBudget": 90
   },
   "events_host_qualification": {
-    "checkedAt": "2026-09-30T12:59:54.021824+00:00",
+    "checkedAt": "2026-09-30T13:11:22.151200+00:00",
     "firstHostResponse": "This connector has no available webhook events",
     "toolsRefreshed": true,
     "freshNormalChatRequestSent": true,
@@ -998,5 +998,14 @@
     "deliveryCount": 0,
     "observationCount": 0,
     "scope": "Live aggregate counts only. No identity, token, callback secret or private request is included."
+  },
+  "native_navigation_polish": {
+    "backendCommit": "a547b43c773eca8fd8e4c5f8974c98b808b945f9",
+    "change": "Missing product titles use readable navigation labels; stable product IDs remain in tool arguments.",
+    "existingNativeTestsPassed": 85,
+    "normalHooks": "Precommit passed; prepush 213-file affected test closure passed.",
+    "liveMetadataChecksPassed": 5,
+    "evidence": "native-polish-production-2026-09-30.json",
+    "actualChatgptRecapture": "pending browser-control restoration; the current history screenshot predates the label polish"
   }
 }

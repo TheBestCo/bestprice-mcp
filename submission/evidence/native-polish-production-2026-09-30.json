@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-09-30T13:10:40.414Z",
+  "scope": "Anonymous live metadata and UI source after the navigation-label polish; actual ChatGPT capture and Events subscription remain separate gates.",
+  "checks": [
+    {
+      "name": "four_shopping_tools_preserved",
+      "status": 200,
+      "revision": "a547b43c773eca8fd8e4c5f8974c98b808b945f9",
+      "passed": true,
+      "tools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"]
+    },
+    {
+      "name": "ui://bestprice/shopping-workspace-v5.html",
+      "status": 200,
+      "revision": "a547b43c773eca8fd8e4c5f8974c98b808b945f9",
+      "passed": true
+    },
+    {
+      "name": "ui://bestprice/shopping-workspace-v1.html",
+      "status": 200,
+      "revision": "a547b43c773eca8fd8e4c5f8974c98b808b945f9",
+      "passed": true
+    },
+    {
+      "name": "ui://bestprice/shopping-workspace-v4.html",
+      "status": 200,
+      "revision": "a547b43c773eca8fd8e4c5f8974c98b808b945f9",
+      "passed": true
+    },
+    {
+      "name": "events_capability_preserved",
+      "status": 200,
+      "revision": "a547b43c773eca8fd8e4c5f8974c98b808b945f9",
+      "passed": true
+    }
+  ],
+  "status": "passed"
+}
