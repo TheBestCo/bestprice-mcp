@@ -23,10 +23,25 @@ Subscriptions expire after at most 24 hours unless the host refreshes them. OAut
 
 ## Current qualification
 
+On October 1, a separate **BestPrice delivery qualification** monitor was created
+in the actual ChatGPT host for `bp_2157591869` at **€185.87 EUR item price**. The
+earlier €170 monitor remains paused. The real scheduled worker sampled
+€185.88 at 04:39:02 UTC and again at 04:44:02 UTC. Read-only
+production checks confirm one active subscription, a usable `events:subscribe`
+grant, and its lease through October 2 at 04:38:28 UTC. No delivery records exist:
+the observed price has not crossed the threshold. No real catalog price or
+production observation was changed for this test.
+
+At 04:45:13 UTC, both cron rows in the five-minute heartbeat cohort run the fixed
+7b746ea revision; the latest worker success was 04:45:10 UTC. This proves active
+periodic sampling beyond an idle tick. It does not prove a genuine callback or
+ChatGPT processing. The [follow-up receipt](evidence/end-to-end-gates-2026-10-01.json)
+records these checks; subscription expiry still requires host renewal.
+
 On 30 September 2026, the private qualification connector passed real OAuth linking, subscription creation, signed callback verification, Resume, scheduled catalog sampling and Pause. Scheduled observations at 15:55:26 and 16:01:05 UTC independently confirmed the real €185.88 price after the manual sampler check. Pause left zero active subscriptions and no delivery records.
 
 All 72 Events, callback, protocol and OAuth tests passed. The expanded isolated MySQL qualification passed exact-threshold crossings, concurrent duplicates, re-arming, stale-baseline suppression, signed fixture delivery and cancellation of 19 queued recipients. Its disposable tables were removed. [PR #1665](https://github.com/TheBestCo/bp-backend-node/pull/1665) retains that additional regression coverage. Synthetic fixture delivery is separate from real ChatGPT notification delivery.
 
 Native search, offers and price history also passed in the actual ChatGPT workspace with CSP enforcement enabled.
 
-No genuine crossing notification has yet reached ChatGPT. The public plugin remains In review and its associated app still shows No authentication; public OAuth migration and final applied reviewer materials require resolution. The selected private reviewer account also needs usable login details supplied outside the ZIP. The separate CSS-backed ACP export has not been accepted by an external partner. These remain release gates. The owner-approved OpenAI Support request was sent and its human specialist escalation confirmed; see the [support receipt](evidence/openai-support-request-2026-09-30.json).
+No genuine crossing notification has yet reached ChatGPT. Plugin 1.2.0 remains In review; released 1.0.1 independently shows Authorization supported: None and has no account-linking control. Public OAuth migration and final applied reviewer materials require OpenAI resolution. Private reviewer credentials remain outside the ZIP and public repository. The separate CSS-backed ACP export has not been accepted by an external partner. These remain release gates. The owner-approved OpenAI Support request was sent and escalated; an October 1 inspection of the same support conversation found no human resolution. See the [support receipt](evidence/openai-support-request-2026-09-30.json).

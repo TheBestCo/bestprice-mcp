@@ -30,8 +30,8 @@
       "freshness": "published-v1.0.1-v1.2-review",
       "url": "https://developers.openai.com/plugins/deploy/submission",
       "verifiedAt": "2026-10-01",
-      "evidence": "The portal shows BestPrice 1.2.0 In review and published 1.0.1. The fresh October 1 scan leaves get_shopping_decision Earlier version live with one issue: This tool update needs further review before it can go live. The previous conversation-history warning is absent; the other three tools and instructions are Live.",
-      "note": "The public associated app still shows No authentication. Public OAuth migration, applied reviewer details, approval/publication and clean-account discovery remain unverified; the existing support escalation has no observed human resolution.",
+      "evidence": "Portal: BestPrice 1.2.0 In review; released 1.0.1. Fresh scan completed October 1 at 04:35:25 UTC: zero issues, all four tools and server instructions Live. get_shopping_decision independently shows 0 issues and Live definition; prior held update and conversation-history finding are absent. A fresh private-connector native card history follow-up returned the correct minimum and median without another visible tool call.",
+      "note": "The portal still shows No authentication. Installed released 1.0.1 independently shows Authorization supported/used: None and no account-linking control. Existing support conversation remains escalated without a human resolution. Public OAuth migration, applied reviewer materials, approval/publication and clean-account discovery remain open.",
       "nextAction": "Resolve the associated-app OAuth migration, verify applied reviewer materials, and qualify clean-account discovery and the released BestPrice listing after approval/publication.",
       "nextActionBy": "upstream"
     },

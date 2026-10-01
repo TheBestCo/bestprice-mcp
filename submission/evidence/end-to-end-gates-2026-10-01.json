@@ -1,0 +1,336 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-01T04:47:03.910Z",
+  "scope": "Fresh actual ChatGPT qualification, portal rescan, real scheduled sampling and separate ACP preparation; no package approval or partner ingestion claim",
+  "deployedSource": {
+    "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
+    "serverVersion": "1.8.4",
+    "workspaceVersion": "v8",
+    "priorReceipt": "paranoid-qualification-2026-10-01.json"
+  },
+  "portalScan": {
+    "completedAt": "2026-10-01T04:35:25Z",
+    "issues": 0,
+    "tools": [
+      {
+        "name": "get_shopping_decision",
+        "availability": "Live"
+      },
+      {
+        "name": "search_products",
+        "availability": "Live"
+      },
+      {
+        "name": "compare_offers",
+        "availability": "Live"
+      },
+      {
+        "name": "get_price_history",
+        "availability": "Live"
+      }
+    ],
+    "serverInstructions": "Live",
+    "shoppingDecisionDetail": {
+      "issues": 0,
+      "definition": "Live definition"
+    },
+    "priorHeldUpdateAbsent": true,
+    "priorConversationHistoryFindingAbsent": true,
+    "packageApprovalEstablished": false
+  },
+  "nativeHost": {
+    "host": "ChatGPT",
+    "connector": "Private OAuth qualification connector",
+    "freshOffers": {
+      "productId": "bp_2157591869",
+      "offers": 10,
+      "itemPriceCents": 18588,
+      "shippingUnknownPreserved": true
+    },
+    "uiOnlyHistory": {
+      "windowDays": 180,
+      "minimumItemPriceCents": 18490,
+      "medianItemPriceCents": 18868,
+      "currentItemPriceCents": 18588,
+      "attachedContextItems": 1,
+      "actualFollowupReturnedCorrectMinimumAndMedian": true,
+      "additionalVisibleToolCalls": 0,
+      "pausedMonitorUnchanged": true,
+      "bridgeAcknowledgementUsedAsSoleProof": false
+    },
+    "freshNewSearch": {
+      "requestedModel": "Sony WH-1000XM5",
+      "results": 7,
+      "modelProducts": 4,
+      "labelledAccessories": 3,
+      "completed": true
+    },
+    "limits": [
+      "Host internal resource selection was not independently inspected.",
+      "Private linking does not qualify the released public app."
+    ]
+  },
+  "realEvents": {
+    "monitorCreatedInNativeHost": true,
+    "name": "BestPrice delivery qualification",
+    "productId": "bp_2157591869",
+    "thresholdItemPriceCents": 18587,
+    "currency": "EUR",
+    "previous17000CentMonitorPaused": true,
+    "initialScheduledObservation": {
+      "itemPriceCents": 18588,
+      "observedAt": "2026-10-01T04:39:02.677Z"
+    },
+    "latestReadOnlyCheck": {
+      "observedAt": "2026-10-01T04:44:46.910Z",
+      "purpose": "Read-only real ChatGPT monitor qualification",
+      "syntheticPriceWrites": false,
+      "rowKeys": [
+        "status",
+        "product_id",
+        "expires_at_ms",
+        "event_name",
+        "threshold_cents",
+        "currency",
+        "revoked_at_ms",
+        "grant_expires_at_ms",
+        "scope",
+        "price_cents",
+        "observed_at_ms",
+        "checked_at_ms"
+      ],
+      "monitors": [
+        {
+          "status": "active",
+          "productId": "bp_2157591869",
+          "eventName": "price.dropped",
+          "thresholdCents": 18587,
+          "currency": "EUR",
+          "expiresAt": "2026-10-02T04:38:28.994Z",
+          "grantUsable": true,
+          "observation": {
+            "itemPriceCents": 18588,
+            "observedAt": "2026-10-01T04:44:02.357Z",
+            "checkedAt": "2026-10-01T04:44:02.357Z"
+          }
+        },
+        {
+          "status": "stopped",
+          "productId": "bp_2157591869",
+          "eventName": "price.dropped",
+          "thresholdCents": 17000,
+          "currency": "EUR",
+          "expiresAt": "2026-10-01T15:45:36.582Z",
+          "grantUsable": true,
+          "observation": {
+            "itemPriceCents": 18588,
+            "observedAt": "2026-10-01T04:44:02.357Z",
+            "checkedAt": "2026-10-01T04:44:02.357Z"
+          }
+        },
+        {
+          "status": "stopped",
+          "productId": "bp_2157591869",
+          "eventName": "price.dropped",
+          "thresholdCents": 17000,
+          "currency": "EUR",
+          "expiresAt": "2026-10-01T13:21:30.262Z",
+          "grantUsable": true,
+          "observation": {
+            "itemPriceCents": 18588,
+            "observedAt": "2026-10-01T04:44:02.357Z",
+            "checkedAt": "2026-10-01T04:44:02.357Z"
+          }
+        }
+      ],
+      "deliveries": [],
+      "status": "passed"
+    },
+    "schedulerCheck": {
+      "observedAt": "2026-10-01T04:45:13.777Z",
+      "subscriptions": [
+        {
+          "status": "stopped",
+          "count": 2
+        },
+        {
+          "status": "active",
+          "count": 1
+        }
+      ],
+      "activeGrantHealth": [
+        {
+          "active_unexpired": 1,
+          "missing_grant": "0",
+          "revoked_grant": "0",
+          "expired_grant": "0"
+        }
+      ],
+      "deliveries": [],
+      "scheduler": [
+        {
+          "job": "agent_commerce_events",
+          "last_success_at": "2026-10-01T04:45:10.894Z",
+          "updated_at": "2026-10-01T04:45:10.894Z",
+          "runtime_revision": "7b746ea",
+          "runtime_is_cron": 1,
+          "runtime_started_at": "2026-10-01T04:24:26.000Z"
+        }
+      ],
+      "cronFiveMinuteHeartbeatCohort": [
+        {
+          "is_cron": 1,
+          "revision": "7b746ea",
+          "instances": 2,
+          "newest_heartbeat": "2026-10-01T04:44:26.000Z"
+        }
+      ]
+    },
+    "realPriceCrossingObserved": false,
+    "actualCallbackAcknowledgementObserved": false,
+    "chatGPTProcessingObserved": false,
+    "syntheticProductionPriceWrites": false,
+    "limits": [
+      "Heartbeat cohort is not complete Nomad allocation inventory.",
+      "Lease expires unless renewed by the host.",
+      "A callback 2xx would establish acknowledgement, not ChatGPT processing."
+    ]
+  },
+  "publicOAuth": {
+    "portalAuthentication": "No authentication",
+    "installedReleasedVersion": "1.0.1",
+    "authorizationSupported": "None",
+    "authorizationUsed": "None",
+    "linkedAccount": false,
+    "accountMenuActions": ["Settings"],
+    "accountSettingsControls": ["Nickname", "Tool approval preferences"],
+    "accountLinkingControlPresent": false,
+    "packageDeclaredConnection": "Connection unknown",
+    "migrationConfirmed": false
+  },
+  "review": {
+    "submittedVersion": "1.2.0",
+    "state": "In review",
+    "releasedVersion": "1.0.1",
+    "appliedReviewerMaterialsVerified": false,
+    "supportConversationInspected": true,
+    "supportState": "Escalated to support specialist; no human resolution observed",
+    "narrowEmailSearch": "Submission receipt found; no newer approval or OAuth-resolution email found",
+    "withdrawalOrDuplicateSubmission": false,
+    "frozenBundleModified": false
+  },
+  "acp": {
+    "sourceObservedAt": "2026-10-01T03:30:24.133Z",
+    "sourceRows": 10000,
+    "sourceGzipSha256": "8cde6359d4436ceb4d00a538c64e96569f64d7f09c9f497aba80ed86db3c2b76",
+    "onboardingPilot": {
+      "preparedAt": "2026-10-01T04:40:02.890Z",
+      "rows": 100,
+      "categoryCounts": {
+        "Κινητά": 5,
+        "Laptops": 5,
+        "Τηλεοράσεις": 5,
+        "Οθόνες Υπολογιστών": 5,
+        "Ακουστικά Ψείρες": 5,
+        "Κλιματιστικά": 5,
+        "Air Fryers": 5,
+        "Ψυγεία": 5,
+        "Πλυντήρια Ρούχων": 5,
+        "Ηλεκτρικές Σκούπες": 5,
+        "Μηχανές Espresso": 5,
+        "Κονσόλες": 5,
+        "Smartwatches": 5,
+        "Πληκτρολόγια": 5,
+        "Κάρτες Γραφικών": 5,
+        "SSD": 5,
+        "Εκτυπωτές": 5,
+        "Ποντίκια": 5,
+        "Routers": 5,
+        "Tablets": 5
+      },
+      "sellers": 45,
+      "brands": 47,
+      "validation": {
+        "rows": 100,
+        "unique_item_ids": 100,
+        "unique_offer_ids": 100,
+        "unique_seller_names": 45,
+        "brands": 47,
+        "categories": {
+          "Κινητά": 5,
+          "Laptops": 5,
+          "Τηλεοράσεις": 5,
+          "Οθόνες Υπολογιστών": 5,
+          "Ακουστικά Ψείρες": 5,
+          "Κλιματιστικά": 5,
+          "Air Fryers": 5,
+          "Ψυγεία": 5,
+          "Πλυντήρια Ρούχων": 5,
+          "Ηλεκτρικές Σκούπες": 5,
+          "Μηχανές Espresso": 5,
+          "Κονσόλες": 5,
+          "Smartwatches": 5,
+          "Πληκτρολόγια": 5,
+          "Κάρτες Γραφικών": 5,
+          "SSD": 5,
+          "Εκτυπωτές": 5,
+          "Ποντίκια": 5,
+          "Routers": 5,
+          "Tablets": 5
+        },
+        "schema_errors": {},
+        "invalid_gtin": 0,
+        "missing_images": 0,
+        "unknown_availability": 0,
+        "duplicate_item_ids": 0,
+        "duplicate_offer_ids": 0,
+        "non_eur_prices": 0,
+        "non_positive_prices": 0,
+        "invalid_urls": 0,
+        "field_truncations": {},
+        "offers_per_product": {
+          "1": 100
+        },
+        "rejected": {},
+        "source": null,
+        "valid": true
+      },
+      "gzipSha256": "52725424e2eff6f0bee5b4fe9f077a2bcd01af85198d524565097239f1e267a8",
+      "jsonlSha256": "41ca0c80e93871576c0d1873f515e973d35c499cc756fcee8c04769434483aa9"
+    },
+    "application": "Company-only draft prepared; required business contact fields pending",
+    "applicationSubmitted": false,
+    "feedReadyDeclarationChecked": false,
+    "marketAndComparisonPlatformApproved": false,
+    "uploaded": false,
+    "partnerProcessingAccepted": false,
+    "limits": [
+      "Regenerate from fresh source before delivery.",
+      "Pilot is not a complete production snapshot.",
+      "Actual partner-crawler access remains unqualified.",
+      "Flat file-upload rows are not the nested Products API format."
+    ],
+    "officialSources": [
+      "https://chatgpt.com/merchants/",
+      "https://developers.openai.com/commerce/guides/get-started",
+      "https://developers.openai.com/commerce/specs/file-upload/products",
+      "https://developers.openai.com/commerce/specs/file-upload/overview"
+    ]
+  },
+  "privateScreenshots": {
+    "committed": false,
+    "files": [
+      "bestprice-mcp-scan-cleared-2026-10-01.png",
+      "bestprice-native-history-context-passed-2026-10-01.png",
+      "bestprice-real-event-monitor-active-2026-10-01.png"
+    ],
+    "reason": "Actual-host screenshots include private browser and account context; retained locally for owner inspection."
+  },
+  "remainingGates": [
+    "Genuine threshold-crossing notification processed by ChatGPT.",
+    "OpenAI public-app OAuth migration and applied reviewer materials.",
+    "OpenAI 1.2.0 approval, publication and clean-account discovery.",
+    "Business contact details and ACP application submission, explicit Greece/EUR comparison-platform approval, partner ingestion, refresh/removal, crawler and attribution acceptance.",
+    "LobeHub repository enrichment and stale inferred npm artifact correction."
+  ]
+}

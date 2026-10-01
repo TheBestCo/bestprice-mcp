@@ -4,6 +4,18 @@ Use the [current release matrix](current-release-matrix.md) for deployed revisio
 live gates and host qualification. The sections below retain the timestamped
 implementation and submission history.
 
+At the latest October 1 follow-up, a fresh portal scan reports **zero issues**, all
+four tools and server instructions **Live**. A fresh ChatGPT native card and its
+UI-only history follow-up passed: the model returned minimum €184.90 and median
+€188.68 from the attached card without another visible tool call. A separate real
+€185.87 monitor is active and the scheduled worker has repeatedly sampled
+€185.88; no genuine crossing or notification has occurred in the observed window.
+Public-app OAuth migration and package approval remain with OpenAI. The separate
+ACP application and validated 100-item sample are prepared, pending business
+contact details and explicit Greece/EUR comparison-platform approval. See the
+[follow-up receipt](evidence/end-to-end-gates-2026-10-01.json) and
+[ACP onboarding record](acp-onboarding.md).
+
 `openai/` is the replacement ZIP source for the existing BestPrice plugin. It preserves the assigned package identity and public MCP URL. Its version is independent of the distribution/WebMCP package version.
 
 The package uses **BestPrice** throughout, the official square BestPrice logo for light and dark themes, Greek listing text, and three genuine native-workspace screenshots matched to the three starter prompts. Screenshots are JPEG/PNG files, each 706 pixels wide and 400–860 pixels high. The review contains five positive and three negative cases. Additional cases are retained in the evidence directory outside the ZIP.
@@ -35,11 +47,11 @@ The deeper Events qualification passed all 72 lifecycle, callback, protocol and 
 - Complete optional OAuth configuration on the public associated app. The portal still displays **No authentication** and says individual connection details are unavailable. Its separate package-declared server shows **Connection unknown** without a Connect/Reconnect control. Real OAuth and native Events qualification currently belongs to the separate test connector. The [support request](openai-support-draft.md) was sent through official OpenAI Support after owner authorization and received under the existing OpenAI login. OpenAI confirmed escalation to a human support specialist at 16:29:45 UTC, with replies in the conversation and by email. Resolution remains pending; see the [support receipt](evidence/openai-support-request-2026-09-30.json).
 - Deployed sampler admission, native subscription, signed verification, Resume, periodic real-price observations and actual-host cancellation are confirmed. A genuine threshold-crossing notification remains unobserved. Synthetic observations were confined to disposable qualification tables; no real ChatGPT callback received a fabricated event.
 - Complete the private OAuth reviewer login details for the account selected by the owner. Credentials must remain outside the ZIP and public repository.
-- The superseded **1.1.0 review is canceled**. A fresh MCP scan at 15:27:32 UTC reports **no issues**. `get_shopping_decision` shows **zero issues**, **Live definition**, and **Live** availability after reload; all four shopping tools and server instructions are Live. The earlier tool hold is cleared. The package metadata finding flags the established BestPrice brand as a superlative; its review outcome remains pending.
+- The superseded **1.1.0 review is canceled**. The latest MCP scan completed October 1 at **04:35:25 UTC** with **no issues**. `get_shopping_decision` shows **zero issues**, **Live definition**, and **Live** availability; all four shopping tools and server instructions are Live. The later held update is cleared. The package metadata finding flags the established BestPrice brand as a superlative; its review outcome remains pending.
 - After approval and publication, verify the released host and the **BestPrice** listing name. The released 1.0.1 connection still reflects its older cached metadata.
 
 ## Separate ACP deliverable
 
-The CSS-backed offline export contains 10,000 items across 20 families, 406 sellers and 246 brands. Twenty representative PDPs and twenty images returned HTTP 200 under browser-UA HEAD checks; full crawler qualification is not claimed. The local bundle is `/Users/gp/Downloads/bestprice-acp-css-2026-09-30.zip`.
+The current CSS-backed offline sample contains 10,000 items across 20 families, 406 sellers and 247 brands. The October 1 sample excludes the older explicit colour conflicts and has zero export-profile validation errors. A balanced 100-item onboarding sample is also prepared. Browser-UA and explicitly synthetic crawler probes do not prove actual partner-crawler access; default-curl PDP HEAD probes returned 403. See the [onboarding record](acp-onboarding.md) for hashes, market constraints and the prepared application.
 
 The ACP export is outside the plugin ZIP. No feed has been uploaded or accepted by an external commerce partner.
