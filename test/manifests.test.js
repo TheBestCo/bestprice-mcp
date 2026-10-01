@@ -299,7 +299,7 @@ describe('endpoint manifests', () => {
       assert.equal(tool.annotations.readOnlyHint, true, tool.name);
       assert.equal(tool.annotations.destructiveHint, false, tool.name);
       assert.equal(tool.annotations.idempotentHint, true, tool.name);
-      assert.equal(tool.annotations.openWorldHint, false, tool.name);
+      assert.equal(tool.annotations.openWorldHint, true, tool.name);
       assert.equal(tool.inputSchema.type, 'object', tool.name);
     }
     assert.deepEqual(

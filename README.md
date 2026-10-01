@@ -25,7 +25,7 @@ https://mcp.bestprice.gr/mcp
 
 - Transport: Streamable HTTP over HTTPS; anonymous shopping, optional OAuth for Events
 - Official Registry ID: `gr.bestprice/mcp`
-- Server version: `1.8.3`
+- Server version: `1.8.4`
 - Public guide: <https://www.bestprice.gr/mcp>
 - Support: <https://www.bestprice.gr/contact>
 

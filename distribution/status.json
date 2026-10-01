@@ -1,9 +1,9 @@
 {
   "schemaVersion": 2,
-  "asOf": "2026-09-30",
+  "asOf": "2026-10-01",
   "canonical": {
     "registryId": "gr.bestprice/mcp",
-    "serverVersion": "1.8.3",
+    "serverVersion": "1.8.4",
     "packageVersion": "2.8.0",
     "endpoint": "https://mcp.bestprice.gr/mcp",
     "tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
@@ -15,12 +15,12 @@
       "id": "official-mcp-registry",
       "name": "Official MCP Registry",
       "state": "published",
-      "freshness": "current-host-1.8.3-published-retrieval-unverified",
+      "freshness": "host-1.8.4-registry-update-prepared",
       "url": "https://registry.modelcontextprotocol.io/v0/servers?search=gr.bestprice&version=latest",
-      "verifiedAt": "2026-09-30",
-      "evidence": "The official MCP publisher accepted gr.bestprice/mcp version 1.8.3 at 2026-09-30T18:12:47Z in successful workflow 36756874645, using source f681bc745a58c7ed9d6c447de1fdde9335053159 and the BestPrice title. Hosted discovery also advertises 1.8.3.",
-      "note": "Official publication is confirmed; a fresh receiving GET remains unverified because local and web requests timed out or were inaccessible.",
-      "nextAction": "Verify the receiving latest-version record when the Registry GET endpoint is reachable.",
+      "verifiedAt": "2026-10-01",
+      "evidence": "Hosted discovery advertises 1.8.4 at a8d5dddfa3a94c2299dc4d059c072c4fe88d6d4c. A fresh receiving GET confirmed active/latest 1.8.3 with the BestPrice title; the 1.8.4 manifest update is prepared.",
+      "note": "Receiving registry visibility for 1.8.3 is now verified. Publication and receiving visibility for 1.8.4 remain pending.",
+      "nextAction": "Publish the prepared 1.8.4 manifest through the existing workflow and verify the receiving record.",
       "nextActionBy": "us-here"
     },
     {
@@ -29,9 +29,9 @@
       "state": "published",
       "freshness": "published-v1.0.1-v1.2-review",
       "url": "https://developers.openai.com/plugins/deploy/submission",
-      "verifiedAt": "2026-09-30",
-      "evidence": "The portal shows published 1.0.1 and BestPrice 1.2.0 In review. The superseded 1.1.0 review was canceled. The uploaded draft's seven files match the source.",
-      "note": "Current-account directory search returned no matches while the installed connector stayed callable. Public OAuth migration and applied reviewer details remain unverified; OpenAI support has escalated the request.",
+      "verifiedAt": "2026-10-01",
+      "evidence": "The portal shows BestPrice 1.2.0 In review and published 1.0.1. The fresh October 1 scan leaves get_shopping_decision Earlier version live with one issue: This tool update needs further review before it can go live. The previous conversation-history warning is absent; the other three tools and instructions are Live.",
+      "note": "The public associated app still shows No authentication. Public OAuth migration, applied reviewer details, approval/publication and clean-account discovery remain unverified; the existing support escalation has no observed human resolution.",
       "nextAction": "Resolve the associated-app OAuth migration, verify applied reviewer materials, and qualify clean-account discovery and the released BestPrice listing after approval/publication.",
       "nextActionBy": "upstream"
     },
