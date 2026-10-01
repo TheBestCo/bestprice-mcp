@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
-import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, realpath, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -11,6 +11,7 @@ import {
   parseTestSummary,
   runtimePaths,
   validatePack,
+  verifyDependencyPath,
   verifyRuntimeFiles,
 } from '../scripts/verify-packed-release.mjs';
 
@@ -191,6 +192,22 @@ test('an omitted module cannot be satisfied by a checkout file or symlink', asyn
   await assert.rejects(verifyRuntimeFiles(source, installed, ['src/bridge.js']));
   await symlink(path.join(source, 'src/bridge.js'), path.join(installed, 'src/bridge.js'));
   await assert.rejects(verifyRuntimeFiles(source, installed, ['src/bridge.js']));
+});
+
+test('an aliased install root accepts its own dependency and refuses a symlink to checkout source', async t => {
+  const { source, installed, directory } = await fixture(t);
+  const dependency = path.join(installed, 'node_modules/sdk/stdio.js');
+  await mkdir(path.dirname(dependency), { recursive: true });
+  await writeFile(dependency, 'export const installed = true;\n');
+  const alias = path.join(directory, 'install-alias');
+  await symlink(installed, alias);
+  assert.equal(
+    await verifyDependencyPath(alias, path.join(alias, 'node_modules/sdk/stdio.js')),
+    await realpath(dependency),
+  );
+  const escapedDependency = path.join(alias, 'node_modules/checkout.js');
+  await symlink(path.join(source, 'src/bridge.js'), escapedDependency);
+  await assert.rejects(verifyDependencyPath(alias, escapedDependency), /outside isolated install/u);
 });
 
 test('runtime inventory refuses non-code and symlinked source entries', async t => {

@@ -104,6 +104,15 @@ export async function verifyRuntimeFiles(source, installed, paths) {
   return hashes;
 }
 
+export async function verifyDependencyPath(installed, dependency) {
+  // macOS temporary roots may use /var or /tmp aliases. Compare canonical paths
+  // on both sides, while still rejecting dependencies resolved outside this install.
+  const modules = await realpath(path.join(installed, 'node_modules'));
+  const resolved = await realpath(dependency);
+  assert.ok(isWithin(modules, resolved), 'SDK resolved outside isolated install');
+  return resolved;
+}
+
 export function parseTestSummary(log) {
   const counts = {};
   for (const key of ['tests', 'pass', 'fail', 'cancelled', 'skipped', 'todo']) {
@@ -204,8 +213,7 @@ export async function verifyPackedRelease(output) {
     );
     assert.ok(lockBytes.equals(await readFile(path.join(installed, 'package-lock.json'))), 'Lock changed');
     const require = createRequire(path.join(installed, 'stdio.mjs'));
-    const sdk = await realpath(require.resolve('@modelcontextprotocol/sdk/server/stdio.js'));
-    assert.ok(isWithin(path.join(installed, 'node_modules'), sdk), 'SDK resolved outside isolated install');
+    await verifyDependencyPath(installed, require.resolve('@modelcontextprotocol/sdk/server/stdio.js'));
     const versions = {};
     for (const [name, entry] of Object.entries(lock.packages)) {
       if (!name || entry.dev) continue;
