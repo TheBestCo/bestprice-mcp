@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAt": "2026-10-01T04:08:53.207Z",
+  "observedAt": "2026-10-01T04:22:06.104Z",
   "scope": "October 1 boundary hardening and independent release qualification; no aggregate production failure-rate claim",
   "source": {
     "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
@@ -115,7 +115,7 @@
     ]
   },
   "backendBuild": {
-    "observedAt": "2026-10-01T04:04:27.401Z",
+    "observedAt": "2026-10-01T04:12:14.296Z",
     "number": 28410,
     "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/28410/",
     "result": "SUCCESS",
@@ -220,7 +220,7 @@
     ]
   },
   "liveEvents": {
-    "observedAt": "2026-10-01T04:04:07.941Z",
+    "observedAt": "2026-10-01T04:19:58.356Z",
     "subscriptions": [
       {
         "status": "stopped",
@@ -231,8 +231,11 @@
     "scheduler": [
       {
         "job": "agent_commerce_events",
-        "last_success_at": "2026-10-01T04:03:11.492Z",
-        "updated_at": "2026-10-01T04:03:11.492Z"
+        "last_success_at": "2026-10-01T04:19:11.888Z",
+        "updated_at": "2026-10-01T04:19:11.888Z",
+        "runtime_revision": "fdd0b09",
+        "runtime_is_cron": 1,
+        "runtime_started_at": "2026-10-01T03:24:50.000Z"
       }
     ],
     "fleet": [
@@ -240,22 +243,32 @@
         "is_cron": 0,
         "revision": "7b746ea",
         "instances": 5,
-        "newest_heartbeat": "2026-10-01T04:03:55.000Z"
-      },
-      {
-        "is_cron": 0,
-        "revision": "a8d5ddd",
-        "instances": 4,
-        "newest_heartbeat": "2026-10-01T04:03:27.000Z"
+        "newest_heartbeat": "2026-10-01T04:18:55.000Z"
       },
       {
         "is_cron": 1,
         "revision": "fdd0b09",
         "instances": 2,
-        "newest_heartbeat": "2026-10-01T04:00:58.000Z"
+        "newest_heartbeat": "2026-10-01T04:19:50.000Z"
       }
     ],
-    "actualChatgptProcessedNotification": false
+    "actualChatgptProcessedNotification": false,
+    "runtimeQualification": "pending; latest successful Events tick still attributed to fdd0b09",
+    "desiredWorkerRelease": {
+      "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
+      "build": 28411,
+      "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/28411/",
+      "pipelineResult": "SUCCESS",
+      "deploymentWaitScope": "API readiness; cron and old allocations drain in the background"
+    },
+    "priorDiagnosticFailures": {
+      "attempts": 2,
+      "sqlCode": "ER_CANT_AGGREGATE_2COLLATIONS",
+      "scope": "Read-only qualification query, not an Events service failure",
+      "correction": "Compare runtime identifier formats using byte equality; schema unchanged",
+      "correctedQueryPassed": true
+    },
+    "controlPlaneReadFromMac": "Nomad read timed out; no mutations made"
   },
   "targetedProductionCases": {
     "observedAt": "2026-10-01T04:03:49.212Z",
@@ -363,6 +376,11 @@
   },
   "distribution": {
     "publicRevision": "a5e8c32f1ce5e9bc4a7ffca5c5bed723feb7418c",
+    "evidenceCi": {
+      "revision": "8b8d0baf6ddc73b46127568d1331b893786fe7cd",
+      "url": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/36813789100",
+      "status": "success"
+    },
     "ci": {
       "url": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/36813117504",
       "status": "success",
@@ -390,7 +408,7 @@
       "workflowUrl": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/36813117642"
     },
     "lobehub": {
-      "observedAt": "2026-10-01T04:02:56.874Z",
+      "observedAt": "2026-10-01T04:10:45.008Z",
       "httpStatus": 200,
       "version": "1.8.4",
       "name": "BestPrice",

@@ -367,7 +367,7 @@
       "url": "https://lobehub.com/mcp/thebestco-bestprice-mcp",
       "verifiedAt": "2026-10-01",
       "evidence": "The authenticated owner update moved the listing from 1.8.1 to 1.8.4. Public receiving API at 2026-10-01T04:02:56Z returned validated BestPrice 1.8.4, four public tools with readOnlyHint/idempotentHint/openWorldHint true and destructiveHint false, and three portable resources.",
-      "note": "The portable three-resource subset is valid. The inferred npm artifact still advertises bestprice-mcp 1.2.7 although this private repository package is 2.8.0; declared installations use the current Git checkout or hosted HTTP. Repeat publication of the same owned repository was accepted and repository enrichment is processing.",
+      "note": "The portable three-resource subset is valid. The inferred npm artifact still advertises bestprice-mcp 1.2.7 although this private repository package is 2.8.0; declared installations use the current Git checkout or hosted HTTP. Repeat publication of the same owned repository was accepted for enrichment; its completed processing status is unverified.",
       "nextAction": "Verify refreshed repository enrichment and correct the inferred npm artifact if it remains stale.",
       "nextActionBy": "upstream"
     },
