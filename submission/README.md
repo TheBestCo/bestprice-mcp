@@ -11,8 +11,9 @@ UI-only history follow-up passed: the model returned minimum €184.90 and media
 €185.87 monitor is active and the scheduled worker has repeatedly sampled
 €185.88; no genuine crossing or notification has occurred in the observed window.
 Public-app OAuth migration and package approval remain with OpenAI. The separate
-ACP application and validated 100-item sample are prepared, pending business
-contact details and explicit Greece/EUR comparison-platform approval. See the
+ACP application is submitted with OpenAI's receipt confirmed; the validated
+100-item sample remains local pending explicit Greece/EUR comparison-platform
+approval and partner provisioning. See the
 [follow-up receipt](evidence/end-to-end-gates-2026-10-01.json) and
 [ACP onboarding record](acp-onboarding.md).
 
@@ -54,4 +55,4 @@ The deeper Events qualification passed all 72 lifecycle, callback, protocol and 
 
 The current CSS-backed offline sample contains 10,000 items across 20 families, 406 sellers and 247 brands. The October 1 sample excludes the older explicit colour conflicts and has zero export-profile validation errors. A balanced 100-item onboarding sample is also prepared. Browser-UA and explicitly synthetic crawler probes do not prove actual partner-crawler access; default-curl PDP HEAD probes returned 403. See the [onboarding record](acp-onboarding.md) for hashes, market constraints and the prepared application.
 
-The ACP export is outside the plugin ZIP. No feed has been uploaded or accepted by an external commerce partner.
+The ACP export is outside the plugin ZIP. The [official application receipt](evidence/acp-application-submitted-2026-10-01.json) is confirmed. Partner selection, Greece/EUR comparison-platform approval and feed provisioning remain pending; no feed has been uploaded or accepted by an external commerce partner.

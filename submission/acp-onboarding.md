@@ -23,17 +23,23 @@ Regenerate from fresh source before actual delivery. Local schema validation
 does not establish approval of Greece/EUR, comparison-platform mapping, real
 crawler access or partner processing.
 
-## Application prepared, not submitted
+## Application submitted and receipt verified
 
-The [official merchant application](https://chatgpt.com/merchants/) is drafted for
+The [official merchant application](https://chatgpt.com/merchants/) was submitted on
+October 1, 2026, for
 BestPrice, Greece, https://www.bestprice.gr/, electronics/appliances and product-feed
 integration. The selected 0–1M size range describes the intended 10,000-item pilot;
 the notes explicitly distinguish it from a full production catalog. The
 “feed ready and meets OpenAI specifications” declaration is left unchecked.
-Required business contact fields are pending; private account details are not
-reused for this application.
+The owner supplied the required business contact fields and explicitly authorized
+submission. Contact details remain outside this public record.
 
-Prepared company notes:
+OpenAI replaced the form with **“Thanks for your application!”** and confirmed
+receipt. Its message describes review and potential later contact for selected
+applicants; it provides no selection decision or timeline. See the
+[sanitized application receipt](evidence/acp-application-submitted-2026-10-01.json).
+
+Submitted company notes:
 
 > BestPrice is a Greece-based comparison shopping platform, not the selling
 > merchant. We seek discovery-only integration for Greece/EUR with checkout on
@@ -66,5 +72,6 @@ shaped Products API. Do not upload internal custody files, credentials or the
 plugin ZIP.
 
 Acceptance requires partner processing evidence, actual crawler access and
-durable merchant/canonical-item attribution. No application receipt, transport
-credentials, upload, ingestion approval or product visibility has been observed.
+durable merchant/canonical-item attribution. Application receipt is confirmed;
+selection, market approval, transport credentials, feed upload, ingestion approval
+and product visibility remain pending.
