@@ -1,0 +1,110 @@
+{
+  "recordedAt": "2026-10-01T18:23:59Z",
+  "scope": "Read-only OpenAI submission identity and duplicate-review audit. This is a visible portal, receipt and local archive audit, not an inspection of OpenAI's internal review queue.",
+  "canonicalIdentity": {
+    "pluginId": "plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981",
+    "associatedAppId": "asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981",
+    "manifestName": "app-6a8d8ed6e2bc8191b3caaf7214f3c981",
+    "submittedPackageIdFromSeptember30Receipt": "appsub_6abd16a16bb4819193e6e6bdc6337af1",
+    "displayName": "BestPrice",
+    "endpoint": "https://mcp.bestprice.gr/mcp"
+  },
+  "portal": {
+    "organization": "bestpricegr",
+    "project": "Default project",
+    "visiblePluginRows": 1,
+    "selectedVersion": "1.2.0 · In review",
+    "versionPickerOptions": ["1.2.0 · In review", "1.0.1 · Published"],
+    "visibleActiveReviewCount": 1,
+    "publishedVersion": "1.0.1",
+    "cancelReviewControlPresent": true,
+    "overviewName": "BestPrice Shopping",
+    "overviewReviewBadge": "Version 1.1.0 · Not submitted",
+    "overviewDetailDiscrepancy": true,
+    "discrepancyCauseVerified": false,
+    "privateScreenshotRetained": true
+  },
+  "submissionEmailAudit": {
+    "matchingVersion1_2_0Receipts": 1,
+    "version1_2_0ReceiptAt": "2026-09-30T14:33:43Z",
+    "historicalVersion1_1_0Receipts": 2,
+    "historicalVersion1_1_0ReceiptTimes": ["2026-09-29T03:17:05Z", "2026-09-29T08:41:20Z"],
+    "supersededReviewCancellationSource": "live-qualification-2026-09-30.json: plugin_1_2_0_submission.superseded1_1_0Review",
+    "supersededVersionPresentInCurrentPicker": false,
+    "interpretation": "Historical submission receipts exist. The current visible portal has one active review, for 1.2.0. Receipt counts do not establish hidden queue state."
+  },
+  "archiveAudit": {
+    "archives": [
+      {
+        "name": "bestprice-plugin-1.2.0-review-draft.zip",
+        "sha256": "9da1ede7334aa008489c381802a5dd2f210f34117fc30c8a91aa885058a5a306"
+      },
+      {
+        "name": "app-6a8d8ed6e2bc8191b3caaf7214f3c981-1.2.0.zip",
+        "sha256": "ab45d38503c5ff4922aae4b1cdbfea0ab76c87c419faee2dd8df3e5d29d83e22"
+      }
+    ],
+    "bothArchivesPreserveAssignedIdentity": true,
+    "version": "1.2.0",
+    "mcpServersPerArchive": 1,
+    "mcpServerName": "BestPrice",
+    "uniqueFilesPerArchive": 7,
+    "duplicateEntriesPerArchive": 0,
+    "crcPassed": true,
+    "symlinksPresent": false,
+    "allSevenFilesMatchEachOtherAndCurrentSource": true,
+    "files": [
+      ".codex-plugin/plugin.json",
+      ".mcp.json",
+      "assets/bestprice-logo.png",
+      "assets/native-history.png",
+      "assets/native-home.jpg",
+      "assets/native-offers.jpg",
+      "skills/bestprice-shopping/SKILL.md"
+    ],
+    "interpretation": "Different ZIP container hashes, identical source contents. Two local archive copies are not evidence of two submissions."
+  },
+  "mcpPortalRecords": [
+    {
+      "identity": "server:BestPrice",
+      "type": "Package-declared server",
+      "url": "https://mcp.bestprice.gr/mcp",
+      "connection": "Connection unknown",
+      "setup": "Complete MCP setup"
+    },
+    {
+      "identity": "app:asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981",
+      "type": "Associated app",
+      "url": "https://mcp.bestprice.gr/mcp",
+      "authentication": "No authentication",
+      "domain": "Domain verified"
+    }
+  ],
+  "latestObservedMcpScan": {
+    "reviewedAt": "2026-10-01T18:08:16Z",
+    "issues": 0,
+    "serverInstructions": "Live",
+    "allFourShoppingTools": "Live",
+    "shoppingDecisionDetail": { "issues": 0, "definition": "Live definition" },
+    "earlierHeldUpdateClearedByRescanWithoutCodeChange": true
+  },
+  "mutationsDuringThisIdentityAudit": {
+    "packageUploads": 0,
+    "newSubmissions": 0,
+    "reviewCancellations": 0,
+    "connectionRemovals": 0,
+    "publicationChanges": 0,
+    "newSupportRequests": 0
+  },
+  "existingSupportEscalation": {
+    "receipt": "openai-support-request-2026-09-30.json",
+    "humanEscalationConfirmed": true,
+    "resolutionVerified": false
+  },
+  "remainingGates": [
+    "OpenAI confirmation of public-app OAuth migration and applied reviewer materials",
+    "Approval, publication and fresh released-host verification of 1.2.0",
+    "A genuine threshold-crossing Events notification processed by ChatGPT"
+  ],
+  "operatingRule": "Preserve the submitted 1.2.0 identity and both existing portal records. Check current status before any future upload, cancellation or connection change; do not use the conflicting overview badge as a reason to resubmit."
+}

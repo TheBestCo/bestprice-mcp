@@ -4,6 +4,14 @@ Use the [current release matrix](current-release-matrix.md) for deployed revisio
 live gates and host qualification. The sections below retain the timestamped
 implementation and submission history.
 
+The latest [submission identity audit](evidence/submission-identity-audit-2026-10-01.json)
+confirms one visible plugin and one active review: **1.2.0 In review**, alongside
+**1.0.1 Published**. Both ZIPs preserve the assigned identity and define one MCP
+server. The two portal MCP entries are the package-server and associated-app
+records, with the same endpoint. The overview's **1.1.0 Not submitted** badge
+disagrees with the detail page; do not resubmit or remove records to reconcile
+that display. No submission or connection mutation was made during this audit.
+
 At the latest October 1 follow-up, a fresh portal scan reports **zero issues**, all
 four tools and server instructions **Live**. A fresh ChatGPT native card and its
 UI-only history follow-up passed: the model returned minimum €184.90 and median
