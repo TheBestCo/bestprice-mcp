@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "observedAt": "2026-10-01T04:22:06.104Z",
+  "observedAt": "2026-10-01T04:26:06.638Z",
   "scope": "October 1 boundary hardening and independent release qualification; no aggregate production failure-rate claim",
   "source": {
     "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
@@ -220,7 +220,7 @@
     ]
   },
   "liveEvents": {
-    "observedAt": "2026-10-01T04:19:58.356Z",
+    "observedAt": "2026-10-01T04:24:25.141Z",
     "subscriptions": [
       {
         "status": "stopped",
@@ -231,29 +231,42 @@
     "scheduler": [
       {
         "job": "agent_commerce_events",
-        "last_success_at": "2026-10-01T04:19:11.888Z",
-        "updated_at": "2026-10-01T04:19:11.888Z",
-        "runtime_revision": "fdd0b09",
+        "last_success_at": "2026-10-01T04:23:22.266Z",
+        "updated_at": "2026-10-01T04:23:22.266Z",
+        "runtime_revision": "7b746ea",
         "runtime_is_cron": 1,
-        "runtime_started_at": "2026-10-01T03:24:50.000Z"
+        "runtime_started_at": "2026-10-01T04:20:18.000Z"
       }
     ],
     "fleet": [
       {
         "is_cron": 0,
-        "revision": "7b746ea",
+        "revision": "5c227c3",
+        "instances": 4,
+        "newest_heartbeat": "2026-10-01T04:20:24.000Z"
+      },
+      {
+        "is_cron": 0,
+        "revision": "87a65a8",
         "instances": 5,
-        "newest_heartbeat": "2026-10-01T04:18:55.000Z"
+        "newest_heartbeat": "2026-10-01T04:22:43.000Z"
+      },
+      {
+        "is_cron": 1,
+        "revision": "7b746ea",
+        "instances": 1,
+        "newest_heartbeat": "2026-10-01T04:20:18.000Z"
       },
       {
         "is_cron": 1,
         "revision": "fdd0b09",
         "instances": 2,
-        "newest_heartbeat": "2026-10-01T04:19:50.000Z"
+        "newest_heartbeat": "2026-10-01T04:20:58.000Z"
       }
     ],
+    "fleetDenominator": "Heartbeat rows in the preceding five minutes; is_cron=0 means non-cron and does not distinguish API from push processes",
     "actualChatgptProcessedNotification": false,
-    "runtimeQualification": "pending; latest successful Events tick still attributed to fdd0b09",
+    "runtimeQualification": "Latest successful Events tick independently attributed to the fixed 7b746ea worker; older cron rows remain in the heartbeat window, so complete rollout is unverified",
     "desiredWorkerRelease": {
       "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
       "build": 28411,
@@ -269,6 +282,12 @@
       "correctedQueryPassed": true
     },
     "controlPlaneReadFromMac": "Nomad read timed out; no mutations made"
+  },
+  "laterDefaultBranchChanges": {
+    "headObserved": "55efeb280e3",
+    "changedFiles": 23,
+    "ownedMcpOAuthEventsBrainPathsChanged": false,
+    "scope": "Classification and internal cost tooling advanced after the gateway qualification; subsequent full deployment state is separate"
   },
   "targetedProductionCases": {
     "observedAt": "2026-10-01T04:03:49.212Z",
@@ -527,7 +546,7 @@
   },
   "remainingGates": [
     "Fresh deployed native UI and model follow-up",
-    "Live Events worker revision",
+    "Cron rollout completion across current instances",
     "Genuine price crossing and ChatGPT-processed notification",
     "Public-app OAuth migration and applied reviewer materials",
     "OpenAI review/publication and clean-account discovery",
