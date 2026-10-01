@@ -15,13 +15,13 @@
       "id": "official-mcp-registry",
       "name": "Official MCP Registry",
       "state": "published",
-      "freshness": "host-1.8.4-registry-update-prepared",
+      "freshness": "current",
       "url": "https://registry.modelcontextprotocol.io/v0/servers?search=gr.bestprice&version=latest",
       "verifiedAt": "2026-10-01",
-      "evidence": "Hosted discovery advertises 1.8.4 at a8d5dddfa3a94c2299dc4d059c072c4fe88d6d4c. A fresh receiving GET confirmed active/latest 1.8.3 with the BestPrice title; the 1.8.4 manifest update is prepared.",
-      "note": "Receiving registry visibility for 1.8.3 is now verified. Publication and receiving visibility for 1.8.4 remain pending.",
-      "nextAction": "Publish the prepared 1.8.4 manifest through the existing workflow and verify the receiving record.",
-      "nextActionBy": "us-here"
+      "evidence": "Hosted discovery advertises 1.8.4 at 7b746eaf57cbdb78c88ba845fc8ff70b56d7e374. Publication workflow 36813117642 succeeded. Receiving GET at 2026-10-01T04:02:12Z returned HTTP 200 with active/latest 1.8.4 and the BestPrice title; publication timestamp 04:01:05Z.",
+      "note": "Publication and receiving visibility for 1.8.4 are verified independently of OpenAI plugin review.",
+      "nextAction": "None.",
+      "nextActionBy": "none"
     },
     {
       "id": "openai",
@@ -363,13 +363,13 @@
       "id": "lobehub",
       "name": "LobeHub MCP Marketplace",
       "state": "published",
-      "freshness": "current",
+      "freshness": "listing-current-inferred-artifacts-stale",
       "url": "https://lobehub.com/mcp/thebestco-bestprice-mcp",
-      "verifiedAt": "2026-09-25",
-      "evidence": "Claimed by the owner and updated from lhm.plugin.json on 2026-09-25: the market API returns version 1.8.1, four tools, three resources, category lifestyle, the current README, and deployments http https://mcp.bestprice.gr/mcp plus stdio node stdio.mjs.",
-      "note": "Repository enrichment also infers an npm artifact bestprice-mcp 1.2.7, a name that is not published on npm. The lobehub.com page cache lagged the market API at verification time.",
-      "nextAction": "Run `lhm plugin update` from this directory whenever lhm.plugin.json changes.",
-      "nextActionBy": "none"
+      "verifiedAt": "2026-10-01",
+      "evidence": "The authenticated owner update moved the listing from 1.8.1 to 1.8.4. Public receiving API at 2026-10-01T04:02:56Z returned validated BestPrice 1.8.4, four public tools with readOnlyHint/idempotentHint/openWorldHint true and destructiveHint false, and three portable resources.",
+      "note": "The portable three-resource subset is valid. The inferred npm artifact still advertises bestprice-mcp 1.2.7 although this private repository package is 2.8.0; declared installations use the current Git checkout or hosted HTTP. Repeat publication of the same owned repository was accepted and repository enrichment is processing.",
+      "nextAction": "Verify refreshed repository enrichment and correct the inferred npm artifact if it remains stale.",
+      "nextActionBy": "upstream"
     },
     {
       "id": "gemini-gallery",

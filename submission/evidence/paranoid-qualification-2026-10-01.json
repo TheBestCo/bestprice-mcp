@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-01T04:08:53.207Z",
+  "scope": "October 1 boundary hardening and independent release qualification; no aggregate production failure-rate claim",
+  "source": {
+    "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
+    "serverVersion": "1.8.4",
+    "workspaceVersion": "v8",
+    "combinedTests": {
+      "files": 13,
+      "tests": 293,
+      "passed": 293,
+      "failed": 0,
+      "skipped": 0
+    },
+    "normalPrePush": {
+      "affectedTestFilesQualified": 217,
+      "passed": true,
+      "hooksBypassed": false,
+      "priorBoundaryFixFiles": 284,
+      "countsOverlap": true
+    },
+    "resourceParityRegressions": {
+      "tests": 70,
+      "passed": 70,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "Adjacent UI, MCP and server boundaries; overlaps the combined run"
+    }
+  },
+  "productionCanary": {
+    "observedAt": "2026-10-01T04:04:21.065Z",
+    "deployment": {
+      "scope": "mcp_gateway",
+      "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
+      "responses": 50,
+      "stable": true
+    },
+    "status": "passed",
+    "summary": {
+      "passed": 55,
+      "failed": 0,
+      "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
+      "checkoutTools": 0,
+      "merchantRedirectsFollowed": 0,
+      "rateLimitRetries": 0,
+      "requestsSent": 67,
+      "requestBudget": 90
+    },
+    "publicTlsCertificateVerification": true
+  },
+  "priorNegativeCanaryAttempts": [
+    {
+      "revision": "a8d5dddfa3a94c2299dc4d059c072c4fe88d6d4c",
+      "passed": false,
+      "failure": "SDK inventory differed from the expected surface; expectation omitted retained v7",
+      "requestCountRecorded": false
+    },
+    {
+      "revision": "a8d5dddfa3a94c2299dc4d059c072c4fe88d6d4c",
+      "passed": false,
+      "failure": "Corrected expectation exposed legacy server-card inventory missing retained v7",
+      "requestCountRecorded": false
+    }
+  ],
+  "publicEndpoints": {
+    "observedAt": "2026-10-01T04:03:49.212Z",
+    "requestLimit": 8,
+    "retries": 0,
+    "endpoints": [
+      {
+        "url": "https://mcp.bestprice.gr/healthz",
+        "status": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
+        "version": "1.8.4"
+      },
+      {
+        "url": "https://mcp.bestprice.gr/mcp/server-card",
+        "status": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
+        "version": "1.8.4"
+      },
+      {
+        "url": "https://mcp.bestprice.gr/mcp/oauth-protected-resource",
+        "status": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      },
+      {
+        "url": "https://mcp.bestprice.gr/.well-known/oauth-protected-resource",
+        "status": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      },
+      {
+        "url": "https://www.bestprice.gr/.well-known/oauth-authorization-server",
+        "status": 200,
+        "revision": null
+      },
+      {
+        "url": "https://www.bestprice.gr/.well-known/mcp.json",
+        "status": 200,
+        "revision": null,
+        "version": "1.8.4"
+      },
+      {
+        "url": "https://www.bestprice.gr/webmcp.json",
+        "status": 200,
+        "revision": null,
+        "version": "2.8"
+      },
+      {
+        "url": "https://www.bestprice.gr/mcp",
+        "status": 200,
+        "revision": null
+      }
+    ]
+  },
+  "backendBuild": {
+    "observedAt": "2026-10-01T04:04:27.401Z",
+    "number": 28410,
+    "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/28410/",
+    "result": "SUCCESS",
+    "building": false,
+    "stages": [
+      {
+        "name": "Cron batch",
+        "status": "NOT_EXECUTED"
+      },
+      {
+        "name": "Queue",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Pipeline",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Verification",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Admission",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Prepare",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "clone",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Plan tests",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Verify and build",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Cloud tests",
+        "status": "NOT_EXECUTED"
+      },
+      {
+        "name": "Test",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Test (unsafe half)",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Images",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Dockerize",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Registry Push",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "CI benchmarks",
+        "status": "NOT_EXECUTED"
+      },
+      {
+        "name": "Release ready",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Release",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Release admission",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Deploy Agent Commerce",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Deploy",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Publish API schema",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "Runtime proof",
+        "status": "NOT_EXECUTED"
+      },
+      {
+        "name": "notify",
+        "status": "SUCCESS"
+      }
+    ]
+  },
+  "liveEvents": {
+    "observedAt": "2026-10-01T04:04:07.941Z",
+    "subscriptions": [
+      {
+        "status": "stopped",
+        "count": 2
+      }
+    ],
+    "deliveries": [],
+    "scheduler": [
+      {
+        "job": "agent_commerce_events",
+        "last_success_at": "2026-10-01T04:03:11.492Z",
+        "updated_at": "2026-10-01T04:03:11.492Z"
+      }
+    ],
+    "fleet": [
+      {
+        "is_cron": 0,
+        "revision": "7b746ea",
+        "instances": 5,
+        "newest_heartbeat": "2026-10-01T04:03:55.000Z"
+      },
+      {
+        "is_cron": 0,
+        "revision": "a8d5ddd",
+        "instances": 4,
+        "newest_heartbeat": "2026-10-01T04:03:27.000Z"
+      },
+      {
+        "is_cron": 1,
+        "revision": "fdd0b09",
+        "instances": 2,
+        "newest_heartbeat": "2026-10-01T04:00:58.000Z"
+      }
+    ],
+    "actualChatgptProcessedNotification": false
+  },
+  "targetedProductionCases": {
+    "observedAt": "2026-10-01T04:03:49.212Z",
+    "expectedRevision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374",
+    "status": "passed",
+    "requestsSent": 7,
+    "retries": 0,
+    "merchantRedirectsFollowed": 0,
+    "cases": [
+      {
+        "caseName": "collective_monitor_basket",
+        "passed": true,
+        "httpStatus": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      },
+      {
+        "caseName": "unsupported_chair_basket",
+        "passed": true,
+        "httpStatus": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      },
+      {
+        "caseName": "exact_model_unverified_runtime_recovery",
+        "passed": true,
+        "httpStatus": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      },
+      {
+        "caseName": "exact_search_limit_1",
+        "passed": true,
+        "httpStatus": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      },
+      {
+        "caseName": "exact_search_limit_2",
+        "passed": true,
+        "httpStatus": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      },
+      {
+        "caseName": "offer_facts_and_delivery_scope",
+        "passed": true,
+        "httpStatus": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      },
+      {
+        "caseName": "history_facts",
+        "passed": true,
+        "httpStatus": 200,
+        "revision": "7b746eaf57cbdb78c88ba845fc8ff70b56d7e374"
+      }
+    ]
+  },
+  "installedPackage": {
+    "purpose": "installed-package-diagnostic",
+    "qualification": false,
+    "ok": true,
+    "revision": "bba514295eb7ef8f07a6db237c24b8543bfc3ba2",
+    "nodeVersion": "v26.8.2",
+    "lockSha256": "980c5321db14dc98726b368068d7433183ce06feaa20e22decadfee616bbda54",
+    "package": {
+      "name": "bestprice-mcp",
+      "version": "2.8.0",
+      "sha256": "2342cc543b0a5e59669781c6e1543905f59f0a1ca3e39090712581c206a78413",
+      "integrity": "sha512-xOUNs9JEl/I7UqJ8Wq2GGMUO+t7S7I43iWEwkp4BUELqYY1GAtN4uOpn+S2ecrwh+amzlj2RUt7l3HkZ3qFHDw=="
+    },
+    "runtimeSha256": {
+      "package.json": "8fdd44568a408b4855d7b1f7fd09ecc2dcc0a2480d9802445c955d4e0373c8ae",
+      "src/bridge.js": "5771cd6dd019d1dea3f7802889acd6404f6e7bf5b3ff8c2368467d7e59825973",
+      "src/selection-score.js": "a450911efc91ec371e5bdbad0c9826427edce5b131e42809091f7153572ff5ab",
+      "src/utf8-input.js": "467f63f07cac731ae5d67f40cfbccd178fb0dad77244d62ed94ce93c2f15cdce",
+      "src/utf8-response.js": "c66fff06f28b9a08162190e24e21c9473df132f6e1cecc6bd12cd4a748a70bf2",
+      "stdio.mjs": "27f1779d72325c7a616d56d11188b3386606c578e455a9979c71485cbefa896d"
+    },
+    "tests": {
+      "tests": 75,
+      "pass": 75,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "dependenciesChecked": 94,
+    "finishedAt": "2026-10-01T03:48:36.920Z",
+    "repositoryTests": {
+      "tests": 1090,
+      "passed": 1090,
+      "failed": 0,
+      "skipped": 0
+    },
+    "priorNegativeReceipt": {
+      "ok": false,
+      "failedStage": "locked-offline-install",
+      "cause": "Aliased macOS temporary root compared with a canonical SDK target; actual npm installation succeeded. Canonical roots fix the verifier without allowing outside dependencies."
+    }
+  },
+  "nativeHost": {
+    "priorVisibleOffersAndHistory": true,
+    "priorModelFollowup": {
+      "offerFactsRetained": true,
+      "uiOnlyHistoryFactsRetained": false
+    },
+    "latestWorkspaceHostModelFollowup": "pending",
+    "privacy": "Current canonical structured result only; no private card metadata, transcript or cumulative history."
+  },
+  "distribution": {
+    "publicRevision": "a5e8c32f1ce5e9bc4a7ffca5c5bed723feb7418c",
+    "ci": {
+      "url": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/36813117504",
+      "status": "success",
+      "perNodeLine": {
+        "tests": 1090,
+        "passed": 1088,
+        "failed": 0,
+        "skipped": 2
+      },
+      "skippedReasons": ["Sibling website checkout absent", "Quarantined local demo ledger absent"],
+      "installedTarballDiagnostic": "passed"
+    },
+    "officialRegistry": {
+      "observedAt": "2026-10-01T04:02:12.295Z",
+      "httpStatus": 200,
+      "version": "1.8.4",
+      "title": "BestPrice",
+      "official": {
+        "status": "active",
+        "statusChangedAt": "2026-10-01T04:01:05.672993Z",
+        "publishedAt": "2026-10-01T04:01:05.672993Z",
+        "updatedAt": "2026-10-01T04:01:05.672993Z",
+        "isLatest": true
+      },
+      "workflowUrl": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/36813117642"
+    },
+    "lobehub": {
+      "observedAt": "2026-10-01T04:02:56.874Z",
+      "httpStatus": 200,
+      "version": "1.8.4",
+      "name": "BestPrice",
+      "isValidated": true,
+      "tools": [
+        {
+          "name": "get_shopping_decision",
+          "annotations": {
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "idempotentHint": true,
+            "destructiveHint": false
+          }
+        },
+        {
+          "name": "search_products",
+          "annotations": {
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "idempotentHint": true,
+            "destructiveHint": false
+          }
+        },
+        {
+          "name": "compare_offers",
+          "annotations": {
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "idempotentHint": true,
+            "destructiveHint": false
+          }
+        },
+        {
+          "name": "get_price_history",
+          "annotations": {
+            "readOnlyHint": true,
+            "openWorldHint": true,
+            "idempotentHint": true,
+            "destructiveHint": false
+          }
+        }
+      ],
+      "resourcesCount": 3,
+      "inferredArtifacts": {
+        "npm": {
+          "version": "1.2.7",
+          "packageName": "bestprice-mcp"
+        },
+        "docker": {
+          "tag": "22.23.2-alpine",
+          "imageName": "node"
+        }
+      },
+      "inferredNpmArtifactStatus": "stale; package is private and the declared installation paths use Git or hosted HTTP",
+      "repositoryEnrichmentRequested": true,
+      "repositoryEnrichmentTriggerResult": "processing"
+    }
+  },
+  "openai": {
+    "portalScanObservedAt": "2026-10-01T03:22:47Z",
+    "shoppingDecisionStatus": "Earlier version live",
+    "shoppingDecisionIssue": "This tool update needs further review before it can go live.",
+    "priorConversationHistoryWarningPresent": false,
+    "otherThreeTools": "Live",
+    "serverInstructions": "Live",
+    "submittedPluginVersion": "1.2.0",
+    "reviewStatus": "In review",
+    "publishedPluginVersion": "1.0.1",
+    "publicAssociatedAppAuthentication": "No authentication",
+    "publicOAuthMigration": "unverified",
+    "reviewerMaterialsApplied": "unverified",
+    "submittedSourceZipSha256": "9da1ede7334aa008489c381802a5dd2f210f34117fc30c8a91aa885058a5a306",
+    "portalZipSha256": "ab45d38503c5ff4922aae4b1cdbfea0ab76c87c419faee2dd8df3e5d29d83e22",
+    "sourceMembersIdentical": 7,
+    "frozenSubmissionPreserved": true
+  },
+  "acp": {
+    "observedAt": "2026-10-01T03:30:24.133Z",
+    "rows": 10000,
+    "uniqueItems": 10000,
+    "uniqueOffers": 10000,
+    "families": 20,
+    "categoryCountSum": 10000,
+    "sellers": 406,
+    "brands": 247,
+    "schemaErrors": {},
+    "examinedProducts": 15932,
+    "population": {
+      "exported": 10000,
+      "noEligibleHeadline": 5534,
+      "qualityExclusions": 284,
+      "unprocessedTail": 114
+    },
+    "priorExplicitColourContradictions": 8,
+    "priorContradictingItemsExcluded": true,
+    "gzipSha256": "8cde6359d4436ceb4d00a538c64e96569f64d7f09c9f497aba80ed86db3c2b76",
+    "defaultCurlHead": {
+      "productPages200": 0,
+      "productPages403": 20,
+      "images200": 20
+    },
+    "twoRepresentativeChromeUaChecks": {
+      "head200": 2,
+      "get200": 2,
+      "getBodyCapBytes": 32768,
+      "redirectsFollowed": 0
+    },
+    "explicitlyMarkedSyntheticCrawlerChecks": {
+      "get200": 2,
+      "getBodyCapBytes": 32768,
+      "redirectsFollowed": 0,
+      "actualOpenaiCrawler": false
+    },
+    "partnerAcceptance": "unqualified",
+    "uploaded": false
+  },
+  "remainingGates": [
+    "Fresh deployed native UI and model follow-up",
+    "Live Events worker revision",
+    "Genuine price crossing and ChatGPT-processed notification",
+    "Public-app OAuth migration and applied reviewer materials",
+    "OpenAI review/publication and clean-account discovery",
+    "ACP partner acceptance, freshness/removal and attribution",
+    "LobeHub repository enrichment and stale inferred npm artifact"
+  ],
+  "privacy": "No credentials, account identifiers, callback/webhook values, private conversation URLs or signed merchant destinations."
+}
