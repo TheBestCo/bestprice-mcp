@@ -85,6 +85,73 @@ test('mirror comparison is structural, supports Greek, and rejects contradictory
   fails(() => verifyMirror(envelope(null)), 'MISSING_STRUCTURED_OUTPUT');
 });
 
+test('large decision text mirrors only a checked compact projection', () => {
+  const output = {
+    currency: 'EUR',
+    locale: 'el-GR',
+    outcome: 'recommendation',
+    products: [{ product_id: 'bp_2147483650', title: 'Ελληνικά' }],
+    shopping_context: {
+      version: 'fixture',
+      products: [
+        {
+          product_id: 'bp_2147483650',
+          family: 'phones',
+          attributes: [{ key: 'ram', unit: 'GB', status: 'known', value: 8, source_id: 'source_1' }],
+          private_detail: 'omitted',
+        },
+      ],
+      market: [{ product_id: 'bp_2147483650', private_detail: 'omitted' }],
+    },
+    evidence: {
+      scope: 'returned_products',
+      detail: 'summary',
+      sources: [{ source_id: 'source_1' }],
+      claims: [{ claim_id: 'claim_1' }],
+      omitted_source_count: 3,
+      omitted_claim_count: 5,
+    },
+  };
+  const mirror = {
+    currency: 'EUR',
+    locale: 'el-GR',
+    outcome: 'recommendation',
+    products: output.products,
+    shopping_context: {
+      version: 'fixture',
+      products: [
+        {
+          product_id: 'bp_2147483650',
+          family: 'phones',
+          attributes: [{ key: 'ram', unit: 'GB', status: 'known', value: 8 }],
+        },
+      ],
+      market_product_count: 1,
+    },
+    evidence: {
+      scope: 'returned_products',
+      detail: 'summary',
+      source_count: 1,
+      claim_count: 1,
+      omitted_source_count: 3,
+      omitted_claim_count: 5,
+      in_structured_content: true,
+    },
+  };
+  const marker =
+    '\n\nStructured result (compact JSON; structuredContent carries the complete result, including evidence):\n';
+  const result = {
+    structuredContent: output,
+    content: [{ type: 'text', text: `Σύνοψη${marker}${JSON.stringify(mirror)}` }],
+  };
+  verifyMirror(result, 'get_shopping_decision');
+  fails(() => verifyMirror(result, 'search_products'), 'UNEXPECTED_COMPACT_TEXT_MIRROR');
+  result.content[0].text = `Σύνοψη${marker}${JSON.stringify({ ...mirror, products: [] })}`;
+  fails(() => verifyMirror(result, 'get_shopping_decision'), 'TEXT_MIRROR_MISMATCH');
+  result.content[0].text = `Σύνοψη${marker}${JSON.stringify({ ...mirror, evidence: { ...mirror.evidence, claim_count: 0 } })}`;
+  fails(() => verifyMirror(result, 'get_shopping_decision'), 'TEXT_MIRROR_MISMATCH');
+});
+
 for (const value of [null, '', '1.20', NaN, Infinity, -1, undefined]) {
   test(`money does not coerce ${String(value)} to a price`, () => fails(() => cents(value), 'INVALID_MONEY'));
 }

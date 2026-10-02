@@ -9,6 +9,8 @@ export const PUBLIC_TOOLS = Object.freeze([
   'search_products',
 ]);
 const MIRROR = '\nStructured result (JSON):\n';
+const COMPACT_MIRROR =
+  '\n\nStructured result (compact JSON; structuredContent carries the complete result, including evidence):\n';
 export class IntegrityError extends Error {
   constructor(code) {
     super(code);
@@ -29,20 +31,62 @@ export function cents(value) {
   return rounded;
 }
 
-export function verifyMirror(result) {
+function compactDecisionMirror(output) {
+  const { evidence, shopping_context: context, ...actionable } = output;
+  check(record(evidence) && record(context), 'INVALID_COMPACT_TEXT_MIRROR');
+  check(
+    Array.isArray(evidence.sources) &&
+      Array.isArray(evidence.claims) &&
+      Array.isArray(context.products) &&
+      Array.isArray(context.market) &&
+      context.products.every(product => Array.isArray(product.attributes)),
+    'INVALID_COMPACT_TEXT_MIRROR',
+  );
+  return {
+    ...actionable,
+    shopping_context: {
+      version: context.version,
+      products: context.products.map(({ product_id, family, attributes }) => ({
+        product_id,
+        family,
+        attributes: attributes.map(({ key, unit, status, value }) => ({ key, unit, status, value })),
+      })),
+      market_product_count: context.market.length,
+    },
+    evidence: {
+      scope: evidence.scope,
+      ...(evidence.detail ? { detail: evidence.detail } : {}),
+      source_count: evidence.sources.length,
+      claim_count: evidence.claims.length,
+      ...(evidence.detail
+        ? {
+            omitted_source_count: evidence.omitted_source_count,
+            omitted_claim_count: evidence.omitted_claim_count,
+          }
+        : {}),
+      in_structured_content: true,
+    },
+  };
+}
+
+export function verifyMirror(result, toolName) {
   check(record(result?.structuredContent), 'MISSING_STRUCTURED_OUTPUT');
   const texts = (result.content ?? []).filter(item => item.type === 'text');
   check(texts.length === 1 && typeof texts[0].text === 'string', 'AMBIGUOUS_TEXT_MIRROR');
   const text = texts[0].text;
-  const index = text.indexOf(MIRROR);
-  const raw = index < 0 ? text : text.slice(index + MIRROR.length);
+  const compactIndex = text.indexOf(COMPACT_MIRROR);
+  const compact = compactIndex >= 0;
+  check(!compact || toolName === 'get_shopping_decision', 'UNEXPECTED_COMPACT_TEXT_MIRROR');
+  const index = compact ? compactIndex : text.indexOf(MIRROR);
+  const raw = index < 0 ? text : text.slice(index + (compact ? COMPACT_MIRROR.length : MIRROR.length));
   let mirror;
   try {
     mirror = JSON.parse(raw);
   } catch {
     throw new IntegrityError('INVALID_TEXT_MIRROR');
   }
-  check(isDeepStrictEqual(mirror, result.structuredContent), 'TEXT_MIRROR_MISMATCH');
+  const expected = compact ? compactDecisionMirror(result.structuredContent) : result.structuredContent;
+  check(isDeepStrictEqual(mirror, expected), 'TEXT_MIRROR_MISMATCH');
 }
 
 export function verifyPublicLinks(output) {
@@ -116,7 +160,7 @@ export function createToolVerifier(tools) {
     output(name, args, result) {
       this.input(name, args);
       check(result?.isError !== true, 'TOOL_RETURNED_ERROR');
-      verifyMirror(result);
+      verifyMirror(result, name);
       const value = result.structuredContent;
       check(validators.get(name).output(value).valid, 'OUTPUT_SCHEMA_INVALID');
       check(!Object.hasOwn(value, 'error'), 'ERROR_ENVELOPE_AS_SUCCESS');
