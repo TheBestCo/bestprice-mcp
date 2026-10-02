@@ -1,13 +1,33 @@
 /** Source-confirmed native-read target controls, not a browser/model qualification. */
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { isAllowedBrowsingPage, selectVisibleProductReadTarget } from '../scripts/native-read-policy.js';
+import {
+  isAllowedBrowsingPage,
+  isReadOnlyHistoryCall,
+  selectVisibleProductReadTarget,
+} from '../scripts/native-read-policy.js';
 
 const id = '2147483650';
 const path = `https://www.bestprice.gr/item/${id}/control.html`;
 const product = (url = `${path}?bpref=mcp`, productId = id) => ({
   product_id: productId,
   bestprice_url: url,
+});
+
+test('history read opts out of the chart action explicitly and accepts no other arguments', () => {
+  assert.equal(isReadOnlyHistoryCall('summarize_price_history', { show_chart: false }), true);
+  for (const args of [
+    null,
+    {},
+    [],
+    false,
+    { show_chart: true },
+    { show_chart: 'false' },
+    { show_chart: false, href: path },
+  ]) {
+    assert.equal(isReadOnlyHistoryCall('summarize_price_history', args), false);
+  }
+  assert.equal(isReadOnlyHistoryCall('open_product', { show_chart: false }), false);
 });
 
 test('native read identity authorizes only the same grouped-product browsing path', () => {
@@ -80,4 +100,42 @@ test('a 1.7 list read without links resolves through the page link for the same 
   assert.equal(selectVisibleProductReadTarget(listed, [path.replace('https:', 'http:')]), null);
   /* A published link is still the one used, and still judged on its own. */
   assert.equal(selectVisibleProductReadTarget([product(`${path}?action=1`)], [path]), null);
+  assert.equal(selectVisibleProductReadTarget([product(null)], [path]), null);
+});
+
+test('a live search title link supplies the same product without sending search attribution', () => {
+  const listed = [{ product_id: id }];
+  const links = Object.freeze([
+    `${path}?qid=opaque&seq=1&qo=Sony+WH-1000XM5&from=search`,
+    `${path}?qo=Sony+WH-1000XM5&from=search`,
+  ]);
+  assert.deepEqual(selectVisibleProductReadTarget(listed, links), { productId: id, url: path });
+  assert.equal(new URL(links[1]).searchParams.get('from'), 'search', 'retain the original evidence');
+  assert.equal(isAllowedBrowsingPage(new URL(links[1])), false, 'never broaden the navigation guard');
+});
+
+test('search-link resolution still refuses redirects, click data, ambiguous queries and identity mismatches', () => {
+  const listed = [{ product_id: id }];
+  for (const query of [
+    '?qo=Sony&from=search&action=1',
+    '?qo=Sony&from=search&qid=opaque&seq=1',
+    '?qo=Sony&from=search&ct=opaque',
+    '?qo=Sony&from=search&from=search',
+    '?qo=Sony&qo=Sony&from=search',
+    '?qo=&from=search',
+    '?qo=Sony&from=merchant',
+    '?qo=Sony&from=search#offer',
+  ]) {
+    assert.equal(selectVisibleProductReadTarget(listed, [path + query]), null, query);
+  }
+  for (const link of [
+    path.replace(id, '2147483651'),
+    path.replace('www.bestprice.gr', 'merchant.invalid'),
+    path.replace('https:', 'http:'),
+    path.replace('www.bestprice.gr', 'user:secret@www.bestprice.gr'),
+    path.replace('/item/', '/to/'),
+  ]) {
+    assert.equal(selectVisibleProductReadTarget(listed, [`${link}?qo=Sony&from=search`]), null);
+  }
+  assert.equal(selectVisibleProductReadTarget([product(`${path}?qo=Sony&from=search`)], []), null);
 });

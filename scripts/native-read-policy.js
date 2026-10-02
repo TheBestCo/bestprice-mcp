@@ -8,6 +8,19 @@ export function isAllowedBrowsingPage(url) {
   return /^\/(?:$|search(?:\/|$)|cat\/|hub\/)/u.test(url.pathname);
 }
 
+/** History also offers a chart action; the diagnostic must explicitly opt out. */
+export function isReadOnlyHistoryCall(name, args) {
+  return (
+    name === 'summarize_price_history' &&
+    args != null &&
+    typeof args === 'object' &&
+    !Array.isArray(args) &&
+    Object.keys(args).length === 1 &&
+    Object.hasOwn(args, 'show_chart') &&
+    args.show_chart === false
+  );
+}
+
 /** One explicit read-only POST, not a general exception for same-origin requests. */
 export function allowSpecificationsRead(request, resourceType, permit, now) {
   if (
@@ -99,7 +112,10 @@ export function selectBrowsingProductUrl(values) {
  *
  * From WebMCP contract 1.7 a list read no longer repeats each product's link (open_visible_product,
  * since contract 2.0 open_product, takes the id alone). A product without `bestprice_url` resolves to the page's own query-free link
- * for the same id (`links`, as `inspectBrowsingProductLinks` reads them), under the same checks. */
+ * for the same id. SearchPage's Product::getLink adds qo/from search attribution
+ * even to grouped-product title links. Only that source-confirmed pair may be
+ * removed here; click IDs, filters, fragments and other parameters remain refused.
+ * The general document-navigation guard still receives a query-free URL. */
 export function selectVisibleProductReadTarget(products, links = []) {
   if (!Array.isArray(products) || products.length > 8) return null;
   const ids = new Set();
@@ -108,15 +124,31 @@ export function selectVisibleProductReadTarget(products, links = []) {
     ids.add(product.product_id);
   }
   const pageLinks = Array.isArray(links) ? links.slice(0, 64).filter(link => typeof link === 'string') : [];
+  const withoutSearchAttribution = url => {
+    const entries = [...url.searchParams];
+    if (
+      entries.length !== 2 ||
+      entries.filter(([key]) => key === 'qo').length !== 1 ||
+      entries.filter(([key]) => key === 'from').length !== 1 ||
+      url.searchParams.get('from') !== 'search' ||
+      !url.searchParams.get('qo')
+    )
+      return false;
+    url.search = '';
+    return true;
+  };
   const pageLinkFor = id =>
-    pageLinks.find(link => {
+    pageLinks.flatMap(link => {
       try {
+        if (link.length > 2048) return [];
         const url = new URL(link);
-        return url.search === '' && url.hash === '' && /^\/item\/(\d{10})\//u.exec(url.pathname)?.[1] === id;
+        if (/^\/item\/(\d{10})\//u.exec(url.pathname)?.[1] !== id) return [];
+        if (url.search && !withoutSearchAttribution(url)) return [];
+        return isAllowedBrowsingPage(url) ? [url.href] : [];
       } catch {
-        return false;
+        return [];
       }
-    });
+    })[0];
   for (const product of products) {
     const id = product.product_id;
     const value = Object.hasOwn(product, 'bestprice_url') ? product.bestprice_url : pageLinkFor(id);

@@ -16,6 +16,7 @@ import {
   allowSpecificationsRead,
   inspectBrowsingProductLinks,
   isAllowedBrowsingPage,
+  isReadOnlyHistoryCall,
   selectVisibleProductReadTarget,
 } from './native-read-policy.js';
 import { finalizeNativeReadVerdict, recordNativeGuardFailure } from './native-read-verdict.js';
@@ -40,6 +41,7 @@ const report = {
     externalRequests: 'blocked',
     userAgentOverride: false,
     toolActions: false,
+    priceHistoryArguments: { show_chart: false },
     nonReadHttpMethods: 'blocked_except_scoped_specifications_and_price_history_reads',
   },
 };
@@ -326,6 +328,8 @@ try {
     );
     const before = await readDocument();
     const began = performance.now();
+    const readOnlyHistory = isReadOnlyHistoryCall(name, args);
+    ensure(name !== 'summarize_price_history' || readOnlyHistory, 'history_action_refused');
     // This tool reads specifications using a POST with exactly one FormData field.
     // The source-confirmed selector is read-only; it does not authorize other POSTs.
     const specificationsUrl = new URL(before.url);
@@ -349,10 +353,20 @@ try {
     let observation;
     try {
       observation = await page.evaluate(
-        async ({ name, args, modernArgs, expectedProductId, documentKey }) => {
+        async ({ name, args, modernArgs, expectedProductId, documentKey, readOnlyHistory }) => {
           const documentBefore = { documentId: globalThis[documentKey] ?? null, url: location.href };
           const tool = (await document.modelContext.getTools()).find(tool => tool.name === name);
-          if (tool?.annotations?.readOnlyHint !== true) return { error: 'not_read_only' };
+          // History's tool-level hint covers its optional chart action too.
+          // This call pins show_chart:false, with the same scoped RPC and document guards.
+          if (
+            tool?.annotations?.readOnlyHint !== true &&
+            !(
+              readOnlyHistory &&
+              tool?.annotations?.readOnlyHint === false &&
+              tool?.annotations?.consequentialHint === false
+            )
+          )
+            return { error: 'not_read_only' };
           const result = await document.modelContext.executeTool(
             tool,
             modernArgs ? args : JSON.stringify(args),
@@ -379,19 +393,6 @@ try {
             )
               arrays[key] = value.length;
           }
-          const productCandidates =
-            name === 'get_visible_products' && Array.isArray(payload?.products)
-              ? payload.products.slice(0, 8).map(product => ({
-                  product_id:
-                    typeof product?.product_id === 'string' && product.product_id.length <= 20
-                      ? product.product_id
-                      : null,
-                  bestprice_url:
-                    typeof product?.bestprice_url === 'string' && product.bestprice_url.length <= 2048
-                      ? product.bestprice_url
-                      : null,
-                }))
-              : undefined;
           return {
             // Raw output is ephemeral input to semantic validation; never spread it into
             // the persisted observation, where only allowlisted summaries belong.
@@ -401,20 +402,19 @@ try {
             ok: payload?.ok === true,
             bytes: new TextEncoder().encode(wire ?? '').byteLength,
             arrays,
-            ...(productCandidates ? { productCandidates } : {}),
             ...(expectedProductId
               ? { productIdentityMatches: payload?.product_id === expectedProductId }
               : {}),
           };
         },
-        { name, args, modernArgs, expectedProductId, documentKey },
+        { name, args, modernArgs, expectedProductId, documentKey, readOnlyHistory },
       );
     } finally {
       specificationsPermit = null;
       historyPermit = null;
     }
     // Candidate identities/URLs are ephemeral navigation input, never report content.
-    const { productCandidates, payload, documentBefore, documentAfter } = observation;
+    const { payload, documentBefore, documentAfter } = observation;
     const row = makeNativeReadReceipt({
       name,
       page: kind,
@@ -433,7 +433,9 @@ try {
     row.documentUnchanged = true;
     row.contractChecks = verifyNativeReadPayload(name, args, payload, expectedProductId);
     row.contractValidated = true;
-    return productCandidates;
+    // Preserve absent optional links: inserting bestprice_url:null here would
+    // suppress the selector's ID-matched DOM fallback for every current list read.
+    return name === 'get_visible_products' ? payload.products : undefined;
   };
   await visit('home', 'https://www.bestprice.gr/');
   await visit('listing', 'https://www.bestprice.gr/search?q=Sony%20WH-1000XM5');
@@ -471,7 +473,7 @@ try {
   await invoke('product', 'get_page_product', {}, target.productId);
   await invoke('product', 'compare_page_offers', { limit: 2 }, target.productId);
   await invoke('product', 'get_product_specifications', { limit: 3 }, target.productId);
-  await invoke('product', 'summarize_price_history', {}, target.productId);
+  await invoke('product', 'summarize_price_history', { show_chart: false }, target.productId);
   ensure(report.priceHistoryReads === 1, 'history_read_not_observed');
   ensure(report.specificationsReads === 1, 'specifications_read_not_observed');
   ensure(!report.blocked.budget, 'browser_budget_exhausted');
