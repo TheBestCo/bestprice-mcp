@@ -1,0 +1,490 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-02T14:16:00Z",
+  "scope": "October 2 production, actual ChatGPT host, portal, package, OAuth and Events qualification. Selected observations and test cohorts are not a guarantee of approval or all-catalog correctness.",
+  "identity": {
+    "plugin": "plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981",
+    "app": "asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981",
+    "submission": "appsub_6abd16a16bb4819193e6e6bdc6337af1",
+    "submittedVersion": "1.2.0",
+    "displayName": "BestPrice",
+    "publishedVersion": "1.0.1",
+    "publishedDisplayName": "BestPrice Shopping",
+    "visibleActiveReviews": 1,
+    "pickerVersions": ["1.2.0 In review", "1.0.1 Published"]
+  },
+  "package": {
+    "assignedIdentity": "app-6a8d8ed6e2bc8191b3caaf7214f3c981",
+    "version": "1.2.0",
+    "displayName": "BestPrice",
+    "sourceFileCount": 7,
+    "mcpServerCount": 1,
+    "endpoint": "https://mcp.bestprice.gr/mcp",
+    "positiveReviewerCases": 5,
+    "negativeReviewerCases": 3,
+    "releaseNotesVersionMatches": true,
+    "credentialsFoundInBundle": false,
+    "screenshotsVisuallyInspected": true,
+    "brandingProvenanceHashesMatch": true,
+    "logo": {
+      "width": 512,
+      "height": 512,
+      "bytes": 9709
+    },
+    "archives": [
+      {
+        "name": "bestprice-plugin-1.2.0-review-draft.zip",
+        "sha256": "9da1ede7334aa008489c381802a5dd2f210f34117fc30c8a91aa885058a5a306",
+        "sourceBytesMatch": true,
+        "fileCount": 7,
+        "duplicateEntries": 0,
+        "symlinks": 0,
+        "crcValid": true
+      },
+      {
+        "name": "app-6a8d8ed6e2bc8191b3caaf7214f3c981-1.2.0.zip",
+        "sha256": "ab45d38503c5ff4922aae4b1cdbfea0ab76c87c419faee2dd8df3e5d29d83e22",
+        "sourceBytesMatch": true,
+        "fileCount": 7,
+        "duplicateEntries": 0,
+        "symlinks": 0,
+        "crcValid": true
+      }
+    ]
+  },
+  "productionCanary": {
+    "generatedAt": "2026-10-02T13:23:27.306Z",
+    "deployment": {
+      "scope": "mcp_gateway",
+      "revision": "d9118ca51c8ba658f965895bdcb10d658a4c8b0a",
+      "responses": 50,
+      "stable": true
+    },
+    "status": "passed",
+    "summary": {
+      "passed": 55,
+      "failed": 0,
+      "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
+      "checkoutTools": 0,
+      "merchantRedirectsFollowed": 0,
+      "rateLimitRetries": 0,
+      "requestsSent": 67,
+      "requestBudget": 90
+    }
+  },
+  "publicInstalledConnector": {
+    "toolsPassed": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
+    "decision": {
+      "case": "Greek phone request below EUR500 with NFC and 5G",
+      "outcome": "recommendation_ready",
+      "products": 3,
+      "allWithinBudget": true,
+      "allHaveTypedNfcAnd5gAndSupportingCatalogEvidence": true
+    },
+    "search": {
+      "case": "Sony WH-1000XM5",
+      "returned": 7,
+      "exactModelProducts": 4,
+      "explicitAccessories": 3
+    },
+    "offers": {
+      "productId": "bp_2157591869",
+      "offers": 10,
+      "moneySumsCorrectInCents": true,
+      "sortedTotals": true,
+      "uniqueMerchants": true,
+      "firstItemCents": 18588,
+      "firstShippingCents": 400,
+      "firstTotalCents": 18988,
+      "merchantDestinationsFollowed": 0
+    },
+    "history": {
+      "currentCents": 18588,
+      "windows": [
+        {
+          "days": 30,
+          "minCents": 18588,
+          "medianCents": 18588,
+          "observations": 30
+        },
+        {
+          "days": 90,
+          "minCents": 18490,
+          "medianCents": 18588,
+          "observations": 90
+        },
+        {
+          "days": 180,
+          "minCents": 18490,
+          "medianCents": 18868,
+          "observations": 180
+        }
+      ]
+    },
+    "limit": "These are bounded reviewer examples, not a catalog-wide quality measurement."
+  },
+  "actualChatgptNativeHost": {
+    "checkedOn": "2026-10-02",
+    "connector": "Existing private OAuth qualification connector on the production endpoint",
+    "freshOffers": {
+      "returned": 10,
+      "firstTotalCents": 18988,
+      "displayedAtLocalAthens": "16:39"
+    },
+    "historyView": {
+      "days": 180,
+      "minCents": 18490,
+      "medianCents": 18868,
+      "currentCents": 18588
+    },
+    "selectedHistoryView": {
+      "days": 30,
+      "minCents": 18588,
+      "medianCents": 18588
+    },
+    "hostContextItems": 1,
+    "modelFollowupUsedOnlyAttachedCardContext": true,
+    "modelReturnedCorrect30And180DayComparison": true,
+    "additionalVisibleToolCallsOnFollowup": 0,
+    "alertMutations": 0,
+    "sourceResource": "ui://bestprice/shopping-workspace-v8.html",
+    "internalHostResourceSelectionIndependentlyInspected": false,
+    "limitations": [
+      "Host reused a previous visible card frame for fresh results; a newer hidden frame was not the interactive target.",
+      "Private qualification does not prove public-app OAuth migration.",
+      "Screenshot retained privately; no private chat URL or surrounding account UI is published."
+    ]
+  },
+  "portal": {
+    "latestCompletedScanObserved": {
+      "completedAt": "2026-10-01T18:08:16Z",
+      "issues": 0,
+      "allFourToolsLive": true,
+      "serverInstructionsLive": true,
+      "decisionIssues": 0,
+      "decisionDefinition": "Live",
+      "decisionHistoryInputPresent": false
+    },
+    "october2Rescan": {
+      "requested": true,
+      "approximatelyAt": "2026-10-02T13:33:00Z",
+      "newerCompletedTimestampObserved": false
+    },
+    "mcpPicker": {
+      "visibleBestPriceOptions": 1,
+      "inspectionAfterReconnectClosedAndReload": true,
+      "recordsRemovedByThisAudit": 0,
+      "causeOfDifferenceFromOctober1TwoRecords": "Unverified"
+    },
+    "reconnect": {
+      "menuAvailable": true,
+      "opens": "Legacy multi-step Connect MCP server form",
+      "steps": ["Info", "MCP", "Screenshot", "Testing", "Global", "Submit"],
+      "categoryDisplayed": "Travel",
+      "errorWhenOpeningMcpStep": "Category is required",
+      "olderDescriptionAndDemoVisible": true,
+      "formEdited": false,
+      "formSaved": false,
+      "finalSubmitClicked": false
+    },
+    "publicOauthMigrationVerified": false,
+    "appliedReviewerMaterialsVerified": false
+  },
+  "oauth": {
+    "recordedAt": "2026-10-02T13:28:48.442Z",
+    "publicChecksPassed": 10,
+    "issuer": "https://www.bestprice.gr",
+    "authorizationEndpoint": "https://www.bestprice.gr/login/oauth",
+    "tokenEndpoint": "https://www.bestprice.gr/api/oauth/token",
+    "revocationEndpoint": "https://www.bestprice.gr/api/oauth/revoke",
+    "resource": "https://mcp.bestprice.gr",
+    "scope": "events:subscribe",
+    "pkce": "S256",
+    "clientAuthentication": "none",
+    "cimdValidated": true,
+    "anonymousShoppingPreserved": true,
+    "reviewerAccount": {
+      "dedicatedSampleRequiredByOfficialGuide": true,
+      "ownerAgreedToProvideDedicatedAccount": true,
+      "identifierProvided": false,
+      "cleanPasswordLoginVerified": false,
+      "privateCredentialsAppliedVerified": false,
+      "requirementSource": "https://developers.openai.com/plugins/deploy/submission"
+    }
+  },
+  "events": {
+    "recordedAt": "2026-10-02T13:34:31.409Z",
+    "subscriptions": {
+      "total": 3,
+      "limitReached": false,
+      "statusCounts": {
+        "stopped": 2,
+        "active": 1
+      },
+      "eligibleWithUsableGrant": 1,
+      "unexpired": 1,
+      "expired": 2,
+      "withUsableGrant": 3,
+      "plaintextSecretRows": 0
+    },
+    "qualificationMonitor": {
+      "productId": "bp_2157591869",
+      "active": true,
+      "version": 2,
+      "leaseExpiresAt": "2026-10-02T22:05:53.989Z",
+      "grantUsable": true,
+      "unconsumedLiveRefreshTokenExists": true,
+      "thresholdCents": 18587,
+      "catalogPriceCents": 18588,
+      "latestDurableObservation": {
+        "checkedAt": "2026-10-02T13:31:17.556Z",
+        "priceCents": 18588,
+        "observedAt": "2026-10-02T13:31:09.381Z"
+      }
+    },
+    "outboxRows": 0,
+    "genuineCrossingObserved": false,
+    "realChatgptDeliveryObserved": false,
+    "samplingWindow": {
+      "checkedAt": "2026-10-02T13:30:17.581Z",
+      "windowStart": "2026-10-02T12:30:00.000Z",
+      "windowEndExclusive": "2026-10-02T13:30:00.000Z",
+      "expectedMinuteBoundaries": 60,
+      "claimedBoundaries": 53,
+      "missingBoundaries": [
+        "2026-10-02T13:11:00.000Z",
+        "2026-10-02T13:12:00.000Z",
+        "2026-10-02T13:13:00.000Z",
+        "2026-10-02T13:14:00.000Z",
+        "2026-10-02T13:15:00.000Z",
+        "2026-10-02T13:16:00.000Z",
+        "2026-10-02T13:17:00.000Z"
+      ],
+      "maxObservedClaimGapMs": 508247,
+      "maxClaimDelayMs": 30412,
+      "activeJobRecord": null
+    },
+    "samplingTransactions": {
+      "since": "2026-10-02T12:30:00.000Z",
+      "untilExclusive": "2026-10-02T13:30:00.000Z",
+      "executions": 53,
+      "errors": 0,
+      "maxDurationSeconds": 0.442789088,
+      "byRevision": [
+        {
+          "revision": "7c63f61",
+          "executions": 41,
+          "errors": 0,
+          "averageDurationSeconds": 0.06749124802439024,
+          "maxDurationSeconds": 0.208019139
+        },
+        {
+          "revision": "041995e",
+          "executions": 12,
+          "errors": 0,
+          "averageDurationSeconds": 0.10543218275,
+          "maxDurationSeconds": 0.442789088
+        }
+      ],
+      "interpretation": "53 completed transactions for 60 scheduled minute boundaries; 7 unsampled minutes, not a 100% cadence claim."
+    },
+    "cadenceInterpretation": "53 completed executions for 60 scheduled minute boundaries; seven missing minutes and an 8m28.247s maximum adjacent claim gap. Sampling resumed. The gap coincides with cron replacement; exact cause is unproven. This is not uninterrupted minute-by-minute coverage.",
+    "priceOrObservationFabrications": 0,
+    "subscriptionOrGrantWritesByAudit": 0,
+    "finalReadOnlyCheck": {
+      "checkedAt": "2026-10-02T14:15:38.859Z",
+      "since": "2026-10-02T13:31:00.000Z",
+      "eligibleSubscriptions": 1,
+      "monitor": [
+        {
+          "status": "stopped",
+          "version": 2,
+          "leaseExpiresAt": "2026-10-01T13:21:30.262Z",
+          "leaseActive": false,
+          "grantUsable": true,
+          "thresholdCents": 17000,
+          "currency": "EUR"
+        },
+        {
+          "status": "active",
+          "version": 2,
+          "leaseExpiresAt": "2026-10-02T22:05:53.989Z",
+          "leaseActive": true,
+          "grantUsable": true,
+          "thresholdCents": 18587,
+          "currency": "EUR"
+        },
+        {
+          "status": "stopped",
+          "version": 2,
+          "leaseExpiresAt": "2026-10-01T15:45:36.582Z",
+          "leaseActive": false,
+          "grantUsable": true,
+          "thresholdCents": 17000,
+          "currency": "EUR"
+        }
+      ],
+      "latestCheckpoint": {
+        "priceCents": 18588,
+        "observedAt": "2026-10-02T14:15:18.620Z",
+        "checkedAt": "2026-10-02T14:15:18.620Z",
+        "ageSeconds": 20.239
+      },
+      "allOutboxByStatus": [],
+      "outboxRowsSinceEarlierCheck": 0,
+      "outboxLimitReached": false,
+      "recentDeliveryFacts": [],
+      "latestCronSuccess": "2026-10-02T14:15:18.655Z"
+    }
+  },
+  "localTests": [
+    {
+      "cohort": "MCP manifest/native policy/offline public smoke",
+      "passed": 209,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "cohort": "MCP compact mirror public contracts",
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "cohort": "Backend native UI/model projection/context race contracts",
+      "passed": 149,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "cohort": "Backend served resource MIME/CSP/metadata",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "cohort": "Events worker, subscription, webhook, transport and telemetry",
+      "passed": 101,
+      "failed": 0
+    },
+    {
+      "cohort": "OAuth backend, website and MCP boundaries",
+      "passed": 79,
+      "failed": 0
+    },
+    {
+      "cohort": "Greek/English MCP FAQ, public contracts and rendered page",
+      "passed": 43,
+      "failed": 0
+    }
+  ],
+  "testCounting": "Cohorts overlap and are deliberately not summed into a grand total.",
+  "documentation": {
+    "gapFound": "Public MCP FAQ omitted optional Events data use, consent and retention. Corporate privacy policy has no dedicated Events/OAuth section.",
+    "websiteCommit": "daa8aa12d753c5f2c988e16c599becb22d0acfb0",
+    "branch": "master",
+    "normalHooksUsed": true,
+    "filesChanged": ["extra/mcpLanding/McpFaq.php"],
+    "languages": ["el", "en"],
+    "phpSyntaxPassed": true,
+    "renderedAndContractTestsPassed": 43,
+    "deploymentStatus": "Production promotion pending explicit owner choice because shared staging also contains concurrent order-attribution changes; public FAQ still old at14:08 UTC.",
+    "formalPrivacyPolicyChanged": false,
+    "policyOwnerBoundary": "Corporate policy body/version is database-managed through admin.GetPolicy, not the static MCP FAQ.",
+    "retentionLimits": "Expiry is not immediate deletion. Cleanup eligibility is expiry plus30 days for subscription/auth records, last check plus30 days for observations, creation plus30 days for completed deliveries. Batches can delay cleanup; the account quota reference has no automatic deletion deadline in this service.",
+    "stagingBuild": {
+      "number": 18207,
+      "status": "SUCCESS",
+      "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/BestPrice.gr/job/master/18207/"
+    },
+    "liveReadback": {
+      "checkedAt": "2026-10-02T14:08:02.144925+00:00",
+      "pages": [
+        {
+          "path": "/mcp",
+          "status": 200,
+          "newDisclosurePresent": false,
+          "occurrences": 0
+        },
+        {
+          "path": "/en/mcp",
+          "status": 200,
+          "newDisclosurePresent": false,
+          "occurrences": 0
+        }
+      ]
+    },
+    "privacyOwnerReview": "../events-privacy-review.md"
+  },
+  "support": {
+    "existingCase": "September 30 official Help Center escalation",
+    "specialistResolutionVisibleBeforeFollowup": false,
+    "followupSent": true,
+    "sentAtApproximate": "2026-10-02T14:02:00Z",
+    "explicitOwnerApproval": true,
+    "messageSource": "../openai-support-followup-2026-10-02.md",
+    "sameConversation": true,
+    "sentMessageAndClearedComposerObserved": true,
+    "newCases": 0,
+    "credentialsOrAccountIdentifiersSent": false,
+    "specialistResolutionVisibleAfterFollowup": false
+  },
+  "publicDemo": {
+    "rawVideoHeadStatus": 200,
+    "githubPageHeadStatus": 200,
+    "mediaDownloaded": false
+  },
+  "acp": {
+    "includedInPlugin": false,
+    "checkoutInPlugin": false,
+    "sourceAdapterReusesCssIdentityEnrichment": true,
+    "sourceAdapterInvokesGoogleUploadWriters": false,
+    "exportProfileCheckoutEligible": false,
+    "submittedApplicationReceiptPresent": true,
+    "approvalClaimed": false,
+    "partnerAcceptancePending": true,
+    "freshFeedMustBeRegeneratedBeforeDelivery": true
+  },
+  "intermediateAttempts": [
+    {
+      "attempt": "Temporary BestPrice native qualification connector history call",
+      "result": "Unavailable: old temporary tunnel endpoint",
+      "limit": "Separate from healthy submitted production endpoint and stable OAuth qualification connector."
+    },
+    {
+      "attempt": "Fresh native-frame selector",
+      "result": "Host reused an existing visible frame; newest frame was hidden. Open app in tab exposed the working interactive surface.",
+      "limit": "Selector/host control issue, not a reproduced renderer defect."
+    },
+    {
+      "attempt": "Website yarn test launcher",
+      "result": "Local yarn launcher reported command not found: jest. Direct installed Jest command passed all43 checks.",
+      "limit": "Commit and push hooks were still executed normally."
+    }
+  ],
+  "remainingGates": [
+    "Public-app optional OAuth migration without disrupting the queued review.",
+    "Applied reviewer cases, release notes, demo, translation and dedicated sample-account credentials.",
+    "Genuine threshold-crossing notification processed by ChatGPT.",
+    "Alignment of the database-managed corporate privacy notice and account deletion/retention practices with linked Events.",
+    "OpenAI1.2.0 approval/publication and clean-account discovery.",
+    "Separate ACP market/comparison-platform approval and partner feed acceptance."
+  ],
+  "protectedState": {
+    "bundleChanges": 0,
+    "bundleUploads": 0,
+    "submissions": 0,
+    "reviewCancellations": 0,
+    "connectionRemovals": 0,
+    "publicationChanges": 0,
+    "runtimeCodeChanges": 0,
+    "backendCheckoutSwitches": 0
+  },
+  "privacy": "No account identifiers, tokens, authorization codes, callback URLs, webhook secrets, private chat URLs, signed merchant destinations or raw account screens are included.",
+  "sourceQualification": {
+    "mcpOfflineTestRevision": "2ca458792b4a325c6c68c3a472a0fd895509963c",
+    "backendNativeTestRevision": "7c690f10936ba2873b797001bfcb905d1412ab9e",
+    "backendWorkingCheckoutChangedByOtherTasks": true,
+    "sourceIsNotDeploymentProof": true
+  }
+}

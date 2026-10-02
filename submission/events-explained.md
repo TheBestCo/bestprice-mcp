@@ -23,20 +23,11 @@ Subscriptions expire after at most 24 hours unless the host refreshes them. OAut
 
 ## Current qualification
 
-On October 1, a separate **BestPrice delivery qualification** monitor was created
-in the actual ChatGPT host for `bp_2157591869` at **€185.87 EUR item price**. The
-earlier €170 monitor remains paused. The real scheduled worker sampled
-€185.88 at 04:39:02 UTC and again at 04:44:02 UTC. Read-only
-production checks confirm one active subscription, a usable `events:subscribe`
-grant, and its lease through October 2 at 04:38:28 UTC. No delivery records exist:
-the observed price has not crossed the threshold. No real catalog price or
-production observation was changed for this test.
+On October 2, the existing qualification monitor for `bp_2157591869` was still active at a **€185.87 EUR item-price threshold**. Read-only production checks found a renewed subscription version and a lease through **October 2 at 22:05:53 UTC**, a usable grant and a live refresh token. The durable observation at **13:31:09 UTC was €185.88**, matching an independent canonical catalog read. There was one active subscription and two stopped subscriptions, with no delivery records. No price, observation, subscription or grant was changed by the audit.
 
-At 04:45:13 UTC, both cron rows in the five-minute heartbeat cohort run the fixed
-7b746ea revision; the latest worker success was 04:45:10 UTC. This proves active
-periodic sampling beyond an idle tick. It does not prove a genuine callback or
-ChatGPT processing. The [follow-up receipt](evidence/end-to-end-gates-2026-10-01.json)
-records these checks; subscription expiry still requires host renewal.
+Sampling is periodic, not guaranteed every minute. In the fixed **12:30–13:30 UTC** window, **53 of 60** scheduled minute boundaries had completed worker transactions, with zero transaction errors. Seven missing minutes coincided with cron process replacement; the largest adjacent claim gap was **8 minutes 28.247 seconds**. Sampling resumed, but the exact cause is not established by retained telemetry. This is an observed operational limit, not a claim of a failed webhook.
+
+The [October 2 receipt](evidence/end-to-end-qualification-2026-10-02.json) separates sampling and host renewal from the still-unobserved genuine crossing and ChatGPT processing. The October 1 [follow-up receipt](evidence/end-to-end-gates-2026-10-01.json) retains earlier qualification evidence.
 
 On 30 September 2026, the private qualification connector passed real OAuth linking, subscription creation, signed callback verification, Resume, scheduled catalog sampling and Pause. Scheduled observations at 15:55:26 and 16:01:05 UTC independently confirmed the real €185.88 price after the manual sampler check. Pause left zero active subscriptions and no delivery records.
 
@@ -44,4 +35,4 @@ All 72 Events, callback, protocol and OAuth tests passed. The expanded isolated 
 
 Native search, offers and price history also passed in the actual ChatGPT workspace with CSP enforcement enabled.
 
-No genuine crossing notification has yet reached ChatGPT. Plugin 1.2.0 remains In review; released 1.0.1 independently shows Authorization supported: None and has no account-linking control. Public OAuth migration and final applied reviewer materials require OpenAI resolution. Private reviewer credentials remain outside the ZIP and public repository. The separate CSS-backed ACP export has not been accepted by an external partner. These remain release gates. The owner-approved OpenAI Support request was sent and escalated; an October 1 inspection of the same support conversation found no human resolution. See the [support receipt](evidence/openai-support-request-2026-09-30.json).
+No genuine crossing notification has yet reached ChatGPT. Plugin 1.2.0 remains In review; released 1.0.1 independently shows Authorization supported: None and has no account-linking control. Public OAuth migration and final applied reviewer materials require OpenAI resolution. Private reviewer credentials remain outside the ZIP and public repository. The separate CSS-backed ACP export has not been accepted by an external partner. These remain release gates. The owner-approved OpenAI Support request was sent and escalated; an October 2 inspection still found no specialist resolution. The owner-approved [October 2 follow-up](openai-support-followup-2026-10-02.md) was sent in that same case. See the original [support receipt](evidence/openai-support-request-2026-09-30.json).
