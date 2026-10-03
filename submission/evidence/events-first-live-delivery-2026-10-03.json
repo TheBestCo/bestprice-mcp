@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-10-03T05:09:30Z",
+  "connection": "private BestPrice OAuth qualification plugin",
+  "product_id": "bp_2157591869",
+  "event_name": "price.dropped",
+  "detected_at_utc": "2026-10-02T17:43:06.136Z",
+  "threshold_cents": 18587,
+  "previous_item_price_cents": 18588,
+  "current_item_price_cents": 17988,
+  "currency": "EUR",
+  "production_outbox": {
+    "total_rows": 1,
+    "status": "accepted",
+    "attempts": 1
+  },
+  "production_observation": {
+    "price_cents": 17988,
+    "observed_at_utc": "2026-10-03T05:07:19.014Z"
+  },
+  "production_subscription_counts": {
+    "active": 1,
+    "active_unexpired": 1,
+    "stopped": 2
+  },
+  "host_observation": "The ChatGPT alert conversation displayed the native price.dropped event, the 185.88-to-179.88 EUR item-price crossing, and the October 2 20:43 Athens event time.",
+  "limits": [
+    "The observed connection is the private OAuth qualification plugin, not the released public associated app.",
+    "Outbox acceptance establishes callback acknowledgement; a distinct push notification was not independently observed.",
+    "No callback URL, signing secret, token, account identifier, event ID, subscription ID, or private conversation URL is recorded in this public receipt."
+  ]
+}
