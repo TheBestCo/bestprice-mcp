@@ -1,0 +1,927 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:17:52.543Z",
+  "outcome": "basket",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "9c6169f5-367d-40ab-8cd4-814e484fa01b",
+    "revision": 2,
+    "fingerprint": "eabefbfed88e5bd7a41de4569ac0a5b3c944400f908ff5b6c9d5668bdba649ae",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "phone",
+    "intent": "shop",
+    "query": "κινητό",
+    "constraints": {
+      "budgetEur": 500,
+      "statedBudgetEur": 500,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": 24,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 500,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 500,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 49,
+            "end": 61,
+            "text": "έως 500 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [
+      {
+        "id": "screen_inches",
+        "label": "οθόνη 24 ιντσών",
+        "target": 24
+      }
+    ],
+    "preferences": [
+      {
+        "id": "unverified_request_detail",
+        "label": "κάτι από όσα ζήτησες",
+        "preference": true,
+        "clauses": ["NFC"]
+      }
+    ],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": ["οθόνη 24 ιντσών"],
+    "nonPricePhrases": ["οθόνη 24 ιντσών", "NFC"],
+    "source_turns": [],
+    "transition": "amend"
+  },
+  "actions": [],
+  "status": "ready",
+  "mission": {
+    "intent": "basket",
+    "summary_el": "Κοινό καλάθι · Κινητό · Συνολικό όριο 500 € · 24\"",
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": 24,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 500,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 500,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 49,
+              "end": 61,
+              "text": "έως 500 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 500,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "phone",
+          "label": "Κινητό",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "nfc",
+                "label": "NFC"
+              }
+            ]
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "monitor",
+          "label": "Οθόνη υπολογιστή",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": 24,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ]
+    }
+  },
+  "primary": null,
+  "alternatives": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": 24,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 500,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 500,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 49,
+            "end": 61,
+            "text": "έως 500 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 500,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "phone",
+        "label": "Κινητό",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "nfc",
+              "label": "NFC"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": 24,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "catalog_requirements": ["οθόνη 24 ιντσών"]
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "price_history": null,
+  "candidate_summary": null,
+  "candidates": [
+    {
+      "product_id": "bp_2163689592",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163689592:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163689592:bp_2163689592",
+        "optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592",
+        "optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592",
+        "search_products:bp_2163689592:bp_2163689592"
+      ]
+    },
+    {
+      "product_id": "bp_2163979176",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163979176:bp_2163979176",
+        "optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176",
+        "optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"
+      ]
+    },
+    {
+      "product_id": "bp_2162499899",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2162499899:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2162499899:bp_2162499899"
+      ]
+    },
+    {
+      "product_id": "bp_2163461420",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163461420:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163461420:bp_2163461420"
+      ]
+    },
+    {
+      "product_id": "bp_2163844359",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163844359:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163844359:bp_2163844359"
+      ]
+    },
+    {
+      "product_id": "bp_2164518034",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164518034:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2164518034:bp_2164518034"
+      ]
+    },
+    {
+      "product_id": "bp_2163527417",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:nfc"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163527417:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163527417:bp_2163527417"
+      ]
+    },
+    {
+      "product_id": "bp_2162499901",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2162499901:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2162499901:bp_2162499901"
+      ]
+    },
+    {
+      "product_id": "bp_2162452975",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2162452975:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2162452975:bp_2162452975"
+      ]
+    },
+    {
+      "product_id": "bp_2164588382",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164588382:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2164588382:bp_2164588382",
+        "search_products:bp_2164588382:bp_2164588382"
+      ]
+    },
+    {
+      "product_id": "bp_2158096886",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158096886:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2158096886:bp_2158096886",
+        "search_products:bp_2158096886:bp_2158096886"
+      ]
+    },
+    {
+      "product_id": "bp_2163455282",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163455282:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163455282:bp_2163455282",
+        "search_products:bp_2163455282:bp_2163455282"
+      ]
+    },
+    {
+      "product_id": "bp_2158368346",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158368346:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2158368346:bp_2158368346",
+        "search_products:bp_2158368346:bp_2158368346"
+      ]
+    },
+    {
+      "product_id": "bp_2160331924",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160331924:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2160331924:bp_2160331924",
+        "search_products:bp_2160331924:bp_2160331924"
+      ]
+    },
+    {
+      "product_id": "bp_2164207519",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164207519:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2164207519:bp_2164207519",
+        "search_products:bp_2164207519:bp_2164207519"
+      ]
+    },
+    {
+      "product_id": "bp_2159326195",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159326195:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2159326195:bp_2159326195",
+        "search_products:bp_2159326195:bp_2159326195"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 2,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:17:51.686Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 2539,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 196,30€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 303,70€ κάτω από το συνολικό όριο των 500€.",
+  "comparison": null,
+  "basket": {
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "fewer_merchants",
+        "merchant_count": 1,
+        "item_subtotal": 205.4,
+        "shipping_total": 4,
+        "shipping_status": "known",
+        "total_price": 209.4,
+        "reliability_score": 4.84,
+        "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_961",
+            "merchant_name": "Websupplies",
+            "merchant_rating": 4.84,
+            "verified_merchant": true,
+            "item_subtotal": 205.4,
+            "shipping_price": 4,
+            "shipping_status": "known",
+            "total_price": 209.4,
+            "reason": "covers_basket_with_one_merchant",
+            "items": [
+              {
+                "product_id": "bp_2163689592",
+                "title": "Xiaomi A24i 2026 IPS Monitor 23.8\" 1920x1080 FHD 144Hz 6ms",
+                "quantity": 1,
+                "unit_price": 83.5,
+                "line_total": 83.5,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2163979176",
+                "title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+                "quantity": 1,
+                "unit_price": 121.9,
+                "line_total": 121.9,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "plan_type": "balanced",
+        "merchant_count": 2,
+        "item_subtotal": 191.8,
+        "shipping_total": 4.5,
+        "shipping_status": "known",
+        "total_price": 196.3,
+        "reliability_score": 4.62,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_128",
+            "merchant_name": "Msystems",
+            "merchant_rating": 4.9,
+            "verified_merchant": false,
+            "item_subtotal": 79.9,
+            "shipping_price": 2.5,
+            "shipping_status": "known",
+            "total_price": 82.4,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2163689592",
+                "title": "Xiaomi A24i 2026 IPS Monitor 23.8\" 1920x1080 FHD 144Hz 6ms",
+                "quantity": 1,
+                "unit_price": 79.9,
+                "line_total": 79.9,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          },
+          {
+            "merchant_id": "bp_merchant_7108",
+            "merchant_name": "MobiCell",
+            "merchant_rating": 4.34,
+            "verified_merchant": true,
+            "item_subtotal": 111.9,
+            "shipping_price": 2,
+            "shipping_status": "known",
+            "total_price": 113.9,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2163979176",
+                "title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+                "quantity": 1,
+                "unit_price": 111.9,
+                "line_total": 111.9,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": [],
+    "warnings": [
+      "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+    ],
+    "as_of": "2026-10-12T10:17:52.262Z",
+    "currency": "EUR",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "phone",
+        "label": "Κινητό",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "nfc",
+              "label": "NFC"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": 24,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "phone",
+        "label": "Κινητό",
+        "quantity": 1,
+        "product_id": "bp_2163979176",
+        "catalog_price_eur": 109,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "product_id": "bp_2163689592",
+        "catalog_price_eur": 72.9,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 500
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "phone",
+        "label": "Κινητό",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "nfc",
+              "label": "NFC"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": 24,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "phone",
+        "label": "Κινητό",
+        "quantity": 1,
+        "product_id": "bp_2163979176",
+        "catalog_price_eur": 109,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "product_id": "bp_2163689592",
+        "catalog_price_eur": 72.9,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 500
+  },
+  "execution": {
+    "tools_used": ["search_products", "get_product_details", "optimize_basket"],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 969,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 1,
+      "understanding_requirements": 1,
+      "understanding_ms": 86,
+      "direct_recommendation": false,
+      "exact_route": false,
+      "catalog_search_calls": 2,
+      "search_products_calls": 2,
+      "search_products_failures": 0,
+      "search_products_invocations": 2,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 599,
+      "search_products_max_ms": 517,
+      "get_product_details_calls": 4,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 4,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 611,
+      "get_product_details_max_ms": 338,
+      "compare_offers_calls": 0,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 0,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 0,
+      "compare_offers_max_ms": 0,
+      "get_price_history_calls": 0,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 0,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 0,
+      "get_price_history_max_ms": 0,
+      "get_product_reviews_calls": 0,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 0,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 0,
+      "get_product_reviews_max_ms": 0,
+      "optimize_basket_calls": 2,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 2,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 280,
+      "optimize_basket_max_ms": 198,
+      "retrieval_page_candidates": 16,
+      "receipt_disqualified_candidates": 1,
+      "receipt_eligible_candidates": 15,
+      "receipt_review_requested": 0,
+      "receipt_review_available": 0,
+      "receipt_validation_ms": 10,
+      "brain_runtime_ms": 969,
+      "brain_finalization_ms": 55
+    }
+  },
+  "personalization": null
+}

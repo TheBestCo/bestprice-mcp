@@ -1,0 +1,1037 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:10:55.189Z",
+  "outcome": "recommendation",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "4d584040-69cf-4470-aaa2-40265475d727",
+    "revision": 1,
+    "fingerprint": "eb44fe38154ee5b88e955e4a77355ced703b94de09aa5fd70b1fd75de8d8816f",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "air_fryer",
+    "intent": "shop",
+    "query": "air fryer",
+    "constraints": {
+      "budgetEur": 120,
+      "statedBudgetEur": 120,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": {
+        "minimum": 4,
+        "maximum": 5,
+        "target": 4.5
+      },
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 120,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 120,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 1,
+            "start": 24,
+            "end": 36,
+            "text": "έως 120 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": ["μόνο από 4 έως 5 λίτρα"],
+    "nonPricePhrases": ["μόνο από 4 έως 5 λίτρα"],
+    "source_turns": [],
+    "transition": "start"
+  },
+  "actions": [
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_0",
+      "type": "refine",
+      "message": "Βρες κάτι φθηνότερο από το Hoco HJD15A Air Fryer 4.5lt, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "product_ids": []
+    },
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_1",
+      "type": "refine",
+      "message": "Βρες αντίστοιχη επιλογή σε άλλο μέγεθος από το Hoco HJD15A Air Fryer 4.5lt των 4,5 λίτρων, κρατώντας το ίδιο budget και τον ίδιο αριθμό ατόμων.",
+      "product_ids": []
+    },
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_2",
+      "type": "compare",
+      "message": "Σύγκρινε αναλυτικά το Hoco HJD15A Air Fryer 4.5lt με το Eldom FR45 Air Fryer 4.5lt Inox.",
+      "product_ids": ["bp_2160412918", "bp_2164176215", "bp_2158725074"]
+    }
+  ],
+  "status": "ready",
+  "mission": {
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Air fryer · Έως 120 € · 4–5 λίτρα",
+    "constraints": {
+      "maximum_price_eur": 120,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": {
+        "minimum": 4,
+        "maximum": 5,
+        "target": 4.5
+      },
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 120,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 120,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 1,
+              "start": 24,
+              "end": 36,
+              "text": "έως 120 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "primary": {
+    "product_id": "bp_2160412918",
+    "title": "Hoco HJD15A Air Fryer 4.5lt",
+    "brand": "Hoco",
+    "model": "Hoco HJD15A Air Fryer 4.5lt",
+    "variant": null,
+    "category_title": "Air Fryers",
+    "price_from": 36.31,
+    "rating": null,
+    "offer_count": 2,
+    "availability": "in_stock",
+    "product_url": "[omitted]",
+    "image_url": "[omitted]",
+    "ram_gb": null,
+    "people_count": 2,
+    "capacity_litres": 4.5,
+    "dual_basket": false
+  },
+  "alternatives": [
+    {
+      "product": {
+        "product_id": "bp_2164176215",
+        "title": "Eldom FR45 Air Fryer 4.5lt Inox",
+        "brand": "Eldom",
+        "model": "Eldom FR45 Air Fryer 4.5lt Inox",
+        "variant": null,
+        "category_title": "Air Fryers",
+        "price_from": 47.83,
+        "rating": null,
+        "offer_count": 4,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": null,
+        "people_count": 2,
+        "capacity_litres": 4.5,
+        "dual_basket": false
+      },
+      "label": "11,52€ ακριβότερο",
+      "tradeoff": "Δεν συνέκρινα: βαθμολογία αγοραστών BestPrice",
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_216162546",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 47.83,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:10:55.116Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_216162546",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 47.83,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:10:55.116Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 120,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 4,
+        "unknown_shipping_count": 4
+      },
+      "requires_constraint_change": false
+    },
+    {
+      "product": {
+        "product_id": "bp_2158725074",
+        "title": "Dsp KB2085 Air Fryer 4.5lt",
+        "brand": "Dsp",
+        "model": "Dsp KB2085 Air Fryer 4.5lt",
+        "variant": null,
+        "category_title": "Air Fryers",
+        "price_from": 92.4,
+        "rating": null,
+        "offer_count": 18,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": null,
+        "people_count": 2,
+        "capacity_litres": 4.5,
+        "dual_basket": false
+      },
+      "label": "Σε περισσότερα καταστήματα",
+      "tradeoff": null,
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_131959271",
+          "merchant_id": "bp_merchant_13363",
+          "merchant_name": "Smart eShop",
+          "merchant_rating": 4,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 92.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "price_checked_at": "2026-10-12T10:10:55.116Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_131959271",
+          "merchant_id": "bp_merchant_13363",
+          "merchant_name": "Smart eShop",
+          "merchant_rating": 4,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 92.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "price_checked_at": "2026-10-12T10:10:55.116Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 120,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    }
+  ],
+  "constraints": {
+    "maximum_price_eur": 120,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": {
+      "minimum": 4,
+      "maximum": 5,
+      "target": 4.5
+    },
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "catalog_requirements": [],
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 120,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 120,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 1,
+            "start": 24,
+            "end": 36,
+            "text": "έως 120 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [
+    "Καλύπτει τα εξής κριτήρια: έως 120€.",
+    "Η επόμενη επιλογή κοστίζει 11,52€ παραπάνω χωρίς διαφορά στα εξής: χωρητικότητα για το νοικοκυριό. Δεν συνέκρινα: βαθμολογία αγοραστών BestPrice.",
+    "Η χωρητικότητα των 4,5 λίτρων είναι μέσα στο εύρος που ζήτησες."
+  ],
+  "tradeoffs": [
+    "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 2 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+    "Repair4all: βαθμολογία καταστήματος 5/5 από 5 αξιολογήσεις; δηλωμένη διαθεσιμότητα «1–3 εργάσιμες ημέρες» (εκτίμηση καταστήματος)."
+  ],
+  "offer_summary": {
+    "postal_code": null,
+    "price_basis": "item_price",
+    "affordability": "within_item_budget_delivery_unknown",
+    "offer_scope": "returned_sample",
+    "delivery_affordability_proven": false,
+    "recommended": {
+      "offer_id": "bp_offer_207417694",
+      "merchant_id": "bp_merchant_13378",
+      "merchant_name": "Repair4all",
+      "merchant_rating": 5,
+      "merchant_rating_count": 5,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 36.31,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_1_3_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "1–3 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:10:55.116Z"
+    },
+    "cheapest": {
+      "offer_id": "bp_offer_207417694",
+      "merchant_id": "bp_merchant_13378",
+      "merchant_name": "Repair4all",
+      "merchant_rating": 5,
+      "merchant_rating_count": 5,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 36.31,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_1_3_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "1–3 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:10:55.116Z"
+    },
+    "same_offer": true,
+    "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+    "budget_eur": 120,
+    "recommended_within_budget": true,
+    "cheapest_within_budget": true,
+    "compared_offer_count": 2,
+    "unknown_shipping_count": 2
+  },
+  "price_history": {
+    "current_price": 36.31,
+    "quote_consistency": "matched",
+    "current_price_source": "live_offer_minimum",
+    "source_last_observed_at": "2026-10-12T10:10:55.116Z",
+    "period_days": 180,
+    "window_stats": [
+      {
+        "days": 30,
+        "minimum_price": 34.4,
+        "median_price": 36.31,
+        "observations": 4,
+        "coverage_pct": 13.3
+      },
+      {
+        "days": 90,
+        "minimum_price": 34.4,
+        "median_price": 35.4,
+        "observations": 18,
+        "coverage_pct": 20
+      },
+      {
+        "days": 180,
+        "minimum_price": 34.13,
+        "median_price": 34.49,
+        "observations": 24,
+        "coverage_pct": 13.3
+      }
+    ],
+    "minimum_price": 34.13,
+    "median_price": 34.49,
+    "observations": 24,
+    "coverage_pct": 13.3,
+    "delta_vs_median_pct": 5.28,
+    "deal_classification": "insufficient_data",
+    "methodology_id": "bestprice_daily_min_v1",
+    "data_gaps": {
+      "missing_days": 157,
+      "longest_gap_days": 37,
+      "stale_days": 15,
+      "coverage_note": "157 ημέρες δεν είχαν έγκυρη ημερήσια παρατήρηση."
+    },
+    "warnings": [
+      "Η κατάταξη τιμής συγκρίνει με το διάστημα 180 ημερών και χρειάζεται τουλάχιστον 30 παρατηρήσεις και 60% κάλυψη· εκεί υπάρχουν 24 παρατηρήσεις (13,3%)."
+    ],
+    "series": [
+      {
+        "date": "2026-04-29",
+        "price": 34.13
+      },
+      {
+        "date": "2026-05-05",
+        "price": 34.49
+      },
+      {
+        "date": "2026-05-11",
+        "price": 35.22
+      },
+      {
+        "date": "2026-05-13",
+        "price": 34.49
+      },
+      {
+        "date": "2026-05-26",
+        "price": 36.31
+      },
+      {
+        "date": "2026-07-03",
+        "price": 34.49
+      },
+      {
+        "date": "2026-07-22",
+        "price": 34.49
+      },
+      {
+        "date": "2026-07-28",
+        "price": 34.49
+      },
+      {
+        "date": "2026-07-30",
+        "price": 34.49
+      },
+      {
+        "date": "2026-08-05",
+        "price": 34.49
+      },
+      {
+        "date": "2026-08-06",
+        "price": 38.44
+      },
+      {
+        "date": "2026-08-11",
+        "price": 38.44
+      },
+      {
+        "date": "2026-08-22",
+        "price": 34.49
+      },
+      {
+        "date": "2026-08-24",
+        "price": 34.49
+      },
+      {
+        "date": "2026-08-25",
+        "price": 34.49
+      },
+      {
+        "date": "2026-08-31",
+        "price": 34.49
+      },
+      {
+        "date": "2026-09-01",
+        "price": 36.31
+      },
+      {
+        "date": "2026-09-03",
+        "price": 36.31
+      },
+      {
+        "date": "2026-09-05",
+        "price": 36.31
+      },
+      {
+        "date": "2026-09-10",
+        "price": 36.31
+      },
+      {
+        "date": "2026-09-15",
+        "price": 34.4
+      },
+      {
+        "date": "2026-09-17",
+        "price": 36.31
+      },
+      {
+        "date": "2026-09-27",
+        "price": 36.31
+      },
+      {
+        "date": "2026-10-12",
+        "price": 36.31
+      }
+    ]
+  },
+  "candidate_summary": {
+    "scope": "returned_candidates",
+    "returned_count": 8,
+    "eligible_count": 8,
+    "rejected_count": 0,
+    "rejection_counts": {},
+    "search_fallback_applied": false,
+    "delivered_totals_checked": 8,
+    "delivered_totals_known": 0
+  },
+  "candidates": [
+    {
+      "product_id": "bp_2160412918",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2160412918:bp_offer_207417694",
+        "compare_offers:bp_2160412918:bp_offer_208105420",
+        "compare_offers:bp_2160412918:check",
+        "deterministic_ranking:bp_2160412918:bestprice_shopping_policy_v1:air_fryers",
+        "get_price_history:bp_2160412918:bp_2160412918",
+        "get_product_details:bp_2160412918:bp_2160412918",
+        "search_products:bp_2160412918:bp_2160412918"
+      ]
+    },
+    {
+      "product_id": "bp_2164176215",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2164176215:bp_offer_216162546",
+        "compare_offers:bp_2164176215:bp_offer_216721067",
+        "compare_offers:bp_2164176215:bp_offer_217855537",
+        "compare_offers:bp_2164176215:bp_offer_225922754",
+        "compare_offers:bp_2164176215:check",
+        "deterministic_ranking:bp_2164176215:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2164176215:bp_2164176215",
+        "search_products:bp_2164176215:bp_2164176215"
+      ]
+    },
+    {
+      "product_id": "bp_2158725074",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2158725074:bp_offer_131959271",
+        "compare_offers:bp_2158725074:bp_offer_141359229",
+        "compare_offers:bp_2158725074:bp_offer_141391592",
+        "compare_offers:bp_2158725074:bp_offer_147582905",
+        "compare_offers:bp_2158725074:bp_offer_158995039",
+        "compare_offers:bp_2158725074:bp_offer_182997362",
+        "compare_offers:bp_2158725074:bp_offer_185640956",
+        "compare_offers:bp_2158725074:bp_offer_192839516",
+        "compare_offers:bp_2158725074:bp_offer_219623565",
+        "compare_offers:bp_2158725074:bp_offer_224662189",
+        "compare_offers:bp_2158725074:check",
+        "deterministic_ranking:bp_2158725074:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2158725074:bp_2158725074",
+        "search_products:bp_2158725074:bp_2158725074"
+      ]
+    },
+    {
+      "product_id": "bp_2160057712",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2160057712:bp_offer_163791025",
+        "compare_offers:bp_2160057712:bp_offer_163833658",
+        "compare_offers:bp_2160057712:bp_offer_163944131",
+        "compare_offers:bp_2160057712:bp_offer_164139240",
+        "compare_offers:bp_2160057712:bp_offer_164152693",
+        "compare_offers:bp_2160057712:bp_offer_195719161",
+        "compare_offers:bp_2160057712:bp_offer_208459072",
+        "compare_offers:bp_2160057712:bp_offer_212889895",
+        "compare_offers:bp_2160057712:bp_offer_221918767",
+        "compare_offers:bp_2160057712:bp_offer_225588833",
+        "compare_offers:bp_2160057712:check",
+        "deterministic_ranking:bp_2160057712:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2160057712:bp_2160057712",
+        "search_products:bp_2160057712:bp_2160057712"
+      ]
+    },
+    {
+      "product_id": "bp_2159236827",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2159236827:bp_offer_141341477",
+        "compare_offers:bp_2159236827:bp_offer_145895344",
+        "compare_offers:bp_2159236827:bp_offer_186622753",
+        "compare_offers:bp_2159236827:bp_offer_186625120",
+        "compare_offers:bp_2159236827:bp_offer_211666537",
+        "compare_offers:bp_2159236827:bp_offer_216601118",
+        "compare_offers:bp_2159236827:bp_offer_226352270",
+        "compare_offers:bp_2159236827:check",
+        "deterministic_ranking:bp_2159236827:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2159236827:bp_2159236827",
+        "search_products:bp_2159236827:bp_2159236827"
+      ]
+    },
+    {
+      "product_id": "bp_2158144367",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2158144367:bp_offer_109593167",
+        "compare_offers:bp_2158144367:bp_offer_109855859",
+        "compare_offers:bp_2158144367:bp_offer_112327769",
+        "compare_offers:bp_2158144367:bp_offer_117206341",
+        "compare_offers:bp_2158144367:bp_offer_119069208",
+        "compare_offers:bp_2158144367:bp_offer_135783775",
+        "compare_offers:bp_2158144367:bp_offer_138704651",
+        "compare_offers:bp_2158144367:bp_offer_139795394",
+        "compare_offers:bp_2158144367:bp_offer_152564993",
+        "compare_offers:bp_2158144367:bp_offer_221714530",
+        "compare_offers:bp_2158144367:check",
+        "deterministic_ranking:bp_2158144367:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2158144367:bp_2158144367",
+        "get_product_reviews:bp_2158144367:bp_2158144367",
+        "search_products:bp_2158144367:bp_2158144367"
+      ]
+    },
+    {
+      "product_id": "bp_2157818719",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2157818719:bp_offer_100185471",
+        "compare_offers:bp_2157818719:bp_offer_103065941",
+        "compare_offers:bp_2157818719:bp_offer_105061860",
+        "compare_offers:bp_2157818719:bp_offer_120304437",
+        "compare_offers:bp_2157818719:bp_offer_132901693",
+        "compare_offers:bp_2157818719:bp_offer_138362039",
+        "compare_offers:bp_2157818719:bp_offer_149400780",
+        "compare_offers:bp_2157818719:bp_offer_161251045",
+        "compare_offers:bp_2157818719:bp_offer_167141254",
+        "compare_offers:bp_2157818719:bp_offer_209456471",
+        "compare_offers:bp_2157818719:check",
+        "deterministic_ranking:bp_2157818719:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2157818719:bp_2157818719",
+        "search_products:bp_2157818719:bp_2157818719"
+      ]
+    },
+    {
+      "product_id": "bp_2157250295",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2157250295:bp_offer_100343251",
+        "compare_offers:bp_2157250295:bp_offer_165392447",
+        "compare_offers:bp_2157250295:bp_offer_167209403",
+        "compare_offers:bp_2157250295:bp_offer_175878549",
+        "compare_offers:bp_2157250295:bp_offer_194379486",
+        "compare_offers:bp_2157250295:bp_offer_195367114",
+        "compare_offers:bp_2157250295:bp_offer_199065569",
+        "compare_offers:bp_2157250295:bp_offer_208290901",
+        "compare_offers:bp_2157250295:bp_offer_214175663",
+        "compare_offers:bp_2157250295:check",
+        "deterministic_ranking:bp_2157250295:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2157250295:bp_2157250295",
+        "search_products:bp_2157250295:bp_2157250295"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 8,
+    "complete_catalog": false,
+    "search_calls": 1,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:10:54.687Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 36,
+      "candidate_count": 35,
+      "eligible_count": 35,
+      "returned_count": 8,
+      "category_id": 8535,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [
+    {
+      "code": "ranking_calibration",
+      "product_id": "bp_2160412918",
+      "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+    },
+    {
+      "code": "landed_cost_unknown",
+      "product_id": "bp_2160412918",
+      "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+    },
+    {
+      "code": "history_coverage_insufficient",
+      "product_id": "bp_2160412918",
+      "message": "Οι διαθέσιμες καταγραφές δεν καλύπτουν αρκετές ημέρες για αξιόπιστη σύγκριση τιμής."
+    }
+  ],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_coverage_insufficient",
+    "source_ids": ["get_price_history:bp_2160412918:bp_2160412918"],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "",
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "execution": {
+    "tools_used": [
+      "search_products",
+      "get_product_details",
+      "compare_offers",
+      "get_price_history",
+      "get_product_reviews"
+    ],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 1969,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": false,
+      "understanding_cached": false,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 0,
+      "understanding_ms": 1438,
+      "direct_recommendation": true,
+      "exact_route": false,
+      "catalog_search_calls": 1,
+      "search_products_calls": 1,
+      "search_products_failures": 0,
+      "search_products_invocations": 1,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 261,
+      "search_products_max_ms": 261,
+      "get_product_details_calls": 2,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 2,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 320,
+      "get_product_details_max_ms": 160,
+      "compare_offers_calls": 8,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 8,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 24,
+      "compare_offers_max_ms": 3,
+      "get_price_history_calls": 1,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 1,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 13,
+      "get_price_history_max_ms": 13,
+      "get_product_reviews_calls": 8,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 8,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 466,
+      "get_product_reviews_max_ms": 67,
+      "optimize_basket_calls": 0,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 0,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 0,
+      "optimize_basket_max_ms": 0,
+      "retrieval_page_candidates": 8,
+      "receipt_disqualified_candidates": 0,
+      "receipt_eligible_candidates": 8,
+      "receipt_review_requested": 8,
+      "receipt_review_available": 1,
+      "receipt_validation_ms": 5,
+      "brain_runtime_ms": 1969,
+      "brain_finalization_ms": 14
+    }
+  },
+  "personalization": null,
+  "follow_ups": [
+    {
+      "id": "cheaper",
+      "label": "Κάτι φθηνότερο",
+      "message": "Βρες κάτι φθηνότερο από το Hoco HJD15A Air Fryer 4.5lt, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_0"
+      }
+    },
+    {
+      "id": "capacity",
+      "label": "Άλλο μέγεθος",
+      "message": "Βρες αντίστοιχη επιλογή σε άλλο μέγεθος από το Hoco HJD15A Air Fryer 4.5lt των 4,5 λίτρων, κρατώντας το ίδιο budget και τον ίδιο αριθμό ατόμων.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_1"
+      }
+    },
+    {
+      "id": "compare",
+      "label": "Σύγκρινε τις επιλογές",
+      "message": "Σύγκρινε αναλυτικά το Hoco HJD15A Air Fryer 4.5lt με το Eldom FR45 Air Fryer 4.5lt Inox.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_2"
+      }
+    }
+  ],
+  "coverage": {
+    "policy_version": "ask_beta_coverage_v1",
+    "family": "air_fryer",
+    "reason": "catalog_family_verified",
+    "supported": true
+  },
+  "spend_walk": {
+    "version": "ask_spend_walk_v1",
+    "category_schema": "air_fryers",
+    "comparison_status": "consistent",
+    "use_case": "household",
+    "price_basis": "item_price",
+    "ranking": null,
+    "budget_eur": 120,
+    "base": {
+      "product_id": "bp_2160412918",
+      "fit": 100,
+      "price_eur": 36.31
+    },
+    "winner": {
+      "product_id": "bp_2160412918",
+      "fit": 100,
+      "reason": "base",
+      "price_eur": 36.31
+    },
+    "next": {
+      "product_id": "bp_2164176215",
+      "price_eur": 47.83,
+      "delta_fit": 0,
+      "delta_eur": 11.52,
+      "accepted": false
+    },
+    "steps": [
+      {
+        "product_id": "bp_2164176215",
+        "price_eur": 47.83,
+        "delta_fit": 0,
+        "fit_relation": "equal_measured_fit",
+        "compared_attributes": ["capacity_fit"],
+        "delta_eur": 11.52,
+        "fit_per_eur": 0,
+        "threshold": 0.071,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 36.31,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 11.52
+      },
+      {
+        "product_id": "bp_2160057712",
+        "price_eur": 48.07,
+        "delta_fit": 0,
+        "fit_relation": "equal_measured_fit",
+        "compared_attributes": ["capacity_fit"],
+        "delta_eur": 11.76,
+        "fit_per_eur": 0,
+        "threshold": 0.072,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 36.31,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 11.76
+      },
+      {
+        "product_id": "bp_2157818719",
+        "price_eur": 55,
+        "delta_fit": 0,
+        "fit_relation": "equal_measured_fit",
+        "compared_attributes": ["capacity_fit"],
+        "delta_eur": 18.69,
+        "fit_per_eur": 0,
+        "threshold": 0.075,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 36.31,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 18.69
+      },
+      {
+        "product_id": "bp_2159236827",
+        "price_eur": 60.48,
+        "delta_fit": 0,
+        "fit_relation": "equal_measured_fit",
+        "compared_attributes": ["capacity_fit"],
+        "delta_eur": 24.17,
+        "fit_per_eur": 0,
+        "threshold": 0.078,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 36.31,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 24.17
+      },
+      {
+        "product_id": "bp_2158144367",
+        "price_eur": 63,
+        "delta_fit": 0,
+        "fit_relation": "equal_measured_fit",
+        "compared_attributes": ["capacity_fit"],
+        "delta_eur": 26.69,
+        "fit_per_eur": 0,
+        "threshold": 0.08,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 36.31,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 26.69
+      },
+      {
+        "product_id": "bp_2158725074",
+        "price_eur": 92.4,
+        "delta_fit": 0,
+        "fit_relation": "equal_measured_fit",
+        "compared_attributes": ["capacity_fit"],
+        "delta_eur": 56.09,
+        "fit_per_eur": 0,
+        "threshold": 0.103,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 36.31,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 56.09
+      },
+      {
+        "product_id": "bp_2157250295",
+        "price_eur": 94.7,
+        "delta_fit": 0,
+        "fit_relation": "equal_measured_fit",
+        "compared_attributes": ["capacity_fit"],
+        "delta_eur": 58.39,
+        "fit_per_eur": 0,
+        "threshold": 0.105,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 36.31,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 58.39
+      }
+    ]
+  }
+}

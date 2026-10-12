@@ -1,0 +1,1152 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:11:18.562Z",
+  "outcome": "clarification",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "14f15e0d-e03d-4538-a451-9b75323599f7",
+    "revision": 2,
+    "fingerprint": "dc1bdc4fee5a0361719502f09605de67ea9c50e2a9e7f296918f8ba3fe55d314",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "laptop",
+    "intent": "shop",
+    "query": "laptop",
+    "constraints": {
+      "budgetEur": 650,
+      "statedBudgetEur": 650,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 650,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 650,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 44,
+            "end": 56,
+            "text": "έως 650 ευρώ"
+          }
+        },
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 900,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 98,
+            "end": 110,
+            "text": "έως 900 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": [],
+    "nonPricePhrases": [],
+    "source_turns": [],
+    "transition": "amend"
+  },
+  "actions": [],
+  "status": "needs_input",
+  "mission": {
+    "intent": "basket",
+    "summary_el": "Κοινό καλάθι · Laptop · Συνολικό όριο 650 €",
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 650,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 650,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 44,
+              "end": 56,
+              "text": "έως 650 ευρώ"
+            }
+          },
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 900,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 98,
+              "end": 110,
+              "text": "έως 900 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 650,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "laptop",
+          "label": "Laptop",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_3",
+          "family": "laptop",
+          "label": "Laptop",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_4",
+          "family": "monitor",
+          "label": "Οθόνη υπολογιστή",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_5",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ]
+    }
+  },
+  "primary": null,
+  "alternatives": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 650,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 650,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 44,
+            "end": 56,
+            "text": "έως 650 ευρώ"
+          }
+        },
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 900,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 98,
+            "end": 110,
+            "text": "έως 900 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 650,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_3",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_4",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_5",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "catalog_requirements": []
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "price_history": null,
+  "candidate_summary": null,
+  "candidates": [
+    {
+      "product_id": "bp_2158096886",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158096886:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2158096886:bp_2158096886",
+        "optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886",
+        "optimize_basket:bp_2158096886:fewer_merchants:bp_merchant_90:bp_2158096886"
+      ]
+    },
+    {
+      "product_id": "bp_2150726317",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2150726317:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2150726317:bp_2150726317",
+        "optimize_basket:bp_2150726317:balanced:bp_merchant_3963:bp_2150726317",
+        "optimize_basket:bp_2150726317:fewer_merchants:bp_merchant_90:bp_2150726317",
+        "search_products:bp_2150726317:bp_2150726317"
+      ]
+    },
+    {
+      "product_id": "bp_2156608080",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156608080:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2156608080:bp_2156608080",
+        "optimize_basket:bp_2156608080:balanced:bp_merchant_3963:bp_2156608080",
+        "optimize_basket:bp_2156608080:fewer_merchants:bp_merchant_90:bp_2156608080",
+        "search_products:bp_2156608080:bp_2156608080"
+      ]
+    },
+    {
+      "product_id": "bp_2164551996",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164551996:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164551996:bp_2164551996",
+        "optimize_basket:bp_2164551996:balanced:bp_merchant_11804:bp_2164551996",
+        "optimize_basket:bp_2164551996:fewer_merchants:bp_merchant_11804:bp_2164551996"
+      ]
+    },
+    {
+      "product_id": "bp_2163730271",
+      "status": "disqualified",
+      "reason_codes": ["maximum_price_eur", "basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163730271:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2163730271:bp_2163730271"
+      ]
+    },
+    {
+      "product_id": "bp_2164412265",
+      "status": "disqualified",
+      "reason_codes": ["maximum_price_eur", "basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164412265:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164412265:bp_2164412265"
+      ]
+    },
+    {
+      "product_id": "bp_2158846555",
+      "status": "disqualified",
+      "reason_codes": ["maximum_price_eur", "basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158846555:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2158846555:bp_2158846555"
+      ]
+    },
+    {
+      "product_id": "bp_2164547927",
+      "status": "disqualified",
+      "reason_codes": ["maximum_price_eur", "basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164547927:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164547927:bp_2164547927"
+      ]
+    },
+    {
+      "product_id": "bp_2164551998",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164551998:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164551998:bp_2164551998"
+      ]
+    },
+    {
+      "product_id": "bp_2164551997",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164551997:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164551997:bp_2164551997"
+      ]
+    },
+    {
+      "product_id": "bp_2163730270",
+      "status": "disqualified",
+      "reason_codes": ["maximum_price_eur", "basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163730270:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2163730270:bp_2163730270"
+      ]
+    },
+    {
+      "product_id": "bp_2163493195",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163493195:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2163493195:bp_2163493195",
+        "search_products:bp_2163493195:bp_2163493195"
+      ]
+    },
+    {
+      "product_id": "bp_2155476310",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155476310:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2155476310:bp_2155476310",
+        "search_products:bp_2155476310:bp_2155476310"
+      ]
+    },
+    {
+      "product_id": "bp_2163319957",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163319957:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2163319957:bp_2163319957",
+        "search_products:bp_2163319957:bp_2163319957"
+      ]
+    },
+    {
+      "product_id": "bp_2158361753",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158361753:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2158361753:bp_2158361753",
+        "search_products:bp_2158361753:bp_2158361753"
+      ]
+    },
+    {
+      "product_id": "bp_2158996105",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158996105:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2158996105:bp_2158996105",
+        "search_products:bp_2158996105:bp_2158996105"
+      ]
+    },
+    {
+      "product_id": "bp_2157261945",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2157261945:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2157261945:bp_2157261945",
+        "search_products:bp_2157261945:bp_2157261945"
+      ]
+    },
+    {
+      "product_id": "bp_2164542519",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164542519:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164542519:bp_2164542519"
+      ]
+    },
+    {
+      "product_id": "bp_2164471654",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164471654:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164471654:bp_2164471654"
+      ]
+    },
+    {
+      "product_id": "bp_2164471541",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164471541:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164471541:bp_2164471541"
+      ]
+    },
+    {
+      "product_id": "bp_2164502480",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164502480:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164502480:bp_2164502480"
+      ]
+    },
+    {
+      "product_id": "bp_2163455282",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163455282:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2163455282:bp_2163455282"
+      ]
+    },
+    {
+      "product_id": "bp_2164588382",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164588382:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164588382:bp_2164588382"
+      ]
+    },
+    {
+      "product_id": "bp_2164585349",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164585349:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164585349:bp_2164585349"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 24,
+    "complete_catalog": false,
+    "search_calls": 5,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:11:17.831Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 2781,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "provide_context",
+    "reason": "missing_shopping_context",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [
+    {
+      "question": "Δεν βρέθηκε πλήρες πλάνο μέσα στο συνολικό όριο των 650 €.",
+      "reason": "missing_shopping_context"
+    }
+  ],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "Δεν βρέθηκε πλήρες πλάνο μέσα στο συνολικό όριο των 650 €.",
+  "comparison": null,
+  "basket": null,
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_3",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_4",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_5",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [],
+    "unresolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "reason": "aggregate_budget_exceeded",
+        "candidate_product_id": "bp_2164551996"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "reason": "aggregate_budget_exceeded",
+        "candidate_product_id": "bp_2150726317"
+      },
+      {
+        "slot_id": "slot_3",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "reason": "aggregate_budget_exceeded",
+        "candidate_product_id": "bp_2164551996"
+      },
+      {
+        "slot_id": "slot_4",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "reason": "aggregate_budget_exceeded",
+        "candidate_product_id": "bp_2158096886"
+      },
+      {
+        "slot_id": "slot_5",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "reason": "aggregate_budget_exceeded",
+        "candidate_product_id": "bp_2156608080"
+      }
+    ],
+    "total_budget_eur": 650
+  },
+  "execution": {
+    "tools_used": ["search_products", "get_product_details", "optimize_basket"],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 2105,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": false,
+      "understanding_cached": false,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 0,
+      "understanding_ms": 1348,
+      "direct_recommendation": false,
+      "exact_route": false,
+      "catalog_search_calls": 5,
+      "search_products_calls": 5,
+      "search_products_failures": 0,
+      "search_products_invocations": 5,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 434,
+      "search_products_max_ms": 115,
+      "get_product_details_calls": 10,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 10,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 455,
+      "get_product_details_max_ms": 88,
+      "compare_offers_calls": 0,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 0,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 0,
+      "compare_offers_max_ms": 0,
+      "get_price_history_calls": 0,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 0,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 0,
+      "get_price_history_max_ms": 0,
+      "get_product_reviews_calls": 0,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 0,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 0,
+      "get_product_reviews_max_ms": 0,
+      "optimize_basket_calls": 3,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 3,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 545,
+      "optimize_basket_max_ms": 223,
+      "retrieval_page_candidates": 24,
+      "receipt_disqualified_candidates": 17,
+      "receipt_eligible_candidates": 7,
+      "receipt_review_requested": 0,
+      "receipt_review_available": 0,
+      "receipt_validation_ms": 8,
+      "brain_runtime_ms": 2105,
+      "brain_finalization_ms": 26
+    }
+  },
+  "personalization": null
+}

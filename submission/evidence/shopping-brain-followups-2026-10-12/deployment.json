@@ -1,0 +1,42 @@
+{
+  "observed_at": "2026-10-12T10:29:05.400708+00:00",
+  "source_release": "b91cfa5392f867e3c44828666389e566d20d84ef",
+  "backend_ci": {
+    "state": "success",
+    "statuses": [
+      {
+        "description": "This commit looks good",
+        "state": "success",
+        "target_url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/30029/display/redirect"
+      }
+    ]
+  },
+  "jenkins_release": {
+    "build": 30029,
+    "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/30029/console",
+    "api_admitted_at": "2026-10-12T13:28:08+03:00",
+    "api_allocations": 4,
+    "api_revision": "b91cfa5",
+    "result": "SUCCESS"
+  },
+  "heartbeat_rows": [
+    {
+      "is_cron": "0",
+      "hash": "b91cfa5",
+      "instances": "5",
+      "oldest_start": "2026-10-12 13:27:11",
+      "newest_start": "2026-10-12 13:27:42",
+      "newest_heartbeat": "2026-10-12 13:27:42"
+    },
+    {
+      "is_cron": "1",
+      "hash": "ed49cc3",
+      "instances": "2",
+      "oldest_start": "2026-10-12 12:54:07",
+      "newest_start": "2026-10-12 13:00:08",
+      "newest_heartbeat": "2026-10-12 13:25:08"
+    }
+  ],
+  "heartbeat_scope": "Five-minute recent heartbeat window. Non-cron rows include roles other than API; the four serving API allocations are independently established by Jenkins admission.",
+  "cron": "Separate ed49cc3 cron image retained without pausing or restarting for this release."
+}

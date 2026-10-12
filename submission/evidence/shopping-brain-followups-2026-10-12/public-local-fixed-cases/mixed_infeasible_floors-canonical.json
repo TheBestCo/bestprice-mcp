@@ -1,0 +1,663 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:17:56.366Z",
+  "outcome": "clarification",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "6273a087-1f2f-46a8-822d-5ef6b5786f4c",
+    "revision": 2,
+    "fingerprint": "3fca4e3a06dab8264b93949c07990744914e98d4edfc11eeaff60e078b7e93ba",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "mouse",
+    "intent": "shop",
+    "query": "ποντίκι ακουστικά",
+    "constraints": {
+      "budgetEur": 100,
+      "statedBudgetEur": 100,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 100,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 100,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 75,
+            "end": 87,
+            "text": "έως 100 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": [],
+    "nonPricePhrases": [],
+    "source_turns": [],
+    "transition": "amend"
+  },
+  "actions": [],
+  "status": "needs_input",
+  "mission": {
+    "intent": "basket",
+    "summary_el": "Κοινό καλάθι · Ποντίκι · Συνολικό όριο 100 €",
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 100,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 100,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 75,
+              "end": 87,
+              "text": "έως 100 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 100,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": 50,
+              "maximum_eur": 70,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "gte",
+                  "value": 50,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 8,
+                    "end": 26,
+                    "text": "από 50 έως 70 ευρώ"
+                  }
+                },
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 70,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 8,
+                    "end": 26,
+                    "text": "από 50 έως 70 ευρώ"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 70,
+              "statedBudgetEur": 70,
+              "minimumPriceEur": 50,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": 60,
+              "maximum_eur": 80,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "gte",
+                  "value": 60,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 10,
+                    "end": 28,
+                    "text": "από 60 έως 80 ευρώ"
+                  }
+                },
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 80,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 10,
+                    "end": 28,
+                    "text": "από 60 έως 80 ευρώ"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 80,
+              "statedBudgetEur": 80,
+              "minimumPriceEur": 60,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ]
+    }
+  },
+  "primary": null,
+  "alternatives": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 100,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 100,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 75,
+            "end": 87,
+            "text": "έως 100 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 100,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": 50,
+            "maximum_eur": 70,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [
+              {
+                "field": "item_price",
+                "operator": "gte",
+                "value": 50,
+                "unit": "EUR",
+                "source": {
+                  "turn_index": 0,
+                  "start": 8,
+                  "end": 26,
+                  "text": "από 50 έως 70 ευρώ"
+                }
+              },
+              {
+                "field": "item_price",
+                "operator": "lte",
+                "value": 70,
+                "unit": "EUR",
+                "source": {
+                  "turn_index": 0,
+                  "start": 8,
+                  "end": 26,
+                  "text": "από 50 έως 70 ευρώ"
+                }
+              }
+            ],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": 70,
+            "statedBudgetEur": 70,
+            "minimumPriceEur": 50,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": 60,
+            "maximum_eur": 80,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [
+              {
+                "field": "item_price",
+                "operator": "gte",
+                "value": 60,
+                "unit": "EUR",
+                "source": {
+                  "turn_index": 0,
+                  "start": 10,
+                  "end": 28,
+                  "text": "από 60 έως 80 ευρώ"
+                }
+              },
+              {
+                "field": "item_price",
+                "operator": "lte",
+                "value": 80,
+                "unit": "EUR",
+                "source": {
+                  "turn_index": 0,
+                  "start": 10,
+                  "end": 28,
+                  "text": "από 60 έως 80 ευρώ"
+                }
+              }
+            ],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": 80,
+            "statedBudgetEur": 80,
+            "minimumPriceEur": 60,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "catalog_requirements": []
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "price_history": null,
+  "candidate_summary": null,
+  "candidates": [],
+  "retrieval": {
+    "scope": "not_searched",
+    "candidate_count": 0,
+    "complete_catalog": false,
+    "search_calls": 0,
+    "receipt": null
+  },
+  "uncertainty": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "provide_context",
+    "reason": "missing_shopping_context",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [
+    {
+      "question": "Τα ελάχιστα ποσά των προϊόντων ξεπερνούν ήδη το συνολικό όριο, πριν από μεταφορικά. Ποια όρια θέλεις να αλλάξουμε;",
+      "reason": "missing_shopping_context"
+    }
+  ],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "Τα ελάχιστα ποσά των προϊόντων ξεπερνούν ήδη το συνολικό όριο, πριν από μεταφορικά. Ποια όρια θέλεις να αλλάξουμε;",
+  "comparison": null,
+  "basket": null,
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": 50,
+            "maximum_eur": 70,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [
+              {
+                "field": "item_price",
+                "operator": "gte",
+                "value": 50,
+                "unit": "EUR",
+                "source": {
+                  "turn_index": 0,
+                  "start": 8,
+                  "end": 26,
+                  "text": "από 50 έως 70 ευρώ"
+                }
+              },
+              {
+                "field": "item_price",
+                "operator": "lte",
+                "value": 70,
+                "unit": "EUR",
+                "source": {
+                  "turn_index": 0,
+                  "start": 8,
+                  "end": 26,
+                  "text": "από 50 έως 70 ευρώ"
+                }
+              }
+            ],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": 70,
+            "statedBudgetEur": 70,
+            "minimumPriceEur": 50,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": 60,
+            "maximum_eur": 80,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [
+              {
+                "field": "item_price",
+                "operator": "gte",
+                "value": 60,
+                "unit": "EUR",
+                "source": {
+                  "turn_index": 0,
+                  "start": 10,
+                  "end": 28,
+                  "text": "από 60 έως 80 ευρώ"
+                }
+              },
+              {
+                "field": "item_price",
+                "operator": "lte",
+                "value": 80,
+                "unit": "EUR",
+                "source": {
+                  "turn_index": 0,
+                  "start": 10,
+                  "end": 28,
+                  "text": "από 60 έως 80 ευρώ"
+                }
+              }
+            ],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": 80,
+            "statedBudgetEur": 80,
+            "minimumPriceEur": 60,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [],
+    "unresolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "reason": "conflicting_requirements"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "reason": "conflicting_requirements"
+      }
+    ],
+    "total_budget_eur": 100
+  },
+  "execution": {
+    "tools_used": [],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 12,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 0,
+      "understanding_ms": 6,
+      "direct_recommendation": false,
+      "exact_route": false,
+      "catalog_search_calls": 0,
+      "search_products_calls": 0,
+      "search_products_failures": 0,
+      "search_products_invocations": 0,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 0,
+      "search_products_max_ms": 0,
+      "get_product_details_calls": 0,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 0,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 0,
+      "get_product_details_max_ms": 0,
+      "compare_offers_calls": 0,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 0,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 0,
+      "compare_offers_max_ms": 0,
+      "get_price_history_calls": 0,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 0,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 0,
+      "get_price_history_max_ms": 0,
+      "get_product_reviews_calls": 0,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 0,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 0,
+      "get_product_reviews_max_ms": 0,
+      "optimize_basket_calls": 0,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 0,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 0,
+      "optimize_basket_max_ms": 0,
+      "retrieval_page_candidates": 0,
+      "receipt_disqualified_candidates": 0,
+      "receipt_eligible_candidates": 0,
+      "receipt_review_requested": 0,
+      "receipt_review_available": 0,
+      "receipt_validation_ms": 0,
+      "brain_runtime_ms": 12,
+      "brain_finalization_ms": 2
+    }
+  },
+  "personalization": null
+}

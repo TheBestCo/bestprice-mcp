@@ -1,0 +1,4378 @@
+[
+  {
+    "name": "search_products",
+    "input": {
+      "query": "Θέλω ασύρματο ποντίκι έως 40 ευρώ Διόρθωση: μόνο ενσύρματο.",
+      "required_features": [],
+      "sort": "relevance",
+      "limit": 8,
+      "price_max": 40
+    },
+    "result": {
+      "requested_query": "ποντίκι ενσύρματο",
+      "interpreted_query": "ΠΟΝΤΙΚΙ ΕΝΣΥΡΜΑΤΟΣ",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:10:56.454Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 675,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": 2569,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": 40,
+        "sort": "relevance",
+        "feature_hints": ["ενσύρματο"],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["ποντίκια gaming ενσύρματα", "ποντίκι ασύρματο", "mousepad"],
+      "total_matches": 8,
+      "products": [
+        {
+          "product_id": "bp_2156608080",
+          "title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "brand": null,
+          "model": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 7.8,
+          "offer_count": 32,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2150726317",
+          "title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "brand": null,
+          "model": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 3.79,
+          "offer_count": 45,
+          "availability": "available",
+          "match_confidence": 0.99,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.25,
+            "count": 7
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2153547976",
+          "title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "brand": null,
+          "model": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 3.79,
+          "offer_count": 54,
+          "availability": "available",
+          "match_confidence": 0.97,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2154730954",
+          "title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "brand": null,
+          "model": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 5.68,
+          "offer_count": 71,
+          "availability": "available",
+          "match_confidence": 0.96,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155808380",
+          "title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "brand": null,
+          "model": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 14.43,
+          "offer_count": 21,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 2,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155625772",
+          "title": "Logitech M100 Ενσύρματο Ποντίκι Black",
+          "brand": null,
+          "model": "Logitech M100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 4.36,
+          "offer_count": 47,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157364893",
+          "title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "brand": null,
+          "model": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 3.66,
+          "offer_count": 21,
+          "availability": "available",
+          "match_confidence": 0.91,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.25,
+            "count": 7
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2156061984",
+          "title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "brand": null,
+          "model": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 7.5,
+          "offer_count": 35,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158694371",
+          "title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "brand": null,
+          "model": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 1.94,
+          "offer_count": 41,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2154790139",
+          "title": "Logitech M170 Ασύρματο Mini Ποντίκι Grey",
+          "brand": null,
+          "model": "Logitech M170 Ασύρματο Mini Ποντίκι Grey",
+          "variant": "910-004642",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 6.63,
+          "offer_count": 40,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 7
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157753266",
+          "title": "Ugreen MU006 Ασύρματο Ποντίκι Black 90545",
+          "brand": null,
+          "model": "Ugreen MU006 Ασύρματο Ποντίκι Black 90545",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 7.44,
+          "offer_count": 29,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2154894250",
+          "title": "Logitech B170 Ασύρματο Ποντίκι Black",
+          "brand": null,
+          "model": "Logitech B170 Ασύρματο Ποντίκι Black",
+          "variant": null,
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 7.53,
+          "offer_count": 52,
+          "availability": "available",
+          "match_confidence": 0.91,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4,
+            "count": 4
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Οι προτιμήσεις χαρακτηριστικών χρησιμοποιούνται μόνο για τη σειρά συνάφειας. Δεν έχουν επιβεβαιωθεί για κάθε προϊόν· έλεγξέ τες στη σελίδα του προϊόντος.",
+        "Τα αποτελέσματα περιορίστηκαν στην κατηγορία «Ποντίκια», ώστε να μη προηγούνται σχετικά αξεσουάρ.",
+        "Ο κατάλογος ερμήνευσε την αναζήτηση ως «ΠΟΝΤΙΚΙ ΕΝΣΥΡΜΑΤΟΣ». Όροι που δεν εμφανίζονται εκεί δεν θεωρούνται επιβεβαιωμένα φίλτρα.",
+        "Δεν αναζητήθηκε «ενσύρματο» από τη διατύπωσή σου. Έλεγξε ότι τα αποτελέσματα αντιστοιχούν σε αυτό που ζήτησες."
+      ],
+      "as_of": "2026-10-12T10:10:56.454Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2156608080", "bp_2150726317", "bp_2153547976", "bp_2154730954"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2156608080",
+          "title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "brand": "HP",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 7.8,
+          "availability": "in_stock",
+          "offer_count": 32,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Για Δεξιόχειρες",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1600 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1600,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "HP Wired Mouse 100 Black 6VY96AA",
+            "HP 100 Ενσύρματο Ποντίκι Μαύρο",
+            "Ποντίκι HP 100 - 1600 Dpi (6VY96AA) - Black 6VY96AA",
+            "Ποντίκι HP 100 Wired Black 6VY96AA",
+            "HP Wired Mouse 100 EURO - 6VY96AA",
+            "HP 100 Wired Mouse - (6VY96AA)",
+            "HP Wired Optical Mouse 100, 3 Buttons, 1600dpi, Black (6VY96AA)",
+            "HP 100 Wired Mouse (6VY96AA)"
+          ]
+        },
+        {
+          "product_id": "bp_2150726317",
+          "title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "brand": "Logitech",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 3.79,
+          "availability": "in_stock",
+          "offer_count": 45,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1000 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1000,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Mouse Logitech M90 Black (Optical/Wired/USB)",
+            "Logitech M90 Mouse 910-001793",
+            "Ποντίκι Logitech M90 Black 910-001793",
+            "LOGITECH MOUSE M90 910-001793",
+            "Logitech M90 - Optical Mouse - Μαύρο (910-001793)",
+            "Ποντίκι Logitech M90 - 1000 Dpi (910-001793) - Black 910-001793",
+            "Mouse Logitech M90 (910-001793)",
+            "Logitech M90 Black Ποντίκι"
+          ],
+          "rating": {
+            "average": 4.25,
+            "count": 7
+          }
+        },
+        {
+          "product_id": "bp_2153547976",
+          "title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "brand": "Logitech",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 3.79,
+          "availability": "in_stock",
+          "offer_count": 54,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "800 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 800,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Logitech B100 Wired Optical Mouse Black 910-003357",
+            "LOGITECH B100 OPTICAL USB MOUSE 910-003357",
+            "Ποντίκι Logitech B100 Black 910-003357",
+            "Mouse Logitech B100 Black",
+            "Ποντίκι Logitech B100 - 800 Dpi (910-003357) - Black 910-003357",
+            "LOGITECH Mouse B100 Part No: 910-003357",
+            "Logitech B100 Ενσύρματο Ποντίκι Μαύρο",
+            "ΠΟΝΤΙΚΙ LOGITECH B100 ΕΝΣΥΡΜΑΤΟ"
+          ],
+          "rating": {
+            "average": 4.5,
+            "count": 2
+          }
+        },
+        {
+          "product_id": "bp_2154730954",
+          "title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "brand": "Dell",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 5.68,
+          "availability": "in_stock",
+          "offer_count": 71,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1000 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1000,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "DELL MOUSE MS116 OPTICAL BLACK - (570-AAIR)",
+            "Ποντίκι Dell MS116 Optical Wired Black 570-AAIS",
+            "Dell Mouse MS116 Optical Wired Black 570-AAIR",
+            "DELL Mouse Optical MS116, Black 570-AAIR",
+            "Dell MS116 Optical Mouse, Black (570-AAIR)",
+            "Mouse Dell MS116 Optical Wired Black (570-AAIR)",
+            "Dell Optical Mouse-MS116 - Black (570-AAIS)",
+            "Dell Optical Mouse-MS116 - Black"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 3
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:10:57.285Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2155808380", "bp_2155625772", "bp_2157364893", "bp_2156061984"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2155808380",
+          "title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "brand": "Trust",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 14.43,
+          "availability": "in_stock",
+          "offer_count": 21,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "6",
+              "group": null,
+              "numeric": {
+                "value": 6,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Για Δεξιόχειρες",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1600 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1600,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Εργονομικό, Vertical",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Trust Verto Ergonomic Mouse 22885",
+            "TRUST VERTO ERGONOMIC MOUSE ΜΑΥΡΟ - (22885)",
+            "Ποντίκι Trust Verto (22885)",
+            "Ποντίκι Trust Verto Ergonomic 22885",
+            "MOUSE TRUST VERTO ERGO 22885",
+            "Trust Verto Ergonomic Mouse (22885)",
+            "Trust Verto Ergonomic",
+            "Bosch Serie 4 MMB6177S blender 1.5 L Tabletop blender 1200 W Black, Silver"
+          ],
+          "rating": {
+            "average": 2,
+            "count": 1
+          }
+        },
+        {
+          "product_id": "bp_2155625772",
+          "title": "Logitech M100 Ενσύρματο Ποντίκι Black",
+          "brand": "Logitech",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 4.36,
+          "availability": "in_stock",
+          "offer_count": 47,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1000 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1000,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Ποντίκι Logitech M100 Black 910-006652",
+            "ΕΝΣΥΡΜΑΤΟ ΠΟΝΤΙΚΙ LOGITECH M100 BLACK",
+            "Logitech Ποντίκι M100 Μαύρο",
+            "LOGITECH MOUSE M100 910-006652 RECHTS- UND LINKSHANDIG",
+            "Logitech M100 Ενσύρματο Ποντίκι Μαύρο",
+            "Logitech M100 Wired Optical Mouse Black 910-006652",
+            "Ενσύρματο ποντίκι USB οπτικό μαύρο M100R Logitech",
+            "Logitech M100, mouse (910-006652)"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 1
+          }
+        },
+        {
+          "product_id": "bp_2157364893",
+          "title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "brand": "Logitech",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 3.66,
+          "availability": "in_stock",
+          "offer_count": 21,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Ανθρακί",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1000 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1000,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Logitech M90 Wired Optical Mouse [910-001793]",
+            "LOGITECH M90 USB MOUSE (GREY)",
+            "Logitech M90 Ενσύρματο Ποντίκι Μαύρο (3 Buttons)Κωδικός: 31145796",
+            "Logitech M90 Ενσύρματο Ποντίκι Μαύρο",
+            "Logitech M90 Ενσύρματο Ποντίκι Μαύρο - Wired",
+            "Logitech M90 ποντίκι Αμφιδέξιος USB Τύπου-A Οπτικός 1000 DPI",
+            "Logitech M90 Ποντίκι Black",
+            "Mouse Logitech M90"
+          ],
+          "rating": {
+            "average": 4.25,
+            "count": 7
+          }
+        },
+        {
+          "product_id": "bp_2156061984",
+          "title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "brand": "Dell",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 7.5,
+          "availability": "in_stock",
+          "offer_count": 35,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Άσπρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1000 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1000,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "DELL MOUSE MS116 OPTICAL WIRED WHITE - (570-AAIP)",
+            "Ποντίκι Dell MS116 Optical Wired White 570-AAIP",
+            "Dell Mouse MS116 Optical Wired White 570-AAIP",
+            "Dell MS116 Optical Mouse, White (570-AAIP)",
+            "Mouse Dell MS116 Optical Wired White (570-AAIP)",
+            "Ποντίκι Dell MS116 - 1000 Dpi (570-AAIP) - White 570-AAIP",
+            "Dell MS116 (White)",
+            "DELL MS116 mouse USB Type-A Optical 1000 DPI Ambidextrous 570-AAIP"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 3
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:10:57.285Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2158694371", "bp_2154790139", "bp_2157753266", "bp_2154894250"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2158694371",
+          "title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "brand": "Powertech",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 1.94,
+          "availability": "in_stock",
+          "offer_count": 41,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ενσύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1000 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1000,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "POWERTECH ενσύρματο ποντίκι PT-1077, οπτικό, 1000DPI, μαύρο",
+            "POWERTECH ενσύρματο ποντίκι PT-1077 οπτικό 1000DPI μαύρο",
+            "Powertech ενσύρματο ποντίκι οπτικό, 1000DPI, μαύρο - (PT-1077)",
+            "ΠΟΝΤΙΚΙ POWERTECH PT-1077 ΕΝΣΥΡΜΑΤΟ ΟΠΤΙΚΟ 1000DPI, USB ΜΑΥΡΟ",
+            "Mouse Wired Optical 100dpi Black Powertech PT-1077 Ποντίκι Ενσύρματο Οπτικό Μαύρο",
+            "Ενσύρματο οπτικό ποντίκι POWERTECH PT-1077 1000DPΙ σε μαύρο χρώμα - PT-1077",
+            "Powertech PT-1077 Black Ενσύρματο Ποντίκι",
+            "Powertech PT-1077 Μαύρο Ενσύρματο Ποντίκι *"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 1
+          }
+        },
+        {
+          "product_id": "bp_2154790139",
+          "title": "Logitech M170 Ασύρματο Mini Ποντίκι Grey",
+          "brand": "Logitech",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 6.63,
+          "availability": "in_stock",
+          "offer_count": 40,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ασύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Mini",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο, Γκρι",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1000 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1000,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Finger, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Logitech M170 Optical Wireless Mouse, Gray-Black (910-004642)",
+            "Logitech M170 Wireless Mouse Grey 910-004642",
+            "LOGITECH Mouse Wireless M170 Black (910-004642)",
+            "Ποντίκι Logitech M170 Wireless Grey 910-004642",
+            "Ποντίκι Logitech M170 Mini - 1000 Dpi Ασύρματο (910-004642) - Grey 910-004642",
+            "Logitech M170 Grey",
+            "MOUSE LOGITECH M170 WIRELESS",
+            "Logitech M170 Wireless (910-004642)"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 7
+          }
+        },
+        {
+          "product_id": "bp_2157753266",
+          "title": "Ugreen MU006 Ασύρματο Ποντίκι Black 90545",
+          "brand": "Ugreen",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 7.44,
+          "availability": "in_stock",
+          "offer_count": 29,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ασύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "5",
+              "group": null,
+              "numeric": {
+                "value": 5,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "4000 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 4000,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Finger",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Ugreen Mouse Wireless MU006 Black 90545",
+            "Ποντίκι Ugreen MU006 Wireless Black 90545",
+            "Ποντίκι Ugreen MU006 Wireless 2.4 GHz & Bluetooth Black 90855",
+            "Mouse Ugreen Wireless MU006 Black",
+            "UGREEN MU006 90545 WIRELESS MOUSE BLACK Ποντίκια",
+            "UGREEN Mouse Wireless 2.4 GHz & Bluetooth MU006 Black 90855",
+            "UGREEN Mouse Wireless MU006 Black 90545",
+            "MOUSE WIRELESS MU006 BLACK 90545 UGREEN"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 3
+          }
+        },
+        {
+          "product_id": "bp_2154894250",
+          "title": "Logitech B170 Ασύρματο Ποντίκι Black",
+          "brand": "Logitech",
+          "category_id": 2569,
+          "category_title": "Ποντίκια",
+          "price_from": 7.53,
+          "availability": "in_stock",
+          "offer_count": 52,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1121,
+              "label": "Τύπος",
+              "value": "Ασύρματο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 3239,
+              "label": "Τύπος Σύνδεσης",
+              "value": "USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1106,
+              "label": "Αριθμός Πλήκτρων",
+              "value": "3",
+              "group": null,
+              "numeric": {
+                "value": 3,
+                "unit": null
+              }
+            },
+            {
+              "id": 3262,
+              "label": "Μέγεθος",
+              "value": "Standard",
+              "group": null
+            },
+            {
+              "id": 3263,
+              "label": "Προσανατολισμός Χεριού",
+              "value": "Και για τα Δύο Χέρια",
+              "group": null
+            },
+            {
+              "id": 3264,
+              "label": "Ρύθμιση Βάρους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1105,
+              "label": "Τύπος Αισθητήρα",
+              "value": "Optical",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1108,
+              "label": "Μέγιστη Ανάλυση Αισθητήρα",
+              "value": "1600 DPI",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1600,
+                "unit": "DPI"
+              }
+            },
+            {
+              "id": 4379,
+              "label": "Σχεδιασμός",
+              "value": "Claw, Palm",
+              "group": null
+            },
+            {
+              "id": 4380,
+              "label": "TrackBall",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4381,
+              "label": "TouchPad",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 4383,
+              "label": "Αθόρυβο",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5465,
+              "label": "Με Παιδικά Σχέδια",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "MOUSE LOGITECH B170 WIRELESS (910-004798)",
+            "LOGITECH WIRELESS MOUSE B170 910-004798 - (910-004798)",
+            "Ποντίκι Logitech B170 Optical Wireless Black 910-004798",
+            "Logitech B170 Wireless USB Mouse Black 910-004798",
+            "LOGITECH B170 WIRELESS MOUSE, MOUSE USB 3 BUTTONS VISUAL RECEIVER WITH INFRARED TECHNOLOGY BLACK",
+            "Logitech Wireless Mouse B170 Part No: 910-004798",
+            "Logitech B170 Wireless Optical Mouse (910-004798)",
+            "Logitech B170 Wireless Black"
+          ],
+          "rating": {
+            "average": 4,
+            "count": 4
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:10:58.828Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2158694371",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2158694371",
+        "title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+        "brand": "Powertech",
+        "model": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 1.94,
+      "quoted_lowest_item_price": 1.94,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_218622205",
+          "merchant_id": "bp_merchant_2645",
+          "merchant_name": "Tool-Market",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.17,
+          "merchant_rating_count": 60,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 1.94,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_126211368",
+          "merchant_id": "bp_merchant_5307",
+          "merchant_name": "Diogenistore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.45,
+          "merchant_rating_count": 65,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.17,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_171762177",
+          "merchant_id": "bp_merchant_4505",
+          "merchant_name": "Lysishop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 6,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.25,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_214900556",
+          "merchant_id": "bp_merchant_17010",
+          "merchant_name": "Gadgethub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.26,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_191439291",
+          "merchant_id": "bp_merchant_15618",
+          "merchant_name": "Xsafe.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 1,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.28,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_160524191",
+          "merchant_id": "bp_merchant_1117",
+          "merchant_name": "Dileris",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.96,
+          "merchant_rating_count": 28,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.3,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_163929700",
+          "merchant_id": "bp_merchant_12954",
+          "merchant_name": "TechnoGate",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.32,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225281393",
+          "merchant_id": "bp_merchant_15900",
+          "merchant_name": "Vremelaxrinaki",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.34,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_162589631",
+          "merchant_id": "bp_merchant_7951",
+          "merchant_name": "Silvernose",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.35,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_135381113",
+          "merchant_id": "bp_merchant_4864",
+          "merchant_name": "Houseshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.38,
+          "merchant_rating_count": 113,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 2.37,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2157364893",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2157364893",
+        "title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+        "brand": "Logitech",
+        "model": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 3.66,
+      "quoted_lowest_item_price": 3.66,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_156500675",
+          "merchant_id": "bp_merchant_14355",
+          "merchant_name": "Buychoice",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.14,
+          "merchant_rating_count": 74,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 3.66,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_220331668",
+          "merchant_id": "bp_merchant_4505",
+          "merchant_name": "Lysishop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 6,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 3.98,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_87506578",
+          "merchant_id": "bp_merchant_128",
+          "merchant_name": "Msystems",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_193295346",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 4.22,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223911047",
+          "merchant_id": "bp_merchant_6452",
+          "merchant_name": "Aplada",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 4.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_202634218",
+          "merchant_id": "bp_merchant_714",
+          "merchant_name": "Antoniadis",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_198084668",
+          "merchant_id": "bp_merchant_9343",
+          "merchant_name": "Paperpoint.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 5.31,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_207923823",
+          "merchant_id": "bp_merchant_11911",
+          "merchant_name": "Myglitch",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 5.74,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_202575490",
+          "merchant_id": "bp_merchant_6992",
+          "merchant_name": "xTech",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 5.74,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_136751428",
+          "merchant_id": "bp_merchant_1435",
+          "merchant_name": "Mobiletrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+          "variant": null,
+          "item_price": 5.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2154730954",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2154730954",
+        "title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+        "brand": "Dell",
+        "model": "Dell MS116 Ενσύρματο Ποντίκι Black",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 5.68,
+      "quoted_lowest_item_price": 5.68,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_222586131",
+          "merchant_id": "bp_merchant_15013",
+          "merchant_name": "PWU",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 5.68,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_222247302",
+          "merchant_id": "bp_merchant_2042",
+          "merchant_name": "Easyprint",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 5.89,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224074872",
+          "merchant_id": "bp_merchant_4505",
+          "merchant_name": "Lysishop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 6,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 5.93,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_84266905",
+          "merchant_id": "bp_merchant_8665",
+          "merchant_name": "Dkoul",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 6,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225328496",
+          "merchant_id": "bp_merchant_14530",
+          "merchant_name": "Shopmoo",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 6,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_44511281",
+          "merchant_id": "bp_merchant_3607",
+          "merchant_name": "Quickshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.61,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 6,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_35611654",
+          "merchant_id": "bp_merchant_723",
+          "merchant_name": "MrCheap",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.52,
+          "merchant_rating_count": 23,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 6,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_189867195",
+          "merchant_id": "bp_merchant_14551",
+          "merchant_name": "Smart Print",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 6.03,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_145346242",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 6.07,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_222723926",
+          "merchant_id": "bp_merchant_122",
+          "merchant_name": "Officeplus",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 6.2,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2156061984",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2156061984",
+        "title": "Dell MS116 Ενσύρματο Ποντίκι White",
+        "brand": "Dell",
+        "model": "Dell MS116 Ενσύρματο Ποντίκι White",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 7.5,
+      "quoted_lowest_item_price": 7.5,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_23392912",
+          "merchant_id": "bp_merchant_961",
+          "merchant_name": "Websupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.79,
+          "merchant_rating_count": 71,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 7.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_188940935",
+          "merchant_id": "bp_merchant_2042",
+          "merchant_name": "Easyprint",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 8.27,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_215030599",
+          "merchant_id": "bp_merchant_15013",
+          "merchant_name": "PWU",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 8.32,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_145367668",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 8.53,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_209046477",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 8.59,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224074440",
+          "merchant_id": "bp_merchant_4505",
+          "merchant_name": "Lysishop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 6,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 8.7,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_189865804",
+          "merchant_id": "bp_merchant_14551",
+          "merchant_name": "Smart Print",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 8.85,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_218602173",
+          "merchant_id": "bp_merchant_791",
+          "merchant_name": "Plus3",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225328641",
+          "merchant_id": "bp_merchant_14530",
+          "merchant_name": "Shopmoo",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_49059139",
+          "merchant_id": "bp_merchant_7696",
+          "merchant_name": "t-Support",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell MS116 Ενσύρματο Ποντίκι White",
+          "variant": null,
+          "item_price": 9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2150726317",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2150726317",
+        "title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+        "brand": "Logitech",
+        "model": "Logitech M90 Ενσύρματο Ποντίκι Black",
+        "variant": "910-001793",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 3.79,
+      "quoted_lowest_item_price": 3.79,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_226580726",
+          "merchant_id": "bp_merchant_4864",
+          "merchant_name": "Houseshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.38,
+          "merchant_rating_count": 113,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 3.79,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_19415364",
+          "merchant_id": "bp_merchant_3607",
+          "merchant_name": "Quickshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.61,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 3.89,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_127886831",
+          "merchant_id": "bp_merchant_974",
+          "merchant_name": "Info-world",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 3.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_32321975",
+          "merchant_id": "bp_merchant_3963",
+          "merchant_name": "Etd",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 14,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 3.93,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208305167",
+          "merchant_id": "bp_merchant_4923",
+          "merchant_name": "E-Natco",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 3.94,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225330639",
+          "merchant_id": "bp_merchant_14530",
+          "merchant_name": "Shopmoo",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195076349",
+          "merchant_id": "bp_merchant_16078",
+          "merchant_name": "Computer Data",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_6746950",
+          "merchant_id": "bp_merchant_961",
+          "merchant_name": "Websupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.79,
+          "merchant_rating_count": 71,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "by_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "15–30 ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_214803773",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 4.08,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_216721762",
+          "merchant_id": "bp_merchant_117",
+          "merchant_name": "Mg Manager",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 36,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+          "variant": "910-001793",
+          "item_price": 4.17,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2156608080",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2156608080",
+        "title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+        "brand": "HP",
+        "model": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 7.8,
+      "quoted_lowest_item_price": 7.8,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_206497983",
+          "merchant_id": "bp_merchant_6501",
+          "merchant_name": "ClickInside",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.88,
+          "merchant_rating_count": 48,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 7.8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_199152924",
+          "merchant_id": "bp_merchant_6265",
+          "merchant_name": "Guruelectrics",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.24,
+          "merchant_rating_count": 34,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 7.8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_76135285",
+          "merchant_id": "bp_merchant_961",
+          "merchant_name": "Websupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.79,
+          "merchant_rating_count": 71,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208304803",
+          "merchant_id": "bp_merchant_4923",
+          "merchant_name": "E-Natco",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 8.36,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208385262",
+          "merchant_id": "bp_merchant_2810",
+          "merchant_name": "ElectroGatos",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 8.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_85599395",
+          "merchant_id": "bp_merchant_3963",
+          "merchant_name": "Etd",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 14,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 8.43,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_219704699",
+          "merchant_id": "bp_merchant_16078",
+          "merchant_name": "Computer Data",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 8.7,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_216843818",
+          "merchant_id": "bp_merchant_12956",
+          "merchant_name": "eCosmos",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 8,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 8.78,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_74212891",
+          "merchant_id": "bp_merchant_85",
+          "merchant_name": "Cosmodata",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.62,
+          "merchant_rating_count": 123,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 8.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_207044924",
+          "merchant_id": "bp_merchant_1781",
+          "merchant_name": "Papyroc",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "HP 100 Ενσύρματο Ποντίκι Black 6VY96AA",
+          "variant": null,
+          "item_price": 8.92,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2153547976",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2153547976",
+        "title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+        "brand": "Logitech",
+        "model": "Logitech B100 Ενσύρματο Ποντίκι Black",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 3.79,
+      "quoted_lowest_item_price": 3.79,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_193294723",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 3.79,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_73022384",
+          "merchant_id": "bp_merchant_8665",
+          "merchant_name": "Dkoul",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 3.87,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_156461838",
+          "merchant_id": "bp_merchant_14355",
+          "merchant_name": "Buychoice",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.14,
+          "merchant_rating_count": 74,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 3.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_219493507",
+          "merchant_id": "bp_merchant_4793",
+          "merchant_name": "Gatoulis",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 3.96,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_37437979",
+          "merchant_id": "bp_merchant_3607",
+          "merchant_name": "Quickshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.61,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 3.96,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224083486",
+          "merchant_id": "bp_merchant_3963",
+          "merchant_name": "Etd",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 14,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 4.06,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_24479008",
+          "merchant_id": "bp_merchant_961",
+          "merchant_name": "Websupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.79,
+          "merchant_rating_count": 71,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 4.19,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_145348490",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 4.23,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194823411",
+          "merchant_id": "bp_merchant_16078",
+          "merchant_name": "Computer Data",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 4.3,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_13509400",
+          "merchant_id": "bp_merchant_90",
+          "merchant_name": "e-Gate",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.72,
+          "merchant_rating_count": 18,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Logitech B100 Ενσύρματο Ποντίκι Black",
+          "variant": null,
+          "item_price": 4.31,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2155808380",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2155808380",
+        "title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+        "brand": "Trust",
+        "model": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+        "variant": "22885",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 14.43,
+      "quoted_lowest_item_price": 14.43,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_209218418",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 14.43,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225105601",
+          "merchant_id": "bp_merchant_12956",
+          "merchant_name": "eCosmos",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 8,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 14.72,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_45908140",
+          "merchant_id": "bp_merchant_1904",
+          "merchant_name": "EuroSupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 15.54,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_54986009",
+          "merchant_id": "bp_merchant_2614",
+          "merchant_name": "Nok-Shop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 12,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 15.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_161790183",
+          "merchant_id": "bp_merchant_6265",
+          "merchant_name": "Guruelectrics",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.24,
+          "merchant_rating_count": 34,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 15.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225332234",
+          "merchant_id": "bp_merchant_14530",
+          "merchant_name": "Shopmoo",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 16,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_148054143",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 16.1,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194823486",
+          "merchant_id": "bp_merchant_16078",
+          "merchant_name": "Computer Data",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 16.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_226618866",
+          "merchant_id": "bp_merchant_15013",
+          "merchant_name": "PWU",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 16.53,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_132931307",
+          "merchant_id": "bp_merchant_3963",
+          "merchant_name": "Etd",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 14,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Trust Verto Ενσύρματο Ποντίκι Εργονομικό Vertical Black",
+          "variant": "22885",
+          "item_price": 16.78,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:58.892Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_price_history",
+    "input": {
+      "product_id": "bp_2158694371",
+      "period_days": 180
+    },
+    "result": {
+      "product_id": "bp_2158694371",
+      "product_title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+      "product_url": "[omitted]",
+      "period_days": 180,
+      "current_price": 1.94,
+      "current_price_source": "live_offer_minimum",
+      "source_last_observed_at": "2026-10-12T10:10:58.892Z",
+      "window_stats": [
+        {
+          "days": 30,
+          "minimum_price": 1.93,
+          "median_price": 1.94,
+          "observations": 26,
+          "coverage_pct": 86.7,
+          "longest_gap_days": 2
+        },
+        {
+          "days": 90,
+          "minimum_price": 1.93,
+          "median_price": 1.94,
+          "observations": 82,
+          "coverage_pct": 91.1,
+          "longest_gap_days": 2
+        },
+        {
+          "days": 180,
+          "minimum_price": 1.92,
+          "median_price": 1.94,
+          "observations": 169,
+          "coverage_pct": 93.9,
+          "longest_gap_days": 2
+        }
+      ],
+      "price_delta_vs_180d_median_pct": 0,
+      "deal_classification": "typical_price",
+      "methodology_id": "bestprice_daily_min_v1",
+      "quality": {
+        "cluster_continuity": "same_cluster",
+        "outlier_status": "protected"
+      },
+      "data_gaps": {
+        "missing_days": 12,
+        "longest_gap_days": 2,
+        "stale_days": 1,
+        "coverage_note": "12 ημέρες δεν είχαν έγκυρη ημερήσια παρατήρηση."
+      },
+      "series": [
+        {
+          "date": "2026-04-16",
+          "price": 2.13,
+          "merchant_count": 39
+        },
+        {
+          "date": "2026-04-23",
+          "price": 2.13,
+          "merchant_count": 42
+        },
+        {
+          "date": "2026-05-01",
+          "price": 2.13,
+          "merchant_count": 44
+        },
+        {
+          "date": "2026-05-10",
+          "price": 2.13,
+          "merchant_count": 43
+        },
+        {
+          "date": "2026-05-16",
+          "price": 2.13,
+          "merchant_count": 45
+        },
+        {
+          "date": "2026-05-25",
+          "price": 2.13,
+          "merchant_count": 43
+        },
+        {
+          "date": "2026-06-02",
+          "price": 2.13,
+          "merchant_count": 44
+        },
+        {
+          "date": "2026-06-10",
+          "price": 2,
+          "merchant_count": 42
+        },
+        {
+          "date": "2026-06-18",
+          "price": 2,
+          "merchant_count": 41
+        },
+        {
+          "date": "2026-06-26",
+          "price": 2,
+          "merchant_count": 40
+        },
+        {
+          "date": "2026-07-06",
+          "price": 2,
+          "merchant_count": 43
+        },
+        {
+          "date": "2026-07-07",
+          "price": 1.92,
+          "merchant_count": 45
+        },
+        {
+          "date": "2026-07-12",
+          "price": 1.94,
+          "merchant_count": 44
+        },
+        {
+          "date": "2026-07-17",
+          "price": 1.94,
+          "merchant_count": 43
+        },
+        {
+          "date": "2026-07-26",
+          "price": 1.94,
+          "merchant_count": 42
+        },
+        {
+          "date": "2026-08-06",
+          "price": 1.94,
+          "merchant_count": 37
+        },
+        {
+          "date": "2026-08-14",
+          "price": 1.94,
+          "merchant_count": 30
+        },
+        {
+          "date": "2026-08-22",
+          "price": 1.94,
+          "merchant_count": 35
+        },
+        {
+          "date": "2026-08-30",
+          "price": 1.94,
+          "merchant_count": 40
+        },
+        {
+          "date": "2026-09-07",
+          "price": 1.94,
+          "merchant_count": 39
+        },
+        {
+          "date": "2026-09-13",
+          "price": 1.94,
+          "merchant_count": 39
+        },
+        {
+          "date": "2026-09-23",
+          "price": 1.93,
+          "merchant_count": 40
+        },
+        {
+          "date": "2026-10-02",
+          "price": 1.94,
+          "merchant_count": 42
+        },
+        {
+          "date": "2026-10-12",
+          "price": 1.94,
+          "merchant_count": 41
+        }
+      ],
+      "warnings": [],
+      "as_of": "2026-10-12T10:10:58.892Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2156608080"
+    },
+    "result": {
+      "product_id": "bp_2156608080",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:58.893Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2158694371"
+    },
+    "result": {
+      "product_id": "bp_2158694371",
+      "review_count": 1,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:58.893Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2154730954"
+    },
+    "result": {
+      "product_id": "bp_2154730954",
+      "review_count": 3,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Πολύ αξιόλογο προϊόν. Συνεργάστηκε αμέσως με ηλεκτρονικό υπολογιστή με Windows 7. Κανένα πρόβλημα. Λειτουργεί κανονικά μέχρι σήμερα.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2019-01-02T01:24:06.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "Υπέροχο ποντίκι και ξεκούραστο. Να το επιλέξετε!",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2020-12-25T19:46:33.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:10:58.893Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2156061984"
+    },
+    "result": {
+      "product_id": "bp_2156061984",
+      "review_count": 3,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Πολύ αξιόλογο προϊόν. Συνεργάστηκε αμέσως με ηλεκτρονικό υπολογιστή με Windows 7. Κανένα πρόβλημα. Λειτουργεί κανονικά μέχρι σήμερα.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2019-01-02T01:24:06.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "Υπέροχο ποντίκι και ξεκούραστο. Να το επιλέξετε!",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2020-12-25T19:46:33.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:10:58.893Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2157364893"
+    },
+    "result": {
+      "product_id": "bp_2157364893",
+      "review_count": 7,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Σε αυτή την τιμή δεν μπορείς να ζητήσεις κάτι καλύτερο. Για απλή χρήση είναι άψογο. Στα 6 χρόνια άρχισε να κάνει αποσυνδέσεις. Έχω εντοπίσει το πρόβλημα στο καλώδιο, στο σημείο που ακουμπάει το καλώδιο με την τρύπα που έχει το ποντίκι για να περνάει το καλώδιο. Με αλλαγή καλωδίου θα λειτουργήσει ξανά χωρίς…",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2024-10-17T06:04:26.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "το καλύτερο απλό ποντίκι της αγοράς... βολεύει σε κάθε είδους παιχνίδι και για κάθε είδους δουλειά. Δεν καταλαβαίνει τίποτα, δεν φθείρεται με τίποτα και είμαι πολύ ικανοποιημένος ( το έχω 4 χρόνια)",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2017-12-29T15:11:55.000Z"
+        },
+        {
+          "rating": 3,
+          "excerpt": "Έχω δύο ίδια ποντίκια, και τα δύο δεν πιάνουν σε δύο από τα τρία τραπέζια μου. Πιάνουν σε κανονικό ξύλινο τραπέζι, αλλά χάνουν πολύ συχνά κινήσεις στο ξύλινο τραπέζι με λούστρο και στο μαρμάρινο. Δύο άλλα οικονομικά ποντίκια που έχω, από άλλες εταιρείες, δεν έχουν αυτό το πρόβλημα.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2025-10-06T14:32:20.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:10:58.893Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2150726317"
+    },
+    "result": {
+      "product_id": "bp_2150726317",
+      "review_count": 7,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Σε αυτή την τιμή δεν μπορείς να ζητήσεις κάτι καλύτερο. Για απλή χρήση είναι άψογο. Στα 6 χρόνια άρχισε να κάνει αποσυνδέσεις. Έχω εντοπίσει το πρόβλημα στο καλώδιο, στο σημείο που ακουμπάει το καλώδιο με την τρύπα που έχει το ποντίκι για να περνάει το καλώδιο. Με αλλαγή καλωδίου θα λειτουργήσει ξανά χωρίς…",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2024-10-17T06:04:26.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "το καλύτερο απλό ποντίκι της αγοράς... βολεύει σε κάθε είδους παιχνίδι και για κάθε είδους δουλειά. Δεν καταλαβαίνει τίποτα, δεν φθείρεται με τίποτα και είμαι πολύ ικανοποιημένος ( το έχω 4 χρόνια)",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2017-12-29T15:11:55.000Z"
+        },
+        {
+          "rating": 3,
+          "excerpt": "Έχω δύο ίδια ποντίκια, και τα δύο δεν πιάνουν σε δύο από τα τρία τραπέζια μου. Πιάνουν σε κανονικό ξύλινο τραπέζι, αλλά χάνουν πολύ συχνά κινήσεις στο ξύλινο τραπέζι με λούστρο και στο μαρμάρινο. Δύο άλλα οικονομικά ποντίκια που έχω, από άλλες εταιρείες, δεν έχουν αυτό το πρόβλημα.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2025-10-06T14:32:20.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:10:58.893Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2153547976"
+    },
+    "result": {
+      "product_id": "bp_2153547976",
+      "review_count": 2,
+      "reviews": [
+        {
+          "rating": 4,
+          "excerpt": "To έχω εδώ και λίγες μέρες. Πραγματικά πολύ ωραία αίσθηση στο χέρι.Τα κουμπιά είναι \"κλικ\" και γενικά όλο το πακέτο δεν σου φαίνεται για ένα φθηνό ποιον το όποιο κοστίζει 6 ευρώ. Το δοκίμασα και για gaming και ήταν μια χαρά. Δεν ξέρω σε βάθος χρόνου αν θα έχει την ίδια απόδοση άλλα μέχρι στιγμής είναι πολύ καλό! Το…",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2018-01-09T01:25:33.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "Για απλό ποντίκι είναι πολύ καλό.. είναι άνετο στη χρήση του και βολικό στο χέρι..",
+          "helpfulness": 1,
+          "helpful_votes": 5,
+          "unhelpful_votes": 0,
+          "written_at": "2017-08-19T09:57:26.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:10:58.893Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2155808380"
+    },
+    "result": {
+      "product_id": "bp_2155808380",
+      "review_count": 1,
+      "reviews": [
+        {
+          "rating": 2,
+          "excerpt": "Εργονομικό, αλλά μετά από 3 μήνες χρήσης, χάλασε η ρόδα.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-09-05T06:21:03.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:10:58.893Z"
+    }
+  }
+]

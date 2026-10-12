@@ -1,0 +1,1184 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:11:09.059Z",
+  "outcome": "recommendation",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "dd23de47-4845-4e78-ad87-33bbe59ba407",
+    "revision": 2,
+    "fingerprint": "7d6edaa7b1f2ec732da16aa6cd24ea5717a664082cbe677f539f1e0263357302",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "phone",
+    "intent": "shop",
+    "query": "κινητό",
+    "constraints": {
+      "budgetEur": 400,
+      "statedBudgetEur": 400,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 400,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 400,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 1,
+            "start": 12,
+            "end": 24,
+            "text": "έως 400 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [
+      {
+        "id": "nfc",
+        "label": "NFC"
+      }
+    ],
+    "preferences": [
+      {
+        "id": "catalog_row:e2dbcc8d9a1824395aa545df98d62ca3:prefer_higher",
+        "label": "όσο πιο υψηλό Μέγεθος Οθόνης",
+        "row": "Μέγεθος Οθόνης",
+        "row_group": "Οθόνη",
+        "row_unit": "\"",
+        "check": "prefer_higher",
+        "value": null,
+        "quote": "Καλύτερα λίγο μεγαλύτερο",
+        "strength": "nice",
+        "grounding": "catalog_grounding_v1",
+        "preference": true
+      }
+    ],
+    "unresolved": [],
+    "unreadable": ["Καλύτερα λίγο μεγαλύτερο"],
+    "quotes": ["με NFC"],
+    "nonPricePhrases": ["με NFC", "Καλύτερα λίγο μεγαλύτερο"],
+    "source_turns": [],
+    "transition": "amend"
+  },
+  "actions": [
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_0",
+      "type": "refine",
+      "message": "Βρες κάτι φθηνότερο από το Xiaomi Poco M8 Pro 5G NFC 12GB 512GB, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "product_ids": []
+    },
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_1",
+      "type": "compare",
+      "message": "Σύγκρινε αναλυτικά το Xiaomi Poco M8 Pro 5G NFC 12GB 512GB με το Xiaomi Poco X8 5G NFC 8GB 256GB.",
+      "product_ids": ["bp_2163461418", "bp_2164616240", "bp_2164533314"]
+    }
+  ],
+  "status": "ready",
+  "mission": {
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Κινητό · Έως 400 €",
+    "constraints": {
+      "maximum_price_eur": 400,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 400,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 400,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 1,
+              "start": 12,
+              "end": 24,
+              "text": "έως 400 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "primary": {
+    "product_id": "bp_2163461418",
+    "title": "Xiaomi Poco M8 Pro 5G NFC 12GB 512GB",
+    "brand": "Xiaomi",
+    "model": "Xiaomi Poco M8 Pro 5G NFC 12GB 512GB",
+    "variant": null,
+    "category_title": "Κινητά",
+    "price_from": 332.95,
+    "rating": {
+      "average": 5,
+      "count": 2
+    },
+    "offer_count": 20,
+    "availability": "in_stock",
+    "product_url": "[omitted]",
+    "image_url": "[omitted]",
+    "ram_gb": 12,
+    "people_count": null,
+    "capacity_litres": null,
+    "dual_basket": null
+  },
+  "alternatives": [
+    {
+      "product": {
+        "product_id": "bp_2164616240",
+        "title": "Xiaomi Poco X8 5G NFC 8GB 256GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Poco X8 5G NFC 8GB 256GB",
+        "variant": null,
+        "category_title": "Κινητά",
+        "price_from": 299.88,
+        "rating": null,
+        "offer_count": 9,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": 8,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "Εξοικονόμησε 33,07€",
+      "tradeoff": "Χωρίς αρκετές αξιολογήσεις αγοραστών του BestPrice",
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_226933183",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "item_price": 299.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "price_checked_at": "2026-10-12T10:11:08.916Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_226933183",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "item_price": 299.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "price_checked_at": "2026-10-12T10:11:08.916Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 400,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 9,
+        "unknown_shipping_count": 9
+      },
+      "requires_constraint_change": false
+    },
+    {
+      "product": {
+        "product_id": "bp_2164533314",
+        "title": "Xiaomi Redmi Note 17 Pro 5G NFC 8GB 512GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Redmi Note 17 Pro 5G NFC 8GB 512GB",
+        "variant": null,
+        "category_title": "Κινητά",
+        "price_from": 376.42,
+        "rating": null,
+        "offer_count": 9,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": 8,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "Δεύτερη διαθέσιμη επιλογή",
+      "tradeoff": "8GB RAM στον τίτλο αντί για 12GB",
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_226385291",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 376.42,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:11:08.916Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_226385291",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 376.42,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:11:08.916Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 400,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 9,
+        "unknown_shipping_count": 9
+      },
+      "requires_constraint_change": false
+    }
+  ],
+  "constraints": {
+    "maximum_price_eur": 400,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "catalog_requirements": ["NFC"],
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 400,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 400,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 1,
+            "start": 12,
+            "end": 24,
+            "text": "έως 400 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [
+    "Δίνει τεκμηριωμένη βαθμολογία από αγοραστές του BestPrice, ενώ η φθηνότερη δεν έχει ακόμη αρκετές αξιολογήσεις. Καλύπτει τα εξής κριτήρια: έως 400€ και NFC.",
+    "Από όσες καλύπτουν όσα ζήτησες, έχει το υψηλότερο «Μέγεθος Οθόνης»: 6.83 \".",
+    "Η σημερινή τιμή είναι κοντά στη συνηθισμένη των 30, 90 και 180 ημερών, πριν τα μεταφορικά."
+  ],
+  "tradeoffs": [
+    "Κοστίζει 33,07€ παραπάνω από τη φθηνότερη με το υψηλότερο «Μέγεθος Οθόνης» (Xiaomi Poco X8 5G, 299,88€).",
+    "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+    "MobileHellas: βαθμολογία καταστήματος 5/5 από 11 αξιολογήσεις; δηλωμένη διαθεσιμότητα «1–3 εργάσιμες ημέρες» (εκτίμηση καταστήματος)."
+  ],
+  "offer_summary": {
+    "postal_code": null,
+    "price_basis": "item_price",
+    "affordability": "within_item_budget_delivery_unknown",
+    "offer_scope": "returned_sample",
+    "delivery_affordability_proven": false,
+    "recommended": {
+      "offer_id": "bp_offer_205460250",
+      "merchant_id": "bp_merchant_904",
+      "merchant_name": "MobileHellas",
+      "merchant_rating": 5,
+      "merchant_rating_count": 11,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 332.95,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_1_3_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "1–3 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:11:08.916Z"
+    },
+    "cheapest": {
+      "offer_id": "bp_offer_205460250",
+      "merchant_id": "bp_merchant_904",
+      "merchant_name": "MobileHellas",
+      "merchant_rating": 5,
+      "merchant_rating_count": 11,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 332.95,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_1_3_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "1–3 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:11:08.916Z"
+    },
+    "same_offer": true,
+    "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+    "budget_eur": 400,
+    "recommended_within_budget": true,
+    "cheapest_within_budget": true,
+    "compared_offer_count": 10,
+    "unknown_shipping_count": 10
+  },
+  "price_history": {
+    "current_price": 332.95,
+    "quote_consistency": "matched",
+    "current_price_source": "live_offer_minimum",
+    "source_last_observed_at": "2026-10-12T10:11:08.979Z",
+    "period_days": 180,
+    "window_stats": [
+      {
+        "days": 30,
+        "minimum_price": 331.9,
+        "median_price": 331.99,
+        "observations": 28,
+        "coverage_pct": 93.3
+      },
+      {
+        "days": 90,
+        "minimum_price": 299,
+        "median_price": 331.9,
+        "observations": 88,
+        "coverage_pct": 97.8
+      },
+      {
+        "days": 180,
+        "minimum_price": 299,
+        "median_price": 329,
+        "observations": 173,
+        "coverage_pct": 96.1
+      }
+    ],
+    "minimum_price": 299,
+    "median_price": 329,
+    "observations": 173,
+    "coverage_pct": 96.1,
+    "delta_vs_median_pct": 1.2,
+    "deal_classification": "typical_price",
+    "methodology_id": "bestprice_daily_min_v1",
+    "data_gaps": {
+      "missing_days": 7,
+      "longest_gap_days": 1,
+      "stale_days": 0,
+      "coverage_note": "7 ημέρες δεν είχαν έγκυρη ημερήσια παρατήρηση."
+    },
+    "warnings": [],
+    "series": [
+      {
+        "date": "2026-04-16",
+        "price": 327
+      },
+      {
+        "date": "2026-04-22",
+        "price": 329
+      },
+      {
+        "date": "2026-04-30",
+        "price": 329
+      },
+      {
+        "date": "2026-05-09",
+        "price": 329
+      },
+      {
+        "date": "2026-05-18",
+        "price": 329
+      },
+      {
+        "date": "2026-05-26",
+        "price": 329
+      },
+      {
+        "date": "2026-06-06",
+        "price": 329
+      },
+      {
+        "date": "2026-06-15",
+        "price": 326.97
+      },
+      {
+        "date": "2026-06-23",
+        "price": 321
+      },
+      {
+        "date": "2026-07-01",
+        "price": 321
+      },
+      {
+        "date": "2026-07-11",
+        "price": 312.99
+      },
+      {
+        "date": "2026-07-19",
+        "price": 299
+      },
+      {
+        "date": "2026-07-27",
+        "price": 319
+      },
+      {
+        "date": "2026-08-06",
+        "price": 326
+      },
+      {
+        "date": "2026-08-13",
+        "price": 319
+      },
+      {
+        "date": "2026-08-23",
+        "price": 319
+      },
+      {
+        "date": "2026-08-25",
+        "price": 335
+      },
+      {
+        "date": "2026-08-31",
+        "price": 334
+      },
+      {
+        "date": "2026-09-08",
+        "price": 332.9
+      },
+      {
+        "date": "2026-09-15",
+        "price": 331.99
+      },
+      {
+        "date": "2026-09-26",
+        "price": 331.9
+      },
+      {
+        "date": "2026-10-05",
+        "price": 331.98
+      },
+      {
+        "date": "2026-10-12",
+        "price": 332.95
+      }
+    ]
+  },
+  "candidate_summary": {
+    "scope": "returned_candidates",
+    "returned_count": 8,
+    "eligible_count": 8,
+    "rejected_count": 0,
+    "rejection_counts": {},
+    "search_fallback_applied": false,
+    "delivered_totals_checked": 8,
+    "delivered_totals_known": 0
+  },
+  "candidates": [
+    {
+      "product_id": "bp_2160449839",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2160449839:bp_offer_181152241",
+        "compare_offers:bp_2160449839:bp_offer_181232877",
+        "compare_offers:bp_2160449839:bp_offer_181383957",
+        "compare_offers:bp_2160449839:bp_offer_181431379",
+        "compare_offers:bp_2160449839:bp_offer_181648280",
+        "compare_offers:bp_2160449839:bp_offer_181946100",
+        "compare_offers:bp_2160449839:bp_offer_183373131",
+        "compare_offers:bp_2160449839:bp_offer_202158257",
+        "compare_offers:bp_2160449839:bp_offer_223493264",
+        "compare_offers:bp_2160449839:bp_offer_226624297",
+        "compare_offers:bp_2160449839:check",
+        "deterministic_ranking:bp_2160449839:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2160449839:bp_2160449839",
+        "get_product_reviews:bp_2160449839:bp_2160449839",
+        "search_products:bp_2160449839:bp_2160449839"
+      ]
+    },
+    {
+      "product_id": "bp_2163844357",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2163844357:bp_offer_210893892",
+        "compare_offers:bp_2163844357:bp_offer_211249285",
+        "compare_offers:bp_2163844357:bp_offer_211297360",
+        "compare_offers:bp_2163844357:bp_offer_211435653",
+        "compare_offers:bp_2163844357:bp_offer_211735476",
+        "compare_offers:bp_2163844357:bp_offer_211737599",
+        "compare_offers:bp_2163844357:bp_offer_212592413",
+        "compare_offers:bp_2163844357:bp_offer_213192704",
+        "compare_offers:bp_2163844357:bp_offer_213483684",
+        "compare_offers:bp_2163844357:bp_offer_226322536",
+        "compare_offers:bp_2163844357:check",
+        "deterministic_ranking:bp_2163844357:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163844357:bp_2163844357",
+        "get_product_reviews:bp_2163844357:bp_2163844357",
+        "search_products:bp_2163844357:bp_2163844357"
+      ]
+    },
+    {
+      "product_id": "bp_2164533314",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2164533314:bp_offer_225508098",
+        "compare_offers:bp_2164533314:bp_offer_225522518",
+        "compare_offers:bp_2164533314:bp_offer_225526420",
+        "compare_offers:bp_2164533314:bp_offer_225696751",
+        "compare_offers:bp_2164533314:bp_offer_225819568",
+        "compare_offers:bp_2164533314:bp_offer_225819925",
+        "compare_offers:bp_2164533314:bp_offer_226385291",
+        "compare_offers:bp_2164533314:bp_offer_226404781",
+        "compare_offers:bp_2164533314:bp_offer_227409872",
+        "compare_offers:bp_2164533314:check",
+        "deterministic_ranking:bp_2164533314:bestprice_shopping_policy_v1:phones",
+        "get_price_history:bp_2164533314:bp_2164533314",
+        "get_product_details:bp_2164533314:bp_2164533314",
+        "search_products:bp_2164533314:bp_2164533314"
+      ]
+    },
+    {
+      "product_id": "bp_2164616240",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2164616240:bp_offer_226933183",
+        "compare_offers:bp_2164616240:bp_offer_227036627",
+        "compare_offers:bp_2164616240:bp_offer_227052275",
+        "compare_offers:bp_2164616240:bp_offer_227083558",
+        "compare_offers:bp_2164616240:bp_offer_227130828",
+        "compare_offers:bp_2164616240:bp_offer_227130988",
+        "compare_offers:bp_2164616240:bp_offer_227134060",
+        "compare_offers:bp_2164616240:bp_offer_227134299",
+        "compare_offers:bp_2164616240:bp_offer_227164803",
+        "compare_offers:bp_2164616240:check",
+        "deterministic_ranking:bp_2164616240:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2164616240:bp_2164616240",
+        "search_products:bp_2164616240:bp_2164616240"
+      ]
+    },
+    {
+      "product_id": "bp_2164510860",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2164510860:bp_offer_225185334",
+        "compare_offers:bp_2164510860:bp_offer_225226288",
+        "compare_offers:bp_2164510860:bp_offer_225347789",
+        "compare_offers:bp_2164510860:bp_offer_225522633",
+        "compare_offers:bp_2164510860:bp_offer_225696753",
+        "compare_offers:bp_2164510860:bp_offer_225780150",
+        "compare_offers:bp_2164510860:bp_offer_225819468",
+        "compare_offers:bp_2164510860:bp_offer_225819564",
+        "compare_offers:bp_2164510860:bp_offer_225819921",
+        "compare_offers:bp_2164510860:bp_offer_226385288",
+        "compare_offers:bp_2164510860:check",
+        "deterministic_ranking:bp_2164510860:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2164510860:bp_2164510860",
+        "search_products:bp_2164510860:bp_2164510860"
+      ]
+    },
+    {
+      "product_id": "bp_2163461418",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2163461418:bp_offer_204998848",
+        "compare_offers:bp_2163461418:bp_offer_205266283",
+        "compare_offers:bp_2163461418:bp_offer_205434134",
+        "compare_offers:bp_2163461418:bp_offer_205460250",
+        "compare_offers:bp_2163461418:bp_offer_207336413",
+        "compare_offers:bp_2163461418:bp_offer_208447430",
+        "compare_offers:bp_2163461418:bp_offer_214376390",
+        "compare_offers:bp_2163461418:bp_offer_214710241",
+        "compare_offers:bp_2163461418:bp_offer_216211914",
+        "compare_offers:bp_2163461418:bp_offer_221509808",
+        "compare_offers:bp_2163461418:check",
+        "deterministic_ranking:bp_2163461418:bestprice_shopping_policy_v1:phones",
+        "get_price_history:bp_2163461418:bp_2163461418",
+        "get_product_details:bp_2163461418:bp_2163461418",
+        "get_product_reviews:bp_2163461418:bp_2163461418",
+        "search_products:bp_2163461418:bp_2163461418"
+      ]
+    },
+    {
+      "product_id": "bp_2163499636",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2163499636:bp_offer_205274147",
+        "compare_offers:bp_2163499636:bp_offer_205431719",
+        "compare_offers:bp_2163499636:bp_offer_205507520",
+        "compare_offers:bp_2163499636:bp_offer_205730649",
+        "compare_offers:bp_2163499636:bp_offer_206521463",
+        "compare_offers:bp_2163499636:bp_offer_212697426",
+        "compare_offers:bp_2163499636:bp_offer_212717202",
+        "compare_offers:bp_2163499636:bp_offer_216141184",
+        "compare_offers:bp_2163499636:bp_offer_216267628",
+        "compare_offers:bp_2163499636:bp_offer_226322468",
+        "compare_offers:bp_2163499636:check",
+        "deterministic_ranking:bp_2163499636:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163499636:bp_2163499636",
+        "get_product_reviews:bp_2163499636:bp_2163499636",
+        "search_products:bp_2163499636:bp_2163499636"
+      ]
+    },
+    {
+      "product_id": "bp_2163499639",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2163499639:bp_offer_205319851",
+        "compare_offers:bp_2163499639:bp_offer_205619231",
+        "compare_offers:bp_2163499639:bp_offer_205929465",
+        "compare_offers:bp_2163499639:bp_offer_206239257",
+        "compare_offers:bp_2163499639:bp_offer_206430114",
+        "compare_offers:bp_2163499639:bp_offer_206521473",
+        "compare_offers:bp_2163499639:bp_offer_208079315",
+        "compare_offers:bp_2163499639:bp_offer_210263899",
+        "compare_offers:bp_2163499639:bp_offer_214423769",
+        "compare_offers:bp_2163499639:bp_offer_225061867",
+        "compare_offers:bp_2163499639:check",
+        "deterministic_ranking:bp_2163499639:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163499639:bp_2163499639",
+        "get_product_reviews:bp_2163499639:bp_2163499639",
+        "search_products:bp_2163499639:bp_2163499639"
+      ]
+    },
+    {
+      "product_id": "bp_2163810534",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163810534:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163810534:bp_2163810534",
+        "search_products:bp_2163810534:bp_2163810534"
+      ]
+    },
+    {
+      "product_id": "bp_2163638418",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:nfc"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163638418:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163638418:bp_2163638418",
+        "search_products:bp_2163638418:bp_2163638418"
+      ]
+    },
+    {
+      "product_id": "bp_2163461419",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "no_text_sample",
+      "source_ids": [
+        "deterministic_ranking:bp_2163461419:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163461419:bp_2163461419",
+        "search_products:bp_2163461419:bp_2163461419"
+      ]
+    },
+    {
+      "product_id": "bp_2163844359",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163844359:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163844359:bp_2163844359",
+        "search_products:bp_2163844359:bp_2163844359"
+      ]
+    },
+    {
+      "product_id": "bp_2163499638",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "deterministic_ranking:bp_2163499638:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163499638:bp_2163499638",
+        "search_products:bp_2163499638:bp_2163499638"
+      ]
+    },
+    {
+      "product_id": "bp_2163844358",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163844358:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2163844358:bp_2163844358",
+        "search_products:bp_2163844358:bp_2163844358"
+      ]
+    },
+    {
+      "product_id": "bp_2164182739",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:nfc"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164182739:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2164182739:bp_2164182739",
+        "search_products:bp_2164182739:bp_2164182739"
+      ]
+    },
+    {
+      "product_id": "bp_2164076160",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:nfc"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164076160:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2164076160:bp_2164076160",
+        "search_products:bp_2164076160:bp_2164076160"
+      ]
+    },
+    {
+      "product_id": "bp_2164517857",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:nfc"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2164517857:bp_2164517857"]
+    },
+    {
+      "product_id": "bp_2163841269",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:nfc"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2163841269:bp_2163841269"]
+    },
+    {
+      "product_id": "bp_2162373531",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:nfc"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2162373531:bp_2162373531"]
+    },
+    {
+      "product_id": "bp_2163461420",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:nfc"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2163461420:bp_2163461420"]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 20,
+    "complete_catalog": false,
+    "search_calls": 1,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:11:06.990Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 338,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 20,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [
+    {
+      "code": "ranking_calibration",
+      "product_id": "bp_2163461418",
+      "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+    },
+    {
+      "code": "landed_cost_unknown",
+      "product_id": "bp_2163461418",
+      "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+    }
+  ],
+  "price_verdict": {
+    "verdict": "typical",
+    "reason": "typical_across_usable_windows",
+    "source_ids": ["get_price_history:bp_2163461418:bp_2163461418"],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "",
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "execution": {
+    "tools_used": [
+      "search_products",
+      "get_product_details",
+      "compare_offers",
+      "get_price_history",
+      "get_product_reviews"
+    ],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 3651,
+      "grounding_calls": 1,
+      "grounding_ms": 1371,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": false,
+      "understanding_cached": false,
+      "understanding_unreadable": 1,
+      "understanding_requirements": 1,
+      "understanding_ms": 1526,
+      "direct_recommendation": true,
+      "exact_route": false,
+      "catalog_search_calls": 1,
+      "search_products_calls": 1,
+      "search_products_failures": 0,
+      "search_products_invocations": 1,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 287,
+      "search_products_max_ms": 287,
+      "get_product_details_calls": 4,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 4,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 369,
+      "get_product_details_max_ms": 121,
+      "compare_offers_calls": 8,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 8,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 54,
+      "compare_offers_max_ms": 7,
+      "get_price_history_calls": 2,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 2,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 35,
+      "get_price_history_max_ms": 19,
+      "get_product_reviews_calls": 10,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 10,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 242,
+      "get_product_reviews_max_ms": 34,
+      "optimize_basket_calls": 0,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 0,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 0,
+      "optimize_basket_max_ms": 0,
+      "retrieval_page_candidates": 20,
+      "receipt_disqualified_candidates": 7,
+      "receipt_eligible_candidates": 13,
+      "receipt_review_requested": 10,
+      "receipt_review_available": 5,
+      "receipt_validation_ms": 10,
+      "brain_runtime_ms": 3651,
+      "brain_finalization_ms": 34
+    }
+  },
+  "personalization": null,
+  "follow_ups": [
+    {
+      "id": "cheaper",
+      "label": "Κάτι φθηνότερο",
+      "message": "Βρες κάτι φθηνότερο από το Xiaomi Poco M8 Pro 5G NFC 12GB 512GB, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_0"
+      }
+    },
+    {
+      "id": "compare",
+      "label": "Σύγκρινε τις επιλογές",
+      "message": "Σύγκρινε αναλυτικά το Xiaomi Poco M8 Pro 5G NFC 12GB 512GB με το Xiaomi Poco X8 5G NFC 8GB 256GB.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_1"
+      }
+    }
+  ],
+  "coverage": {
+    "policy_version": "ask_beta_coverage_v1",
+    "family": "phone",
+    "reason": "catalog_family_verified",
+    "supported": true
+  },
+  "spend_walk": {
+    "version": "ask_spend_walk_v1",
+    "category_schema": "phones",
+    "comparison_status": "consistent",
+    "use_case": "general",
+    "price_basis": "item_price",
+    "ranking": {
+      "criteria": [
+        {
+          "row": "Μέγεθος Οθόνης",
+          "check": "prefer_higher"
+        }
+      ],
+      "secondary_policy": null
+    },
+    "budget_eur": 400,
+    "base": {
+      "product_id": "bp_2164616240",
+      "fit": 92.3,
+      "price_eur": 299.88
+    },
+    "winner": {
+      "product_id": "bp_2163461418",
+      "fit": 85.2,
+      "reason": "fit",
+      "price_eur": 332.95
+    },
+    "next": null,
+    "steps": [
+      {
+        "product_id": "bp_2164510860",
+        "price_eur": 305.62,
+        "delta_fit": -5.1,
+        "fit_relation": "worse_supported_fit",
+        "compared_attributes": ["ram", "storage", "network5g", "longevity", "panel_type", "dual_sim"],
+        "delta_eur": 5.74,
+        "fit_per_eur": -0.889,
+        "threshold": 0,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 299.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 5.74
+      },
+      {
+        "product_id": "bp_2163499639",
+        "price_eur": 306.88,
+        "delta_fit": 2.1,
+        "fit_relation": "tradeoff",
+        "compared_attributes": [
+          "ram",
+          "storage",
+          "network5g",
+          "longevity",
+          "satisfaction",
+          "panel_type",
+          "dual_sim"
+        ],
+        "delta_eur": 7,
+        "fit_per_eur": 0.3,
+        "threshold": 0,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 299.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 7
+      },
+      {
+        "product_id": "bp_2163499636",
+        "price_eur": 327,
+        "delta_fit": 4.1,
+        "fit_relation": "tradeoff",
+        "compared_attributes": [
+          "ram",
+          "storage",
+          "network5g",
+          "longevity",
+          "satisfaction",
+          "panel_type",
+          "dual_sim"
+        ],
+        "delta_eur": 27.12,
+        "fit_per_eur": 0.151,
+        "threshold": 0,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 299.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 27.12
+      },
+      {
+        "product_id": "bp_2163461418",
+        "price_eur": 332.95,
+        "delta_fit": 11.2,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": [
+          "ram",
+          "storage",
+          "network5g",
+          "longevity",
+          "satisfaction",
+          "panel_type",
+          "dual_sim"
+        ],
+        "delta_eur": 33.07,
+        "fit_per_eur": 0.339,
+        "threshold": 0,
+        "accepted": true,
+        "selected": true,
+        "selection_reason": "fit",
+        "premium_reference_eur": 299.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 33.07
+      },
+      {
+        "product_id": "bp_2164533314",
+        "price_eur": 376.42,
+        "delta_fit": -11.2,
+        "fit_relation": "worse_supported_fit",
+        "compared_attributes": [
+          "ram",
+          "storage",
+          "network5g",
+          "longevity",
+          "satisfaction",
+          "panel_type",
+          "dual_sim"
+        ],
+        "delta_eur": 43.47,
+        "fit_per_eur": -0.258,
+        "threshold": 0,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 332.95,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 43.47
+      }
+    ]
+  },
+  "review_evidence": {
+    "version": "ask_review_evidence_v1",
+    "review_count": 2,
+    "helpful_average": 5,
+    "highlights": [
+      {
+        "rating": 5,
+        "excerpt": "Σε αυτή την τιμή δεν έχει αντίπαλο. Οθόνη χορταστική, με ζωντανά χρώματα και υψηλή φωτεινότητα. Μπαταρία δύο ημερών. Κάμερα αξιοπρεπέστατη, αλλά οι υπόλοιπες δεν προσφέρουν κάτι το ιδιαίτερο. Καλή ποιότητα, με όλες τις πιστοποιήσεις για νερό και σκόνη. Φόρτιση στα 100 W και τέσσερις μεγάλες αναβαθμίσεις με 6 χρόνια…",
+        "helpfulness": 1,
+        "helpful_votes": 5,
+        "unhelpful_votes": 0,
+        "written_at": "2026-01-27T16:54:23.000Z"
+      },
+      {
+        "rating": 5,
+        "excerpt": "Ένα καλό κινητό για καθημερινή χρήση, με επαγγελματικό προσανατολισμό. Θα έλεγα ότι με εξέπληξε ευχάριστα!",
+        "helpfulness": 1,
+        "helpful_votes": 0,
+        "unhelpful_votes": 0,
+        "written_at": "2026-07-20T21:12:04.000Z"
+      }
+    ],
+    "as_of": "2026-10-12T10:11:08.916Z"
+  }
+}

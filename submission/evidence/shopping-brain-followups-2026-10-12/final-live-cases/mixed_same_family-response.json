@@ -1,0 +1,1315 @@
+{
+  "schema_version": "2.0",
+  "as_of": "2026-10-12T10:29:34.299Z",
+  "currency": "EUR",
+  "locale": "el-GR",
+  "warnings": [],
+  "brain": {
+    "projection_version": "bestprice_mcp_decision_v1",
+    "decision_version": "bestprice_decision_v1",
+    "decision_id": "[omitted]",
+    "evidence_fingerprint": "3a896011151ef3127983ecec93823ee675dc3d0bc072ef210caae87786d38e33"
+  },
+  "outcome": "basket",
+  "status": "ready",
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 15,50€ από 1 κατάστημα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 64,50€ κάτω από το συνολικό όριο των 80€.",
+  "reason": null,
+  "message": null,
+  "blocking_constraints": [],
+  "recommended_product_id": null,
+  "alternatives": [],
+  "products": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 80,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 80,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 62,
+            "end": 73,
+            "text": "έως 80 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 80,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wired",
+              "label": "ενσύρματη σύνδεση",
+              "hint": "ενσύρματο"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wireless",
+              "label": "ασύρματη σύνδεση",
+              "hint": "ασύρματο"
+            }
+          ]
+        }
+      }
+    ],
+    "catalog_requirements": ["ενσύρματη σύνδεση", "ασύρματη σύνδεση"]
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "comparison": null,
+  "basket": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T10:29:34.184Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [
+      "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+    ],
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "balanced",
+        "merchant_count": 1,
+        "item_subtotal": 13,
+        "shipping_total": 2.5,
+        "shipping_status": "known",
+        "total_price": 15.5,
+        "reliability_score": 4.9,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_128",
+            "merchant_name": "Msystems",
+            "merchant_rating": 4.9,
+            "verified_merchant": false,
+            "item_subtotal": 13,
+            "shipping_price": 2.5,
+            "shipping_status": "known",
+            "total_price": 15.5,
+            "reason": "covers_basket_with_one_merchant",
+            "items": [
+              {
+                "product_id": "bp_2154894250",
+                "title": "Logitech B170 Ασύρματο Ποντίκι Black",
+                "quantity": 1,
+                "unit_price": 9,
+                "line_total": 9,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2157364893",
+                "title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+                "quantity": 1,
+                "unit_price": 4,
+                "line_total": 4,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": []
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wired",
+              "label": "ενσύρματη σύνδεση",
+              "hint": "ενσύρματο"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wireless",
+              "label": "ασύρματη σύνδεση",
+              "hint": "ασύρματο"
+            }
+          ]
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2157364893",
+        "catalog_price_eur": 3.66,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2154894250",
+        "catalog_price_eur": 7.53,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 80
+  },
+  "clarifications": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "requires_user_action": true,
+    "bestprice_url": "[omitted]"
+  },
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 2,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:29:33.661Z",
+      "source_observed_at": "2026-10-12T10:27:40.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 3327,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": 2569,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "shopping_context": {
+    "version": "bestprice_shopping_context_v32",
+    "products": [
+      {
+        "product_id": "bp_2154894250",
+        "family": "mice",
+        "attributes": [
+          {
+            "key": "wireless",
+            "unit": null,
+            "status": "known",
+            "value": true,
+            "claim_ids": ["claim_7c3cf220829f3def76be1a77"],
+            "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"]
+          }
+        ]
+      },
+      {
+        "product_id": "bp_2157364893",
+        "family": "mice",
+        "attributes": [
+          {
+            "key": "wireless",
+            "unit": null,
+            "status": "known",
+            "value": false,
+            "claim_ids": ["claim_aa81bb349bfb48f84e8d3b81"],
+            "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"]
+          }
+        ]
+      }
+    ],
+    "market": [
+      {
+        "product_id": "bp_2154894250",
+        "offers": {
+          "status": "not_checked",
+          "scope": "bounded_returned_offers",
+          "offer_count": 0,
+          "merchant_count": 0,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 0,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 0
+          },
+          "item_price": null,
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      },
+      {
+        "product_id": "bp_2157364893",
+        "offers": {
+          "status": "not_checked",
+          "scope": "bounded_returned_offers",
+          "offer_count": 0,
+          "merchant_count": 0,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 0,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 0
+          },
+          "item_price": null,
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      }
+    ]
+  },
+  "evidence": {
+    "scope": "returned_products",
+    "sources": [
+      {
+        "source_id": "deterministic_ranking:bp_2154894250:bestprice_shopping_policy_v1:mice",
+        "kind": "decision_policy",
+        "record_id": "bestprice_shopping_policy_v1:mice",
+        "product_id": "bp_2154894250",
+        "scope": "cluster",
+        "capability": "deterministic_ranking",
+        "checked_at": "2026-10-12T10:29:34.299Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "deterministic_ranking:bp_2157364893:bestprice_shopping_policy_v1:mice",
+        "kind": "decision_policy",
+        "record_id": "bestprice_shopping_policy_v1:mice",
+        "product_id": "bp_2157364893",
+        "scope": "cluster",
+        "capability": "deterministic_ranking",
+        "checked_at": "2026-10-12T10:29:34.299Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "get_product_details:bp_2154894250:bp_2154894250",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2154894250",
+        "product_id": "bp_2154894250",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:29:33.661Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "get_product_details:bp_2157364893:bp_2157364893",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2157364893",
+        "product_id": "bp_2157364893",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:29:33.654Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250",
+        "kind": "basket_quote",
+        "record_id": "balanced:bp_merchant_128:bp_2154894250",
+        "product_id": "bp_2154894250",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:29:34.184Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893",
+        "kind": "basket_quote",
+        "record_id": "balanced:bp_merchant_128:bp_2157364893",
+        "product_id": "bp_2157364893",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:29:34.184Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "search_products:bp_2154894250:bp_2154894250",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2154894250",
+        "product_id": "bp_2154894250",
+        "scope": "cluster",
+        "capability": "search_products",
+        "checked_at": "2026-10-12T10:29:33.661Z",
+        "source_observed_at": "2026-10-12T10:27:40.000Z",
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "claim_01d87136892290cc527d4ac3",
+        "product_id": "bp_2157364893",
+        "field": "feature:1108",
+        "value": "1000 DPI",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1108,
+          "label": "Μέγιστη Ανάλυση Αισθητήρα",
+          "group": "Απόδοση"
+        }
+      },
+      {
+        "claim_id": "claim_040ee5ba4e63471a205ab174",
+        "product_id": "bp_2154894250",
+        "field": "category_title",
+        "value": "Ποντίκια",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_04fd7982d38e652181ecd08d",
+        "product_id": "bp_2154894250",
+        "field": "feature:4383",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4383,
+          "label": "Αθόρυβο",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_07b8317b607afcb58f772dda",
+        "product_id": "bp_2154894250",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_0dee6847265cb040fdfae63e",
+        "product_id": "bp_2157364893",
+        "field": "feature:4381",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4381,
+          "label": "TouchPad",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_129ad335e8a2dcba5a8bf3fa",
+        "product_id": "bp_2154894250",
+        "field": "ranking:mice:satisfaction",
+        "value": 4,
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2154894250:bp_2154894250",
+          "get_product_details:bp_2154894250:bp_2154894250",
+          "deterministic_ranking:bp_2154894250:bestprice_shopping_policy_v1:mice"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_15991550410cf5cb4b9f259d",
+        "product_id": "bp_2154894250",
+        "field": "catalog_family",
+        "value": "mice",
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2154894250:bp_2154894250",
+          "get_product_details:bp_2154894250:bp_2154894250"
+        ],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_e67bf829d377187134e895e4",
+          "claim_040ee5ba4e63471a205ab174",
+          "claim_cec11f0a3b03d4c112491324"
+        ]
+      },
+      {
+        "claim_id": "claim_1a4969d7638c544135d683a9",
+        "product_id": "bp_2154894250",
+        "field": "basket_merchant_shipping",
+        "value": 2.5,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_1dd818f1bc49a745f5a29d12",
+        "product_id": "bp_2154894250",
+        "field": "feature:1121",
+        "value": "Ασύρματο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1121,
+          "label": "Τύπος",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_23af0b00e5fded3e9d691a68",
+        "product_id": "bp_2157364893",
+        "field": "basket_unit_price",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_244a8f2436d41b8b558668b8",
+        "product_id": "bp_2154894250",
+        "field": "title",
+        "value": "Logitech B170 Ασύρματο Ποντίκι Black",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_248ef110f76e01f9a10d5d16",
+        "product_id": "bp_2157364893",
+        "field": "feature:3263",
+        "value": "Και για τα Δύο Χέρια",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3263,
+          "label": "Προσανατολισμός Χεριού",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_2c69138fd406971887e748e7",
+        "product_id": "bp_2154894250",
+        "field": "basket_line_total",
+        "value": 9,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_30d671bf07bb0b436bc0c1bd",
+        "product_id": "bp_2154894250",
+        "field": "price_from",
+        "value": 7.53,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_30ff0fe6854f38f24d24e3cd",
+        "product_id": "bp_2157364893",
+        "field": "title",
+        "value": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3580193104b1a30a50884cde",
+        "product_id": "bp_2157364893",
+        "field": "basket_line_total",
+        "value": 4,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_3b41e946b522c6dd3a8dde65",
+        "product_id": "bp_2154894250",
+        "field": "feature:1062",
+        "value": "Μαύρο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1062,
+          "label": "Χρώμα",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_3f29771961861a2a32b9c513",
+        "product_id": "bp_2157364893",
+        "field": "feature:3239",
+        "value": "USB",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3239,
+          "label": "Τύπος Σύνδεσης",
+          "group": "Συνδεσιμότητα"
+        }
+      },
+      {
+        "claim_id": "claim_4162ae926f9fe900a1f829c2",
+        "product_id": "bp_2154894250",
+        "field": "rating_count",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4b349f4ed85ec8899eec3b69",
+        "product_id": "bp_2154894250",
+        "field": "basket_unit_price",
+        "value": 9,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4d945aeac6f7a2e657213ea7",
+        "product_id": "bp_2157364893",
+        "field": "rating_count",
+        "value": 7,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5362597f78808514adc37cd6",
+        "product_id": "bp_2154894250",
+        "field": "feature:3262",
+        "value": "Standard",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3262,
+          "label": "Μέγεθος",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_5438a38cd49d76c26436daff",
+        "product_id": "bp_2157364893",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_55cea657ce3f9d7ca246c116",
+        "product_id": "bp_2154894250",
+        "field": "basket_merchant_name",
+        "value": "Msystems",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_56b599da3df84131f81c0759",
+        "product_id": "bp_2157364893",
+        "field": "feature:4380",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4380,
+          "label": "TrackBall",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_5e8c003275ab2d8e7a175f9c",
+        "product_id": "bp_2157364893",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_63a7dc206520201473478bc6",
+        "product_id": "bp_2154894250",
+        "field": "feature:3239",
+        "value": "USB",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3239,
+          "label": "Τύπος Σύνδεσης",
+          "group": "Συνδεσιμότητα"
+        }
+      },
+      {
+        "claim_id": "claim_65193c46e4c0a1167730fc66",
+        "product_id": "bp_2157364893",
+        "field": "feature:4383",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4383,
+          "label": "Αθόρυβο",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_760a5c3f487214b0e06e996b",
+        "product_id": "bp_2154894250",
+        "field": "feature:3263",
+        "value": "Και για τα Δύο Χέρια",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3263,
+          "label": "Προσανατολισμός Χεριού",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_7888d3e4eb46c766c0073891",
+        "product_id": "bp_2154894250",
+        "field": "feature:1106",
+        "value": "3",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1106,
+          "label": "Αριθμός Πλήκτρων",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_7c3cf220829f3def76be1a77",
+        "product_id": "bp_2154894250",
+        "field": "attribute:wireless",
+        "value": true,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_1dd818f1bc49a745f5a29d12"]
+      },
+      {
+        "claim_id": "claim_83da832a22aa72d85af2ee1a",
+        "product_id": "bp_2157364893",
+        "field": "feature:5465",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 5465,
+          "label": "Με Παιδικά Σχέδια",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_8ef549a2bda7dc529969c4d4",
+        "product_id": "bp_2157364893",
+        "field": "title",
+        "value": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_907b10ac22ed14409412b2fb",
+        "product_id": "bp_2154894250",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_95f35bef437105f4711413bb",
+        "product_id": "bp_2157364893",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a6d39ebff383528356b301e4",
+        "product_id": "bp_2154894250",
+        "field": "feature:5465",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 5465,
+          "label": "Με Παιδικά Σχέδια",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_aa81bb349bfb48f84e8d3b81",
+        "product_id": "bp_2157364893",
+        "field": "attribute:wireless",
+        "value": false,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_8ef549a2bda7dc529969c4d4"]
+      },
+      {
+        "claim_id": "claim_b04f825de55456bb556b0eb9",
+        "product_id": "bp_2157364893",
+        "field": "feature:4379",
+        "value": "Claw, Palm",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4379,
+          "label": "Σχεδιασμός",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_b27a046d6670d6350e7597a6",
+        "product_id": "bp_2154894250",
+        "field": "feature:1108",
+        "value": "1600 DPI",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1108,
+          "label": "Μέγιστη Ανάλυση Αισθητήρα",
+          "group": "Απόδοση"
+        }
+      },
+      {
+        "claim_id": "claim_b3c7f3efaa8ee3874d2edec4",
+        "product_id": "bp_2157364893",
+        "field": "offer_count",
+        "value": 21,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b3cf45d9e1051ef49e3f852f",
+        "product_id": "bp_2157364893",
+        "field": "catalog_family",
+        "value": "mice",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_f4f8c2d171875944f331480b",
+          "claim_bc72c8d8eaa5e9494c98701a",
+          "claim_8ef549a2bda7dc529969c4d4"
+        ]
+      },
+      {
+        "claim_id": "claim_b57d08511b8719cf08452ec9",
+        "product_id": "bp_2154894250",
+        "field": "rating_average",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b9c4eab71c5f792cdb7ef988",
+        "product_id": "bp_2157364893",
+        "field": "feature:1121",
+        "value": "Ενσύρματο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1121,
+          "label": "Τύπος",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_bc72c8d8eaa5e9494c98701a",
+        "product_id": "bp_2157364893",
+        "field": "category_title",
+        "value": "Ποντίκια",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_bdca8e6a6f38916a228120a2",
+        "product_id": "bp_2157364893",
+        "field": "rating_average",
+        "value": 4.25,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_beb541c8b8d7edfebcee045a",
+        "product_id": "bp_2154894250",
+        "field": "feature:1105",
+        "value": "Optical",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1105,
+          "label": "Τύπος Αισθητήρα",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_c309141352937fd8d882eab4",
+        "product_id": "bp_2157364893",
+        "field": "feature:1105",
+        "value": "Optical",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1105,
+          "label": "Τύπος Αισθητήρα",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_c8d95d003b62de3cb4364438",
+        "product_id": "bp_2154894250",
+        "field": "feature:4381",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4381,
+          "label": "TouchPad",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_ca5aea877467c5aed2624818",
+        "product_id": "bp_2157364893",
+        "field": "feature:1106",
+        "value": "3",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1106,
+          "label": "Αριθμός Πλήκτρων",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_ce0ab538707312fe48927616",
+        "product_id": "bp_2157364893",
+        "field": "feature:3264",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3264,
+          "label": "Ρύθμιση Βάρους",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_cec11f0a3b03d4c112491324",
+        "product_id": "bp_2154894250",
+        "field": "title",
+        "value": "Logitech B170 Ασύρματο Ποντίκι Black",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d11387115c8fcb804a7a2bd7",
+        "product_id": "bp_2154894250",
+        "field": "basket_plan_total",
+        "value": 15.5,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_d166784cf6319497b4667a5e",
+        "product_id": "bp_2157364893",
+        "field": "basket_plan_total",
+        "value": 15.5,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_d4a4c8e272ca8bba0152ce2c",
+        "product_id": "bp_2157364893",
+        "field": "feature:1062",
+        "value": "Ανθρακί",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1062,
+          "label": "Χρώμα",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_da99cd9bf7faabceb153e988",
+        "product_id": "bp_2157364893",
+        "field": "basket_merchant_name",
+        "value": "Msystems",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_dbb6ffc6d6a5661d86f1fe40",
+        "product_id": "bp_2154894250",
+        "field": "feature:4380",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4380,
+          "label": "TrackBall",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_dbf11d7913ce54f029df095f",
+        "product_id": "bp_2154894250",
+        "field": "offer_count",
+        "value": 52,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_de1ab52154b3c1cf876081a5",
+        "product_id": "bp_2157364893",
+        "field": "ranking:mice:satisfaction",
+        "value": 4.116666666666666,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2157364893:bp_2157364893",
+          "deterministic_ranking:bp_2157364893:bestprice_shopping_policy_v1:mice"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_e3e968a5ddd5e93eb034e7c1",
+        "product_id": "bp_2154894250",
+        "field": "feature:4379",
+        "value": "Claw, Palm",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4379,
+          "label": "Σχεδιασμός",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_e547ec2076a154e170c1d1ee",
+        "product_id": "bp_2157364893",
+        "field": "price_from",
+        "value": 3.66,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e67bf829d377187134e895e4",
+        "product_id": "bp_2154894250",
+        "field": "category_id",
+        "value": 2569,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ef01823952da653fed3e776e",
+        "product_id": "bp_2157364893",
+        "field": "basket_merchant_shipping",
+        "value": 2.5,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f4f8c2d171875944f331480b",
+        "product_id": "bp_2157364893",
+        "field": "category_id",
+        "value": 2569,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f8a1d700130960d6727f5596",
+        "product_id": "bp_2154894250",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f922739f4ba2cb1285f5c654",
+        "product_id": "bp_2154894250",
+        "field": "feature:3264",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2154894250:bp_2154894250"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3264,
+          "label": "Ρύθμιση Βάρους",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_fac9aaffb103dd8182acbf3a",
+        "product_id": "bp_2157364893",
+        "field": "feature:3262",
+        "value": "Standard",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157364893:bp_2157364893"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3262,
+          "label": "Μέγεθος",
+          "group": ""
+        }
+      }
+    ]
+  },
+  "uncertainty": []
+}

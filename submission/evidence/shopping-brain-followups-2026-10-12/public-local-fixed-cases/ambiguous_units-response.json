@@ -1,0 +1,5431 @@
+{
+  "schema_version": "2.0",
+  "as_of": "2026-10-12T10:17:42.701Z",
+  "currency": "EUR",
+  "locale": "el-GR",
+  "warnings": [],
+  "brain": {
+    "projection_version": "bestprice_mcp_decision_v1",
+    "decision_version": "bestprice_decision_v1",
+    "decision_id": "[omitted]",
+    "evidence_fingerprint": "4a61ef17637248dab0f51a0d0f98c4a50cf18b084ee341c2ab0c27f5c4d38b2a"
+  },
+  "outcome": "recommendation",
+  "status": "ready",
+  "answer": "",
+  "reason": null,
+  "message": null,
+  "blocking_constraints": [],
+  "recommended_product_id": "bp_2163663957",
+  "alternatives": [
+    {
+      "product_id": "bp_2160331924",
+      "label": "Εξοικονόμησε 20,88€",
+      "tradeoff": "Χαμηλότερος ρυθμός ανανέωσης",
+      "requires_constraint_change": false,
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_221525467",
+          "merchant_id": "bp_merchant_6426",
+          "merchant_name": "Welcomestores",
+          "merchant_rating": 4,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 89,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "price_checked_at": "2026-10-12T10:17:42.627Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_221525467",
+          "merchant_id": "bp_merchant_6426",
+          "merchant_name": "Welcomestores",
+          "merchant_rating": 4,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 89,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "price_checked_at": "2026-10-12T10:17:42.627Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 250,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      }
+    },
+    {
+      "product_id": "bp_2163375863",
+      "label": "4,65€ ακριβότερο",
+      "tradeoff": "Δεν συνέκρινα: βαθμολογία αγοραστών BestPrice",
+      "requires_constraint_change": false,
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_206818893",
+          "merchant_id": "bp_merchant_3805",
+          "merchant_name": "Dexter",
+          "merchant_rating": 3.94,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 114.53,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:17:42.627Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_206818893",
+          "merchant_id": "bp_merchant_3805",
+          "merchant_name": "Dexter",
+          "merchant_rating": 3.94,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 114.53,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:17:42.627Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 250,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      }
+    }
+  ],
+  "products": [
+    {
+      "product_id": "bp_2163663957",
+      "title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+      "brand": "Dell",
+      "category_title": "Οθόνες Υπολογιστών",
+      "price_from": 109.88,
+      "decision_id": "[omitted]",
+      "bestprice_url": "[omitted]",
+      "image_url": "[omitted]"
+    },
+    {
+      "product_id": "bp_2160331924",
+      "title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+      "brand": "Samsung",
+      "category_title": "Οθόνες Υπολογιστών",
+      "price_from": 89,
+      "decision_id": "[omitted]",
+      "bestprice_url": "[omitted]",
+      "image_url": "[omitted]"
+    },
+    {
+      "product_id": "bp_2163375863",
+      "title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+      "brand": "Xiaomi",
+      "category_title": "Οθόνες Υπολογιστών",
+      "price_from": 114.53,
+      "decision_id": "[omitted]",
+      "bestprice_url": "[omitted]",
+      "image_url": "[omitted]"
+    }
+  ],
+  "constraints": {
+    "maximum_price_eur": 250,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "catalog_requirements": ["οθόνη 27 ιντσών"],
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 250,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 250,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 14,
+            "end": 26,
+            "text": "έως 250 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [
+    "Δίνει υψηλότερο ρυθμό ανανέωσης. Καλύπτει τα εξής κριτήρια: έως 250€ και οθόνη 27 ιντσών.",
+    "Η επόμενη, ακριβότερη επιλογή κοστίζει 4,65€ παραπάνω, χωρίς να προσφέρει κάτι επιπλέον σε όσα ζήτησες. Δεν συνέκρινα: βαθμολογία αγοραστών BestPrice.",
+    "Η σημερινή τιμή είναι χαμηλότερη από τη συνηθισμένη των 30, 90 και 180 ημερών, πριν τα μεταφορικά."
+  ],
+  "tradeoffs": [
+    "Κοστίζει 20,88€ παραπάνω από τη φθηνότερη επιλογή που καλύπτει όσα ζήτησες (Samsung Essential S3 S30GD, 89€).",
+    "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+    "MobileHub: βαθμολογία καταστήματος 3,89/5 από 106 αξιολογήσεις; δηλωμένη διαθεσιμότητα «4–10 εργάσιμες ημέρες» (εκτίμηση καταστήματος)."
+  ],
+  "offer_summary": {
+    "postal_code": null,
+    "price_basis": "item_price",
+    "affordability": "within_item_budget_delivery_unknown",
+    "offer_scope": "returned_sample",
+    "delivery_affordability_proven": false,
+    "recommended": {
+      "offer_id": "bp_offer_216155699",
+      "merchant_id": "bp_merchant_15392",
+      "merchant_name": "MobileHub",
+      "merchant_rating": 3.89,
+      "merchant_rating_count": 106,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 109.88,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_4_10_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "4–10 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:17:42.627Z"
+    },
+    "cheapest": {
+      "offer_id": "bp_offer_216155699",
+      "merchant_id": "bp_merchant_15392",
+      "merchant_name": "MobileHub",
+      "merchant_rating": 3.89,
+      "merchant_rating_count": 106,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 109.88,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_4_10_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "4–10 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:17:42.627Z"
+    },
+    "same_offer": true,
+    "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+    "budget_eur": 250,
+    "recommended_within_budget": true,
+    "cheapest_within_budget": true,
+    "compared_offer_count": 10,
+    "unknown_shipping_count": 10
+  },
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "clarifications": [],
+  "price_verdict": {
+    "verdict": "good",
+    "reason": "below_typical_across_usable_windows",
+    "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "requires_user_action": true,
+    "bestprice_url": "[omitted]"
+  },
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 8,
+    "complete_catalog": false,
+    "search_calls": 1,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:17:41.976Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 68,
+      "candidate_count": 32,
+      "eligible_count": 27,
+      "returned_count": 8,
+      "category_id": 2621,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "shopping_context": {
+    "version": "bestprice_shopping_context_v32",
+    "products": [
+      {
+        "product_id": "bp_2160331924",
+        "family": "monitors",
+        "attributes": [
+          {
+            "key": "screen_diagonal_inches",
+            "unit": "inch",
+            "status": "known",
+            "value": 27,
+            "claim_ids": ["claim_b06fc4ea8f568bf9269273a8"],
+            "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"]
+          },
+          {
+            "key": "refresh_rate_hz",
+            "unit": "Hz",
+            "status": "known",
+            "value": 100,
+            "claim_ids": ["claim_9f1064c65caaa5df82438154"],
+            "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"]
+          },
+          {
+            "key": "resolution",
+            "unit": null,
+            "status": "known",
+            "value": "Full HD",
+            "claim_ids": ["claim_424e9dce60bcc6845a71489d", "claim_87a439af158a8945326a0cd6"],
+            "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"]
+          },
+          {
+            "key": "panel_type",
+            "unit": null,
+            "status": "known",
+            "value": "IPS",
+            "claim_ids": ["claim_6dfa413552b0e3ce336d48d4"],
+            "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"]
+          }
+        ]
+      },
+      {
+        "product_id": "bp_2163375863",
+        "family": "monitors",
+        "attributes": [
+          {
+            "key": "screen_diagonal_inches",
+            "unit": "inch",
+            "status": "known",
+            "value": 27,
+            "claim_ids": ["claim_ef52fbcbab885c76e966294d"],
+            "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"]
+          },
+          {
+            "key": "refresh_rate_hz",
+            "unit": "Hz",
+            "status": "known",
+            "value": 200,
+            "claim_ids": ["claim_c82da844233d5fa4b0e7ebe2"],
+            "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"]
+          },
+          {
+            "key": "resolution",
+            "unit": null,
+            "status": "known",
+            "value": "Full HD",
+            "claim_ids": ["claim_4cfc8220571e64f7e68dd5dc", "claim_b144f26277ed7c4ae220e09b"],
+            "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"]
+          },
+          {
+            "key": "panel_type",
+            "unit": null,
+            "status": "known",
+            "value": "IPS",
+            "claim_ids": ["claim_db9c2de1aa499397694f5ed9"],
+            "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"]
+          }
+        ]
+      },
+      {
+        "product_id": "bp_2163663957",
+        "family": "monitors",
+        "attributes": [
+          {
+            "key": "screen_diagonal_inches",
+            "unit": "inch",
+            "status": "known",
+            "value": 27,
+            "claim_ids": ["claim_f13b4985caa920c717dee1af"],
+            "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"]
+          },
+          {
+            "key": "refresh_rate_hz",
+            "unit": "Hz",
+            "status": "known",
+            "value": 240,
+            "claim_ids": ["claim_6b9116f1f87e9b358f070a78"],
+            "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"]
+          },
+          {
+            "key": "resolution",
+            "unit": null,
+            "status": "known",
+            "value": "Full HD",
+            "claim_ids": ["claim_337a6cd0a0f0c22c705ab4c5", "claim_9afca5542eae08ad5378b2db"],
+            "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"]
+          },
+          {
+            "key": "panel_type",
+            "unit": null,
+            "status": "known",
+            "value": "IPS",
+            "claim_ids": ["claim_dfce80b96d2a3aa1ecfb3d20"],
+            "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"]
+          }
+        ]
+      }
+    ],
+    "market": [
+      {
+        "product_id": "bp_2160331924",
+        "offers": {
+          "status": "available",
+          "scope": "bounded_returned_offers",
+          "offer_count": 10,
+          "merchant_count": 10,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 5,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 10
+          },
+          "item_price": {
+            "minimum": 89,
+            "median": 93.45,
+            "maximum": 97.66,
+            "count": 10
+          },
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [
+            "compare_offers:bp_2160331924:bp_offer_176421652",
+            "compare_offers:bp_2160331924:bp_offer_176559711",
+            "compare_offers:bp_2160331924:bp_offer_176599052",
+            "compare_offers:bp_2160331924:bp_offer_179694513",
+            "compare_offers:bp_2160331924:bp_offer_184692849",
+            "compare_offers:bp_2160331924:bp_offer_206954293",
+            "compare_offers:bp_2160331924:bp_offer_209039432",
+            "compare_offers:bp_2160331924:bp_offer_219318152",
+            "compare_offers:bp_2160331924:bp_offer_221525467",
+            "compare_offers:bp_2160331924:bp_offer_227266516",
+            "compare_offers:bp_2160331924:check"
+          ],
+          "claim_ids": [
+            "claim_014b2d4e5db15996704e0a39",
+            "claim_03158d21ed568a5a718dd9d3",
+            "claim_070726c927b1f3c5bea99386",
+            "claim_0765b10589d2153920b6f744",
+            "claim_0ccdfa1cd1dfabb26e9f5c37",
+            "claim_0da6db0886610c8a1417075e",
+            "claim_1085b599ff544a55e7720c2f",
+            "claim_10f07aef3e35e4c873a7d563",
+            "claim_11cfd7c22aaccf41559407e8",
+            "claim_139713c8ba4df077d9ac2523",
+            "claim_18cb57f8c5137262e48617a3",
+            "claim_197617d01675f33c6a118684",
+            "claim_199d7be72fb8e19bc0801165",
+            "claim_199e058bd7363d1f8594f962",
+            "claim_20df12193cd7679e05f7de54",
+            "claim_21208d43ed99ba6e2f5fe02c",
+            "claim_215225e43974528294b5ed52",
+            "claim_2363c36080ad7c575478f790",
+            "claim_26b5fed531bc5b8577bb4ffa",
+            "claim_29b0c25cb41c63002f071a3c",
+            "claim_2beb940b5b27dc44cbd32978",
+            "claim_2f693812f7badb232bf434d8",
+            "claim_332153d7d8b5ef2ac653e041",
+            "claim_33374f32e96ad9bcd180219d",
+            "claim_3f6c6dc1819a4c81b59ff050",
+            "claim_40986d93801eb40a500bb263",
+            "claim_4103b2e8d6657c9ae32e7f94",
+            "claim_430cbb940747746298a16176",
+            "claim_453323b000023632f643e3b5",
+            "claim_45dd40ba81bd4de20ec5fdd7",
+            "claim_4838554250a5c0fe4e9bac46",
+            "claim_4ee0495e7e59a2da06e051f2",
+            "claim_52499f38a9dc47aab540b6c7",
+            "claim_588fbe4e51927acf5a3f04f4",
+            "claim_5c6f1d21280ebb8e91b7f29a",
+            "claim_5c9c9509f24f8934fa583094",
+            "claim_5d1545614dbb39b3949cfa2f",
+            "claim_5dcf87b584984ff41bf088b5",
+            "claim_62f555cc37079dedc65c0728",
+            "claim_658a600d1cc7c1f6f608d5ef",
+            "claim_6642abb5a8d797f446fcba83",
+            "claim_6885efd4a92d4d0871ab28f1",
+            "claim_68fe52dea9bac7bf3f009922",
+            "claim_6aa8eec6fca37c2433595827",
+            "claim_6b8e4d4e2a96ab539666101f",
+            "claim_6e256d3314d7eb462e7a29da",
+            "claim_72cb917cc30a3c72903d9351",
+            "claim_77ac01ba6da6a9cfaa7836da",
+            "claim_7a32965241a8d565646ef527",
+            "claim_7d1d633b63539c05459bbdf3",
+            "claim_8510f0a849c89bd97edbe855",
+            "claim_9a40104a6b54857e1f28cb94",
+            "claim_9bc956b6f86be44023610b2f",
+            "claim_9ca9db3598b70dcecee44387",
+            "claim_a00e976a7b44eaa63dcb6665",
+            "claim_a15b06130215802dea33d7db",
+            "claim_aa66a3d73d96a983d972e33e",
+            "claim_aacbd2bfbf7f56fbe0c174c2",
+            "claim_ac04061535492df66d1a0d9d",
+            "claim_acb8e457f9a12ca9cfb8d81b",
+            "claim_acdc1e097b2ab333e24bc20a",
+            "claim_af69f2cc014950bf1dc7c4e9",
+            "claim_b2446cd7e37afd724f4c3fc4",
+            "claim_b596427a739de5f1a55bdb37",
+            "claim_b5dcb9c5c7fece7509960232",
+            "claim_b6e97cc5f53aa18f67671030",
+            "claim_baeab0cab5fc446598f45166",
+            "claim_bc5fc9cd124c5085aa427cd2",
+            "claim_bf493f6c9d5e5776399802a5",
+            "claim_c1daa4672abd4c7219a14d47",
+            "claim_c35a6d7ee803e6f923403c9a",
+            "claim_cdf59493209b5762d5775453",
+            "claim_cff58bc05196eb4be88176ba",
+            "claim_d092ef60ed370bbe7db471d6",
+            "claim_d3d257228c15007572aef251",
+            "claim_d6dc97a27bac56d5287fe9fa",
+            "claim_d85ad4e1114e5b2ecba05095",
+            "claim_de191873c939ba534145b45f",
+            "claim_de393aa00b9eeb615503db97",
+            "claim_e1a978b5a3116d6b9ebee818",
+            "claim_e71656ece57edb16bbcb367b",
+            "claim_e85e9f37f31bf7c2168c1b64",
+            "claim_f29878e38b87a9eb18e2b836",
+            "claim_f4a92998f2bd5171c0ee4578",
+            "claim_f56e4e5b18b38910d8353a30",
+            "claim_fd250f4f24ed9b0631de27d1",
+            "claim_ff0421d6da479b28a5863b91"
+          ]
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      },
+      {
+        "product_id": "bp_2163375863",
+        "offers": {
+          "status": "available",
+          "scope": "bounded_returned_offers",
+          "offer_count": 10,
+          "merchant_count": 10,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 5,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 10
+          },
+          "item_price": {
+            "minimum": 114.53,
+            "median": 125.45,
+            "maximum": 131.19,
+            "count": 10
+          },
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [
+            "compare_offers:bp_2163375863:bp_offer_203391439",
+            "compare_offers:bp_2163375863:bp_offer_205495917",
+            "compare_offers:bp_2163375863:bp_offer_206151888",
+            "compare_offers:bp_2163375863:bp_offer_206818893",
+            "compare_offers:bp_2163375863:bp_offer_206824387",
+            "compare_offers:bp_2163375863:bp_offer_207144094",
+            "compare_offers:bp_2163375863:bp_offer_208051960",
+            "compare_offers:bp_2163375863:bp_offer_215277406",
+            "compare_offers:bp_2163375863:bp_offer_220476064",
+            "compare_offers:bp_2163375863:bp_offer_221919242",
+            "compare_offers:bp_2163375863:check"
+          ],
+          "claim_ids": [
+            "claim_058af8dc4956a08d9c1983a2",
+            "claim_07933e224ba3ea14b00bfa94",
+            "claim_0c1bbbbb1b2416959e9aafd5",
+            "claim_10c0e635f587579d248ac5b2",
+            "claim_146832b483313f5a0101d52b",
+            "claim_16474b83eed42002d27c1520",
+            "claim_1bc8f6dafd9321376badc0ca",
+            "claim_26b88930aa6528eea49381c7",
+            "claim_2816685478eee00c849853f5",
+            "claim_2edb584842583c3663359987",
+            "claim_33372901ff7ab33068a9f9ab",
+            "claim_36f654799b7094f57de83034",
+            "claim_4691bcf94eba053cd5748319",
+            "claim_478a42592c75d03b62652112",
+            "claim_4a1661f5bec59f61d3cba0b6",
+            "claim_4c69d1b8a40ad519a62729b8",
+            "claim_4f5f89733e91181335fd9ccc",
+            "claim_55d2f9285b180497b7dab55a",
+            "claim_5820e5c805f1e2b7377d2008",
+            "claim_5a1683c28e9821ca0b1517ba",
+            "claim_5bfc33e813f98f1c7b71ae10",
+            "claim_5fe0fb1a4093c614fa9fb6cf",
+            "claim_60390b8020d2f1362efff4fe",
+            "claim_67270c8f6aa62018e1a470b3",
+            "claim_685158720bcd46eb549ca01a",
+            "claim_6d7392320e09d22542c034ef",
+            "claim_6ec0f76ef2cd3fd402d66454",
+            "claim_721d8be8f89b46361609ff2f",
+            "claim_72a104f83adfec7a9649861b",
+            "claim_7bacd59fa4148ec7246390d6",
+            "claim_7c19c6db928b87c0fb1d9714",
+            "claim_7d5d7c555491601ad7a3ceba",
+            "claim_7f65fc770f76a0d1c416f2d1",
+            "claim_830008c25372d22ba7db74d4",
+            "claim_83bd04a9e5c74f646b0f252f",
+            "claim_84d50c17e5132074fa84a5c5",
+            "claim_873f08b5c250acdc03faa946",
+            "claim_88c9d55f1d9ca7fc0d5edb0a",
+            "claim_892b69a3117c4b8a9bf1e37c",
+            "claim_8d271b4793ca739bda28b61a",
+            "claim_90d921f662b9f4dc50da0b99",
+            "claim_92a53180ccfda7469f8e9870",
+            "claim_94703e304ed086dbd9a2f8c6",
+            "claim_95cf07bb38343587de149e7b",
+            "claim_9dc33a6a6d77d5375774e238",
+            "claim_9eba4114f53706e27e749172",
+            "claim_a7a1af86a2d263e22531472c",
+            "claim_a8bcaab8a807b2a166f38dbc",
+            "claim_a8e93a09375c33eab179c008",
+            "claim_ab0e0011f95c8787d82afd10",
+            "claim_ae5b68a26bc0164eab414b47",
+            "claim_b1bbab13ea585b12a01dd048",
+            "claim_b1dbd0c0329a000c05b205f7",
+            "claim_b251ceccbf17e2fab9a225bb",
+            "claim_b7a56b290b805a6c7ddd6e3a",
+            "claim_b88e7f7882569cf38cd302d0",
+            "claim_b96cdfaab956caf34a03bf0a",
+            "claim_bfb4934be5bb2dccc763addd",
+            "claim_c01a2039f08fff9499a31b4a",
+            "claim_c2c2d78f9e5c282ca6d4cbed",
+            "claim_c308fd025551a1c9087b0415",
+            "claim_c508633c5fd71ef6673387be",
+            "claim_c708e8a1808a1e1198857a40",
+            "claim_c881512614785b730c362207",
+            "claim_c8a5041208aa31499ba4098a",
+            "claim_cab9a7fdfefecb1983e348fb",
+            "claim_cc9db3612bc778d6623a4179",
+            "claim_d37afa558803aff38586e129",
+            "claim_d63ec3b30de461c997097cee",
+            "claim_d6cc6d6170e02442432ca57e",
+            "claim_d874280c4b1fba93e3abe8fd",
+            "claim_da3fe028a3221fce976a5f1f",
+            "claim_db5bb8afa32a7691b7057314",
+            "claim_deb058f6e455adfb803098d4",
+            "claim_e0071d45e488efd00c267091",
+            "claim_e0fb9e881bb72ae7f71bf8ee",
+            "claim_e3a758ff113eb2a8d94e548b",
+            "claim_e597a8321f37e50c902b80b6",
+            "claim_e82fde6a263678a52ece0ecf",
+            "claim_ecc87a27884615f80ceede4c",
+            "claim_ef73701a52276e5321d8f51f",
+            "claim_f37fa866fccc07e2f8b5d75c",
+            "claim_f5765cd9ccbc79c3440cfd70",
+            "claim_f6a4a239dd953af764fd7717",
+            "claim_fc98877a7c8d7cbaf197a2f6",
+            "claim_fd6b2634a8c38033dd6f4cc5",
+            "claim_fdf1bc506ad099add75e429a",
+            "claim_fe95ea7ff59f8d05658b0163",
+            "claim_ff88984fab49575b82be3776"
+          ]
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      },
+      {
+        "product_id": "bp_2163663957",
+        "offers": {
+          "status": "available",
+          "scope": "bounded_returned_offers",
+          "offer_count": 10,
+          "merchant_count": 10,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 3,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 10
+          },
+          "item_price": {
+            "minimum": 109.88,
+            "median": 126,
+            "maximum": 129,
+            "count": 10
+          },
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [
+            "compare_offers:bp_2163663957:bp_offer_208030892",
+            "compare_offers:bp_2163663957:bp_offer_208498741",
+            "compare_offers:bp_2163663957:bp_offer_209390108",
+            "compare_offers:bp_2163663957:bp_offer_209434041",
+            "compare_offers:bp_2163663957:bp_offer_211823216",
+            "compare_offers:bp_2163663957:bp_offer_212097800",
+            "compare_offers:bp_2163663957:bp_offer_212497029",
+            "compare_offers:bp_2163663957:bp_offer_216155699",
+            "compare_offers:bp_2163663957:bp_offer_216806833",
+            "compare_offers:bp_2163663957:bp_offer_224388126",
+            "compare_offers:bp_2163663957:check"
+          ],
+          "claim_ids": [
+            "claim_0ba43adef14edbcfb3e3e64e",
+            "claim_0f510c6af10474889d142243",
+            "claim_10dc818ea7ec5fbdbdd03b5f",
+            "claim_12e8faee55b245ac526dee02",
+            "claim_12f439cb2eea2be9951a42da",
+            "claim_136c998c4556f648d1d2c357",
+            "claim_180cc476a4d3974f47b6abb9",
+            "claim_1a7758c4b8af206ee5f54b6a",
+            "claim_1ad49d83130f3806b5a6de90",
+            "claim_20edec92042406e85ea8f192",
+            "claim_2241ca5f5939a40db8868561",
+            "claim_22566c22896c8424e257f97a",
+            "claim_22d3386d80ab158af5e1dd3b",
+            "claim_266de18cdf922d4931cd8baa",
+            "claim_2b3739fb54f34c985f6961dc",
+            "claim_2dcc6de6b822b024eea23897",
+            "claim_2f8e8d58780938569f519b6e",
+            "claim_35b0ffb7da8190cb4c0dd2e9",
+            "claim_3690368568074ca6978975b8",
+            "claim_36fe236a049a1610f07e6f23",
+            "claim_3f0d429e58d4a6a38519dd6d",
+            "claim_3f3098b2ec00ad11b4bd34a7",
+            "claim_402f64f3026686a24dfb3376",
+            "claim_42217173fb947f2dfdc4ef14",
+            "claim_489edcc80c9827ae7534b92f",
+            "claim_4cf854bcb263bf8778ca618e",
+            "claim_4e11a2c9fcf3819e708b8414",
+            "claim_4e18499625e8e8db8e8a46ed",
+            "claim_4f4c7e5d5923326ec0c146e7",
+            "claim_53f1b225ec410748c924bcf9",
+            "claim_5b8b76a31d02a24ba70b2a43",
+            "claim_5c2fc553b1776cd2a07bc244",
+            "claim_65d4669093f8197151b2fc77",
+            "claim_6b2128aa39ec346639d8d672",
+            "claim_6dcb74f6f153b982883178bf",
+            "claim_6dcf044b988a28ead1588b1b",
+            "claim_77002a367599a4d95e176119",
+            "claim_7b863125a1772d6ebc500f7a",
+            "claim_7c288d238eaac0a6aa921f4e",
+            "claim_801bac89c7177054bd07a775",
+            "claim_80f71b80a543734a4a7bebd0",
+            "claim_82028aeab5cc939b27eb113f",
+            "claim_82516d08c142e7100793a8ed",
+            "claim_8494f2cbfdd211c15de77c42",
+            "claim_874cbd9231b823c83a33ee64",
+            "claim_8bed46a75b7c1ac138254b4c",
+            "claim_8c0cea54f5a93ba0dc70bf4a",
+            "claim_8e67251b9562c2f48284498d",
+            "claim_8f1937fbda585b069908009e",
+            "claim_9058ab1e902645384c3443f7",
+            "claim_94b53e1d964b87fdcc6c7d51",
+            "claim_95d9244b9c0620c2a83c520e",
+            "claim_9c235b26340aa80a50d83de4",
+            "claim_9c3490c6b44d2bf017a20051",
+            "claim_a0f6c47c76da667fa3a73f20",
+            "claim_a2ece494af7c413b04acfbfb",
+            "claim_a530453218edbec70c86f492",
+            "claim_a99818226dcca25afe7f5181",
+            "claim_aaf064cd7a1dd648748a328a",
+            "claim_acf9b24de8b1209efc1666c5",
+            "claim_aee2adebc65ea73b156da94f",
+            "claim_aef518a414abd72be494eb83",
+            "claim_b392012118cdd3593a069973",
+            "claim_b79b5d69ff0cebbd47db82e7",
+            "claim_b8f085df1edc9556abf58934",
+            "claim_bc2e2ec00e1c53f7b8870d72",
+            "claim_bea58fe9cb07550b52142cd2",
+            "claim_c718b734607935d34c64e721",
+            "claim_c75d94657191c575f10b9b7c",
+            "claim_c796d31f0ce590c71cf24699",
+            "claim_c826815bebf715f50f13837b",
+            "claim_cca0c87f585a1b7c81b3e29f",
+            "claim_cf44a14308341dcf3409e543",
+            "claim_d587e49f4cd4568df4f289f5",
+            "claim_d5982354c5fea6f5c50ca024",
+            "claim_d68f3c91b58781405d72751b",
+            "claim_d6feb0efd47d525869d51170",
+            "claim_d9253e66cd7c68509259b8fd",
+            "claim_d9a4b360f8eae1226bf9956a",
+            "claim_ddb33feefd639c28b65b3a4b",
+            "claim_df1beefebd856a76a9b89b17",
+            "claim_ebc3dae288c85451862c14b1",
+            "claim_ed33afee82dd055284159d6f",
+            "claim_f0657d0375b6941f3f865f49",
+            "claim_f261ddd879c745aa2ae3f3a1",
+            "claim_f6f5e2ef12e70077cdecbfa9",
+            "claim_f8be7827baca08d6ca2e5f19",
+            "claim_fcade7647d828bcdae44c8d0",
+            "claim_fec7b8aed10bc65e2bcd387d"
+          ]
+        },
+        "history": {
+          "status": "available",
+          "basis": "daily_item_minimum",
+          "windows": [
+            {
+              "days": 30,
+              "minimum_price": 109.88,
+              "median_price": 117,
+              "observations": 30,
+              "coverage_pct": 100,
+              "claim_ids": [
+                "claim_1ec9f83a39cc463591802cef",
+                "claim_2808f7a314211ef66a414a03",
+                "claim_52796425a699d960e73d56ea",
+                "claim_fb5e604105b416c21184ade6"
+              ]
+            },
+            {
+              "days": 90,
+              "minimum_price": 109.88,
+              "median_price": 123.48,
+              "observations": 90,
+              "coverage_pct": 100,
+              "claim_ids": [
+                "claim_08893db48d8c84912f655739",
+                "claim_158a82ca72a0060fa0ac89a0",
+                "claim_5c0d4233d29811f3611f6555",
+                "claim_f894fac3506ae7973ca7738d"
+              ]
+            },
+            {
+              "days": 180,
+              "minimum_price": 109.88,
+              "median_price": 124,
+              "observations": 179,
+              "coverage_pct": 99.4,
+              "claim_ids": [
+                "claim_29e64e9fcf61729cd55ae244",
+                "claim_324bb0d191575bd5dc3bceba",
+                "claim_922f4f71b97293d1594f1b5c",
+                "claim_ee32753c9f967a8e89459b2a"
+              ]
+            }
+          ],
+          "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+          "claim_ids": [
+            "claim_08893db48d8c84912f655739",
+            "claim_158a82ca72a0060fa0ac89a0",
+            "claim_1ec9f83a39cc463591802cef",
+            "claim_2808f7a314211ef66a414a03",
+            "claim_29e64e9fcf61729cd55ae244",
+            "claim_324bb0d191575bd5dc3bceba",
+            "claim_52796425a699d960e73d56ea",
+            "claim_5c0d4233d29811f3611f6555",
+            "claim_5c4796f21fc551c720512f5a",
+            "claim_922f4f71b97293d1594f1b5c",
+            "claim_a517aa70a27cde210ee33216",
+            "claim_ee32753c9f967a8e89459b2a",
+            "claim_f894fac3506ae7973ca7738d",
+            "claim_fb5e604105b416c21184ade6"
+          ]
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      }
+    ]
+  },
+  "evidence": {
+    "scope": "returned_products",
+    "sources": [
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_176421652",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_176421652",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_176559711",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_176559711",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_176599052",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_176599052",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_179694513",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_179694513",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_184692849",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_184692849",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_206954293",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_206954293",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_209039432",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_209039432",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_219318152",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_219318152",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_221525467",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_221525467",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:bp_offer_227266516",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_227266516",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2160331924:check",
+        "kind": "merchant_offer",
+        "record_id": "check",
+        "product_id": "bp_2160331924",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_203391439",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_203391439",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_205495917",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_205495917",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_206151888",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_206151888",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_206818893",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_206818893",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_206824387",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_206824387",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_207144094",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_207144094",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_208051960",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_208051960",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_215277406",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_215277406",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_220476064",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_220476064",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:bp_offer_221919242",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_221919242",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163375863:check",
+        "kind": "merchant_offer",
+        "record_id": "check",
+        "product_id": "bp_2163375863",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_208030892",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_208030892",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_208498741",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_208498741",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_209390108",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_209390108",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_209434041",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_209434041",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_211823216",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_211823216",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_212097800",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_212097800",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_212497029",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_212497029",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_216155699",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_216155699",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_216806833",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_216806833",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:bp_offer_224388126",
+        "kind": "merchant_offer",
+        "record_id": "bp_offer_224388126",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "compare_offers:bp_2163663957:check",
+        "kind": "merchant_offer",
+        "record_id": "check",
+        "product_id": "bp_2163663957",
+        "scope": "offer",
+        "capability": "compare_offers",
+        "checked_at": "2026-10-12T10:17:42.627Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "get_price_history:bp_2163663957:bp_2163663957",
+        "kind": "price_history",
+        "record_id": "bp_2163663957",
+        "product_id": "bp_2163663957",
+        "scope": "cluster",
+        "capability": "get_price_history",
+        "checked_at": "2026-10-12T10:17:42.628Z",
+        "source_observed_at": "2026-10-12T10:17:42.628Z",
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "get_product_details:bp_2160331924:bp_2160331924",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2160331924",
+        "product_id": "bp_2160331924",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:17:42.300Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "get_product_details:bp_2163375863:bp_2163375863",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2163375863",
+        "product_id": "bp_2163375863",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:17:42.300Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "get_product_details:bp_2163663957:bp_2163663957",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2163663957",
+        "product_id": "bp_2163663957",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:17:42.301Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "search_products:bp_2160331924:bp_2160331924",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2160331924",
+        "product_id": "bp_2160331924",
+        "scope": "cluster",
+        "capability": "search_products",
+        "checked_at": "2026-10-12T10:17:41.976Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "search_products:bp_2163375863:bp_2163375863",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2163375863",
+        "product_id": "bp_2163375863",
+        "scope": "cluster",
+        "capability": "search_products",
+        "checked_at": "2026-10-12T10:17:41.976Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "search_products:bp_2163663957:bp_2163663957",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2163663957",
+        "product_id": "bp_2163663957",
+        "scope": "cluster",
+        "capability": "search_products",
+        "checked_at": "2026-10-12T10:17:41.976Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "claim_014b2d4e5db15996704e0a39",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 89,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_03158d21ed568a5a718dd9d3",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating_count",
+        "value": 11,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_031f1345e2c73b69bd6c596e",
+        "product_id": "bp_2163375863",
+        "field": "feature:3201",
+        "value": "FreeSync, G-Sync",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3201,
+          "label": "Επιπλέον Δυνατότητες",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_058af8dc4956a08d9c1983a2",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 18,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_070726c927b1f3c5bea99386",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_0765b10589d2153920b6f744",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_07933e224ba3ea14b00bfa94",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_07c97f99200d44933277a1ab",
+        "product_id": "bp_2163375863",
+        "field": "feature:3204",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3204,
+          "label": "Ultrawide",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_081884da6d353dd56b78b480",
+        "product_id": "bp_2163375863",
+        "field": "feature:38",
+        "value": "27 \"",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 38,
+          "label": "Μέγεθος Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_08893db48d8c84912f655739",
+        "product_id": "bp_2163663957",
+        "field": "history_90d_observations",
+        "value": 90,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_0ba43adef14edbcfb3e3e64e",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 4.77,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_0bd4731a07cafbe4e689a850",
+        "product_id": "bp_2160331924",
+        "field": "feature:622",
+        "value": "5 ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 622,
+          "label": "Χρόνος Απόκρισης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_0c1bbbbb1b2416959e9aafd5",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 127,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_0ccdfa1cd1dfabb26e9f5c37",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_961",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_0da6db0886610c8a1417075e",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "Astrongameclub",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_0dc4d5aefeeb02b98c82d1c6",
+        "product_id": "bp_2160331924",
+        "field": "feature:3205",
+        "value": "HDMI, VGA",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3205,
+          "label": "Συνδεσιμότητα",
+          "group": "Συνδεσιμότητα"
+        }
+      },
+      {
+        "claim_id": "claim_0f510c6af10474889d142243",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_128",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_105e0f6a0c51bf2651b27a38",
+        "product_id": "bp_2163663957",
+        "field": "feature:3205",
+        "value": "DisplayPort, HDMI 2.1",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3205,
+          "label": "Συνδεσιμότητα",
+          "group": "Συνδεσιμότητα"
+        }
+      },
+      {
+        "claim_id": "claim_1085b599ff544a55e7720c2f",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating",
+        "value": 4.52,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_10c0e635f587579d248ac5b2",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 4.38,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_10dc818ea7ec5fbdbdd03b5f",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_743",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_10f07aef3e35e4c873a7d563",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating",
+        "value": 4.79,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_11cfd7c22aaccf41559407e8",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_12e8faee55b245ac526dee02",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "UniMax",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_12f439cb2eea2be9951a42da",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "8–14 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_136c998c4556f648d1d2c357",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "1–3 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208030892"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_139713c8ba4df077d9ac2523",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 93.38,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_146832b483313f5a0101d52b",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 122.07,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_15716416f054e9223e9f3d97",
+        "product_id": "bp_2163375863",
+        "field": "feature:622",
+        "value": "1 ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 622,
+          "label": "Χρόνος Απόκρισης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_158a82ca72a0060fa0ac89a0",
+        "product_id": "bp_2163663957",
+        "field": "history_90d_coverage_pct",
+        "value": 100,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_16474b83eed42002d27c1520",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 17,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_17e0f485da4eb3e3bee6c8f9",
+        "product_id": "bp_2163375863",
+        "field": "feature:7485",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7485,
+          "label": "Smart Monitor",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_180cc476a4d3974f47b6abb9",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_18cb57f8c5137262e48617a3",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating_count",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_18f5212bcc418a332c8bf505",
+        "product_id": "bp_2163375863",
+        "field": "feature:605",
+        "value": "200 Hz",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 605,
+          "label": "Συχνότητα Ανανέωσης Εικόνας",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_197617d01675f33c6a118684",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "1–3 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_199d7be72fb8e19bc0801165",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "EuroSupplies",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_199e058bd7363d1f8594f962",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "1–3 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_19be99423c9a760f8749eb0d",
+        "product_id": "bp_2163375863",
+        "field": "feature:1933",
+        "value": "75x75",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1933,
+          "label": "VESA Mount",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_1a7758c4b8af206ee5f54b6a",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_1ad49d83130f3806b5a6de90",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_1bc8f6dafd9321376badc0ca",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_4864",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_1ec9f83a39cc463591802cef",
+        "product_id": "bp_2163663957",
+        "field": "history_30d_median_price",
+        "value": 117,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_1ff972d903987b625bf37b5b",
+        "product_id": "bp_2163375863",
+        "field": "price_from",
+        "value": 114.53,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_20df12193cd7679e05f7de54",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "1–3 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_184692849"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_20edec92042406e85ea8f192",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 126,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208030892"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_21208d43ed99ba6e2f5fe02c",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_215225e43974528294b5ed52",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2241ca5f5939a40db8868561",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_22566c22896c8424e257f97a",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_22d3386d80ab158af5e1dd3b",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2363c36080ad7c575478f790",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating",
+        "value": 4.86,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_236bd382ceb3180c0075d0fc",
+        "product_id": "bp_2160331924",
+        "field": "feature:3202",
+        "value": "Office Monitor",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3202,
+          "label": "Είδος",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_25c92fe31b9e5bef5ee6af67",
+        "product_id": "bp_2163663957",
+        "field": "feature:605",
+        "value": "240 Hz",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 605,
+          "label": "Συχνότητα Ανανέωσης Εικόνας",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_266de18cdf922d4931cd8baa",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 5,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_26b5fed531bc5b8577bb4ffa",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_26b88930aa6528eea49381c7",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 3.94,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2808f7a314211ef66a414a03",
+        "product_id": "bp_2163663957",
+        "field": "history_30d_coverage_pct",
+        "value": 100,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_2816685478eee00c849853f5",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 113,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_285ec49ba1005014b2253f37",
+        "product_id": "bp_2163663957",
+        "field": "feature:3018",
+        "value": "IPS",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3018,
+          "label": "Τύπος Panel",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_29b0c25cb41c63002f071a3c",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_8622",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_29e64e9fcf61729cd55ae244",
+        "product_id": "bp_2163663957",
+        "field": "history_180d_median_price",
+        "value": 124,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_2ad60596c80e94dc23fdaae1",
+        "product_id": "bp_2163663957",
+        "field": "category_id",
+        "value": 2621,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2b3739fb54f34c985f6961dc",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 4.87,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2beb940b5b27dc44cbd32978",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "delivery_1_3_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2dcc6de6b822b024eea23897",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "Msystems",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2edb584842583c3663359987",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 4.62,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2f693812f7badb232bf434d8",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "delivery_1_3_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2f8e8d58780938569f519b6e",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 171,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3093a364dce75cf379c867be",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "edfe22ade310194e56884eb57d4c9723bd1b89534af76a9498b2e70ab38a5a7d",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_324bb0d191575bd5dc3bceba",
+        "product_id": "bp_2163663957",
+        "field": "history_180d_minimum_price",
+        "value": 109.88,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_3307f2c13d7e1cc14f391be3",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "7d495f2801dd60a94041179a11f9f7df3b2369fc4dcd9e7bf6738b181395c241",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_332153d7d8b5ef2ac653e041",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_6461",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_209039432"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_33372901ff7ab33068a9f9ab",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "Houseshop",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_33374f32e96ad9bcd180219d",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating_count",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_337a6cd0a0f0c22c705ab4c5",
+        "product_id": "bp_2163663957",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_5e5b92b4e3604e1d0b5e4c1b"]
+      },
+      {
+        "claim_id": "claim_34a1fc452ccb079abcd825a4",
+        "product_id": "bp_2163663957",
+        "field": "current_price",
+        "value": 109.88,
+        "kind": "observed",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3540efc69d54476c2a1c8520",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "8b15324d8853b757824f65f08016165b514993c1c5186fe59f917e20ccb7aefa",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_35b0ffb7da8190cb4c0dd2e9",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 123,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3690368568074ca6978975b8",
+        "product_id": "bp_2163663957",
+        "field": "offers_status",
+        "value": "available",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:check"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_36f654799b7094f57de83034",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 114.53,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_36fe236a049a1610f07e6f23",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "MobileHub",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_37807cba1163885ceaaff866",
+        "product_id": "bp_2160331924",
+        "field": "catalog_family",
+        "value": "monitors",
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2160331924:bp_2160331924",
+          "get_product_details:bp_2160331924:bp_2160331924"
+        ],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_576aa0188f4dfa3083c9c390",
+          "claim_7e6fca62f8ce3711a9d3190f",
+          "claim_edb664ebd3794d8cf767d9c7"
+        ]
+      },
+      {
+        "claim_id": "claim_3ae3c4e327b90bfa775473af",
+        "product_id": "bp_2160331924",
+        "field": "feature:43",
+        "value": "1920 x 1080 (FHD)",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 43,
+          "label": "Μέγιστη Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_3b7a216ca7f54db8f69bc5b3",
+        "product_id": "bp_2163663957",
+        "field": "feature:3201",
+        "value": "FreeSync",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3201,
+          "label": "Επιπλέον Δυνατότητες",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_3ca7c9f27bdf11cfdb5089a1",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "f4f5b9213007c8469251049bcabaca81f5d43d3f1abe243f10f39350b9dcbc8c",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_203391439"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_3cf1672cc477473f14f962d1",
+        "product_id": "bp_2163663957",
+        "field": "category_title",
+        "value": "Οθόνες Υπολογιστών",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3f0d429e58d4a6a38519dd6d",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_4871",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208030892"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3f3098b2ec00ad11b4bd34a7",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_8622",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3f418d040184d63a379ff454",
+        "product_id": "bp_2160331924",
+        "field": "feature:4144",
+        "value": "D",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4144,
+          "label": "Νέα Ενεργειακή Κλάση",
+          "group": "Νέα Ενεργειακή Ετικέτα"
+        }
+      },
+      {
+        "claim_id": "claim_3f6c6dc1819a4c81b59ff050",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "1–3 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_402f64f3026686a24dfb3376",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "Κατόπιν παραγγελίας",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_40986d93801eb40a500bb263",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "Welcomestores",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4103b2e8d6657c9ae32e7f94",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_42217173fb947f2dfdc4ef14",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_424e9dce60bcc6845a71489d",
+        "product_id": "bp_2160331924",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_3ae3c4e327b90bfa775473af"]
+      },
+      {
+        "claim_id": "claim_430cbb940747746298a16176",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_453323b000023632f643e3b5",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_1904",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4575a87dd736c9a7413ec0de",
+        "product_id": "bp_2160331924",
+        "field": "feature:1062",
+        "value": "Μαύρο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1062,
+          "label": "Χρώμα",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_45c8e7441427203db3bd1972",
+        "product_id": "bp_2163663957",
+        "field": "feature:7485",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7485,
+          "label": "Smart Monitor",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_45dd40ba81bd4de20ec5fdd7",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_209039432"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4691bcf94eba053cd5748319",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_478a42592c75d03b62652112",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4838554250a5c0fe4e9bac46",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 94,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_489edcc80c9827ae7534b92f",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 3.73,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4a1661f5bec59f61d3cba0b6",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4b889cca115a2b0d4217c1c0",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "675415097b9e8e2f0755f72529852fea414a75afa6f8b2406cc065cfb49a2631",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_4c69d1b8a40ad519a62729b8",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4cf854bcb263bf8778ca618e",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4cfc8220571e64f7e68dd5dc",
+        "product_id": "bp_2163375863",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_d12b11395b3682eb271aae79"]
+      },
+      {
+        "claim_id": "claim_4e11a2c9fcf3819e708b8414",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4e18499625e8e8db8e8a46ed",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4ee0495e7e59a2da06e051f2",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4ef0de2d1e9bea9342395a55",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "0771ce6ada857a8b72a973f1f78098f4e76974514bbd8a0ea30a9572eba02133",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_4f27a3c954cb59d01aed9ab5",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "bd4c9046ea9d59bde70745c32b5c2d57b6e8bd196b3db71b583f0b3a69f31940",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_4f4c7e5d5923326ec0c146e7",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "Public",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4f5f89733e91181335fd9ccc",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_51c483cc62c2665e36f3512c",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "502b6e1a98470aa889094b336134bc6ec70c1d76f7ed6e70018a9b6c2bef5c09",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_52499f38a9dc47aab540b6c7",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_2780",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5273765aac5257d02cc8e269",
+        "product_id": "bp_2163663957",
+        "field": "feature:4144",
+        "value": "E",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4144,
+          "label": "Νέα Ενεργειακή Κλάση",
+          "group": "Νέα Ενεργειακή Ετικέτα"
+        }
+      },
+      {
+        "claim_id": "claim_52796425a699d960e73d56ea",
+        "product_id": "bp_2163663957",
+        "field": "history_30d_observations",
+        "value": 30,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_53f1b225ec410748c924bcf9",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_55d2f9285b180497b7dab55a",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 5,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_566b8d556980aa9216aa11fc",
+        "product_id": "bp_2163663957",
+        "field": "feature:140",
+        "value": "1000:1",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 140,
+          "label": "Λόγος Αντίθεσης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_576aa0188f4dfa3083c9c390",
+        "product_id": "bp_2160331924",
+        "field": "category_id",
+        "value": 2621,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5820e5c805f1e2b7377d2008",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_85",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_588fbe4e51927acf5a3f04f4",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_58dd8c30f28fd4c27f2804d8",
+        "product_id": "bp_2163375863",
+        "field": "feature:3205",
+        "value": "HDMI, DisplayPort",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3205,
+          "label": "Συνδεσιμότητα",
+          "group": "Συνδεσιμότητα"
+        }
+      },
+      {
+        "claim_id": "claim_59771c8260ea2f6993c62600",
+        "product_id": "bp_2163375863",
+        "field": "feature:1999",
+        "value": "16:9",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1999,
+          "label": "Aspect Ratio",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_5a1683c28e9821ca0b1517ba",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 129.72,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5b8b76a31d02a24ba70b2a43",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_3592",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5bcd1f73c837e15ea6fc66fe",
+        "product_id": "bp_2160331924",
+        "field": "feature:3203",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3203,
+          "label": "HDR",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_5bfc33e813f98f1c7b71ae10",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5c02e80c1ce8ca6d6464e9f5",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "ba6031e6eefbec6025ee00e5a0e827c35a1d11e782e1c969c1d4e268fe845611",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_5c0d4233d29811f3611f6555",
+        "product_id": "bp_2163663957",
+        "field": "history_90d_minimum_price",
+        "value": 109.88,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_5c2fc553b1776cd2a07bc244",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 22,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5c4796f21fc551c720512f5a",
+        "product_id": "bp_2163663957",
+        "field": "history_status",
+        "value": "available",
+        "kind": "observed",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5c6f1d21280ebb8e91b7f29a",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_184692849"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5c9c9509f24f8934fa583094",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_1828",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5d1545614dbb39b3949cfa2f",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "delivery_1_3_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5dcf87b584984ff41bf088b5",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5e1a3fb0972f662e53c43ae0",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5e5b92b4e3604e1d0b5e4c1b",
+        "product_id": "bp_2163663957",
+        "field": "feature:1101",
+        "value": "Full HD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1101,
+          "label": "Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_5f87633cb015bcc4ee9ebb73",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "0f4c1d25198ae86fa63fe6dd00d13610bbba9586a4521a554a14544fee570c56",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_5fe0fb1a4093c614fa9fb6cf",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5feac948c3e938f12a32980b",
+        "product_id": "bp_2163663957",
+        "field": "feature:1999",
+        "value": "16:9",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1999,
+          "label": "Aspect Ratio",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_60390b8020d2f1362efff4fe",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6178e7fdc6889af571f5fe6d",
+        "product_id": "bp_2163375863",
+        "field": "category_id",
+        "value": 2621,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_62f555cc37079dedc65c0728",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating_count",
+        "value": 23,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_658a600d1cc7c1f6f608d5ef",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_65d4669093f8197151b2fc77",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6642abb5a8d797f446fcba83",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating_count",
+        "value": 25,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_67270c8f6aa62018e1a470b3",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_685158720bcd46eb549ca01a",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "4–7 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6885efd4a92d4d0871ab28f1",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "Praxi",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_68fe52dea9bac7bf3f009922",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6aa8eec6fca37c2433595827",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating",
+        "value": 4.44,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6b2128aa39ec346639d8d672",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 109.88,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6b8e4d4e2a96ab539666101f",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_8529",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6b9116f1f87e9b358f070a78",
+        "product_id": "bp_2163663957",
+        "field": "attribute:refresh_rate_hz",
+        "value": 240,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_25c92fe31b9e5bef5ee6af67"]
+      },
+      {
+        "claim_id": "claim_6d7392320e09d22542c034ef",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6dcb74f6f153b982883178bf",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_137",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6dcf044b988a28ead1588b1b",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "to_order",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6dfa413552b0e3ce336d48d4",
+        "product_id": "bp_2160331924",
+        "field": "attribute:panel_type",
+        "value": "IPS",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_7b353e1b4cbe414d17783403"]
+      },
+      {
+        "claim_id": "claim_6e256d3314d7eb462e7a29da",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6ec0f76ef2cd3fd402d66454",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_203391439"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_70072f1acd3029d79aaf688a",
+        "product_id": "bp_2163375863",
+        "field": "feature:7484",
+        "value": "Ρύθμιση Κλίσης",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7484,
+          "label": "Εργονομία Βάσης",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_721d8be8f89b46361609ff2f",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_72a104f83adfec7a9649861b",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_72cb917cc30a3c72903d9351",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 95,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_184692849"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_759a139614a7b2b93160b279",
+        "product_id": "bp_2163663957",
+        "field": "offer_summary_receipt_fingerprint",
+        "value": "3a86faa247e1aa292b3dd1a12939e5d425dbb7e225c3673245c5d2ca1d2cd59c",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:check"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_77002a367599a4d95e176119",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 123,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_77ac01ba6da6a9cfaa7836da",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "1–3 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_79d69aea3ad49efafb324a40",
+        "product_id": "bp_2160331924",
+        "field": "feature:7484",
+        "value": "Ρύθμιση Κλίσης",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7484,
+          "label": "Εργονομία Βάσης",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_7a32965241a8d565646ef527",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 93.5,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7b353e1b4cbe414d17783403",
+        "product_id": "bp_2160331924",
+        "field": "feature:3018",
+        "value": "IPS",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3018,
+          "label": "Τύπος Panel",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_7b863125a1772d6ebc500f7a",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7b8b649a57157f8527f8e752",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "6c1af1b7f755be4ac663fb69dc6b7f3c452b550534693772b4b7f75bf6d4c107",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_7bacd59fa4148ec7246390d6",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "delivery_1_3_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7c19c6db928b87c0fb1d9714",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 127.77,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7c288d238eaac0a6aa921f4e",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_79",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7d1d633b63539c05459bbdf3",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "delivery_1_3_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7d5d7c555491601ad7a3ceba",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_4746",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7e6fca62f8ce3711a9d3190f",
+        "product_id": "bp_2160331924",
+        "field": "category_title",
+        "value": "Οθόνες Υπολογιστών",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7f65fc770f76a0d1c416f2d1",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 4.53,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_801bac89c7177054bd07a775",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "4–10 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_80f71b80a543734a4a7bebd0",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "delivery_4_10_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_816e4527f7837a83a019e3ed",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "f05ed4ee3cccc7a395fe70739d44df4e1cb18dd9eadd44c8ad28b5807f363adf",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_81a49fa0b503328d8859001b",
+        "product_id": "bp_2160331924",
+        "field": "price_from",
+        "value": 89,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_82028aeab5cc939b27eb113f",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "Praxi",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_82516d08c142e7100793a8ed",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 126,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_830008c25372d22ba7db74d4",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "delivery_4_7_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_83005007bda7792408eadf1f",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "5bf0f317692c1b0513fc2b912a4ed6213c53db7cfa713966e7e59c7e453562cd",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208030892"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_836d26b843283b3fb20a2f81",
+        "product_id": "bp_2163663957",
+        "field": "feature:1911",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1911,
+          "label": "Κυρτή",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_83bd04a9e5c74f646b0f252f",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8494f2cbfdd211c15de77c42",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 126.44,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_84d50c17e5132074fa84a5c5",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "delivery_8_14_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8510f0a849c89bd97edbe855",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_873f08b5c250acdc03faa946",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "4–7 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_874cbd9231b823c83a33ee64",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 128,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_87a22f219a0e489f25389b13",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_87a439af158a8945326a0cd6",
+        "product_id": "bp_2160331924",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_9653579bd3138d25be45f391"]
+      },
+      {
+        "claim_id": "claim_88c9d55f1d9ca7fc0d5edb0a",
+        "product_id": "bp_2163375863",
+        "field": "offers_status",
+        "value": "available",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:check"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_892b69a3117c4b8a9bf1e37c",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 121.9,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_89d7242813dae2e710f0447a",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8bed46a75b7c1ac138254b4c",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 4.84,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8bfdf401619c2af994a7f7a6",
+        "product_id": "bp_2163375863",
+        "field": "catalog_family",
+        "value": "monitors",
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2163375863:bp_2163375863",
+          "get_product_details:bp_2163375863:bp_2163375863"
+        ],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_6178e7fdc6889af571f5fe6d",
+          "claim_8e4df80d516d713ab931a766",
+          "claim_f59297e3dd2f8cf54d1ec18a"
+        ]
+      },
+      {
+        "claim_id": "claim_8c0cea54f5a93ba0dc70bf4a",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 3.89,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8d271b4793ca739bda28b61a",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8e4df80d516d713ab931a766",
+        "product_id": "bp_2163375863",
+        "field": "category_title",
+        "value": "Οθόνες Υπολογιστών",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8e67251b9562c2f48284498d",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "delivery_1_3_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208030892"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8ef85dac7fbbb05b60bba9ce",
+        "product_id": "bp_2160331924",
+        "field": "feature:1933",
+        "value": "100x100",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1933,
+          "label": "VESA Mount",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_8f1937fbda585b069908009e",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_14797",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9058ab1e902645384c3443f7",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 4.62,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_909a781a6cbfc979f4e1836c",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "da897c37305a2cd46bb77e563d3ecefe679ea0d48c3c8fb0bc642cd2461ff7d7",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_90d921f662b9f4dc50da0b99",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9217e0f932778a5008f97136",
+        "product_id": "bp_2160331924",
+        "field": "feature:3204",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3204,
+          "label": "Ultrawide",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_922f4f71b97293d1594f1b5c",
+        "product_id": "bp_2163663957",
+        "field": "history_180d_coverage_pct",
+        "value": 99.4,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_92a53180ccfda7469f8e9870",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "8–14 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_94703e304ed086dbd9a2f8c6",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_128",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_94b53e1d964b87fdcc6c7d51",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 106,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_95cf07bb38343587de149e7b",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 114.83,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_203391439"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_95d9244b9c0620c2a83c520e",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 5,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9653579bd3138d25be45f391",
+        "product_id": "bp_2160331924",
+        "field": "feature:1101",
+        "value": "Full HD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1101,
+          "label": "Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_978e14fa9f6b306c8871d5c9",
+        "product_id": "bp_2163663957",
+        "field": "feature:622",
+        "value": "5 ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 622,
+          "label": "Χρόνος Απόκρισης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_97c80cfdb5d9efbbfcaa5e90",
+        "product_id": "bp_2163663957",
+        "field": "feature:38",
+        "value": "27 \"",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 38,
+          "label": "Μέγεθος Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_995a2fa1adc6c527c231ec7c",
+        "product_id": "bp_2163663957",
+        "field": "feature:3204",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3204,
+          "label": "Ultrawide",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_9a40104a6b54857e1f28cb94",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating",
+        "value": 5,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9afca5542eae08ad5378b2db",
+        "product_id": "bp_2163663957",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_b9e51ea44496ad140c41401f"]
+      },
+      {
+        "claim_id": "claim_9bc956b6f86be44023610b2f",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_209039432"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9c235b26340aa80a50d83de4",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "Plaisio",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9c3490c6b44d2bf017a20051",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "delivery_8_14_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9ca9db3598b70dcecee44387",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_7696",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_184692849"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9dc33a6a6d77d5375774e238",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9eba4114f53706e27e749172",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9ebe4fa2a91d41ddb86a487a",
+        "product_id": "bp_2163375863",
+        "field": "feature:1101",
+        "value": "Full HD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1101,
+          "label": "Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_9f1064c65caaa5df82438154",
+        "product_id": "bp_2160331924",
+        "field": "attribute:refresh_rate_hz",
+        "value": 100,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_c4bdaec72cf4d3fd6d566c82"]
+      },
+      {
+        "claim_id": "claim_a00e976a7b44eaa63dcb6665",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a0f6c47c76da667fa3a73f20",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 102,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a15b06130215802dea33d7db",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_209039432"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a2ece494af7c413b04acfbfb",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "delivery_4_10_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a491bbb986ae313c965c37d1",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "3d7b65393e20ee6900a95c77dbda29f589e935bfe83500589944177412e9a3fc",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_a50ee01f8eefb286f5ce2da8",
+        "product_id": "bp_2163663957",
+        "field": "feature:621",
+        "value": "300",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 621,
+          "label": "Φωτεινότητα Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_a517aa70a27cde210ee33216",
+        "product_id": "bp_2163663957",
+        "field": "current_price_source",
+        "value": "live_offer_minimum",
+        "kind": "observed",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a530453218edbec70c86f492",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "4–10 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a5722a186a49b62db44eefee",
+        "product_id": "bp_2163375863",
+        "field": "feature:1911",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1911,
+          "label": "Κυρτή",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_a7a1af86a2d263e22531472c",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_791",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a8bcaab8a807b2a166f38dbc",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 2,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a8e93a09375c33eab179c008",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_3102",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_203391439"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a99818226dcca25afe7f5181",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "4–10 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_aa00e6449348af3e0c8c4551",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "3b7dc2f54963d7adc2bf3d55be7f75ed96a19606141d5a79d58d863b89f58fd1",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_aa66a3d73d96a983d972e33e",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_aacbd2bfbf7f56fbe0c174c2",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_209039432"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_aaf064cd7a1dd648748a328a",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ab0e0011f95c8787d82afd10",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 18,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ab1323aa972adf4ad45bf719",
+        "product_id": "bp_2163663957",
+        "field": "feature:7484",
+        "value": "Ρύθμιση Κλίσης",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7484,
+          "label": "Εργονομία Βάσης",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_abd736d5fc9fad39954e6967",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "6c34c80cfa7c27eb6981c200c603a6f28fa93fb1dccfcdaf8fbc12f16d0e92de",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_209039432"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_ac04061535492df66d1a0d9d",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_acb8e457f9a12ca9cfb8d81b",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating_count",
+        "value": 71,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_acdc1e097b2ab333e24bc20a",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_acf9b24de8b1209efc1666c5",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_85",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ad5b4f61fe1403d9a3357687",
+        "product_id": "bp_2160331924",
+        "field": "feature:1999",
+        "value": "16:9",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1999,
+          "label": "Aspect Ratio",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_ae5b68a26bc0164eab414b47",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 131.19,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_aee2adebc65ea73b156da94f",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_aef518a414abd72be494eb83",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 122.9,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_af69f2cc014950bf1dc7c4e9",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "MytechBox",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b06fc4ea8f568bf9269273a8",
+        "product_id": "bp_2160331924",
+        "field": "attribute:screen_diagonal_inches",
+        "value": 27,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_c2ccf378303978cebbe6d908"]
+      },
+      {
+        "claim_id": "claim_b108b7668846f553d2e7356f",
+        "product_id": "bp_2163375863",
+        "field": "feature:3202",
+        "value": "Gaming Monitor",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3202,
+          "label": "Είδος",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_b144f26277ed7c4ae220e09b",
+        "product_id": "bp_2163375863",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_9ebe4fa2a91d41ddb86a487a"]
+      },
+      {
+        "claim_id": "claim_b1bbab13ea585b12a01dd048",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 4.61,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b1dbd0c0329a000c05b205f7",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 5,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b2446cd7e37afd724f4c3fc4",
+        "product_id": "bp_2160331924",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b251ceccbf17e2fab9a225bb",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_203391439"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b392012118cdd3593a069973",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating",
+        "value": 4.64,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b41096e1583e53d1dd93a820",
+        "product_id": "bp_2160331924",
+        "field": "feature:7485",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7485,
+          "label": "Smart Monitor",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_b596427a739de5f1a55bdb37",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b5dcb9c5c7fece7509960232",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_6426",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b6e97cc5f53aa18f67671030",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b79b5d69ff0cebbd47db82e7",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "Cosmodata",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b7a56b290b805a6c7ddd6e3a",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "Dexter",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b88e7f7882569cf38cd302d0",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_5569",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b8f085df1edc9556abf58934",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 129,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b96cdfaab956caf34a03bf0a",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b9e51ea44496ad140c41401f",
+        "product_id": "bp_2163663957",
+        "field": "feature:43",
+        "value": "1920 x 1080 (FHD)",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 43,
+          "label": "Μέγιστη Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_baeab0cab5fc446598f45166",
+        "product_id": "bp_2160331924",
+        "field": "offers_status",
+        "value": "available",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:check"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_bb4c91a5ea3b2a8da7082c1d",
+        "product_id": "bp_2160331924",
+        "field": "offer_count",
+        "value": 46,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_bc2e2ec00e1c53f7b8870d72",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "delivery_4_10_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_bc5fc9cd124c5085aa427cd2",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 93.4,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_be64bbd7979feb0b73a654c8",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "94b62804bfb3c1ea8b9934c6f141185cb4a09737c6320591d26d0922ab2a98ab",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_bea58fe9cb07550b52142cd2",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 129,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212497029"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_bee0441a444027095aae5416",
+        "product_id": "bp_2163375863",
+        "field": "feature:140",
+        "value": "1000:1",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 140,
+          "label": "Λόγος Αντίθεσης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_bf493f6c9d5e5776399802a5",
+        "product_id": "bp_2160331924",
+        "field": "merchant_id",
+        "value": "bp_merchant_723",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_bfb4934be5bb2dccc763addd",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "Metrostore",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c01a2039f08fff9499a31b4a",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c1daa4672abd4c7219a14d47",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 92.4,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c2c2d78f9e5c282ca6d4cbed",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c2ccf378303978cebbe6d908",
+        "product_id": "bp_2160331924",
+        "field": "feature:38",
+        "value": "27 \"",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 38,
+          "label": "Μέγεθος Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_c308fd025551a1c9087b0415",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_203391439"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c31992794d189fd28074832d",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "71e3bfc9072ab3fd0ac189b919479fb7fa3dff7de4e07d7f82a3e0e09063ff30",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_c35a6d7ee803e6f923403c9a",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating",
+        "value": 4.64,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c4bdaec72cf4d3fd6d566c82",
+        "product_id": "bp_2160331924",
+        "field": "feature:605",
+        "value": "100 Hz",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 605,
+          "label": "Συχνότητα Ανανέωσης Εικόνας",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_c508633c5fd71ef6673387be",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_3607",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c708e8a1808a1e1198857a40",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "Plus3",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c718b734607935d34c64e721",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "delivery_1_3_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c75d94657191c575f10b9b7c",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 2,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_211823216"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c796d31f0ce590c71cf24699",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 15,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c7ce92d9b8809b6c6711b68c",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "05e5c3ae052ba6f2be9fe9340bcf06607746265c6c2420adb42c35bcd6516e40",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_c826815bebf715f50f13837b",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c82da844233d5fa4b0e7ebe2",
+        "product_id": "bp_2163375863",
+        "field": "attribute:refresh_rate_hz",
+        "value": 200,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_18f5212bcc418a332c8bf505"]
+      },
+      {
+        "claim_id": "claim_c87541d388331d9d85f1d12d",
+        "product_id": "bp_2160331924",
+        "field": "feature:140",
+        "value": "1000:1",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 140,
+          "label": "Λόγος Αντίθεσης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_c881512614785b730c362207",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "Msystems",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c8877e83ee12c8d92ea49641",
+        "product_id": "bp_2160331924",
+        "field": "feature:621",
+        "value": "250",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 621,
+          "label": "Φωτεινότητα Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_c8a5041208aa31499ba4098a",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_cab9a7fdfefecb1983e348fb",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "Άμεσα διαθέσιμο",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_cc9db3612bc778d6623a4179",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_cca0c87f585a1b7c81b3e29f",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ccd06be4f965864d1abcc7c6",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "0242ea778557c5707aecd067b7fb3629f4f44b77d91d2e81dab7709705439cab",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_cdf59493209b5762d5775453",
+        "product_id": "bp_2160331924",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_cf44a14308341dcf3409e543",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_cff58bc05196eb4be88176ba",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d092ef60ed370bbe7db471d6",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "All About Office",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_206954293"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d12b11395b3682eb271aae79",
+        "product_id": "bp_2163375863",
+        "field": "feature:43",
+        "value": "1920 x 1080 (FHD)",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 43,
+          "label": "Μέγιστη Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_d199784c86076521cdf8ace7",
+        "product_id": "bp_2163375863",
+        "field": "offer_summary_receipt_fingerprint",
+        "value": "c1838f5188fa62994e6ebef17c2d91ec05ff72b138128d8fc7dcff772d571edb",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:check"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_d37afa558803aff38586e129",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d3d257228c15007572aef251",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating_count",
+        "value": 36,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d3e8bcaa01b6e1d22bde1969",
+        "product_id": "bp_2163663957",
+        "field": "feature:1062",
+        "value": "Μαύρο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1062,
+          "label": "Χρώμα",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_d587e49f4cd4568df4f289f5",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d5982354c5fea6f5c50ca024",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d63ec3b30de461c997097cee",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "Cosmodata",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d68f3c91b58781405d72751b",
+        "product_id": "bp_2163663957",
+        "field": "item_price",
+        "value": 117.81,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d6cc6d6170e02442432ca57e",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_203391439"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d6d2f04b00c5c9f929eb8bb5",
+        "product_id": "bp_2163375863",
+        "field": "feature:3018",
+        "value": "IPS",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3018,
+          "label": "Τύπος Panel",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_d6dc97a27bac56d5287fe9fa",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 93.37,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_209039432"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d6feb0efd47d525869d51170",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208030892"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d70a7d8fe1b1f2cbad2aafc2",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "f21997332adae62167fd9153bc55881d29a20fe26980ec3a0ce68cdf5e0878dd",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_d85ad4e1114e5b2ecba05095",
+        "product_id": "bp_2160331924",
+        "field": "availability",
+        "value": "delivery_1_3_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_184692849"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d874280c4b1fba93e3abe8fd",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 123,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d9253e66cd7c68509259b8fd",
+        "product_id": "bp_2163663957",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d9a4b360f8eae1226bf9956a",
+        "product_id": "bp_2163663957",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209434041"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_da3fe028a3221fce976a5f1f",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 129.9,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_dab4243d0fa0039c2cf2fa9c",
+        "product_id": "bp_2160331924",
+        "field": "feature:1911",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1911,
+          "label": "Κυρτή",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_db5bb8afa32a7691b7057314",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "1–3 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_db9c2de1aa499397694f5ed9",
+        "product_id": "bp_2163375863",
+        "field": "attribute:panel_type",
+        "value": "IPS",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_d6d2f04b00c5c9f929eb8bb5"]
+      },
+      {
+        "claim_id": "claim_ddb33feefd639c28b65b3a4b",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_212097800"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ddca549b6dbcdbb1be0187aa",
+        "product_id": "bp_2163663957",
+        "field": "feature:1933",
+        "value": "100x100",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1933,
+          "label": "VESA Mount",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_de191873c939ba534145b45f",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "MrCheap",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176421652"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_de393aa00b9eeb615503db97",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 96.1,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_deb058f6e455adfb803098d4",
+        "product_id": "bp_2163375863",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_df1beefebd856a76a9b89b17",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_dfce80b96d2a3aa1ecfb3d20",
+        "product_id": "bp_2163663957",
+        "field": "attribute:panel_type",
+        "value": "IPS",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_285ec49ba1005014b2253f37"]
+      },
+      {
+        "claim_id": "claim_e0071d45e488efd00c267091",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_3592",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e0fb9e881bb72ae7f71bf8ee",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 5,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_205495917"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e1a978b5a3116d6b9ebee818",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "t-Support",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_184692849"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e21cf603c8f66aa0deb769c4",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "cefedd79941f3e9f3ac84a14f70809f023a00ea92db3a79e889dd3b2fb58e63f",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_e27782f6a9207052d498804c",
+        "product_id": "bp_2163663957",
+        "field": "title",
+        "value": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e33538c102b46862a87995c7",
+        "product_id": "bp_2163663957",
+        "field": "offer_count",
+        "value": 43,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e35cc4c8d24c45798cec99c0",
+        "product_id": "bp_2163375863",
+        "field": "feature:4144",
+        "value": "E",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4144,
+          "label": "Νέα Ενεργειακή Κλάση",
+          "group": "Νέα Ενεργειακή Ετικέτα"
+        }
+      },
+      {
+        "claim_id": "claim_e371117c01dc22bdfa7259ae",
+        "product_id": "bp_2163663957",
+        "field": "price_history_receipt_fingerprint",
+        "value": "2aada8fee10bf7b7a269ef21f4f8b9eae87abda2df47bca66b2c995017ac66b4",
+        "kind": "derived",
+        "source_ids": [
+          "get_price_history:bp_2163663957:bp_2163663957",
+          "compare_offers:bp_2163663957:bp_offer_216155699"
+        ],
+        "validation": "deterministic_history_receipt"
+      },
+      {
+        "claim_id": "claim_e3a758ff113eb2a8d94e548b",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating",
+        "value": 4.88,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e3ea737836cb60770d52fade",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "aa4f9d2f37551e9337f1ce4695bf1efbf8a4dd947ba839867ba2823c1a414739",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_e4a34f3a1552d38e5b60110e",
+        "product_id": "bp_2163663957",
+        "field": "feature:3202",
+        "value": "Gaming Monitor",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3202,
+          "label": "Είδος",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_e5286b0cb98e222088e7aa76",
+        "product_id": "bp_2163663957",
+        "field": "price_from",
+        "value": 109.88,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e597a8321f37e50c902b80b6",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "delivery_4_7_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_220476064"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e71656ece57edb16bbcb367b",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating_count",
+        "value": 2,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e82fde6a263678a52ece0ecf",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "TechHut",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_203391439"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e85e9f37f31bf7c2168c1b64",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "AskAdamStore",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_209039432"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e8c2676615d8a15e313dfcc9",
+        "product_id": "bp_2163663957",
+        "field": "feature:3203",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3203,
+          "label": "HDR",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_e90bc74968354898c186efda",
+        "product_id": "bp_2163663957",
+        "field": "catalog_family",
+        "value": "monitors",
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2163663957:bp_2163663957",
+          "get_product_details:bp_2163663957:bp_2163663957"
+        ],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_2ad60596c80e94dc23fdaae1",
+          "claim_3cf1672cc477473f14f962d1",
+          "claim_e27782f6a9207052d498804c"
+        ]
+      },
+      {
+        "claim_id": "claim_e9c1e7610c9e6750d2d98fd2",
+        "product_id": "bp_2163375863",
+        "field": "feature:621",
+        "value": "400",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 621,
+          "label": "Φωτεινότητα Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_ebc3dae288c85451862c14b1",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "CTS",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208030892"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ec371be6dc34bd615315dd7d",
+        "product_id": "bp_2163375863",
+        "field": "feature:1062",
+        "value": "Μαύρο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1062,
+          "label": "Χρώμα",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_ecc87a27884615f80ceede4c",
+        "product_id": "bp_2163375863",
+        "field": "delivery_estimate",
+        "value": "4–10 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ed33afee82dd055284159d6f",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": true,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208498741"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_edb664ebd3794d8cf767d9c7",
+        "product_id": "bp_2160331924",
+        "field": "title",
+        "value": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2160331924:bp_2160331924"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ee32753c9f967a8e89459b2a",
+        "product_id": "bp_2163663957",
+        "field": "history_180d_observations",
+        "value": 179,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_ee33d3c67f123c1c34e43e60",
+        "product_id": "bp_2163375863",
+        "field": "feature:3203",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3203,
+          "label": "HDR",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_ee79fa213c8fb8a22bcb2a8e",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "6c78d915efd6f3c2c7d62348e2d52057698e37e075a513e5114dce0bbba4082f",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_219318152"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_ef52fbcbab885c76e966294d",
+        "product_id": "bp_2163375863",
+        "field": "attribute:screen_diagonal_inches",
+        "value": 27,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_081884da6d353dd56b78b480"]
+      },
+      {
+        "claim_id": "claim_ef73701a52276e5321d8f51f",
+        "product_id": "bp_2163375863",
+        "field": "availability",
+        "value": "delivery_4_10_days",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f0657d0375b6941f3f865f49",
+        "product_id": "bp_2163663957",
+        "field": "delivery_estimate",
+        "value": "1–3 εργάσιμες ημέρες",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f13b4985caa920c717dee1af",
+        "product_id": "bp_2163663957",
+        "field": "attribute:screen_diagonal_inches",
+        "value": 27,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163663957:bp_2163663957"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_97c80cfdb5d9efbbfcaa5e90"]
+      },
+      {
+        "claim_id": "claim_f261ddd879c745aa2ae3f3a1",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "ThinkScreen",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f262e60e9188f6190b1a71eb",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "2569db0d42748d06d3f45cd16bb0e50c0f4d4ee6f323bc6e17adaf7e521067f8",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176559711"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_f29878e38b87a9eb18e2b836",
+        "product_id": "bp_2160331924",
+        "field": "item_price",
+        "value": 97.66,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f37fa866fccc07e2f8b5d75c",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "OneThing",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f3eb479580ba1364d77a7cb8",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "fe9a5ce0face80cee31ec0b3f908413f2ebe5a526a284dc523ca1d7494680472",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_227266516"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_f41b5cd0a5b273bd6c7b7e07",
+        "product_id": "bp_2163375863",
+        "field": "offer_count",
+        "value": 25,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f4a92998f2bd5171c0ee4578",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_184692849"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f4d407bc2685514c4e896fc3",
+        "product_id": "bp_2163375863",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "4ece3f4318cbd653dcf560f786b40f8596f2d519144dd798b26dbe928d3a373d",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_f56e4e5b18b38910d8353a30",
+        "product_id": "bp_2160331924",
+        "field": "shipping_status",
+        "value": "unknown",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_221525467"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f5765cd9ccbc79c3440cfd70",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "Quickshop",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_215277406"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f59297e3dd2f8cf54d1ec18a",
+        "product_id": "bp_2163375863",
+        "field": "title",
+        "value": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163375863:bp_2163375863"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f6a4a239dd953af764fd7717",
+        "product_id": "bp_2163375863",
+        "field": "merchant_id",
+        "value": "bp_merchant_3805",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206818893"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f6f5e2ef12e70077cdecbfa9",
+        "product_id": "bp_2163663957",
+        "field": "merchant_name",
+        "value": "VnP",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_224388126"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f894fac3506ae7973ca7738d",
+        "product_id": "bp_2163663957",
+        "field": "history_90d_median_price",
+        "value": 123.48,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_f8be7827baca08d6ca2e5f19",
+        "product_id": "bp_2163663957",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_208030892"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f92e146a061f7302fa7dc311",
+        "product_id": "bp_2160331924",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "4f54c02d1070119e2268174ccb1f840e0c44d0f8c570ad54e02ea15b36240874",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_184692849"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_fb5e604105b416c21184ade6",
+        "product_id": "bp_2163663957",
+        "field": "history_30d_minimum_price",
+        "value": 109.88,
+        "kind": "derived",
+        "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+        "validation": "deterministic_history_aggregation"
+      },
+      {
+        "claim_id": "claim_fc98877a7c8d7cbaf197a2f6",
+        "product_id": "bp_2163375863",
+        "field": "item_price",
+        "value": 123.9,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206824387"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_fcade7647d828bcdae44c8d0",
+        "product_id": "bp_2163663957",
+        "field": "merchant_rating_count",
+        "value": 11,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_209390108"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_fd0ef2e7de8330505fe5523d",
+        "product_id": "bp_2163663957",
+        "field": "comparison_offer_receipt_fingerprint",
+        "value": "9b163549b9ff60c3db8bab733dcb73eeb1c2990d29aa66f097ae697d6c28ff88",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216806833"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_fd250f4f24ed9b0631de27d1",
+        "product_id": "bp_2160331924",
+        "field": "merchant_name",
+        "value": "Websupplies",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_176599052"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_fd6b2634a8c38033dd6f4cc5",
+        "product_id": "bp_2163375863",
+        "field": "merchant_rating_count",
+        "value": 8,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_208051960"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_fdf1bc506ad099add75e429a",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_221919242"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_fe95ea7ff59f8d05658b0163",
+        "product_id": "bp_2163375863",
+        "field": "verified_merchant",
+        "value": false,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_207144094"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_fec7b8aed10bc65e2bcd387d",
+        "product_id": "bp_2163663957",
+        "field": "merchant_id",
+        "value": "bp_merchant_15392",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163663957:bp_offer_216155699"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ff0421d6da479b28a5863b91",
+        "product_id": "bp_2160331924",
+        "field": "merchant_rating",
+        "value": 5,
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2160331924:bp_offer_179694513"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ff593d676a5a11ca6d4dc4ed",
+        "product_id": "bp_2160331924",
+        "field": "offer_summary_receipt_fingerprint",
+        "value": "d94f1df9c7983b31b82a08c43f6a27fe52ad3da3dd4a354a1cb9a96e51c677cd",
+        "kind": "derived",
+        "source_ids": ["compare_offers:bp_2160331924:check"],
+        "validation": "same_quote_receipt_v3"
+      },
+      {
+        "claim_id": "claim_ff88984fab49575b82be3776",
+        "product_id": "bp_2163375863",
+        "field": "merchant_name",
+        "value": "UniMax",
+        "kind": "observed",
+        "source_ids": ["compare_offers:bp_2163375863:bp_offer_206151888"],
+        "validation": "exact_tool_field"
+      }
+    ]
+  },
+  "uncertainty": [
+    {
+      "code": "ranking_calibration",
+      "product_id": "bp_2163663957",
+      "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+    },
+    {
+      "code": "landed_cost_unknown",
+      "product_id": "bp_2163663957",
+      "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+    }
+  ]
+}

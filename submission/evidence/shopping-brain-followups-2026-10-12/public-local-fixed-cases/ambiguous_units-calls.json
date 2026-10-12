@@ -1,0 +1,3947 @@
+[
+  {
+    "name": "search_products",
+    "input": {
+      "query": "Θέλω οθόνη 27 έως 250 ευρώ.",
+      "required_features": [],
+      "sort": "relevance",
+      "limit": 8,
+      "price_max": 250
+    },
+    "result": {
+      "requested_query": "οθόνη 27\" οθόνη 27 ιντσών",
+      "interpreted_query": "οθόνη 27 ιντσών",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:17:41.976Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 68,
+        "candidate_count": 32,
+        "eligible_count": 27,
+        "returned_count": 8,
+        "category_id": 2621,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": 250,
+        "sort": "relevance",
+        "feature_hints": ["οθόνη 27 ιντσών"],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["οθόνες 27 ιντσών curved", "οθόνες υπολογιστών"],
+      "total_matches": 8,
+      "products": [
+        {
+          "product_id": "bp_2159511435",
+          "title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "brand": null,
+          "model": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 193,
+          "offer_count": 51,
+          "availability": "available",
+          "match_confidence": 0.78,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163493438",
+          "title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "brand": null,
+          "model": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 138,
+          "offer_count": 8,
+          "availability": "available",
+          "match_confidence": 0.77,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160331924",
+          "title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "brand": null,
+          "model": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 89,
+          "offer_count": 46,
+          "availability": "available",
+          "match_confidence": 0.75,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163375863",
+          "title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "brand": null,
+          "model": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 114.53,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.74,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163092926",
+          "title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "brand": null,
+          "model": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 148.5,
+          "offer_count": 40,
+          "availability": "available",
+          "match_confidence": 0.73,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163663957",
+          "title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "brand": null,
+          "model": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 109.88,
+          "offer_count": 43,
+          "availability": "available",
+          "match_confidence": 0.71,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163092927",
+          "title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "brand": null,
+          "model": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 148.3,
+          "offer_count": 42,
+          "availability": "available",
+          "match_confidence": 0.7,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2156190430",
+          "title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "brand": null,
+          "model": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 123,
+          "offer_count": 24,
+          "availability": "available",
+          "match_confidence": 0.68,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Οι προτιμήσεις χαρακτηριστικών χρησιμοποιούνται μόνο για τη σειρά συνάφειας. Δεν έχουν επιβεβαιωθεί για κάθε προϊόν· έλεγξέ τες στη σελίδα του προϊόντος.",
+        "Τα αποτελέσματα περιορίστηκαν στην κατηγορία «Οθόνες Υπολογιστών», ώστε να μη προηγούνται σχετικά αξεσουάρ.",
+        "Ο κατάλογος ερμήνευσε την αναζήτηση ως «οθόνη 27 ιντσών». Όροι που δεν εμφανίζονται εκεί δεν θεωρούνται επιβεβαιωμένα φίλτρα."
+      ],
+      "as_of": "2026-10-12T10:17:41.976Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2159511435", "bp_2163493438", "bp_2160331924", "bp_2163375863"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2159511435",
+          "title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "brand": "Dell",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 193,
+          "availability": "in_stock",
+          "offer_count": 51,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Office Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "Ενσωματωμένα Ηχεία, USB Hub",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "100 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 100,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "5 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 5,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, USB, USB-C, DisplayPort, Ethernet",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Ασημί",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης, Ρύθμιση Ύψους, Οριζόντια Περιστροφή, Κατακόρυφη Περιστροφή",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "D",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "300",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 300,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1500:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "DELL Monitor P2725HE 27'' IPS, HDMI, DisplayPort, USB-C HUB, RJ45, Height Adjustable, 3YearsW",
+            "Dell Monitor 27'' IPS, HDMI, DisplayPort, USB-C HUB, RJ45, Height Adjustable, 3YEarsw - (P2725HE)",
+            "DELL Monitor P2725HE 27'' IPS, HDMI, DisplayPort, USB-C HUB, RJ45, Height Adjustable, 3YearsW (P2725HE)",
+            "DELL P2725HE IPS USB-C Monitor 27\" (210-BMJC) (DELP2725HE)",
+            "DELL Monitor P2725HE 27 IPS, HDMI, DisplayPort, USB-C HUB, RJ45, Height Adjustable, 3YearsW",
+            "Dell P2725HE IPS Monitor 27\" FHD 1920x1080",
+            "Dell P2725HE, 27-Inch FHD IPS Monitor, 1920x1080, 100Hz, 16:9, 5ms, 1500:1, USB, HDMI, DP, Ethernet, Black/Silver (P2725HE)",
+            "Οθόνη Dell P2725HE 27\" IPS FHD 100Hz USB-C HUB 210-BMJC"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 1
+          }
+        },
+        {
+          "product_id": "bp_2163493438",
+          "title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "brand": "BenQ",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 138,
+          "availability": "in_stock",
+          "offer_count": 8,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Office Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "FreeSync, Ενσωματωμένα Ηχεία",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "144 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 144,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "5 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 5,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, USB-C, DisplayPort",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Άσπρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης, Ρύθμιση Ύψους, Οριζόντια Περιστροφή, Κατακόρυφη Περιστροφή",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "C",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "300",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 300,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1500:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "BenQ GW2790TC 68,58cm(27 ) 1920 1080 IPS (9H.LNSLA.TBE)",
+            "BenQ GW2790TC IPS Monitor 27\" FHD με Χρόνο Απόκρισης 5ms GTG Λευκό",
+            "BenQ GW2790TC IPS Monitor 27\" FHD 1920x1080 144Hz",
+            "Οθόνη Gaming BenQ GW2790TC Full HD 27",
+            "BenQ Οθόνη GW2790TC 27 ιντσών IPS 1920x1080 144Hz FreeSync USB-C Eye-Care",
+            "BenQ Monitor GW2790TC (9H LNSLA TBE) BenQLNSLA BenQ LNSLA"
+          ]
+        },
+        {
+          "product_id": "bp_2160331924",
+          "title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "brand": "Samsung",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 89,
+          "availability": "in_stock",
+          "offer_count": 46,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Office Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "100 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 100,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "5 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 5,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, VGA",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "D",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "250",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 250,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1000:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Samsung Essential S3 S30GD IPS Monitor 27\" FHD 1920x1080 με Χρόνο Απόκρισης 5ms GTG (LS27D302GAUXEN)",
+            "SAMSUNG LS27D302GAUXEN Essential S3 Monitor 27'' (SAMLS27D302GAUXEN)",
+            "Samsung Ls27d302gauxen Essential s3 Monitor 27'' (Samls27d302gauxen)",
+            "ΟΘΟΝΗ SAMSUNG 27' LS27D302GAUXEN",
+            "Οθόνη Samsung Essential S3 S30GD 27\" IPS Full HD 100Hz LS27D302GAUXEN",
+            "Monitor Samsung Essential S3 S30GD - 27'' FHD - IPS - 100Hz - HDMI/DSUB LS27D302GAUXEN",
+            "Οθόνη Samsung IPS 27-inch FHD 5ms (LS27D302GAUXEN)",
+            "SAMSUNG Monitor Essential S3 27'' IPS, FHD, 100Hz, 5ms, 3 Year Warranty / LS27D302GAUXEN"
+          ]
+        },
+        {
+          "product_id": "bp_2163375863",
+          "title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "brand": "Xiaomi",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 114.53,
+          "availability": "in_stock",
+          "offer_count": 25,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Gaming Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "FreeSync, G-Sync",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "200 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 200,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "1 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 1,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, DisplayPort",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "E",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "400",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 400,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1000:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "75x75",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Xiaomi Gaming Monitor G27i 2026 Fast IPS 1080P HD 200Hz",
+            "Οθόνη Xiaomi G27i 27\" IPS Full HD 200Hz HDR (2026) ELA6370EU",
+            "Xiaomi Mi Gaming Monitor G27i 2026 OM4FF-EU (ELA6370EU)",
+            "Xiaomi Gaming Monitor G27i 2026 27 IPS Flat 200Hz 1 ms",
+            "Xiaomi G27i 2026 Gaming Monitor Full HD 27 Wide LED IPS - 200Hz / 1ms with AMD FreeSync Premium - HDR Ready [ELA6370EU]",
+            "Xiaomi G27i IPS FHD 200Hz 2026 Gaming Monitor",
+            "Xiaomi G27i 2026 computer monitor 68.6 cm (27\") 1920 x 1080 pixels Full HD LCD Black",
+            "Xiaomi G27i 2026 27\" IPS FHD 165Hz Gaming Monitor"
+          ]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:42.300Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2163092926", "bp_2163663957", "bp_2163092927", "bp_2156190430"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2163092926",
+          "title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "brand": "Samsung",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 148.5,
+          "availability": "in_stock",
+          "offer_count": 40,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Office Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "Ενσωματωμένα Ηχεία, USB Hub",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "60 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 60,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "5 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 5,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, USB, Wi-Fi, Bluetooth",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Άσπρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "E",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "250",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 250,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1000:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "SAMSUNG LS27FM501EUXDU Monitor 27'' (SAMLS27FM501EUXDU)",
+            "Samsung Ls27fm501euxdu Monitor 27'' (Samls27fm501euxdu)",
+            "ΟΘΟΝΗ SAMSUNG 27\" LS27FM501EUXDU (LS27FM501EUXDU) (799628)",
+            "ΟΘΟΝΗ SAMSUNG 27\" LS27FM501EUXDU",
+            "SAMSUNG LS27FM501EUXDU Monitor 27''",
+            "Samsung 27\" Smart Monitor M5 M50F FHD - White",
+            "Samsung Monitor 27'' - (LS27FM501EUXDU)",
+            "Smart Monitor Samsung M5 M50F - 27'' FHD - IPS - 60Hz - HDR10 - HDMI/LAN/Bluetooth/Wi-Fi LS27FM501EUXDU"
+          ]
+        },
+        {
+          "product_id": "bp_2163663957",
+          "title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "brand": "Dell",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 109.88,
+          "availability": "in_stock",
+          "offer_count": 43,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Gaming Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "FreeSync",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "240 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 240,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "5 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 5,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "DisplayPort, HDMI 2.1",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "E",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "300",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 300,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1000:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "DELL Monitor SE2726HG 27&apos&apos FHD IPS 240Hz, DP, HDMI, 3YearsW",
+            "DELL Monitor SE2726HG 27 FHD IPS 240Hz, DP, HDMI, 3YearsW",
+            "DELL Monitor SE2726HG 27'' FHD IPS 240Hz, DP, HDMI, 3YearsW",
+            "DELL Monitor SE2726HG 27'' FHD IPS 240Hz, DP, HDMI, 3YearsW (210-BTSP)",
+            "DELL Monitor SE2726HG 27'' FHD IPS 240Hz, DP, HDMI, 3YearsW 210-BTSP",
+            "Dell SE2726HG IPS 27'' Gaming Monitor FHD 1920x1080 240Hz 5ms",
+            "DELL SE2726HG 27\" FHD IPS 240Hz, DP, HDMI, 3YearsW, PC Monitor",
+            "DELL Monitor SE2726HG 27\" FHD IPS 240Hz, DP, HDMI, 3YearsW"
+          ]
+        },
+        {
+          "product_id": "bp_2163092927",
+          "title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "brand": "Samsung",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 148.3,
+          "availability": "in_stock",
+          "offer_count": 42,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Office Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "Ενσωματωμένα Ηχεία, USB Hub",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "60 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 60,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "5 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 5,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, USB, Wi-Fi, Bluetooth",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "E",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "250",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 250,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1000:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Samsung 27\" Smart Monitor M5 M50F FHD - Black",
+            "Samsung Monitor 27\" Smart M5 M50F Black",
+            "Samsung M5 M50F LS27FM500 Smart Monitor 27 FHD IPS Flat 60Hz 5ms",
+            "Samsung LS27FM500EUXEN IPS Smart Monitor 27\" FHD 1920x1080 με Χρόνο Απόκρισης 5ms GTG",
+            "ΟΘΟΝΗ SAMSUNG 27\" LS27FM500EUXDU (LS27FM500EUXDU) (802340)",
+            "Οθόνη Samsung 27\" LS27FM500EUXDU",
+            "Samsung M5 LS27FM500EUXDU 27\" M50F FHD Smart Monitor",
+            "SAMSUNG LS27FM500EUXDU Μ5 M50F Smart Monitor 27\" with speakers (LS27FM500EUXDU) (SAMLS27FM500EUXDU)"
+          ]
+        },
+        {
+          "product_id": "bp_2156190430",
+          "title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "brand": "Philips",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 123,
+          "availability": "in_stock",
+          "offer_count": 24,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Office Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "Ενσωματωμένα Ηχεία",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "75 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 75,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "4 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 4,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, DVI, VGA, DisplayPort",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης, Ρύθμιση Ύψους, Οριζόντια Περιστροφή, Κατακόρυφη Περιστροφή",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "A",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "250",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 250,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1000:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Philips S-Line 272S1AE/00 27\" FHD IPS Monitor",
+            "Philips 272S1AE/00 68.6 cm (27 inches) black, adaptive sync, fullHD, 75 Hz (272S1AE/00)",
+            "Philips 272S1AE/00, 27-Inch FHD IPS Monitor, 1920x1080, 16:9, 4ms, 1000:1, HDMI, DP, VGA, DVI-D, Speakers, Black (272S1AE/00)",
+            "Οθόνη Philips S-Line 272S1AE 27'' FHD IPS",
+            "PHILIPS S Line 272S1AE 27\" LED IPS Full HD Monitor",
+            "Philips S Line 272S1AE/00 LED display 68.6 cm (27\") 1920 x 1080 pixels Full HD LCD Black (272S1AE/00)",
+            "Οθόνη Philips S Line 27-inch Black (272S1AE/00)",
+            "Philips S Line LED display 68.6 cm (27'') 1920 x 1080 pixels Full HD LCD Black - (272S1AE/00)"
+          ]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:42.301Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2160331924",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2160331924",
+        "title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+        "brand": "Samsung",
+        "model": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+        "variant": "LS27D302GAUXEN",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 89,
+      "quoted_lowest_item_price": 89,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_221525467",
+          "merchant_id": "bp_merchant_6426",
+          "merchant_name": "Welcomestores",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 89,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_219318152",
+          "merchant_id": "bp_merchant_8622",
+          "merchant_name": "Praxi",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 11,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 92.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_209039432",
+          "merchant_id": "bp_merchant_6461",
+          "merchant_name": "AskAdamStore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 93.37,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_227266516",
+          "merchant_id": "bp_merchant_1828",
+          "merchant_name": "Astrongameclub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 36,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 93.38,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_176599052",
+          "merchant_id": "bp_merchant_961",
+          "merchant_name": "Websupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.79,
+          "merchant_rating_count": 71,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 93.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_206954293",
+          "merchant_id": "bp_merchant_2780",
+          "merchant_name": "All About Office",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 93.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_176421652",
+          "merchant_id": "bp_merchant_723",
+          "merchant_name": "MrCheap",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.52,
+          "merchant_rating_count": 23,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 94,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_184692849",
+          "merchant_id": "bp_merchant_7696",
+          "merchant_name": "t-Support",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 95,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_176559711",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 96.1,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_179694513",
+          "merchant_id": "bp_merchant_1904",
+          "merchant_name": "EuroSupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "LS27D302GAUXEN",
+          "item_price": 97.66,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:17:42.627Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163663957",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163663957",
+        "title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+        "brand": "Dell",
+        "model": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+        "variant": "210-BTSP",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 109.88,
+      "quoted_lowest_item_price": 109.88,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_216155699",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 109.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_216806833",
+          "merchant_id": "bp_merchant_14797",
+          "merchant_name": "ThinkScreen",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.87,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 117.81,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208498741",
+          "merchant_id": "bp_merchant_85",
+          "merchant_name": "Cosmodata",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.62,
+          "merchant_rating_count": 123,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 122.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_212097800",
+          "merchant_id": "bp_merchant_3592",
+          "merchant_name": "UniMax",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 123,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211823216",
+          "merchant_id": "bp_merchant_128",
+          "merchant_name": "Msystems",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 126,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208030892",
+          "merchant_id": "bp_merchant_4871",
+          "merchant_name": "CTS",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 126,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224388126",
+          "merchant_id": "bp_merchant_137",
+          "merchant_name": "VnP",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.73,
+          "merchant_rating_count": 22,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 126.44,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_209390108",
+          "merchant_id": "bp_merchant_8622",
+          "merchant_name": "Praxi",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 11,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 128,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_212497029",
+          "merchant_id": "bp_merchant_79",
+          "merchant_name": "Plaisio",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.84,
+          "merchant_rating_count": 102,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 129,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_209434041",
+          "merchant_id": "bp_merchant_743",
+          "merchant_name": "Public",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.77,
+          "merchant_rating_count": 171,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+          "variant": "210-BTSP",
+          "item_price": 129,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:42.627Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163375863",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163375863",
+        "title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+        "brand": "Xiaomi",
+        "model": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+        "variant": "ELA6370EU",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 114.53,
+      "quoted_lowest_item_price": 114.53,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_206818893",
+          "merchant_id": "bp_merchant_3805",
+          "merchant_name": "Dexter",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.94,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 114.53,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_203391439",
+          "merchant_id": "bp_merchant_3102",
+          "merchant_name": "TechHut",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 114.83,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205495917",
+          "merchant_id": "bp_merchant_128",
+          "merchant_name": "Msystems",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 121.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_207144094",
+          "merchant_id": "bp_merchant_5569",
+          "merchant_name": "OneThing",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.53,
+          "merchant_rating_count": 17,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 122.07,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_206824387",
+          "merchant_id": "bp_merchant_85",
+          "merchant_name": "Cosmodata",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.62,
+          "merchant_rating_count": 123,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 123.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_206151888",
+          "merchant_id": "bp_merchant_3592",
+          "merchant_name": "UniMax",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 127,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_215277406",
+          "merchant_id": "bp_merchant_3607",
+          "merchant_name": "Quickshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.61,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 127.77,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_220476064",
+          "merchant_id": "bp_merchant_4864",
+          "merchant_name": "Houseshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.38,
+          "merchant_rating_count": 113,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 129.72,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208051960",
+          "merchant_id": "bp_merchant_4746",
+          "merchant_name": "Metrostore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.88,
+          "merchant_rating_count": 8,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 129.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_221919242",
+          "merchant_id": "bp_merchant_791",
+          "merchant_name": "Plus3",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+          "variant": "ELA6370EU",
+          "item_price": 131.19,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.627Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:17:42.627Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163493438",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163493438",
+        "title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+        "brand": "BenQ",
+        "model": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 138,
+      "quoted_lowest_item_price": 138,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_205718769",
+          "merchant_id": "bp_merchant_3805",
+          "merchant_name": "Dexter",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.94,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "item_price": 138,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_209709265",
+          "merchant_id": "bp_merchant_3587",
+          "merchant_name": "Pinguin",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.66,
+          "merchant_rating_count": 173,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "item_price": 140.67,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210406505",
+          "merchant_id": "bp_merchant_8037",
+          "merchant_name": "EasyOffers",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 2.43,
+          "merchant_rating_count": 7,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "item_price": 142,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_209521284",
+          "merchant_id": "bp_merchant_3607",
+          "merchant_name": "Quickshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.61,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "item_price": 146.23,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_207127692",
+          "merchant_id": "bp_merchant_7696",
+          "merchant_name": "t-Support",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "item_price": 172.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "by_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "15–30 ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_207254901",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "item_price": 210.06,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "by_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "15–30 ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_227038306",
+          "merchant_id": "bp_merchant_688",
+          "merchant_name": "CosmoMarket",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.32,
+          "merchant_rating_count": 41,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "item_price": 213.27,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225919178",
+          "merchant_id": "bp_merchant_17241",
+          "merchant_name": "Techstores",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "BenQ GW2790TC IPS Monitor 27\" 1920x1080 FHD 144Hz 5ms",
+          "variant": null,
+          "item_price": 317.26,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:17:42.628Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2159511435",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2159511435",
+        "title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+        "brand": "Dell",
+        "model": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+        "variant": "209-80-DEMSP2725HE",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 193,
+      "quoted_lowest_item_price": 193,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_152468183",
+          "merchant_id": "bp_merchant_723",
+          "merchant_name": "MrCheap",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.52,
+          "merchant_rating_count": 23,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 193,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_161886294",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 196.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_152352180",
+          "merchant_id": "bp_merchant_3963",
+          "merchant_name": "Etd",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 14,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 202.19,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_222354589",
+          "merchant_id": "bp_merchant_12956",
+          "merchant_name": "eCosmos",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 8,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 202.32,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_165016184",
+          "merchant_id": "bp_merchant_843",
+          "merchant_name": "Ca-Microland",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 204.62,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_170233170",
+          "merchant_id": "bp_merchant_14797",
+          "merchant_name": "ThinkScreen",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.87,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 209.36,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_182614811",
+          "merchant_id": "bp_merchant_12328",
+          "merchant_name": "Magnet Market",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 210.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_202307435",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 211.21,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_179696732",
+          "merchant_id": "bp_merchant_1904",
+          "merchant_name": "EuroSupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 212.24,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195149550",
+          "merchant_id": "bp_merchant_16078",
+          "merchant_name": "Computer Data",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dell P2725HE IPS Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+          "variant": "209-80-DEMSP2725HE",
+          "item_price": 213,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:17:42.628Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2156190430",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2156190430",
+        "title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+        "brand": "Philips",
+        "model": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 123,
+      "quoted_lowest_item_price": 123,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_186121496",
+          "merchant_id": "bp_merchant_8037",
+          "merchant_name": "EasyOffers",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 2.43,
+          "merchant_rating_count": 7,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 123,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_85053753",
+          "merchant_id": "bp_merchant_117",
+          "merchant_name": "Mg Manager",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 36,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 123.58,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_87719338",
+          "merchant_id": "bp_merchant_723",
+          "merchant_name": "MrCheap",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.52,
+          "merchant_rating_count": 23,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 140,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_166906268",
+          "merchant_id": "bp_merchant_7696",
+          "merchant_name": "t-Support",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 141,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_217187275",
+          "merchant_id": "bp_merchant_12956",
+          "merchant_name": "eCosmos",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 8,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 144.23,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194605011",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 144.93,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195827168",
+          "merchant_id": "bp_merchant_4514",
+          "merchant_name": "AsisNet",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 146.2,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_56415829",
+          "merchant_id": "bp_merchant_90",
+          "merchant_name": "e-Gate",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.72,
+          "merchant_rating_count": 18,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 146.28,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_87596168",
+          "merchant_id": "bp_merchant_3963",
+          "merchant_name": "Etd",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 14,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 146.7,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_88399528",
+          "merchant_id": "bp_merchant_1904",
+          "merchant_name": "EuroSupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Philips S-Line 272S1AE IPS Monitor 27\" 1920x1080 FHD 75Hz 4ms",
+          "variant": null,
+          "item_price": 147.82,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:42.628Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163092926",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163092926",
+        "title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+        "brand": "Samsung",
+        "model": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+        "variant": "LS27FM501EUXDU",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 148.5,
+      "quoted_lowest_item_price": 148.5,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_219318043",
+          "merchant_id": "bp_merchant_8622",
+          "merchant_name": "Praxi",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 11,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 148.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210901991",
+          "merchant_id": "bp_merchant_723",
+          "merchant_name": "MrCheap",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.52,
+          "merchant_rating_count": 23,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 151,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_201195579",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 153.1,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_213052561",
+          "merchant_id": "bp_merchant_4514",
+          "merchant_name": "AsisNet",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 155.74,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210718865",
+          "merchant_id": "bp_merchant_7696",
+          "merchant_name": "t-Support",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 157,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_201108852",
+          "merchant_id": "bp_merchant_85",
+          "merchant_name": "Cosmodata",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.62,
+          "merchant_rating_count": 123,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 157.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210740625",
+          "merchant_id": "bp_merchant_128",
+          "merchant_name": "Msystems",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 158,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208568252",
+          "merchant_id": "bp_merchant_16078",
+          "merchant_name": "Computer Data",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 158,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_216063340",
+          "merchant_id": "bp_merchant_79",
+          "merchant_name": "Plaisio",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.84,
+          "merchant_rating_count": 102,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 158,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_201694903",
+          "merchant_id": "bp_merchant_961",
+          "merchant_name": "Websupplies",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.79,
+          "merchant_rating_count": 71,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms White",
+          "variant": "LS27FM501EUXDU",
+          "item_price": 158,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:42.628Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163092927",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163092927",
+        "title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+        "brand": "Samsung",
+        "model": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+        "variant": "LS27FM501EUXEN",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 148.3,
+      "quoted_lowest_item_price": 148.3,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_219318010",
+          "merchant_id": "bp_merchant_8622",
+          "merchant_name": "Praxi",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 11,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 148.3,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210814187",
+          "merchant_id": "bp_merchant_723",
+          "merchant_name": "MrCheap",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.52,
+          "merchant_rating_count": 23,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 151,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210500945",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 152.97,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_213103546",
+          "merchant_id": "bp_merchant_4514",
+          "merchant_name": "AsisNet",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 155.7,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210735974",
+          "merchant_id": "bp_merchant_7696",
+          "merchant_name": "t-Support",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 157.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211423746",
+          "merchant_id": "bp_merchant_85",
+          "merchant_name": "Cosmodata",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.62,
+          "merchant_rating_count": 123,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 157.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210513362",
+          "merchant_id": "bp_merchant_3963",
+          "merchant_name": "Etd",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 14,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 157.92,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_207626492",
+          "merchant_id": "bp_merchant_16078",
+          "merchant_name": "Computer Data",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 158,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_202565738",
+          "merchant_id": "bp_merchant_79",
+          "merchant_name": "Plaisio",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.84,
+          "merchant_rating_count": 102,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 158,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_203073985",
+          "merchant_id": "bp_merchant_743",
+          "merchant_name": "Public",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.77,
+          "merchant_rating_count": 171,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung M5 M50F IPS HDR Smart Monitor 27\" 1920x1080 FHD 60Hz 5ms Black",
+          "variant": "LS27FM501EUXEN",
+          "item_price": 158,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:42.628Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:17:42.628Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_price_history",
+    "input": {
+      "product_id": "bp_2163663957",
+      "period_days": 180
+    },
+    "result": {
+      "product_id": "bp_2163663957",
+      "product_title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+      "product_url": "[omitted]",
+      "period_days": 180,
+      "current_price": 109.88,
+      "current_price_source": "live_offer_minimum",
+      "source_last_observed_at": "2026-10-12T10:17:42.628Z",
+      "window_stats": [
+        {
+          "days": 30,
+          "minimum_price": 109.88,
+          "median_price": 117,
+          "observations": 30,
+          "coverage_pct": 100,
+          "longest_gap_days": 0
+        },
+        {
+          "days": 90,
+          "minimum_price": 109.88,
+          "median_price": 123.48,
+          "observations": 90,
+          "coverage_pct": 100,
+          "longest_gap_days": 0
+        },
+        {
+          "days": 180,
+          "minimum_price": 109.88,
+          "median_price": 124,
+          "observations": 179,
+          "coverage_pct": 99.4,
+          "longest_gap_days": 1
+        }
+      ],
+      "price_delta_vs_180d_median_pct": -11.39,
+      "deal_classification": "excellent_price",
+      "methodology_id": "bestprice_daily_min_v1",
+      "quality": {
+        "cluster_continuity": "same_cluster",
+        "outlier_status": "protected"
+      },
+      "data_gaps": {
+        "missing_days": 1,
+        "longest_gap_days": 1,
+        "stale_days": 0,
+        "coverage_note": "1 ημέρα δεν είχε έγκυρη ημερήσια παρατήρηση."
+      },
+      "series": [
+        {
+          "date": "2026-04-16",
+          "price": 128,
+          "merchant_count": 27
+        },
+        {
+          "date": "2026-04-22",
+          "price": 128,
+          "merchant_count": 25
+        },
+        {
+          "date": "2026-05-01",
+          "price": 128,
+          "merchant_count": 30
+        },
+        {
+          "date": "2026-05-11",
+          "price": 128,
+          "merchant_count": 32
+        },
+        {
+          "date": "2026-05-14",
+          "price": 138,
+          "merchant_count": 31
+        },
+        {
+          "date": "2026-05-15",
+          "price": 124,
+          "merchant_count": 33
+        },
+        {
+          "date": "2026-05-24",
+          "price": 124,
+          "merchant_count": 33
+        },
+        {
+          "date": "2026-06-02",
+          "price": 128,
+          "merchant_count": 32
+        },
+        {
+          "date": "2026-06-11",
+          "price": 123,
+          "merchant_count": 35
+        },
+        {
+          "date": "2026-06-19",
+          "price": 123,
+          "merchant_count": 37
+        },
+        {
+          "date": "2026-06-30",
+          "price": 134,
+          "merchant_count": 37
+        },
+        {
+          "date": "2026-07-08",
+          "price": 124,
+          "merchant_count": 38
+        },
+        {
+          "date": "2026-07-15",
+          "price": 124,
+          "merchant_count": 42
+        },
+        {
+          "date": "2026-07-21",
+          "price": 124,
+          "merchant_count": 38
+        },
+        {
+          "date": "2026-07-29",
+          "price": 114.95,
+          "merchant_count": 36
+        },
+        {
+          "date": "2026-08-09",
+          "price": 123.48,
+          "merchant_count": 31
+        },
+        {
+          "date": "2026-08-16",
+          "price": 123.48,
+          "merchant_count": 31
+        },
+        {
+          "date": "2026-08-24",
+          "price": 124,
+          "merchant_count": 36
+        },
+        {
+          "date": "2026-09-02",
+          "price": 124.9,
+          "merchant_count": 41
+        },
+        {
+          "date": "2026-09-10",
+          "price": 117,
+          "merchant_count": 43
+        },
+        {
+          "date": "2026-09-16",
+          "price": 117,
+          "merchant_count": 38
+        },
+        {
+          "date": "2026-09-24",
+          "price": 117,
+          "merchant_count": 43
+        },
+        {
+          "date": "2026-10-05",
+          "price": 117.65,
+          "merchant_count": 41
+        },
+        {
+          "date": "2026-10-12",
+          "price": 109.88,
+          "merchant_count": 43
+        }
+      ],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:42.628Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163663957"
+    },
+    "result": {
+      "product_id": "bp_2163663957",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:17:42.629Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2160331924"
+    },
+    "result": {
+      "product_id": "bp_2160331924",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:17:42.629Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163493438"
+    },
+    "result": {
+      "product_id": "bp_2163493438",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:17:42.629Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2156190430"
+    },
+    "result": {
+      "product_id": "bp_2156190430",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:17:42.629Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163092926"
+    },
+    "result": {
+      "product_id": "bp_2163092926",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:17:42.629Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163375863"
+    },
+    "result": {
+      "product_id": "bp_2163375863",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:17:42.629Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163092927"
+    },
+    "result": {
+      "product_id": "bp_2163092927",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:17:42.629Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2159511435"
+    },
+    "result": {
+      "product_id": "bp_2159511435",
+      "review_count": 1,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Η οθόνη της Dell μου είχε προταθεί για αγορά από επαγγελματίες φωτογράφους και όντως αποδεικνύεται ότι ανταποκρίνεται στις προσδοκίες. Η ανάλυση της θα μπορούσε να είναι μεγαλύτερη, αλλά κάνει τη δουλειά που χρειάζεται μια χαρά. Η δυνατότητα περιστροφής της είναι σίγουρα στα highlights, αλλά και η χρωματική απόδοση…",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2024-12-12T00:43:54.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:17:42.629Z"
+    }
+  }
+]

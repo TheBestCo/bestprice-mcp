@@ -1,0 +1,1098 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:26:25.571Z",
+  "outcome": "recommendation",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "75b9feee-c086-4b4b-9587-b1ec035e9ea7",
+    "revision": 2,
+    "fingerprint": "fb9f61a0ea90044cd95e73542ca13a005b9fa9ed62fdf664fc05c89e8d8fde8b",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "mouse",
+    "intent": "shop",
+    "query": "ποντίκι",
+    "constraints": {
+      "budgetEur": 40,
+      "statedBudgetEur": 40,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 40,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 40,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 1,
+            "start": 22,
+            "end": 33,
+            "text": "έως 40 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [
+      {
+        "id": "wired",
+        "label": "ενσύρματη σύνδεση",
+        "hint": "ενσύρματο"
+      }
+    ],
+    "preferences": [
+      {
+        "id": "catalog_row:190fc8bc7f915adeb844f9e2df90a06d:contains",
+        "label": "Τύπος: Ενσύρματο",
+        "row": "Τύπος",
+        "row_group": "Τύπος",
+        "row_unit": null,
+        "check": "contains",
+        "value": "Ενσύρματο",
+        "quote": "μόνο ενσύρματο",
+        "strength": "nice",
+        "relaxation": "Και χωρίς Ενσύρματο",
+        "grounding": "catalog_grounding_v1",
+        "preference": true
+      }
+    ],
+    "unresolved": [],
+    "unreadable": ["μόνο ενσύρματο"],
+    "quotes": ["μόνο ενσύρματο"],
+    "nonPricePhrases": ["μόνο ενσύρματο"],
+    "source_turns": [],
+    "transition": "amend"
+  },
+  "actions": [
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_0",
+      "type": "refine",
+      "message": "Βρες κάτι φθηνότερο από το Powertech PT-1077 Ενσύρματο Ποντίκι Black, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "product_ids": []
+    },
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_1",
+      "type": "compare",
+      "message": "Σύγκρινε αναλυτικά το Powertech PT-1077 Ενσύρματο Ποντίκι Black με το Logitech M90 Ενσύρματο Ποντίκι Grey.",
+      "product_ids": ["bp_2158694371", "bp_2157364893", "bp_2154730954"]
+    }
+  ],
+  "status": "ready",
+  "mission": {
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Ποντίκι · Έως 40 €",
+    "constraints": {
+      "maximum_price_eur": 40,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 40,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 40,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 1,
+              "start": 22,
+              "end": 33,
+              "text": "έως 40 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "primary": {
+    "product_id": "bp_2158694371",
+    "title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+    "brand": "Powertech",
+    "model": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+    "variant": null,
+    "category_title": "Ποντίκια",
+    "price_from": 1.94,
+    "rating": {
+      "average": 5,
+      "count": 1
+    },
+    "offer_count": 41,
+    "availability": "in_stock",
+    "product_url": "[omitted]",
+    "image_url": "[omitted]",
+    "ram_gb": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "dual_basket": null
+  },
+  "alternatives": [
+    {
+      "product": {
+        "product_id": "bp_2157364893",
+        "title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+        "brand": "Logitech",
+        "model": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+        "variant": null,
+        "category_title": "Ποντίκια",
+        "price_from": 3.66,
+        "rating": {
+          "average": 4.25,
+          "count": 7
+        },
+        "offer_count": 21,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "1,72€ ακριβότερο",
+      "tradeoff": "Δίνει τεκμηριωμένη βαθμολογία από αγοραστές του BestPrice, ενώ η φθηνότερη δεν έχει ακόμη αρκετές αξιολογήσεις",
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_156500675",
+          "merchant_id": "bp_merchant_14355",
+          "merchant_name": "Buychoice",
+          "merchant_rating": 4.14,
+          "merchant_rating_count": 74,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "item_price": 3.66,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:26:25.515Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_156500675",
+          "merchant_id": "bp_merchant_14355",
+          "merchant_name": "Buychoice",
+          "merchant_rating": 4.14,
+          "merchant_rating_count": 74,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "item_price": 3.66,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:26:25.515Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 40,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    },
+    {
+      "product": {
+        "product_id": "bp_2154730954",
+        "title": "Dell MS116 Ενσύρματο Ποντίκι Black",
+        "brand": "Dell",
+        "model": "Dell MS116 Ενσύρματο Ποντίκι Black",
+        "variant": null,
+        "category_title": "Ποντίκια",
+        "price_from": 5.68,
+        "rating": {
+          "average": 5,
+          "count": 3
+        },
+        "offer_count": 71,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "Σε περισσότερα καταστήματα",
+      "tradeoff": null,
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_222586131",
+          "merchant_id": "bp_merchant_15013",
+          "merchant_name": "PWU",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 5.68,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:26:25.515Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_222586131",
+          "merchant_id": "bp_merchant_15013",
+          "merchant_name": "PWU",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 5.68,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:26:25.515Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 40,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    }
+  ],
+  "constraints": {
+    "maximum_price_eur": 40,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "catalog_requirements": ["ενσύρματη σύνδεση"],
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 40,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 40,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 1,
+            "start": 22,
+            "end": 33,
+            "text": "έως 40 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [
+    "Καλύπτει τα εξής κριτήρια: έως 40€ και ενσύρματη σύνδεση.",
+    "Η επόμενη επιλογή κοστίζει 1,72€ παραπάνω και δίνει τεκμηριωμένη βαθμολογία από αγοραστές του BestPrice, ενώ η φθηνότερη δεν έχει ακόμη αρκετές αξιολογήσεις. Η σύγκριση βασίζεται σε περιορισμένα στοιχεία. Με βάση αυτά, δεν προτείνω να πληρώσεις τη διαφορά.",
+    "Τα στοιχεία του καταλόγου επιβεβαιώνουν: Τύπος: Ενσύρματο."
+  ],
+  "tradeoffs": [
+    "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+    "Tool-Market: βαθμολογία καταστήματος 4,17/5 από 60 αξιολογήσεις; δηλωμένη διαθεσιμότητα «Άμεσα διαθέσιμο» (εκτίμηση καταστήματος)."
+  ],
+  "offer_summary": {
+    "postal_code": null,
+    "price_basis": "item_price",
+    "affordability": "within_item_budget_delivery_unknown",
+    "offer_scope": "returned_sample",
+    "delivery_affordability_proven": false,
+    "recommended": {
+      "offer_id": "bp_offer_218622205",
+      "merchant_id": "bp_merchant_2645",
+      "merchant_name": "Tool-Market",
+      "merchant_rating": 4.17,
+      "merchant_rating_count": 60,
+      "verified_merchant": true,
+      "certification_level": "gold",
+      "item_price": 1.94,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "in_stock",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "Άμεσα διαθέσιμο",
+      "price_checked_at": "2026-10-12T10:26:25.515Z"
+    },
+    "cheapest": {
+      "offer_id": "bp_offer_218622205",
+      "merchant_id": "bp_merchant_2645",
+      "merchant_name": "Tool-Market",
+      "merchant_rating": 4.17,
+      "merchant_rating_count": 60,
+      "verified_merchant": true,
+      "certification_level": "gold",
+      "item_price": 1.94,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "in_stock",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "Άμεσα διαθέσιμο",
+      "price_checked_at": "2026-10-12T10:26:25.515Z"
+    },
+    "same_offer": true,
+    "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+    "budget_eur": 40,
+    "recommended_within_budget": true,
+    "cheapest_within_budget": true,
+    "compared_offer_count": 10,
+    "unknown_shipping_count": 10
+  },
+  "price_history": {
+    "current_price": 1.94,
+    "quote_consistency": "matched",
+    "current_price_source": "live_offer_minimum",
+    "source_last_observed_at": "2026-10-12T10:26:25.516Z",
+    "period_days": 180,
+    "window_stats": [
+      {
+        "days": 30,
+        "minimum_price": 1.93,
+        "median_price": 1.94,
+        "observations": 26,
+        "coverage_pct": 86.7
+      },
+      {
+        "days": 90,
+        "minimum_price": 1.93,
+        "median_price": 1.94,
+        "observations": 82,
+        "coverage_pct": 91.1
+      },
+      {
+        "days": 180,
+        "minimum_price": 1.92,
+        "median_price": 1.94,
+        "observations": 169,
+        "coverage_pct": 93.9
+      }
+    ],
+    "minimum_price": 1.92,
+    "median_price": 1.94,
+    "observations": 169,
+    "coverage_pct": 93.9,
+    "delta_vs_median_pct": 0,
+    "deal_classification": "typical_price",
+    "methodology_id": "bestprice_daily_min_v1",
+    "data_gaps": {
+      "missing_days": 12,
+      "longest_gap_days": 2,
+      "stale_days": 1,
+      "coverage_note": "12 ημέρες δεν είχαν έγκυρη ημερήσια παρατήρηση."
+    },
+    "warnings": [],
+    "series": [
+      {
+        "date": "2026-04-16",
+        "price": 2.13
+      },
+      {
+        "date": "2026-04-23",
+        "price": 2.13
+      },
+      {
+        "date": "2026-05-01",
+        "price": 2.13
+      },
+      {
+        "date": "2026-05-10",
+        "price": 2.13
+      },
+      {
+        "date": "2026-05-16",
+        "price": 2.13
+      },
+      {
+        "date": "2026-05-25",
+        "price": 2.13
+      },
+      {
+        "date": "2026-06-02",
+        "price": 2.13
+      },
+      {
+        "date": "2026-06-10",
+        "price": 2
+      },
+      {
+        "date": "2026-06-18",
+        "price": 2
+      },
+      {
+        "date": "2026-06-26",
+        "price": 2
+      },
+      {
+        "date": "2026-07-06",
+        "price": 2
+      },
+      {
+        "date": "2026-07-07",
+        "price": 1.92
+      },
+      {
+        "date": "2026-07-12",
+        "price": 1.94
+      },
+      {
+        "date": "2026-07-17",
+        "price": 1.94
+      },
+      {
+        "date": "2026-07-26",
+        "price": 1.94
+      },
+      {
+        "date": "2026-08-06",
+        "price": 1.94
+      },
+      {
+        "date": "2026-08-14",
+        "price": 1.94
+      },
+      {
+        "date": "2026-08-22",
+        "price": 1.94
+      },
+      {
+        "date": "2026-08-30",
+        "price": 1.94
+      },
+      {
+        "date": "2026-09-07",
+        "price": 1.94
+      },
+      {
+        "date": "2026-09-13",
+        "price": 1.94
+      },
+      {
+        "date": "2026-09-23",
+        "price": 1.93
+      },
+      {
+        "date": "2026-10-02",
+        "price": 1.94
+      },
+      {
+        "date": "2026-10-12",
+        "price": 1.94
+      }
+    ]
+  },
+  "candidate_summary": {
+    "scope": "returned_candidates",
+    "returned_count": 8,
+    "eligible_count": 8,
+    "rejected_count": 0,
+    "rejection_counts": {},
+    "search_fallback_applied": false,
+    "delivered_totals_checked": 8,
+    "delivered_totals_known": 0
+  },
+  "candidates": [
+    {
+      "product_id": "bp_2158694371",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "no_text_sample",
+      "source_ids": [
+        "compare_offers:bp_2158694371:bp_offer_126211368",
+        "compare_offers:bp_2158694371:bp_offer_135381113",
+        "compare_offers:bp_2158694371:bp_offer_160524191",
+        "compare_offers:bp_2158694371:bp_offer_162589631",
+        "compare_offers:bp_2158694371:bp_offer_163929700",
+        "compare_offers:bp_2158694371:bp_offer_171762177",
+        "compare_offers:bp_2158694371:bp_offer_191439291",
+        "compare_offers:bp_2158694371:bp_offer_214900556",
+        "compare_offers:bp_2158694371:bp_offer_218622205",
+        "compare_offers:bp_2158694371:bp_offer_225281393",
+        "compare_offers:bp_2158694371:check",
+        "deterministic_ranking:bp_2158694371:bestprice_shopping_policy_v1:mice",
+        "get_price_history:bp_2158694371:bp_2158694371",
+        "get_product_details:bp_2158694371:bp_2158694371",
+        "search_products:bp_2158694371:bp_2158694371"
+      ]
+    },
+    {
+      "product_id": "bp_2157364893",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2157364893:bp_offer_136751428",
+        "compare_offers:bp_2157364893:bp_offer_156500675",
+        "compare_offers:bp_2157364893:bp_offer_193295346",
+        "compare_offers:bp_2157364893:bp_offer_198084668",
+        "compare_offers:bp_2157364893:bp_offer_202575490",
+        "compare_offers:bp_2157364893:bp_offer_202634218",
+        "compare_offers:bp_2157364893:bp_offer_207923823",
+        "compare_offers:bp_2157364893:bp_offer_220331668",
+        "compare_offers:bp_2157364893:bp_offer_223911047",
+        "compare_offers:bp_2157364893:bp_offer_87506578",
+        "compare_offers:bp_2157364893:check",
+        "deterministic_ranking:bp_2157364893:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2157364893:bp_2157364893",
+        "get_product_reviews:bp_2157364893:bp_2157364893",
+        "search_products:bp_2157364893:bp_2157364893"
+      ]
+    },
+    {
+      "product_id": "bp_2154730954",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2154730954:bp_offer_145346242",
+        "compare_offers:bp_2154730954:bp_offer_189867195",
+        "compare_offers:bp_2154730954:bp_offer_222247302",
+        "compare_offers:bp_2154730954:bp_offer_222586131",
+        "compare_offers:bp_2154730954:bp_offer_222723926",
+        "compare_offers:bp_2154730954:bp_offer_224074872",
+        "compare_offers:bp_2154730954:bp_offer_225328496",
+        "compare_offers:bp_2154730954:bp_offer_35611654",
+        "compare_offers:bp_2154730954:bp_offer_44511281",
+        "compare_offers:bp_2154730954:bp_offer_84266905",
+        "compare_offers:bp_2154730954:check",
+        "deterministic_ranking:bp_2154730954:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2154730954:bp_2154730954",
+        "get_product_reviews:bp_2154730954:bp_2154730954",
+        "search_products:bp_2154730954:bp_2154730954"
+      ]
+    },
+    {
+      "product_id": "bp_2150726317",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2150726317:bp_offer_127886831",
+        "compare_offers:bp_2150726317:bp_offer_19415364",
+        "compare_offers:bp_2150726317:bp_offer_195076349",
+        "compare_offers:bp_2150726317:bp_offer_208305167",
+        "compare_offers:bp_2150726317:bp_offer_214803773",
+        "compare_offers:bp_2150726317:bp_offer_216721762",
+        "compare_offers:bp_2150726317:bp_offer_225330639",
+        "compare_offers:bp_2150726317:bp_offer_226580726",
+        "compare_offers:bp_2150726317:bp_offer_32321975",
+        "compare_offers:bp_2150726317:bp_offer_6746950",
+        "compare_offers:bp_2150726317:check",
+        "deterministic_ranking:bp_2150726317:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2150726317:bp_2150726317",
+        "get_product_reviews:bp_2150726317:bp_2150726317",
+        "search_products:bp_2150726317:bp_2150726317"
+      ]
+    },
+    {
+      "product_id": "bp_2156608080",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2156608080:bp_offer_199152924",
+        "compare_offers:bp_2156608080:bp_offer_206497983",
+        "compare_offers:bp_2156608080:bp_offer_207044924",
+        "compare_offers:bp_2156608080:bp_offer_208304803",
+        "compare_offers:bp_2156608080:bp_offer_208385262",
+        "compare_offers:bp_2156608080:bp_offer_216843818",
+        "compare_offers:bp_2156608080:bp_offer_219704699",
+        "compare_offers:bp_2156608080:bp_offer_74212891",
+        "compare_offers:bp_2156608080:bp_offer_76135285",
+        "compare_offers:bp_2156608080:bp_offer_85599395",
+        "compare_offers:bp_2156608080:check",
+        "deterministic_ranking:bp_2156608080:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2156608080:bp_2156608080",
+        "search_products:bp_2156608080:bp_2156608080"
+      ]
+    },
+    {
+      "product_id": "bp_2153547976",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2153547976:bp_offer_13509400",
+        "compare_offers:bp_2153547976:bp_offer_145348490",
+        "compare_offers:bp_2153547976:bp_offer_156461838",
+        "compare_offers:bp_2153547976:bp_offer_193294723",
+        "compare_offers:bp_2153547976:bp_offer_194823411",
+        "compare_offers:bp_2153547976:bp_offer_219493507",
+        "compare_offers:bp_2153547976:bp_offer_224083486",
+        "compare_offers:bp_2153547976:bp_offer_24479008",
+        "compare_offers:bp_2153547976:bp_offer_37437979",
+        "compare_offers:bp_2153547976:bp_offer_73022384",
+        "compare_offers:bp_2153547976:check",
+        "deterministic_ranking:bp_2153547976:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2153547976:bp_2153547976",
+        "get_product_reviews:bp_2153547976:bp_2153547976",
+        "search_products:bp_2153547976:bp_2153547976"
+      ]
+    },
+    {
+      "product_id": "bp_2155808380",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2155808380:bp_offer_132931307",
+        "compare_offers:bp_2155808380:bp_offer_148054143",
+        "compare_offers:bp_2155808380:bp_offer_161790183",
+        "compare_offers:bp_2155808380:bp_offer_194823486",
+        "compare_offers:bp_2155808380:bp_offer_209218418",
+        "compare_offers:bp_2155808380:bp_offer_225105601",
+        "compare_offers:bp_2155808380:bp_offer_225332234",
+        "compare_offers:bp_2155808380:bp_offer_226618866",
+        "compare_offers:bp_2155808380:bp_offer_45908140",
+        "compare_offers:bp_2155808380:bp_offer_54986009",
+        "compare_offers:bp_2155808380:check",
+        "deterministic_ranking:bp_2155808380:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2155808380:bp_2155808380",
+        "get_product_reviews:bp_2155808380:bp_2155808380",
+        "search_products:bp_2155808380:bp_2155808380"
+      ]
+    },
+    {
+      "product_id": "bp_2155625772",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "no_text_sample",
+      "source_ids": [
+        "compare_offers:bp_2155625772:bp_offer_123041041",
+        "compare_offers:bp_2155625772:bp_offer_123891105",
+        "compare_offers:bp_2155625772:bp_offer_170588033",
+        "compare_offers:bp_2155625772:bp_offer_181734569",
+        "compare_offers:bp_2155625772:bp_offer_193295164",
+        "compare_offers:bp_2155625772:bp_offer_195777334",
+        "compare_offers:bp_2155625772:bp_offer_205129142",
+        "compare_offers:bp_2155625772:bp_offer_205718915",
+        "compare_offers:bp_2155625772:bp_offer_219493528",
+        "compare_offers:bp_2155625772:bp_offer_224073726",
+        "compare_offers:bp_2155625772:check",
+        "deterministic_ranking:bp_2155625772:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2155625772:bp_2155625772",
+        "search_products:bp_2155625772:bp_2155625772"
+      ]
+    },
+    {
+      "product_id": "bp_2150726319",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2150726319:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2150726319:bp_2150726319",
+        "search_products:bp_2150726319:bp_2150726319"
+      ]
+    },
+    {
+      "product_id": "bp_2154790139",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2154790139:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2154790139:bp_2154790139",
+        "search_products:bp_2154790139:bp_2154790139"
+      ]
+    },
+    {
+      "product_id": "bp_2157753266",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2157753266:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2157753266:bp_2157753266",
+        "search_products:bp_2157753266:bp_2157753266"
+      ]
+    },
+    {
+      "product_id": "bp_2154894250",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2154894250:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2154894250:bp_2154894250",
+        "search_products:bp_2154894250:bp_2154894250"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 12,
+    "complete_catalog": false,
+    "search_calls": 2,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:26:23.360Z",
+      "source_observed_at": "2026-10-12T10:20:24.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 675,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": 2569,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [
+    {
+      "code": "ranking_calibration",
+      "product_id": "bp_2158694371",
+      "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+    },
+    {
+      "code": "landed_cost_unknown",
+      "product_id": "bp_2158694371",
+      "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+    }
+  ],
+  "price_verdict": {
+    "verdict": "typical",
+    "reason": "typical_across_usable_windows",
+    "source_ids": ["get_price_history:bp_2158694371:bp_2158694371"],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "",
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "execution": {
+    "tools_used": [
+      "search_products",
+      "get_product_details",
+      "compare_offers",
+      "get_price_history",
+      "get_product_reviews"
+    ],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 2232,
+      "grounding_calls": 1,
+      "grounding_ms": 1545,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 1,
+      "understanding_requirements": 1,
+      "understanding_ms": 17,
+      "direct_recommendation": true,
+      "exact_route": false,
+      "catalog_search_calls": 2,
+      "search_products_calls": 1,
+      "search_products_failures": 0,
+      "search_products_invocations": 1,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 417,
+      "search_products_max_ms": 417,
+      "get_product_details_calls": 3,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 3,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 234,
+      "get_product_details_max_ms": 118,
+      "compare_offers_calls": 8,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 8,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 63,
+      "compare_offers_max_ms": 8,
+      "get_price_history_calls": 1,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 1,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 20,
+      "get_price_history_max_ms": 20,
+      "get_product_reviews_calls": 8,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 8,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 290,
+      "get_product_reviews_max_ms": 40,
+      "optimize_basket_calls": 0,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 0,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 0,
+      "optimize_basket_max_ms": 0,
+      "retrieval_page_candidates": 12,
+      "receipt_disqualified_candidates": 3,
+      "receipt_eligible_candidates": 9,
+      "receipt_review_requested": 8,
+      "receipt_review_available": 5,
+      "receipt_validation_ms": 10,
+      "brain_runtime_ms": 2232,
+      "brain_finalization_ms": 22
+    }
+  },
+  "personalization": null,
+  "follow_ups": [
+    {
+      "id": "cheaper",
+      "label": "Κάτι φθηνότερο",
+      "message": "Βρες κάτι φθηνότερο από το Powertech PT-1077 Ενσύρματο Ποντίκι Black, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_0"
+      }
+    },
+    {
+      "id": "compare",
+      "label": "Σύγκρινε τις επιλογές",
+      "message": "Σύγκρινε αναλυτικά το Powertech PT-1077 Ενσύρματο Ποντίκι Black με το Logitech M90 Ενσύρματο Ποντίκι Grey.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_1"
+      }
+    }
+  ],
+  "coverage": {
+    "policy_version": "ask_beta_coverage_v1",
+    "family": "mouse",
+    "reason": "catalog_family_verified",
+    "supported": true
+  },
+  "spend_walk": {
+    "version": "ask_spend_walk_v1",
+    "category_schema": "mice",
+    "comparison_status": "consistent",
+    "use_case": "general",
+    "price_basis": "item_price",
+    "ranking": null,
+    "budget_eur": 40,
+    "base": {
+      "product_id": "bp_2158694371",
+      "fit": null,
+      "price_eur": 1.94
+    },
+    "winner": {
+      "product_id": "bp_2158694371",
+      "fit": null,
+      "reason": "base",
+      "price_eur": 1.94
+    },
+    "next": {
+      "product_id": "bp_2157364893",
+      "price_eur": 3.66,
+      "delta_fit": 18.7,
+      "delta_eur": 1.72,
+      "accepted": false
+    },
+    "steps": [
+      {
+        "product_id": "bp_2157364893",
+        "price_eur": 3.66,
+        "delta_fit": 18.7,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": ["satisfaction"],
+        "delta_eur": 1.72,
+        "fit_per_eur": 10.872,
+        "threshold": 0.061,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 1.94,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 1.72
+      },
+      {
+        "product_id": "bp_2150726317",
+        "price_eur": 3.79,
+        "delta_fit": 18.7,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": ["satisfaction"],
+        "delta_eur": 1.85,
+        "fit_per_eur": 10.108,
+        "threshold": 0.061,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 1.94,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 1.85
+      },
+      {
+        "product_id": "bp_2153547976",
+        "price_eur": 3.79,
+        "delta_fit": 41.7,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": ["satisfaction"],
+        "delta_eur": 1.85,
+        "fit_per_eur": 22.541,
+        "threshold": 0.061,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 1.94,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 1.85
+      },
+      {
+        "product_id": "bp_2155625772",
+        "price_eur": 4.36,
+        "delta_fit": 0,
+        "fit_relation": "insufficient_comparability",
+        "compared_attributes": [],
+        "delta_eur": 2.42,
+        "fit_per_eur": 0,
+        "threshold": 0.061,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 1.94,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 2.42
+      },
+      {
+        "product_id": "bp_2154730954",
+        "price_eur": 5.68,
+        "delta_fit": 50,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": ["satisfaction"],
+        "delta_eur": 3.74,
+        "fit_per_eur": 13.369,
+        "threshold": 0.062,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 1.94,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 3.74
+      },
+      {
+        "product_id": "bp_2156608080",
+        "price_eur": 7.8,
+        "delta_fit": 0,
+        "fit_relation": "insufficient_comparability",
+        "compared_attributes": [],
+        "delta_eur": 5.86,
+        "fit_per_eur": 0,
+        "threshold": 0.063,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 1.94,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 5.86
+      },
+      {
+        "product_id": "bp_2155808380",
+        "price_eur": 14.43,
+        "delta_fit": 0,
+        "fit_relation": "insufficient_comparability",
+        "compared_attributes": [],
+        "delta_eur": 12.49,
+        "fit_per_eur": 0,
+        "threshold": 0.071,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 1.94,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 12.49
+      }
+    ]
+  }
+}

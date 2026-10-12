@@ -1,0 +1,1108 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:17:50.656Z",
+  "outcome": "basket",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "855db4d9-b8c0-4227-99b1-3e27f4e2e756",
+    "revision": 2,
+    "fingerprint": "9370ac5b24afb3b432bebddc864d2334782ae276f55c876381edbe6d7a016894",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "headphones",
+    "intent": "shop",
+    "query": "ποντίκι ακουστικά router",
+    "constraints": {
+      "budgetEur": 200,
+      "statedBudgetEur": 200,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 200,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 200,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 45,
+            "end": 57,
+            "text": "έως 200 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": [],
+    "nonPricePhrases": [],
+    "source_turns": [],
+    "transition": "amend"
+  },
+  "actions": [],
+  "status": "ready",
+  "mission": {
+    "intent": "basket",
+    "summary_el": "Κοινό καλάθι · Ακουστικά · Συνολικό όριο 200 €",
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 200,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 200,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 45,
+              "end": 57,
+              "text": "έως 200 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 200,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_3",
+          "family": "router",
+          "label": "Router / Wi-Fi",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ]
+    }
+  },
+  "primary": null,
+  "alternatives": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 200,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 200,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 45,
+            "end": 57,
+            "text": "έως 200 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 200,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_3",
+        "family": "router",
+        "label": "Router / Wi-Fi",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "catalog_requirements": []
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "price_history": null,
+  "candidate_summary": null,
+  "candidates": [
+    {
+      "product_id": "bp_2159035699",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159035699:bestprice_shopping_policy_v1:routers",
+        "get_product_details:bp_2159035699:bp_2159035699",
+        "optimize_basket:bp_2159035699:balanced:bp_merchant_3963:bp_2159035699",
+        "optimize_basket:bp_2159035699:fewer_merchants:bp_merchant_11295:bp_2159035699",
+        "search_products:bp_2159035699:bp_2159035699"
+      ]
+    },
+    {
+      "product_id": "bp_2160295107",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "get_product_details:bp_2160295107:bp_2160295107",
+        "optimize_basket:bp_2160295107:balanced:bp_merchant_3837:bp_2160295107",
+        "optimize_basket:bp_2160295107:fewer_merchants:bp_merchant_11295:bp_2160295107"
+      ]
+    },
+    {
+      "product_id": "bp_2150726317",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "get_product_details:bp_2150726317:bp_2150726317",
+        "optimize_basket:bp_2150726317:balanced:bp_merchant_3963:bp_2150726317",
+        "optimize_basket:bp_2150726317:fewer_merchants:bp_merchant_11295:bp_2150726317"
+      ]
+    },
+    {
+      "product_id": "bp_2163493195",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2163493195:bp_2163493195"]
+    },
+    {
+      "product_id": "bp_2155476310",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2155476310:bp_2155476310"]
+    },
+    {
+      "product_id": "bp_2163319957",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2163319957:bp_2163319957"]
+    },
+    {
+      "product_id": "bp_2158361753",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2158361753:bp_2158361753"]
+    },
+    {
+      "product_id": "bp_2158996105",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2158996105:bp_2158996105"]
+    },
+    {
+      "product_id": "bp_2156608080",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2156608080:bp_2156608080"]
+    },
+    {
+      "product_id": "bp_2157261945",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2157261945:bp_2157261945"]
+    },
+    {
+      "product_id": "bp_2162546866",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2162546866:bp_2162546866"]
+    },
+    {
+      "product_id": "bp_2164481537",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2164481537:bp_2164481537"]
+    },
+    {
+      "product_id": "bp_2159415390",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2159415390:bp_2159415390"]
+    },
+    {
+      "product_id": "bp_2157653812",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2157653812:bp_2157653812"]
+    },
+    {
+      "product_id": "bp_2162546867",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2162546867:bp_2162546867"]
+    },
+    {
+      "product_id": "bp_2163698335",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2163698335:bp_2163698335"]
+    },
+    {
+      "product_id": "bp_2162413405",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2162413405:bp_2162413405"]
+    },
+    {
+      "product_id": "bp_2157026727",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2157026727:bestprice_shopping_policy_v1:routers",
+        "get_product_details:bp_2157026727:bp_2157026727",
+        "search_products:bp_2157026727:bp_2157026727"
+      ]
+    },
+    {
+      "product_id": "bp_2156580689",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156580689:bestprice_shopping_policy_v1:routers",
+        "get_product_details:bp_2156580689:bp_2156580689",
+        "search_products:bp_2156580689:bp_2156580689"
+      ]
+    },
+    {
+      "product_id": "bp_2156537479",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156537479:bestprice_shopping_policy_v1:routers",
+        "get_product_details:bp_2156537479:bp_2156537479",
+        "search_products:bp_2156537479:bp_2156537479"
+      ]
+    },
+    {
+      "product_id": "bp_2157043336",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2157043336:bestprice_shopping_policy_v1:routers",
+        "get_product_details:bp_2157043336:bp_2157043336",
+        "search_products:bp_2157043336:bp_2157043336"
+      ]
+    },
+    {
+      "product_id": "bp_2156418929",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156418929:bestprice_shopping_policy_v1:routers",
+        "get_product_details:bp_2156418929:bp_2156418929",
+        "search_products:bp_2156418929:bp_2156418929"
+      ]
+    },
+    {
+      "product_id": "bp_2158873674",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158873674:bestprice_shopping_policy_v1:routers",
+        "get_product_details:bp_2158873674:bp_2158873674",
+        "search_products:bp_2158873674:bp_2158873674"
+      ]
+    },
+    {
+      "product_id": "bp_2158798608",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158798608:bestprice_shopping_policy_v1:routers",
+        "get_product_details:bp_2158798608:bp_2158798608",
+        "search_products:bp_2158798608:bp_2158798608"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 24,
+    "complete_catalog": false,
+    "search_calls": 3,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:17:50.017Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 240,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": 2627,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 80,05€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 119,95€ κάτω από το συνολικό όριο των 200€.",
+  "comparison": null,
+  "basket": {
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "fewer_merchants",
+        "merchant_count": 1,
+        "item_subtotal": 87.9,
+        "shipping_total": 2.5,
+        "shipping_status": "known",
+        "total_price": 90.4,
+        "reliability_score": 5,
+        "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_11295",
+            "merchant_name": "SmartLux",
+            "merchant_rating": 5,
+            "verified_merchant": false,
+            "item_subtotal": 87.9,
+            "shipping_price": 2.5,
+            "shipping_status": "known",
+            "total_price": 90.4,
+            "reason": "covers_basket_with_one_merchant",
+            "items": [
+              {
+                "product_id": "bp_2159035699",
+                "title": "Cudy WR3000 Ασύρματο Router WiFi 6",
+                "quantity": 1,
+                "unit_price": 39.9,
+                "line_total": 39.9,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2160295107",
+                "title": "Xiaomi Redmi Buds 6 Ακουστικά Bluetooth In Ear Ανθεκτικά στο Νερό Night Black",
+                "quantity": 1,
+                "unit_price": 39.5,
+                "line_total": 39.5,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2150726317",
+                "title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+                "quantity": 1,
+                "unit_price": 8.5,
+                "line_total": 8.5,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "plan_type": "balanced",
+        "merchant_count": 2,
+        "item_subtotal": 73.05,
+        "shipping_total": 7,
+        "shipping_status": "known",
+        "total_price": 80.05,
+        "reliability_score": 4.92,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_3837",
+            "merchant_name": "Drele",
+            "merchant_rating": 4.9,
+            "verified_merchant": true,
+            "item_subtotal": 30.37,
+            "shipping_price": 4,
+            "shipping_status": "known",
+            "total_price": 34.37,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2160295107",
+                "title": "Xiaomi Redmi Buds 6 Ακουστικά Bluetooth In Ear Ανθεκτικά στο Νερό Night Black",
+                "quantity": 1,
+                "unit_price": 30.37,
+                "line_total": 30.37,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          },
+          {
+            "merchant_id": "bp_merchant_3963",
+            "merchant_name": "Etd",
+            "merchant_rating": 4.93,
+            "verified_merchant": true,
+            "item_subtotal": 42.68,
+            "shipping_price": 3,
+            "shipping_status": "known",
+            "total_price": 45.68,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2159035699",
+                "title": "Cudy WR3000 Ασύρματο Router WiFi 6",
+                "quantity": 1,
+                "unit_price": 38.75,
+                "line_total": 38.75,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2150726317",
+                "title": "Logitech M90 Ενσύρματο Ποντίκι Black",
+                "quantity": 1,
+                "unit_price": 3.93,
+                "line_total": 3.93,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": [],
+    "warnings": [
+      "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+    ],
+    "as_of": "2026-10-12T10:17:50.438Z",
+    "currency": "EUR",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_3",
+        "family": "router",
+        "label": "Router / Wi-Fi",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2150726317",
+        "catalog_price_eur": 3.79,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "product_id": "bp_2160295107",
+        "catalog_price_eur": 29.4,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_3",
+        "family": "router",
+        "label": "Router / Wi-Fi",
+        "quantity": 1,
+        "product_id": "bp_2159035699",
+        "catalog_price_eur": 33.9,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 200
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_3",
+        "family": "router",
+        "label": "Router / Wi-Fi",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2150726317",
+        "catalog_price_eur": 3.79,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "product_id": "bp_2160295107",
+        "catalog_price_eur": 29.4,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_3",
+        "family": "router",
+        "label": "Router / Wi-Fi",
+        "quantity": 1,
+        "product_id": "bp_2159035699",
+        "catalog_price_eur": 33.9,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 200
+  },
+  "execution": {
+    "tools_used": ["search_products", "get_product_details", "optimize_basket"],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 669,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 0,
+      "understanding_ms": 17,
+      "direct_recommendation": false,
+      "exact_route": false,
+      "catalog_search_calls": 3,
+      "search_products_calls": 3,
+      "search_products_failures": 0,
+      "search_products_invocations": 3,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 585,
+      "search_products_max_ms": 329,
+      "get_product_details_calls": 6,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 6,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 289,
+      "get_product_details_max_ms": 83,
+      "compare_offers_calls": 0,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 0,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 0,
+      "compare_offers_max_ms": 0,
+      "get_price_history_calls": 0,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 0,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 0,
+      "get_price_history_max_ms": 0,
+      "get_product_reviews_calls": 0,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 0,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 0,
+      "get_product_reviews_max_ms": 0,
+      "optimize_basket_calls": 1,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 1,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 214,
+      "optimize_basket_max_ms": 214,
+      "retrieval_page_candidates": 24,
+      "receipt_disqualified_candidates": 0,
+      "receipt_eligible_candidates": 24,
+      "receipt_review_requested": 0,
+      "receipt_review_available": 0,
+      "receipt_validation_ms": 7,
+      "brain_runtime_ms": 669,
+      "brain_finalization_ms": 28
+    }
+  },
+  "personalization": null
+}

@@ -1,0 +1,258 @@
+{
+  "scope": "Local same-Brain user-history replay with live read-only catalog tools; no HTTP Ask and no persistence",
+  "cases": [
+    {
+      "id": "history_budget",
+      "message": "Διόρθωση: έως 600 ευρώ.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω laptop έως 800 ευρώ με 16GB RAM"
+        }
+      ],
+      "expectation": {
+        "outcome": "recommendation",
+        "budget": 600,
+        "maxConstraint": 600
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_budget-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_budget-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_budget-canonical.json",
+      "response_receipt": "history-fixed-cases/history_budget-response.json",
+      "calls_receipt": "history-fixed-cases/history_budget-calls.json"
+    },
+    {
+      "id": "history_capacity",
+      "message": "Διόρθωση: μόνο από 4 έως 5 λίτρα.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω air fryer 6 λίτρων έως 120 ευρώ"
+        }
+      ],
+      "expectation": {
+        "outcome": "recommendation",
+        "capacity": [4, 5],
+        "budget": 120
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_capacity-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_capacity-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_capacity-canonical.json",
+      "response_receipt": "history-fixed-cases/history_capacity-response.json",
+      "calls_receipt": "history-fixed-cases/history_capacity-calls.json"
+    },
+    {
+      "id": "history_wireless",
+      "message": "Διόρθωση: μόνο ενσύρματο.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω ασύρματο ποντίκι έως 40 ευρώ"
+        }
+      ],
+      "expectation": {
+        "outcome": "recommendation",
+        "falseFlags": ["wireless"],
+        "budget": 40
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_wireless-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_wireless-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_wireless-canonical.json",
+      "response_receipt": "history-fixed-cases/history_wireless-response.json",
+      "calls_receipt": "history-fixed-cases/history_wireless-calls.json"
+    },
+    {
+      "id": "history_wireless_three",
+      "message": "Τελικά ασύρματο.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω ασύρματο ποντίκι έως 40 ευρώ"
+        },
+        {
+          "role": "user",
+          "content": "Διόρθωση: ενσύρματο."
+        }
+      ],
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["wireless"],
+        "budget": 40
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_wireless_three-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_wireless_three-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_wireless_three-canonical.json",
+      "response_receipt": "history-fixed-cases/history_wireless_three-response.json",
+      "calls_receipt": "history-fixed-cases/history_wireless_three-calls.json"
+    },
+    {
+      "id": "history_brand",
+      "message": "Διόρθωση: μόνο Samsung με NFC.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω κινητό έως 400 ευρώ, όχι Samsung"
+        }
+      ],
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["nfc"],
+        "only": "samsung",
+        "budget": 400
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_brand-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_brand-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_brand-canonical.json",
+      "response_receipt": "history-fixed-cases/history_brand-response.json",
+      "calls_receipt": "history-fixed-cases/history_brand-calls.json"
+    },
+    {
+      "id": "history_family_switch",
+      "message": "Άλλαξα γνώμη: θέλω ποντίκι έως 40 ευρώ.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω laptop έως 800 ευρώ με 32GB RAM"
+        }
+      ],
+      "expectation": {
+        "outcome": "recommendation",
+        "budget": 40,
+        "family": "mice"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_family_switch-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_family_switch-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_family_switch-canonical.json",
+      "response_receipt": "history-fixed-cases/history_family_switch-response.json",
+      "calls_receipt": "history-fixed-cases/history_family_switch-calls.json"
+    },
+    {
+      "id": "history_ambiguous",
+      "message": "Καλύτερα λίγο μεγαλύτερο.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω κινητό έως 400 ευρώ με NFC"
+        }
+      ],
+      "expectation": {},
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_ambiguous-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_ambiguous-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_ambiguous-canonical.json",
+      "response_receipt": "history-fixed-cases/history_ambiguous-response.json",
+      "calls_receipt": "history-fixed-cases/history_ambiguous-calls.json"
+    },
+    {
+      "id": "history_basket_budget",
+      "message": "Διόρθωση: συνολικά έως 100 ευρώ.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω ποντίκι και ακουστικά συνολικά έως 50 ευρώ. ΤΚ 11527."
+        }
+      ],
+      "expectation": {
+        "outcome": "basket",
+        "total": 100,
+        "slots": 2
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_basket_budget-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_basket_budget-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_basket_budget-canonical.json",
+      "response_receipt": "history-fixed-cases/history_basket_budget-response.json",
+      "calls_receipt": "history-fixed-cases/history_basket_budget-calls.json"
+    },
+    {
+      "id": "history_basket_postcode",
+      "message": "ΤΚ 11527.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω laptop και οθόνη συνολικά έως 800 ευρώ."
+        }
+      ],
+      "expectation": {
+        "outcome": "basket",
+        "total": 800,
+        "slots": 2
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_basket_postcode-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_basket_postcode-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_basket_postcode-canonical.json",
+      "response_receipt": "history-fixed-cases/history_basket_postcode-response.json",
+      "calls_receipt": "history-fixed-cases/history_basket_postcode-calls.json"
+    },
+    {
+      "id": "history_basket_quantities",
+      "message": "Διόρθωση: 1 ποντίκι και 2 ακουστικά, συνολικά έως 100 ευρώ.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω 2 ποντίκια και ακουστικά συνολικά έως 150 ευρώ. ΤΚ 11527."
+        }
+      ],
+      "expectation": {
+        "outcome": "basket",
+        "total": 100,
+        "quantities": [1, 2]
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_basket_quantities-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_basket_quantities-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_basket_quantities-canonical.json",
+      "response_receipt": "history-fixed-cases/history_basket_quantities-response.json",
+      "calls_receipt": "history-fixed-cases/history_basket_quantities-calls.json"
+    },
+    {
+      "id": "history_basket_remove",
+      "message": "Διόρθωση: μόνο laptop και ποντίκι, συνολικά έως 650 ευρώ.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω laptop, οθόνη και ποντίκι συνολικά έως 900 ευρώ. ΤΚ 11527."
+        }
+      ],
+      "expectation": {
+        "outcome": "basket",
+        "total": 650,
+        "slots": 2
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_basket_remove-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_basket_remove-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_basket_remove-canonical.json",
+      "response_receipt": "history-fixed-cases/history_basket_remove-response.json",
+      "calls_receipt": "history-fixed-cases/history_basket_remove-calls.json"
+    },
+    {
+      "id": "history_nfc_retained",
+      "message": "Διόρθωση: έως 400 ευρώ.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω κινητό έως 300 ευρώ με υποχρεωτικό NFC"
+        }
+      ],
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["nfc"],
+        "budget": 400
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-fixed-cases/history_nfc_retained-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-fixed-cases/history_nfc_retained-canonical-shopping_context.json",
+      "canonical_receipt": "history-fixed-cases/history_nfc_retained-canonical.json",
+      "response_receipt": "history-fixed-cases/history_nfc_retained-response.json",
+      "calls_receipt": "history-fixed-cases/history_nfc_retained-calls.json"
+    }
+  ]
+}

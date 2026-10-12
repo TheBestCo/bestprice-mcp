@@ -1,0 +1,2599 @@
+[
+  {
+    "name": "search_products",
+    "input": {
+      "query": "laptop",
+      "required_features": [],
+      "sort": "relevance",
+      "limit": 8
+    },
+    "result": {
+      "requested_query": "laptop",
+      "interpreted_query": "laptop",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:16:36.055Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 2712,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 16,
+        "category_id": 2591,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": null,
+        "sort": "relevance",
+        "feature_hints": [],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["laptop τσάντες", "laptop βάσεις"],
+      "total_matches": 16,
+      "products": [
+        {
+          "product_id": "bp_2164551996",
+          "title": "Energizer EnergyBook 18.5\" Φορητός Υπολογιστής (Intel 6500Y/4GB/128GB SSD/Windows 11) Μπλε",
+          "brand": null,
+          "model": "Energizer EnergyBook 18.5\" Φορητός Υπολογιστής (Intel 6500Y/4GB/128GB SSD/Windows 11) Μπλε",
+          "variant": "52842",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 395.59,
+          "offer_count": 10,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164551998",
+          "title": "Energizer EnergyBook 18.5\" Φορητός Υπολογιστής (6500Y/8GB/256GB SSD/Windows 11) Ροζ",
+          "brand": null,
+          "model": "Energizer EnergyBook 18.5\" Φορητός Υπολογιστής (6500Y/8GB/256GB SSD/Windows 11) Ροζ",
+          "variant": "52845",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 432.39,
+          "offer_count": 10,
+          "availability": "available",
+          "match_confidence": 0.99,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164551997",
+          "title": "Energizer EnergyBook Φορητός Υπολογιστής Ροζ (6500Y/8GB/256GB SSD/Windows 11)",
+          "brand": null,
+          "model": "Energizer EnergyBook Φορητός Υπολογιστής Ροζ (6500Y/8GB/256GB SSD/Windows 11)",
+          "variant": null,
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 429.99,
+          "offer_count": 6,
+          "availability": "available",
+          "match_confidence": 0.97,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163730270",
+          "title": "Apple MacBook Neo 13\" 2026 (A18 Pro Chip 6-Core/8GB/256GB SSD/5-Core GPU)",
+          "brand": null,
+          "model": "Apple MacBook Neo 13\" 2026 (A18 Pro Chip 6-Core/8GB/256GB SSD/5-Core GPU)",
+          "variant": "MHFA4GR/A | MHFH4GR/A | MHFD4GR/A | MHFF4GR/A",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 758.05,
+          "offer_count": 28,
+          "availability": "available",
+          "match_confidence": 0.96,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163730271",
+          "title": "Apple MacBook Neo 13\" 2026 Touch ID (A18 Pro Chip 6-Core/8GB/512GB SSD/5-Core GPU)",
+          "brand": null,
+          "model": "Apple MacBook Neo 13\" 2026 Touch ID (A18 Pro Chip 6-Core/8GB/512GB SSD/5-Core GPU)",
+          "variant": "MHFC4GR/A | MHFJ4GR/A | MHFE4GR/A | MHFG4GR/A",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 848.22,
+          "offer_count": 22,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164412265",
+          "title": "Lenovo ThinkPad E16 Gen 4 (Core 7 350/32GB/512GB SSD/Intel Graphics/Windows 11)",
+          "brand": null,
+          "model": "Lenovo ThinkPad E16 Gen 4 (Core 7 350/32GB/512GB SSD/Intel Graphics/Windows 11)",
+          "variant": "21YE000PGM",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1795.33,
+          "offer_count": 26,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158846555",
+          "title": "Lenovo ThinkPad X1 Yoga G8 Touch (i7-1355U/16GB/512GB SSD/Iris Xe Graphics/Windows 11)",
+          "brand": null,
+          "model": "Lenovo ThinkPad X1 Yoga G8 Touch (i7-1355U/16GB/512GB SSD/Iris Xe Graphics/Windows 11)",
+          "variant": "21HQ002VGM",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1541,
+          "offer_count": 18,
+          "availability": "available",
+          "match_confidence": 0.91,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164547927",
+          "title": "MSI Cyborg 15 C2WFO (Core 7 240H/16GB/512GB SSD/GeForce RTX 5060 8GB/Windows 11)",
+          "brand": null,
+          "model": "MSI Cyborg 15 C2WFO (Core 7 240H/16GB/512GB SSD/GeForce RTX 5060 8GB/Windows 11)",
+          "variant": "9S7-15T121-480 | 285-94-MINCYB15L",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1262,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164547926",
+          "title": "MSI Cyborg 15 C2WEO (Core 7 240H/16GB/512GB SSD/GeForce RTX 5050 8GB/Windows 11)",
+          "brand": null,
+          "model": "MSI Cyborg 15 C2WEO (Core 7 240H/16GB/512GB SSD/GeForce RTX 5050 8GB/Windows 11)",
+          "variant": "9S7-15T121-477 | 285-94-MINCYB15N",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1169,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163724840",
+          "title": "Apple MacBook Air 13\" 2026 (M5 Chip 10-Core/16GB/512GB SSD/8-Core GPU)",
+          "brand": null,
+          "model": "Apple MacBook Air 13\" 2026 (M5 Chip 10-Core/16GB/512GB SSD/8-Core GPU)",
+          "variant": "MDHH4GR/A | MDH74GR/A | MDHA4GR/A | MDHE4GR/A",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1428,
+          "offer_count": 22,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164532739",
+          "title": "Lenovo ThinkPad E14 Gen 8 (Ryzen AI 7 445/32GB/1TB SSD/Radeon Graphics 840M/Windows 11)",
+          "brand": null,
+          "model": "Lenovo ThinkPad E14 Gen 8 (Ryzen AI 7 445/32GB/1TB SSD/Radeon Graphics 840M/Windows 11)",
+          "variant": "21Y2004BGM",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1824,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164532734",
+          "title": "Lenovo ThinkPad E16 Gen 4 (Ultra 7 355/32GB/1TB SSD/Intel Graphics/Windows 11)",
+          "brand": null,
+          "model": "Lenovo ThinkPad E16 Gen 4 (Ultra 7 355/32GB/1TB SSD/Intel Graphics/Windows 11)",
+          "variant": "21YC0060GM",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 2026,
+          "offer_count": 24,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164532737",
+          "title": "Lenovo ThinkPad E14 Gen 8 (Core 7 350/16GB/512GB SSD/Intel Graphics/Windows 11)",
+          "brand": null,
+          "model": "Lenovo ThinkPad E14 Gen 8 (Core 7 350/16GB/512GB SSD/Intel Graphics/Windows 11)",
+          "variant": "21Y8001CGM",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1552,
+          "offer_count": 26,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164532740",
+          "title": "MSI Prestige 14 Flip AI+ The Starry Night Vincent van Gogh Edition Touch (Ultra X9 378H/32GB/1TB SSD/Arc Graphics B390/Windows 11)",
+          "brand": null,
+          "model": "MSI Prestige 14 Flip AI+ The Starry Night Vincent van Gogh Edition Touch (Ultra X9 378H/32GB/1TB SSD/Arc Graphics B390/Windows 11)",
+          "variant": "285-94-MINPRS14FB | 9S7-14T235-429",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 2483,
+          "offer_count": 21,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164532736",
+          "title": "Lenovo ThinkPad E14 Gen 8 (Core 5 320/16GB/512GB SSD/Intel Graphics/Windows 11)",
+          "brand": null,
+          "model": "Lenovo ThinkPad E14 Gen 8 (Core 5 320/16GB/512GB SSD/Intel Graphics/Windows 11)",
+          "variant": "21Y8001RGM",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1304,
+          "offer_count": 24,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164547928",
+          "title": "MSI Cyborg 15 C2WEO (Core 7 240H/16GB/1TB SSD/GeForce RTX 5050 8GB/Windows 11)",
+          "brand": null,
+          "model": "MSI Cyborg 15 C2WEO (Core 7 240H/16GB/1TB SSD/GeForce RTX 5050 8GB/Windows 11)",
+          "variant": "9S7-15T121-479 | 285-94-MINCYB15M",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1697,
+          "offer_count": 22,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Τα αποτελέσματα περιορίστηκαν στην κατηγορία «Laptops», ώστε να μη προηγούνται σχετικά αξεσουάρ."
+      ],
+      "as_of": "2026-10-12T10:16:36.055Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "search_products",
+    "input": {
+      "query": "οθόνη υπολογιστή",
+      "required_features": [],
+      "sort": "relevance",
+      "limit": 8
+    },
+    "result": {
+      "requested_query": "οθόνη",
+      "interpreted_query": "οθόνες",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:16:36.057Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 2539,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": null,
+        "sort": "relevance",
+        "feature_hints": [],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["gaming οθόνες", "curved οθόνες"],
+      "total_matches": 8,
+      "products": [
+        {
+          "product_id": "bp_2164542519",
+          "title": "ZEUSLAP Z13K IPS Φορητή Οθόνη 13.5\" 3000x2000 60Hz",
+          "brand": null,
+          "model": "ZEUSLAP Z13K IPS Φορητή Οθόνη 13.5\" 3000x2000 60Hz",
+          "variant": null,
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 232.82,
+          "offer_count": 2,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164471654",
+          "title": "Οθόνη ESR Kickstand Portable Monitor USB-C, HDMI, Jack, 15.6 inch, 1080P Full HD Silver",
+          "brand": null,
+          "model": "Οθόνη ESR Kickstand Portable Monitor USB-C, HDMI, Jack, 15.6 inch, 1080P Full HD Silver",
+          "variant": null,
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 209,
+          "offer_count": 1,
+          "availability": "available",
+          "match_confidence": 0.99,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164471541",
+          "title": "Οθόνη Αφής NG-TF156DR 15.6\" True Flat 1920x1080 VGA HDMI VESA 75",
+          "brand": null,
+          "model": "Οθόνη Αφής NG-TF156DR 15.6\" True Flat 1920x1080 VGA HDMI VESA 75",
+          "variant": null,
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 270,
+          "offer_count": 1,
+          "availability": "available",
+          "match_confidence": 0.97,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164502480",
+          "title": "POWERTECH PT-1514 Οθόνη για Σύστημα POS 10.1\" 1024x600 LCD HDMI Μαύρη",
+          "brand": null,
+          "model": "POWERTECH PT-1514 Οθόνη για Σύστημα POS 10.1\" 1024x600 LCD HDMI Μαύρη",
+          "variant": null,
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 140.98,
+          "offer_count": 1,
+          "availability": "available",
+          "match_confidence": 0.96,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158096886",
+          "title": "AOC 25G3ZM VA Gaming Monitor 24.5\" 1920x1080 FHD 240Hz 1ms",
+          "brand": null,
+          "model": "AOC 25G3ZM VA Gaming Monitor 24.5\" 1920x1080 FHD 240Hz 1ms",
+          "variant": null,
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 88.75,
+          "offer_count": 26,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163455282",
+          "title": "Samsung Odyssey G5 G50SF OLED HDR Gaming Monitor 27\" 2560x1440 QHD 180Hz 0.03ms",
+          "brand": null,
+          "model": "Samsung Odyssey G5 G50SF OLED HDR Gaming Monitor 27\" 2560x1440 QHD 180Hz 0.03ms",
+          "variant": "LS27FG502SUXEN",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 323.92,
+          "offer_count": 32,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164588382",
+          "title": "Elo TouchSystems ET2470L-2UWA-1-WH-G Touchscreen Οθόνη Υπολογιστή 24\" FHD",
+          "brand": null,
+          "model": "Elo TouchSystems ET2470L-2UWA-1-WH-G Touchscreen Οθόνη Υπολογιστή 24\" FHD",
+          "variant": "E266179",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 581.15,
+          "offer_count": 1,
+          "availability": "available",
+          "match_confidence": 0.91,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164585349",
+          "title": "Acer Predator XB273UX2bmiiprx IPS Gaming Οθόνη 27\" QHD 2560x1440 210Hz UM.HX3EE.219",
+          "brand": null,
+          "model": "Acer Predator XB273UX2bmiiprx IPS Gaming Οθόνη 27\" QHD 2560x1440 210Hz UM.HX3EE.219",
+          "variant": null,
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 243.42,
+          "offer_count": 1,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Ο κατάλογος ερμήνευσε την αναζήτηση ως «οθόνες». Όροι που δεν εμφανίζονται εκεί δεν θεωρούνται επιβεβαιωμένα φίλτρα.",
+        "Δεν αναζητήθηκε «οθόνη» από τη διατύπωσή σου. Έλεγξε ότι τα αποτελέσματα αντιστοιχούν σε αυτό που ζήτησες."
+      ],
+      "as_of": "2026-10-12T10:16:36.057Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2163730271", "bp_2164412265", "bp_2158846555", "bp_2164547927"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2163730271",
+          "title": "Apple MacBook Neo 13\" 2026 Touch ID (A18 Pro Chip 6-Core/8GB/512GB SSD/5-Core GPU)",
+          "brand": "Apple",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 848.22,
+          "availability": "in_stock",
+          "offer_count": 22,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "13 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 13,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "8192 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 8192,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 2527,
+              "label": "Χωρητικότητα Σκληρού Δίσκου",
+              "value": "512 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 512,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1034,
+              "label": "Οικογένεια Επεξεργαστή",
+              "value": "Apple A18 Pro",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 396,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "macOS",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 2781,
+              "label": "Τύπος Laptop",
+              "value": "Καθημερινή Χρήση, Φοιτητικό",
+              "group": "Τύπος"
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "2408 x 1506",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1200,
+              "label": "Τύπος Κάρτας Γραφικών",
+              "value": "Apple A18 Pro 5-Core",
+              "group": "Κάρτα Γραφικών"
+            },
+            {
+              "id": 48,
+              "label": "Μέγεθος Μνήμης Γραφικών",
+              "value": "1 MB",
+              "group": "Κάρτα Γραφικών",
+              "numeric": {
+                "value": 1,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 659,
+              "label": "Βάρος",
+              "value": "1.23 kg",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 1.23,
+                "unit": "kg"
+              }
+            },
+            {
+              "id": 2115,
+              "label": "Συνδέσεις",
+              "value": "USB 2.0, USB 3.0, Wi-Fi, Bluetooth, DisplayPort, USB Type-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1785,
+              "label": "Touch Screen",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2525,
+              "label": "IPS Panel",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2533,
+              "label": "Τύπος Optical Drive",
+              "value": "Χωρίς Optical Drive",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 141,
+              "label": "Ενσωματωμένος Card Reader",
+              "value": "Όχι",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 2526,
+              "label": "Μοντέλο Επεξεργαστή",
+              "value": "A18 Pro 6-Core",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2530,
+              "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2879,
+              "label": "Τύπος Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            }
+          ],
+          "offer_titles": [
+            "Apple MacBook Neo 13 Retina (Apple A18 Pro/8GB/512GB SSD, 5 Cores GPU, MacOS, Touch ID) Indigo",
+            "Apple MacBook Neo 13 Retina (Apple A18 Pro/8GB/512GB SSD, 5 Cores GPU, MacOS, Touch ID) Citrus",
+            "Apple MacBook Neo 13 Retina (Apple A18 Pro/8GB/512GB SSD, 5 Cores GPU, MacOS, Touch ID) Silver",
+            "Apple MacBook Neo 13 Retina (Apple A18 Pro/8GB/512GB SSD, 5 Cores GPU, MacOS, Touch ID) Blush",
+            "Apple MacBook Neo Silver Laptop 13\" Retina (A18 Pro/8 GB/512 GB/5 Core GPU/macOS)",
+            "Apple MacBook Neo Citrus Laptop 13\" Retina (A18 Pro/8 GB/512 GB/5 Core GPU/macOS)",
+            "Apple MacBook Neo Indigo Laptop 13\" Retina (A18 Pro/8 GB/512 GB/5 Core GPU/macOS)",
+            "Apple MacBook Neo 13\" A18 Pro 6-Core/8GB/512GB/5-Core Silver with Touch ID Laptop"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 2
+          }
+        },
+        {
+          "product_id": "bp_2164412265",
+          "title": "Lenovo ThinkPad E16 Gen 4 (Core 7 350/32GB/512GB SSD/Intel Graphics/Windows 11)",
+          "brand": "Lenovo",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1795.33,
+          "availability": "in_stock",
+          "offer_count": 26,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "16 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 16,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "32768 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 32768,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 2527,
+              "label": "Χωρητικότητα Σκληρού Δίσκου",
+              "value": "512 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 512,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1034,
+              "label": "Οικογένεια Επεξεργαστή",
+              "value": "Intel Core 7",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 396,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Windows 11",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1200 (Full HD+)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1200,
+              "label": "Τύπος Κάρτας Γραφικών",
+              "value": "Intel Graphics",
+              "group": "Κάρτα Γραφικών"
+            },
+            {
+              "id": 48,
+              "label": "Μέγεθος Μνήμης Γραφικών",
+              "value": "1 MB",
+              "group": "Κάρτα Γραφικών",
+              "numeric": {
+                "value": 1,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 4686,
+              "label": "Ρυθμός Ανανέωσης",
+              "value": "60 Hz",
+              "group": null,
+              "numeric": {
+                "value": 60,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 659,
+              "label": "Βάρος",
+              "value": "1.71 kg",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 1.71,
+                "unit": "kg"
+              }
+            },
+            {
+              "id": 2115,
+              "label": "Συνδέσεις",
+              "value": "Wi-Fi, Ethernet, Bluetooth, Thunderbolt, DisplayPort, USB 3.2, HDMI 2.1",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1785,
+              "label": "Touch Screen",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2525,
+              "label": "IPS Panel",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1033,
+              "label": "Τύπος RAM",
+              "value": "DDR5",
+              "group": "Μνήμη"
+            },
+            {
+              "id": 2533,
+              "label": "Τύπος Optical Drive",
+              "value": "Χωρίς Optical Drive",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 141,
+              "label": "Ενσωματωμένος Card Reader",
+              "value": "Όχι",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 297,
+              "label": "Συχνότητα",
+              "value": "5600 MHz",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 5600,
+                "unit": "MHz"
+              }
+            },
+            {
+              "id": 2526,
+              "label": "Μοντέλο Επεξεργαστή",
+              "value": "350",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2530,
+              "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2879,
+              "label": "Τύπος Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "FHD+",
+              "group": "Οθόνη"
+            }
+          ],
+          "offer_titles": [
+            "NB TP E16 G4 CORE7 32G 512G 11P",
+            "NB TP E16 G4 CORE7/32GB/512GB/W11P",
+            "LENOVO Laptop ThinkPad E16 G4 16'' WUXGA IPS/Core 7-350/32GB/512GB SSD/Intel Graphics/Win 11 Pro/3Y NBD/Black",
+            "LENOVO Laptop ThinkPad E16 G4 16\" FHD+ Core 7-350, 32GB, 512GB SSD M.2, Win 11 Pro, 3 Year Warranty / 21YE000PGM",
+            "LENOVO Laptop ThinkPad E16 G4 16&apos&apos WUXGA IPS/Core 7-350/32GB/512GB SSD/Intel Graphics/Win 11 Pro/3Y NBD/Black",
+            "LENOVO ThinkPad E16 Gen 4 16\" IPS Core7/ 32GB/ 512GB/ Intel Graphics/ Win11 Pro/3Y NBD/Black Laptop",
+            "ThinkPad E16 Gen4 Core7-350 32GB SSD512GB WPRO 3Y ONSITE",
+            "LENOVO Laptop ThinkPad E16 G4 16'' WUXGA IPS/Core 7-350/32GB/512GB SSD/Intel Graphics/Win 11 Pro/3Y NBD/Black 21YE000PGM"
+          ]
+        },
+        {
+          "product_id": "bp_2158846555",
+          "title": "Lenovo ThinkPad X1 Yoga G8 Touch (i7-1355U/16GB/512GB SSD/Iris Xe Graphics/Windows 11)",
+          "brand": "Lenovo",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1541,
+          "availability": "in_stock",
+          "offer_count": 18,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "14 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 14,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "16384 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 16384,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 2527,
+              "label": "Χωρητικότητα Σκληρού Δίσκου",
+              "value": "512 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 512,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1034,
+              "label": "Οικογένεια Επεξεργαστή",
+              "value": "Intel Core i7",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 396,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Windows 11",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 2781,
+              "label": "Τύπος Laptop",
+              "value": "Business, Εύκολη Μεταφορά, Υψηλών Επιδόσεων",
+              "group": "Τύπος"
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1200 (Full HD+)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1200,
+              "label": "Τύπος Κάρτας Γραφικών",
+              "value": "Intel Iris Xe Graphics",
+              "group": "Κάρτα Γραφικών"
+            },
+            {
+              "id": 48,
+              "label": "Μέγεθος Μνήμης Γραφικών",
+              "value": "1 MB",
+              "group": "Κάρτα Γραφικών",
+              "numeric": {
+                "value": 1,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 659,
+              "label": "Βάρος",
+              "value": "1.38 kg",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 1.38,
+                "unit": "kg"
+              }
+            },
+            {
+              "id": 2115,
+              "label": "Συνδέσεις",
+              "value": "Wi-Fi, Bluetooth, Thunderbolt, USB Type-C, USB 3.2, HDMI 2.1",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 5145,
+              "label": "Γενιά Επεξεργαστή",
+              "value": "13ης Γενιάς",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 1785,
+              "label": "Touch Screen",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2525,
+              "label": "IPS Panel",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1035,
+              "label": "Ταχύτητα Επεξεργαστή",
+              "value": "3.7 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 3.7,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1033,
+              "label": "Τύπος RAM",
+              "value": "LPDDR5",
+              "group": "Μνήμη"
+            },
+            {
+              "id": 2533,
+              "label": "Τύπος Optical Drive",
+              "value": "Χωρίς Optical Drive",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 141,
+              "label": "Ενσωματωμένος Card Reader",
+              "value": "Όχι",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 297,
+              "label": "Συχνότητα",
+              "value": "6400 MHz",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 6400,
+                "unit": "MHz"
+              }
+            },
+            {
+              "id": 2526,
+              "label": "Μοντέλο Επεξεργαστή",
+              "value": "1355U",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2530,
+              "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2879,
+              "label": "Τύπος Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "FHD+",
+              "group": "Οθόνη"
+            }
+          ],
+          "offer_titles": [
+            "Lenovo ThinkPad X1 Yoga G8 T 21HQ002VGM 14'' WUXGA/i7- 1355U/16GB/512GB/Win 11 Pro/3Y Premier",
+            "Lenovo ThinkPad X1 Yoga G8 T 21HQ002VGM 14'' WUXGA/i7- 1355U/16GB LPDDR5/512GB SSD/Win 11 Pro/3Y Premier (21HQ002VGM)",
+            "Lenovo ThinkPad X1 Yoga G8 T 21HQ002VGM 14'' WUXGA Touch/ i7- 1355U/ 16GB/ 512GB/ Windows 11 Pro/ 3Y Premier",
+            "Laptop Lenovo ThinkPad X1 Yoga G8 T 14'' WUXGA Touch/ i7-1355U/ 16GB/ 512GB SSD/ Windows 11 Pro/ 3Y Premier 21HQ002VGM",
+            "Lenovo ThinkPad X1 Yoga Gen 8 14\" IPS Touchscreen (i7-1355U/16GB/512GB SSD/W11 Pro) Storm Grey (GR Keyboard)",
+            "Lenovo ThinkPad X1 Yoga Gen 8, i7-1355U/14 WUXGA IPS Touch/16GB/512GB SSD/Webcam/Win11 Pro, Storm Grey",
+            "Laptop Lenovo ThinkPad X1 Yoga G8 14\" Touch Intel Core i7-1355U(3.70GHz) 16GB 512GB SSD Win11 Pro Storm Grey 21HQ002VGM",
+            "Laptop Lenovo ThinkPad X1 Yoga G8 T 14 WUXGA Touch/ i7-1355U/ 16GB/ 512GB SSD/ Windows 11 Pro/ 3Y Premier 21HQ002VGM"
+          ]
+        },
+        {
+          "product_id": "bp_2164547927",
+          "title": "MSI Cyborg 15 C2WFO (Core 7 240H/16GB/512GB SSD/GeForce RTX 5060 8GB/Windows 11)",
+          "brand": "MSI",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 1262,
+          "availability": "in_stock",
+          "offer_count": 23,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "15.6 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 15.6,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "16384 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 16384,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 2527,
+              "label": "Χωρητικότητα Σκληρού Δίσκου",
+              "value": "512 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 512,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1034,
+              "label": "Οικογένεια Επεξεργαστή",
+              "value": "Intel Core 7",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 396,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Windows 11",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 2781,
+              "label": "Τύπος Laptop",
+              "value": "Gaming",
+              "group": "Τύπος"
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1200,
+              "label": "Τύπος Κάρτας Γραφικών",
+              "value": "Nvidia GeForce RTX 5060",
+              "group": "Κάρτα Γραφικών"
+            },
+            {
+              "id": 48,
+              "label": "Μέγεθος Μνήμης Γραφικών",
+              "value": "8192 MB",
+              "group": "Κάρτα Γραφικών",
+              "numeric": {
+                "value": 8192,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 4686,
+              "label": "Ρυθμός Ανανέωσης",
+              "value": "144 Hz",
+              "group": null,
+              "numeric": {
+                "value": 144,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 659,
+              "label": "Βάρος",
+              "value": "1.98 kg",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 1.98,
+                "unit": "kg"
+              }
+            },
+            {
+              "id": 1785,
+              "label": "Touch Screen",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2525,
+              "label": "IPS Panel",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1035,
+              "label": "Ταχύτητα Επεξεργαστή",
+              "value": "2.5 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2.5,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1033,
+              "label": "Τύπος RAM",
+              "value": "DDR4",
+              "group": "Μνήμη"
+            },
+            {
+              "id": 2533,
+              "label": "Τύπος Optical Drive",
+              "value": "Χωρίς Optical Drive",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 141,
+              "label": "Ενσωματωμένος Card Reader",
+              "value": "Όχι",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 2526,
+              "label": "Μοντέλο Επεξεργαστή",
+              "value": "240H",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2530,
+              "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2879,
+              "label": "Τύπος Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            }
+          ],
+          "offer_titles": [
+            "MSI Laptop Cyborg 15 C2WFO 15.6'' FHD IPS 144Hz C7-240H/16GB/512GB SSD NVMe PCIe 4.0/NVidia GeForce RTX 5060 8GB/Win 11 Home/2Y/Platinum Gray",
+            "MSI Laptop Cyborg 15 C2WFO 15.6'' FHD IPS 144Hz C7-240H/16GB/512GB SSD NVMe PCIe 4.0/NVidia GeForce RTX 5060 8GB/Win 11 Home/2Y/Platinum Gray (9S7-15T121-480)",
+            "MSI Laptop Cyborg 15 C2WFO 15.6'' FHD IPS 144Hz C7-240H/16GB/512GB SSD NVMe PCIe 4.0/NVidia GeForce RTX 5060 8GB/Win 11 Home/2Y/Platinum Gray 9S7-15T121-480",
+            "MSI Cyborg 15 C2WFO 15.6\" IPS 144Hz Core7/ 16GB/ 512GB/ RTX5060 8GB/Win 11 Home/2Y/Platinum Gray Gaming Laptop",
+            "MSI Laptop Cyborg 15 C2WFO 15.6\" FHD Core 7-240H, 16GB, 512GB SSD M.2, Nvidia GeForce RTX 5060 8GB, Win 11 Home, 2 Year Warranty / 9S7-15T121-480",
+            "MSI Laptop Cyborg 15 C2WFO 15.6 FHD IPS 144Hz C7-240H/16GB/512GB SSD NVMe PCIe 4.0/NVidia GeForce RTX 5060 8GB/Win 11 Home/2Y/Platinum Gray",
+            "MSI Cyborg 15 C2WFO 15.6 IPS FHD 144Hz (Core 7-240H/16GB/512GB SSD/GeForce RTX 5060/W11 Home) Platinum Gray (International English Keyboard)",
+            "Gaming Laptop MSI Cyborg 15 C2WFO - Οθόνη FHD 15.6'' IPS 144Hz - Intel(R) Core(TM) 7 240H - 16GB RAM - 512GB SSD NVMe - RTX 5060 8GB - Windows 11 Home - Platinum Gray 9S7-15T121-48"
+          ]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:16:36.055Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2164551996", "bp_2164551998", "bp_2164551997", "bp_2163730270"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2164551996",
+          "title": "Energizer EnergyBook 18.5\" Φορητός Υπολογιστής (Intel 6500Y/4GB/128GB SSD/Windows 11) Μπλε",
+          "brand": "Energizer",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 395.59,
+          "availability": "in_stock",
+          "offer_count": 10,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "18.5 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 18.5,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "4096 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 4096,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 2527,
+              "label": "Χωρητικότητα Σκληρού Δίσκου",
+              "value": "128 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 128,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 396,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Windows 11",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 659,
+              "label": "Βάρος",
+              "value": "2.25 kg",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 2.25,
+                "unit": "kg"
+              }
+            },
+            {
+              "id": 2525,
+              "label": "IPS Panel",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2526,
+              "label": "Μοντέλο Επεξεργαστή",
+              "value": "6500Y",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2530,
+              "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2528,
+              "label": "Χωρητικότητα Δεύτερου Σκληρού Δίσκου",
+              "value": "128 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 128,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 2531,
+              "label": "Τύπος Δεύτερου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2879,
+              "label": "Τύπος Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            }
+          ],
+          "offer_titles": [
+            "Φορητός Υπολογιστής Energizer EnergyBook 18.5 Intel 6500Y 4GB / 128GB SSD 1920 x 1080 IPS Οθόνη Windows 11 Μπλε 52842",
+            "Φορητός Υπολογιστής Energizer EnergyBook 18.5\" Intel 6500Y 4GB / 128GB SSD 1920 x 1080 IPS Οθόνη Windows 11 Μπλε",
+            "Φορητός Υπολογιστής Energizer EnergyBook 18.5\" Intel 6500Y 4GB / 128GB SSD 1920 x 1080 IPS Οθόνη Win"
+          ]
+        },
+        {
+          "product_id": "bp_2164551998",
+          "title": "Energizer EnergyBook 18.5\" Φορητός Υπολογιστής (6500Y/8GB/256GB SSD/Windows 11) Ροζ",
+          "brand": "Energizer",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 432.39,
+          "availability": "in_stock",
+          "offer_count": 10,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "18.5 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 18.5,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "8192 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 8192,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 2527,
+              "label": "Χωρητικότητα Σκληρού Δίσκου",
+              "value": "256 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 256,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 396,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Windows 11",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 659,
+              "label": "Βάρος",
+              "value": "2.25 kg",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 2.25,
+                "unit": "kg"
+              }
+            },
+            {
+              "id": 2525,
+              "label": "IPS Panel",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2526,
+              "label": "Μοντέλο Επεξεργαστή",
+              "value": "6500Y",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2530,
+              "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2528,
+              "label": "Χωρητικότητα Δεύτερου Σκληρού Δίσκου",
+              "value": "256 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 256,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 2531,
+              "label": "Τύπος Δεύτερου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2879,
+              "label": "Τύπος Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            }
+          ],
+          "offer_titles": [
+            "Φορητός Υπολογιστής Energizer EnergyBook 18.5 Intel 6500Y 8GB / 256GB SSD 1920 x 1080 IPS Οθόνη Windows 11 Ροζ 52845",
+            "Φορητός Υπολογιστής Energizer EnergyBook 18.5\" Intel 6500Y 8GB / 256GB SSD 1920 x 1080 IPS Οθόνη Windows 11 Ροζ",
+            "Φορητός Υπολογιστής Energizer EnergyBook 18.5\" Intel 6500Y 8GB / 256GB SSD 1920 x 1080 IPS Οθόνη Win"
+          ]
+        },
+        {
+          "product_id": "bp_2164551997",
+          "title": "Energizer EnergyBook Φορητός Υπολογιστής Ροζ (6500Y/8GB/256GB SSD/Windows 11)",
+          "brand": "Energizer",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 429.99,
+          "availability": "in_stock",
+          "offer_count": 6,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "15.6 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 15.6,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "8192 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 8192,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 2527,
+              "label": "Χωρητικότητα Σκληρού Δίσκου",
+              "value": "256 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 256,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 396,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Windows 11",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 2526,
+              "label": "Μοντέλο Επεξεργαστή",
+              "value": "6500Y",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2530,
+              "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2528,
+              "label": "Χωρητικότητα Δεύτερου Σκληρού Δίσκου",
+              "value": "256 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 256,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 2531,
+              "label": "Τύπος Δεύτερου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2879,
+              "label": "Τύπος Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            }
+          ],
+          "offer_titles": [
+            "Φορητός Υπολογιστής Energizer EnergyBook 15.6\" Intel 6500Y 8GB / 256GB SSD 1920 x 1080 IPS Οθόνη Windows 11 Ροζ",
+            "Φορητός Υπολογιστής Energizer EnergyBook 15.6\" Intel 6500Y 8GB / 256GB SSD 1920 x 1080 IPS Οθόνη Win"
+          ]
+        },
+        {
+          "product_id": "bp_2163730270",
+          "title": "Apple MacBook Neo 13\" 2026 (A18 Pro Chip 6-Core/8GB/256GB SSD/5-Core GPU)",
+          "brand": "Apple",
+          "category_id": 2591,
+          "category_title": "Laptops",
+          "price_from": 758.05,
+          "availability": "in_stock",
+          "offer_count": 28,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "13 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 13,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "8192 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 8192,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 2527,
+              "label": "Χωρητικότητα Σκληρού Δίσκου",
+              "value": "256 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 256,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1034,
+              "label": "Οικογένεια Επεξεργαστή",
+              "value": "Apple A18 Pro",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 396,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "macOS",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 2781,
+              "label": "Τύπος Laptop",
+              "value": "Καθημερινή Χρήση, Φοιτητικό",
+              "group": "Τύπος"
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "2408 x 1506",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1200,
+              "label": "Τύπος Κάρτας Γραφικών",
+              "value": "Apple A18 Pro 5-Core",
+              "group": "Κάρτα Γραφικών"
+            },
+            {
+              "id": 48,
+              "label": "Μέγεθος Μνήμης Γραφικών",
+              "value": "1 MB",
+              "group": "Κάρτα Γραφικών",
+              "numeric": {
+                "value": 1,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 659,
+              "label": "Βάρος",
+              "value": "1.23 kg",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 1.23,
+                "unit": "kg"
+              }
+            },
+            {
+              "id": 2115,
+              "label": "Συνδέσεις",
+              "value": "USB 2.0, USB 3.0, Wi-Fi, Bluetooth, DisplayPort, USB Type-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1785,
+              "label": "Touch Screen",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2525,
+              "label": "IPS Panel",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2533,
+              "label": "Τύπος Optical Drive",
+              "value": "Χωρίς Optical Drive",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 141,
+              "label": "Ενσωματωμένος Card Reader",
+              "value": "Όχι",
+              "group": "Μέσα Ανάγνωσης"
+            },
+            {
+              "id": 2526,
+              "label": "Μοντέλο Επεξεργαστή",
+              "value": "A18 Pro 6-Core",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2530,
+              "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 2879,
+              "label": "Τύπος Σκληρού Δίσκου",
+              "value": "SSD",
+              "group": "Αποθηκευτικός Χώρος"
+            }
+          ],
+          "offer_titles": [
+            "Apple MacBook Neo 13 Retina (Apple A18 Pro/8GB/256GB SSD, 5 Cores GPU, MacOS) Silver",
+            "Apple MacBook Neo 13 Retina (Apple A18 Pro/8GB/256GB SSD, 5 Cores GPU, MacOS) Blush",
+            "Apple MacBook Neo 13 Retina (Apple A18 Pro/8GB/256GB SSD, 5 Cores GPU, MacOS) Citrus",
+            "Apple MacBook Neo 13 Retina (Apple A18 Pro/8GB/256GB SSD, 5 Cores GPU, MacOS) Indigo",
+            "Apple MacBook Neo Silver Laptop 13\" Retina (A18 Pro/8 GB/256 GB/5 Core GPU/macOS)",
+            "Apple MacBook Neo Citrus Laptop 13\" Retina (A18 Pro/8 GB/256 GB/5 Core GPU/macOS)",
+            "Apple MacBook Neo Indigo Laptop 13\" Retina (A18 Pro/8 GB/256 GB/5 Core GPU/macOS)",
+            "Apple MacBook Neo 13\" A18 Pro 6-Core/8GB/256GB/5-Core Silver Laptop"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 2
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:16:36.055Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2164542519", "bp_2164471654", "bp_2164471541", "bp_2164502480"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2164542519",
+          "title": "ZEUSLAP Z13K IPS Φορητή Οθόνη 13.5\" 3000x2000 60Hz",
+          "brand": "ZEUSLAP",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 232.82,
+          "availability": "in_stock",
+          "offer_count": 2,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "13.5 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 13.5,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Φορητό Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "60 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 60,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "4 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 4,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "3:2",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "480",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 480,
+                "unit": null
+              }
+            }
+          ],
+          "offer_titles": [
+            "Zeuslap Z13K 13,5\" φορητή οθόνη IPS 3000x2000 60Hz",
+            "ZEUSLAP Monitor 13.5\" Z13K IPS 3000x2000 (Z13K)"
+          ]
+        },
+        {
+          "product_id": "bp_2164471654",
+          "title": "Οθόνη ESR Kickstand Portable Monitor USB-C, HDMI, Jack, 15.6 inch, 1080P Full HD Silver",
+          "brand": "ESR",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 209,
+          "availability": "in_stock",
+          "offer_count": 1,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "15.6 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 15.6,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "USB Hub",
+              "group": null
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            }
+          ],
+          "offer_titles": [
+            "Οθόνη ESR Kickstand Portable Monitor USB-C, HDMI, Jack, 15.6 inch, 1080P Full HD Silver"
+          ]
+        },
+        {
+          "product_id": "bp_2164471541",
+          "title": "Οθόνη Αφής NG-TF156DR 15.6\" True Flat 1920x1080 VGA HDMI VESA 75",
+          "brand": "NG",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 270,
+          "availability": "in_stock",
+          "offer_count": 1,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "15.6 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 15.6,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "8 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 8,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "VGA",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "400",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 400,
+                "unit": null
+              }
+            }
+          ],
+          "offer_titles": ["ΟΘΟΝΗ ΑΦΗΣ NG-TF156DR 15,6\" TRUE FLAT 1920*1080, VGA, HDMI, VESA 75"]
+        },
+        {
+          "product_id": "bp_2164502480",
+          "title": "POWERTECH PT-1514 Οθόνη για Σύστημα POS 10.1\" 1024x600 LCD HDMI Μαύρη",
+          "brand": "Powertech",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 140.98,
+          "availability": "in_stock",
+          "offer_count": 1,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "10.1 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 10.1,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "LCD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": ["POWERTECH οθόνη για σύστημα POS PT-1514, 10.1\" 1024x600 LCD, HDMI, μαύρη"]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:16:36.057Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2158096886", "bp_2163455282", "bp_2164588382", "bp_2164585349"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2158096886",
+          "title": "AOC 25G3ZM VA Gaming Monitor 24.5\" 1920x1080 FHD 240Hz 1ms",
+          "brand": "AOC",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 88.75,
+          "availability": "in_stock",
+          "offer_count": 26,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "24.5 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 24.5,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "1920 x 1080 (FHD)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Gaming Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "FreeSync",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "VA",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "240 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 240,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "1 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 1,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, DisplayPort",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης, Ρύθμιση Ύψους, Οριζόντια Περιστροφή, Κατακόρυφη Περιστροφή",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "E",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "300",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 300,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "3000:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Gaming Monitor AOC 25G3ZM/BK - 24.5'' FHD - VA - 240Hz-1ms - HDMI/DP 25G3ZM/BK",
+            "AOC 25G3ZM/BK, 24.5-Inch FHD VA Gaming Monitor, 1920x1080, 240Hz, 16:9, 1ms, 3000:1, HDMI, DP, Black/Red (25G3ZM/BK)",
+            "AOC 25G3ZM/BK 24.5\" 240Hz Gaming Monitor",
+            "AOC 25G3ZM/BK VA Gaming Monitor 24.5\" FHD 1920x1080 240Hz με Χρόνο Απόκρισης 1ms GTG",
+            "AOC 25G3ZM - Οθόνη υπολογιστή - LED VA 1Ms 240Hz - 25",
+            "AOC 25G3ZM/BK",
+            "AOC 25G3ZM/BK (25G3ZM/BK)",
+            "Aoc 25g3zm/bk Computer Monitor 62.2 cm (24.5\") 1920 x 1080 Pixels Full hd Black, red"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 1
+          }
+        },
+        {
+          "product_id": "bp_2163455282",
+          "title": "Samsung Odyssey G5 G50SF OLED HDR Gaming Monitor 27\" 2560x1440 QHD 180Hz 0.03ms",
+          "brand": "Samsung",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 323.92,
+          "availability": "in_stock",
+          "offer_count": 32,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 43,
+              "label": "Μέγιστη Ανάλυση",
+              "value": "2560 x 1440 (QHD 2Κ)",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3202,
+              "label": "Είδος",
+              "value": "Gaming Monitor",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3201,
+              "label": "Επιπλέον Δυνατότητες",
+              "value": "FreeSync, G-Sync",
+              "group": null
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "OLED",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "180 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 180,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "0.03 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 0.03,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 3205,
+              "label": "Συνδεσιμότητα",
+              "value": "HDMI, DisplayPort",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 7484,
+              "label": "Εργονομία Βάσης",
+              "value": "Ρύθμιση Κλίσης",
+              "group": null
+            },
+            {
+              "id": 3204,
+              "label": "Ultrawide",
+              "value": "Όχι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 3203,
+              "label": "HDR",
+              "value": "Ναι",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1911,
+              "label": "Κυρτή",
+              "value": "Όχι",
+              "group": "Τύπος"
+            },
+            {
+              "id": 7485,
+              "label": "Smart Monitor",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "QHD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4144,
+              "label": "Νέα Ενεργειακή Κλάση",
+              "value": "G",
+              "group": "Νέα Ενεργειακή Ετικέτα"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "200",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 200,
+                "unit": null
+              }
+            },
+            {
+              "id": 140,
+              "label": "Λόγος Αντίθεσης",
+              "value": "1000000:1",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1933,
+              "label": "VESA Mount",
+              "value": "100x100",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Samsung Monitor 27\" Odyssey OLED G5 G50S",
+            "Samsung Odyssey G5 G50SF LS27FG502SUXEN 27\" QHD OLED 2K Gaming Monitor",
+            "Οθόνη Samsung Odyssey OLED G5 G50F 27\" QHD 180Hz HDR LS27FG502SUXEN",
+            "Samsung Odyssey G5 G50SF OLED HDR Gaming Monitor 27' QHD 2560x1440 180Hz με Χρόνο Απόκρισης 0.03ms GTG",
+            "SAMSUNG LS27FG502SUXEN Odyssey OLED G5 G50SF Gaming Monitor 27\" (LS27FG502SUXEN)",
+            "Samsung Odyssey G5 G50SF OLED HDR Gaming Monitor 27\" QHD 2560x1440 180Hz με Χρόνο Απόκρισης 0.03ms GTG LS27FG502SUXEN",
+            "Gaming Monitor Samsung Odyssey G5 G50SF - 27'' QHD - OLED - HDR10 - 180Hz/0.03ms - HDMI/DP LS27FG502SUXEN",
+            "Samsung Odyssey G5 G50SF OLED HDR Monitor 27\" QHD 2560x1440 144Hz με Χρόνο Απόκρισης 0.03ms GTG"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 2
+          }
+        },
+        {
+          "product_id": "bp_2164588382",
+          "title": "Elo TouchSystems ET2470L-2UWA-1-WH-G Touchscreen Οθόνη Υπολογιστή 24\" FHD",
+          "brand": "Elo TouchSystems",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 581.15,
+          "availability": "in_stock",
+          "offer_count": 1,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "24 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 24,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "LCD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "60 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 60,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 1999,
+              "label": "Aspect Ratio",
+              "value": "16:9",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "Full HD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "225",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 225,
+                "unit": null
+              }
+            }
+          ],
+          "offer_titles": [
+            "Elo Touch Systems Οθόνες Υπολογιστή ET2470L-2UWA-1-WH-G 24IN LCD FHD PCAP 10-TOUCH ANTI-GLARE WHT"
+          ]
+        },
+        {
+          "product_id": "bp_2164585349",
+          "title": "Acer Predator XB273UX2bmiiprx IPS Gaming Οθόνη 27\" QHD 2560x1440 210Hz UM.HX3EE.219",
+          "brand": "Acer",
+          "category_id": 2621,
+          "category_title": "Οθόνες Υπολογιστών",
+          "price_from": 243.42,
+          "availability": "in_stock",
+          "offer_count": 1,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "27 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 27,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 3018,
+              "label": "Τύπος Panel",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 605,
+              "label": "Συχνότητα Ανανέωσης Εικόνας",
+              "value": "210 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 210,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 622,
+              "label": "Χρόνος Απόκρισης",
+              "value": "0.5 ms",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 0.5,
+                "unit": "ms"
+              }
+            },
+            {
+              "id": 1101,
+              "label": "Ανάλυση",
+              "value": "QHD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 621,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "350",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 350,
+                "unit": null
+              }
+            }
+          ],
+          "offer_titles": ["Acer Predator XB273UX2BMIIPRX 27\" Οθόνη Gaming QHD (2560x1440) IPS 210Hz"]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:16:36.057Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "optimize_basket",
+    "input": {
+      "items": [
+        {
+          "product_id": "bp_2164551997",
+          "quantity": 1
+        },
+        {
+          "product_id": "bp_2158096886",
+          "quantity": 1
+        }
+      ],
+      "postal_code": "11527",
+      "maximum_merchants": 3,
+      "minimum_merchant_rating": 0,
+      "objective": "balanced_reliability_cost"
+    },
+    "result": {
+      "preferred_plan": "balanced",
+      "methodology_id": "bestprice_basket_bounded_v1",
+      "plans": [
+        {
+          "plan_type": "balanced",
+          "merchant_count": 2,
+          "item_subtotal": 553.49,
+          "shipping_total": 18,
+          "shipping_status": "known",
+          "total_price": 571.49,
+          "reliability_score": 5,
+          "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+          "merchants": [
+            {
+              "merchant_id": "bp_merchant_220",
+              "merchant_name": "Syncom",
+              "merchant_rating": 5,
+              "verified_merchant": false,
+              "item_subtotal": 123.5,
+              "shipping_price": 14.5,
+              "shipping_status": "known",
+              "total_price": 138,
+              "reason": "selected_by_basket_optimizer",
+              "items": [
+                {
+                  "product_id": "bp_2158096886",
+                  "title": "AOC 25G3ZM VA Gaming Monitor 24.5\" 1920x1080 FHD 240Hz 1ms",
+                  "quantity": 1,
+                  "unit_price": 123.5,
+                  "line_total": 123.5,
+                  "decision_id": "[omitted]",
+                  "product_url": "[omitted]"
+                }
+              ]
+            },
+            {
+              "merchant_id": "bp_merchant_11804",
+              "merchant_name": "Telephoneplus",
+              "merchant_rating": 5,
+              "verified_merchant": false,
+              "item_subtotal": 429.99,
+              "shipping_price": 3.5,
+              "shipping_status": "known",
+              "total_price": 433.49,
+              "reason": "selected_by_basket_optimizer",
+              "items": [
+                {
+                  "product_id": "bp_2164551997",
+                  "title": "Energizer EnergyBook Φορητός Υπολογιστής Ροζ (6500Y/8GB/256GB SSD/Windows 11)",
+                  "quantity": 1,
+                  "unit_price": 429.99,
+                  "line_total": 429.99,
+                  "decision_id": "[omitted]",
+                  "product_url": "[omitted]"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "unavailable_items": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:16:36.232Z",
+      "currency": "EUR"
+    }
+  }
+]

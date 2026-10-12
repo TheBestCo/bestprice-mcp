@@ -1,0 +1,895 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:17:56.836Z",
+  "outcome": "basket",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "0a5ce7b7-c9c2-455e-af60-58ad12a5f281",
+    "revision": 2,
+    "fingerprint": "c05b7bb6ab0d553381693904962bbf0f5f3799af81e4c1161fb240241073b0c1",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "mouse",
+    "intent": "shop",
+    "query": "ποντίκι",
+    "constraints": {
+      "budgetEur": 80,
+      "statedBudgetEur": 80,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 80,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 80,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 62,
+            "end": 73,
+            "text": "έως 80 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [
+      {
+        "id": "wired",
+        "label": "ενσύρματη σύνδεση",
+        "hint": "ενσύρματο"
+      },
+      {
+        "id": "wireless",
+        "label": "ασύρματη σύνδεση",
+        "hint": "bluetooth"
+      }
+    ],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": ["ενσύρματο ποντίκι", "ασύρματο ποντίκι"],
+    "nonPricePhrases": ["ενσύρματο ποντίκι", "ασύρματο ποντίκι"],
+    "source_turns": [],
+    "transition": "amend"
+  },
+  "actions": [],
+  "status": "ready",
+  "mission": {
+    "intent": "basket",
+    "summary_el": "Κοινό καλάθι · Ποντίκι · Συνολικό όριο 80 €",
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 80,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 80,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 62,
+              "end": 73,
+              "text": "έως 80 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 80,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "wired",
+                "label": "ενσύρματη σύνδεση",
+                "hint": "ενσύρματο"
+              }
+            ]
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "wireless",
+                "label": "ασύρματη σύνδεση",
+                "hint": "ασύρματο"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "primary": null,
+  "alternatives": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 80,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 80,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 62,
+            "end": 73,
+            "text": "έως 80 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 80,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wired",
+              "label": "ενσύρματη σύνδεση",
+              "hint": "ενσύρματο"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wireless",
+              "label": "ασύρματη σύνδεση",
+              "hint": "ασύρματο"
+            }
+          ]
+        }
+      }
+    ],
+    "catalog_requirements": ["ενσύρματη σύνδεση", "ασύρματη σύνδεση"]
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "price_history": null,
+  "candidate_summary": null,
+  "candidates": [
+    {
+      "product_id": "bp_2154894250",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2154894250:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2154894250:bp_2154894250",
+        "optimize_basket:bp_2154894250:balanced:bp_merchant_128:bp_2154894250",
+        "search_products:bp_2154894250:bp_2154894250"
+      ]
+    },
+    {
+      "product_id": "bp_2157364893",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2157364893:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2157364893:bp_2157364893",
+        "optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893"
+      ]
+    },
+    {
+      "product_id": "bp_2155808380",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wireless"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155808380:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2155808380:bp_2155808380"
+      ]
+    },
+    {
+      "product_id": "bp_2155625772",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wireless"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155625772:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2155625772:bp_2155625772"
+      ]
+    },
+    {
+      "product_id": "bp_2150726319",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wireless"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2150726319:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2150726319:bp_2150726319"
+      ]
+    },
+    {
+      "product_id": "bp_2156608080",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wireless"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156608080:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2156608080:bp_2156608080"
+      ]
+    },
+    {
+      "product_id": "bp_2150726317",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wireless"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2150726317:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2150726317:bp_2150726317"
+      ]
+    },
+    {
+      "product_id": "bp_2153547976",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wireless"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2153547976:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2153547976:bp_2153547976"
+      ]
+    },
+    {
+      "product_id": "bp_2154730954",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wireless"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2154730954:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2154730954:bp_2154730954"
+      ]
+    },
+    {
+      "product_id": "bp_2154945835",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2154945835:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2154945835:bp_2154945835",
+        "search_products:bp_2154945835:bp_2154945835"
+      ]
+    },
+    {
+      "product_id": "bp_2156275773",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156275773:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2156275773:bp_2156275773",
+        "search_products:bp_2156275773:bp_2156275773"
+      ]
+    },
+    {
+      "product_id": "bp_2156061788",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156061788:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2156061788:bp_2156061788",
+        "search_products:bp_2156061788:bp_2156061788"
+      ]
+    },
+    {
+      "product_id": "bp_2155096258",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155096258:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2155096258:bp_2155096258",
+        "search_products:bp_2155096258:bp_2155096258"
+      ]
+    },
+    {
+      "product_id": "bp_2156061787",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156061787:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2156061787:bp_2156061787",
+        "search_products:bp_2156061787:bp_2156061787"
+      ]
+    },
+    {
+      "product_id": "bp_2156314127",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156314127:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2156314127:bp_2156314127",
+        "search_products:bp_2156314127:bp_2156314127"
+      ]
+    },
+    {
+      "product_id": "bp_2156061791",
+      "status": "disqualified",
+      "reason_codes": ["basket_slot_unrequested", "catalog_requirement:wired"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2156061791:bestprice_shopping_policy_v1:mice",
+        "get_product_details:bp_2156061791:bp_2156061791",
+        "search_products:bp_2156061791:bp_2156061791"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 2,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:17:56.434Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 3328,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": 2569,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 15,50€ από 1 κατάστημα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 64,50€ κάτω από το συνολικό όριο των 80€.",
+  "comparison": null,
+  "basket": {
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "balanced",
+        "merchant_count": 1,
+        "item_subtotal": 13,
+        "shipping_total": 2.5,
+        "shipping_status": "known",
+        "total_price": 15.5,
+        "reliability_score": 4.9,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_128",
+            "merchant_name": "Msystems",
+            "merchant_rating": 4.9,
+            "verified_merchant": false,
+            "item_subtotal": 13,
+            "shipping_price": 2.5,
+            "shipping_status": "known",
+            "total_price": 15.5,
+            "reason": "covers_basket_with_one_merchant",
+            "items": [
+              {
+                "product_id": "bp_2154894250",
+                "title": "Logitech B170 Ασύρματο Ποντίκι Black",
+                "quantity": 1,
+                "unit_price": 9,
+                "line_total": 9,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2157364893",
+                "title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+                "quantity": 1,
+                "unit_price": 4,
+                "line_total": 4,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": [],
+    "warnings": [
+      "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+    ],
+    "as_of": "2026-10-12T10:17:56.745Z",
+    "currency": "EUR",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wired",
+              "label": "ενσύρματη σύνδεση",
+              "hint": "ενσύρματο"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wireless",
+              "label": "ασύρματη σύνδεση",
+              "hint": "ασύρματο"
+            }
+          ]
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2157364893",
+        "catalog_price_eur": 3.66,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2154894250",
+        "catalog_price_eur": 7.53,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 80
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wired",
+              "label": "ενσύρματη σύνδεση",
+              "hint": "ενσύρματο"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wireless",
+              "label": "ασύρματη σύνδεση",
+              "hint": "ασύρματο"
+            }
+          ]
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2157364893",
+        "catalog_price_eur": 3.66,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2154894250",
+        "catalog_price_eur": 7.53,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 80
+  },
+  "execution": {
+    "tools_used": ["search_products", "get_product_details", "optimize_basket"],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 419,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 2,
+      "understanding_ms": 8,
+      "direct_recommendation": false,
+      "exact_route": false,
+      "catalog_search_calls": 2,
+      "search_products_calls": 2,
+      "search_products_failures": 0,
+      "search_products_invocations": 2,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 299,
+      "search_products_max_ms": 232,
+      "get_product_details_calls": 4,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 4,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 471,
+      "get_product_details_max_ms": 170,
+      "compare_offers_calls": 0,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 0,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 0,
+      "compare_offers_max_ms": 0,
+      "get_price_history_calls": 0,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 0,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 0,
+      "get_price_history_max_ms": 0,
+      "get_product_reviews_calls": 0,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 0,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 0,
+      "get_product_reviews_max_ms": 0,
+      "optimize_basket_calls": 1,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 1,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 91,
+      "optimize_basket_max_ms": 91,
+      "retrieval_page_candidates": 16,
+      "receipt_disqualified_candidates": 14,
+      "receipt_eligible_candidates": 2,
+      "receipt_review_requested": 0,
+      "receipt_review_available": 0,
+      "receipt_validation_ms": 5,
+      "brain_runtime_ms": 419,
+      "brain_finalization_ms": 18
+    }
+  },
+  "personalization": null
+}

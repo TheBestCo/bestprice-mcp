@@ -1,0 +1,49 @@
+{
+  "scope": "Local same-Brain user-history replay with live read-only catalog tools; no HTTP Ask and no persistence",
+  "cases": [
+    {
+      "id": "history_basket_budget",
+      "message": "Διόρθωση: συνολικά έως 100 ευρώ.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω ποντίκι και ακουστικά συνολικά έως 50 ευρώ. ΤΚ 11527."
+        }
+      ],
+      "expectation": {
+        "outcome": "basket",
+        "total": 100,
+        "slots": 2
+      },
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'clarification'\n- 'basket'\n",
+      "code": "ERR_ASSERTION",
+      "canonical_evidence_receipt": "history-target-fixed-cases/history_basket_budget-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-target-fixed-cases/history_basket_budget-canonical-shopping_context.json",
+      "canonical_receipt": "history-target-fixed-cases/history_basket_budget-canonical.json",
+      "response_receipt": "history-target-fixed-cases/history_basket_budget-response.json",
+      "calls_receipt": "history-target-fixed-cases/history_basket_budget-calls.json"
+    },
+    {
+      "id": "history_basket_remove",
+      "message": "Διόρθωση: μόνο laptop και ποντίκι, συνολικά έως 650 ευρώ.",
+      "history": [
+        {
+          "role": "user",
+          "content": "Θέλω laptop, οθόνη και ποντίκι συνολικά έως 900 ευρώ. ΤΚ 11527."
+        }
+      ],
+      "expectation": {
+        "outcome": "basket",
+        "total": 650,
+        "slots": 2
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "history-target-fixed-cases/history_basket_remove-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "history-target-fixed-cases/history_basket_remove-canonical-shopping_context.json",
+      "canonical_receipt": "history-target-fixed-cases/history_basket_remove-canonical.json",
+      "response_receipt": "history-target-fixed-cases/history_basket_remove-response.json",
+      "calls_receipt": "history-target-fixed-cases/history_basket_remove-calls.json"
+    }
+  ]
+}

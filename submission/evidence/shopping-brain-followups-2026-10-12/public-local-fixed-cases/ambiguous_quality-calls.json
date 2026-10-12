@@ -1,0 +1,3997 @@
+[
+  {
+    "name": "search_products",
+    "input": {
+      "query": "Θέλω καλό κινητό για φωτογραφίες έως 300 ευρώ.",
+      "required_features": [],
+      "sort": "relevance",
+      "limit": 8,
+      "price_max": 300
+    },
+    "result": {
+      "requested_query": "smartphone",
+      "interpreted_query": "κινητό",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:17:42.837Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 748,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": 300,
+        "sort": "relevance",
+        "feature_hints": [],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["θήκες κινητών", "smartwatches", "power bank"],
+      "total_matches": 8,
+      "products": [
+        {
+          "product_id": "bp_2164551999",
+          "title": "Powertech Milly Small III χωρίς Κάμερα",
+          "brand": null,
+          "model": "Powertech Milly Small III χωρίς Κάμερα",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 15.97,
+          "offer_count": 30,
+          "availability": "available",
+          "match_confidence": 0.35,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160411933",
+          "title": "Nokia 105 2024 Dual",
+          "brand": null,
+          "model": "Nokia 105 2024 Dual",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 22.8,
+          "offer_count": 37,
+          "availability": "available",
+          "match_confidence": 0.34,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155874671",
+          "title": "Panasonic KX-TU110 Dual",
+          "brand": null,
+          "model": "Panasonic KX-TU110 Dual",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 23.56,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.32,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155915623",
+          "title": "Powertech Sentry Eco",
+          "brand": null,
+          "model": "Powertech Sentry Eco",
+          "variant": "PTM-18 | PTM-24 | PTM-25",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 24.71,
+          "offer_count": 58,
+          "availability": "available",
+          "match_confidence": 0.31,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.67,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160571943",
+          "title": "Powertech Sentry Eco II",
+          "brand": null,
+          "model": "Powertech Sentry Eco II",
+          "variant": "PTM-39",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 25,
+          "offer_count": 45,
+          "availability": "available",
+          "match_confidence": 0.29,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159670397",
+          "title": "Powertech Milly Flip",
+          "brand": null,
+          "model": "Powertech Milly Flip",
+          "variant": "PTM-38",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 29.2,
+          "offer_count": 33,
+          "availability": "available",
+          "match_confidence": 0.28,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.75,
+            "count": 4
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160563495",
+          "title": "HMD 2660 Flip",
+          "brand": null,
+          "model": "HMD 2660 Flip",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 59.56,
+          "offer_count": 22,
+          "availability": "available",
+          "match_confidence": 0.26,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159196612",
+          "title": "AGM M8 Flip",
+          "brand": null,
+          "model": "AGM M8 Flip",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 85.53,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.25,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160176672",
+          "title": "Samsung Galaxy A16 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 151,
+          "offer_count": 51,
+          "availability": "available",
+          "match_confidence": 0.35,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.82,
+            "count": 21
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163461420",
+          "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "brand": null,
+          "model": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 248.9,
+          "offer_count": 18,
+          "availability": "available",
+          "match_confidence": 0.34,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163844357",
+          "title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "brand": null,
+          "model": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 298.5,
+          "offer_count": 66,
+          "availability": "available",
+          "match_confidence": 0.32,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162408545",
+          "title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 175,
+          "offer_count": 80,
+          "availability": "available",
+          "match_confidence": 0.31,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.67,
+            "count": 8
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163841269",
+          "title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 253,
+          "offer_count": 68,
+          "availability": "available",
+          "match_confidence": 0.29,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164165234",
+          "title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 219,
+          "offer_count": 69,
+          "availability": "available",
+          "match_confidence": 0.28,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160449839",
+          "title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 289.98,
+          "offer_count": 28,
+          "availability": "available",
+          "match_confidence": 0.26,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.75,
+            "count": 72
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164182739",
+          "title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "brand": null,
+          "model": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 273,
+          "offer_count": 49,
+          "availability": "available",
+          "match_confidence": 0.25,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Ο κατάλογος ερμήνευσε την αναζήτηση ως «κινητό». Όροι που δεν εμφανίζονται εκεί δεν θεωρούνται επιβεβαιωμένα φίλτρα.",
+        "Δεν αναζητήθηκε «smartphone» από τη διατύπωσή σου. Έλεγξε ότι τα αποτελέσματα αντιστοιχούν σε αυτό που ζήτησες."
+      ],
+      "as_of": "2026-10-12T10:17:42.837Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2160571943", "bp_2159670397", "bp_2160563495", "bp_2159196612"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2160571943",
+          "title": "Powertech Sentry Eco II",
+          "brand": "Powertech",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 25,
+          "availability": "in_stock",
+          "offer_count": 45,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "32 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 32,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Απλής Χρήσης",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "2G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2025",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "Bluetooth, USB-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "2.31 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 2.31,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "1400 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 1400,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "N / A",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "0.08 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 0.08,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "1",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Πληκτρολόγιο",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Όχι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Όχι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "132.1 x 58.4 x 14.1",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "POWERTECH κινητό τηλέφωνο Sentry Eco II, 2.31\" dual SIM, με κάμερα, μαύρο",
+            "POWERTECH κινητό τηλέφωνο Sentry Eco II, 2.31\" dual SIM, με κάμερα, μαύρο PTM-39",
+            "Powertech κινητό τηλέφωνο Sentry Eco II, 2.31'' Dual SIM, με κάμερα, μαύρο - (PTM-39)",
+            "ΚΙΝΗΤΟ ΤΗΛΕΦΩΝΟ POWERTECH SENTRY ECO II PTM-39",
+            "Κινητό τηλέφωνο 2.31 '' Powertech Sentry ECO II (PTM-39) Dual SIM, Bluetooth, μαύρο PTM-39",
+            "Powertech PTM-39 Sentry Eco II Dual SIM (32MB) Κινητό με Κουμπιά (Ελληνικό Μενού) Μαύρο *",
+            "Mobile Cell Phone Sentry Eco II Sim Black Κινητό Τηλέφωνο Powertech PTM-39",
+            "Powertech Sentry Eco II Kινητό Tηλέφωνο 2.31\" Dual SIM με Κάμερα Μαύρο"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 3
+          }
+        },
+        {
+          "product_id": "bp_2159670397",
+          "title": "Powertech Milly Flip",
+          "brand": "Powertech",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 29.2,
+          "availability": "in_stock",
+          "offer_count": 33,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Πληκτρολόγιο",
+              "group": "Οθόνη"
+            }
+          ],
+          "offer_titles": [
+            "POWERTECH κινητό τηλέφωνο Milly Flip, 2.4\" dual SIM, πλήκτρο SOS, μαύρο PTM-38",
+            "Powertech κινητό τηλέφωνο Milly Flip, 2.4'' Dual SIM, πλήκτρο SOS, μαύρο - (PTM-38)",
+            "ΚΙΝΗΤΟ ΤΗΛΕΦΩΝΟ POWERTECH PTM-38 MILLY FLIP BLACK",
+            "POWERTECH κινητό τηλέφωνο Milly Flip, 2.4\" dual SIM, πλήκτρο SOS, μαύρο",
+            "POWERTECH κινητό τηλέφωνο Milly Flip, 2.4\" dual SIM, πλήκτρο SOS, μαύρο (PTM-38)",
+            "Powertech Sentry Milly Flip PTM-38 Black",
+            "POWERTECH κινητό τηλέφωνο Milly Flip V2, 2.4\" dual SIM, πλήκτρο SOS, μαύρο",
+            "Κινητό τηλέφωνο 2.4'' Powertech Milly Flip (PTM-38) Dual SIM, με Μεγάλα Κουμπιά, Μαύρο PTM-38"
+          ],
+          "rating": {
+            "average": 4.75,
+            "count": 4
+          }
+        },
+        {
+          "product_id": "bp_2160563495",
+          "title": "HMD 2660 Flip",
+          "brand": "HMD",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 59.56,
+          "availability": "in_stock",
+          "offer_count": 22,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Απλής Χρήσης",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "4G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2025",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "Bluetooth, USB-C, 3.5mm Jack",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "2.8 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 2.8,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "1450 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 1450,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "1",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "1 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 1,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Πληκτρολόγιο",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Όχι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Μονοπύρηνος",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "PLS TFT LCD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Unisoc T107?",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "320 x 240",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "108 x 55 x 19",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP54",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "136.5 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 136.5,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "HMD 2660 (2025) Flip 4G Dual Sim Black GR",
+            "HMD 2660 (2025) Flip 4G Dual Sim Purple GR",
+            "HMD 2660 Flip Dual SIM Κινητό με Μεγάλα Κουμπιά Black- GR",
+            "Κινητό Απλής Χρήσης 2.8'' HMD 2660 FLIP 4G DS (2025) SIM - Black 1GF033CPH1G01",
+            "Κινητό απλής χρήσης 2.8'' HMD 2660 4G DS (32MB/ 64MB) Dual SIM - Purple 1GF033CPF1G01",
+            "HMD 2660 FLIP 4G DS PURPL 2025",
+            "HMD 2660 FLIP 4G DS BLACK 2025",
+            "ΚΙΝΗΤΟ ΜΕ ΠΛΗΚΤΡΑ HMD 2660 FLIP (2025) 4G 2.8in DUAL SIM 64MB/128MB (TA-1711) BLACK GR"
+          ]
+        },
+        {
+          "product_id": "bp_2159196612",
+          "title": "AGM M8 Flip",
+          "brand": "AGM",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 85.53,
+          "availability": "in_stock",
+          "offer_count": 25,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Πληκτρολόγιο",
+              "group": "Οθόνη"
+            }
+          ],
+          "offer_titles": [
+            "AGM M8 FLIP Μαύρο αδιάβροχο κινητό τηλέφωνο με πορτάκι ανθεκτικό σε πτώση IP68/IP69K, MIL-STD-810H, Dual Sim με Bluetooth, USB, SD, οθόνη 2.8, SOS συμβατό με ακουστικά βαρηκοΐας",
+            "Κινητό Τηλέφωνο AGM M8 Black",
+            "AGM M8 FLIP 4G Κινητό Black",
+            "AGM M8 Flip 4G Dual Sim - Black",
+            "Μαύρο Αδιάβροχο Κινητό Τηλέφωνο με Πορτάκι Ανθεκτικό σε Πτώση IP68/IP69K, AGM M8 FLIP",
+            "AGM M8 Flip Κινητό Τηλέφωνο",
+            "AGM Κινητό Τηλέφωνο M8 Flip Μαύρο 4G αδιάβροχο με πορτάκι ανθεκτικό σε πτώση IP68/IP69K, Dual Sim με Bluetooth, USB, SD, οθόνη 2.8",
+            "ΚΙΝΗΤΟ ΤΗΛΕΦΩΝΟ AGM M8 FLIP 4G 2.8'' ΑΔΙΑΒΡΟΧΟ & ΑΝΘΕΚΤΙΚΟ ΣΕ ΠΤΩΣΗ BLACK"
+          ]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:43.307Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2164551999", "bp_2160411933", "bp_2155874671", "bp_2155915623"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2164551999",
+          "title": "Powertech Milly Small III χωρίς Κάμερα",
+          "brand": "Powertech",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 15.97,
+          "availability": "in_stock",
+          "offer_count": 30,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Απλής Χρήσης",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "2G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "Bluetooth, USB-C, 3.5mm Jack",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "1.77 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 1.77,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "1000 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 1000,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "N / A",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "Χωρίς Κάμερα",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Πληκτρολόγιο",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Όχι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Όχι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Όχι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "117 x 50 x 14",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "50 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 50,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "POWERTECH κινητό τηλέφωνο Milly Small III, 1.77\" dual SIM, χωρίς κάμερα, μαύρο",
+            "POWERTECH κινητό τηλέφωνο Milly Small III, 1.77, dual SIM, χωρίς κάμερα, μαύρο",
+            "POWERTECH κινητό τηλέφωνο Milly Small III, 1.77\" dual SIM, χωρίς κάμερα, μαύρο PTM-44",
+            "ΚΙΝΗΤΟ ΤΗΛΕΦΩΝΟ POWERTECH PTM-44 MILLY SMALL III",
+            "Powertech Milly Small III χωρίς Κάμερα Dual SIM Κινητό με Κουμπιά (Ελληνικό Μενού) Μαύρο",
+            "Κινητό τηλέφωνο 1.77'' Powertech Milly Small III (32MB/32MB) Dual SIM - Χωρίς κάμερα - Black PTM-44",
+            "POWERTECH PTM-44 Milly Small III Κινητό 1.77\" Dual SIM χωρίς Κάμερα με SOS Μαύρο *",
+            "POWERTECH Milly Small IIInc PTM-44, χωρίς κάμερα, με Ελληνικό μενού"
+          ]
+        },
+        {
+          "product_id": "bp_2160411933",
+          "title": "Nokia 105 2024 Dual",
+          "brand": "Nokia",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 22.8,
+          "availability": "in_stock",
+          "offer_count": 37,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Απλής Χρήσης",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "2G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2024",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "Bluetooth, Micro USB",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "2 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 2,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "1000 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 1000,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "N / A",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "Χωρίς Κάμερα",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Πληκτρολόγιο",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Όχι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "TFT LCD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "120 x 160",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "115.5 x 49.5 x 14",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "77.5 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 77.5,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Nokia 105 (2024) Dual Sim Black-GR ΣΟΥΠΕΡ ΤΙΜΗ",
+            "Nokia 105 (2024) Dual Sim Blue-GR",
+            "NOKIA 105 TA-1684 DS BLACK ΜΕ ΕΛΛΗΝΙΚΟ ΜΕΝΟΥ EU",
+            "Nokia 105 (2024) Black Κινητό Τηλέφωνο",
+            "Nokia 105 (2024) Blue Κινητό Τηλέφωνο",
+            "Nokia 105 (2024) 2G Dual Sim USB-C Blue GR",
+            "Nokia 105 (2024) Dual SIM Κινητό με Κουμπιά (Ελληνικό Μενού) Μαύρο",
+            "Nokia Phone Hmd 105 TA-1684 Ds Black - (SP01Z07Z2065Y)"
+          ]
+        },
+        {
+          "product_id": "bp_2155874671",
+          "title": "Panasonic KX-TU110 Dual",
+          "brand": "Panasonic",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 23.56,
+          "availability": "in_stock",
+          "offer_count": 25,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Απλής Χρήσης",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "2G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2017",
+              "group": null
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "1.77 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 1.77,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "1000 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 1000,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Πληκτρολόγιο",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Όχι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "TFT",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "114 x 51 x 13.5",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "81 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 81,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Κινητό Τηλέφωνο Απλής Χρήσης Panasonic KX-TU110 1.7'' Black DS με SOS Button",
+            "Κινητό Τηλέφωνο Απλής Χρήσης Panasonic KX-TU110 1.7'' Blue DS με SOS Button",
+            "Panasonic Dual SIM Κινητό με Μεγάλα Κουμπιά KX-TU110 Μπλε",
+            "Panasonic KX-TU110EXB Black Dual Sim Κινητό Τηλέφωνο",
+            "Panasonic KX-TU110EXC Blue Dual Sim Κινητό Τηλέφωνο",
+            "Panasonic KX-TU110 Dual Sim - Blue",
+            "Panasonic KX-TU110 Dual Sim - Μαύρο",
+            "Panasonic KX-TU110EXB (Dual SIM) Μαύρο 1.77\" Easy Phone με πλήκτρο SOS, Bluetooth και Μεγάλα Γράμματ"
+          ]
+        },
+        {
+          "product_id": "bp_2155915623",
+          "title": "Powertech Sentry Eco",
+          "brand": "Powertech",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 24.71,
+          "availability": "in_stock",
+          "offer_count": 58,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Απλής Χρήσης",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "3G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "Bluetooth",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "2.2 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 2.2,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "1000 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 1000,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Πληκτρολόγιο",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Όχι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 60,
+              "label": "FM Radio",
+              "value": "Ναι",
+              "group": "Δέκτης"
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Κινητό Τηλέφωνο Sentry Eco Sos Call Με Φακό Μαύρο PTM-18 POWERTECH PTM-18",
+            "Κινητό απλής χρήσης Powertech Sentry Eco PTM-18 - Dual SIM - SOS Call - Black PTM-18",
+            "POWERTECH Κινητό Τηλέφωνο Sentry Eco PTM-18, SOS Call, με φακό, μαύρο",
+            "POWERTECH ΚΙΝΗΤΟ ΤΗΛΕΦΩΝΟ SENTRY ECO ΜΑΥΡΟ - (PTM-18)",
+            "Powertech Sentry Eco PTM-18 Dual Black Κινητό Τηλέφωνο",
+            "Powertech Κινητό Τηλέφωνο Sentry Eco PTM-18 SOS Call με Φακό Μαύρο",
+            "POWERTECH Κινητό Τηλέφωνο Sentry Eco PTM-25, SOS Call, με φακό, κόκκινο",
+            "Κινητό απλής χρήσης Powertech Sentry Eco PTM25 - Dual SIM - SOS Call- Κόκκινο PTM-25"
+          ],
+          "rating": {
+            "average": 4.67,
+            "count": 3
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:43.307Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2160176672"
+    },
+    "result": {
+      "product_id": "bp_2160176672",
+      "review_count": 21,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Για τα λεφτά του, είναι η καλύτερη επιλογή μέχρι 150€. Smooth οθόνη και καλές κάμερες για μέχρι 150€. Βίντεο και zoom είναι βασικά. Για τους πιο προχωρημένους, η οθόνη είναι 8 bit, δηλαδή έχει 15 εκατομμύρια χρώματα, έναντι 10 bit, δηλαδή 1,6 δισ. χρώματα. Μπορεί να τη βρουν λίγο φτωχή όσοι προέρχονται από 10 bit. Το…",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-10-04T15:49:08.000Z"
+        },
+        {
+          "rating": 4,
+          "excerpt": "Πολύ καλή οθόνη και μπαταρία. Η κάμερα είναι κακή για εσωτερικούς χώρους, αλλά μέτρια έως καλή για εξωτερικούς. Η έκδοση με 4 GB RAM σέρνεται λίγο. Προτιμήστε την έκδοση με 8 GB RAM.",
+          "helpfulness": 1,
+          "helpful_votes": 1,
+          "unhelpful_votes": 0,
+          "written_at": "2026-06-29T06:43:04.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "Πραγματικά πολύ καλό για τα χρήματά του. Το πήρα για τον πατέρα μου και έμεινε πολύ ικανοποιημένος για όσα κάνει (βασικά πράγματα). Υστερεί μόνο στην ταχύτητα, λογικό με 4άρα RAM. Όμως είναι τέλειο για κάποιον που δεν έχει υψηλές απαιτήσεις από ένα κινητό. Πάνω από τον μέσο όρο, θα του έβαζα 8/10. Η Samsung δεν με…",
+          "helpfulness": 1,
+          "helpful_votes": 1,
+          "unhelpful_votes": 0,
+          "written_at": "2026-06-28T14:59:08.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:16:33.063Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2162408545"
+    },
+    "result": {
+      "product_id": "bp_2162408545",
+      "review_count": 8,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Πάρα πολύ καλό. Το πήρα για τη μητέρα μου. Έχει πολύ καλό icebox. Απ' ό,τι μου έχει πει, έχει και αρκετά καλή διάρκεια μπαταρίας.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-09-01T16:31:47.000Z"
+        },
+        {
+          "rating": 4,
+          "excerpt": "Είναι μια συσκευή που, παρά το γεγονός ότι έχει σχεδόν τα ίδια χαρακτηριστικά με τα προηγούμενα της σειράς Α, είναι αξιόπιστη. Συνιστάται για απλή καθημερινή χρήση.",
+          "helpfulness": 1,
+          "helpful_votes": 2,
+          "unhelpful_votes": 0,
+          "written_at": "2025-12-21T21:08:43.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "Είναι ένα καλό τηλέφωνο, το οποίο αξίζει τα λεφτά του. Η ανάλυση της κάμερας είναι αρκετά καλή.",
+          "helpfulness": 1,
+          "helpful_votes": 2,
+          "unhelpful_votes": 0,
+          "written_at": "2025-12-25T12:27:54.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:16:33.064Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2160449839"
+    },
+    "result": {
+      "product_id": "bp_2160449839",
+      "review_count": 72,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Προερχόμενος από το Α52, το οποίο είχα τρία χρόνια, μπορώ να πω ότι έχω μείνει ευχαριστημένος. Είναι αισθητά πιο γρήγορο και ανταποκρίνεται άμεσα σε κάθε πάτημα των πλήκτρων, χωρίς να έχω νιώσει να ζεσταίνεται σε συνηθισμένη χρήση. Η μπαταρία άνετα βγάζει μία μέρα, όση χρήση και αν γίνει. Τα ηχεία δεν είναι τόσο…",
+          "helpfulness": 1,
+          "helpful_votes": 11,
+          "unhelpful_votes": 1,
+          "written_at": "2025-11-06T06:46:03.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "Μεγάλη αναβάθμιση σε σχέση με το Xiaomi Redmi Note 7 που είχα πριν. Η μπαταρία αντέχει αρκετά. Βέβαια, εξαρτάται από τη χρήση. Εγώ, τελευταία, το έχω και με hotspot συνέχεια ενεργοποιημένο (το οποίο, προφανώς, καταναλώνει αρκετή μπαταρία), αλλά μου κρατάει την ημέρα. Μου αρέσουν τα εργαλεία AI. Μπορείς να φτιάξεις…",
+          "helpfulness": 1,
+          "helpful_votes": 5,
+          "unhelpful_votes": 0,
+          "written_at": "2025-12-17T16:04:04.000Z"
+        },
+        {
+          "rating": 4,
+          "excerpt": "Προέρχομαι από το παμπάλαιο, για τα σημερινά δεδομένα, μοντέλο της Samsung, το A22 5G, το οποίο με άφησε μετά από βαριά χρήση τεσσάρων χρόνων. Το A56 είναι παραπάνω από ένα τίμιο τηλέφωνο και, για την τιμή που το πήρα εγώ (300), έχει απίστευτο value. Η κάμερά του είναι καλή, αλλά δεν είναι κάτι το απίστευτο. Η…",
+          "helpfulness": 1,
+          "helpful_votes": 1,
+          "unhelpful_votes": 0,
+          "written_at": "2026-04-03T22:53:42.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:16:33.063Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163844357"
+    },
+    "result": {
+      "product_id": "bp_2163844357",
+      "review_count": 2,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Τέλειο. Πολύ ωραία ποιότητα κατασκευής, γρήγορο στη χρήση, μεγάλη οθόνη. Το προτείνω.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-09-11T05:32:30.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:16:33.064Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163461420"
+    },
+    "result": {
+      "product_id": "bp_2163461420",
+      "review_count": 3,
+      "reviews": [],
+      "as_of": "2026-10-12T10:16:37.329Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163841269"
+    },
+    "result": {
+      "product_id": "bp_2163841269",
+      "review_count": 2,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Τέλειο. Πολύ ωραία ποιότητα κατασκευής, γρήγορο στη χρήση, μεγάλη οθόνη. Το προτείνω.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-09-11T05:32:30.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:16:33.064Z"
+    }
+  },
+  {
+    "name": "get_price_history",
+    "input": {
+      "product_id": "bp_2160176672",
+      "period_days": 180
+    },
+    "result": {
+      "product_id": "bp_2160176672",
+      "product_title": "Samsung Galaxy A16 128GB",
+      "product_url": "[omitted]",
+      "period_days": 180,
+      "current_price": 151,
+      "current_price_source": "live_offer_minimum",
+      "source_last_observed_at": "2026-10-12T10:17:43.550Z",
+      "window_stats": [
+        {
+          "days": 30,
+          "minimum_price": 136.97,
+          "median_price": 147,
+          "observations": 30,
+          "coverage_pct": 100,
+          "longest_gap_days": 0
+        },
+        {
+          "days": 90,
+          "minimum_price": 110,
+          "median_price": 134.55,
+          "observations": 90,
+          "coverage_pct": 100,
+          "longest_gap_days": 0
+        },
+        {
+          "days": 180,
+          "minimum_price": 97,
+          "median_price": 110,
+          "observations": 180,
+          "coverage_pct": 100,
+          "longest_gap_days": 0
+        }
+      ],
+      "price_delta_vs_180d_median_pct": 37.27,
+      "deal_classification": "above_typical",
+      "methodology_id": "bestprice_daily_min_v1",
+      "quality": {
+        "cluster_continuity": "same_cluster",
+        "outlier_status": "protected"
+      },
+      "data_gaps": {
+        "missing_days": 0,
+        "longest_gap_days": 0,
+        "stale_days": 0,
+        "coverage_note": "Πλήρης ημερήσια κάλυψη για το ζητούμενο διάστημα."
+      },
+      "series": [
+        {
+          "date": "2026-04-16",
+          "price": 99,
+          "merchant_count": 88
+        },
+        {
+          "date": "2026-04-22",
+          "price": 101,
+          "merchant_count": 88
+        },
+        {
+          "date": "2026-05-01",
+          "price": 104,
+          "merchant_count": 77
+        },
+        {
+          "date": "2026-05-11",
+          "price": 104,
+          "merchant_count": 90
+        },
+        {
+          "date": "2026-05-18",
+          "price": 100,
+          "merchant_count": 89
+        },
+        {
+          "date": "2026-05-28",
+          "price": 99,
+          "merchant_count": 88
+        },
+        {
+          "date": "2026-06-05",
+          "price": 97,
+          "merchant_count": 83
+        },
+        {
+          "date": "2026-06-15",
+          "price": 99,
+          "merchant_count": 80
+        },
+        {
+          "date": "2026-06-22",
+          "price": 99,
+          "merchant_count": 79
+        },
+        {
+          "date": "2026-07-01",
+          "price": 99,
+          "merchant_count": 58
+        },
+        {
+          "date": "2026-07-09",
+          "price": 107,
+          "merchant_count": 51
+        },
+        {
+          "date": "2026-07-19",
+          "price": 114,
+          "merchant_count": 53
+        },
+        {
+          "date": "2026-07-27",
+          "price": 117,
+          "merchant_count": 58
+        },
+        {
+          "date": "2026-08-05",
+          "price": 123.87,
+          "merchant_count": 42
+        },
+        {
+          "date": "2026-08-12",
+          "price": 118.8,
+          "merchant_count": 43
+        },
+        {
+          "date": "2026-08-23",
+          "price": 135.6,
+          "merchant_count": 39
+        },
+        {
+          "date": "2026-08-30",
+          "price": 123.86,
+          "merchant_count": 48
+        },
+        {
+          "date": "2026-09-07",
+          "price": 136.89,
+          "merchant_count": 43
+        },
+        {
+          "date": "2026-09-17",
+          "price": 142.98,
+          "merchant_count": 37
+        },
+        {
+          "date": "2026-09-24",
+          "price": 150,
+          "merchant_count": 39
+        },
+        {
+          "date": "2026-10-05",
+          "price": 151,
+          "merchant_count": 42
+        },
+        {
+          "date": "2026-10-12",
+          "price": 151,
+          "merchant_count": 51
+        }
+      ],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163461420",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163461420",
+        "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 248.9,
+      "quoted_lowest_item_price": 248.9,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_207452440",
+          "merchant_id": "bp_merchant_904",
+          "merchant_name": "MobileHellas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 248.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_204983886",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 266,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210265680",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 266,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205434129",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 267.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_107560516",
+          "merchant_id": "bp_merchant_117",
+          "merchant_name": "Mg Manager",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 36,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 271.8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_204918266",
+          "merchant_id": "bp_merchant_13363",
+          "merchant_name": "Smart eShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 272.08,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_218478677",
+          "merchant_id": "bp_merchant_3875",
+          "merchant_name": "Kaizer",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 279,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205929196",
+          "merchant_id": "bp_merchant_1074",
+          "merchant_name": "Media-ram",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.56,
+          "merchant_rating_count": 9,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 279,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_204994999",
+          "merchant_id": "bp_merchant_1172",
+          "merchant_name": "Mobile-phones",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 279,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205000615",
+          "merchant_id": "bp_merchant_85",
+          "merchant_name": "Cosmodata",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.62,
+          "merchant_rating_count": 123,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 279.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2160449839",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2160449839",
+        "title": "Samsung Galaxy A56 5G 8GB 128GB",
+        "brand": "Samsung",
+        "model": "Samsung Galaxy A56 5G 8GB 128GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 289.98,
+      "quoted_lowest_item_price": 289.98,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_181648280",
+          "merchant_id": "bp_merchant_4397",
+          "merchant_name": "Justech",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.75,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 289.98,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_181232877",
+          "merchant_id": "bp_merchant_5556",
+          "merchant_name": "Electrolleti",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.42,
+          "merchant_rating_count": 33,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 290,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_202158257",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 303.75,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223493264",
+          "merchant_id": "bp_merchant_8523",
+          "merchant_name": "TechMobile",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 40,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 328.13,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_183373131",
+          "merchant_id": "bp_merchant_5569",
+          "merchant_name": "OneThing",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.53,
+          "merchant_rating_count": 17,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 330.79,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_181946100",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 335,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_181152241",
+          "merchant_id": "bp_merchant_1502",
+          "merchant_name": "Kaizershop.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 337.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_226624297",
+          "merchant_id": "bp_merchant_16547",
+          "merchant_name": "Sms-Store",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 10,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 338,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_181431379",
+          "merchant_id": "bp_merchant_3875",
+          "merchant_name": "Kaizer",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 339,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_181383957",
+          "merchant_id": "bp_merchant_14651",
+          "merchant_name": "Shop-All",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A56 5G 8GB 128GB",
+          "variant": null,
+          "item_price": 345.09,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2160176672",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2160176672",
+        "title": "Samsung Galaxy A16 128GB",
+        "brand": "Samsung",
+        "model": "Samsung Galaxy A16 128GB",
+        "variant": "A165",
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 151,
+      "quoted_lowest_item_price": 151,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_174011783",
+          "merchant_id": "bp_merchant_14077",
+          "merchant_name": "Hashtagtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 108,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 151,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_177709829",
+          "merchant_id": "bp_merchant_8625",
+          "merchant_name": "MyTechtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 153,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_175991679",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 153.29,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_173300737",
+          "merchant_id": "bp_merchant_4397",
+          "merchant_name": "Justech",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.75,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 153.3,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_173250219",
+          "merchant_id": "bp_merchant_10981",
+          "merchant_name": "DrMob",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 153.8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_198590392",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 158.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_181272673",
+          "merchant_id": "bp_merchant_7234",
+          "merchant_name": "Globalw",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.85,
+          "merchant_rating_count": 55,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 161,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_181945965",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 162,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_173722836",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 164.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_215181391",
+          "merchant_id": "bp_merchant_9414",
+          "merchant_name": "Parras",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "item_price": 169,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2164182739",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2164182739",
+        "title": "Samsung Galaxy A27 5G 8GB 256GB",
+        "brand": "Samsung",
+        "model": "Samsung Galaxy A27 5G 8GB 256GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 273,
+      "quoted_lowest_item_price": 273,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_218323432",
+          "merchant_id": "bp_merchant_14077",
+          "merchant_name": "Hashtagtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 108,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 273,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224033795",
+          "merchant_id": "bp_merchant_8625",
+          "merchant_name": "MyTechtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 275,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_219087788",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 276,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224037215",
+          "merchant_id": "bp_merchant_10981",
+          "merchant_name": "DrMob",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 276,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_220071498",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 284.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_220523089",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 288.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_218465178",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 292,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223012094",
+          "merchant_id": "bp_merchant_6265",
+          "merchant_name": "Guruelectrics",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.24,
+          "merchant_rating_count": 34,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 294.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223732699",
+          "merchant_id": "bp_merchant_7696",
+          "merchant_name": "t-Support",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 307.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_219021129",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Galaxy A27 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 307.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2164165234",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2164165234",
+        "title": "Samsung Galaxy A27 5G 6GB 128GB",
+        "brand": "Samsung",
+        "model": "Samsung Galaxy A27 5G 6GB 128GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 219,
+      "quoted_lowest_item_price": 219,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_218323429",
+          "merchant_id": "bp_merchant_14077",
+          "merchant_name": "Hashtagtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 108,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 219,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_222164436",
+          "merchant_id": "bp_merchant_904",
+          "merchant_name": "MobileHellas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 221,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223689967",
+          "merchant_id": "bp_merchant_13959",
+          "merchant_name": "Mobilistas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 221,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_219087785",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 222.97,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_218465175",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 224,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_219514804",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 224.2,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224034460",
+          "merchant_id": "bp_merchant_10981",
+          "merchant_name": "DrMob",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 229,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_220523086",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 229.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_221752145",
+          "merchant_id": "bp_merchant_15110",
+          "merchant_name": "Greymaritimo",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.97,
+          "merchant_rating_count": 61,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 230,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224033792",
+          "merchant_id": "bp_merchant_8625",
+          "merchant_name": "MyTechtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 233,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163844357",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163844357",
+        "title": "Samsung Galaxy A37 5G 8GB 256GB",
+        "brand": "Samsung",
+        "model": "Samsung Galaxy A37 5G 8GB 256GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 298.5,
+      "quoted_lowest_item_price": 298.5,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_211297360",
+          "merchant_id": "bp_merchant_14077",
+          "merchant_name": "Hashtagtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 108,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 298.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_212592413",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 300,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_213192704",
+          "merchant_id": "bp_merchant_13959",
+          "merchant_name": "Mobilistas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 305,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211737599",
+          "merchant_id": "bp_merchant_10981",
+          "merchant_name": "DrMob",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 315,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211735476",
+          "merchant_id": "bp_merchant_8625",
+          "merchant_name": "MyTechtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 316,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211435653",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 323.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210893892",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 324,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_213483684",
+          "merchant_id": "bp_merchant_7234",
+          "merchant_name": "Globalw",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.85,
+          "merchant_rating_count": 55,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 335.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_226322536",
+          "merchant_id": "bp_merchant_16547",
+          "merchant_name": "Sms-Store",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 10,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 348,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211249285",
+          "merchant_id": "bp_merchant_1502",
+          "merchant_name": "Kaizershop.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "variant": null,
+          "item_price": 348.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2164165234"
+    },
+    "result": {
+      "product_id": "bp_2164165234",
+      "review_count": 2,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Μια χαρά για τα λεφτά του.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-09-15T19:01:06.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:17:43.551Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2164182739"
+    },
+    "result": {
+      "product_id": "bp_2164182739",
+      "review_count": 2,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Μια χαρά για τα λεφτά του.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-09-15T19:01:06.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:17:43.551Z"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2162408545",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2162408545",
+        "title": "Samsung Galaxy A17 5G 4GB 128GB",
+        "brand": "Samsung",
+        "model": "Samsung Galaxy A17 5G 4GB 128GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 175,
+      "quoted_lowest_item_price": 175,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_199605807",
+          "merchant_id": "bp_merchant_14633",
+          "merchant_name": "SSP MOBILE",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 175,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195020111",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 175.81,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_197601258",
+          "merchant_id": "bp_merchant_904",
+          "merchant_name": "MobileHellas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 175.82,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195084940",
+          "merchant_id": "bp_merchant_7234",
+          "merchant_name": "Globalw",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.85,
+          "merchant_rating_count": 55,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 175.95,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194716472",
+          "merchant_id": "bp_merchant_4397",
+          "merchant_name": "Justech",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.75,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 175.95,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194497207",
+          "merchant_id": "bp_merchant_8625",
+          "merchant_name": "MyTechtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 182,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194442463",
+          "merchant_id": "bp_merchant_10981",
+          "merchant_name": "DrMob",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 183,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195519589",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 185.14,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_197522118",
+          "merchant_id": "bp_merchant_5569",
+          "merchant_name": "OneThing",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.53,
+          "merchant_rating_count": 17,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 191.94,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194155695",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "item_price": 193.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163841269",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163841269",
+        "title": "Samsung Galaxy A37 5G 6GB 128GB",
+        "brand": "Samsung",
+        "model": "Samsung Galaxy A37 5G 6GB 128GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 253,
+      "quoted_lowest_item_price": 253,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_211297356",
+          "merchant_id": "bp_merchant_14077",
+          "merchant_name": "Hashtagtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 108,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 253,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_213192703",
+          "merchant_id": "bp_merchant_13959",
+          "merchant_name": "Mobilistas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 255,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211735614",
+          "merchant_id": "bp_merchant_8625",
+          "merchant_name": "MyTechtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 256,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211705932",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 256.99,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210893888",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 257,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211737320",
+          "merchant_id": "bp_merchant_10981",
+          "merchant_name": "DrMob",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 259,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210662767",
+          "merchant_id": "bp_merchant_7234",
+          "merchant_name": "Globalw",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.85,
+          "merchant_rating_count": 55,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 259.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211619108",
+          "merchant_id": "bp_merchant_15110",
+          "merchant_name": "Greymaritimo",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.97,
+          "merchant_rating_count": 61,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 260,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210662426",
+          "merchant_id": "bp_merchant_4397",
+          "merchant_name": "Justech",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.75,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 264.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_211435650",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "variant": null,
+          "item_price": 267.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:17:43.550Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:17:43.550Z",
+      "currency": "EUR"
+    }
+  }
+]

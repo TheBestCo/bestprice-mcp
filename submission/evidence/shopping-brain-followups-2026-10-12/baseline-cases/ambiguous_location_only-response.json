@@ -1,0 +1,105 @@
+{
+  "schema_version": "2.0",
+  "as_of": "2026-10-12T10:09:46.167Z",
+  "currency": "EUR",
+  "locale": "el-GR",
+  "warnings": [],
+  "brain": {
+    "projection_version": "bestprice_mcp_decision_v1",
+    "decision_version": "bestprice_decision_v1",
+    "decision_id": "[omitted]",
+    "evidence_fingerprint": "6301a9fb65fcac8c6c3cf790cb7298df82b49a7e01542e738a761508272c4595"
+  },
+  "outcome": "no_match",
+  "status": "no_match",
+  "answer": "",
+  "reason": "unsupported_beta_category",
+  "message": "Δεν κατάλαβα με σιγουριά ποια κατηγορία ψάχνεις. Μπορείς όμως να δεις τα αποτελέσματα της αναζήτησης στο BestPrice.",
+  "blocking_constraints": ["beta_category_coverage"],
+  "recommended_product_id": null,
+  "alternatives": [],
+  "products": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "catalog_requirements": [],
+    "beta_supported": false,
+    "coverage_family": "unknown",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": null,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [],
+      "conflicts": []
+    }
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "clarifications": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "provide_context",
+    "reason": "unsupported_beta_category",
+    "requires_user_action": true,
+    "bestprice_url": "[omitted]"
+  },
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 0,
+    "complete_catalog": false,
+    "search_calls": 1,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:09:44.978Z",
+      "source_observed_at": null,
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 0,
+      "candidate_count": 0,
+      "eligible_count": 0,
+      "returned_count": 0,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "shopping_context": {
+    "version": "bestprice_shopping_context_v32",
+    "products": [],
+    "market": []
+  },
+  "search_handoff": {
+    "url": "[omitted]",
+    "label": "Δες αποτελέσματα στο BestPrice"
+  },
+  "evidence": {
+    "scope": "returned_products",
+    "detail": "summary",
+    "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+    "omitted_claim_count": 0,
+    "omitted_source_count": 0,
+    "sources": [],
+    "claims": []
+  },
+  "uncertainty": []
+}

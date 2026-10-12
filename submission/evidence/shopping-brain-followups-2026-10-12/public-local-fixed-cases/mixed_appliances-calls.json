@@ -1,0 +1,2917 @@
+[
+  {
+    "name": "search_products",
+    "input": {
+      "query": "air fryer",
+      "required_features": [],
+      "sort": "relevance",
+      "limit": 8
+    },
+    "result": {
+      "requested_query": "air fryer",
+      "interpreted_query": "air fryer",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:17:50.912Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 1173,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": 8535,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": null,
+        "sort": "relevance",
+        "feature_hints": [],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["philips air fryer", "ninjta air fryer", "air fryer αξεσουάρ"],
+      "total_matches": 8,
+      "products": [
+        {
+          "product_id": "bp_2157732664",
+          "title": "Tefal EY501815 Air Fryer 4.2lt",
+          "brand": null,
+          "model": "Tefal EY501815 Air Fryer 4.2lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 67.09,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158725071",
+          "title": "Sencor SFR 5010BK Air Fryer 5lt",
+          "brand": null,
+          "model": "Sencor SFR 5010BK Air Fryer 5lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 80,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.99,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159260915",
+          "title": "Ninja Foodi FlexDrawer AF500EU Air Fryer 10.4lt",
+          "brand": null,
+          "model": "Ninja Foodi FlexDrawer AF500EU Air Fryer 10.4lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 174,
+          "offer_count": 41,
+          "availability": "available",
+          "match_confidence": 0.97,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 8
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158150132",
+          "title": "Rohnson R-2834 Air Fryer 8lt με Wi-Fi",
+          "brand": null,
+          "model": "Rohnson R-2834 Air Fryer 8lt με Wi-Fi",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 86.9,
+          "offer_count": 47,
+          "availability": "available",
+          "match_confidence": 0.96,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.19,
+            "count": 32
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160290728",
+          "title": "Rohnson R-2882 Air Fryer 12lt με Διπλό Κάδο",
+          "brand": null,
+          "model": "Rohnson R-2882 Air Fryer 12lt με Διπλό Κάδο",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 138,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162867736",
+          "title": "Rohnson Dual R-28019 Air Fryer 9lt με Διπλό Κάδο",
+          "brand": null,
+          "model": "Rohnson Dual R-28019 Air Fryer 9lt με Διπλό Κάδο",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 87.49,
+          "offer_count": 31,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159132561",
+          "title": "Rohnson SmartChef XL R-2858 Air Fryer 8lt με Wi-Fi",
+          "brand": null,
+          "model": "Rohnson SmartChef XL R-2858 Air Fryer 8lt με Wi-Fi",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 94.7,
+          "offer_count": 45,
+          "availability": "available",
+          "match_confidence": 0.91,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.71,
+            "count": 21
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159403370",
+          "title": "Ninja Max Pro AF180EU Air Fryer 6.2lt Black",
+          "brand": null,
+          "model": "Ninja Max Pro AF180EU Air Fryer 6.2lt Black",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 117.3,
+          "offer_count": 29,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Τα αποτελέσματα περιορίστηκαν στην κατηγορία «Air Fryers», ώστε να μη προηγούνται σχετικά αξεσουάρ."
+      ],
+      "as_of": "2026-10-12T10:17:50.912Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2160290728", "bp_2162867736", "bp_2159132561", "bp_2159403370"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2160290728",
+          "title": "Rohnson R-2882 Air Fryer 12lt με Διπλό Κάδο",
+          "brand": "Rohnson",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 138,
+          "availability": "in_stock",
+          "offer_count": 23,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "12 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 12,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 5+ Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "2200 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 2200,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Inox",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "ΦΡΙΤΕΖΑ AIR FRYER MOD R-2882 SINGLE AND DUAL BASKET ROHNSON",
+            "Φριτέζα Αέρος Rohnson 2in1 R-2882 12lt 2200W",
+            "ROHNSON R-2882 ΔΙΠΛΗ Η ΜΟΝΗ ΦΡΙΤΕΖΑ ΑΕΡΟΣ - 12,0 lt",
+            "Rohnson Family 12XXL R-2882 Φριτέζα Αέρα",
+            "Rohnson R-2882 Single or Dual Cook Air Fryer Φριτέζα Αέρος",
+            "Φριτέζα αέρος Rohnson R-2882 Family 12XXL",
+            "ROHNSON R-2882 BLACK Air Fryers",
+            "Rohnson Φριτέζα Αέρος R-2882 Single & Dual"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 2
+          }
+        },
+        {
+          "product_id": "bp_2162867736",
+          "title": "Rohnson Dual R-28019 Air Fryer 9lt με Διπλό Κάδο",
+          "brand": "Rohnson",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 87.49,
+          "availability": "in_stock",
+          "offer_count": 31,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "9 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 9,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 3 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "3100 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 3100,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "Air Fryer Rohnson Dual R-28019 9lt με Διπλό Κάδο",
+            "ΦΡΙΤΕΖΑ AIR FRYER MOD R-28019 SINGLE OR DUAL BASKET ROHNSON",
+            "ROHNSON R-28019 Air Fryers",
+            "Φριτέζα αέρος ROHNSON R-28019 με αποσπώμενο κάδο 9lt Μαύρο",
+            "Rohnson R-28019 Air Fryer 9lt Μαύρο Single or Dual Cook",
+            "Rohnson Dual R-28019 Air Fryer 9lt με Διπλό Κάδο",
+            "Rohnson Air Fryer 9lt Μαύρο R-28019",
+            "ROHNSON R-28019 ΦΡΙΤΕΖΑ ΑΕΡΟΣ 9 ΛΙΤΡΩΝ ΜΕ ΔΙΑΧΩΡΙΣΤΙΚΟ ΓΙΑ 2 ΚΑΔΟΥΣ 4.5 ΛΙΤΡΩΝ 3100W 12 ΠΡΟΕΠΙΛΕΓΜΕΝΑ ΠΡΟΓΡΑΜΜΑΤΑ"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 3
+          }
+        },
+        {
+          "product_id": "bp_2159132561",
+          "title": "Rohnson SmartChef XL R-2858 Air Fryer 8lt με Wi-Fi",
+          "brand": "Rohnson",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 94.7,
+          "availability": "in_stock",
+          "offer_count": 45,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "8 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 8,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 3 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1800 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1800,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Ναι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "Φριτέζα Αέρος Rohnson R-2858 SmartChef XL 2 με Αποσπώμενο Κάδο 8lt",
+            "ΦΡΙΤΕΖΑ AIR FRYER SOFT COOKING R-2858 ROHNSON",
+            "Rohnson R2858 Soft Cooking Φριτέζα Αέρα",
+            "ROHNSON R-2858 Φριτέζες",
+            "Φριτέζα Rohnson R-2858 Airfryer XL Wi-Fi",
+            "ΦΡΙΤΕΖΑ ΑΕΡΟΣ ROHNSON R-2858 XL 8LT",
+            "ΦΡΙΤΕΖΑ AIR FRYER SOFT COOKING R-2858 Rohnson",
+            "Rohnson R-2858 Φριτέζα Αέρος"
+          ],
+          "rating": {
+            "average": 4.71,
+            "count": 21
+          }
+        },
+        {
+          "product_id": "bp_2159403370",
+          "title": "Ninja Max Pro AF180EU Air Fryer 6.2lt Black",
+          "brand": "Ninja",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 117.3,
+          "availability": "in_stock",
+          "offer_count": 29,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "6.2 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 6.2,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 3 Άτομα",
+              "group": null
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "Ninja AF180EU",
+            "Ninja Φριτέζα Αέρος AF180EU Max",
+            "Ninja AF180EU MAX Pro 6,2L Φριτέζα αέρος",
+            "Ninja AF180EU Max Φριτέζα Αέρα",
+            "Ninja Max Pro Air Fryer 6.2lt Μαύρο",
+            "NINJA AF180EU με Αποσπώμενο Κάδο 6.2 L 2000 W Μαύρο Φριτέζα Αέρος",
+            "Φριτέζα αέρος Ninja AF180EU με αποσπώμενο κάδο, ισχύ 2000W και χωρητικότητα 6.2L AF180EU",
+            "Ninja AF180EU Φριτέζα Αέρος 6.2lt"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 3
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:50.912Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "search_products",
+    "input": {
+      "query": "μηχανή espresso",
+      "required_features": ["χωρίς κάψουλες"],
+      "sort": "relevance",
+      "limit": 8
+    },
+    "result": {
+      "requested_query": "μηχανή espresso",
+      "interpreted_query": "μηχανές espresso",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:17:50.909Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 998,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 48,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": null,
+        "sort": "relevance",
+        "feature_hints": [],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["δισκογόνα espresso", "κάψουλες espresso", "καφετιέρες"],
+      "total_matches": 48,
+      "products": [
+        {
+          "product_id": "bp_2155056130",
+          "title": "DeLonghi EC685.BK Dedica Μηχανή Espresso 1350W 15bar",
+          "brand": null,
+          "model": "DeLonghi EC685.BK Dedica Μηχανή Espresso 1350W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 126.23,
+          "offer_count": 48,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.74,
+            "count": 39
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159767045",
+          "title": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+          "brand": null,
+          "model": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 88,
+          "offer_count": 48,
+          "availability": "available",
+          "match_confidence": 0.99,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.58,
+            "count": 24
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155058806",
+          "title": "DeLonghi EC685.M Dedica Μηχανή Espresso 1350W 15bar",
+          "brand": null,
+          "model": "DeLonghi EC685.M Dedica Μηχανή Espresso 1350W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 125,
+          "offer_count": 56,
+          "availability": "available",
+          "match_confidence": 0.97,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.74,
+            "count": 39
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160910317",
+          "title": "Rohnson Barista Dual R-98082 Αυτόματη Μηχανή Espresso 1350W 20bar",
+          "brand": null,
+          "model": "Rohnson Barista Dual R-98082 Αυτόματη Μηχανή Espresso 1350W 20bar",
+          "variant": "G13/KAF/R98082",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 113.9,
+          "offer_count": 47,
+          "availability": "available",
+          "match_confidence": 0.96,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.8,
+            "count": 5
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155079943",
+          "title": "DeLonghi EC685.R Dedica Μηχανή Espresso 1350W 15bar",
+          "brand": null,
+          "model": "DeLonghi EC685.R Dedica Μηχανή Espresso 1350W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 119.21,
+          "offer_count": 74,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.74,
+            "count": 39
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160087320",
+          "title": "Philips EP0820/00 Series 800 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "brand": null,
+          "model": "Philips EP0820/00 Series 800 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 219.9,
+          "offer_count": 24,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.8,
+            "count": 5
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159033529",
+          "title": "Philips EP2334/10 Αυτόματη Μηχανή Espresso 15bar με Μύλο",
+          "brand": null,
+          "model": "Philips EP2334/10 Αυτόματη Μηχανή Espresso 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 341.37,
+          "offer_count": 38,
+          "availability": "available",
+          "match_confidence": 0.91,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158644887",
+          "title": "DeLonghi Magnifica Start ECAM220.21.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi Magnifica Start ECAM220.21.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 288.77,
+          "offer_count": 21,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159835253",
+          "title": "Rohnson R-98016 Μηχανή Espresso 20bar",
+          "brand": null,
+          "model": "Rohnson R-98016 Μηχανή Espresso 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 93.79,
+          "offer_count": 27,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157495177",
+          "title": "DeLonghi ECAM22.115.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi ECAM22.115.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 292.92,
+          "offer_count": 30,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157100137",
+          "title": "DeLonghi Magnifica Evo ECAM290.61.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi Magnifica Evo ECAM290.61.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 352.2,
+          "offer_count": 26,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159028895",
+          "title": "DeLonghi ECAM290.81.TB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi ECAM290.81.TB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 377.41,
+          "offer_count": 35,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164215081",
+          "title": "Krups SA403BE0 Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "Krups SA403BE0 Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 259,
+          "offer_count": 28,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159089588",
+          "title": "DeLonghi Dinamica Plus ECAM380.95.TB Αυτόματη Μηχανή Espresso 1450W 15bar",
+          "brand": null,
+          "model": "DeLonghi Dinamica Plus ECAM380.95.TB Αυτόματη Μηχανή Espresso 1450W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 620.31,
+          "offer_count": 21,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2156266121",
+          "title": "Philips EP2230/10 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "brand": null,
+          "model": "Philips EP2230/10 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 339,
+          "offer_count": 19,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2156172608",
+          "title": "DeLonghi Stilosa EC260.BK Μηχανή Espresso 1100W 15bar",
+          "brand": null,
+          "model": "DeLonghi Stilosa EC260.BK Μηχανή Espresso 1100W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 96,
+          "offer_count": 31,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 3.8,
+            "count": 5
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159033528",
+          "title": "Philips EP3321/40 Αυτόματη Μηχανή Espresso 15bar με Μύλο",
+          "brand": null,
+          "model": "Philips EP3321/40 Αυτόματη Μηχανή Espresso 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 298.76,
+          "offer_count": 31,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158390375",
+          "title": "DeLonghi ECAM450.86.T Αυτόματη Μηχανή Espresso 1450W 19bar με Μύλο και Wi-Fi",
+          "brand": null,
+          "model": "DeLonghi ECAM450.86.T Αυτόματη Μηχανή Espresso 1450W 19bar με Μύλο και Wi-Fi",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 877.49,
+          "offer_count": 24,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162556361",
+          "title": "Rohnson R-98300 Μηχανή Espresso 2700W 20bar",
+          "brand": null,
+          "model": "Rohnson R-98300 Μηχανή Espresso 2700W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 205.9,
+          "offer_count": 31,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2156127382",
+          "title": "DeLonghi EC235.BK Μηχανή Espresso 1100W 15bar",
+          "brand": null,
+          "model": "DeLonghi EC235.BK Μηχανή Espresso 1100W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 89.18,
+          "offer_count": 31,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.6,
+            "count": 5
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159835243",
+          "title": "Rohnson R-98014 Αυτόματη Μηχανή Espresso 1350W 20bar",
+          "brand": null,
+          "model": "Rohnson R-98014 Αυτόματη Μηχανή Espresso 1350W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 74.9,
+          "offer_count": 20,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 1,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159135977",
+          "title": "DeLonghi Magnifica Start ECAM220.80.SB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi Magnifica Start ECAM220.80.SB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 366.56,
+          "offer_count": 31,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2153370406",
+          "title": "DeLonghi ECAM22.110.SB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi ECAM22.110.SB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 298.61,
+          "offer_count": 31,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.67,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155071545",
+          "title": "DeLonghi EC685.W Dedica Μηχανή Espresso 1350W 15bar",
+          "brand": null,
+          "model": "DeLonghi EC685.W Dedica Μηχανή Espresso 1350W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 132.16,
+          "offer_count": 51,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.74,
+            "count": 39
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164275958",
+          "title": "Primo PREM-40577 Μηχανή Espresso 1350W 20bar",
+          "brand": null,
+          "model": "Primo PREM-40577 Μηχανή Espresso 1350W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 115.9,
+          "offer_count": 20,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2154832822",
+          "title": "DeLonghi Magnifica S ECAM21.117.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi Magnifica S ECAM21.117.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 281.25,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164275957",
+          "title": "Primo PREM-40576 Μηχανή Espresso 1350W 20bar",
+          "brand": null,
+          "model": "Primo PREM-40576 Μηχανή Espresso 1350W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 75.9,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162374615",
+          "title": "DeLonghi EC890.WI Αυτόματη Μηχανή Espresso 1450W 15bar",
+          "brand": null,
+          "model": "DeLonghi EC890.WI Αυτόματη Μηχανή Espresso 1450W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 206.73,
+          "offer_count": 20,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158276828",
+          "title": "DeLonghi ECAM220.22.GB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi ECAM220.22.GB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 293.85,
+          "offer_count": 34,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164187213",
+          "title": "Krups SA4001E0 Αυτόματη Μηχανή Espresso 1370W 15bar",
+          "brand": null,
+          "model": "Krups SA4001E0 Αυτόματη Μηχανή Espresso 1370W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 228,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159452006",
+          "title": "Primo PREM-40444 Αυτόματη Μηχανή Espresso 1050W 20bar",
+          "brand": null,
+          "model": "Primo PREM-40444 Αυτόματη Μηχανή Espresso 1050W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 86.5,
+          "offer_count": 37,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162799732",
+          "title": "Izzy Aerolatte IZ-6020 Μηχανή Espresso 1450W 20bar",
+          "brand": null,
+          "model": "Izzy Aerolatte IZ-6020 Μηχανή Espresso 1450W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 123.9,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160910319",
+          "title": "DeLonghi EC890. M Αυτόματη Μηχανή Espresso 1450W 15bar",
+          "brand": null,
+          "model": "DeLonghi EC890. M Αυτόματη Μηχανή Espresso 1450W 15bar",
+          "variant": "0132106349",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 215.6,
+          "offer_count": 27,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164132101",
+          "title": "Primo PRΕΜ-40570 Μηχανή Espresso 1350W 20bar",
+          "brand": null,
+          "model": "Primo PRΕΜ-40570 Μηχανή Espresso 1350W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 103.9,
+          "offer_count": 28,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163370112",
+          "title": "Primo PREM-40542 Μηχανή Espresso 850W 20bar",
+          "brand": null,
+          "model": "Primo PREM-40542 Μηχανή Espresso 850W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 78.9,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159452002",
+          "title": "Primo PREM-40445 Αυτόματη Μηχανή Espresso 1100W 20bar",
+          "brand": null,
+          "model": "Primo PREM-40445 Αυτόματη Μηχανή Espresso 1100W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 85,
+          "offer_count": 40,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157978096",
+          "title": "DeLonghi ECAM220.30.SB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "DeLonghi ECAM220.30.SB Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 343.57,
+          "offer_count": 22,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155644245",
+          "title": "Philips EP1220/00 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "brand": null,
+          "model": "Philips EP1220/00 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 228.2,
+          "offer_count": 19,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2154854677",
+          "title": "Ariete 1389/13 Vintage Creme Μηχανή Espresso 900W 15bar",
+          "brand": null,
+          "model": "Ariete 1389/13 Vintage Creme Μηχανή Espresso 900W 15bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 119,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164297632",
+          "title": "Primo PREM-40574 Μηχανή Espresso 1350W 20bar",
+          "brand": null,
+          "model": "Primo PREM-40574 Μηχανή Espresso 1350W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 129,
+          "offer_count": 21,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160077619",
+          "title": "Bosch Serie 8 CTL7181B0 Αυτόματη Μηχανή Espresso 19bar με Μύλο",
+          "brand": null,
+          "model": "Bosch Serie 8 CTL7181B0 Αυτόματη Μηχανή Espresso 19bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 1543.34,
+          "offer_count": 24,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157816560",
+          "title": "Krups EA897B10 Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": null,
+          "model": "Krups EA897B10 Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 319,
+          "offer_count": 17,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157177082",
+          "title": "IQ CM-175 Mint Green Μηχανή Espresso 1100W 20bar",
+          "brand": null,
+          "model": "IQ CM-175 Mint Green Μηχανή Espresso 1100W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 86,
+          "offer_count": 21,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162847765",
+          "title": "Rohnson R-98200 Αυτόματη Μηχανή Espresso 2800W 20bar με Μύλο",
+          "brand": null,
+          "model": "Rohnson R-98200 Αυτόματη Μηχανή Espresso 2800W 20bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 329,
+          "offer_count": 19,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160830518",
+          "title": "Bruno Barista BRN-0224 Αυτόματη Μηχανή Espresso 950W 19bar",
+          "brand": null,
+          "model": "Bruno Barista BRN-0224 Αυτόματη Μηχανή Espresso 950W 19bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 79.61,
+          "offer_count": 46,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.67,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164112069",
+          "title": "Estia 06-39240 Μηχανή Espresso 1360W 20bar",
+          "brand": null,
+          "model": "Estia 06-39240 Μηχανή Espresso 1360W 20bar",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 118.98,
+          "offer_count": 23,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160087324",
+          "title": "Philips Series 2300 EP2330/10 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "brand": null,
+          "model": "Philips Series 2300 EP2330/10 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 385.51,
+          "offer_count": 22,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160069418",
+          "title": "IQ CM-185 Αυτόματη Μηχανή Espresso 1050W 20bar Black",
+          "brand": null,
+          "model": "IQ CM-185 Αυτόματη Μηχανή Espresso 1050W 20bar Black",
+          "variant": null,
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 65,
+          "offer_count": 20,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Ο κατάλογος ερμήνευσε την αναζήτηση ως «μηχανές espresso». Όροι που δεν εμφανίζονται εκεί δεν θεωρούνται επιβεβαιωμένα φίλτρα.",
+        "Δεν αναζητήθηκε «μηχανή» από τη διατύπωσή σου. Έλεγξε ότι τα αποτελέσματα αντιστοιχούν σε αυτό που ζήτησες."
+      ],
+      "as_of": "2026-10-12T10:17:50.909Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2157732664", "bp_2158725071", "bp_2159260915", "bp_2158150132"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2157732664",
+          "title": "Tefal EY501815 Air Fryer 4.2lt",
+          "brand": "Tefal",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 67.09,
+          "availability": "in_stock",
+          "offer_count": 25,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.2 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.2,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1550 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1550,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "Tefal Easy Fry & Grill EY501815 fryer Single 4.2 L Stand-alone 1550 W Hot air fryer Black (EY501815)",
+            "Tefal Easy Fry & Grill Classic EY5018 Φριτέζα Αέρος με Αποσπώμενο Κάδο 4.2lt Μαύρη Κωδικός: 36540452",
+            "Tefal Easy Fry & Grill EY5018 Single 4.2 L Stand-alone 1550 W Hot air fryer Black",
+            "Tefal EY5018 Easy Fry & Grill Μαύρο Φριτέζα Αέρος",
+            "Tefal Easy Fry + Grill EY5018 Φριτέζα Αέρος",
+            "Tefal EY5018 Easy Fry & Grill Classic Φριτέζα Αέρος με Αποσπώμενο Κάδο 4.2lt Μαύρη",
+            "Tefal EY5018 Easy Fry & Grill Φριτέζα Αέρος",
+            "Tefal Φριτέζα Αέρος Easy Fry & Grill Classic EY5018 με Κάδο 4.2lt 1550W Μαύρη"
+          ]
+        },
+        {
+          "product_id": "bp_2158725071",
+          "title": "Sencor SFR 5010BK Air Fryer 5lt",
+          "brand": "Sencor",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 80,
+          "availability": "in_stock",
+          "offer_count": 23,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1500 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1500,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "SENCOR SFR 5010BK VITA FRYER ΜΕ ΠΑΡΑΘΥΡΟ - 5,0 lt",
+            "SENCOR SFR 5010BK VITA AIR FRYER 5L 1,500W",
+            "Φριτέζα Αέρος SENCOR SFR 5010 1500W 5 L Μαύρο",
+            "Φριτέζα Αέρος SENCOR Vita Fryer SFR 5010BK",
+            "ΦΡΙΤΕΖΑ ΑΕΡΟΣ SENCOR SFR 5010",
+            "Φριτέζα Αέρος Sencor SFR 5010BK 5Lt 1500W Black/Inox",
+            "Sencor Φριτέζα Αέρος Vita Fryer SFR 5010BK με Αποσπώμενο Κάδο 5lt",
+            "Φριτέζα SENCOR SFR 5010BK Vita 5L 1500W"
+          ]
+        },
+        {
+          "product_id": "bp_2159260915",
+          "title": "Ninja Foodi FlexDrawer AF500EU Air Fryer 10.4lt",
+          "brand": "Ninja",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 174,
+          "availability": "in_stock",
+          "offer_count": 41,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "10.4 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 10.4,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 4 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "2470 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 2470,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "Ninja Megazone Flexdrawer 10.4LT 2470W Φριτέζα Αέρα",
+            "Ninja AF500EU Foodi Max Dual Zone Φριτέζα Αέρος με Διπλό Αποσπώμενο Κάδο 10.4lt Μαύρη 622356270373",
+            "Ninja Φριτέζα Αέρος Megazone Flexdrawer AF500EU",
+            "Φριτέζα Αέρος Ninja Dual Zone AF500EU",
+            "Ninja AF500EU fryer Double 10.4 L Stand-alone 2470 W Hot air fryer Black, Stainless steel (AF500EU)",
+            "Ninja AF500EU",
+            "Ninja - AF500EU Φριτέζα Αέρος 10.4lt Μαύρη με Αποσπώμενο Κάδο (Air Fryer) 60511002",
+            "NINJA AF500EU Air Fryer Black"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 8
+          }
+        },
+        {
+          "product_id": "bp_2158150132",
+          "title": "Rohnson R-2834 Air Fryer 8lt με Wi-Fi",
+          "brand": "Rohnson",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 86.9,
+          "availability": "in_stock",
+          "offer_count": 47,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "8 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 8,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 3 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1800 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1800,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Ναι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "ROHNSON SMARTCHEF XL R-2834 με Αποσπώμενο Κάδο 1800 W 8 L Μαύρο Φριτέζα Αέρος",
+            "Rohnson R2834 Wi-Fi Φριτέζα Αέρα",
+            "Φριτέζα Αέρος ROHNSON SMARTCHEF XL R-2834 1800 W με Wifi και Αποσπώμενο Κάδο 8 L Μαύρο",
+            "ΦΡΙΤΕΖΑ AIR FRYER MOD R-2834 WITH WIFI ROHNSON",
+            "Rohnson R-2834 SmartChef XL (Φριτέζα Αέρος 8lt με WiFi)",
+            "Rohnson Φριτέζα Αέρος SmartChef XL R-2834 1800W 8Lt",
+            "Φριτέζα Rohnson R-2834 Airfryer XL Wi-Fi",
+            "Φριτέζα Αέρος Rohnson WiFi R-2834"
+          ],
+          "rating": {
+            "average": 4.19,
+            "count": 32
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:50.912Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2155079943", "bp_2160087320", "bp_2159033529", "bp_2158644887"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2155079943",
+          "title": "DeLonghi EC685.R Dedica Μηχανή Espresso 1350W 15bar",
+          "brand": "DeLonghi",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 119.21,
+          "availability": "in_stock",
+          "offer_count": 74,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 3143,
+              "label": "Παροχή Καφέ",
+              "value": "Αλεσμένος",
+              "group": null
+            },
+            {
+              "id": 3142,
+              "label": "Τύπος",
+              "value": "Χειροκίνητη",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Κόκκινο",
+              "group": null
+            },
+            {
+              "id": 4818,
+              "label": "Ακροφύσιο Ατμού",
+              "value": "Με Ακροφύσιο Ατμού",
+              "group": null
+            },
+            {
+              "id": 392,
+              "label": "Wi-Fi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 5359,
+              "label": "Εντοιχιζόμενες",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 408,
+              "label": "Κατανάλωση",
+              "value": "1300 W",
+              "group": "Κατανάλωση",
+              "numeric": {
+                "value": 1300,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 519,
+              "label": "Πίεση Αντλίας",
+              "value": "15 bar",
+              "group": null,
+              "numeric": {
+                "value": 15,
+                "unit": "bar"
+              }
+            },
+            {
+              "id": 501,
+              "label": "Χωρητικότητα Δοχείου Νερού",
+              "value": "1 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 1,
+                "unit": "lt"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Delonghi EC685.R (Μηχανή espresso cappuccino)",
+            "Delonghi EC685.R Καφετιέρα Espresso Cappuccino",
+            "Καφετιέρα Espresso Delonghi EC 685.R Dedica Style Red",
+            "Delonghi EC685.R Καφετιέρα Espresso",
+            "Delonghi EC685.R Καφετιέρα Espresso-Cappuccino",
+            "Delonghi EC685.R",
+            "ΚΑΦΕΤΙΕΡΑ ESPRESSO EC685.R DELONGHI",
+            "Delonghi EC685.R Μηχανή Espresso"
+          ],
+          "rating": {
+            "average": 4.74,
+            "count": 39
+          }
+        },
+        {
+          "product_id": "bp_2160087320",
+          "title": "Philips EP0820/00 Series 800 Αυτόματη Μηχανή Espresso 1500W 15bar με Μύλο",
+          "brand": "Philips",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 219.9,
+          "availability": "in_stock",
+          "offer_count": 24,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 3143,
+              "label": "Παροχή Καφέ",
+              "value": "Κόκκοι (με Μύλο)",
+              "group": null
+            },
+            {
+              "id": 3142,
+              "label": "Τύπος",
+              "value": "Αυτόματη",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 4818,
+              "label": "Ακροφύσιο Ατμού",
+              "value": "Με Ακροφύσιο Ατμού",
+              "group": null
+            },
+            {
+              "id": 392,
+              "label": "Wi-Fi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 5359,
+              "label": "Εντοιχιζόμενες",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 408,
+              "label": "Κατανάλωση",
+              "value": "1500 W",
+              "group": "Κατανάλωση",
+              "numeric": {
+                "value": 1500,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 519,
+              "label": "Πίεση Αντλίας",
+              "value": "15 bar",
+              "group": null,
+              "numeric": {
+                "value": 15,
+                "unit": "bar"
+              }
+            },
+            {
+              "id": 501,
+              "label": "Χωρητικότητα Δοχείου Νερού",
+              "value": "1.8 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 1.8,
+                "unit": "lt"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Philips Καφετιέρα Espresso Αυτόματη EP0820/00 Series 800",
+            "Philips EP0820/00 Series 800 Μηχανή Espresso",
+            "PHILIPS EP0820/00 Μηχανές Espresso",
+            "Philips EP0820/00 Μηχανή Espresso",
+            "Philips Μηχανή Espresso EP0820/00 Πίεσης 15bar 1500W Μαύρη με ενσωματωμένο μύλο άλεσης",
+            "PHILIPS EP0820/00 MHXANH ESPRESSO 15BAR ME ΜΥΛΟ ΑΛΕΣΗΣ ΚΑΦΕ & ΣΥΣΤΗΜΑ ΓΙΑ ΑΦΡΟΓΑΛΑ",
+            "Καφετιέρα - Μηχανή Espresso Philips EP0820/00",
+            "ΚΑΦΕΤΙΕΡΑ ESPRESSO EP0820/00 PHILIPS"
+          ],
+          "rating": {
+            "average": 4.8,
+            "count": 5
+          }
+        },
+        {
+          "product_id": "bp_2159033529",
+          "title": "Philips EP2334/10 Αυτόματη Μηχανή Espresso 15bar με Μύλο",
+          "brand": "Philips",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 341.37,
+          "availability": "in_stock",
+          "offer_count": 38,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 3143,
+              "label": "Παροχή Καφέ",
+              "value": "Κόκκοι (με Μύλο)",
+              "group": null
+            },
+            {
+              "id": 3142,
+              "label": "Τύπος",
+              "value": "Αυτόματη",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 4818,
+              "label": "Ακροφύσιο Ατμού",
+              "value": "Χωρίς Ακροφύσιο Ατμού",
+              "group": null
+            },
+            {
+              "id": 392,
+              "label": "Wi-Fi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 5359,
+              "label": "Εντοιχιζόμενες",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 519,
+              "label": "Πίεση Αντλίας",
+              "value": "15 bar",
+              "group": null,
+              "numeric": {
+                "value": 15,
+                "unit": "bar"
+              }
+            },
+            {
+              "id": 501,
+              "label": "Χωρητικότητα Δοχείου Νερού",
+              "value": "1.8 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 1.8,
+                "unit": "lt"
+              }
+            }
+          ],
+          "offer_titles": [
+            "PHILIPS Series 2300 EP2334/10 15bar Μηχανή Espresso",
+            "Philips EP2334/10 coffee maker Fully-auto Espresso machine",
+            "Philips EP2334/10 coffee maker Fully-auto Espresso machine (EP2334/10)",
+            "Philips EP2334/10 Αυτόματη Μηχανή Espresso 1500W Πίεσης 15bar Μαύρη",
+            "Καφετιέρα - Μηχανή Espresso Philips EP2334/10",
+            "Philips Μηχανή Espresso EP2334/10 1500W Πίεσης 15bar",
+            "PHILIPS EP2334/10 ΜΗΧΑΝΗ ESPRESSO ΠΙΕΣΗΣ 15BAR",
+            "Μηχανή Espresso Philips Series 2300 EP2334/10 1500W 15bar Μαύρη"
+          ]
+        },
+        {
+          "product_id": "bp_2158644887",
+          "title": "DeLonghi Magnifica Start ECAM220.21.B Αυτόματη Μηχανή Espresso 1450W 15bar με Μύλο",
+          "brand": "DeLonghi",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 288.77,
+          "availability": "in_stock",
+          "offer_count": 21,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 3143,
+              "label": "Παροχή Καφέ",
+              "value": "Κόκκοι (με Μύλο)",
+              "group": null
+            },
+            {
+              "id": 3142,
+              "label": "Τύπος",
+              "value": "Αυτόματη",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 4818,
+              "label": "Ακροφύσιο Ατμού",
+              "value": "Με Ακροφύσιο Ατμού",
+              "group": null
+            },
+            {
+              "id": 392,
+              "label": "Wi-Fi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 5359,
+              "label": "Εντοιχιζόμενες",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 408,
+              "label": "Κατανάλωση",
+              "value": "1450 W",
+              "group": "Κατανάλωση",
+              "numeric": {
+                "value": 1450,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 519,
+              "label": "Πίεση Αντλίας",
+              "value": "15 bar",
+              "group": null,
+              "numeric": {
+                "value": 15,
+                "unit": "bar"
+              }
+            },
+            {
+              "id": 501,
+              "label": "Χωρητικότητα Δοχείου Νερού",
+              "value": "1.8 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 1.8,
+                "unit": "lt"
+              }
+            }
+          ],
+          "offer_titles": [
+            "DELONGHI ECAM220.21.B Magnifica Start Αυτόματες μηχανές espresso",
+            "DELONGHI Magnifica Start ECAM220.21.BG 1450W 15bar Μηχανή Espresso",
+            "DELONGHI ECAM 220.21.B MAGNIFICA START Καφετιέρες ροφημάτων",
+            "DeLonghi ECAM220.21.B Magnifica Start",
+            "De'Longhi Magnifica Start ECAM220.21.B Αυτόματη Μηχανή Espresso 1450W Πίεσης 15bar με Μύλο Άλεσης Μαύρη",
+            "DELONGHI ECAM220.21.B Magnifica Start Μηχανές Espresso Black",
+            "Μηχανή Espresso De'Longhi Magnifica Start ECAM220.21.B Αυτόματη 1450W Πίεσης 15bar με Μύλο Άλεσης",
+            "Delonghi ECAM220.21.B Magnifica Start Αυτόματη μηχανή espresso"
+          ]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:50.909Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2155056130", "bp_2159767045", "bp_2155058806", "bp_2160910317"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2155056130",
+          "title": "DeLonghi EC685.BK Dedica Μηχανή Espresso 1350W 15bar",
+          "brand": "DeLonghi",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 126.23,
+          "availability": "in_stock",
+          "offer_count": 48,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 3143,
+              "label": "Παροχή Καφέ",
+              "value": "Αλεσμένος",
+              "group": null
+            },
+            {
+              "id": 3142,
+              "label": "Τύπος",
+              "value": "Χειροκίνητη",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 4818,
+              "label": "Ακροφύσιο Ατμού",
+              "value": "Με Ακροφύσιο Ατμού",
+              "group": null
+            },
+            {
+              "id": 392,
+              "label": "Wi-Fi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 5359,
+              "label": "Εντοιχιζόμενες",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 408,
+              "label": "Κατανάλωση",
+              "value": "1350 W",
+              "group": "Κατανάλωση",
+              "numeric": {
+                "value": 1350,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 519,
+              "label": "Πίεση Αντλίας",
+              "value": "15 bar",
+              "group": null,
+              "numeric": {
+                "value": 15,
+                "unit": "bar"
+              }
+            },
+            {
+              "id": 501,
+              "label": "Χωρητικότητα Δοχείου Νερού",
+              "value": "1 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 1,
+                "unit": "lt"
+              }
+            }
+          ],
+          "offer_titles": [
+            "DeLonghi EC 685 BK Dedica Style",
+            "Delonghi EC685.BK (Μηχανή espresso cappuccino)",
+            "Delonghi EC685.BK Καφετιέρα Espresso Cappuccino",
+            "Καφετιέρα Espresso Delonghi EC 685.BK Dedica Style Black",
+            "ΚΑΦΕΤΙΕΡΑ ESPRESSO EC685.BK DELONGHI",
+            "Delonghi EC685.BK",
+            "Delonghi EC685.BK Μηχανή Espresso",
+            "Μηχανή Espresso Delonghi Dedica Style EC685.BK Black"
+          ],
+          "rating": {
+            "average": 4.74,
+            "count": 39
+          }
+        },
+        {
+          "product_id": "bp_2159767045",
+          "title": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+          "brand": "Rohnson",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 88,
+          "availability": "in_stock",
+          "offer_count": 48,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 3143,
+              "label": "Παροχή Καφέ",
+              "value": "Αλεσμένος",
+              "group": null
+            },
+            {
+              "id": 3142,
+              "label": "Τύπος",
+              "value": "Αυτόματη",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": null
+            },
+            {
+              "id": 4818,
+              "label": "Ακροφύσιο Ατμού",
+              "value": "Με Ακροφύσιο Ατμού",
+              "group": null
+            },
+            {
+              "id": 392,
+              "label": "Wi-Fi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 5359,
+              "label": "Εντοιχιζόμενες",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 408,
+              "label": "Κατανάλωση",
+              "value": "1350 W",
+              "group": "Κατανάλωση",
+              "numeric": {
+                "value": 1350,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 519,
+              "label": "Πίεση Αντλίας",
+              "value": "20 bar",
+              "group": null,
+              "numeric": {
+                "value": 20,
+                "unit": "bar"
+              }
+            },
+            {
+              "id": 501,
+              "label": "Χωρητικότητα Δοχείου Νερού",
+              "value": "1.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 1.5,
+                "unit": "lt"
+              }
+            }
+          ],
+          "offer_titles": [
+            "ROHNSON R-98015 Μηχανές Espresso Μηχανές Espresso",
+            "Rohnson R-98015 Μηχανή Espresso",
+            "ΚΑΦΕΤΙΕΡΑ ESPRESSO MOD R-98015 ROHNSON",
+            "ΚΑΦΕΤΙΕΡΑ ESPRESSO MOD R-98015 Rohnson",
+            "ROHNSON R-98015 Μηχανές Espresso Silver/Black",
+            "Rohnson R-98015 Μαύρη Αυτόματη Μηχανή Espresso 1350W Πίεσης 20bar *",
+            "Rohnson R-98015 Hot & Cold Μηχανή Espresso",
+            "Rohnson Μηχανή Espresso R-98015 Hot & Cold 1350W Πίεσης 20bar"
+          ],
+          "rating": {
+            "average": 4.58,
+            "count": 24
+          }
+        },
+        {
+          "product_id": "bp_2155058806",
+          "title": "DeLonghi EC685.M Dedica Μηχανή Espresso 1350W 15bar",
+          "brand": "DeLonghi",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 125,
+          "availability": "in_stock",
+          "offer_count": 56,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 3143,
+              "label": "Παροχή Καφέ",
+              "value": "Αλεσμένος",
+              "group": null
+            },
+            {
+              "id": 3142,
+              "label": "Τύπος",
+              "value": "Χειροκίνητη",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Ασημί",
+              "group": null
+            },
+            {
+              "id": 4818,
+              "label": "Ακροφύσιο Ατμού",
+              "value": "Με Ακροφύσιο Ατμού",
+              "group": null
+            },
+            {
+              "id": 392,
+              "label": "Wi-Fi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 5359,
+              "label": "Εντοιχιζόμενες",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 408,
+              "label": "Κατανάλωση",
+              "value": "1350 W",
+              "group": "Κατανάλωση",
+              "numeric": {
+                "value": 1350,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 519,
+              "label": "Πίεση Αντλίας",
+              "value": "15 bar",
+              "group": null,
+              "numeric": {
+                "value": 15,
+                "unit": "bar"
+              }
+            },
+            {
+              "id": 501,
+              "label": "Χωρητικότητα Δοχείου Νερού",
+              "value": "1 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 1,
+                "unit": "lt"
+              }
+            }
+          ],
+          "offer_titles": [
+            "DeLonghi EC 685 M Dedica Style",
+            "Delonghi EC685.M Καφετιέρα Espresso Cappuccino",
+            "Delonghi EC685.M Metal",
+            "ΚΑΦΕΤΙΕΡΑ ESPRESSO EC685.M DELONGHI",
+            "Καφετιέρα espresso cappuccino Delonghi EC 685.M",
+            "Delonghi EC685.M Μηχανή Espresso",
+            "Καφετιέρα Espresso Delonghi EC 685.M Dedica Style Silver",
+            "Μηχανή Espresso Delonghi Dedica Style EC685.M Metallic"
+          ],
+          "rating": {
+            "average": 4.74,
+            "count": 39
+          }
+        },
+        {
+          "product_id": "bp_2160910317",
+          "title": "Rohnson Barista Dual R-98082 Αυτόματη Μηχανή Espresso 1350W 20bar",
+          "brand": "Rohnson",
+          "category_id": 6627,
+          "category_title": "Μηχανές Espresso",
+          "price_from": 113.9,
+          "availability": "in_stock",
+          "offer_count": 47,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 3143,
+              "label": "Παροχή Καφέ",
+              "value": "Αλεσμένος",
+              "group": null
+            },
+            {
+              "id": 3142,
+              "label": "Τύπος",
+              "value": "Αυτόματη",
+              "group": "Τύπος"
+            },
+            {
+              "id": 1062,
+              "label": "Χρώμα",
+              "value": "Μαύρο, Ασημί",
+              "group": null
+            },
+            {
+              "id": 4818,
+              "label": "Ακροφύσιο Ατμού",
+              "value": "Με Ακροφύσιο Ατμού",
+              "group": null
+            },
+            {
+              "id": 392,
+              "label": "Wi-Fi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 5359,
+              "label": "Εντοιχιζόμενες",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 408,
+              "label": "Κατανάλωση",
+              "value": "1350 W",
+              "group": "Κατανάλωση",
+              "numeric": {
+                "value": 1350,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 519,
+              "label": "Πίεση Αντλίας",
+              "value": "20 bar",
+              "group": null,
+              "numeric": {
+                "value": 20,
+                "unit": "bar"
+              }
+            },
+            {
+              "id": 501,
+              "label": "Χωρητικότητα Δοχείου Νερού",
+              "value": "1.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 1.5,
+                "unit": "lt"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Rohnson R-98082 Barista Dual Hot & Cold Μηχανή Espresso",
+            "ROHNSON R-98082 Μηχανή Espresso & Cappuccino Barista Dual 20 bar 1350W *",
+            "Καφετιέρα HOT&COLD Espresso & Cappuccino R-98082 ROHNSON",
+            "Καφετιέρα Espresso Rohnson R-98082",
+            "ΚΑΦΕΤΙΕΡΑ HOT&COLD ESPRESSO & CAPPUCCINO MOD R-98082 ROHNSON",
+            "Καφετιέρα Espresso & Cappuccino Barista Dual ROHNSON R-98082 Μαύρο-Inox",
+            "ROHNSON R-98082 Μηχανές Espresso",
+            "ROHNSON Barista Dual R-98082 1350W 20bar Μηχανή Espresso"
+          ],
+          "rating": {
+            "average": 4.8,
+            "count": 5
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:17:50.909Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "optimize_basket",
+    "input": {
+      "items": [
+        {
+          "product_id": "bp_2159767045",
+          "quantity": 1
+        },
+        {
+          "product_id": "bp_2157732664",
+          "quantity": 1
+        }
+      ],
+      "postal_code": "11527",
+      "maximum_merchants": 3,
+      "minimum_merchant_rating": 0,
+      "objective": "balanced_reliability_cost"
+    },
+    "result": {
+      "preferred_plan": "balanced",
+      "methodology_id": "bestprice_basket_bounded_v1",
+      "plans": [
+        {
+          "plan_type": "fewer_merchants",
+          "merchant_count": 1,
+          "item_subtotal": 178.9,
+          "shipping_total": 7,
+          "shipping_status": "known",
+          "total_price": 185.9,
+          "reliability_score": 4.47,
+          "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+          "merchants": [
+            {
+              "merchant_id": "bp_merchant_2728",
+              "merchant_name": "Schinas-electric",
+              "merchant_rating": 4.47,
+              "verified_merchant": true,
+              "item_subtotal": 178.9,
+              "shipping_price": 7,
+              "shipping_status": "known",
+              "total_price": 185.9,
+              "reason": "covers_basket_with_one_merchant",
+              "items": [
+                {
+                  "product_id": "bp_2157732664",
+                  "title": "Tefal EY501815 Air Fryer 4.2lt",
+                  "quantity": 1,
+                  "unit_price": 69.9,
+                  "line_total": 69.9,
+                  "decision_id": "[omitted]",
+                  "product_url": "[omitted]"
+                },
+                {
+                  "product_id": "bp_2159767045",
+                  "title": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+                  "quantity": 1,
+                  "unit_price": 109,
+                  "line_total": 109,
+                  "decision_id": "[omitted]",
+                  "product_url": "[omitted]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "plan_type": "balanced",
+          "merchant_count": 2,
+          "item_subtotal": 158.3,
+          "shipping_total": 7,
+          "shipping_status": "known",
+          "total_price": 165.3,
+          "reliability_score": 4.7,
+          "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+          "merchants": [
+            {
+              "merchant_id": "bp_merchant_2728",
+              "merchant_name": "Schinas-electric",
+              "merchant_rating": 4.47,
+              "verified_merchant": true,
+              "item_subtotal": 69.9,
+              "shipping_price": 7,
+              "shipping_status": "known",
+              "total_price": 76.9,
+              "reason": "selected_by_basket_optimizer",
+              "items": [
+                {
+                  "product_id": "bp_2157732664",
+                  "title": "Tefal EY501815 Air Fryer 4.2lt",
+                  "quantity": 1,
+                  "unit_price": 69.9,
+                  "line_total": 69.9,
+                  "decision_id": "[omitted]",
+                  "product_url": "[omitted]"
+                }
+              ]
+            },
+            {
+              "merchant_id": "bp_merchant_6501",
+              "merchant_name": "ClickInside",
+              "merchant_rating": 4.93,
+              "verified_merchant": true,
+              "item_subtotal": 88.4,
+              "shipping_price": 0,
+              "shipping_status": "known",
+              "total_price": 88.4,
+              "reason": "free_shipping",
+              "items": [
+                {
+                  "product_id": "bp_2159767045",
+                  "title": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+                  "quantity": 1,
+                  "unit_price": 88.4,
+                  "line_total": 88.4,
+                  "decision_id": "[omitted]",
+                  "product_url": "[omitted]"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "unavailable_items": [],
+      "warnings": [
+        "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+      ],
+      "as_of": "2026-10-12T10:17:51.246Z",
+      "currency": "EUR"
+    }
+  }
+]

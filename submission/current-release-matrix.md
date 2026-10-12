@@ -1,6 +1,10 @@
 # BestPrice current release matrix
 
-Updated October 12, 2026. Latest: [category, exclusion and basket audit](shopping-brain-category-audit-2026-10-12.md), released at `77b594bd8d526e004c8f38b4d30c15caee91ba4f`: **40/40 anonymous live cases across 15 categories**, **53/53 read-only canary checks**, Jenkins green. Wired exclusions, explicit conflicts, basket item-price floors and slot-specific feature handling were repaired. [Immutable-file receipt and hashes](evidence/shopping-brain-categories-2026-10-12/release-receipt.json) retain all nine reproduced failures and the passing release responses. Earlier observations below remain historical and do not establish today's portal or account state.
+Updated October 12, 2026. Latest: [follow-up, ambiguity and mixed-basket audit](shopping-brain-followup-audit-2026-10-12.md), released at `b91cfa5392f867e3c44828666389e566d20d84ef`: **24/24 anonymous public cases**, **12/12 local multi-turn replays with live catalog data**, **53/53 read-only canary checks**, Jenkins green. Corrected inventories, budget-only basket continuation and unresolved product choices were repaired. [The release manifest](evidence/shopping-brain-followups-2026-10-12/release-receipt.json) retains the failed attempts, repeats and passing release results. Public calls accept a concise current request; local history replays do not prove actual host transcript handling or live Ask/MCP parity.
+
+## Earlier October 12 category audit
+
+The [category, exclusion and basket audit](shopping-brain-category-audit-2026-10-12.md), released at `77b594bd8d526e004c8f38b4d30c15caee91ba4f`, passed **40/40 live cases across 15 categories** and **53/53 read-only canary checks**, with Jenkins green. [Its release manifest](evidence/shopping-brain-categories-2026-10-12/release-receipt.json) retains all nine reproduced failures and the passing responses. Earlier observations below remain historical and do not establish today's portal or account state.
 
 ## Earlier October 12 broad audit
 

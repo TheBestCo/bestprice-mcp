@@ -1,0 +1,1159 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:17:43.634Z",
+  "outcome": "recommendation",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "fcc47967-ea9b-43d0-9027-da19ba54fc0f",
+    "revision": 1,
+    "fingerprint": "98fd874e2be75047ff6e34b7a82c5fd287f70bc4df38a39961e03d9803e2b62b",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "phone",
+    "intent": "shop",
+    "query": "κινητό",
+    "constraints": {
+      "budgetEur": 300,
+      "statedBudgetEur": 300,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 300,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 300,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 33,
+            "end": 45,
+            "text": "έως 300 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {
+      "camera_quality_evidence": ["καλό κινητό για φωτογραφίες"]
+    },
+    "requirements": [],
+    "preferences": [
+      {
+        "id": "camera_quality_evidence",
+        "label": "καλή κάμερα (π.χ. οπτική σταθεροποίηση)",
+        "ranks": true,
+        "preference": true
+      }
+    ],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": ["καλό κινητό για φωτογραφίες"],
+    "nonPricePhrases": ["καλό κινητό για φωτογραφίες"],
+    "source_turns": [
+      {
+        "role": "user",
+        "content": "καλό κινητό για φωτογραφίες"
+      }
+    ],
+    "transition": "start"
+  },
+  "actions": [
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_0",
+      "type": "refine",
+      "message": "Βρες κάτι φθηνότερο από το Samsung Galaxy A16 128GB, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "product_ids": []
+    },
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_1",
+      "type": "compare",
+      "message": "Σύγκρινε αναλυτικά το Samsung Galaxy A16 128GB με το Samsung Galaxy A17 5G 4GB 128GB.",
+      "product_ids": ["bp_2160176672", "bp_2162408545", "bp_2160449839"]
+    }
+  ],
+  "status": "ready",
+  "mission": {
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Κινητό · Έως 300 €",
+    "constraints": {
+      "maximum_price_eur": 300,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 300,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 300,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 33,
+              "end": 45,
+              "text": "έως 300 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "primary": {
+    "product_id": "bp_2160176672",
+    "title": "Samsung Galaxy A16 128GB",
+    "brand": null,
+    "model": "Samsung Galaxy A16 128GB",
+    "variant": "A165",
+    "category_title": "Κινητά",
+    "price_from": 151,
+    "rating": {
+      "average": 4.82,
+      "count": 21
+    },
+    "offer_count": 51,
+    "availability": "available",
+    "product_url": "[omitted]",
+    "image_url": "[omitted]",
+    "ram_gb": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "dual_basket": null
+  },
+  "alternatives": [
+    {
+      "product": {
+        "product_id": "bp_2162408545",
+        "title": "Samsung Galaxy A17 5G 4GB 128GB",
+        "brand": null,
+        "model": "Samsung Galaxy A17 5G 4GB 128GB",
+        "variant": null,
+        "category_title": "Κινητά",
+        "price_from": 175,
+        "rating": {
+          "average": 4.67,
+          "count": 8
+        },
+        "offer_count": 80,
+        "availability": "available",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": 4,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "24€ ακριβότερο",
+      "tradeoff": "Δίνει ανώτερη σειρά μοντέλου στην κατάταξη επιδόσεων του BestPrice (εκτίμηση, όχι μέτρηση). Δεν συνέκρινα: μνήμη RAM, δίκτυο 5G και τεχνολογία οθόνης",
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_199605807",
+          "merchant_id": "bp_merchant_14633",
+          "merchant_name": "SSP MOBILE",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 175,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "price_checked_at": "2026-10-12T10:17:43.550Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_199605807",
+          "merchant_id": "bp_merchant_14633",
+          "merchant_name": "SSP MOBILE",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 175,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "price_checked_at": "2026-10-12T10:17:43.550Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 300,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    },
+    {
+      "product": {
+        "product_id": "bp_2160449839",
+        "title": "Samsung Galaxy A56 5G 8GB 128GB",
+        "brand": null,
+        "model": "Samsung Galaxy A56 5G 8GB 128GB",
+        "variant": null,
+        "category_title": "Κινητά",
+        "price_from": 289.98,
+        "rating": {
+          "average": 4.75,
+          "count": 72
+        },
+        "offer_count": 28,
+        "availability": "available",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": 8,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "Δεύτερη διαθέσιμη επιλογή",
+      "tradeoff": null,
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_181648280",
+          "merchant_id": "bp_merchant_4397",
+          "merchant_name": "Justech",
+          "merchant_rating": 4.75,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 289.98,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:17:43.550Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_181648280",
+          "merchant_id": "bp_merchant_4397",
+          "merchant_name": "Justech",
+          "merchant_rating": 4.75,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 289.98,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:17:43.550Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 300,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    }
+  ],
+  "constraints": {
+    "maximum_price_eur": 300,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "catalog_requirements": [],
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 300,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 300,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 33,
+            "end": 45,
+            "text": "έως 300 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [
+    "Καλύπτει τα εξής κριτήρια: έως 300€.",
+    "Η επόμενη επιλογή κοστίζει 24€ παραπάνω και δίνει ανώτερη σειρά μοντέλου στην κατάταξη επιδόσεων του BestPrice (εκτίμηση, όχι μέτρηση) αλλά χαμηλότερη βαθμολογία από αγοραστές του BestPrice. Συνέκρινα μόνο: επίδοση οικογένειας μοντέλου, αποθηκευτικός χώρος, νεότερη γενιά και βαθμολογία αγοραστών BestPrice. Με βάση αυτά, δεν προτείνω να πληρώσεις τη διαφορά. Δεν συνέκρινα: μνήμη RAM, δίκτυο 5G και τεχνολογία οθόνης.",
+    "Αγοραστές στο BestPrice το βαθμολογούν 4,8/5 σε 21 αξιολογήσεις."
+  ],
+  "tradeoffs": [
+    "Ο κατάλογος δεν δίνει στοιχεία για την ποιότητα της κάμερας (π.χ. OIS) γι' αυτό το μοντέλο, οπότε δεν μπήκε στη σύγκριση.",
+    "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+    "Hashtagtrade: βαθμολογία καταστήματος 4,8/5 από 108 αξιολογήσεις; δηλωμένη διαθεσιμότητα «Άμεσα διαθέσιμο» (εκτίμηση καταστήματος)."
+  ],
+  "offer_summary": {
+    "postal_code": null,
+    "price_basis": "item_price",
+    "affordability": "within_item_budget_delivery_unknown",
+    "offer_scope": "returned_sample",
+    "delivery_affordability_proven": false,
+    "recommended": {
+      "offer_id": "bp_offer_174011783",
+      "merchant_id": "bp_merchant_14077",
+      "merchant_name": "Hashtagtrade",
+      "merchant_rating": 4.8,
+      "merchant_rating_count": 108,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 151,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "in_stock",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "Άμεσα διαθέσιμο",
+      "price_checked_at": "2026-10-12T10:17:43.550Z"
+    },
+    "cheapest": {
+      "offer_id": "bp_offer_174011783",
+      "merchant_id": "bp_merchant_14077",
+      "merchant_name": "Hashtagtrade",
+      "merchant_rating": 4.8,
+      "merchant_rating_count": 108,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 151,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "in_stock",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "Άμεσα διαθέσιμο",
+      "price_checked_at": "2026-10-12T10:17:43.550Z"
+    },
+    "same_offer": true,
+    "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+    "budget_eur": 300,
+    "recommended_within_budget": true,
+    "cheapest_within_budget": true,
+    "compared_offer_count": 10,
+    "unknown_shipping_count": 10
+  },
+  "price_history": {
+    "current_price": 151,
+    "quote_consistency": "matched",
+    "current_price_source": "live_offer_minimum",
+    "source_last_observed_at": "2026-10-12T10:17:43.550Z",
+    "period_days": 180,
+    "window_stats": [
+      {
+        "days": 30,
+        "minimum_price": 136.97,
+        "median_price": 147,
+        "observations": 30,
+        "coverage_pct": 100
+      },
+      {
+        "days": 90,
+        "minimum_price": 110,
+        "median_price": 134.55,
+        "observations": 90,
+        "coverage_pct": 100
+      },
+      {
+        "days": 180,
+        "minimum_price": 97,
+        "median_price": 110,
+        "observations": 180,
+        "coverage_pct": 100
+      }
+    ],
+    "minimum_price": 97,
+    "median_price": 110,
+    "observations": 180,
+    "coverage_pct": 100,
+    "delta_vs_median_pct": 37.27,
+    "deal_classification": "above_typical",
+    "methodology_id": "bestprice_daily_min_v1",
+    "data_gaps": {
+      "missing_days": 0,
+      "longest_gap_days": 0,
+      "stale_days": 0,
+      "coverage_note": "Πλήρης ημερήσια κάλυψη για το ζητούμενο διάστημα."
+    },
+    "warnings": [],
+    "series": [
+      {
+        "date": "2026-04-16",
+        "price": 99
+      },
+      {
+        "date": "2026-04-22",
+        "price": 101
+      },
+      {
+        "date": "2026-05-01",
+        "price": 104
+      },
+      {
+        "date": "2026-05-11",
+        "price": 104
+      },
+      {
+        "date": "2026-05-18",
+        "price": 100
+      },
+      {
+        "date": "2026-05-28",
+        "price": 99
+      },
+      {
+        "date": "2026-06-05",
+        "price": 97
+      },
+      {
+        "date": "2026-06-15",
+        "price": 99
+      },
+      {
+        "date": "2026-06-22",
+        "price": 99
+      },
+      {
+        "date": "2026-07-01",
+        "price": 99
+      },
+      {
+        "date": "2026-07-09",
+        "price": 107
+      },
+      {
+        "date": "2026-07-19",
+        "price": 114
+      },
+      {
+        "date": "2026-07-27",
+        "price": 117
+      },
+      {
+        "date": "2026-08-05",
+        "price": 123.87
+      },
+      {
+        "date": "2026-08-12",
+        "price": 118.8
+      },
+      {
+        "date": "2026-08-23",
+        "price": 135.6
+      },
+      {
+        "date": "2026-08-30",
+        "price": 123.86
+      },
+      {
+        "date": "2026-09-07",
+        "price": 136.89
+      },
+      {
+        "date": "2026-09-17",
+        "price": 142.98
+      },
+      {
+        "date": "2026-09-24",
+        "price": 150
+      },
+      {
+        "date": "2026-10-05",
+        "price": 151
+      },
+      {
+        "date": "2026-10-12",
+        "price": 151
+      }
+    ]
+  },
+  "candidate_summary": {
+    "scope": "returned_candidates",
+    "returned_count": 8,
+    "eligible_count": 8,
+    "rejected_count": 0,
+    "rejection_counts": {},
+    "search_fallback_applied": false,
+    "delivered_totals_checked": 8,
+    "delivered_totals_known": 0
+  },
+  "candidates": [
+    {
+      "product_id": "bp_2163461420",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "no_text_sample",
+      "source_ids": [
+        "compare_offers:bp_2163461420:bp_offer_107560516",
+        "compare_offers:bp_2163461420:bp_offer_204918266",
+        "compare_offers:bp_2163461420:bp_offer_204983886",
+        "compare_offers:bp_2163461420:bp_offer_204994999",
+        "compare_offers:bp_2163461420:bp_offer_205000615",
+        "compare_offers:bp_2163461420:bp_offer_205434129",
+        "compare_offers:bp_2163461420:bp_offer_205929196",
+        "compare_offers:bp_2163461420:bp_offer_207452440",
+        "compare_offers:bp_2163461420:bp_offer_210265680",
+        "compare_offers:bp_2163461420:bp_offer_218478677",
+        "compare_offers:bp_2163461420:check",
+        "deterministic_ranking:bp_2163461420:bestprice_shopping_policy_v1:phones",
+        "search_products:bp_2163461420:bp_2163461420"
+      ]
+    },
+    {
+      "product_id": "bp_2160449839",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2160449839:bp_offer_181152241",
+        "compare_offers:bp_2160449839:bp_offer_181232877",
+        "compare_offers:bp_2160449839:bp_offer_181383957",
+        "compare_offers:bp_2160449839:bp_offer_181431379",
+        "compare_offers:bp_2160449839:bp_offer_181648280",
+        "compare_offers:bp_2160449839:bp_offer_181946100",
+        "compare_offers:bp_2160449839:bp_offer_183373131",
+        "compare_offers:bp_2160449839:bp_offer_202158257",
+        "compare_offers:bp_2160449839:bp_offer_223493264",
+        "compare_offers:bp_2160449839:bp_offer_226624297",
+        "compare_offers:bp_2160449839:check",
+        "deterministic_ranking:bp_2160449839:bestprice_shopping_policy_v1:phones",
+        "get_product_reviews:bp_2160449839:bp_2160449839",
+        "search_products:bp_2160449839:bp_2160449839"
+      ]
+    },
+    {
+      "product_id": "bp_2160176672",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2160176672:bp_offer_173250219",
+        "compare_offers:bp_2160176672:bp_offer_173300737",
+        "compare_offers:bp_2160176672:bp_offer_173722836",
+        "compare_offers:bp_2160176672:bp_offer_174011783",
+        "compare_offers:bp_2160176672:bp_offer_175991679",
+        "compare_offers:bp_2160176672:bp_offer_177709829",
+        "compare_offers:bp_2160176672:bp_offer_181272673",
+        "compare_offers:bp_2160176672:bp_offer_181945965",
+        "compare_offers:bp_2160176672:bp_offer_198590392",
+        "compare_offers:bp_2160176672:bp_offer_215181391",
+        "compare_offers:bp_2160176672:check",
+        "deterministic_ranking:bp_2160176672:bestprice_shopping_policy_v1:phones",
+        "get_price_history:bp_2160176672:bp_2160176672",
+        "get_product_reviews:bp_2160176672:bp_2160176672",
+        "search_products:bp_2160176672:bp_2160176672"
+      ]
+    },
+    {
+      "product_id": "bp_2164182739",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2164182739:bp_offer_218323432",
+        "compare_offers:bp_2164182739:bp_offer_218465178",
+        "compare_offers:bp_2164182739:bp_offer_219021129",
+        "compare_offers:bp_2164182739:bp_offer_219087788",
+        "compare_offers:bp_2164182739:bp_offer_220071498",
+        "compare_offers:bp_2164182739:bp_offer_220523089",
+        "compare_offers:bp_2164182739:bp_offer_223012094",
+        "compare_offers:bp_2164182739:bp_offer_223732699",
+        "compare_offers:bp_2164182739:bp_offer_224033795",
+        "compare_offers:bp_2164182739:bp_offer_224037215",
+        "compare_offers:bp_2164182739:check",
+        "deterministic_ranking:bp_2164182739:bestprice_shopping_policy_v1:phones",
+        "get_product_reviews:bp_2164182739:bp_2164182739",
+        "search_products:bp_2164182739:bp_2164182739"
+      ]
+    },
+    {
+      "product_id": "bp_2164165234",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2164165234:bp_offer_218323429",
+        "compare_offers:bp_2164165234:bp_offer_218465175",
+        "compare_offers:bp_2164165234:bp_offer_219087785",
+        "compare_offers:bp_2164165234:bp_offer_219514804",
+        "compare_offers:bp_2164165234:bp_offer_220523086",
+        "compare_offers:bp_2164165234:bp_offer_221752145",
+        "compare_offers:bp_2164165234:bp_offer_222164436",
+        "compare_offers:bp_2164165234:bp_offer_223689967",
+        "compare_offers:bp_2164165234:bp_offer_224033792",
+        "compare_offers:bp_2164165234:bp_offer_224034460",
+        "compare_offers:bp_2164165234:check",
+        "deterministic_ranking:bp_2164165234:bestprice_shopping_policy_v1:phones",
+        "get_product_reviews:bp_2164165234:bp_2164165234",
+        "search_products:bp_2164165234:bp_2164165234"
+      ]
+    },
+    {
+      "product_id": "bp_2163844357",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2163844357:bp_offer_210893892",
+        "compare_offers:bp_2163844357:bp_offer_211249285",
+        "compare_offers:bp_2163844357:bp_offer_211297360",
+        "compare_offers:bp_2163844357:bp_offer_211435653",
+        "compare_offers:bp_2163844357:bp_offer_211735476",
+        "compare_offers:bp_2163844357:bp_offer_211737599",
+        "compare_offers:bp_2163844357:bp_offer_212592413",
+        "compare_offers:bp_2163844357:bp_offer_213192704",
+        "compare_offers:bp_2163844357:bp_offer_213483684",
+        "compare_offers:bp_2163844357:bp_offer_226322536",
+        "compare_offers:bp_2163844357:check",
+        "deterministic_ranking:bp_2163844357:bestprice_shopping_policy_v1:phones",
+        "get_product_reviews:bp_2163844357:bp_2163844357",
+        "search_products:bp_2163844357:bp_2163844357"
+      ]
+    },
+    {
+      "product_id": "bp_2162408545",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2162408545:bp_offer_194155695",
+        "compare_offers:bp_2162408545:bp_offer_194442463",
+        "compare_offers:bp_2162408545:bp_offer_194497207",
+        "compare_offers:bp_2162408545:bp_offer_194716472",
+        "compare_offers:bp_2162408545:bp_offer_195020111",
+        "compare_offers:bp_2162408545:bp_offer_195084940",
+        "compare_offers:bp_2162408545:bp_offer_195519589",
+        "compare_offers:bp_2162408545:bp_offer_197522118",
+        "compare_offers:bp_2162408545:bp_offer_197601258",
+        "compare_offers:bp_2162408545:bp_offer_199605807",
+        "compare_offers:bp_2162408545:check",
+        "deterministic_ranking:bp_2162408545:bestprice_shopping_policy_v1:phones",
+        "get_product_reviews:bp_2162408545:bp_2162408545",
+        "search_products:bp_2162408545:bp_2162408545"
+      ]
+    },
+    {
+      "product_id": "bp_2163841269",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2163841269:bp_offer_210662426",
+        "compare_offers:bp_2163841269:bp_offer_210662767",
+        "compare_offers:bp_2163841269:bp_offer_210893888",
+        "compare_offers:bp_2163841269:bp_offer_211297356",
+        "compare_offers:bp_2163841269:bp_offer_211435650",
+        "compare_offers:bp_2163841269:bp_offer_211619108",
+        "compare_offers:bp_2163841269:bp_offer_211705932",
+        "compare_offers:bp_2163841269:bp_offer_211735614",
+        "compare_offers:bp_2163841269:bp_offer_211737320",
+        "compare_offers:bp_2163841269:bp_offer_213192703",
+        "compare_offers:bp_2163841269:check",
+        "deterministic_ranking:bp_2163841269:bestprice_shopping_policy_v1:phones",
+        "get_product_reviews:bp_2163841269:bp_2163841269",
+        "search_products:bp_2163841269:bp_2163841269"
+      ]
+    },
+    {
+      "product_id": "bp_2160571943",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160571943:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2160571943:bp_2160571943",
+        "search_products:bp_2160571943:bp_2160571943"
+      ]
+    },
+    {
+      "product_id": "bp_2159670397",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159670397:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2159670397:bp_2159670397",
+        "search_products:bp_2159670397:bp_2159670397"
+      ]
+    },
+    {
+      "product_id": "bp_2160563495",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160563495:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2160563495:bp_2160563495",
+        "search_products:bp_2160563495:bp_2160563495"
+      ]
+    },
+    {
+      "product_id": "bp_2159196612",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159196612:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2159196612:bp_2159196612",
+        "search_products:bp_2159196612:bp_2159196612"
+      ]
+    },
+    {
+      "product_id": "bp_2164551999",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164551999:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2164551999:bp_2164551999",
+        "search_products:bp_2164551999:bp_2164551999"
+      ]
+    },
+    {
+      "product_id": "bp_2160411933",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160411933:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2160411933:bp_2160411933",
+        "search_products:bp_2160411933:bp_2160411933"
+      ]
+    },
+    {
+      "product_id": "bp_2155874671",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155874671:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2155874671:bp_2155874671",
+        "search_products:bp_2155874671:bp_2155874671"
+      ]
+    },
+    {
+      "product_id": "bp_2155915623",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155915623:bestprice_shopping_policy_v1:phones",
+        "get_product_details:bp_2155915623:bp_2155915623",
+        "search_products:bp_2155915623:bp_2155915623"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 3,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:17:42.837Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 748,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [
+    {
+      "code": "ranking_calibration",
+      "product_id": "bp_2160176672",
+      "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+    },
+    {
+      "code": "landed_cost_unknown",
+      "product_id": "bp_2160176672",
+      "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+    },
+    {
+      "code": "mixed_observed_price_windows",
+      "product_id": "bp_2160176672",
+      "message": "Η σημερινή τιμή είναι στη συνηθισμένη τιμή των 30 ημερών, αλλά πάνω από τη συνηθισμένη τιμή των 90 και 180 ημερών (180 ημέρες: διάμεσος 110€, 37,3% πάνω). Η σύγκριση δεν περιλαμβάνει μεταφορικά."
+    }
+  ],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "mixed_observed_price_windows",
+    "source_ids": ["get_price_history:bp_2160176672:bp_2160176672"],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "",
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "execution": {
+    "tools_used": [
+      "search_products",
+      "get_product_details",
+      "compare_offers",
+      "get_price_history",
+      "get_product_reviews"
+    ],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 852,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 0,
+      "understanding_ms": 30,
+      "direct_recommendation": true,
+      "exact_route": false,
+      "catalog_search_calls": 3,
+      "search_products_calls": 1,
+      "search_products_failures": 0,
+      "search_products_invocations": 1,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 469,
+      "search_products_max_ms": 469,
+      "get_product_details_calls": 2,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 2,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 309,
+      "get_product_details_max_ms": 224,
+      "compare_offers_calls": 8,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 8,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 288,
+      "compare_offers_max_ms": 51,
+      "get_price_history_calls": 1,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 1,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 18,
+      "get_price_history_max_ms": 18,
+      "get_product_reviews_calls": 8,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 8,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 156,
+      "get_product_reviews_max_ms": 42,
+      "optimize_basket_calls": 0,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 0,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 0,
+      "optimize_basket_max_ms": 0,
+      "retrieval_page_candidates": 16,
+      "receipt_disqualified_candidates": 0,
+      "receipt_eligible_candidates": 16,
+      "receipt_review_requested": 8,
+      "receipt_review_available": 7,
+      "receipt_validation_ms": 15,
+      "brain_runtime_ms": 852,
+      "brain_finalization_ms": 69
+    }
+  },
+  "personalization": null,
+  "follow_ups": [
+    {
+      "id": "cheaper",
+      "label": "Κάτι φθηνότερο",
+      "message": "Βρες κάτι φθηνότερο από το Samsung Galaxy A16 128GB, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_0"
+      }
+    },
+    {
+      "id": "compare",
+      "label": "Σύγκρινε τις επιλογές",
+      "message": "Σύγκρινε αναλυτικά το Samsung Galaxy A16 128GB με το Samsung Galaxy A17 5G 4GB 128GB.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_1"
+      }
+    }
+  ],
+  "coverage": {
+    "policy_version": "ask_beta_coverage_v1",
+    "family": "phone",
+    "reason": "catalog_family_verified",
+    "supported": true
+  },
+  "spend_walk": {
+    "version": "ask_spend_walk_v1",
+    "category_schema": "phones",
+    "comparison_status": "consistent",
+    "use_case": "general",
+    "price_basis": "item_price",
+    "ranking": null,
+    "budget_eur": 300,
+    "base": {
+      "product_id": "bp_2160176672",
+      "fit": 60.4,
+      "price_eur": 151
+    },
+    "winner": {
+      "product_id": "bp_2160176672",
+      "fit": 60.4,
+      "reason": "base",
+      "price_eur": 151
+    },
+    "next": {
+      "product_id": "bp_2162408545",
+      "price_eur": 175,
+      "delta_fit": 2.1,
+      "delta_eur": 24,
+      "accepted": false
+    },
+    "steps": [
+      {
+        "product_id": "bp_2162408545",
+        "price_eur": 175,
+        "delta_fit": 2.1,
+        "fit_relation": "tradeoff",
+        "compared_attributes": ["perf", "storage", "longevity", "satisfaction"],
+        "delta_eur": 24,
+        "fit_per_eur": 0.088,
+        "threshold": 0.074,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 151,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 24
+      },
+      {
+        "product_id": "bp_2164165234",
+        "price_eur": 219,
+        "delta_fit": 0.7,
+        "fit_relation": "tradeoff",
+        "compared_attributes": ["perf", "storage", "longevity", "satisfaction"],
+        "delta_eur": 68,
+        "fit_per_eur": 0.01,
+        "threshold": 0.087,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 151,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 68
+      },
+      {
+        "product_id": "bp_2163461420",
+        "price_eur": 248.9,
+        "delta_fit": 7.8,
+        "fit_relation": "tradeoff",
+        "compared_attributes": ["perf", "storage", "longevity", "satisfaction"],
+        "delta_eur": 97.9,
+        "fit_per_eur": 0.08,
+        "threshold": 0.098,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 151,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 97.9
+      },
+      {
+        "product_id": "bp_2163841269",
+        "price_eur": 253,
+        "delta_fit": 3,
+        "fit_relation": "tradeoff",
+        "compared_attributes": ["perf", "storage", "longevity", "satisfaction"],
+        "delta_eur": 102,
+        "fit_per_eur": 0.029,
+        "threshold": 0.1,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 151,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 102
+      },
+      {
+        "product_id": "bp_2164182739",
+        "price_eur": 273,
+        "delta_fit": 3.5,
+        "fit_relation": "tradeoff",
+        "compared_attributes": ["perf", "storage", "longevity", "satisfaction"],
+        "delta_eur": 122,
+        "fit_per_eur": 0.029,
+        "threshold": 0.108,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 151,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 122
+      },
+      {
+        "product_id": "bp_2160449839",
+        "price_eur": 289.98,
+        "delta_fit": 10,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": ["perf", "storage", "longevity", "satisfaction"],
+        "delta_eur": 138.98,
+        "fit_per_eur": 0.072,
+        "threshold": 0.115,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 151,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 138.98
+      },
+      {
+        "product_id": "bp_2163844357",
+        "price_eur": 298.5,
+        "delta_fit": 5.7,
+        "fit_relation": "tradeoff",
+        "compared_attributes": ["perf", "storage", "longevity", "satisfaction"],
+        "delta_eur": 147.5,
+        "fit_per_eur": 0.039,
+        "threshold": 0.119,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 151,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 147.5
+      }
+    ]
+  },
+  "review_evidence": {
+    "version": "ask_review_evidence_v1",
+    "review_count": 21,
+    "helpful_average": 4.7,
+    "highlights": [
+      {
+        "rating": 5,
+        "excerpt": "Για τα λεφτά του, είναι η καλύτερη επιλογή μέχρι 150€. Smooth οθόνη και καλές κάμερες για μέχρι 150€. Βίντεο και zoom είναι βασικά. Για τους πιο προχωρημένους, η οθόνη είναι 8 bit, δηλαδή έχει 15 εκατομμύρια χρώματα, έναντι 10 bit, δηλαδή 1,6 δισ. χρώματα. Μπορεί να τη βρουν λίγο φτωχή όσοι προέρχονται από 10 bit. Το…",
+        "helpfulness": 1,
+        "helpful_votes": 0,
+        "unhelpful_votes": 0,
+        "written_at": "2026-10-04T15:49:08.000Z"
+      },
+      {
+        "rating": 4,
+        "excerpt": "Πολύ καλή οθόνη και μπαταρία. Η κάμερα είναι κακή για εσωτερικούς χώρους, αλλά μέτρια έως καλή για εξωτερικούς. Η έκδοση με 4 GB RAM σέρνεται λίγο. Προτιμήστε την έκδοση με 8 GB RAM.",
+        "helpfulness": 1,
+        "helpful_votes": 1,
+        "unhelpful_votes": 0,
+        "written_at": "2026-06-29T06:43:04.000Z"
+      },
+      {
+        "rating": 5,
+        "excerpt": "Πραγματικά πολύ καλό για τα χρήματά του. Το πήρα για τον πατέρα μου και έμεινε πολύ ικανοποιημένος για όσα κάνει (βασικά πράγματα). Υστερεί μόνο στην ταχύτητα, λογικό με 4άρα RAM. Όμως είναι τέλειο για κάποιον που δεν έχει υψηλές απαιτήσεις από ένα κινητό. Πάνω από τον μέσο όρο, θα του έβαζα 8/10. Η Samsung δεν με…",
+        "helpfulness": 1,
+        "helpful_votes": 1,
+        "unhelpful_votes": 0,
+        "written_at": "2026-06-28T14:59:08.000Z"
+      }
+    ],
+    "as_of": "2026-10-12T10:16:33.063Z"
+  }
+}

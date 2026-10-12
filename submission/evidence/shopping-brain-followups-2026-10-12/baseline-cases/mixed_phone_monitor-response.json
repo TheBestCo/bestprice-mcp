@@ -1,0 +1,2171 @@
+{
+  "schema_version": "2.0",
+  "as_of": "2026-10-12T10:10:20.440Z",
+  "currency": "EUR",
+  "locale": "el-GR",
+  "warnings": [],
+  "brain": {
+    "projection_version": "bestprice_mcp_decision_v1",
+    "decision_version": "bestprice_decision_v1",
+    "decision_id": "[omitted]",
+    "evidence_fingerprint": "d1bab6e97a5e4c639f48495407c5a9adbda8220148a3c4fba3832d2d9fde2a61"
+  },
+  "outcome": "basket",
+  "status": "ready",
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 196,30€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 303,70€ κάτω από το συνολικό όριο των 500€.",
+  "reason": null,
+  "message": null,
+  "blocking_constraints": [],
+  "recommended_product_id": null,
+  "alternatives": [],
+  "products": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": 24,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 500,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 500,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 49,
+            "end": 61,
+            "text": "έως 500 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 500,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "phone",
+        "label": "Κινητό",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "nfc",
+              "label": "NFC"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": 24,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "catalog_requirements": ["οθόνη 24 ιντσών"]
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "comparison": null,
+  "basket": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T10:10:20.249Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [
+      "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+    ],
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "fewer_merchants",
+        "merchant_count": 1,
+        "item_subtotal": 205.4,
+        "shipping_total": 4,
+        "shipping_status": "known",
+        "total_price": 209.4,
+        "reliability_score": 4.84,
+        "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_961",
+            "merchant_name": "Websupplies",
+            "merchant_rating": 4.84,
+            "verified_merchant": true,
+            "item_subtotal": 205.4,
+            "shipping_price": 4,
+            "shipping_status": "known",
+            "total_price": 209.4,
+            "reason": "covers_basket_with_one_merchant",
+            "items": [
+              {
+                "product_id": "bp_2163689592",
+                "title": "Xiaomi A24i 2026 IPS Monitor 23.8\" 1920x1080 FHD 144Hz 6ms",
+                "quantity": 1,
+                "unit_price": 83.5,
+                "line_total": 83.5,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2163979176",
+                "title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+                "quantity": 1,
+                "unit_price": 121.9,
+                "line_total": 121.9,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "plan_type": "balanced",
+        "merchant_count": 2,
+        "item_subtotal": 191.8,
+        "shipping_total": 4.5,
+        "shipping_status": "known",
+        "total_price": 196.3,
+        "reliability_score": 4.62,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_128",
+            "merchant_name": "Msystems",
+            "merchant_rating": 4.9,
+            "verified_merchant": false,
+            "item_subtotal": 79.9,
+            "shipping_price": 2.5,
+            "shipping_status": "known",
+            "total_price": 82.4,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2163689592",
+                "title": "Xiaomi A24i 2026 IPS Monitor 23.8\" 1920x1080 FHD 144Hz 6ms",
+                "quantity": 1,
+                "unit_price": 79.9,
+                "line_total": 79.9,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          },
+          {
+            "merchant_id": "bp_merchant_7108",
+            "merchant_name": "MobiCell",
+            "merchant_rating": 4.34,
+            "verified_merchant": true,
+            "item_subtotal": 111.9,
+            "shipping_price": 2,
+            "shipping_status": "known",
+            "total_price": 113.9,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2163979176",
+                "title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+                "quantity": 1,
+                "unit_price": 111.9,
+                "line_total": 111.9,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": []
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "phone",
+        "label": "Κινητό",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "nfc",
+              "label": "NFC"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": 24,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "phone",
+        "label": "Κινητό",
+        "quantity": 1,
+        "product_id": "bp_2163979176",
+        "catalog_price_eur": 109,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "product_id": "bp_2163689592",
+        "catalog_price_eur": 72.9,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 500
+  },
+  "clarifications": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "requires_user_action": true,
+    "bestprice_url": "[omitted]"
+  },
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 2,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:10:17.620Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 2539,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "shopping_context": {
+    "version": "bestprice_shopping_context_v32",
+    "products": [
+      {
+        "product_id": "bp_2163689592",
+        "family": "monitors",
+        "attributes": [
+          {
+            "key": "screen_diagonal_inches",
+            "unit": "inch",
+            "status": "unknown",
+            "value": null,
+            "claim_ids": [],
+            "source_ids": []
+          },
+          {
+            "key": "refresh_rate_hz",
+            "unit": "Hz",
+            "status": "known",
+            "value": 144,
+            "claim_ids": ["claim_5dfbec51f073152834d71af6"],
+            "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"]
+          },
+          {
+            "key": "resolution",
+            "unit": null,
+            "status": "known",
+            "value": "Full HD",
+            "claim_ids": ["claim_378b0882d8b991d1cfa0920d", "claim_8103cdd289910d5cbcc6361e"],
+            "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"]
+          },
+          {
+            "key": "panel_type",
+            "unit": null,
+            "status": "known",
+            "value": "IPS",
+            "claim_ids": ["claim_dbacd73d893075ac7840ed3d"],
+            "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"]
+          }
+        ]
+      },
+      {
+        "product_id": "bp_2163979176",
+        "family": "phones",
+        "attributes": [
+          {
+            "key": "ram_gb",
+            "unit": "GB",
+            "status": "known",
+            "value": 4,
+            "claim_ids": ["claim_965c26adad1de0beab8f0875"],
+            "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+          },
+          {
+            "key": "storage_gb",
+            "unit": "GB",
+            "status": "known",
+            "value": 64,
+            "claim_ids": ["claim_cc3973c6a478d2365957e9c4"],
+            "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+          },
+          {
+            "key": "network_5g",
+            "unit": null,
+            "status": "known",
+            "value": false,
+            "claim_ids": ["claim_bca56af9eebc6009e418265e"],
+            "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+          },
+          {
+            "key": "nfc",
+            "unit": null,
+            "status": "known",
+            "value": true,
+            "claim_ids": ["claim_a2598bf43a3a3e00da9f72fc"],
+            "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+          },
+          {
+            "key": "ois",
+            "unit": null,
+            "status": "unknown",
+            "value": null,
+            "claim_ids": [],
+            "source_ids": []
+          },
+          {
+            "key": "panel_type",
+            "unit": null,
+            "status": "known",
+            "value": "IPS",
+            "claim_ids": ["claim_9eb2c2f9d0d7cfd5e5e7476f"],
+            "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+          },
+          {
+            "key": "dual_sim",
+            "unit": null,
+            "status": "known",
+            "value": true,
+            "claim_ids": ["claim_b3fc7055e224461a0ced4405"],
+            "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+          }
+        ]
+      }
+    ],
+    "market": [
+      {
+        "product_id": "bp_2163689592",
+        "offers": {
+          "status": "not_checked",
+          "scope": "bounded_returned_offers",
+          "offer_count": 0,
+          "merchant_count": 0,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 0,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 0
+          },
+          "item_price": null,
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      },
+      {
+        "product_id": "bp_2163979176",
+        "offers": {
+          "status": "not_checked",
+          "scope": "bounded_returned_offers",
+          "offer_count": 0,
+          "merchant_count": 0,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 0,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 0
+          },
+          "item_price": null,
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      }
+    ]
+  },
+  "evidence": {
+    "scope": "returned_products",
+    "sources": [
+      {
+        "source_id": "deterministic_ranking:bp_2163689592:bestprice_shopping_policy_v1:phones",
+        "kind": "decision_policy",
+        "record_id": "bestprice_shopping_policy_v1:phones",
+        "product_id": "bp_2163689592",
+        "scope": "cluster",
+        "capability": "deterministic_ranking",
+        "checked_at": "2026-10-12T10:10:20.440Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones",
+        "kind": "decision_policy",
+        "record_id": "bestprice_shopping_policy_v1:phones",
+        "product_id": "bp_2163979176",
+        "scope": "cluster",
+        "capability": "deterministic_ranking",
+        "checked_at": "2026-10-12T10:10:20.440Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "get_product_details:bp_2163689592:bp_2163689592",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2163689592",
+        "product_id": "bp_2163689592",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:10:17.620Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "get_product_details:bp_2163979176:bp_2163979176",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2163979176",
+        "product_id": "bp_2163979176",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:10:17.613Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592",
+        "kind": "basket_quote",
+        "record_id": "balanced:bp_merchant_128:bp_2163689592",
+        "product_id": "bp_2163689592",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:10:20.249Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592",
+        "kind": "basket_quote",
+        "record_id": "fewer_merchants:bp_merchant_961:bp_2163689592",
+        "product_id": "bp_2163689592",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:10:20.249Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176",
+        "kind": "basket_quote",
+        "record_id": "balanced:bp_merchant_7108:bp_2163979176",
+        "product_id": "bp_2163979176",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:10:20.249Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176",
+        "kind": "basket_quote",
+        "record_id": "fewer_merchants:bp_merchant_961:bp_2163979176",
+        "product_id": "bp_2163979176",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:10:20.249Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "search_products:bp_2163689592:bp_2163689592",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2163689592",
+        "product_id": "bp_2163689592",
+        "scope": "cluster",
+        "capability": "search_products",
+        "checked_at": "2026-10-12T10:10:17.620Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "claim_02bf006a942f6234ed7f3aa7",
+        "product_id": "bp_2163979176",
+        "field": "feature:1989",
+        "value": "720 x 1600",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1989,
+          "label": "Ανάλυση Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_071adac39cefccbd1c2b756a",
+        "product_id": "bp_2163979176",
+        "field": "feature:2794",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2794,
+          "label": "Ασύρματη Φόρτιση",
+          "group": "Μπαταρία"
+        }
+      },
+      {
+        "claim_id": "claim_0cada195e366e8fdce15be47",
+        "product_id": "bp_2163979176",
+        "field": "basket_line_total",
+        "value": 121.9,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_0edbebb1176a765ba8cc5f3d",
+        "product_id": "bp_2163979176",
+        "field": "catalog_family",
+        "value": "phones",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_653fbf074bab493fed5e225a",
+          "claim_710ab85dc2031072067b6081",
+          "claim_3320d3cb84c3be950838542d"
+        ]
+      },
+      {
+        "claim_id": "claim_15eee8dbd72fcdafeaf12075",
+        "product_id": "bp_2163689592",
+        "field": "basket_merchant_name",
+        "value": "Msystems",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_1913989055a694f0ca86c703",
+        "product_id": "bp_2163979176",
+        "field": "feature:133",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 133,
+          "label": "Ενσωματωμένο Flash",
+          "group": "Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_19db0de496c80b01deb34548",
+        "product_id": "bp_2163689592",
+        "field": "feature:140",
+        "value": "1500:1",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 140,
+          "label": "Λόγος Αντίθεσης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_2029559e4666db8f33649659",
+        "product_id": "bp_2163979176",
+        "field": "feature:1980",
+        "value": "Dual",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1980,
+          "label": "Τύπος SIM",
+          "group": "Κινητό"
+        }
+      },
+      {
+        "claim_id": "claim_224b1588cc5ebe42a556261f",
+        "product_id": "bp_2163689592",
+        "field": "feature:1062",
+        "value": "Μαύρο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1062,
+          "label": "Χρώμα",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_22c9256e9e35d570ed5aefe0",
+        "product_id": "bp_2163979176",
+        "field": "feature:7180",
+        "value": "120 Hz",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7180,
+          "label": "Ρυθμός Ανανέωσης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_2303623ef97d765f012a7ff5",
+        "product_id": "bp_2163689592",
+        "field": "feature:3203",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3203,
+          "label": "HDR",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_238a1ae2144e5792bd71a27c",
+        "product_id": "bp_2163979176",
+        "field": "feature:4628",
+        "value": "15 W",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4628,
+          "label": "Ισχύς Φόρτισης",
+          "group": "Μπαταρία"
+        }
+      },
+      {
+        "claim_id": "claim_259156269e34f4e87ff47ace",
+        "product_id": "bp_2163979176",
+        "field": "feature:2804",
+        "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, GPS, Virtual Proximity Sensing",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2804,
+          "label": "Αισθητήρες",
+          "group": "Αισθητήρες"
+        }
+      },
+      {
+        "claim_id": "claim_26214ee18bff73c330bf2a72",
+        "product_id": "bp_2163979176",
+        "field": "feature:1447",
+        "value": "4096 MB",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1447,
+          "label": "RAM",
+          "group": "Μνήμη"
+        }
+      },
+      {
+        "claim_id": "claim_2744a658f5054d158188235b",
+        "product_id": "bp_2163979176",
+        "field": "feature:4640",
+        "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4640,
+          "label": "Προστασία",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_275d9cd98f1f75e4fbe4db07",
+        "product_id": "bp_2163979176",
+        "field": "basket_merchant_shipping",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3081904b4133a78d90016130",
+        "product_id": "bp_2163979176",
+        "field": "feature:1172",
+        "value": "Οθόνη Αφής",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1172,
+          "label": "Χειρισμός",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_3320d3cb84c3be950838542d",
+        "product_id": "bp_2163979176",
+        "field": "title",
+        "value": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_33c7b9e51ba8f0f88b44ad76",
+        "product_id": "bp_2163979176",
+        "field": "ranking:phones:longevity",
+        "value": 2026,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2163979176:bp_2163979176",
+          "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_33f2ab895e888b21afd68202",
+        "product_id": "bp_2163979176",
+        "field": "feature:2798",
+        "value": "1",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2798,
+          "label": "Αριθμός Selfie Καμερών",
+          "group": "Selfie Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_378b0882d8b991d1cfa0920d",
+        "product_id": "bp_2163689592",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_6756a6fbd7a8c70f887d9e84"]
+      },
+      {
+        "claim_id": "claim_390dba0d467d7e3333922e22",
+        "product_id": "bp_2163979176",
+        "field": "feature:17",
+        "value": "Android",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 17,
+          "label": "Λειτουργικό Σύστημα",
+          "group": "Λογισμικό"
+        }
+      },
+      {
+        "claim_id": "claim_3d36be19594710f7aec02be8",
+        "product_id": "bp_2163979176",
+        "field": "feature:2797",
+        "value": "1",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2797,
+          "label": "Αριθμός Πίσω Καμερών",
+          "group": "Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_3e54f96a90001458fdd1f009",
+        "product_id": "bp_2163979176",
+        "field": "ranking:phones:dual_sim",
+        "value": true,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2163979176:bp_2163979176",
+          "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_43db06cd84372ac2b572e669",
+        "product_id": "bp_2163979176",
+        "field": "feature:4641",
+        "value": "NFC, Bluetooth, WiFi, USB-C",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4641,
+          "label": "Συνδεσιμότητα",
+          "group": "Συνδεσιμότητα"
+        }
+      },
+      {
+        "claim_id": "claim_46045d9e7c0e27b15d9f3d61",
+        "product_id": "bp_2163979176",
+        "field": "feature:1982",
+        "value": "1.6 GHz",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1982,
+          "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+          "group": "Επεξεργαστής"
+        }
+      },
+      {
+        "claim_id": "claim_46b9aec70425d08e75478dfe",
+        "product_id": "bp_2163689592",
+        "field": "title",
+        "value": "Xiaomi A24i 2026 IPS Monitor 23.8\" 1920x1080 FHD 144Hz 6ms",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4a29593ebc0bb825ec0092e2",
+        "product_id": "bp_2163979176",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4aab7d2a8b66454792d1616a",
+        "product_id": "bp_2163979176",
+        "field": "feature:1983",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1983,
+          "label": "Υποδοχή Μνήμης",
+          "group": "Αποθηκευτικός Χώρος"
+        }
+      },
+      {
+        "claim_id": "claim_4b1c693553a3bbcc573a5d3c",
+        "product_id": "bp_2163979176",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4f75b7e953cf0104a04e4553",
+        "product_id": "bp_2163689592",
+        "field": "basket_unit_price",
+        "value": 83.5,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5089a129a3bf0e9a89335d34",
+        "product_id": "bp_2163689592",
+        "field": "basket_merchant_shipping",
+        "value": 2.5,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5117d5ed55d93c1f90eab9c0",
+        "product_id": "bp_2163689592",
+        "field": "feature:3205",
+        "value": "HDMI, DisplayPort",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3205,
+          "label": "Συνδεσιμότητα",
+          "group": "Συνδεσιμότητα"
+        }
+      },
+      {
+        "claim_id": "claim_5452f1abe7decf7f87748399",
+        "product_id": "bp_2163689592",
+        "field": "basket_line_total",
+        "value": 83.5,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_5492c4338f772447929c659f",
+        "product_id": "bp_2163979176",
+        "field": "feature:2627",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2627,
+          "label": "Ανθεκτικό στο Νερό",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_566be8a857a3487e198b21a6",
+        "product_id": "bp_2163689592",
+        "field": "basket_merchant_shipping",
+        "value": 4,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5a3d6e6265b45613e3787eaf",
+        "product_id": "bp_2163979176",
+        "field": "ranking:phones:ram",
+        "value": 4,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2163979176:bp_2163979176",
+          "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_5ab61e074cbdc59a366f42ae",
+        "product_id": "bp_2163979176",
+        "field": "ranking:phones:perf",
+        "value": 0.2,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2163979176:bp_2163979176",
+          "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_5b549819c0cedf7bd39307cd",
+        "product_id": "bp_2163979176",
+        "field": "feature:625",
+        "value": "64 GB",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 625,
+          "label": "Χωρητικότητα",
+          "group": "Αποθηκευτικός Χώρος"
+        }
+      },
+      {
+        "claim_id": "claim_5c59d6138aff3f66004e3176",
+        "product_id": "bp_2163689592",
+        "field": "feature:3202",
+        "value": "Office Monitor",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3202,
+          "label": "Είδος",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_5dfbec51f073152834d71af6",
+        "product_id": "bp_2163689592",
+        "field": "attribute:refresh_rate_hz",
+        "value": 144,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_706c82da003c5908bab428e5"]
+      },
+      {
+        "claim_id": "claim_5e82d5d40a3c5af3a81522a9",
+        "product_id": "bp_2163689592",
+        "field": "title",
+        "value": "Xiaomi A24i 2026 IPS Monitor 23.8\" 1920x1080 FHD 144Hz 6ms",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_621f5b8bbe46b759f8cf9e83",
+        "product_id": "bp_2163689592",
+        "field": "feature:621",
+        "value": "300",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 621,
+          "label": "Φωτεινότητα Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_64aeb03b04f60c36dfe0ab35",
+        "product_id": "bp_2163979176",
+        "field": "feature:1978",
+        "value": "IPS LCD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1978,
+          "label": "Τύπος Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_653fbf074bab493fed5e225a",
+        "product_id": "bp_2163979176",
+        "field": "category_id",
+        "value": 806,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_665b0927b54c02ab42c14df5",
+        "product_id": "bp_2163979176",
+        "field": "basket_unit_price",
+        "value": 121.9,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_674e8a5ec4357b80abdc9f93",
+        "product_id": "bp_2163979176",
+        "field": "feature:1173",
+        "value": "4G",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1173,
+          "label": "Δίκτυο Σύνδεσης",
+          "group": "Δικτύωση"
+        }
+      },
+      {
+        "claim_id": "claim_6756a6fbd7a8c70f887d9e84",
+        "product_id": "bp_2163689592",
+        "field": "feature:1101",
+        "value": "Full HD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1101,
+          "label": "Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_68deb669cfa137e33b4c08a7",
+        "product_id": "bp_2163979176",
+        "field": "feature:389",
+        "value": "Unisoc T7250",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 389,
+          "label": "Τύπος Επεξεργαστή",
+          "group": "Επεξεργαστής"
+        }
+      },
+      {
+        "claim_id": "claim_6a74ea07dbd5f4afb2aabf72",
+        "product_id": "bp_2163979176",
+        "field": "ranking:phones:storage",
+        "value": 64,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2163979176:bp_2163979176",
+          "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_6b0cc325e489346122deec23",
+        "product_id": "bp_2163979176",
+        "field": "title",
+        "value": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6cf9643113b7fb187df3850c",
+        "product_id": "bp_2163689592",
+        "field": "basket_line_total",
+        "value": 79.9,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_706c82da003c5908bab428e5",
+        "product_id": "bp_2163689592",
+        "field": "feature:605",
+        "value": "144 Hz",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 605,
+          "label": "Συχνότητα Ανανέωσης Εικόνας",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_710ab85dc2031072067b6081",
+        "product_id": "bp_2163979176",
+        "field": "category_title",
+        "value": "Κινητά",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7615c86ef1c112bbbd06ae55",
+        "product_id": "bp_2163979176",
+        "field": "feature:1991",
+        "value": "Smartphones",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1991,
+          "label": "Τύπος Κινητού",
+          "group": "Κινητό"
+        }
+      },
+      {
+        "claim_id": "claim_76cb82cce7588c13999d8f24",
+        "product_id": "bp_2163979176",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_785cca55b9d8efdead4547fa",
+        "product_id": "bp_2163689592",
+        "field": "feature:622",
+        "value": "6 ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 622,
+          "label": "Χρόνος Απόκρισης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_78a3e6686400a9c66eefe15a",
+        "product_id": "bp_2163979176",
+        "field": "feature:2793",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2793,
+          "label": "Γρήγορη Φόρτιση",
+          "group": "Μπαταρία"
+        }
+      },
+      {
+        "claim_id": "claim_7cf7474fcd2e490d00db4bdc",
+        "product_id": "bp_2163979176",
+        "field": "ram_gb",
+        "value": 4,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "deterministic_catalog_extraction"
+      },
+      {
+        "claim_id": "claim_7e9ebc43eb755b860b21558d",
+        "product_id": "bp_2163979176",
+        "field": "feature:4637",
+        "value": "1080p 30fps",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4637,
+          "label": "Ανάλυση Βίντεο",
+          "group": "Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_8103cdd289910d5cbcc6361e",
+        "product_id": "bp_2163689592",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_bdc5e5c82c99e6dbcb2d208b"]
+      },
+      {
+        "claim_id": "claim_816a9bf9d319ccc6a56931f0",
+        "product_id": "bp_2163979176",
+        "field": "feature:4639",
+        "value": "1080p 30fps",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4639,
+          "label": "Ανάλυση Βίντεο Selfie",
+          "group": "Selfie Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_87a3943b209feec1c4cfac35",
+        "product_id": "bp_2163979176",
+        "field": "ranking:phones:network5g",
+        "value": 0,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2163979176:bp_2163979176",
+          "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_89ed2c3daa62d60985452b7b",
+        "product_id": "bp_2163689592",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8d4bd4066def01d0becb2a85",
+        "product_id": "bp_2163979176",
+        "field": "feature:431",
+        "value": "6000 mAh",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 431,
+          "label": "Χωρητικότητα Μπαταρίας",
+          "group": "Μπαταρία"
+        }
+      },
+      {
+        "claim_id": "claim_8e8e20f03ea945e486dc953c",
+        "product_id": "bp_2163979176",
+        "field": "basket_unit_price",
+        "value": 111.9,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8ebbecbb4af1daf7e63dbef8",
+        "product_id": "bp_2163979176",
+        "field": "ranking:phones:panel_type",
+        "value": "IPS",
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2163979176:bp_2163979176",
+          "deterministic_ranking:bp_2163979176:bestprice_shopping_policy_v1:phones"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_8f868d122c8c6db6f5c1b09a",
+        "product_id": "bp_2163979176",
+        "field": "basket_line_total",
+        "value": 111.9,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_91e8785571597d639c64d491",
+        "product_id": "bp_2163689592",
+        "field": "basket_plan_total",
+        "value": 196.3,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_94371c350db70faf0e58cde7",
+        "product_id": "bp_2163979176",
+        "field": "basket_plan_total",
+        "value": 209.4,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_965c26adad1de0beab8f0875",
+        "product_id": "bp_2163979176",
+        "field": "attribute:ram_gb",
+        "value": 4,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_26214ee18bff73c330bf2a72"]
+      },
+      {
+        "claim_id": "claim_9971bc50935217155d7c4041",
+        "product_id": "bp_2163979176",
+        "field": "feature:1992",
+        "value": "171.6 x 79.5 x 8.2",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1992,
+          "label": "Διαστάσεις",
+          "group": "Διαστάσεις"
+        }
+      },
+      {
+        "claim_id": "claim_9b20396e9a1a5588d881daf0",
+        "product_id": "bp_2163689592",
+        "field": "feature:1999",
+        "value": "16:9",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1999,
+          "label": "Aspect Ratio",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_9e0b69f1b13416ec27873a51",
+        "product_id": "bp_2163689592",
+        "field": "title",
+        "value": "Xiaomi A24i 2026 IPS Monitor 23.8\" 1920x1080 FHD 144Hz 6ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_9eb2c2f9d0d7cfd5e5e7476f",
+        "product_id": "bp_2163979176",
+        "field": "attribute:panel_type",
+        "value": "IPS",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_64aeb03b04f60c36dfe0ab35"]
+      },
+      {
+        "claim_id": "claim_a2598bf43a3a3e00da9f72fc",
+        "product_id": "bp_2163979176",
+        "field": "attribute:nfc",
+        "value": true,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_43db06cd84372ac2b572e669"]
+      },
+      {
+        "claim_id": "claim_a45cedcf4c45c1642d0e0cfd",
+        "product_id": "bp_2163979176",
+        "field": "feature:1974",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1974,
+          "label": "Αποσπώμενη Μπαταρία",
+          "group": "Μπαταρία"
+        }
+      },
+      {
+        "claim_id": "claim_a4ed675529c65d8d47c38c1d",
+        "product_id": "bp_2163689592",
+        "field": "offer_count",
+        "value": 18,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a58ccb52702a956801bc1eba",
+        "product_id": "bp_2163689592",
+        "field": "price_from",
+        "value": 72.9,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a59642abe1dde8f15d54b97a",
+        "product_id": "bp_2163979176",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a8bd62f82af86a37a7450d96",
+        "product_id": "bp_2163689592",
+        "field": "basket_plan_total",
+        "value": 209.4,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_a9210fee8f317c9ee2fb5cde",
+        "product_id": "bp_2163689592",
+        "field": "feature:7484",
+        "value": "Ρύθμιση Κλίσης",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7484,
+          "label": "Εργονομία Βάσης",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_aac12e9b2db908665f6161e8",
+        "product_id": "bp_2163689592",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_abddb15047bdc0fb047313aa",
+        "product_id": "bp_2163979176",
+        "field": "feature:4636",
+        "value": "HDR",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4636,
+          "label": "Δυνατότητες Κάμερας",
+          "group": "Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_ae6d9376115d6c69aefab991",
+        "product_id": "bp_2163979176",
+        "field": "feature:50",
+        "value": "208 gr",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 50,
+          "label": "Βάρος",
+          "group": "Διαστάσεις"
+        }
+      },
+      {
+        "claim_id": "claim_aec83ed47ec834bf7dc7f792",
+        "product_id": "bp_2163979176",
+        "field": "feature:1448",
+        "value": "2026",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1448,
+          "label": "Έτος Κυκλοφορίας",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_aefd9e152bdf7985bc7888c6",
+        "product_id": "bp_2163979176",
+        "field": "title",
+        "value": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_af2a1d5e0a32b76472fb1612",
+        "product_id": "bp_2163689592",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_af3c2ccac1dc0ce3c6fb336b",
+        "product_id": "bp_2163689592",
+        "field": "feature:7485",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7485,
+          "label": "Smart Monitor",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_b01ae09ae6011806dd8bb0ba",
+        "product_id": "bp_2163689592",
+        "field": "feature:38",
+        "value": "23.8 \"",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 38,
+          "label": "Μέγεθος Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_b2238b822dfdaefde8fee991",
+        "product_id": "bp_2163689592",
+        "field": "feature:3204",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3204,
+          "label": "Ultrawide",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_b2e85ec9beb349a814d03688",
+        "product_id": "bp_2163689592",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b3fc7055e224461a0ced4405",
+        "product_id": "bp_2163979176",
+        "field": "attribute:dual_sim",
+        "value": true,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_2029559e4666db8f33649659"]
+      },
+      {
+        "claim_id": "claim_b94d51459a488a696d0ff4cd",
+        "product_id": "bp_2163979176",
+        "field": "feature:38",
+        "value": "6.9 \"",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 38,
+          "label": "Μέγεθος Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_ba0c880b8265768d8cace6c9",
+        "product_id": "bp_2163689592",
+        "field": "feature:1933",
+        "value": "75x75",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1933,
+          "label": "VESA Mount",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_bca56af9eebc6009e418265e",
+        "product_id": "bp_2163979176",
+        "field": "attribute:network_5g",
+        "value": false,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_674e8a5ec4357b80abdc9f93"]
+      },
+      {
+        "claim_id": "claim_bdc5e5c82c99e6dbcb2d208b",
+        "product_id": "bp_2163689592",
+        "field": "feature:43",
+        "value": "1920 x 1080 (FHD)",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 43,
+          "label": "Μέγιστη Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_be04c0f49722fd8422cddb9f",
+        "product_id": "bp_2163979176",
+        "field": "feature:1981",
+        "value": "1.8 GΗz",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1981,
+          "label": "Ισχύς Βασικού Επεξεργαστή",
+          "group": "Επεξεργαστής"
+        }
+      },
+      {
+        "claim_id": "claim_c278ea807b86890d3f24cb5c",
+        "product_id": "bp_2163979176",
+        "field": "basket_merchant_shipping",
+        "value": 2,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c577c1c6e43ec18c8ce02984",
+        "product_id": "bp_2163689592",
+        "field": "category_id",
+        "value": 2621,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c659f0ebf306fcbc7500510b",
+        "product_id": "bp_2163979176",
+        "field": "feature:1885",
+        "value": "Οκταπύρηνος (2+6)",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1885,
+          "label": "Επεξεργαστής",
+          "group": "Επεξεργαστής"
+        }
+      },
+      {
+        "claim_id": "claim_ca1f7bcb454101bdc0e3f723",
+        "product_id": "bp_2163689592",
+        "field": "feature:1911",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1911,
+          "label": "Κυρτή",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_ca2b91dd2eb1d168ea1302ed",
+        "product_id": "bp_2163689592",
+        "field": "catalog_family",
+        "value": "monitors",
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2163689592:bp_2163689592",
+          "get_product_details:bp_2163689592:bp_2163689592"
+        ],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_c577c1c6e43ec18c8ce02984",
+          "claim_dd1259538d49030241ae048d",
+          "claim_9e0b69f1b13416ec27873a51"
+        ]
+      },
+      {
+        "claim_id": "claim_cb4265473c7d0e98182cd49b",
+        "product_id": "bp_2163689592",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_cc3973c6a478d2365957e9c4",
+        "product_id": "bp_2163979176",
+        "field": "attribute:storage_gb",
+        "value": 64,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_5b549819c0cedf7bd39307cd"]
+      },
+      {
+        "claim_id": "claim_ceea2b09c0e6ac0da57836eb",
+        "product_id": "bp_2163979176",
+        "field": "feature:440",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 440,
+          "label": "Selfie Κάμερα",
+          "group": "Selfie Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_d1716c3174809c7c18acf183",
+        "product_id": "bp_2163979176",
+        "field": "price_from",
+        "value": 109,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_daab066df9f55be015e4afba",
+        "product_id": "bp_2163979176",
+        "field": "feature:40",
+        "value": "13 MP",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 40,
+          "label": "Ανάλυση Κάμερας",
+          "group": "Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_dbacd73d893075ac7840ed3d",
+        "product_id": "bp_2163689592",
+        "field": "attribute:panel_type",
+        "value": "IPS",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_f3786ea2a0bfe1773d48a0ed"]
+      },
+      {
+        "claim_id": "claim_dd1259538d49030241ae048d",
+        "product_id": "bp_2163689592",
+        "field": "category_title",
+        "value": "Οθόνες Υπολογιστών",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ddaa05de82c41e7307f0744c",
+        "product_id": "bp_2163689592",
+        "field": "feature:4144",
+        "value": "F",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4144,
+          "label": "Νέα Ενεργειακή Κλάση",
+          "group": "Νέα Ενεργειακή Ετικέτα"
+        }
+      },
+      {
+        "claim_id": "claim_e0a0f39ee23b77002f509cd0",
+        "product_id": "bp_2163979176",
+        "field": "feature:7185",
+        "value": "800 nits",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7185,
+          "label": "Φωτεινότητα Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_e36719cf689da75184d96a46",
+        "product_id": "bp_2163979176",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e4c0251d957221ced457c1ca",
+        "product_id": "bp_2163689592",
+        "field": "basket_unit_price",
+        "value": 79.9,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:balanced:bp_merchant_128:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e7c2d9a0aab7c8ee3ac43632",
+        "product_id": "bp_2163979176",
+        "field": "feature:2717",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2717,
+          "label": "Για Ηλικιωμένους",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_e8189ebd878ed4cd64b551ff",
+        "product_id": "bp_2163979176",
+        "field": "basket_plan_total",
+        "value": 196.3,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_e933f3763407561d426aeb9c",
+        "product_id": "bp_2163979176",
+        "field": "basket_merchant_name",
+        "value": "Websupplies",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:fewer_merchants:bp_merchant_961:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_e9fe1d724e4636fcf12168ae",
+        "product_id": "bp_2163979176",
+        "field": "offer_count",
+        "value": 25,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ebdffff66d25021db850357d",
+        "product_id": "bp_2163979176",
+        "field": "basket_merchant_name",
+        "value": "MobiCell",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163979176:balanced:bp_merchant_7108:bp_2163979176"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ef4039d419ec9e83badb39d5",
+        "product_id": "bp_2163979176",
+        "field": "feature:4638",
+        "value": "HDR",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4638,
+          "label": "Δυνατότητες Selfie Κάμερας",
+          "group": "Selfie Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_efebc09b6fb3b31f362c8e02",
+        "product_id": "bp_2163979176",
+        "field": "feature:1979",
+        "value": "16",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1979,
+          "label": "Έκδοση Λειτουργικού",
+          "group": "Λογισμικό"
+        }
+      },
+      {
+        "claim_id": "claim_f3786ea2a0bfe1773d48a0ed",
+        "product_id": "bp_2163689592",
+        "field": "feature:3018",
+        "value": "IPS",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163689592:bp_2163689592"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3018,
+          "label": "Τύπος Panel",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_f529636c9bfe2a6c22db5409",
+        "product_id": "bp_2163979176",
+        "field": "feature:630",
+        "value": "8 MP",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 630,
+          "label": "Ανάλυση Selfie Κάμερας",
+          "group": "Selfie Κάμερα"
+        }
+      },
+      {
+        "claim_id": "claim_f9efb402737a1ff9c24efc0a",
+        "product_id": "bp_2163689592",
+        "field": "basket_merchant_name",
+        "value": "Websupplies",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2163689592:fewer_merchants:bp_merchant_961:bp_2163689592"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_fe33c7265982dac1262de626",
+        "product_id": "bp_2163979176",
+        "field": "feature:2795",
+        "value": "IP54",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2795,
+          "label": "Πιστοποίηση Προστασίας",
+          "group": ""
+        }
+      }
+    ]
+  },
+  "uncertainty": []
+}

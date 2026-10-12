@@ -1,0 +1,716 @@
+{
+  "sources": [
+    {
+      "source_id": "search_products:bp_2156013069:bp_2156013069",
+      "kind": "catalog_snapshot",
+      "record_id": "bp_2156013069",
+      "product_id": "bp_2156013069",
+      "scope": "cluster",
+      "capability": "search_products",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "freshness": "fresh",
+      "max_age_seconds": 900,
+      "url": "[omitted]"
+    },
+    {
+      "source_id": "search_products:bp_2157036411:bp_2157036411",
+      "kind": "catalog_snapshot",
+      "record_id": "bp_2157036411",
+      "product_id": "bp_2157036411",
+      "scope": "cluster",
+      "capability": "search_products",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "freshness": "fresh",
+      "max_age_seconds": 900,
+      "url": "[omitted]"
+    },
+    {
+      "source_id": "search_products:bp_2157112237:bp_2157112237",
+      "kind": "catalog_snapshot",
+      "record_id": "bp_2157112237",
+      "product_id": "bp_2157112237",
+      "scope": "cluster",
+      "capability": "search_products",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "freshness": "fresh",
+      "max_age_seconds": 900,
+      "url": "[omitted]"
+    },
+    {
+      "source_id": "search_products:bp_2157513899:bp_2157513899",
+      "kind": "catalog_snapshot",
+      "record_id": "bp_2157513899",
+      "product_id": "bp_2157513899",
+      "scope": "cluster",
+      "capability": "search_products",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "freshness": "fresh",
+      "max_age_seconds": 900,
+      "url": "[omitted]"
+    },
+    {
+      "source_id": "search_products:bp_2157988543:bp_2157988543",
+      "kind": "catalog_snapshot",
+      "record_id": "bp_2157988543",
+      "product_id": "bp_2157988543",
+      "scope": "cluster",
+      "capability": "search_products",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "freshness": "fresh",
+      "max_age_seconds": 900,
+      "url": "[omitted]"
+    },
+    {
+      "source_id": "search_products:bp_2159169403:bp_2159169403",
+      "kind": "catalog_snapshot",
+      "record_id": "bp_2159169403",
+      "product_id": "bp_2159169403",
+      "scope": "cluster",
+      "capability": "search_products",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "freshness": "fresh",
+      "max_age_seconds": 900,
+      "url": "[omitted]"
+    },
+    {
+      "source_id": "search_products:bp_2159198630:bp_2159198630",
+      "kind": "catalog_snapshot",
+      "record_id": "bp_2159198630",
+      "product_id": "bp_2159198630",
+      "scope": "cluster",
+      "capability": "search_products",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "freshness": "fresh",
+      "max_age_seconds": 900,
+      "url": "[omitted]"
+    },
+    {
+      "source_id": "search_products:bp_2160159922:bp_2160159922",
+      "kind": "catalog_snapshot",
+      "record_id": "bp_2160159922",
+      "product_id": "bp_2160159922",
+      "scope": "cluster",
+      "capability": "search_products",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "freshness": "fresh",
+      "max_age_seconds": 900,
+      "url": "[omitted]"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim_02753727f678192381200540",
+      "product_id": "bp_2157988543",
+      "field": "category_id",
+      "value": 813,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_05da806e4bebc964a892441d",
+      "product_id": "bp_2159169403",
+      "field": "title",
+      "value": "Trust GXT 790 Tridox Bundle Black",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159169403:bp_2159169403"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_0932558042ddc4d9baa2ccca",
+      "product_id": "bp_2157513899",
+      "field": "attribute:over_ear",
+      "value": false,
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"],
+      "validation": "normalized_catalog_attribute_v32",
+      "supporting_claim_ids": ["claim_1ad154df44f0956205215d39"]
+    },
+    {
+      "claim_id": "claim_0b5b11f7192c2372af011dd6",
+      "product_id": "bp_2159169403",
+      "field": "catalog_family",
+      "value": "headphones",
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2159169403:bp_2159169403"],
+      "validation": "catalog_family_mapping_v1",
+      "supporting_claim_ids": [
+        "claim_80f57c767223680d006d5554",
+        "claim_6f52c879214bee53bcd863a6",
+        "claim_05da806e4bebc964a892441d"
+      ]
+    },
+    {
+      "claim_id": "claim_0e5fb9f3ee60731f79fb94b1",
+      "product_id": "bp_2157112237",
+      "field": "title",
+      "value": "eKids Mickey Mouse Ενσύρματα Παιδικά Ακουστικά On Ear Black Red",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_11d4808c7f668b624e98e298",
+      "product_id": "bp_2156013069",
+      "field": "title",
+      "value": "eKids Minnie Mouse Ενσύρματα Παιδικά Ακουστικά On Ear Pink White",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_142fa58d779cf9ad46d813fe",
+      "product_id": "bp_2157036411",
+      "field": "title",
+      "value": "OEM GreenMouse Handsfree Earbud 3.5mm 46956477",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157036411:bp_2157036411"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_181e25acde759f0e9baa3e9d",
+      "product_id": "bp_2157112237",
+      "field": "category_id",
+      "value": 8068,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_1ad154df44f0956205215d39",
+      "product_id": "bp_2157513899",
+      "field": "title",
+      "value": "eKids Minnie Mouse Ενσύρματα Παιδικά Ακουστικά On Ear Μαύρα Κόκκινα",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_1baff0b235f8017a46eab2fc",
+      "product_id": "bp_2159198630",
+      "field": "price_from",
+      "value": 34.96,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_21dc1e3bd4573849e5cfb066",
+      "product_id": "bp_2159169403",
+      "field": "availability",
+      "value": "available",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159169403:bp_2159169403"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_2212477e64e5786720cc9dd0",
+      "product_id": "bp_2157036411",
+      "field": "availability",
+      "value": "available",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157036411:bp_2157036411"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_227833807042eff5aa022877",
+      "product_id": "bp_2157036411",
+      "field": "category_title",
+      "value": "Handsfree",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157036411:bp_2157036411"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_31636bf16f601cee9bfd4170",
+      "product_id": "bp_2157988543",
+      "field": "title",
+      "value": "GreenMouse 46956679 Ακουστικά Bluetooth Earbud White",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_352f18d6b1597b6fdd548bf1",
+      "product_id": "bp_2157513899",
+      "field": "category_title",
+      "value": "Headphones",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_37d6f2bc8e2c9966c1c7cef1",
+      "product_id": "bp_2157988543",
+      "field": "attribute:over_ear",
+      "value": false,
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"],
+      "validation": "normalized_catalog_attribute_v32",
+      "supporting_claim_ids": ["claim_31636bf16f601cee9bfd4170"]
+    },
+    {
+      "claim_id": "claim_3ccc4da7b13ad0c36e54893f",
+      "product_id": "bp_2156013069",
+      "field": "category_title",
+      "value": "Headphones",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_3d85408752f5896e95fd4ba1",
+      "product_id": "bp_2160159922",
+      "field": "category_id",
+      "value": 8066,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_4063c736f1adb6b2e9a5569f",
+      "product_id": "bp_2156013069",
+      "field": "attribute:over_ear",
+      "value": false,
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"],
+      "validation": "normalized_catalog_attribute_v32",
+      "supporting_claim_ids": ["claim_11d4808c7f668b624e98e298"]
+    },
+    {
+      "claim_id": "claim_488c0558519a6272e00eb169",
+      "product_id": "bp_2157112237",
+      "field": "availability",
+      "value": "available",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_48d4e9df9dfc87c4ba42ec7d",
+      "product_id": "bp_2159198630",
+      "field": "catalog_family",
+      "value": "headphones",
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"],
+      "validation": "catalog_family_mapping_v1",
+      "supporting_claim_ids": [
+        "claim_dcf9e9d2d59dea4cd1f2bb6b",
+        "claim_be8e9a244a0c10846b688dbb",
+        "claim_a98a676361dd63d86d235019"
+      ]
+    },
+    {
+      "claim_id": "claim_4b0c28e9b800cfdad5ef9023",
+      "product_id": "bp_2159169403",
+      "field": "offer_count",
+      "value": 17,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159169403:bp_2159169403"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_4c1e9566e9b897f23678424f",
+      "product_id": "bp_2157513899",
+      "field": "price_from",
+      "value": 27,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_4e03561c800b8d416f227095",
+      "product_id": "bp_2159198630",
+      "field": "offer_count",
+      "value": 1,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_529f7c13affe5f35b9f9e23e",
+      "product_id": "bp_2156013069",
+      "field": "category_id",
+      "value": 8068,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_5e8ab9caf2ffeb7af72dbf50",
+      "product_id": "bp_2160159922",
+      "field": "title",
+      "value": "Trust Tridox GXT790 3-in-1 Gaming Bundle Gaming Headset On Ear Pink",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_68b99574ba302ef19db95e2b",
+      "product_id": "bp_2160159922",
+      "field": "category_title",
+      "value": "Gaming Headsets",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_691c8dba2e270a528da509ed",
+      "product_id": "bp_2157112237",
+      "field": "catalog_family",
+      "value": "headphones",
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"],
+      "validation": "catalog_family_mapping_v1",
+      "supporting_claim_ids": [
+        "claim_181e25acde759f0e9baa3e9d",
+        "claim_8e4ea727e3f0d406c761555f",
+        "claim_0e5fb9f3ee60731f79fb94b1"
+      ]
+    },
+    {
+      "claim_id": "claim_6cfd7ab9b5b307e57ff5225d",
+      "product_id": "bp_2157988543",
+      "field": "offer_count",
+      "value": 6,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_6e096179776294a8629846b3",
+      "product_id": "bp_2156013069",
+      "field": "offer_count",
+      "value": 8,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_6f52c879214bee53bcd863a6",
+      "product_id": "bp_2159169403",
+      "field": "category_title",
+      "value": "Gaming Headsets",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159169403:bp_2159169403"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_7677d0e51d48d22095bb05d7",
+      "product_id": "bp_2157112237",
+      "field": "attribute:over_ear",
+      "value": false,
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"],
+      "validation": "normalized_catalog_attribute_v32",
+      "supporting_claim_ids": ["claim_0e5fb9f3ee60731f79fb94b1"]
+    },
+    {
+      "claim_id": "claim_79d2a85a09e1302db5a70e20",
+      "product_id": "bp_2159198630",
+      "field": "attribute:over_ear",
+      "value": false,
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"],
+      "validation": "normalized_catalog_attribute_v32",
+      "supporting_claim_ids": ["claim_a98a676361dd63d86d235019"]
+    },
+    {
+      "claim_id": "claim_80f57c767223680d006d5554",
+      "product_id": "bp_2159169403",
+      "field": "category_id",
+      "value": 8066,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159169403:bp_2159169403"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_8c80c733f09b8d98540b73db",
+      "product_id": "bp_2160159922",
+      "field": "catalog_family",
+      "value": "headphones",
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"],
+      "validation": "catalog_family_mapping_v1",
+      "supporting_claim_ids": [
+        "claim_3d85408752f5896e95fd4ba1",
+        "claim_68b99574ba302ef19db95e2b",
+        "claim_5e8ab9caf2ffeb7af72dbf50"
+      ]
+    },
+    {
+      "claim_id": "claim_8d0b0952ab89ee3ca818cf74",
+      "product_id": "bp_2157036411",
+      "field": "offer_count",
+      "value": 11,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157036411:bp_2157036411"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_8e4ea727e3f0d406c761555f",
+      "product_id": "bp_2157112237",
+      "field": "category_title",
+      "value": "Headphones",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_8e634165f379d38890c171b9",
+      "product_id": "bp_2160159922",
+      "field": "price_from",
+      "value": 10.9,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_9047cb936584230d41d12fda",
+      "product_id": "bp_2157112237",
+      "field": "price_from",
+      "value": 23.6,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_911a360439990dec75302379",
+      "product_id": "bp_2157988543",
+      "field": "price_from",
+      "value": 17.61,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_94e169c6f0559a9e49cdded6",
+      "product_id": "bp_2157513899",
+      "field": "category_id",
+      "value": 8068,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_96eccd15c1b20c3ef5f5b0f9",
+      "product_id": "bp_2156013069",
+      "field": "catalog_family",
+      "value": "headphones",
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"],
+      "validation": "catalog_family_mapping_v1",
+      "supporting_claim_ids": [
+        "claim_529f7c13affe5f35b9f9e23e",
+        "claim_3ccc4da7b13ad0c36e54893f",
+        "claim_11d4808c7f668b624e98e298"
+      ]
+    },
+    {
+      "claim_id": "claim_a60ea4bab4c58f5384bb3550",
+      "product_id": "bp_2157513899",
+      "field": "availability",
+      "value": "available",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_a98a676361dd63d86d235019",
+      "product_id": "bp_2159198630",
+      "field": "title",
+      "value": "Lexibook Disney Minnie Mouse Ενσύρματα & Ασύρματα Bluetooth Παιδικά Ακουστικά On Ear Ροζ Γαλάζια",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_ae548187ecd48712a87d65e5",
+      "product_id": "bp_2157513899",
+      "field": "offer_count",
+      "value": 1,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_af88be653876d4818210fa6b",
+      "product_id": "bp_2157112237",
+      "field": "offer_count",
+      "value": 5,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_b337cf89553ac85da371b7ae",
+      "product_id": "bp_2157988543",
+      "field": "category_title",
+      "value": "Bluetooth Handsfree",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_b8248d7bf0a747ad9701966f",
+      "product_id": "bp_2157036411",
+      "field": "catalog_family",
+      "value": "unknown",
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2157036411:bp_2157036411"],
+      "validation": "catalog_family_mapping_v1",
+      "supporting_claim_ids": [
+        "claim_e4938f3927a0f08cb8e33f54",
+        "claim_227833807042eff5aa022877",
+        "claim_142fa58d779cf9ad46d813fe"
+      ]
+    },
+    {
+      "claim_id": "claim_bd00bd7720a7becb19d8d577",
+      "product_id": "bp_2157513899",
+      "field": "catalog_family",
+      "value": "headphones",
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"],
+      "validation": "catalog_family_mapping_v1",
+      "supporting_claim_ids": [
+        "claim_94e169c6f0559a9e49cdded6",
+        "claim_352f18d6b1597b6fdd548bf1",
+        "claim_1ad154df44f0956205215d39"
+      ]
+    },
+    {
+      "claim_id": "claim_be1c8eea0ead449a74d18e1a",
+      "product_id": "bp_2159198630",
+      "field": "availability",
+      "value": "available",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_be8e9a244a0c10846b688dbb",
+      "product_id": "bp_2159198630",
+      "field": "category_title",
+      "value": "Headphones",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_c150da1b8a20c6c9f033c107",
+      "product_id": "bp_2156013069",
+      "field": "price_from",
+      "value": 24.13,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_c254c69d8b7d49bead3009f1",
+      "product_id": "bp_2160159922",
+      "field": "offer_count",
+      "value": 13,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_c6ef89742fe3c0a0e6f522e4",
+      "product_id": "bp_2159169403",
+      "field": "price_from",
+      "value": 24.9,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159169403:bp_2159169403"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_c933fb824e68913148a90a98",
+      "product_id": "bp_2157988543",
+      "field": "availability",
+      "value": "available",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_d24b8b0d6824ddcccf5040c3",
+      "product_id": "bp_2156013069",
+      "field": "availability",
+      "value": "available",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_dcf9e9d2d59dea4cd1f2bb6b",
+      "product_id": "bp_2159198630",
+      "field": "category_id",
+      "value": 8068,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_e1d7ddec7cfd40fcab014ee4",
+      "product_id": "bp_2160159922",
+      "field": "availability",
+      "value": "available",
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_e4938f3927a0f08cb8e33f54",
+      "product_id": "bp_2157036411",
+      "field": "category_id",
+      "value": 811,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157036411:bp_2157036411"],
+      "validation": "exact_tool_field"
+    },
+    {
+      "claim_id": "claim_ebe2c985d76f8ae6fd9772c9",
+      "product_id": "bp_2160159922",
+      "field": "attribute:over_ear",
+      "value": false,
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"],
+      "validation": "normalized_catalog_attribute_v32",
+      "supporting_claim_ids": ["claim_5e8ab9caf2ffeb7af72dbf50"]
+    },
+    {
+      "claim_id": "claim_f475afbdf5b0d5d77f64ec4f",
+      "product_id": "bp_2157988543",
+      "field": "catalog_family",
+      "value": "headphones",
+      "kind": "derived",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"],
+      "validation": "catalog_family_mapping_v1",
+      "supporting_claim_ids": [
+        "claim_02753727f678192381200540",
+        "claim_b337cf89553ac85da371b7ae",
+        "claim_31636bf16f601cee9bfd4170"
+      ]
+    },
+    {
+      "claim_id": "claim_f926a060a04017fc578a4825",
+      "product_id": "bp_2157036411",
+      "field": "price_from",
+      "value": 4.29,
+      "kind": "observed",
+      "source_ids": ["search_products:bp_2157036411:bp_2157036411"],
+      "validation": "exact_tool_field"
+    }
+  ],
+  "price_requirements_fingerprint": "170a4ee3dd2a32607c546fe57913310c3e8b80dfb82af4c5ef76bbd744ea6a63",
+  "fingerprint": "3f6e606d4c2facde84534239fd2b4106eba83c6d96654313c490139c2fdcfc6b"
+}

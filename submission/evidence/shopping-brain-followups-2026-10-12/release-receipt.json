@@ -1,0 +1,2047 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-12T10:31:48.748528+00:00",
+  "source_release": "b91cfa5392f867e3c44828666389e566d20d84ef",
+  "backend_ci": {
+    "state": "success",
+    "statuses": [
+      {
+        "description": "This commit looks good",
+        "state": "success",
+        "target_url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/30029/display/redirect"
+      }
+    ]
+  },
+  "public_live": {
+    "passed": 24,
+    "total": 24,
+    "revision": "b91cfa5392f867e3c44828666389e566d20d84ef",
+    "started_at": "2026-10-12T10:28:51.585Z",
+    "finished_at": "2026-10-12T10:29:36.068Z",
+    "full_evidence_cases": 9,
+    "max_claims": 130,
+    "max_structured_bytes": 58961
+  },
+  "local_history": {
+    "passed": 12,
+    "total": 12,
+    "source_checkout": "d2f65b07bb29135bd3b8345898fe0d2a39b38fd1",
+    "brain_source": "b91cfa5392f867e3c44828666389e566d20d84ef",
+    "scope": "Local same-Brain user-history replay with live read-only catalog tools; no HTTP Ask and no persistence"
+  },
+  "canary": {
+    "passed": 53,
+    "failed": 0,
+    "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
+    "checkoutTools": 0,
+    "merchantRedirectsFollowed": 0,
+    "rateLimitRetries": 0,
+    "requestsSent": 67,
+    "requestBudget": 90
+  },
+  "validation": {
+    "source_fix": "b91cfa5392f867e3c44828666389e566d20d84ef",
+    "affected_suite": {
+      "total": 6207,
+      "passed": 6204,
+      "skipped": 3,
+      "failed": 0,
+      "log": "suite-final.log"
+    },
+    "focused_suite": {
+      "passed": 27,
+      "failed": 0,
+      "log": "focused-final.log"
+    },
+    "normal_hooks": {
+      "bypassed": false,
+      "offline_module_contracts": 23,
+      "commit_log": "commit.log",
+      "push_log": "push.log",
+      "affected_test_files": 550,
+      "eligible_test_files": 5054
+    },
+    "source_blobs": {
+      "agent/clarification.js": "16ea3cfc524f80bca340187ffcc4e07c98a40c2d",
+      "agent/price-constraints.js": "37ec64b90b3b84c351dce4167c675d960e4fdaff",
+      "agent/run/basket-discovery.js": "07cbb83acc17cdbad1f74bb46db87a35bebabb3d",
+      "shopping-brain/runtime.js": "0d4ba89facbfa2e776d30198863e8f7f70c77119",
+      "shopping-brain/mission.js": "fa3ff0a5f89a3582411058f65e3e96a5864aa22c",
+      "shopping-brain/broad-probe.mjs": "346af7bdbe3690e65091ea19ada70f489c462106",
+      "shopping-brain/followup-probe.mjs": "47bb65521b080cb6df28e016232f040bb45f83d2",
+      "shopping-brain/followup-probe.test.js": "a54dd9f0dcc651966c5b74094138ccac2c657c3f",
+      "shopping-brain/followup-audit-regressions.test.js": "fb577f0fe6605982911bec128945c0faacef4a35",
+      "shopping-brain/basket-category-regressions.test.js": "db0e6562506307e522357e439e10f5984cad331c"
+    },
+    "intermediate_commit": "874a1d61eb3a",
+    "source_custody": "Concurrent default-branch work advanced the commit parent during this session. All ten changed source/test blobs were verified identical between 874a1d61eb3a and the pushed b91cfa5392f8. Other edits were preserved.",
+    "notes": [
+      "Suite and hook cohorts overlap; counts are not summed.",
+      "An initial broad suite had one failure in the newly added compatibility counterexample; the narrowed clarification rule passed the final suite.",
+      "Published local traces before final deployment preserve their in-progress source state and are not attributed to immutable release code."
+    ]
+  },
+  "reproduction": {
+    "stable_public_cases": 10,
+    "semantic_failures": 9,
+    "passing_control": 1,
+    "history_cases": 12,
+    "history_semantic_failures": 2,
+    "history_checker_errors": 1,
+    "history_original_passes": 9
+  },
+  "scope": "Anonymous public MCP and local read-only Brain/catalog replays; no staff Ask/history/account/order/alert/Events writes or merchant navigation. Public calls do not carry transcripts.",
+  "receipt_custody": "Canonical evidence and shopping_context are split from their receipt and referenced by each case index. Reconstructed cases exactly match the captured JSON after URL/token/request_id/decision_id redaction. Hashes cover formatted publication bytes, excluding this manifest itself.",
+  "files": [
+    {
+      "path": "backend-ci.json",
+      "bytes": 248,
+      "sha256": "05e7943c9080e29ea08976f5a03897285da502e8fc7798059f53b68ecda272ee"
+    },
+    {
+      "path": "baseline-cases/ambiguous_generic-response.json",
+      "bytes": 3363,
+      "sha256": "be76cac38847d1eacac271ac243a2b65b75786a99ceba05b72650622a0b3db75"
+    },
+    {
+      "path": "baseline-cases/ambiguous_location_only-response.json",
+      "bytes": 3300,
+      "sha256": "ab98f7e7face4f3b3cc5a6785fd8372f5280079d25410acfb22f5e2e574096a8"
+    },
+    {
+      "path": "baseline-cases/ambiguous_missing_basket_budget-response.json",
+      "bytes": 7973,
+      "sha256": "8b21af74db2bcf8e74728bbd9e2d73faf95d2ad7f2d2fe2756c76e2fec158558"
+    },
+    {
+      "path": "baseline-cases/ambiguous_or_family-response.json",
+      "bytes": 24645,
+      "sha256": "aca9fd004de689a1d6f0aa42f72de62ded5a3a7d2055ed546b572a4a42894f3c"
+    },
+    {
+      "path": "baseline-cases/ambiguous_pronoun-response.json",
+      "bytes": 45124,
+      "sha256": "0dcc2b909cf74002181f2b83399f57202013a603abcfdbbd05d8a3678be225cc"
+    },
+    {
+      "path": "baseline-cases/ambiguous_quality-response.json",
+      "bytes": 44486,
+      "sha256": "4952db686aa272c6c15f58f50088c869ee6922115f599bfbd3d10834cc32aafe"
+    },
+    {
+      "path": "baseline-cases/ambiguous_two_budgets-response.json",
+      "bytes": 40181,
+      "sha256": "c4f039a8002f76c99884ba6e6944c9b1d071836f11bc8556cb5d83c1f4e8d222"
+    },
+    {
+      "path": "baseline-cases/ambiguous_units-response.json",
+      "bytes": 47539,
+      "sha256": "0dfa59445aa2249ab1f70562440a1e2eddbb57118e3bad476f6f854d487342e6"
+    },
+    {
+      "path": "baseline-cases/correct_brand_reallow-response.json",
+      "bytes": 51971,
+      "sha256": "5b5476a94df5a39ef31791973ddab62f9cce37b7d65474d878312202503cfa32"
+    },
+    {
+      "path": "baseline-cases/correct_feature_twice-response.json",
+      "bytes": 25898,
+      "sha256": "bfe1e022026b29f080b1f59d499b06a1d06a47c8348c597e34b2e5c0bc22d16a"
+    },
+    {
+      "path": "baseline-cases/correct_price_twice-response.json",
+      "bytes": 25320,
+      "sha256": "305f66bd65c312092215fe8c634b1fbd96ff040aea3073cc441fbbc6747b9e6b"
+    },
+    {
+      "path": "baseline-cases/correct_quantity-response.json",
+      "bytes": 13523,
+      "sha256": "fa733b7bb977beaf78e7c6f5c2a5f166e72961d715695b83fc24bb3d35c469e5"
+    },
+    {
+      "path": "baseline-cases/mixed_appliances-response.json",
+      "bytes": 50656,
+      "sha256": "49c08e6a2912ec746ceafb552fd3b133a8448d5cffd0bb1aea35fc1c1a96607e"
+    },
+    {
+      "path": "baseline-cases/mixed_each_budget-response.json",
+      "bytes": 67394,
+      "sha256": "c9b1697e04673436740106ccaa6dc995ac366ab4ceb44697cdea28dcba142cc4"
+    },
+    {
+      "path": "baseline-cases/mixed_exclusion_scope-response.json",
+      "bytes": 60891,
+      "sha256": "5f33ebd8d8da056b33e5e25bf6ea350a83015bab2e3922e607c9cc662fdb0968"
+    },
+    {
+      "path": "baseline-cases/mixed_infeasible_floors-response.json",
+      "bytes": 287,
+      "sha256": "74c73e699c9a6b7834ca0693f45d652b5f245da1ff339613c24f80bd7ef5c096"
+    },
+    {
+      "path": "baseline-cases/mixed_phone_monitor-response.json",
+      "bytes": 73672,
+      "sha256": "d279147da646895bffc323bf7ef5b1c702319d6e804a5a8d8a661ec9c4c6d014"
+    },
+    {
+      "path": "baseline-cases/mixed_three-response.json",
+      "bytes": 78602,
+      "sha256": "22833ff539f35378929e4ab5a2eaa4fc2f0fa92a97af2daf3b3dd627a8771d23"
+    },
+    {
+      "path": "baseline-cases/mixed_wired_mouse_headphones-response.json",
+      "bytes": 53465,
+      "sha256": "37b5041b1b804c420ee0ed493f1dc9ad51132a088e2c4fec81a2c8aef9e57b7d"
+    },
+    {
+      "path": "baseline.json",
+      "bytes": 26376,
+      "sha256": "629245e89e39a7b454b27ff59d5686cfcf09df419fe36a55f1920fb7a4144b21"
+    },
+    {
+      "path": "canary-final.json",
+      "bytes": 6493,
+      "sha256": "a64755a89c646f9c6ed30c3a8e376706c77591bc43876034e6e53781ba6ac699"
+    },
+    {
+      "path": "confirmed-before-stable-cases/ambiguous_location_only-response.json",
+      "bytes": 3300,
+      "sha256": "74aa87d5a738d3268957db833aa193674c9e093060bbecd5410f41bb9c2dd12d"
+    },
+    {
+      "path": "confirmed-before-stable-cases/ambiguous_or_family-response.json",
+      "bytes": 24645,
+      "sha256": "8271161a3d787e700b15feaeb30da7626f2fb3de3b04fcd0280fb61dae2d8406"
+    },
+    {
+      "path": "confirmed-before-stable-cases/ambiguous_pronoun-response.json",
+      "bytes": 45124,
+      "sha256": "c6e95d8f661b9059f48af5ec748f481b3d3db0f4497e799f204a87fee8428937"
+    },
+    {
+      "path": "confirmed-before-stable-cases/ambiguous_two_budgets-response.json",
+      "bytes": 40181,
+      "sha256": "20c01d5b3f4ee9bf74c6e8376eef4d72bcefec9a7408d7d3e313f989a1a2fb7c"
+    },
+    {
+      "path": "confirmed-before-stable-cases/correct_price_twice-response.json",
+      "bytes": 25320,
+      "sha256": "1b3a7af8ef60d7fa6c87759c4bf469dc185e609f6b1e4b80825f77d28aab9ed4"
+    },
+    {
+      "path": "confirmed-before-stable-cases/correct_quantity-response.json",
+      "bytes": 13523,
+      "sha256": "e100df29c1d7f8c5601640f3fce6fa7e58d1820f0bf73bd03523e653213cba49"
+    },
+    {
+      "path": "confirmed-before-stable-cases/mixed_infeasible_floors-response.json",
+      "bytes": 12270,
+      "sha256": "39ad80374a39d1ffe0ce68c3e42414a2f241e3654a6b102e7d8f535112f1ed2c"
+    },
+    {
+      "path": "confirmed-before-stable-cases/mixed_or_slot-response.json",
+      "bytes": 37464,
+      "sha256": "aeda77a0f594c7d1f3f060d873030bcf97b81725f133a4a41ab192424b2bdcc8"
+    },
+    {
+      "path": "confirmed-before-stable-cases/mixed_remove_slot-response.json",
+      "bytes": 15895,
+      "sha256": "7d8ea86b8dfc3251c358c81d3ad027495b51d8667007e369ec65d85d6a055e2c"
+    },
+    {
+      "path": "confirmed-before-stable-cases/mixed_unknown_slot-response.json",
+      "bytes": 35187,
+      "sha256": "4b99e0adbfaf4e18c987ec5549c9192208b0cb084dc0efecfd607f62f3521921"
+    },
+    {
+      "path": "confirmed-before-stable.json",
+      "bytes": 9482,
+      "sha256": "90fea488106c53b28047bb43d878ea5b1ea34b84d42d3c6c2d5bbc9552fa6199"
+    },
+    {
+      "path": "confirmed-before.json",
+      "bytes": 491,
+      "sha256": "5c50b8b8951d57da0bb7c361ac13c206fd3cc26facb72e5e4a09711dc0b106b6"
+    },
+    {
+      "path": "deployment.json",
+      "bytes": 1442,
+      "sha256": "4e29a1f2709624e499ce88551c2bdc5fa4655121a8f82f985f27becd94c8d44c"
+    },
+    {
+      "path": "final-live-cases/ambiguous_generic-response.json",
+      "bytes": 3363,
+      "sha256": "c40646e275eb1b1f1b553b7bec0c23aa8588b1aa47d72ee06d11d12fb87d1918"
+    },
+    {
+      "path": "final-live-cases/ambiguous_location_only-response.json",
+      "bytes": 3066,
+      "sha256": "be21280e2b093ab783283f2267cae3755d71e68453223963e135213680b158bb"
+    },
+    {
+      "path": "final-live-cases/ambiguous_missing_basket_budget-response.json",
+      "bytes": 7973,
+      "sha256": "67fb7dc95bfd873859caf58ee2cc6c6be79dc84f17b333eeaf423f3a988e1c75"
+    },
+    {
+      "path": "final-live-cases/ambiguous_optional-response.json",
+      "bytes": 3410,
+      "sha256": "a08da9eb07198166c9beade5d571d5aa459a465ef797d0122f4bbfea7f84f7c4"
+    },
+    {
+      "path": "final-live-cases/ambiguous_or_family-response.json",
+      "bytes": 3083,
+      "sha256": "8e767d77d17e0123399c439530f5358f1debe73e2f25486352e01484eb7df95e"
+    },
+    {
+      "path": "final-live-cases/ambiguous_pronoun-response.json",
+      "bytes": 3066,
+      "sha256": "1e7055e1d83e307d15ab746242c06596d0dc8ab0f8d766642fbdc4c810586296"
+    },
+    {
+      "path": "final-live-cases/ambiguous_quality-response.json",
+      "bytes": 37526,
+      "sha256": "fa30b06173e686cb18a2261b43a0dd55edbf68d401b6b395bc42019f5884ad38"
+    },
+    {
+      "path": "final-live-cases/ambiguous_two_budgets-response.json",
+      "bytes": 40181,
+      "sha256": "814de5d875ba434cdd06d00e2b226c6af837df7434bc3ef3fa89a23368f8fe5a"
+    },
+    {
+      "path": "final-live-cases/ambiguous_units-response.json",
+      "bytes": 47539,
+      "sha256": "ebafd98394d2da1d61aca0710f69b3dd10e961488fb4000f3514062f0f2f5e85"
+    },
+    {
+      "path": "final-live-cases/correct_brand_reallow-response.json",
+      "bytes": 51971,
+      "sha256": "b5498db0552495cf68a4e5ed581427e80040e6449b24ae1d99dcb41401d0697b"
+    },
+    {
+      "path": "final-live-cases/correct_feature_twice-response.json",
+      "bytes": 31670,
+      "sha256": "2bdaf6e6da4c5d634a223cb5ea1d383590cc5625bba5bbe67d83b71fc8c8ddc7"
+    },
+    {
+      "path": "final-live-cases/correct_price_twice-response.json",
+      "bytes": 42332,
+      "sha256": "577b40e78772da9136c5c85fd0d995134441f0d5f40f1c2b345f0ec1c2bce910"
+    },
+    {
+      "path": "final-live-cases/correct_quantity-response.json",
+      "bytes": 61371,
+      "sha256": "cb2f8e8a2b981b54299edfa9d073664c04c86cad429bd0464b5d5951e0a2bd44"
+    },
+    {
+      "path": "final-live-cases/mixed_appliances-response.json",
+      "bytes": 50656,
+      "sha256": "defc8560ecbb0c07385f31746042679a87e7b6c0723ca1098c1b3d7132218d43"
+    },
+    {
+      "path": "final-live-cases/mixed_each_budget-response.json",
+      "bytes": 67394,
+      "sha256": "1c6b3cf7f459051653d31a9ef533c1b5f7719138ca3ec04f9d2055f311014bbe"
+    },
+    {
+      "path": "final-live-cases/mixed_exclusion_scope-response.json",
+      "bytes": 60891,
+      "sha256": "372b1e0d4f1517d4a36134a4b913f5a558d079c7b345a4a72a2f52e8e36f8398"
+    },
+    {
+      "path": "final-live-cases/mixed_infeasible_floors-response.json",
+      "bytes": 11667,
+      "sha256": "60dd12d68dd0fa4ea10e939aaac8d0c1ce322933c8efb5eaa9486e6463bdec06"
+    },
+    {
+      "path": "final-live-cases/mixed_or_slot-response.json",
+      "bytes": 3083,
+      "sha256": "3073c6127f4e78fadd3ee936da63e011f829fde8bc91f64ac1158e3cabef0841"
+    },
+    {
+      "path": "final-live-cases/mixed_phone_monitor-response.json",
+      "bytes": 73672,
+      "sha256": "607c45fb92c13f1f2d752e85d4ef4b284367e29c18ad2defeacec8006b9ddfdf"
+    },
+    {
+      "path": "final-live-cases/mixed_remove_slot-response.json",
+      "bytes": 60431,
+      "sha256": "ec9bcae0515483d544d26d147eb7f7ee5efc7bad5aea95001cdbbbf38373a741"
+    },
+    {
+      "path": "final-live-cases/mixed_same_family-response.json",
+      "bytes": 43149,
+      "sha256": "562c5b2ee27e829a8d76ad5f76fba58e643dccf6a3c9c133f160eb1ee531d8b0"
+    },
+    {
+      "path": "final-live-cases/mixed_three-response.json",
+      "bytes": 78602,
+      "sha256": "e1151ead77ca2b5404d81801826cb30d5dac07af807e453285040c95a01e9ca3"
+    },
+    {
+      "path": "final-live-cases/mixed_unknown_slot-response.json",
+      "bytes": 3141,
+      "sha256": "1e4bf11a0b3ecdef0454c19b2292e1fb18cbbb4fa03d63749a3ff7cf500fd928"
+    },
+    {
+      "path": "final-live-cases/mixed_wired_mouse_headphones-response.json",
+      "bytes": 53465,
+      "sha256": "9f72ab5b6409e1f8ff8eefe5b1e9b5203ba38f409724a7d55879d3ae1b22caf8"
+    },
+    {
+      "path": "final-live.json",
+      "bytes": 33708,
+      "sha256": "b6f8c5aa1de977241330c503c76674c0e74fbdba6fd31db590ce3655aafe105d"
+    },
+    {
+      "path": "history-before-cases/history_ambiguous-calls.json",
+      "bytes": 306054,
+      "sha256": "11302b74ca54427ffd33b50f90b87ad568029e873ebdbab6d950ee2dfcde3725"
+    },
+    {
+      "path": "history-before-cases/history_ambiguous-canonical-evidence.json",
+      "bytes": 814406,
+      "sha256": "90b28b56e650cb9b0764213b42488fc80433c02f47e759ffd4f517c8cc357ec6"
+    },
+    {
+      "path": "history-before-cases/history_ambiguous-canonical-shopping_context.json",
+      "bytes": 96648,
+      "sha256": "78f54a54288280202d7b18beb641f7fcaa714b77fc84d6fdcfc54598414bae12"
+    },
+    {
+      "path": "history-before-cases/history_ambiguous-canonical.json",
+      "bytes": 40292,
+      "sha256": "f3a76b84b96b3c452a4bbb0c51da653a2b188975854d253a3eedaa63b1d79e4f"
+    },
+    {
+      "path": "history-before-cases/history_ambiguous-response.json",
+      "bytes": 255601,
+      "sha256": "51a4582bc15bc35be7bdfe86db14cd5e157947284237d44b0b0a3d527fabe053"
+    },
+    {
+      "path": "history-before-cases/history_basket_budget-calls.json",
+      "bytes": 8181,
+      "sha256": "e1ce77e74d3eb36577c32032d5c31c59a1e727d3ce83397d0dce50b897f6b16a"
+    },
+    {
+      "path": "history-before-cases/history_basket_budget-canonical-evidence.json",
+      "bytes": 24241,
+      "sha256": "35b6e5d2b6da3ff3cd1137d28d0929b1885aadde04eb4faf957b8c76f95059fe"
+    },
+    {
+      "path": "history-before-cases/history_basket_budget-canonical-shopping_context.json",
+      "bytes": 17186,
+      "sha256": "882d112328ee6d769ed5fe8413bf5613f52843b1d38afa99011ff128fb9839b7"
+    },
+    {
+      "path": "history-before-cases/history_basket_budget-canonical.json",
+      "bytes": 12704,
+      "sha256": "281bc98f020c854adda96493b29179ec2c3711066e5f862df0767f0a964c1bde"
+    },
+    {
+      "path": "history-before-cases/history_basket_budget-response.json",
+      "bytes": 3127,
+      "sha256": "f18587480d296a40b67ddeeac2c0790f030e21c1ff7ef5e16e02671fdaff8d8f"
+    },
+    {
+      "path": "history-before-cases/history_basket_postcode-calls.json",
+      "bytes": 92091,
+      "sha256": "50c466e214b1f995a68109a1e2356e36cc90bc6821dccad3dddebd86189736fb"
+    },
+    {
+      "path": "history-before-cases/history_basket_postcode-canonical-evidence.json",
+      "bytes": 192898,
+      "sha256": "be33f2f558da7ff5016b9322f9895fe4172e1ad738964c81291e43c76739111e"
+    },
+    {
+      "path": "history-before-cases/history_basket_postcode-canonical-shopping_context.json",
+      "bytes": 35016,
+      "sha256": "5a3aab3a11e3e249d7a2229828ccb4bb4bdf227a6a52559742dfc5854d86864a"
+    },
+    {
+      "path": "history-before-cases/history_basket_postcode-canonical.json",
+      "bytes": 26632,
+      "sha256": "539ae2434787186f14cf48bca446e00ba2c5067e56ca5bf712db9ff69e8f4f17"
+    },
+    {
+      "path": "history-before-cases/history_basket_postcode-response.json",
+      "bytes": 48232,
+      "sha256": "9d9584ca705d2d074a2923991e0b955d6034694752aadb3f1328cb0e263af72f"
+    },
+    {
+      "path": "history-before-cases/history_basket_quantities-calls.json",
+      "bytes": 79130,
+      "sha256": "080474df5564940204a1c879a1b573ca2b3fd3a1a37a87faee95dd16978f1b21"
+    },
+    {
+      "path": "history-before-cases/history_basket_quantities-canonical-evidence.json",
+      "bytes": 174529,
+      "sha256": "b39483cc6504d608842293df2514d3c3f973d3038412efcbfa7a8fe5e8283a6d"
+    },
+    {
+      "path": "history-before-cases/history_basket_quantities-canonical-shopping_context.json",
+      "bytes": 31458,
+      "sha256": "4e4ef12e564714ce84e310efb64bd8ddaf333a377b6b3a338631c5671d1fb1b5"
+    },
+    {
+      "path": "history-before-cases/history_basket_quantities-canonical.json",
+      "bytes": 30047,
+      "sha256": "0ca9a842be0c78f10237bb0213673170b94dea8ff2050fdccb3e95c532d02f4b"
+    },
+    {
+      "path": "history-before-cases/history_basket_quantities-response.json",
+      "bytes": 61371,
+      "sha256": "4a233d72d5d20ece42ae5ea3014d47de6d91fd92a4d1c5028ed2147908d78b8a"
+    },
+    {
+      "path": "history-before-cases/history_basket_remove-calls.json",
+      "bytes": 244362,
+      "sha256": "a1f187649a5bc80b68fce863c05b162d075a53965ee0977da1f6ace5b927a474"
+    },
+    {
+      "path": "history-before-cases/history_basket_remove-canonical-evidence.json",
+      "bytes": 291108,
+      "sha256": "6429aea27843e021821798d072fe875f07d502f661f3e71e4b86062679fc6c30"
+    },
+    {
+      "path": "history-before-cases/history_basket_remove-canonical-shopping_context.json",
+      "bytes": 45886,
+      "sha256": "953876d7714e49a96c5a16cd625e023d0a2a485c8dd09c0652d1ed5f9d0ee95b"
+    },
+    {
+      "path": "history-before-cases/history_basket_remove-canonical.json",
+      "bytes": 36656,
+      "sha256": "c401a9c6144a08e034283b7f14efe34dd5ea68dd84c26aad314e4dd98a8d1bbf"
+    },
+    {
+      "path": "history-before-cases/history_basket_remove-response.json",
+      "bytes": 15967,
+      "sha256": "f7e4047da42ddc3de86215d7da4ffe9c9a3db66074d3404aa1ba93f253e04076"
+    },
+    {
+      "path": "history-before-cases/history_brand-calls.json",
+      "bytes": 226113,
+      "sha256": "411b342aa88970f1fc589ba752b71b9df0e07e18d45f168bbeb4c26fcb896b10"
+    },
+    {
+      "path": "history-before-cases/history_brand-canonical-evidence.json",
+      "bytes": 686417,
+      "sha256": "f88dd026fbe9fdb260822899c5f839f8f23c0181f08d2fe39cf9a2b0a2818353"
+    },
+    {
+      "path": "history-before-cases/history_brand-canonical-shopping_context.json",
+      "bytes": 155227,
+      "sha256": "bd9eb1e23cf341992b928109d936350cd578116c83fc2c00662816d0022b5055"
+    },
+    {
+      "path": "history-before-cases/history_brand-canonical.json",
+      "bytes": 47070,
+      "sha256": "7450995a481a1667105b0e4e70f233abb422cd4f1b39d40c1074bc33fc2db743"
+    },
+    {
+      "path": "history-before-cases/history_brand-response.json",
+      "bytes": 271075,
+      "sha256": "70f97c6aa88c008a39f9a02e465724dd4b8acf0cfd44505b659748663731636e"
+    },
+    {
+      "path": "history-before-cases/history_budget-calls.json",
+      "bytes": 100431,
+      "sha256": "d42ea8fe075f42c0084a354ec1471f7a57e0822fc1569b99921e40eafa29e44d"
+    },
+    {
+      "path": "history-before-cases/history_budget-canonical-evidence.json",
+      "bytes": 281516,
+      "sha256": "b32d42a5586508c81f896f1c339ca5c9001966c38e35eb71bbbf60cab5cd68f9"
+    },
+    {
+      "path": "history-before-cases/history_budget-canonical-shopping_context.json",
+      "bytes": 53762,
+      "sha256": "87620aed7cabce382c94274ccb51465a0843d84f88a8e02a8f4b040a86653c5f"
+    },
+    {
+      "path": "history-before-cases/history_budget-canonical.json",
+      "bytes": 33770,
+      "sha256": "f211025ddb3d97e84f0fdd4305438b9935dec057367d57a0175ad19d00c3940c"
+    },
+    {
+      "path": "history-before-cases/history_budget-response.json",
+      "bytes": 208770,
+      "sha256": "15208564471c2fd38dc4c0fa54587e32be4bb5fce49bd07a485d7a8777951d23"
+    },
+    {
+      "path": "history-before-cases/history_capacity-calls.json",
+      "bytes": 105015,
+      "sha256": "853cb69962ac3252a900ba6b1629506bc73584d0b1857619088a77d13bf2abea"
+    },
+    {
+      "path": "history-before-cases/history_capacity-canonical-evidence.json",
+      "bytes": 302488,
+      "sha256": "9198ebffced5631c28ac5f74d648ddf1678e38de50bcf59d9b26897126e4bb8c"
+    },
+    {
+      "path": "history-before-cases/history_capacity-canonical-shopping_context.json",
+      "bytes": 45266,
+      "sha256": "6164bcabfb46f363e0bebcaa46059c9a5a6dfe9a63c33d2f63fe5c9580132473"
+    },
+    {
+      "path": "history-before-cases/history_capacity-canonical.json",
+      "bytes": 34580,
+      "sha256": "5e283adfee886821432c3018ef1a0245c3da8efb25a6fe5936481241e0389639"
+    },
+    {
+      "path": "history-before-cases/history_capacity-response.json",
+      "bytes": 125978,
+      "sha256": "ca24e2d33c6cb6a537aa3806bf1340dd0286de9fc0e960266f942152b58f0b81"
+    },
+    {
+      "path": "history-before-cases/history_family_switch-calls.json",
+      "bytes": 151745,
+      "sha256": "c33ebe1bfeb456f4c0b67c369f64491bda2eb50287d9fe21aa633a1b857f0b4e"
+    },
+    {
+      "path": "history-before-cases/history_family_switch-canonical-evidence.json",
+      "bytes": 422386,
+      "sha256": "ff238ad55f4915d4a02d62eb76ffacd28926f67ffe8ba7fc2261ff4737093c96"
+    },
+    {
+      "path": "history-before-cases/history_family_switch-canonical-shopping_context.json",
+      "bytes": 57651,
+      "sha256": "658ff2696f8102b6e44aaf71a9f04252899b276d6360f18675ea0915f5ae735c"
+    },
+    {
+      "path": "history-before-cases/history_family_switch-canonical.json",
+      "bytes": 36698,
+      "sha256": "4c69343a288398232283d82e08404afc9c961343c7432902af0f28d969b8189e"
+    },
+    {
+      "path": "history-before-cases/history_family_switch-response.json",
+      "bytes": 191278,
+      "sha256": "252ae600884b9932cd880e772c48709e3a42b6a057d11940eb795263138a26a2"
+    },
+    {
+      "path": "history-before-cases/history_nfc_retained-calls.json",
+      "bytes": 198159,
+      "sha256": "9708599d70190ebfb25c95c2444340dd117ca7d4bfedf1cb3af9f5cca44d037a"
+    },
+    {
+      "path": "history-before-cases/history_nfc_retained-canonical-evidence.json",
+      "bytes": 593275,
+      "sha256": "b296f2f5265b290db63e1fcb59bd2604c17fc15c7eb4105dd5a9bde3af5b5dfe"
+    },
+    {
+      "path": "history-before-cases/history_nfc_retained-canonical-shopping_context.json",
+      "bytes": 122122,
+      "sha256": "c7410af4453c0434a44092cdd0fd5481fe18c30cdcd9136bb767ac7d2138eb0f"
+    },
+    {
+      "path": "history-before-cases/history_nfc_retained-canonical.json",
+      "bytes": 40800,
+      "sha256": "6b29321a31631b1cc443d0b7b2990a8271cd313e2e767b1959cbcfa39489e76d"
+    },
+    {
+      "path": "history-before-cases/history_nfc_retained-response.json",
+      "bytes": 251968,
+      "sha256": "a5b55c743bdccffe2f84ce4bcf5c4a362a9a66e6b10b228e1a7baf69fcb76990"
+    },
+    {
+      "path": "history-before-cases/history_wireless-calls.json",
+      "bytes": 161190,
+      "sha256": "4537bc670e14a076777e5960d47efc5b49a2aedbec65b0ac455c985d537aa52f"
+    },
+    {
+      "path": "history-before-cases/history_wireless-canonical-evidence.json",
+      "bytes": 434615,
+      "sha256": "6cabf99092d815be26a6aad005b9d1772de78ffb4d35bd9969980a28befae58d"
+    },
+    {
+      "path": "history-before-cases/history_wireless-canonical-shopping_context.json",
+      "bytes": 54994,
+      "sha256": "aa4799a72a9e8a83eeb81ebef354cc08228672a8f8be93f3ae6b7115197b0ffd"
+    },
+    {
+      "path": "history-before-cases/history_wireless-canonical.json",
+      "bytes": 37370,
+      "sha256": "8d5fc819139f488c1ed5121f0aa3c99975d4df848b62231327fa06488ba5a015"
+    },
+    {
+      "path": "history-before-cases/history_wireless-response.json",
+      "bytes": 189135,
+      "sha256": "d96cb9cd3f2045099ddb67acfecfc829ac3ffe95f4a3fd920e4fab017e160b89"
+    },
+    {
+      "path": "history-before-cases/history_wireless_three-calls.json",
+      "bytes": 132588,
+      "sha256": "b8b9846a3dd31b085e7fbc37f479829f2e1452741083f8eda462bf6c4d6c35b7"
+    },
+    {
+      "path": "history-before-cases/history_wireless_three-canonical-evidence.json",
+      "bytes": 368200,
+      "sha256": "c0875e1694a8acc8fab5d3fcde7ff00375787134d084962942dc7eef2a604484"
+    },
+    {
+      "path": "history-before-cases/history_wireless_three-canonical-shopping_context.json",
+      "bytes": 52601,
+      "sha256": "ec52326ebabdd154fa0723e29834a4df55053b6c6833c7445e2637f59ce410d3"
+    },
+    {
+      "path": "history-before-cases/history_wireless_three-canonical.json",
+      "bytes": 37796,
+      "sha256": "1bbb6b4d06eb5ae1d6a708b65201fd595fa910e818468d5c1b00c6bcb2d368e8"
+    },
+    {
+      "path": "history-before-cases/history_wireless_three-response.json",
+      "bytes": 138752,
+      "sha256": "60bc445d1501c873748893de894b2d0e2fdb6cac46db4f91966cc118d3d443b8"
+    },
+    {
+      "path": "history-before.json",
+      "bytes": 11322,
+      "sha256": "d38d012c8afe2b2b3a8c0eff1417cca77f7ca3ef657b8e0e85ccb535e188f5cc"
+    },
+    {
+      "path": "history-final-cases/history_ambiguous-calls.json",
+      "bytes": 296123,
+      "sha256": "db58c732ba109529c34c50ad162aa3ebbf145ce6e07906eda6c68f082c761f5c"
+    },
+    {
+      "path": "history-final-cases/history_ambiguous-canonical-evidence.json",
+      "bytes": 783791,
+      "sha256": "537b5afc616ab16045238967982502837a2560e26d4daf81d9f1dc8e66f4b19b"
+    },
+    {
+      "path": "history-final-cases/history_ambiguous-canonical-shopping_context.json",
+      "bytes": 92989,
+      "sha256": "77dab401a23f8cffac8efc9d16e4f64006f743dd68de970a1d25e52cffcf56b0"
+    },
+    {
+      "path": "history-final-cases/history_ambiguous-canonical.json",
+      "bytes": 39785,
+      "sha256": "1daf87b7228d40930210e232eb287fa86768201302f6991e26dc7990aeca7fc3"
+    },
+    {
+      "path": "history-final-cases/history_ambiguous-response.json",
+      "bytes": 255601,
+      "sha256": "d080bb703aeefccd61dd11315144eb3a5ec8479dc955c7141db5a34e0193bb61"
+    },
+    {
+      "path": "history-final-cases/history_basket_budget-calls.json",
+      "bytes": 79128,
+      "sha256": "5d437eb87e4a6e69c549485aa5fba441cf762f9e07705e1c1f16b3be815a28b8"
+    },
+    {
+      "path": "history-final-cases/history_basket_budget-canonical-evidence.json",
+      "bytes": 174527,
+      "sha256": "99ae0cfbe8b72a981b97e35bf5dfe4201c4ec8eb53988ccf083a181b25a87b39"
+    },
+    {
+      "path": "history-final-cases/history_basket_budget-canonical-shopping_context.json",
+      "bytes": 31458,
+      "sha256": "4e4ef12e564714ce84e310efb64bd8ddaf333a377b6b3a338631c5671d1fb1b5"
+    },
+    {
+      "path": "history-final-cases/history_basket_budget-canonical.json",
+      "bytes": 30041,
+      "sha256": "ca881a95d0cb40f5cfbbb686f3a24ae60966fd05955fcbf5d30f6f3751e33739"
+    },
+    {
+      "path": "history-final-cases/history_basket_budget-response.json",
+      "bytes": 61367,
+      "sha256": "91d7ac0d787e19e8ab49d7b6610efaacc74515d7e782e61ef1d869c4a2ce7234"
+    },
+    {
+      "path": "history-final-cases/history_basket_postcode-calls.json",
+      "bytes": 92091,
+      "sha256": "13fbf7b59fac221a9bb8a98ad2d901520334377f1241d0cd20de2907525c5622"
+    },
+    {
+      "path": "history-final-cases/history_basket_postcode-canonical-evidence.json",
+      "bytes": 192898,
+      "sha256": "f27ca3df019dda8a78fcce0ebfc6c8100acacfde48273a4e6539e1f5f65be2dd"
+    },
+    {
+      "path": "history-final-cases/history_basket_postcode-canonical-shopping_context.json",
+      "bytes": 35016,
+      "sha256": "5a3aab3a11e3e249d7a2229828ccb4bb4bdf227a6a52559742dfc5854d86864a"
+    },
+    {
+      "path": "history-final-cases/history_basket_postcode-canonical.json",
+      "bytes": 26627,
+      "sha256": "4592b8b09d5e0ff9bdc6700f29d1bb35eedd5617bd5670fbdbc3ce711628ae74"
+    },
+    {
+      "path": "history-final-cases/history_basket_postcode-response.json",
+      "bytes": 48232,
+      "sha256": "4d6a7fd1d5142293f1a915e7968e85a20bdc43162894393038ea7b5c42b0d71e"
+    },
+    {
+      "path": "history-final-cases/history_basket_quantities-calls.json",
+      "bytes": 79130,
+      "sha256": "6741bfb44a2bf5d848ec14a41a5e4d386f1f193342d981615d597d3cf92e55c6"
+    },
+    {
+      "path": "history-final-cases/history_basket_quantities-canonical-evidence.json",
+      "bytes": 174529,
+      "sha256": "ff8acf38b91b38d00b787b40d4f3ef49c73d0764dfbcd7e918592c93229603e7"
+    },
+    {
+      "path": "history-final-cases/history_basket_quantities-canonical-shopping_context.json",
+      "bytes": 31458,
+      "sha256": "4e4ef12e564714ce84e310efb64bd8ddaf333a377b6b3a338631c5671d1fb1b5"
+    },
+    {
+      "path": "history-final-cases/history_basket_quantities-canonical.json",
+      "bytes": 30042,
+      "sha256": "65b0d8416eaf8df9fa622b1d42f4a8a533228ad40cc9973456fa7a077c33787b"
+    },
+    {
+      "path": "history-final-cases/history_basket_quantities-response.json",
+      "bytes": 61371,
+      "sha256": "d17096e51603652d6360257650885654a4372165aa2af056b320bf57ad8ba7e5"
+    },
+    {
+      "path": "history-final-cases/history_basket_remove-calls.json",
+      "bytes": 102632,
+      "sha256": "4b01a8f183623cd2a280139df328d40adefe0a0f00d48a2df3ec281f3a3b234b"
+    },
+    {
+      "path": "history-final-cases/history_basket_remove-canonical-evidence.json",
+      "bytes": 215834,
+      "sha256": "a5bbc4c11dd3263eef7e94e216a6370d61c7ce211976b50004d8a062c764df9a"
+    },
+    {
+      "path": "history-final-cases/history_basket_remove-canonical-shopping_context.json",
+      "bytes": 29532,
+      "sha256": "1b19d010e9f3c32c0f313911a65d21916c11a512e0bf75902aeabf6c31684db2"
+    },
+    {
+      "path": "history-final-cases/history_basket_remove-canonical.json",
+      "bytes": 30703,
+      "sha256": "02840f7894060deee225f411a9215c4b8cc1730787196cf33a5c091da110875b"
+    },
+    {
+      "path": "history-final-cases/history_basket_remove-response.json",
+      "bytes": 60431,
+      "sha256": "e56aa079afba3ac29ed1ac41771d05f84e997d99494c48140d7ce11af05b1908"
+    },
+    {
+      "path": "history-final-cases/history_brand-calls.json",
+      "bytes": 226117,
+      "sha256": "1425f4120b60cf184b29dd3aa12261347b1e9c8f4e5e4eba8070f1837160de9c"
+    },
+    {
+      "path": "history-final-cases/history_brand-canonical-evidence.json",
+      "bytes": 686421,
+      "sha256": "98d7aca3691df9bee6c633cbae283a339617e9a84e996649c39eed64aa842793"
+    },
+    {
+      "path": "history-final-cases/history_brand-canonical-shopping_context.json",
+      "bytes": 155228,
+      "sha256": "96c565619b598ebfdf70158ffa67fd70ebf437bde74c1ce720340df71dd4922f"
+    },
+    {
+      "path": "history-final-cases/history_brand-canonical.json",
+      "bytes": 47036,
+      "sha256": "6ac079b8cc70e3f18687cbe791dc128b28388689dd4249016e51f5bb736a7aaa"
+    },
+    {
+      "path": "history-final-cases/history_brand-response.json",
+      "bytes": 271075,
+      "sha256": "a4d2d28388c4b7721bae26684cfeb03d2604d0cd799d95f7aee8d0018be066d3"
+    },
+    {
+      "path": "history-final-cases/history_budget-calls.json",
+      "bytes": 100431,
+      "sha256": "bc89454ae5fa0079754b32a81062fbeef7f34e8edf9a7853c4804c48b368d44b"
+    },
+    {
+      "path": "history-final-cases/history_budget-canonical-evidence.json",
+      "bytes": 281516,
+      "sha256": "6b292a2f55558ea05d343ab5d3f08144aa31e374f2bdd840164f4e316014f368"
+    },
+    {
+      "path": "history-final-cases/history_budget-canonical-shopping_context.json",
+      "bytes": 53762,
+      "sha256": "87620aed7cabce382c94274ccb51465a0843d84f88a8e02a8f4b040a86653c5f"
+    },
+    {
+      "path": "history-final-cases/history_budget-canonical.json",
+      "bytes": 33761,
+      "sha256": "f08355e257cabd3b7357ab9625e522c171f09e6a573febbd6d6fc8925e58e2f4"
+    },
+    {
+      "path": "history-final-cases/history_budget-response.json",
+      "bytes": 208770,
+      "sha256": "900508d0b5c9f2440785aadd7e65bbd8eeada09227d42ff3763f14a2eb35deb3"
+    },
+    {
+      "path": "history-final-cases/history_capacity-calls.json",
+      "bytes": 105015,
+      "sha256": "1f6f0786d2671db276bd74993465962c9944d7a70c1544015dacbc51046e0564"
+    },
+    {
+      "path": "history-final-cases/history_capacity-canonical-evidence.json",
+      "bytes": 302488,
+      "sha256": "e4e08fe3db3deae83b97936fbdb71982a6c9c16797e5b51e97a54ea60078ada4"
+    },
+    {
+      "path": "history-final-cases/history_capacity-canonical-shopping_context.json",
+      "bytes": 45266,
+      "sha256": "6164bcabfb46f363e0bebcaa46059c9a5a6dfe9a63c33d2f63fe5c9580132473"
+    },
+    {
+      "path": "history-final-cases/history_capacity-canonical.json",
+      "bytes": 34574,
+      "sha256": "9a81cd6aeaac008cb2594b74f960a91abde75c072a5096766130aeca9eea2f9d"
+    },
+    {
+      "path": "history-final-cases/history_capacity-response.json",
+      "bytes": 125978,
+      "sha256": "e7a970ecd8dc3db8c6e2055fe537b698b759d31086c51753dce7aa88a4f01705"
+    },
+    {
+      "path": "history-final-cases/history_family_switch-calls.json",
+      "bytes": 151745,
+      "sha256": "3564aafe5a1d371f0fd699d3b348f0d65c41c6535f1701b88967659415c45a42"
+    },
+    {
+      "path": "history-final-cases/history_family_switch-canonical-evidence.json",
+      "bytes": 422386,
+      "sha256": "bed02cf3c4d385e69da6f63bce833f853a784faef456cc49c13a2b465dbd1c5a"
+    },
+    {
+      "path": "history-final-cases/history_family_switch-canonical-shopping_context.json",
+      "bytes": 57651,
+      "sha256": "658ff2696f8102b6e44aaf71a9f04252899b276d6360f18675ea0915f5ae735c"
+    },
+    {
+      "path": "history-final-cases/history_family_switch-canonical.json",
+      "bytes": 36689,
+      "sha256": "12f9345f4f244fd02dd52e281bb4da355990a2a78cffcb8c4ee10068f88f4626"
+    },
+    {
+      "path": "history-final-cases/history_family_switch-response.json",
+      "bytes": 191278,
+      "sha256": "e282826fcb0b52f574707197270ccf95e4a638d4b83f94cc60865167e8ae6aa1"
+    },
+    {
+      "path": "history-final-cases/history_nfc_retained-calls.json",
+      "bytes": 198159,
+      "sha256": "ae92204cb0c735d8ae5bf8838992c9729a8cd800e248f5d3679839b7d77b29cc"
+    },
+    {
+      "path": "history-final-cases/history_nfc_retained-canonical-evidence.json",
+      "bytes": 593275,
+      "sha256": "582650c09366092b207c6656ff8b75a3c10abcc6af7d4f15826646c7763b9d0d"
+    },
+    {
+      "path": "history-final-cases/history_nfc_retained-canonical-shopping_context.json",
+      "bytes": 122122,
+      "sha256": "c7410af4453c0434a44092cdd0fd5481fe18c30cdcd9136bb767ac7d2138eb0f"
+    },
+    {
+      "path": "history-final-cases/history_nfc_retained-canonical.json",
+      "bytes": 40793,
+      "sha256": "dfca355dac795f9334511af6174c757ae9a33d86624406611c6b521ad64db687"
+    },
+    {
+      "path": "history-final-cases/history_nfc_retained-response.json",
+      "bytes": 251968,
+      "sha256": "a5264620c443bf0169b2cb3aab42d7ca9862a3d7b326de9dc0fbdb170d983042"
+    },
+    {
+      "path": "history-final-cases/history_wireless-calls.json",
+      "bytes": 160388,
+      "sha256": "d35f4016b2aa0c180e7f6e6ec818a47f16886082e55e452bd33cbf0b74903c07"
+    },
+    {
+      "path": "history-final-cases/history_wireless-canonical-evidence.json",
+      "bytes": 432088,
+      "sha256": "8e87d48dffd668514d999a103ed91cfac955990be34b72137e4ad145ea8a6e5b"
+    },
+    {
+      "path": "history-final-cases/history_wireless-canonical-shopping_context.json",
+      "bytes": 55087,
+      "sha256": "2e28cc3850dc11dd3ff1fc5dac52bcf6d7e04316ce88498b9d32ccae74150b63"
+    },
+    {
+      "path": "history-final-cases/history_wireless-canonical.json",
+      "bytes": 37302,
+      "sha256": "254ad5f2135b8de407c35db38619d04e6441bb88cc80c820aa8724d9a0c71632"
+    },
+    {
+      "path": "history-final-cases/history_wireless-response.json",
+      "bytes": 189135,
+      "sha256": "83b8572bc3a5a4be5f7e61eef2dfa3d5da35ca349cab0da7612135234e953c31"
+    },
+    {
+      "path": "history-final-cases/history_wireless_three-calls.json",
+      "bytes": 132588,
+      "sha256": "5134ee9b43c042c9518ae0c0e8f795ebce3e88fbc5f59c32d7af656b11e7e8d0"
+    },
+    {
+      "path": "history-final-cases/history_wireless_three-canonical-evidence.json",
+      "bytes": 368200,
+      "sha256": "aeb8f39ea79634c2478a0fb3d821524b6dc65390d1db357bfaaa22b1586b36b6"
+    },
+    {
+      "path": "history-final-cases/history_wireless_three-canonical-shopping_context.json",
+      "bytes": 52601,
+      "sha256": "ec52326ebabdd154fa0723e29834a4df55053b6c6833c7445e2637f59ce410d3"
+    },
+    {
+      "path": "history-final-cases/history_wireless_three-canonical.json",
+      "bytes": 37799,
+      "sha256": "24b03b5d73e5b9947108cbb837f91647c4ed79236a5ba4e95ecf5662461b0515"
+    },
+    {
+      "path": "history-final-cases/history_wireless_three-response.json",
+      "bytes": 138752,
+      "sha256": "8513c67078dc260aeb35f032a66cf03bfb7791b4a51242d53527635ebeb9aac2"
+    },
+    {
+      "path": "history-final.json",
+      "bytes": 11207,
+      "sha256": "2fbc320fa90b5d25a2e6809207254a9c18d98d873f46ab21dbbf2a8b30dc766f"
+    },
+    {
+      "path": "history-fixed-cases/history_ambiguous-calls.json",
+      "bytes": 306054,
+      "sha256": "837a6032b76d94485947768a888b966ec6f12d2423ffe5b991f87715ea7005c1"
+    },
+    {
+      "path": "history-fixed-cases/history_ambiguous-canonical-evidence.json",
+      "bytes": 814406,
+      "sha256": "8f5425edf12553817783332558bcfbbdddc0165685ede607ea98c1bfae6b802f"
+    },
+    {
+      "path": "history-fixed-cases/history_ambiguous-canonical-shopping_context.json",
+      "bytes": 96648,
+      "sha256": "78f54a54288280202d7b18beb641f7fcaa714b77fc84d6fdcfc54598414bae12"
+    },
+    {
+      "path": "history-fixed-cases/history_ambiguous-canonical.json",
+      "bytes": 40287,
+      "sha256": "5107434d608d541fc87fa7bdd65ab12dd1809d72037c73d447d78f67f1d2f677"
+    },
+    {
+      "path": "history-fixed-cases/history_ambiguous-response.json",
+      "bytes": 255601,
+      "sha256": "604995e6de34f16bea8fe9990680d267f2ae1f0ec20a8cac58744daedd14a486"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_budget-calls.json",
+      "bytes": 79128,
+      "sha256": "6ed4ac7dd96ee69d1d63ff68cfe0ce05e7b6626e40143b6df51d50e122363b04"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_budget-canonical-evidence.json",
+      "bytes": 174527,
+      "sha256": "2cf1275d1bb0837a67e409fa5dc77a88bd08cd609179a6e2110296faf96f4a9e"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_budget-canonical-shopping_context.json",
+      "bytes": 31458,
+      "sha256": "4e4ef12e564714ce84e310efb64bd8ddaf333a377b6b3a338631c5671d1fb1b5"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_budget-canonical.json",
+      "bytes": 30042,
+      "sha256": "d789cfe922215455a7edac9521778a08af97a90b8542d983fb8b63bded64bccb"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_budget-response.json",
+      "bytes": 61367,
+      "sha256": "caa210e8fb1105f60244ede8d332e63b1886e91f97b460e64992e397e7bf641b"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_postcode-calls.json",
+      "bytes": 92091,
+      "sha256": "2590f3726eb33de718684084d719bb48f6e64bc44b25f80af131cc5166a81f09"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_postcode-canonical-evidence.json",
+      "bytes": 192898,
+      "sha256": "588e593457adf9edf1d637e30992b8a094f1fa7a069d74c895acd55d71d76991"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_postcode-canonical-shopping_context.json",
+      "bytes": 35016,
+      "sha256": "5a3aab3a11e3e249d7a2229828ccb4bb4bdf227a6a52559742dfc5854d86864a"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_postcode-canonical.json",
+      "bytes": 26624,
+      "sha256": "dd057827b646b2bfc05ce0f91f73d09248da5d6d1ec474bc885577fee0a410d9"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_postcode-response.json",
+      "bytes": 48232,
+      "sha256": "b561def52a2d11ecc516e0043a51c7a4a74fea64f65bae35e406df1f00bb1b2b"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_quantities-calls.json",
+      "bytes": 79130,
+      "sha256": "f6009a6f8449f41e36a67c9152aee233fd3b32b8c43274b3e7374bd4fd9092e0"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_quantities-canonical-evidence.json",
+      "bytes": 174529,
+      "sha256": "9532178e8098d6af31784c7c44a21433fd8d83fa82bb80ba2b77f7532091543e"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_quantities-canonical-shopping_context.json",
+      "bytes": 31458,
+      "sha256": "4e4ef12e564714ce84e310efb64bd8ddaf333a377b6b3a338631c5671d1fb1b5"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_quantities-canonical.json",
+      "bytes": 30041,
+      "sha256": "aaa3c27e39f5daa8690c6b88d0da0089cd648f4abfecccc9e6068115b79b4ec8"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_quantities-response.json",
+      "bytes": 61371,
+      "sha256": "5dd9855d137e3202ae6fc0a4045235ec9d71c6d20dac346c51d61d70b8c89ae8"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_remove-calls.json",
+      "bytes": 102632,
+      "sha256": "e24842c535972c737adfed3c654afc4311c31a78c14057512691675495e02d2a"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_remove-canonical-evidence.json",
+      "bytes": 215834,
+      "sha256": "c6a977fee09412df67c88dacb7be818fdd7e088762868808d1d1313dac5e707f"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_remove-canonical-shopping_context.json",
+      "bytes": 29532,
+      "sha256": "1b19d010e9f3c32c0f313911a65d21916c11a512e0bf75902aeabf6c31684db2"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_remove-canonical.json",
+      "bytes": 30704,
+      "sha256": "e794d198b59ecb7ad88615821d59c678a98652015e11b79aa966de58cb546233"
+    },
+    {
+      "path": "history-fixed-cases/history_basket_remove-response.json",
+      "bytes": 60431,
+      "sha256": "c5d49e6e46fd0a6e6b356fd319647615c0fd8b0a4306ca32d52533473b02c95f"
+    },
+    {
+      "path": "history-fixed-cases/history_brand-calls.json",
+      "bytes": 226113,
+      "sha256": "012c174eb79b7518f662cc25e0569e04079b1b899e5c6edb68c01fa8561e946c"
+    },
+    {
+      "path": "history-fixed-cases/history_brand-canonical-evidence.json",
+      "bytes": 686417,
+      "sha256": "ab3443cf8040cfb8c1514515b93b673c44492c2b0b76f6c807076c2ac313ea7f"
+    },
+    {
+      "path": "history-fixed-cases/history_brand-canonical-shopping_context.json",
+      "bytes": 155227,
+      "sha256": "bd9eb1e23cf341992b928109d936350cd578116c83fc2c00662816d0022b5055"
+    },
+    {
+      "path": "history-fixed-cases/history_brand-canonical.json",
+      "bytes": 47067,
+      "sha256": "e186d95eae596c1631c1aa4f670908e806ff40293058f07ffa2ec79f858ae9ac"
+    },
+    {
+      "path": "history-fixed-cases/history_brand-response.json",
+      "bytes": 271075,
+      "sha256": "95e0e5036a115abc439520c0b8e3660e17743d5b18c52502906b814ee4a5ca96"
+    },
+    {
+      "path": "history-fixed-cases/history_budget-calls.json",
+      "bytes": 100431,
+      "sha256": "6cc20696d2bf0dae31327925d49f3978cb18597d174df58e942aad09fad0118b"
+    },
+    {
+      "path": "history-fixed-cases/history_budget-canonical-evidence.json",
+      "bytes": 281516,
+      "sha256": "30c2cb4bdd53a89290dc5ee2a6ed62bba883eacaafb4d8cd941adadfc404b376"
+    },
+    {
+      "path": "history-fixed-cases/history_budget-canonical-shopping_context.json",
+      "bytes": 53762,
+      "sha256": "87620aed7cabce382c94274ccb51465a0843d84f88a8e02a8f4b040a86653c5f"
+    },
+    {
+      "path": "history-fixed-cases/history_budget-canonical.json",
+      "bytes": 33759,
+      "sha256": "342eedbefd4e79bc8024a66116cb12a377675299f38c2b84bb2c071532ed3108"
+    },
+    {
+      "path": "history-fixed-cases/history_budget-response.json",
+      "bytes": 208770,
+      "sha256": "2d211a4e6061e2ea254141856724c8fde6498081278e541dd88d6f860f8eeb13"
+    },
+    {
+      "path": "history-fixed-cases/history_capacity-calls.json",
+      "bytes": 105015,
+      "sha256": "1d40de8affede3210fbac0e90dc14fe2276ba08e7ed43ec9d111af53c2f9ce54"
+    },
+    {
+      "path": "history-fixed-cases/history_capacity-canonical-evidence.json",
+      "bytes": 302488,
+      "sha256": "4b9b193eceb9b193761d9c5eccbab5e3e0fce4e5c0b2aedd224eacfd14dd913e"
+    },
+    {
+      "path": "history-fixed-cases/history_capacity-canonical-shopping_context.json",
+      "bytes": 45266,
+      "sha256": "6164bcabfb46f363e0bebcaa46059c9a5a6dfe9a63c33d2f63fe5c9580132473"
+    },
+    {
+      "path": "history-fixed-cases/history_capacity-canonical.json",
+      "bytes": 34574,
+      "sha256": "5e98fecec5f5aee971a210918a22b338ce23a63d399b6360b2c4196cf5fe6933"
+    },
+    {
+      "path": "history-fixed-cases/history_capacity-response.json",
+      "bytes": 125978,
+      "sha256": "79fdb2f407043b9580715b70a34362a13dbc452396622524e3c5444f146f324b"
+    },
+    {
+      "path": "history-fixed-cases/history_family_switch-calls.json",
+      "bytes": 151745,
+      "sha256": "19c60fe420de9311056901cab911c205b8951679991a40bc35c7309b1e5526bc"
+    },
+    {
+      "path": "history-fixed-cases/history_family_switch-canonical-evidence.json",
+      "bytes": 422386,
+      "sha256": "f2c827e29e1a1d486775146d59bbe02c8ccb7631c1788dc0835012d632ee1b6d"
+    },
+    {
+      "path": "history-fixed-cases/history_family_switch-canonical-shopping_context.json",
+      "bytes": 57651,
+      "sha256": "658ff2696f8102b6e44aaf71a9f04252899b276d6360f18675ea0915f5ae735c"
+    },
+    {
+      "path": "history-fixed-cases/history_family_switch-canonical.json",
+      "bytes": 36689,
+      "sha256": "f7cf03447082b761eab245207225b29cf3c3efff30cefe80f92b3d9fd24151e8"
+    },
+    {
+      "path": "history-fixed-cases/history_family_switch-response.json",
+      "bytes": 191278,
+      "sha256": "1cef0945b5ec1df2bc71ba2552adc30cb4198cf4c96cb0795a8344a7d4766ede"
+    },
+    {
+      "path": "history-fixed-cases/history_nfc_retained-calls.json",
+      "bytes": 198159,
+      "sha256": "ead47b6c5495cbb167f904427bf58a6e143ed88ed70bba299c6c6a8c2f2b60ab"
+    },
+    {
+      "path": "history-fixed-cases/history_nfc_retained-canonical-evidence.json",
+      "bytes": 593275,
+      "sha256": "1593ca0c0c488cdca59224358c8354952827bd03581a7cebd987bee3024ce67a"
+    },
+    {
+      "path": "history-fixed-cases/history_nfc_retained-canonical-shopping_context.json",
+      "bytes": 122122,
+      "sha256": "c7410af4453c0434a44092cdd0fd5481fe18c30cdcd9136bb767ac7d2138eb0f"
+    },
+    {
+      "path": "history-fixed-cases/history_nfc_retained-canonical.json",
+      "bytes": 40797,
+      "sha256": "568768f45333d6a2feda098c8c4e865631782c23250e28159c18bf629279057e"
+    },
+    {
+      "path": "history-fixed-cases/history_nfc_retained-response.json",
+      "bytes": 251968,
+      "sha256": "eb4de4aa26c6018f5c1b9e6287d0dbd3b9ced54d79a6f505a5fb44e2d79e6f56"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless-calls.json",
+      "bytes": 161190,
+      "sha256": "b3aecd4369b0e16ba476b229d10e2b0edca941729cb549acce8c071e08f8f3d7"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless-canonical-evidence.json",
+      "bytes": 434615,
+      "sha256": "22115451c85e5d4431d35e8c7ace874fcfa12f04f3a345e4ff12906905c1f0d3"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless-canonical-shopping_context.json",
+      "bytes": 54994,
+      "sha256": "aa4799a72a9e8a83eeb81ebef354cc08228672a8f8be93f3ae6b7115197b0ffd"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless-canonical.json",
+      "bytes": 37364,
+      "sha256": "ccf05a6d7b6c33c691fd7dd28ad7395e88b3a7eda3e2350f4d9146631c170db1"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless-response.json",
+      "bytes": 189135,
+      "sha256": "09a5b5e7edc315f979fab6141517ade49c4abdf6563149389c4ccf8b6c232f72"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless_three-calls.json",
+      "bytes": 132588,
+      "sha256": "000ccc447f52064d92fdef043c6dd463b0e121f2c97f65e7246247b24c9a41fd"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless_three-canonical-evidence.json",
+      "bytes": 368200,
+      "sha256": "611eadfddade0bd2eb558b35678a713572378bc6e8fe0725620564a8d011d87d"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless_three-canonical-shopping_context.json",
+      "bytes": 52601,
+      "sha256": "ec52326ebabdd154fa0723e29834a4df55053b6c6833c7445e2637f59ce410d3"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless_three-canonical.json",
+      "bytes": 37792,
+      "sha256": "ac31c4ad7906c87db397095031ee93d6a5c81a05cde0a1dca99a3857f936282f"
+    },
+    {
+      "path": "history-fixed-cases/history_wireless_three-response.json",
+      "bytes": 138752,
+      "sha256": "97c6853e9c41898a885ff23614afde8d506c7e089f7f86311713571176b84174"
+    },
+    {
+      "path": "history-fixed.json",
+      "bytes": 10866,
+      "sha256": "d97a95c67353cb31ec56fa03990fe1f11b01c321f4088bb1003b0534ce388057"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_budget-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_budget-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "d2c864104cd8d75bc1730224a495ab57560419540bb6c9eec02cdb9cb2baca6b"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_budget-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_budget-canonical.json",
+      "bytes": 18834,
+      "sha256": "c10a48248798bf4347ed25cf433960e7e32b800e0e6ae09f9e7b91241eec435f"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_budget-response.json",
+      "bytes": 10353,
+      "sha256": "f16452074591023f46538a044d9d27fe7e7dff754e9b4484bb12721aeba2d014"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_remove-calls.json",
+      "bytes": 102632,
+      "sha256": "b957e347b2226bd3962e9e748c7601585b9a06ae3011f9781e8e3e14033176cd"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_remove-canonical-evidence.json",
+      "bytes": 215834,
+      "sha256": "94651f4a40f88358d8841b175a758605a2cdfa0e3d5832e723c776b5fef99f97"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_remove-canonical-shopping_context.json",
+      "bytes": 29532,
+      "sha256": "1b19d010e9f3c32c0f313911a65d21916c11a512e0bf75902aeabf6c31684db2"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_remove-canonical.json",
+      "bytes": 30707,
+      "sha256": "9d13d7021cb81c3cd0003d008733d165b4179118d08bd556fd5403559a07d4ed"
+    },
+    {
+      "path": "history-target-fixed-cases/history_basket_remove-response.json",
+      "bytes": 60431,
+      "sha256": "c993997f5b3493b575701efc862f13d76a0e0b10aadd8b16ffafde4759e9596e"
+    },
+    {
+      "path": "history-target-fixed.json",
+      "bytes": 2235,
+      "sha256": "8b05d46a223704cc3b615466718c6083cde798569eb8c3f290c6becb75ab747f"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_generic-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_generic-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "d9958dea8550668056754f05c0fa9691ed0f0b47e88be4e3b24d53a4c90189e5"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_generic-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_generic-canonical.json",
+      "bytes": 7831,
+      "sha256": "60789ffd213619011acad5e9fbca9ddf914676c63700bb3bd243a39943953a09"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_generic-response.json",
+      "bytes": 2995,
+      "sha256": "0644bb8f8b70a4ef8ef32508790b269d0dd92fb2f3ffd56ecb066407bcf6c279"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_location_only-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_location_only-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "b92d8d47860c1a84c9b708ceef4fcc2b2baba8e78e872142d3ddcd8ef28f5427"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_location_only-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_location_only-canonical.json",
+      "bytes": 6063,
+      "sha256": "2a9fafcf307673e45182259fc8285553cba53ebafd5fad1ec990e044574d2460"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_location_only-response.json",
+      "bytes": 2698,
+      "sha256": "4c2a2e9b0af30aca2fae7c00fa1dd44f679968c03ca1f64495cffded7040913a"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_missing_basket_budget-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_missing_basket_budget-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "b92d8d47860c1a84c9b708ceef4fcc2b2baba8e78e872142d3ddcd8ef28f5427"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_missing_basket_budget-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_missing_basket_budget-canonical.json",
+      "bytes": 14250,
+      "sha256": "57bcc736eca5980e6825daf2fe0bfdbf14823939a7ea232fcdb10f53105ec8db"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_missing_basket_budget-response.json",
+      "bytes": 7605,
+      "sha256": "67161126598346c7645e94bc0effd6c95dd39677f7b8c0e719121d4a058bb6e3"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_optional-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_optional-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "12899fae8d8f6bda16aa8e0250ce5b4dedb8b5977139143a4d724a90382d1b94"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_optional-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_optional-canonical.json",
+      "bytes": 8767,
+      "sha256": "cc2e128202d9d2de0e27c4d45907f47a3711c8db30ae4d4a803fe185c8f36a75"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_optional-response.json",
+      "bytes": 3042,
+      "sha256": "ebd38562067e89bd39e2d9893455f2a2607757c4f70505fa5df15482c6272f53"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_or_family-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_or_family-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "b92d8d47860c1a84c9b708ceef4fcc2b2baba8e78e872142d3ddcd8ef28f5427"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_or_family-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_or_family-canonical.json",
+      "bytes": 6126,
+      "sha256": "3c9f5954c590f14a6f796c92cfcbe6692b67c7192ace04e74d67fbd2d0820251"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_or_family-response.json",
+      "bytes": 2715,
+      "sha256": "c55484b4b38ce33c1ec5b43fb4d7f4ab2a687d8e7253b418edb009c571b02af8"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_pronoun-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_pronoun-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "b92d8d47860c1a84c9b708ceef4fcc2b2baba8e78e872142d3ddcd8ef28f5427"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_pronoun-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_pronoun-canonical.json",
+      "bytes": 6066,
+      "sha256": "3c9bc62406da688f10f918f95fb63e4d2f58b1b338d2f140d18ed843f90befa4"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_pronoun-response.json",
+      "bytes": 2698,
+      "sha256": "5361cc68d78c20e5e00fed5c5114491d3d01239a0bf13ae3547284d2579f7e76"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_quality-calls.json",
+      "bytes": 149706,
+      "sha256": "1018d3e3a677a229fbdf9da00675fba599a259183304f239f5b8c5a3e667b380"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_quality-canonical-evidence.json",
+      "bytes": 461748,
+      "sha256": "406333a7936157ea494f43d0a34fd96c158c1f94330fe9700a2a2b6a406c82f4"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_quality-canonical-shopping_context.json",
+      "bytes": 79542,
+      "sha256": "4af7cf850667650a52fc8365c69db1edf1d194ae8abc00460724398e77f5dc80"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_quality-canonical.json",
+      "bytes": 40941,
+      "sha256": "a64b17775fef504e5186c15774b031ef86b1168202bc45a1c1d8501054e4359a"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_quality-response.json",
+      "bytes": 190833,
+      "sha256": "686379a8289ce233d59dd5fdfc798426769e1b6396fa9bb4b2a72b554f0117d9"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_two_budgets-calls.json",
+      "bytes": 125280,
+      "sha256": "3a3cc712048694e706edefc6ceffa55eef6d96cd0df205e8e23bf338ccaa4b64"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_two_budgets-canonical-evidence.json",
+      "bytes": 407425,
+      "sha256": "ababd722f7aad6017ebd8713888a313b97ad42d7f76c4d8ed80c9abe1de5dbbd"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_two_budgets-canonical-shopping_context.json",
+      "bytes": 76378,
+      "sha256": "aced1661609862cf778e9f104ef678d159f9a8ce1f299b52c52bfc35559d4fbe"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_two_budgets-canonical.json",
+      "bytes": 39162,
+      "sha256": "78c48188040da1657f0b1cefa402446a8a63e0686eafe9be76e8bb66ca743c9f"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_two_budgets-response.json",
+      "bytes": 182132,
+      "sha256": "5390c021fad4ac9d613651440f77807f0ccba8b614b7bdfdf25829d6a6f24b74"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_units-calls.json",
+      "bytes": 146712,
+      "sha256": "f0a73e9aaa8838f95baf345ff8e0befb96f165caece51d9a3066c18e05f5011b"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_units-canonical-evidence.json",
+      "bytes": 394060,
+      "sha256": "5cf8e361bed306a27d628dc5750dd46bd60e5912a7ea4fd7414155f0de2cbeed"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_units-canonical-shopping_context.json",
+      "bytes": 56065,
+      "sha256": "096ab05f2f07b924c3dcb62b08df07ed2f88341c11364c038353ba8ed16c31ed"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_units-canonical.json",
+      "bytes": 34670,
+      "sha256": "53f523150e6ef018f427a681fb859d0aeb24be163577117209636ed2527fd7b5"
+    },
+    {
+      "path": "public-local-fixed-cases/ambiguous_units-response.json",
+      "bytes": 196065,
+      "sha256": "ecf731d243e35bb4d5dee84a4952cd540a080ec9ed5c72a0d8d4fc2f17a3fe52"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_brand_reallow-calls.json",
+      "bytes": 330021,
+      "sha256": "57320cc7bde9e11b6e67c8db173cbff8aadfbf6b6fbde7b808e99fac5888c219"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_brand_reallow-canonical-evidence.json",
+      "bytes": 935839,
+      "sha256": "bcab81d802d8c8c4823c8cacd56d3a883fc5e7dec4a09d4f610acbd7a241e997"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_brand_reallow-canonical-shopping_context.json",
+      "bytes": 162747,
+      "sha256": "8218386e8586f108b888c8b3375bac6fa7418c35d8a4b97e966950da423e3f6a"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_brand_reallow-canonical.json",
+      "bytes": 50037,
+      "sha256": "daa72cfbe6f97f801d7b8830f59907d5fd66409b3b77a07d276636bc90dc906b"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_brand_reallow-response.json",
+      "bytes": 270985,
+      "sha256": "61aa104f602789a4b64f00ecf4c6b8611c04e2d81b5ed8dc463213a6e781a055"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_feature_twice-calls.json",
+      "bytes": 132607,
+      "sha256": "7d27c80e7174ef806554657be5a0551027954cc5a1141e4a2a1bf466492f5cfb"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_feature_twice-canonical-evidence.json",
+      "bytes": 368200,
+      "sha256": "34d9b4e43d790b42c1535df2a6d2e707cd0e8f157c95d527addbe07f310e0c3f"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_feature_twice-canonical-shopping_context.json",
+      "bytes": 52601,
+      "sha256": "ec52326ebabdd154fa0723e29834a4df55053b6c6833c7445e2637f59ce410d3"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_feature_twice-canonical.json",
+      "bytes": 37791,
+      "sha256": "d145d90a1e6e52bbe0df14a5e0e866805e41c27fe7168d37d02d65dc220721a9"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_feature_twice-response.json",
+      "bytes": 138752,
+      "sha256": "320e6cd4966642afa28fabaab2442704ea35fa00cf0ce4283eced058a851d03b"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_price_twice-calls.json",
+      "bytes": 167540,
+      "sha256": "2097fddf9066beb9f72b3f5222ea77776e6bed7d578901aee96ff124b66d9e2d"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_price_twice-canonical-evidence.json",
+      "bytes": 560784,
+      "sha256": "01d4fa13d55a6d80e21646229e9d211d58163d2b823e27e9b057cb3b86adeda4"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_price_twice-canonical-shopping_context.json",
+      "bytes": 144205,
+      "sha256": "d7d93af2d0fe5d059a78b921fa3ca998a710ee19df10e24a48ddca8f955c135b"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_price_twice-canonical.json",
+      "bytes": 44336,
+      "sha256": "e12f429d4d0d7beb6b6e6a0815c0d4b995617f3470f6d31a4d38ef830cfa84b4"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_price_twice-response.json",
+      "bytes": 196237,
+      "sha256": "6e26ed38bd9f8fce863db9064996957649aeae58fe4ce71f4380e6a57dc899ce"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_quantity-calls.json",
+      "bytes": 79130,
+      "sha256": "a652defa1a3ea3c7ca87257875a624ed285bd3f1d4baa99e3db4103ee58e40ca"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_quantity-canonical-evidence.json",
+      "bytes": 174529,
+      "sha256": "43ebccdb0f0c1873766d02ecf097e0629d2c541380383d211fcdef0f3696c2f3"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_quantity-canonical-shopping_context.json",
+      "bytes": 31458,
+      "sha256": "4e4ef12e564714ce84e310efb64bd8ddaf333a377b6b3a338631c5671d1fb1b5"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_quantity-canonical.json",
+      "bytes": 30059,
+      "sha256": "120dbcee32bbc026b5f6e83770747b523feb15e58413f14f9d3bd4d28c320e3f"
+    },
+    {
+      "path": "public-local-fixed-cases/correct_quantity-response.json",
+      "bytes": 61371,
+      "sha256": "b69b723422c0dd0cf9944511b487659fa61a1d3ea7d8b39eea13541226f38994"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_appliances-calls.json",
+      "bytes": 104153,
+      "sha256": "365bc69344fc7a5da7716d56e75d553769f75cc9b01c99cd260f1ee5ab02bba4"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_appliances-canonical-evidence.json",
+      "bytes": 170207,
+      "sha256": "0d904f11ca75169cf8a0e7cbc78fda7ee1599d5c3cd32b597464908a49d7ceb2"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_appliances-canonical-shopping_context.json",
+      "bytes": 29233,
+      "sha256": "c993d71462fada1b16bd6c38d8ad32ac0e7315ca702b159b4b135f83e5a30679"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_appliances-canonical.json",
+      "bytes": 30104,
+      "sha256": "05aea6ec2bdd41faf953f9bdc6f9336737704d74313e8bae7a3a987a37cda8bc"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_appliances-response.json",
+      "bytes": 50656,
+      "sha256": "954e39e24835e751fd46283916d4affc58f1cb2704bbca01a55fea0a1c2add75"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_each_budget-calls.json",
+      "bytes": 127057,
+      "sha256": "f5d9a36d38f3cac7d6645eab936ea0e3ce7a50dbca356eda6c3baf49dc93959d"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_each_budget-canonical-evidence.json",
+      "bytes": 266679,
+      "sha256": "1150ff3daa3995fb048ec6df5729c10de913b36c13cf20f8632a48ecdfb509ce"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_each_budget-canonical-shopping_context.json",
+      "bytes": 51934,
+      "sha256": "6187049b7194d7b2f7808a7ffb1f97a54d42991becc9fb0c07ccfb81637198e5"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_each_budget-canonical.json",
+      "bytes": 37945,
+      "sha256": "ee6f67602643219a635a41fa9c14e19a058a479fc22115c245a13d3c6758069f"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_each_budget-response.json",
+      "bytes": 67394,
+      "sha256": "6641b7cfde57cdb064ae0f2173790350fb823e11cf7c00515dbad19063f247ce"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_exclusion_scope-calls.json",
+      "bytes": 101641,
+      "sha256": "762c30998074f3c61fbff906bd140977c0a65e49a8ae86c38990ea84f4712eca"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_exclusion_scope-canonical-evidence.json",
+      "bytes": 213989,
+      "sha256": "0f3a29142530a0c840f85d2be5761e1fa543d90ea1f050b2772bc4d3e4133df3"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_exclusion_scope-canonical-shopping_context.json",
+      "bytes": 29515,
+      "sha256": "c47a0f943f6c658e56b548dec8705eacc2b1a4f95f9859b545e60b136a388763"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_exclusion_scope-canonical.json",
+      "bytes": 31939,
+      "sha256": "9ee361459815805181bef855ac7b6f375cf15076a37dc35b76935cd8d19af808"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_exclusion_scope-response.json",
+      "bytes": 60891,
+      "sha256": "45764792583a3e022f7284fb6d36c082450feb392bf64543829c469282795a9c"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_infeasible_floors-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_infeasible_floors-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "90f59da8d246adf5eaee35cb59dcc5560eba618fc2a76a15a6f77af285acaebb"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_infeasible_floors-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_infeasible_floors-canonical.json",
+      "bytes": 20331,
+      "sha256": "709c8c340d5a68a10e322b37ae583ea1d9714d3bdb4af36682aa50ff411a0571"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_infeasible_floors-response.json",
+      "bytes": 11299,
+      "sha256": "bfa66784284ff8eb51e65b9e42f414a0477dc832642453a44a143c664e243917"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_or_slot-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_or_slot-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "b92d8d47860c1a84c9b708ceef4fcc2b2baba8e78e872142d3ddcd8ef28f5427"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_or_slot-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_or_slot-canonical.json",
+      "bytes": 6103,
+      "sha256": "c3a91c05c12f3e66868d45f313402e22714d3c999f49726aeba4cd185bbae92a"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_or_slot-response.json",
+      "bytes": 2715,
+      "sha256": "57c219429e980fcba88c668208795fcccc4e716b3ef15a163afea0dfff78c199"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_phone_monitor-calls.json",
+      "bytes": 151461,
+      "sha256": "dd34963ea67ce459975fc056a4413398cd200aeb768292d5b6680377809ac153"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_phone_monitor-canonical-evidence.json",
+      "bytes": 344969,
+      "sha256": "40b419e986cedab2b8ae4817ae5975406e32c06c1b432105d70e66eb9a5d582a"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_phone_monitor-canonical-shopping_context.json",
+      "bytes": 39941,
+      "sha256": "d3c6d8f4663394ba43be0b56d98e67a8ab85ce7cd2372262e20fa3aae2d62eea"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_phone_monitor-canonical.json",
+      "bytes": 29305,
+      "sha256": "66659b5d41214860a054f723d9244930d95458dc61c4672a74a7b4adccb6d22b"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_phone_monitor-response.json",
+      "bytes": 73672,
+      "sha256": "5b03a88eefba0e27bfb6a66e0b12f51522876f615f366a3f4470f6bac5fe1b91"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_remove_slot-calls.json",
+      "bytes": 102632,
+      "sha256": "bf5baa1baa828eb32f00179c3b7f6afc0847ff6659ae9a7d1baa15a0161533f2"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_remove_slot-canonical-evidence.json",
+      "bytes": 215834,
+      "sha256": "e16219607bc40028b5768f831bf6792f29e62a1b29fc57b6025fe343bbd0673a"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_remove_slot-canonical-shopping_context.json",
+      "bytes": 29532,
+      "sha256": "1b19d010e9f3c32c0f313911a65d21916c11a512e0bf75902aeabf6c31684db2"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_remove_slot-canonical.json",
+      "bytes": 30704,
+      "sha256": "a1d7b6a68b86a31d7eed8cc7cd00c4f5d33fdbf3ddc945c7e570eb24120dc2a5"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_remove_slot-response.json",
+      "bytes": 60431,
+      "sha256": "9973d46b9e2a79d85d56e0b165469c3deb0ce1c7e7b81d96b929a282d880a9c8"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_same_family-calls.json",
+      "bytes": 80754,
+      "sha256": "448041824bf345515a499bc3eb31cde2e56f7b5ea61539f115ec1e204dfe5108"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_same_family-canonical-evidence.json",
+      "bytes": 172878,
+      "sha256": "402a7f3b985172ac5103529b67f902c96fd3d81458a9cedd91d652b3f35c49fc"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_same_family-canonical-shopping_context.json",
+      "bytes": 21424,
+      "sha256": "a7fbe54b9f456d09404106f93d7bf9dbe45dfbba935179dbb9263c66e6a31f92"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_same_family-canonical.json",
+      "bytes": 28872,
+      "sha256": "521993da7dfd316730f3bd71b5155c3ac702a6cfd4409184cbd3527a2af2ca0f"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_same_family-response.json",
+      "bytes": 43149,
+      "sha256": "364e9c5a64f9090ce067fa64bd1d0dc042f0575f9adbd5b0db95b283c8b95a42"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_three-calls.json",
+      "bytes": 122988,
+      "sha256": "a78e420b2f9acd62a939f692d6839cf0ec522611ffe90ecf6248eeb10a86a953"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_three-canonical-evidence.json",
+      "bytes": 277184,
+      "sha256": "3d38ed3df56b0e4557211e63e6ec14d7bc3dd770c8ecf168c0a95ede00e174e3"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_three-canonical-shopping_context.json",
+      "bytes": 52060,
+      "sha256": "9d2e0921b380ca982dea4e2aa0036d6184ddf7ba8283d42653cbaccce503a271"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_three-canonical.json",
+      "bytes": 35355,
+      "sha256": "6b4194e2872239c23c8b3fe100fb3e2cb9398740df3b258ecf3dd01660a40e08"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_three-response.json",
+      "bytes": 78602,
+      "sha256": "5fd91646ab30c51baeea8f080a81f4bee6c00c00f96d3f55d547191f0742ada6"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_unknown_slot-calls.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_unknown_slot-canonical-evidence.json",
+      "bytes": 225,
+      "sha256": "b92d8d47860c1a84c9b708ceef4fcc2b2baba8e78e872142d3ddcd8ef28f5427"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_unknown_slot-canonical-shopping_context.json",
+      "bytes": 84,
+      "sha256": "f2faadde5dad94d81febc4d45a98e4906120b785fd61eba34dbe9c329e8e5e01"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_unknown_slot-canonical.json",
+      "bytes": 6155,
+      "sha256": "d5fbefbe90bf581ffaed5cefac4ce8068ae9cc1bbe72ca05c524536df69aa946"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_unknown_slot-response.json",
+      "bytes": 2773,
+      "sha256": "c0ad445767557a485167d980601f0dcf1eeac88d578d0173833f48a699d7754d"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_wired_mouse_headphones-calls.json",
+      "bytes": 79004,
+      "sha256": "5dd7a22b0896a920def8d7c8696e3f25bffd1808b9fdf6b9c48aa7ca59aa167d"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_wired_mouse_headphones-canonical-evidence.json",
+      "bytes": 172863,
+      "sha256": "3646d999c71984b5b00faf5da0752ad43a41be3d866166047426790712a47ff4"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_wired_mouse_headphones-canonical-shopping_context.json",
+      "bytes": 31369,
+      "sha256": "0461396ec6487002201b7b9a7ec1bbb31011144d91cc5da5d3fd731f12825dd8"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_wired_mouse_headphones-canonical.json",
+      "bytes": 30121,
+      "sha256": "69ae018cfb02c80d771fbecb525cb49437b34a6920423a76e1ee548785f08bcc"
+    },
+    {
+      "path": "public-local-fixed-cases/mixed_wired_mouse_headphones-response.json",
+      "bytes": 53465,
+      "sha256": "4caec74c70b59bf0aac32b70beafc7d1c0c66eb8a41b19954aceabe389cef1b7"
+    },
+    {
+      "path": "public-local-fixed.json",
+      "bytes": 20642,
+      "sha256": "7ef597405397dd82151543dbe05e25b0c33763a19f44988e704ecaa88ddc68fe"
+    },
+    {
+      "path": "repeats-current-cases/ambiguous_location_only-response.json",
+      "bytes": 3300,
+      "sha256": "f513bcb40f35baf3b452af9721e60f696261a36530a91e6898e7c24560374b9d"
+    },
+    {
+      "path": "repeats-current-cases/ambiguous_optional-response.json",
+      "bytes": 3410,
+      "sha256": "5f4273454bda620e8fd62271d80899d3bb139bfff1e65c9010ba149319437917"
+    },
+    {
+      "path": "repeats-current-cases/ambiguous_or_family-response.json",
+      "bytes": 24645,
+      "sha256": "5ad4b7a62df6b1f1ca44a3b7da1986c3379562c70608be8ccb1c09c3b4215b9d"
+    },
+    {
+      "path": "repeats-current-cases/ambiguous_pronoun-response.json",
+      "bytes": 45124,
+      "sha256": "b4a4c6b97116ceadee1de7d2b2407db7b96743fbe1c422c1305256b7f6e79679"
+    },
+    {
+      "path": "repeats-current-cases/ambiguous_two_budgets-response.json",
+      "bytes": 40181,
+      "sha256": "f45aca99c5aba9b41eed84304474dbe64764d9382f81e266d30e012a7bcbe201"
+    },
+    {
+      "path": "repeats-current-cases/correct_price_twice-response.json",
+      "bytes": 25320,
+      "sha256": "bdddb54e52b8322a05d3e8466edc19b8e1deba8c54dc207b0c4f38ecc6e8223e"
+    },
+    {
+      "path": "repeats-current-cases/correct_quantity-response.json",
+      "bytes": 13523,
+      "sha256": "879e33b10d3bf767c75245cb42115c2d99c89ca2a16f5db015f83d4d7ab339ad"
+    },
+    {
+      "path": "repeats-current-cases/mixed_infeasible_floors-response.json",
+      "bytes": 12270,
+      "sha256": "ef3d2fb5be2dd575c1252d0f3510ceec480f6658577238386dfb9e5e9d80a011"
+    },
+    {
+      "path": "repeats-current-cases/mixed_or_slot-response.json",
+      "bytes": 37464,
+      "sha256": "cec2317d3502f9f785d66b614442a498fb3466888eb0a338a36def965d27edbf"
+    },
+    {
+      "path": "repeats-current-cases/mixed_remove_slot-response.json",
+      "bytes": 15895,
+      "sha256": "7e0645524b2e95dcec13a1755fe457583bef57b503abb6fcdfb429cec84d1917"
+    },
+    {
+      "path": "repeats-current-cases/mixed_same_family-response.json",
+      "bytes": 43149,
+      "sha256": "01a1627b0c0776b78ee11d16e07be00571eb56207125f71c2df96af535c67886"
+    },
+    {
+      "path": "repeats-current-cases/mixed_unknown_slot-response.json",
+      "bytes": 35187,
+      "sha256": "3d7eee8e69ab14fd29fef5a8b42fca655e55413f882c473d675cce3ce4169e27"
+    },
+    {
+      "path": "repeats-current.json",
+      "bytes": 11148,
+      "sha256": "22c42e26fbc3e528f842746363d66d5c5a53bc2737b4c849d9a2dc14ecae9f28"
+    },
+    {
+      "path": "repeats.json",
+      "bytes": 491,
+      "sha256": "3e402ba9d75a7357e36597a9357a576980facffdbf42b6fce260e79b488a3617"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 2016,
+      "sha256": "e0e6bddd0dfef5a635f572a2ce4c92f029cd3fd60b5a048c78c9a2a956842ed4"
+    }
+  ]
+}

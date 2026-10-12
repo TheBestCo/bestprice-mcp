@@ -1,0 +1,5698 @@
+[
+  {
+    "name": "search_products",
+    "input": {
+      "query": "Θέλω κινητό έως 300 ευρώ με υποχρεωτικό NFC Διόρθωση: έως 400 ευρώ.",
+      "required_features": ["NFC"],
+      "sort": "relevance",
+      "limit": 8,
+      "price_max": 400
+    },
+    "result": {
+      "requested_query": "κινητό NFC",
+      "interpreted_query": "smartphone NFC",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:16:37.112Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 338,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 20,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": 400,
+        "sort": "relevance",
+        "feature_hints": ["NFC"],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["smartphone"],
+      "total_matches": 20,
+      "products": [
+        {
+          "product_id": "bp_2163461420",
+          "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "brand": null,
+          "model": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 248.9,
+          "offer_count": 18,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164518034",
+          "title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 218.3,
+          "offer_count": 32,
+          "availability": "available",
+          "match_confidence": 0.99,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163499636",
+          "title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 327,
+          "offer_count": 21,
+          "availability": "available",
+          "match_confidence": 0.97,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.92,
+            "count": 9
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163527417",
+          "title": "Xiaomi Redmi Note 15 NFC 6GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi Note 15 NFC 6GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 175,
+          "offer_count": 13,
+          "availability": "available",
+          "match_confidence": 0.96,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162452975",
+          "title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 144.88,
+          "offer_count": 13,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 6
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163979176",
+          "title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "brand": null,
+          "model": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 109,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164519002",
+          "title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 180.54,
+          "offer_count": 22,
+          "availability": "available",
+          "match_confidence": 0.91,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164394134",
+          "title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 222.88,
+          "offer_count": 35,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164394130",
+          "title": "Xiaomi Redmi 17 5G NFC 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 17 5G NFC 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 194,
+          "offer_count": 32,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162522800",
+          "title": "Xiaomi Poco C85 NFC 8GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Poco C85 NFC 8GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 186.96,
+          "offer_count": 10,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164394128",
+          "title": "Xiaomi Redmi 17 NFC 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 17 NFC 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 165.99,
+          "offer_count": 22,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164394132",
+          "title": "Xiaomi Redmi 17 NFC 4GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 17 NFC 4GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 196.99,
+          "offer_count": 31,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162452971",
+          "title": "Xiaomi Redmi 15C 5G NFC 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 15C 5G NFC 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 148,
+          "offer_count": 12,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4,
+            "count": 4
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163461418",
+          "title": "Xiaomi Poco M8 Pro 5G NFC 12GB 512GB",
+          "brand": null,
+          "model": "Xiaomi Poco M8 Pro 5G NFC 12GB 512GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 332.95,
+          "offer_count": 20,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164058260",
+          "title": "Xiaomi Redmi A7 Pro NFC 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi A7 Pro NFC 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 142.7,
+          "offer_count": 16,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163499639",
+          "title": "Xiaomi Redmi Note 15 Pro 5G NFC 8GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Redmi Note 15 Pro 5G NFC 8GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 306.88,
+          "offer_count": 12,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.53,
+            "count": 11
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164616240",
+          "title": "Xiaomi Poco X8 5G NFC 8GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Poco X8 5G NFC 8GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 299.88,
+          "offer_count": 9,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162373534",
+          "title": "Xiaomi Redmi 15 5G NFC 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 15 5G NFC 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 162,
+          "offer_count": 9,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.67,
+            "count": 12
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163442427",
+          "title": "Xiaomi Redmi Note 15 NFC 8GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Redmi Note 15 NFC 8GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 248.89,
+          "offer_count": 2,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163443935",
+          "title": "Xiaomi Redmi Note 15 5G NFC 6GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi Note 15 5G NFC 6GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 208,
+          "offer_count": 18,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.21,
+            "count": 7
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164551999",
+          "title": "Powertech Milly Small III χωρίς Κάμερα",
+          "brand": null,
+          "model": "Powertech Milly Small III χωρίς Κάμερα",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 15.97,
+          "offer_count": 30,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2155874671",
+          "title": "Panasonic KX-TU110 Dual",
+          "brand": null,
+          "model": "Panasonic KX-TU110 Dual",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 23.56,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.99,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163856012",
+          "title": "Xiaomi Redmi A7 Pro 4GB 64GB",
+          "brand": null,
+          "model": "Xiaomi Redmi A7 Pro 4GB 64GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 106.46,
+          "offer_count": 51,
+          "availability": "available",
+          "match_confidence": 0.97,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163856013",
+          "title": "Xiaomi Redmi A7 Pro 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi A7 Pro 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 127.77,
+          "offer_count": 25,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164570012",
+          "title": "Oukitel C26 6GB 128GB",
+          "brand": null,
+          "model": "Oukitel C26 6GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 141.42,
+          "offer_count": 26,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160176672",
+          "title": "Samsung Galaxy A16 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A16 128GB",
+          "variant": "A165",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 151,
+          "offer_count": 51,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.82,
+            "count": 21
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164394129",
+          "title": "Xiaomi Redmi 17 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 17 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 155.76,
+          "offer_count": 36,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162795719",
+          "title": "Samsung Galaxy A17 4GB 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A17 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 162.94,
+          "offer_count": 53,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.75,
+            "count": 5
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2162408545",
+          "title": "Samsung Galaxy A17 5G 4GB 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A17 5G 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 175,
+          "offer_count": 80,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4.67,
+            "count": 8
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164394131",
+          "title": "Xiaomi Redmi 17 5G 4GB 128GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 17 5G 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 175.82,
+          "offer_count": 37,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164548325",
+          "title": "Samsung Galaxy A18 4GB 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A18 4GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 205.32,
+          "offer_count": 35,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164394135",
+          "title": "Xiaomi Redmi 17 5G 4GB 256GB",
+          "brand": null,
+          "model": "Xiaomi Redmi 17 5G 4GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 205.32,
+          "offer_count": 37,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163712148",
+          "title": "Motorola Moto G77 5G 8GB 256GB",
+          "brand": null,
+          "model": "Motorola Moto G77 5G 8GB 256GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 213.48,
+          "offer_count": 43,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164165234",
+          "title": "Samsung Galaxy A27 5G 6GB 128GB",
+          "brand": null,
+          "model": "Samsung Galaxy A27 5G 6GB 128GB",
+          "variant": null,
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 219,
+          "offer_count": 69,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Οι προτιμήσεις χαρακτηριστικών χρησιμοποιούνται μόνο για τη σειρά συνάφειας. Δεν έχουν επιβεβαιωθεί για κάθε προϊόν· έλεγξέ τες στη σελίδα του προϊόντος.",
+        "Ο κατάλογος ερμήνευσε την αναζήτηση ως «smartphone NFC». Όροι που δεν εμφανίζονται εκεί δεν θεωρούνται επιβεβαιωμένα φίλτρα.",
+        "Δεν αναζητήθηκε «κινητό» από τη διατύπωσή σου. Έλεγξε ότι τα αποτελέσματα αντιστοιχούν σε αυτό που ζήτησες."
+      ],
+      "as_of": "2026-10-12T10:16:37.112Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2163461420", "bp_2164518034", "bp_2163499636", "bp_2163527417"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2163461420",
+          "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "brand": "Xiaomi",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 248.9,
+          "availability": "in_stock",
+          "offer_count": 18,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "8192 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 8192,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 625,
+              "label": "Χωρητικότητα",
+              "value": "512 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 512,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Smartphones",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "5G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2026",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "NFC, Bluetooth, WiFi, USB-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "6.77 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 6.77,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "5520 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 5520,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Android",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "2",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 630,
+              "label": "Ανάλυση Selfie Κάμερας",
+              "value": "20 MP",
+              "group": "Selfie Κάμερα",
+              "numeric": {
+                "value": 20,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "2.4 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2.4,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Οθόνη Αφής",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2804,
+              "label": "Αισθητήρες",
+              "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, Γυροσκόπιο, GPS, Virtual Proximity Sensing",
+              "group": "Αισθητήρες"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Ναι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Οκταπύρηνος (4+4)",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2798,
+              "label": "Αριθμός Selfie Καμερών",
+              "value": "1",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1982,
+              "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+              "value": "1.8 GHz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 1.8,
+                "unit": "GHz"
+              }
+            },
+            {
+              "id": 1979,
+              "label": "Έκδοση Λειτουργικού",
+              "value": "15",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 4638,
+              "label": "Δυνατότητες Selfie Κάμερας",
+              "value": "HDR, Panorama",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 60,
+              "label": "FM Radio",
+              "value": "Όχι",
+              "group": "Δέκτης"
+            },
+            {
+              "id": 4639,
+              "label": "Ανάλυση Βίντεο Selfie",
+              "value": "1080p 60fps, 1080p 30fps",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "AMOLED",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Qualcomm Snapdragon 6 Gen 3",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 4629,
+              "label": "Ευρυγώνιος Φακός",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 4637,
+              "label": "Ανάλυση Βίντεο",
+              "value": "1080p 60fps, 1080p 30fps, 4K 30fps",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "1080 x 2392",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 4628,
+              "label": "Ισχύς Φόρτισης",
+              "value": "45 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 45,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 4636,
+              "label": "Δυνατότητες Κάμερας",
+              "value": "HDR, Panorama",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "164 x 75.4 x 7.4",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP65",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "178 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 178,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Xiaomi Poco M8 5G, 8GB/512GB, Dual SIM, NFC, Silver",
+            "Smartphone Poco M8 6.77\" 5G NFC 512GB/8GB Black",
+            "Smartphone Poco M8 6.77\" 5G NFC 512GB/8GB Green",
+            "Smartphone Poco M8 6.77\" 5G NFC 512GB/8GB Silver",
+            "Xiaomi Poco M8 8GB Ram 512GB NFC Black 5G- EU",
+            "Xiaomi Poco M8 8GB Ram 512GB NFC Silver 5G- EU",
+            "Xiaomi Poco M8 5G NFC Dual SIM (8GB/512GB) Black",
+            "Xiaomi Poco M8 5G NFC Dual SIM (8GB/512GB) Silver"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 3
+          }
+        },
+        {
+          "product_id": "bp_2164518034",
+          "title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "brand": "Xiaomi",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 218.3,
+          "availability": "in_stock",
+          "offer_count": 32,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 7704,
+              "label": "Δημοφιλείς Σειρές",
+              "value": "Redmi Note 17",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "6144 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 6144,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 625,
+              "label": "Χωρητικότητα",
+              "value": "256 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 256,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Smartphones",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "4G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2026",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "NFC, Bluetooth, WiFi, USB-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "6.99 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 6.99,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "7700 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 7700,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Android",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "1",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 630,
+              "label": "Ανάλυση Selfie Κάμερας",
+              "value": "16 MP",
+              "group": "Selfie Κάμερα",
+              "numeric": {
+                "value": 16,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "2.9 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2.9,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Οθόνη Αφής",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2804,
+              "label": "Αισθητήρες",
+              "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, Proximity, GPS",
+              "group": "Αισθητήρες"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Ναι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Οκταπύρηνος (4+4)",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2798,
+              "label": "Αριθμός Selfie Καμερών",
+              "value": "1",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1979,
+              "label": "Έκδοση Λειτουργικού",
+              "value": "16",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 1982,
+              "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+              "value": "1.9 GHz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 1.9,
+                "unit": "GHz"
+              }
+            },
+            {
+              "id": 4639,
+              "label": "Ανάλυση Βίντεο Selfie",
+              "value": "1080p 30fps",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "AMOLED",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Qualcomm Snapdragon 6s 4G Gen 2",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 4629,
+              "label": "Ευρυγώνιος Φακός",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 4637,
+              "label": "Ανάλυση Βίντεο",
+              "value": "1080p 30fps",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "1080 x 2396",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 4628,
+              "label": "Ισχύς Φόρτισης",
+              "value": "45 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 45,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1990,
+              "label": "Προστασία Οθόνης",
+              "value": "Corning Gorilla Glass 7i",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4636,
+              "label": "Δυνατότητες Κάμερας",
+              "value": "HDR, Panorama, PDAF",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 7182,
+              "label": "Ισχύς Αντίστροφης φόρτισης",
+              "value": "22.5 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 22.5,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 7183,
+              "label": "Τεχνολογία Γρήγορης Φόρτισης",
+              "value": "Power Delivery 3.0",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 7180,
+              "label": "Ρυθμός Ανανέωσης",
+              "value": "120 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 120,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 7185,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "1800 nits",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 1800,
+                "unit": "nits"
+              }
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "169.7 x 79.1 x 8.5",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP65",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "224 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 224,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Xiaomi Redmi Note 17 4G, 6GB/256GB, Dual SIM, NFC, Celestial Purple",
+            "Xiaomi Redmi Note 17 4G, 6GB/256GB, Dual SIM, NFC, Black",
+            "Xiaomi Redmi Note 17 4G Dual SIM NFC 6GB/256GB Sky Teal",
+            "Smartphone Xiaomi Redmi Note 17 6.99\" 4G 256GB/6GB Black",
+            "Smartphone Xiaomi Redmi Note 17 6.99\" 4G 256GB/6GB Blue",
+            "Smartphone Xiaomi Redmi Note 17 6.99\" 4G 256GB/6GB Purple",
+            "Xiaomi Redmi Note 17 6/256GB 4G Black",
+            "Xiaomi Redmi Note 17 6/256GB 4G Blue"
+          ]
+        },
+        {
+          "product_id": "bp_2163499636",
+          "title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "brand": "Xiaomi",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 327,
+          "availability": "in_stock",
+          "offer_count": 21,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 7704,
+              "label": "Δημοφιλείς Σειρές",
+              "value": "Redmi Note 15 Pro+",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "8192 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 8192,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 625,
+              "label": "Χωρητικότητα",
+              "value": "256 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 256,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Smartphones",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "5G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2025",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "NFC, Bluetooth, WiFi, USB-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "6.83 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 6.83,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "6500 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 6500,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Android",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "200 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 200,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "2",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 630,
+              "label": "Ανάλυση Selfie Κάμερας",
+              "value": "32 MP",
+              "group": "Selfie Κάμερα",
+              "numeric": {
+                "value": 32,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "2.7 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2.7,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Οθόνη Αφής",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2804,
+              "label": "Αισθητήρες",
+              "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, Γυροσκόπιο, Proximity, GPS",
+              "group": "Αισθητήρες"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Ναι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Όχι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Οκταπύρηνος (1+3+4)",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2798,
+              "label": "Αριθμός Selfie Καμερών",
+              "value": "1",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1982,
+              "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+              "value": "2.4 GHz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2.4,
+                "unit": "GHz"
+              }
+            },
+            {
+              "id": 1979,
+              "label": "Έκδοση Λειτουργικού",
+              "value": "15",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 4638,
+              "label": "Δυνατότητες Selfie Κάμερας",
+              "value": "HDR, Panorama",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 60,
+              "label": "FM Radio",
+              "value": "Όχι",
+              "group": "Δέκτης"
+            },
+            {
+              "id": 4639,
+              "label": "Ανάλυση Βίντεο Selfie",
+              "value": "1080p 60fps, 1080p 30fps",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2802,
+              "label": "Ταχύτητα Τρίτου Επεξεργαστή",
+              "value": "1.8 GHz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 1.8,
+                "unit": "GHz"
+              }
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "AMOLED",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Qualcomm Snapdragon 7s Gen 4",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 4629,
+              "label": "Ευρυγώνιος Φακός",
+              "value": "200 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 200,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 4630,
+              "label": "Υπερευρυγώνιος Φακός",
+              "value": "8 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 8,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 4637,
+              "label": "Ανάλυση Βίντεο",
+              "value": "1080p 60fps, 1080p 120fps, 1080p 30fps, 4K 30fps",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "1280 x 2772",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 4628,
+              "label": "Ισχύς Φόρτισης",
+              "value": "100 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 100,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1990,
+              "label": "Προστασία Οθόνης",
+              "value": "Corning Gorilla Glass Victus 2",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4636,
+              "label": "Δυνατότητες Κάμερας",
+              "value": "HDR, Panorama",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "163.3 x 78.3 x 8.2",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP69",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "207 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 207,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "ΚΙΝΗΤΟ XIAOMI REDMI NOTE 15 PRO PLUS 5G 6.83in 8GB/256GB DUAL SIM NFC BLUE GW",
+            "Xiaomi Redmi Note 15 Pro Plus 5G 8GB/256GB NFC Dual Midnight Black (Ελληνικό-Global Version)",
+            "Xiaomi Redmi Note 15 Pro+ 8GB Ram 256GB NFC Blue Dual SIM 5G- EU",
+            "Smartphone Xiaomi Redmi Note 15 Pro+ 6.83\" 5G NFC 256GB/8GB Black",
+            "Smartphone Xiaomi Redmi Note 15 Pro+ 6.83\" 5G NFC 256GB/8GB Blue",
+            "Smartphone Xiaomi Redmi Note 15 Pro+ 6.83\" 5G NFC 256GB/8GB Brown",
+            "Smartphone Xiaomi Redmi Note 15 Pro+ 5G NFC Dual Sim 8GB 256GB Mocha Brown MZB0MIGEU",
+            "Xiaomi Redmi Note 15 Pro+ 5G NFC Dual SIM (8GB/256GB) Glacier Blue"
+          ],
+          "rating": {
+            "average": 4.92,
+            "count": 9
+          }
+        },
+        {
+          "product_id": "bp_2163527417",
+          "title": "Xiaomi Redmi Note 15 NFC 6GB 128GB",
+          "brand": "Xiaomi",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 175,
+          "availability": "in_stock",
+          "offer_count": 13,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 7704,
+              "label": "Δημοφιλείς Σειρές",
+              "value": "Redmi Note 15",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "6144 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 6144,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 625,
+              "label": "Χωρητικότητα",
+              "value": "128 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 128,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Smartphones",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "4G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2025",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "Bluetooth, WiFi, USB-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "6.77 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 6.77,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "6000 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 6000,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Android",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "108 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 108,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "2",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 630,
+              "label": "Ανάλυση Selfie Κάμερας",
+              "value": "20 MP",
+              "group": "Selfie Κάμερα",
+              "numeric": {
+                "value": 20,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "2.2 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2.2,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Οθόνη Αφής",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2804,
+              "label": "Αισθητήρες",
+              "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, Γυροσκόπιο, Proximity, GPS",
+              "group": "Αισθητήρες"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Ναι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Οκταπύρηνος (2+6)",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2798,
+              "label": "Αριθμός Selfie Καμερών",
+              "value": "1",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1979,
+              "label": "Έκδοση Λειτουργικού",
+              "value": "15",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 1982,
+              "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+              "value": "2 GHz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2,
+                "unit": "GHz"
+              }
+            },
+            {
+              "id": 60,
+              "label": "FM Radio",
+              "value": "Όχι",
+              "group": "Δέκτης"
+            },
+            {
+              "id": 4639,
+              "label": "Ανάλυση Βίντεο Selfie",
+              "value": "1080p 30fps",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "AMOLED",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Mediatek Helio G100 Ultra",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 4637,
+              "label": "Ανάλυση Βίντεο",
+              "value": "1080p 60fps, 1080p 30fps",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "1080 x 2392",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 4628,
+              "label": "Ισχύς Φόρτισης",
+              "value": "33 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 33,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 4636,
+              "label": "Δυνατότητες Κάμερας",
+              "value": "HDR, Panorama",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "164 x 75.4 x 7.9",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP64",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "183.7 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 183.7,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Xiaomi Redmi Note 15 4G 6GB/128GB NFC Dual Mist Purple (Ελληνικό - Global Version)",
+            "Smartphone Redmi Note 15 6.77\" 4G NFC 128GB/6GB Black",
+            "Smartphone Xiaomi Redmi Note 15 6.77\" 4G NFC 128GB/6GB Blue",
+            "Smartphone Xiaomi Redmi Note 15 6.77\" 4G NFC 128GB/6GB Purple",
+            "Xiaomi Redmi Note 15 4G 128GB - Glacier Blue",
+            "Xiaomi Redmi Note 15 4G 128GB - Purple",
+            "SMARTPHONE XIAOMI Redmi Note 15 6/128GB Black",
+            "Xiaomi Redmi Note 15 6GB/128GB Black Smartphone"
+          ],
+          "rating": {
+            "average": 4.5,
+            "count": 2
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:16:37.253Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2162452975", "bp_2163979176", "bp_2164519002", "bp_2164394134"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2162452975",
+          "title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "brand": "Xiaomi",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 144.88,
+          "availability": "in_stock",
+          "offer_count": 13,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "4096 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 4096,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 625,
+              "label": "Χωρητικότητα",
+              "value": "128 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 128,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Smartphones",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "4G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2025",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "NFC, Bluetooth, WiFi, USB-C, 3.5mm Jack",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "6.9 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 6.9,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "6000 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 6000,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Android",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "2",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 630,
+              "label": "Ανάλυση Selfie Κάμερας",
+              "value": "8 MP",
+              "group": "Selfie Κάμερα",
+              "numeric": {
+                "value": 8,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "2 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Οθόνη Αφής",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2804,
+              "label": "Αισθητήρες",
+              "value": "Δακτυλικό Αποτύπωμα, Accelerometer, GPS, Virtual Proximity Sensing",
+              "group": "Αισθητήρες"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Ναι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Οκταπύρηνος (2+6)",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2798,
+              "label": "Αριθμός Selfie Καμερών",
+              "value": "1",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1982,
+              "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+              "value": "1.8 GHz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 1.8,
+                "unit": "GHz"
+              }
+            },
+            {
+              "id": 1979,
+              "label": "Έκδοση Λειτουργικού",
+              "value": "15",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 4638,
+              "label": "Δυνατότητες Selfie Κάμερας",
+              "value": "HDR",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 60,
+              "label": "FM Radio",
+              "value": "Ναι",
+              "group": "Δέκτης"
+            },
+            {
+              "id": 4639,
+              "label": "Ανάλυση Βίντεο Selfie",
+              "value": "1080p 30fps",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "IPS",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Mediatek Helio G81 Ultra",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 4637,
+              "label": "Ανάλυση Βίντεο",
+              "value": "1080p 30fps",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "720 x 1600",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 4628,
+              "label": "Ισχύς Φόρτισης",
+              "value": "33 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 33,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1990,
+              "label": "Προστασία Οθόνης",
+              "value": "Corning Gorilla Glass 3",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4636,
+              "label": "Δυνατότητες Κάμερας",
+              "value": "HDR",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "171.6 x 79.5 x 8",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP64",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "205 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 205,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "ΚΙΝΗΤΟ XIAOMI REDMI 15C 4G 6.9in 4GB/128GB DUAL SIM NFC BLACK GW",
+            "Smartphone Xiaomi Redmi 15C 6.9\" 4G 128GB/4GB Blue",
+            "Xiaomi Κινητο Redmi 15C 4G 6.9'' 4GB/128GB Dual Sim Nfc Black Gw - (MZB0KOAEU)",
+            "Smartphone Xiaomi Redmi 15C 4GB/128GB Black",
+            "Smartphone Xiaomi Redmi 15C 4GB/128GB Blue",
+            "Xiaomi Redmi 15C 4GB/128GB Moonlight Blue Smartphone",
+            "Xiaomi Redmi 15C 128GB - Moonlight Blue",
+            "SMARTPHONE XIAOMI Redmi 15C 4G 4/128GB Blue"
+          ],
+          "rating": {
+            "average": 5,
+            "count": 6
+          }
+        },
+        {
+          "product_id": "bp_2163979176",
+          "title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "brand": "Xiaomi",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 109,
+          "availability": "in_stock",
+          "offer_count": 25,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "4096 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 4096,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 625,
+              "label": "Χωρητικότητα",
+              "value": "64 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 64,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Smartphones",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "4G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2026",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "NFC, Bluetooth, WiFi, USB-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "6.9 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 6.9,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "6000 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 6000,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Android",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "13 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 13,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "1",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 630,
+              "label": "Ανάλυση Selfie Κάμερας",
+              "value": "8 MP",
+              "group": "Selfie Κάμερα",
+              "numeric": {
+                "value": 8,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "1.8 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 1.8,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Οθόνη Αφής",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2804,
+              "label": "Αισθητήρες",
+              "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, GPS, Virtual Proximity Sensing",
+              "group": "Αισθητήρες"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Ναι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Οκταπύρηνος (2+6)",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2798,
+              "label": "Αριθμός Selfie Καμερών",
+              "value": "1",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1982,
+              "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+              "value": "1.6 GHz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 1.6,
+                "unit": "GHz"
+              }
+            },
+            {
+              "id": 1979,
+              "label": "Έκδοση Λειτουργικού",
+              "value": "16",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 4638,
+              "label": "Δυνατότητες Selfie Κάμερας",
+              "value": "HDR",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 4639,
+              "label": "Ανάλυση Βίντεο Selfie",
+              "value": "1080p 30fps",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "IPS LCD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Unisoc T7250",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 4637,
+              "label": "Ανάλυση Βίντεο",
+              "value": "1080p 30fps",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "720 x 1600",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 4628,
+              "label": "Ισχύς Φόρτισης",
+              "value": "15 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 15,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 4636,
+              "label": "Δυνατότητες Κάμερας",
+              "value": "HDR",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 7180,
+              "label": "Ρυθμός Ανανέωσης",
+              "value": "120 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 120,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 7185,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "800 nits",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 800,
+                "unit": "nits"
+              }
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "171.6 x 79.5 x 8.2",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP54",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "208 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 208,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Smartphone Xiaomi Redmi A7 Pro 6.9\" 4G NFC 64GB/4GB Blue",
+            "Smartphone Xiaomi Redmi A7 Pro 6.9\" 4G NFC 64GB/4GB Green",
+            "Smartphone Xiaomi Redmi A7 Pro 6.9\" 4G NFC 64GB/4GB Black",
+            "ΚΙΝΗΤΟ XIAOMI REDMI A7 PRO 4G 6.9in 4GB/64GB DUAL SIM BLACK NFC GW",
+            "ΚΙΝΗΤΟ XIAOMI REDMI A7 PRO 4G 6.9in 4GB/64GB DUAL SIM BLUE NFC GW",
+            "ΚΙΝΗΤΟ XIAOMI REDMI A7 PRO 4G 6.9in 4GB/64GB DUAL SIM GREEN NFC GW",
+            "Xiaomi Redmi A7 Pro NFC Dual SIM 4GB/64GB, Μαύρο",
+            "Xiaomi Redmi A7 Pro NFC Dual SIM 4GB/64GB, Μπλε"
+          ]
+        },
+        {
+          "product_id": "bp_2164519002",
+          "title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "brand": "Xiaomi",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 180.54,
+          "availability": "in_stock",
+          "offer_count": 22,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 7704,
+              "label": "Δημοφιλείς Σειρές",
+              "value": "Redmi Note 17",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "4096 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 4096,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 625,
+              "label": "Χωρητικότητα",
+              "value": "128 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 128,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Smartphones",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "4G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2026",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "NFC, Bluetooth, WiFi, USB-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "6.99 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 6.99,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "7700 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 7700,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Android",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "1",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 630,
+              "label": "Ανάλυση Selfie Κάμερας",
+              "value": "16 MP",
+              "group": "Selfie Κάμερα",
+              "numeric": {
+                "value": 16,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "2.9 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2.9,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Οθόνη Αφής",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2804,
+              "label": "Αισθητήρες",
+              "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, Proximity, GPS",
+              "group": "Αισθητήρες"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Ναι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Οκταπύρηνος (4+4)",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2798,
+              "label": "Αριθμός Selfie Καμερών",
+              "value": "1",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1979,
+              "label": "Έκδοση Λειτουργικού",
+              "value": "16",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 1982,
+              "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+              "value": "1.9 GHz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 1.9,
+                "unit": "GHz"
+              }
+            },
+            {
+              "id": 4639,
+              "label": "Ανάλυση Βίντεο Selfie",
+              "value": "1080p 30fps",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "AMOLED",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Qualcomm Snapdragon 6s 4G Gen 2",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 4629,
+              "label": "Ευρυγώνιος Φακός",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 4637,
+              "label": "Ανάλυση Βίντεο",
+              "value": "1080p 30fps",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "1080 x 2396",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 4628,
+              "label": "Ισχύς Φόρτισης",
+              "value": "45 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 45,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1990,
+              "label": "Προστασία Οθόνης",
+              "value": "Corning Gorilla Glass 7i",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4636,
+              "label": "Δυνατότητες Κάμερας",
+              "value": "HDR, Panorama, PDAF",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 7182,
+              "label": "Ισχύς Αντίστροφης φόρτισης",
+              "value": "22.5 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 22.5,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 7183,
+              "label": "Τεχνολογία Γρήγορης Φόρτισης",
+              "value": "Power Delivery 3.0",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 7180,
+              "label": "Ρυθμός Ανανέωσης",
+              "value": "120 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 120,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 7185,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "1800 nits",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 1800,
+                "unit": "nits"
+              }
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "169.7 x 79.1 x 8.5",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP65",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "224 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 224,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Smartphone Xiaomi Redmi Note 17 6.99\" 4G 128GB/4GB Black",
+            "Smartphone Xiaomi Redmi Note 17 6.99\" 4G 128GB/4GB Blue",
+            "Smartphone Xiaomi Redmi Note 17 6.99\" 4G 128GB/4GB Purple",
+            "Xiaomi Redmi Note 17 4/128GB 4G Black",
+            "Xiaomi Redmi Note 17 4/128GB 4G Purple",
+            "Xiaomi Redmi Note 17 4G 128GB - Black",
+            "Xiaomi Redmi Note 17 4G 128GB - Sky Teal",
+            "Xiaomi Redmi Note 17 4G 128GB - Celestial Purple"
+          ]
+        },
+        {
+          "product_id": "bp_2164394134",
+          "title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "brand": "Xiaomi",
+          "category_id": 806,
+          "category_title": "Κινητά",
+          "price_from": 222.88,
+          "availability": "in_stock",
+          "offer_count": 35,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 1447,
+              "label": "RAM",
+              "value": "4096 MB",
+              "group": "Μνήμη",
+              "numeric": {
+                "value": 4096,
+                "unit": "MB"
+              }
+            },
+            {
+              "id": 625,
+              "label": "Χωρητικότητα",
+              "value": "256 GB",
+              "group": "Αποθηκευτικός Χώρος",
+              "numeric": {
+                "value": 256,
+                "unit": "GB"
+              }
+            },
+            {
+              "id": 1991,
+              "label": "Τύπος Κινητού",
+              "value": "Smartphones",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1173,
+              "label": "Δίκτυο Σύνδεσης",
+              "value": "5G",
+              "group": "Δικτύωση"
+            },
+            {
+              "id": 1448,
+              "label": "Έτος Κυκλοφορίας",
+              "value": "2026",
+              "group": null
+            },
+            {
+              "id": 4641,
+              "label": "Συνδεσιμότητα",
+              "value": "NFC, Bluetooth, WiFi, USB-C",
+              "group": "Συνδεσιμότητα"
+            },
+            {
+              "id": 38,
+              "label": "Μέγεθος Οθόνης",
+              "value": "6.9 \"",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 6.9,
+                "unit": "\""
+              }
+            },
+            {
+              "id": 431,
+              "label": "Χωρητικότητα Μπαταρίας",
+              "value": "7500 mAh",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 7500,
+                "unit": "mAh"
+              }
+            },
+            {
+              "id": 17,
+              "label": "Λειτουργικό Σύστημα",
+              "value": "Android",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 40,
+              "label": "Ανάλυση Κάμερας",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 2797,
+              "label": "Αριθμός Πίσω Καμερών",
+              "value": "2",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 630,
+              "label": "Ανάλυση Selfie Κάμερας",
+              "value": "8 MP",
+              "group": "Selfie Κάμερα",
+              "numeric": {
+                "value": 8,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1981,
+              "label": "Ισχύς Βασικού Επεξεργαστή",
+              "value": "2.4 GΗz",
+              "group": "Επεξεργαστής",
+              "numeric": {
+                "value": 2.4,
+                "unit": "GΗz"
+              }
+            },
+            {
+              "id": 1980,
+              "label": "Τύπος SIM",
+              "value": "Dual",
+              "group": "Κινητό"
+            },
+            {
+              "id": 1172,
+              "label": "Χειρισμός",
+              "value": "Οθόνη Αφής",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 2804,
+              "label": "Αισθητήρες",
+              "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, GPS, Virtual Proximity Sensing",
+              "group": "Αισθητήρες"
+            },
+            {
+              "id": 4640,
+              "label": "Προστασία",
+              "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+              "group": null
+            },
+            {
+              "id": 440,
+              "label": "Selfie Κάμερα",
+              "value": "Ναι",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 2717,
+              "label": "Για Ηλικιωμένους",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2793,
+              "label": "Γρήγορη Φόρτιση",
+              "value": "Ναι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 2794,
+              "label": "Ασύρματη Φόρτιση",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 1983,
+              "label": "Υποδοχή Μνήμης",
+              "value": "Ναι",
+              "group": "Αποθηκευτικός Χώρος"
+            },
+            {
+              "id": 1885,
+              "label": "Επεξεργαστής",
+              "value": "Οκταπύρηνος",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 2798,
+              "label": "Αριθμός Selfie Καμερών",
+              "value": "1",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1979,
+              "label": "Έκδοση Λειτουργικού",
+              "value": "16",
+              "group": "Λογισμικό"
+            },
+            {
+              "id": 4638,
+              "label": "Δυνατότητες Selfie Κάμερας",
+              "value": "HDR",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 4639,
+              "label": "Ανάλυση Βίντεο Selfie",
+              "value": "1080p 30fps",
+              "group": "Selfie Κάμερα"
+            },
+            {
+              "id": 1978,
+              "label": "Τύπος Οθόνης",
+              "value": "IPS LCD",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 389,
+              "label": "Τύπος Επεξεργαστή",
+              "value": "Qualcomm Snapdragon 4 Gen 5",
+              "group": "Επεξεργαστής"
+            },
+            {
+              "id": 4629,
+              "label": "Ευρυγώνιος Φακός",
+              "value": "50 MP",
+              "group": "Κάμερα",
+              "numeric": {
+                "value": 50,
+                "unit": "MP"
+              }
+            },
+            {
+              "id": 1974,
+              "label": "Αποσπώμενη Μπαταρία",
+              "value": "Όχι",
+              "group": "Μπαταρία"
+            },
+            {
+              "id": 4637,
+              "label": "Ανάλυση Βίντεο",
+              "value": "1080p 30fps",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 1989,
+              "label": "Ανάλυση Οθόνης",
+              "value": "720 x 1600",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 133,
+              "label": "Ενσωματωμένο Flash",
+              "value": "Ναι",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 4628,
+              "label": "Ισχύς Φόρτισης",
+              "value": "45 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 45,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1990,
+              "label": "Προστασία Οθόνης",
+              "value": "Corning Gorilla Glass 7i",
+              "group": "Οθόνη"
+            },
+            {
+              "id": 4636,
+              "label": "Δυνατότητες Κάμερας",
+              "value": "HDR, PDAF",
+              "group": "Κάμερα"
+            },
+            {
+              "id": 7181,
+              "label": "Ισχύς Ασύρματης Φόρτισης",
+              "value": "2 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 2,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 7182,
+              "label": "Ισχύς Αντίστροφης φόρτισης",
+              "value": "22.5 W",
+              "group": "Μπαταρία",
+              "numeric": {
+                "value": 22.5,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 7180,
+              "label": "Ρυθμός Ανανέωσης",
+              "value": "120 Hz",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 120,
+                "unit": "Hz"
+              }
+            },
+            {
+              "id": 7185,
+              "label": "Φωτεινότητα Οθόνης",
+              "value": "825 nits",
+              "group": "Οθόνη",
+              "numeric": {
+                "value": 825,
+                "unit": "nits"
+              }
+            },
+            {
+              "id": 1992,
+              "label": "Διαστάσεις",
+              "value": "170.1 x 78.4 x 8.8",
+              "group": "Διαστάσεις"
+            },
+            {
+              "id": 2627,
+              "label": "Ανθεκτικό στο Νερό",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 2795,
+              "label": "Πιστοποίηση Προστασίας",
+              "value": "IP64",
+              "group": null
+            },
+            {
+              "id": 50,
+              "label": "Βάρος",
+              "value": "232 gr",
+              "group": "Διαστάσεις",
+              "numeric": {
+                "value": 232,
+                "unit": "gr"
+              }
+            }
+          ],
+          "offer_titles": [
+            "Xiaomi Redmi 17 5G NFC Dual Sim 4GB/256GB - Black",
+            "Xiaomi Redmi 17 5G Dual Sim NFC 4GB RAM 256GB, Black",
+            "Xiaomi Redmi 17 5G NFC Dual Sim 4GB/256GB - Deep Blue",
+            "ΚΙΝΗΤΟ XIAOMI REDMI 17 5G 6.9in 4GB/256GB DUAL SIM NFC BLACK GW",
+            "Smartphone Xiaomi Redmi 17 6.9\" 5G 256GB/4GB Black",
+            "Smartphone Xiaomi Redmi 17 6.9\" 5G 256GB/4GB Blue",
+            "Xiaomi Redmi 17 5G 256GB 5G Μαύρο",
+            "Xiaomi Redmi 17 5G 256GB 5G Μπλε"
+          ]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:16:37.253Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163979176",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163979176",
+        "title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 109,
+      "quoted_lowest_item_price": 109,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_223892830",
+          "merchant_id": "bp_merchant_8625",
+          "merchant_name": "MyTechtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 109,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223890674",
+          "merchant_id": "bp_merchant_10981",
+          "merchant_name": "DrMob",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 109.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_215588313",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 110,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_214877854",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 111.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_213741723",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 114.28,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_227053507",
+          "merchant_id": "bp_merchant_1502",
+          "merchant_name": "Kaizershop.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 116.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225175931",
+          "merchant_id": "bp_merchant_16547",
+          "merchant_name": "Sms-Store",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 10,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 118,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_215180750",
+          "merchant_id": "bp_merchant_13206",
+          "merchant_name": "Shop4you",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 119,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_217234315",
+          "merchant_id": "bp_merchant_6242",
+          "merchant_name": "Samarasae",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 119.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_215211310",
+          "merchant_id": "bp_merchant_13363",
+          "merchant_name": "Smart eShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "variant": null,
+          "item_price": 120.92,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:16:37.328Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2162452975",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2162452975",
+        "title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Redmi 15C NFC 4GB 128GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 144.88,
+      "quoted_lowest_item_price": 144.88,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_194401119",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 144.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194598303",
+          "merchant_id": "bp_merchant_4115",
+          "merchant_name": "Electrocrete",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.96,
+          "merchant_rating_count": 254,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 148,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195905801",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 148.79,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194436773",
+          "merchant_id": "bp_merchant_252",
+          "merchant_name": "You",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.47,
+          "merchant_rating_count": 32,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 148.89,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225441941",
+          "merchant_id": "bp_merchant_2591",
+          "merchant_name": "Papandrikopoulos",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 159,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208228705",
+          "merchant_id": "bp_merchant_15503",
+          "merchant_name": "Fotocom",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 159,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_200097188",
+          "merchant_id": "bp_merchant_4549",
+          "merchant_name": "Easlanidis",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 9,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 159.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195321992",
+          "merchant_id": "bp_merchant_13674",
+          "merchant_name": "Papaxaralabous",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 6,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 159.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194627387",
+          "merchant_id": "bp_merchant_496",
+          "merchant_name": "Κωτσόβολος",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 2.82,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 159.99,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195313994",
+          "merchant_id": "bp_merchant_743",
+          "merchant_name": "Public",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.77,
+          "merchant_rating_count": 171,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi 15C NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 160,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:16:37.328Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163461420",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163461420",
+        "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 248.9,
+      "quoted_lowest_item_price": 248.9,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_207452440",
+          "merchant_id": "bp_merchant_904",
+          "merchant_name": "MobileHellas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 248.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_204983886",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 266,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_210265680",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 266,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205434129",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 267.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_107560516",
+          "merchant_id": "bp_merchant_117",
+          "merchant_name": "Mg Manager",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 36,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 271.8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_204918266",
+          "merchant_id": "bp_merchant_13363",
+          "merchant_name": "Smart eShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 272.08,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_218478677",
+          "merchant_id": "bp_merchant_3875",
+          "merchant_name": "Kaizer",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 279,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205929196",
+          "merchant_id": "bp_merchant_1074",
+          "merchant_name": "Media-ram",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.56,
+          "merchant_rating_count": 9,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 279,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_204994999",
+          "merchant_id": "bp_merchant_1172",
+          "merchant_name": "Mobile-phones",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 279,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205000615",
+          "merchant_id": "bp_merchant_85",
+          "merchant_name": "Cosmodata",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.62,
+          "merchant_rating_count": 123,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "variant": null,
+          "item_price": 279.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:16:37.328Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2163499636",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2163499636",
+        "title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 327,
+      "quoted_lowest_item_price": 327,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_205730649",
+          "merchant_id": "bp_merchant_13959",
+          "merchant_name": "Mobilistas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 327,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_212697426",
+          "merchant_id": "bp_merchant_904",
+          "merchant_name": "MobileHellas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 327.98,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_212717202",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 338,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_216141184",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 341.52,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_206521463",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 356.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205507520",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 357,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205274147",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 359.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_205431719",
+          "merchant_id": "bp_merchant_13363",
+          "merchant_name": "Smart eShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 374.6,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_226322468",
+          "merchant_id": "bp_merchant_16547",
+          "merchant_name": "Sms-Store",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 10,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 378,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_216267628",
+          "merchant_id": "bp_merchant_3875",
+          "merchant_name": "Kaizer",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 15 Pro+ 5G NFC 8GB 256GB",
+          "variant": null,
+          "item_price": 379,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:16:37.328Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2164518034",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2164518034",
+        "title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 218.3,
+      "quoted_lowest_item_price": 218.3,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_226385283",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 218.3,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225336273",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 247.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_107561231",
+          "merchant_id": "bp_merchant_117",
+          "merchant_name": "Mg Manager",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 36,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 248.41,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_226380482",
+          "merchant_id": "bp_merchant_904",
+          "merchant_name": "MobileHellas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 250,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225334512",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 254,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225815468",
+          "merchant_id": "bp_merchant_1502",
+          "merchant_name": "Kaizershop.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 254.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225817645",
+          "merchant_id": "bp_merchant_8625",
+          "merchant_name": "MyTechtrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.8,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 259,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225522510",
+          "merchant_id": "bp_merchant_7234",
+          "merchant_name": "Globalw",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.85,
+          "merchant_rating_count": 55,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 259.2,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225508090",
+          "merchant_id": "bp_merchant_4397",
+          "merchant_name": "Justech",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.75,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 259.2,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225816941",
+          "merchant_id": "bp_merchant_10981",
+          "merchant_name": "DrMob",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.67,
+          "merchant_rating_count": 15,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 6GB 256GB",
+          "variant": null,
+          "item_price": 260,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:16:37.328Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2164394134",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2164394134",
+        "title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 222.88,
+      "quoted_lowest_item_price": 222.88,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_223072659",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 222.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223893312",
+          "merchant_id": "bp_merchant_3837",
+          "merchant_name": "Drele",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 9,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 224.01,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223674177",
+          "merchant_id": "bp_merchant_904",
+          "merchant_name": "MobileHellas",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 229,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224123478",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 232,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_223825533",
+          "merchant_id": "bp_merchant_9387",
+          "merchant_name": "Smartbee",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.98,
+          "merchant_rating_count": 57,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 232,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_227038211",
+          "merchant_id": "bp_merchant_17008",
+          "merchant_name": "Terrabytenet",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 233,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_227038946",
+          "merchant_id": "bp_merchant_16547",
+          "merchant_name": "Sms-Store",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 10,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 234,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_227036618",
+          "merchant_id": "bp_merchant_13206",
+          "merchant_name": "Shop4you",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 11,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 235,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_222379297",
+          "merchant_id": "bp_merchant_7108",
+          "merchant_name": "MobiCell",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 235.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225698136",
+          "merchant_id": "bp_merchant_117",
+          "merchant_name": "Mg Manager",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 36,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi 17 5G NFC 4GB 256GB",
+          "variant": null,
+          "item_price": 236.41,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:16:37.328Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2164519002",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2164519002",
+        "title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+        "brand": "Xiaomi",
+        "model": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 180.54,
+      "quoted_lowest_item_price": 180.54,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_226385280",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 180.54,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225226295",
+          "merchant_id": "bp_merchant_8418",
+          "merchant_name": "MatShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.95,
+          "merchant_rating_count": 98,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 204.88,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225886450",
+          "merchant_id": "bp_merchant_3837",
+          "merchant_name": "Drele",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 9,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 205.67,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225334509",
+          "merchant_id": "bp_merchant_15766",
+          "merchant_name": "Blakestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 214,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_227084534",
+          "merchant_id": "bp_merchant_117",
+          "merchant_name": "Mg Manager",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.64,
+          "merchant_rating_count": 36,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 214.81,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225815467",
+          "merchant_id": "bp_merchant_1502",
+          "merchant_name": "Kaizershop.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 216,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225171549",
+          "merchant_id": "bp_merchant_4746",
+          "merchant_name": "Metrostore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.88,
+          "merchant_rating_count": 8,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 219.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225664810",
+          "merchant_id": "bp_merchant_85",
+          "merchant_name": "Cosmodata",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.62,
+          "merchant_rating_count": 123,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 219.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225825888",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 220.79,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225347880",
+          "merchant_id": "bp_merchant_2614",
+          "merchant_name": "Nok-Shop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 12,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Xiaomi Redmi Note 17 NFC 4GB 128GB",
+          "variant": null,
+          "item_price": 226.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:16:37.328Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:16:37.328Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163499636"
+    },
+    "result": {
+      "product_id": "bp_2163499636",
+      "review_count": 9,
+      "reviews": [
+        {
+          "rating": 4,
+          "excerpt": "Το μόνο αρνητικό είναι ότι δεν βρίσκεις πουθενά καλό τζαμάκι. Επειδή είναι πολύ κυρτό, δεν εφάπτεται σωστά. Τρεις μήνες και έχω αλλάξει πάνω από οκτώ φορές. Κρίμα.",
+          "helpfulness": 1,
+          "helpful_votes": 1,
+          "unhelpful_votes": 0,
+          "written_at": "2026-05-22T12:26:12.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:16:35.110Z"
+    }
+  },
+  {
+    "name": "get_price_history",
+    "input": {
+      "product_id": "bp_2163461420",
+      "period_days": 180
+    },
+    "result": {
+      "product_id": "bp_2163461420",
+      "product_title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+      "product_url": "[omitted]",
+      "period_days": 180,
+      "current_price": 248.9,
+      "current_price_source": "live_offer_minimum",
+      "source_last_observed_at": "2026-10-12T10:16:37.328Z",
+      "window_stats": [
+        {
+          "days": 30,
+          "minimum_price": 241.48,
+          "median_price": 241.88,
+          "observations": 27,
+          "coverage_pct": 90,
+          "longest_gap_days": 2
+        },
+        {
+          "days": 90,
+          "minimum_price": 228.89,
+          "median_price": 241.88,
+          "observations": 87,
+          "coverage_pct": 96.7,
+          "longest_gap_days": 2
+        },
+        {
+          "days": 180,
+          "minimum_price": 228.89,
+          "median_price": 241.99,
+          "observations": 175,
+          "coverage_pct": 97.2,
+          "longest_gap_days": 2
+        }
+      ],
+      "price_delta_vs_180d_median_pct": 2.86,
+      "deal_classification": "typical_price",
+      "methodology_id": "bestprice_daily_min_v1",
+      "quality": {
+        "cluster_continuity": "same_cluster",
+        "outlier_status": "protected"
+      },
+      "data_gaps": {
+        "missing_days": 5,
+        "longest_gap_days": 2,
+        "stale_days": 0,
+        "coverage_note": "5 ημέρες δεν είχαν έγκυρη ημερήσια παρατήρηση."
+      },
+      "series": [
+        {
+          "date": "2026-04-16",
+          "price": 241.8,
+          "merchant_count": 30
+        },
+        {
+          "date": "2026-04-24",
+          "price": 239.32,
+          "merchant_count": 31
+        },
+        {
+          "date": "2026-04-28",
+          "price": 250.24,
+          "merchant_count": 32
+        },
+        {
+          "date": "2026-04-30",
+          "price": 244.74,
+          "merchant_count": 30
+        },
+        {
+          "date": "2026-05-09",
+          "price": 244.74,
+          "merchant_count": 28
+        },
+        {
+          "date": "2026-05-17",
+          "price": 244.74,
+          "merchant_count": 26
+        },
+        {
+          "date": "2026-05-27",
+          "price": 244.99,
+          "merchant_count": 24
+        },
+        {
+          "date": "2026-06-04",
+          "price": 241.99,
+          "merchant_count": 26
+        },
+        {
+          "date": "2026-06-12",
+          "price": 241.99,
+          "merchant_count": 28
+        },
+        {
+          "date": "2026-06-22",
+          "price": 238.93,
+          "merchant_count": 28
+        },
+        {
+          "date": "2026-07-01",
+          "price": 241.7,
+          "merchant_count": 27
+        },
+        {
+          "date": "2026-07-08",
+          "price": 241.61,
+          "merchant_count": 27
+        },
+        {
+          "date": "2026-07-17",
+          "price": 242,
+          "merchant_count": 27
+        },
+        {
+          "date": "2026-07-27",
+          "price": 233.29,
+          "merchant_count": 30
+        },
+        {
+          "date": "2026-08-03",
+          "price": 242,
+          "merchant_count": 27
+        },
+        {
+          "date": "2026-08-13",
+          "price": 241.49,
+          "merchant_count": 23
+        },
+        {
+          "date": "2026-08-21",
+          "price": 241.9,
+          "merchant_count": 24
+        },
+        {
+          "date": "2026-08-27",
+          "price": 228.89,
+          "merchant_count": 28
+        },
+        {
+          "date": "2026-08-28",
+          "price": 242,
+          "merchant_count": 25
+        },
+        {
+          "date": "2026-09-07",
+          "price": 241.5,
+          "merchant_count": 23
+        },
+        {
+          "date": "2026-09-15",
+          "price": 241.48,
+          "merchant_count": 25
+        },
+        {
+          "date": "2026-09-25",
+          "price": 241.88,
+          "merchant_count": 23
+        },
+        {
+          "date": "2026-10-04",
+          "price": 241.8,
+          "merchant_count": 23
+        },
+        {
+          "date": "2026-10-12",
+          "price": 248.9,
+          "merchant_count": 18
+        }
+      ],
+      "warnings": [],
+      "as_of": "2026-10-12T10:16:37.328Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2164394134"
+    },
+    "result": {
+      "product_id": "bp_2164394134",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:16:37.329Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2164518034"
+    },
+    "result": {
+      "product_id": "bp_2164518034",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:16:37.329Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163979176"
+    },
+    "result": {
+      "product_id": "bp_2163979176",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:16:37.329Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2164519002"
+    },
+    "result": {
+      "product_id": "bp_2164519002",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:16:37.329Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2163461420"
+    },
+    "result": {
+      "product_id": "bp_2163461420",
+      "review_count": 3,
+      "reviews": [],
+      "as_of": "2026-10-12T10:16:37.329Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2162452975"
+    },
+    "result": {
+      "product_id": "bp_2162452975",
+      "review_count": 6,
+      "reviews": [
+        {
+          "rating": 5,
+          "excerpt": "Το έχω τρία χρόνια χωρίς πρόβλημα. Δεν θα πω πόσες φορές έχει πέσει κάτω χωρίς να σπάσει ούτε γρατζουνιά.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-05-30T15:57:31.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "Value προσφέρει πολλά με μικρό κόστος. Για κάποιον χρήστη που θέλει ταχύτητα και αξιοπιστία, πιστεύω ότι είναι ιδανική αγορά. Η κάμερα θα μπορούσε να είναι καλύτερη, παρόλο που δεν προβληματίζει.",
+          "helpfulness": 1,
+          "helpful_votes": 2,
+          "unhelpful_votes": 0,
+          "written_at": "2025-09-25T07:03:41.000Z"
+        },
+        {
+          "rating": 5,
+          "excerpt": "Είναι ένα πολύ καλό και πρακτικό κινητό, κατάλληλο για καθημερινή χρήση.",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2026-10-01T13:03:34.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:16:37.329Z"
+    }
+  }
+]

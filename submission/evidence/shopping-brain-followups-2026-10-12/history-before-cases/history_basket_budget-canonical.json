@@ -1,0 +1,440 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:11:12.665Z",
+  "outcome": "no_match",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "e2cc12e6-283d-4d1c-a6c2-4e3607b2011c",
+    "revision": 1,
+    "fingerprint": "4a0fb0738e0705c9bb7c27a8e6c9e26c1c17409f5182c6ea9aa6322682cce31b",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "mouse",
+    "intent": "shop",
+    "query": "ποντίκι ακουστικά",
+    "constraints": {
+      "budgetEur": 100,
+      "statedBudgetEur": 100,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 100,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 100,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 19,
+            "end": 31,
+            "text": "έως 100 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": [],
+    "nonPricePhrases": [],
+    "source_turns": [],
+    "transition": "start"
+  },
+  "actions": [
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_0",
+      "type": "amend",
+      "message": "Βρες μου ποντίκι μέχρι 100 €.",
+      "product_ids": []
+    }
+  ],
+  "status": "no_match",
+  "mission": {
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Ποντίκι · Έως 100 €",
+    "constraints": {
+      "maximum_price_eur": 100,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 100,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 100,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 19,
+              "end": 31,
+              "text": "έως 100 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "primary": null,
+  "alternatives": [],
+  "constraints": {
+    "maximum_price_eur": 100,
+    "catalog_requirements": [],
+    "beta_supported": true,
+    "coverage_family": "mouse",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 100,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 100,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 19,
+            "end": 31,
+            "text": "έως 100 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "price_history": null,
+  "candidate_summary": null,
+  "candidates": [
+    {
+      "product_id": "bp_2156013069",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2156013069:bp_2156013069"]
+    },
+    {
+      "product_id": "bp_2157112237",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2157112237:bp_2157112237"]
+    },
+    {
+      "product_id": "bp_2157513899",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2157513899:bp_2157513899"]
+    },
+    {
+      "product_id": "bp_2159198630",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2159198630:bp_2159198630"]
+    },
+    {
+      "product_id": "bp_2159169403",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2159169403:bp_2159169403"]
+    },
+    {
+      "product_id": "bp_2160159922",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2160159922:bp_2160159922"]
+    },
+    {
+      "product_id": "bp_2157036411",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2157036411:bp_2157036411"]
+    },
+    {
+      "product_id": "bp_2157988543",
+      "status": "disqualified",
+      "reason_codes": ["catalog_family_mismatch"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2157988543:bp_2157988543"]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 8,
+    "complete_catalog": false,
+    "search_calls": 3,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 47,
+      "candidate_count": 40,
+      "eligible_count": 40,
+      "returned_count": 8,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "provide_context",
+    "reason": "unsupported_beta_category",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "",
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "execution": {
+    "tools_used": ["search_products"],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 3550,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": false,
+      "understanding_cached": false,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 0,
+      "understanding_ms": 1540,
+      "direct_recommendation": true,
+      "exact_route": false,
+      "catalog_search_calls": 3,
+      "search_products_calls": 1,
+      "search_products_failures": 0,
+      "search_products_invocations": 1,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 1995,
+      "search_products_max_ms": 1995,
+      "get_product_details_calls": 0,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 0,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 0,
+      "get_product_details_max_ms": 0,
+      "compare_offers_calls": 0,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 0,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 0,
+      "compare_offers_max_ms": 0,
+      "get_price_history_calls": 0,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 0,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 0,
+      "get_price_history_max_ms": 0,
+      "get_product_reviews_calls": 0,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 0,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 0,
+      "get_product_reviews_max_ms": 0,
+      "optimize_basket_calls": 0,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 0,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 0,
+      "optimize_basket_max_ms": 0,
+      "retrieval_page_candidates": 8,
+      "receipt_disqualified_candidates": 8,
+      "receipt_eligible_candidates": 0,
+      "receipt_review_requested": 0,
+      "receipt_review_available": 0,
+      "receipt_validation_ms": 2,
+      "brain_runtime_ms": 3550,
+      "brain_finalization_ms": 20
+    }
+  },
+  "personalization": null,
+  "reason": "unsupported_beta_category",
+  "title": "Δεν βρήκα ποντίκι σε αυτή την αναζήτηση",
+  "message": "Μέχρι 100€ ο κατάλογος δεν έδωσε ποντίκι — μόνο προϊόντα από άλλες κατηγορίες. Δοκίμασε μεγαλύτερο όριο τιμής.",
+  "blocking_constraints": ["catalog_family_mismatch"],
+  "follow_ups": [
+    {
+      "id": "restate_family",
+      "label": "Βρες μου ποντίκι",
+      "message": "Βρες μου ποντίκι μέχρι 100 €.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_0"
+      }
+    }
+  ],
+  "coverage": {
+    "policy_version": "ask_beta_coverage_v1",
+    "family": "mouse",
+    "reason": "catalog_family_mismatch",
+    "supported": true,
+    "supported_families": [
+      {
+        "family": "phone",
+        "label": "Κινητό"
+      },
+      {
+        "family": "laptop",
+        "label": "Laptop"
+      },
+      {
+        "family": "tv",
+        "label": "Τηλεόραση"
+      },
+      {
+        "family": "refrigerator",
+        "label": "Ψυγείο"
+      },
+      {
+        "family": "washer",
+        "label": "Πλυντήριο ρούχων"
+      },
+      {
+        "family": "headphones",
+        "label": "Ακουστικά"
+      },
+      {
+        "family": "air_conditioner",
+        "label": "Κλιματιστικό"
+      },
+      {
+        "family": "air_fryer",
+        "label": "Air fryer"
+      },
+      {
+        "family": "espresso",
+        "label": "Μηχανή espresso"
+      },
+      {
+        "family": "filter_coffee",
+        "label": "Καφετιέρα φίλτρου"
+      },
+      {
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή"
+      },
+      {
+        "family": "mouse",
+        "label": "Ποντίκι"
+      },
+      {
+        "family": "dishwasher",
+        "label": "Πλυντήριο πιάτων"
+      },
+      {
+        "family": "robot_vacuum",
+        "label": "Σκούπα ρομπότ"
+      },
+      {
+        "family": "stick_vacuum",
+        "label": "Σκούπα stick"
+      },
+      {
+        "family": "vacuum",
+        "label": "Ηλεκτρική σκούπα"
+      },
+      {
+        "family": "wet_dry_vacuum",
+        "label": "Σκούπα υγρών/στερεών"
+      },
+      {
+        "family": "tablet",
+        "label": "Τάμπλετ"
+      },
+      {
+        "family": "powerbank",
+        "label": "Power bank"
+      },
+      {
+        "family": "smartwatch",
+        "label": "Smartwatch"
+      },
+      {
+        "family": "printer",
+        "label": "Εκτυπωτής"
+      },
+      {
+        "family": "router",
+        "label": "Router / Wi-Fi"
+      }
+    ]
+  }
+}

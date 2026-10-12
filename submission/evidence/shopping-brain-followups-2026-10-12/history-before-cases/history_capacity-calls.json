@@ -1,0 +1,2931 @@
+[
+  {
+    "name": "search_products",
+    "input": {
+      "query": "Θέλω air fryer 6 λίτρων έως 120 ευρώ Διόρθωση: μόνο από 4 έως 5 λίτρα.",
+      "required_features": [],
+      "sort": "relevance",
+      "limit": 8,
+      "price_max": 120
+    },
+    "result": {
+      "requested_query": "air fryer 4.5lt",
+      "interpreted_query": "air fryer 4.5lt",
+      "search_fallback": {
+        "applied": false
+      },
+      "retrieval_receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:10:54.687Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 36,
+        "candidate_count": 35,
+        "eligible_count": 35,
+        "returned_count": 8,
+        "category_id": 8535,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      },
+      "applied_filters": {
+        "price_min": null,
+        "price_max": 120,
+        "sort": "relevance",
+        "feature_hints": [],
+        "feature_hints_verified": false
+      },
+      "suggested_queries": ["air fryer 5lt", "air fryer accessories"],
+      "total_matches": 8,
+      "products": [
+        {
+          "product_id": "bp_2158725074",
+          "title": "Dsp KB2085 Air Fryer 4.5lt",
+          "brand": null,
+          "model": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 92.4,
+          "offer_count": 18,
+          "availability": "available",
+          "match_confidence": 1,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160057712",
+          "title": "Smarton FR450 Air Fryer 4.5lt",
+          "brand": null,
+          "model": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 48.07,
+          "offer_count": 14,
+          "availability": "available",
+          "match_confidence": 0.99,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2159236827",
+          "title": "Unold 58695 Air Fryer 4.5lt",
+          "brand": null,
+          "model": "Unold 58695 Air Fryer 4.5lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 60.48,
+          "offer_count": 7,
+          "availability": "available",
+          "match_confidence": 0.97,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2158144367",
+          "title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "brand": null,
+          "model": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 63,
+          "offer_count": 12,
+          "availability": "available",
+          "match_confidence": 0.96,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": {
+            "average": 4,
+            "count": 1
+          },
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2164176215",
+          "title": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "brand": null,
+          "model": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 47.83,
+          "offer_count": 4,
+          "availability": "available",
+          "match_confidence": 0.94,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157818719",
+          "title": "Life 221-0292 Air Fryer 4.5lt",
+          "brand": null,
+          "model": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 55,
+          "offer_count": 11,
+          "availability": "available",
+          "match_confidence": 0.93,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2157250295",
+          "title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "brand": null,
+          "model": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 94.7,
+          "offer_count": 9,
+          "availability": "available",
+          "match_confidence": 0.91,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160412918",
+          "title": "Hoco HJD15A Air Fryer 4.5lt",
+          "brand": null,
+          "model": "Hoco HJD15A Air Fryer 4.5lt",
+          "variant": null,
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 36.31,
+          "offer_count": 2,
+          "availability": "available",
+          "match_confidence": 0.9,
+          "match_basis": "catalog_relevance_token_coverage_v1",
+          "rating": null,
+          "data_timestamp": "2026-10-12T10:09:33.000Z",
+          "decision_id": "[omitted]",
+          "image_url": "[omitted]",
+          "product_url": "[omitted]"
+        }
+      ],
+      "warnings": [
+        "Η τιμή «από» είναι η χαμηλότερη τιμή καταλόγου χωρίς μεταφορικά, όχι προσφορά αγοράς. Μην την αφαιρείς από προσφορά άλλου προϊόντος. Για συνολικό κόστος, έλεγξε τις προσφορές με τον ταχυδρομικό σου κώδικα.",
+        "Τα αποτελέσματα περιορίστηκαν στην κατηγορία «Air Fryers», ώστε να μη προηγούνται σχετικά αξεσουάρ."
+      ],
+      "as_of": "2026-10-12T10:10:54.687Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2158725074", "bp_2160057712", "bp_2159236827", "bp_2158144367"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2158725074",
+          "title": "Dsp KB2085 Air Fryer 4.5lt",
+          "brand": "Dsp",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 92.4,
+          "availability": "in_stock",
+          "offer_count": 18,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1500 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1500,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Inox",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Ναι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Φριτέζα αέρος - Air fryer - KB2085 - 4.5L - DSP - 612050",
+            "425043 ΦΡΙΤΕΖΑ ΑΕΡΟΣ - AIR FRYER - KB2085 - 4.5L - DSP - 612050",
+            "Φριτέζα αέρος - Air fryer - KB2085 - 4.5L - DSP - 0002863"
+          ]
+        },
+        {
+          "product_id": "bp_2160057712",
+          "title": "Smarton FR450 Air Fryer 4.5lt",
+          "brand": "OEM",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 48.07,
+          "availability": "in_stock",
+          "offer_count": 14,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1350 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1350,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "Φριτέζα Αέρος 4,5lt 1350W Smarton FR 450 Μαύρο",
+            "Φριτέζα Αέρος 4,5lt 1350W Smarton FR 450 Μαύρο - Smarton",
+            "Φριτέζα Αέρος 4,5lt 1350W Smarton FR 450 Μαύρο 42879",
+            "Φριτέζα Αέρος 4,5lt 1350W Smarton FR 450 Μαύρο 26529"
+          ]
+        },
+        {
+          "product_id": "bp_2159236827",
+          "title": "Unold 58695 Air Fryer 4.5lt",
+          "brand": "Unold",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 60.48,
+          "availability": "in_stock",
+          "offer_count": 7,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1200 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1200,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            }
+          ],
+          "offer_titles": [
+            "Unold 58695 φριτέζα Μονός 4,5 L Αυτόνομο 1200 W Φριτέζα ζεστού αέρα Μαύρος (Μαύρο)",
+            "Unold Air Fryer 4.5lt Μαύρο 58695",
+            "Unold 4.5lt Μαύρο 58695"
+          ]
+        },
+        {
+          "product_id": "bp_2158144367",
+          "title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "brand": "Izzy",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 63,
+          "availability": "in_stock",
+          "offer_count": 12,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1500 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1500,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "IZZY IZ-8206 DIGITAL 4,5lit 1500W ΜΑΥΡΗ 224052",
+            "ΦΡΙΤΕΖΑ ΑΕΡΟΣ IZZY IZ-8206 DIGITAL",
+            "Izzy IZ-8206 Φριτέζα Αέρος 4,5Lt Digital Μαύρη",
+            "Izzy IZ-8206 Φριτέζα Αέρος με Αποσπώμενο Κάδο 4.5lt Μαύρη",
+            "ΦΡΙΤΕΖΑ ΑΕΡΟΣ IZZY IZ-8206",
+            "Izzy IZ-8206 Φριτέζα Αέρος με Αποσπώμενο Κάδο 4.5lt Μαύρη Κωδικός: 39893879",
+            "Izzy IZ-8206 224052 Φριτέζα Αέρος",
+            "IZZY 224052 IZ-8206 ΦΡΙΤΕΖΑ ΑΕΡΟΣ ΜΕ ΚΑΔΟ 4,5LT"
+          ],
+          "rating": {
+            "average": 4,
+            "count": 1
+          }
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:10:54.949Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_details",
+    "input": {
+      "product_ids": ["bp_2164176215", "bp_2157818719", "bp_2157250295", "bp_2160412918"]
+    },
+    "result": {
+      "products": [
+        {
+          "product_id": "bp_2164176215",
+          "title": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "brand": "Eldom",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 47.83,
+          "availability": "in_stock",
+          "offer_count": 4,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1350 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1350,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Inox",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": [
+            "Eldom Air Fryer με Wi-Fi 4.2lt Μαύρο 1199752",
+            "ELDOM FR45 FRITELO 1500 W fat-free fryer",
+            "Eldom Air Fryer με Wi-Fi 4.2lt Μαύρο 1199752 FR45",
+            "Φριτέζα αέρος Eldom Fritelo FR45 4.2 L - Ασημί"
+          ]
+        },
+        {
+          "product_id": "bp_2157818719",
+          "title": "Life 221-0292 Air Fryer 4.5lt",
+          "brand": "Life",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 55,
+          "availability": "in_stock",
+          "offer_count": 11,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1500 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1500,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Ναι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Life Digi Touch Φριτέζα Αέρος 4.5L με Ψηφιακή Οθόνη LED 1500W Μαύρη",
+            "ΦΡΙΤΕΖΑ ΑΕΡΟΣ LIFE DIGI TOUCH",
+            "LiFE DIGI TOUCH 4.5L DIGITAL AIR FRYER",
+            "Φριτέζα αέρος με αποσπώμενο κάδο 4.5lt Life Digi Touch Μαύρη (221-0292)",
+            "LIFE DIGI TOUCH Φριτέζα Αέρος Actifry 4.5lt",
+            "Life Digi Touch 221-0292 Φριτέζα Αέρος - Πολυμάγειρας",
+            "LiFE Digi Touch Φριτέζα Αέρος (221-0292)",
+            "LIFE DIGI TOUCH"
+          ]
+        },
+        {
+          "product_id": "bp_2157250295",
+          "title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "brand": "Hoomei",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 94.7,
+          "availability": "in_stock",
+          "offer_count": 9,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1500 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1500,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Μαύρο",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3877,
+              "label": "Φίλτρο Κατά των Οσμών",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3879,
+              "label": "Αντιθερμικά Τοιχώματα",
+              "value": "Όχι",
+              "group": null
+            }
+          ],
+          "offer_titles": [
+            "Hoomei HM-5392 Φριτέζα Αέρος με Αποσπώμενο Κάδο 4.5lt Μαύρη",
+            "Hoomei Φριτέζα Αέρος 1500W με Αποσπώμενο Κάδο 4.5L & Ρυθμιζόμενο Θερμοστάτη - HM-5392",
+            "Φριτέζα Αέρος με Αποσπώμενο Κάδο 4.5lt 1500W Hoomei HM-5392 Μαύρη",
+            "1500W Iσχυρή Φριτέζα Αέρος με Αποσπώμενο Κάδο 4.5lt και Ρυθμιζόμενο Θερμοστάτη HM-5392 Air Fryer",
+            "Hoomei Air Fryer 4.5lt Μαύρο HM-5392",
+            "Hoomei Φριτέζα Αέρος 1500W με Αποσπώμενο Κάδο 4.5L & Ρυθμιζόμενο Θερμοστάτη - Air Fryer HM-5392",
+            "Φριτέζα αέρος με αποσπώμενο κάδο 4.5Lt 1500W Hoomei HM-5392 σε μαύρο χρώμα"
+          ]
+        },
+        {
+          "product_id": "bp_2160412918",
+          "title": "Hoco HJD15A Air Fryer 4.5lt",
+          "brand": "Hoco",
+          "category_id": 8535,
+          "category_title": "Air Fryers",
+          "price_from": 36.31,
+          "availability": "in_stock",
+          "offer_count": 2,
+          "product_url": "[omitted]",
+          "image_url": "[omitted]",
+          "features": [
+            {
+              "id": 4472,
+              "label": "Χωρητικότητα Κάδου",
+              "value": "4.5 lt",
+              "group": "Χωρητικότητα",
+              "numeric": {
+                "value": 4.5,
+                "unit": "lt"
+              }
+            },
+            {
+              "id": 5416,
+              "label": "Αριθμός Ατόμων",
+              "value": "Για 2 Άτομα",
+              "group": null
+            },
+            {
+              "id": 502,
+              "label": "Ισχύς",
+              "value": "1000 W",
+              "group": "Απόδοση",
+              "numeric": {
+                "value": 1000,
+                "unit": "W"
+              }
+            },
+            {
+              "id": 1994,
+              "label": "Χρώμα",
+              "value": "Λευκό",
+              "group": "Τύπος"
+            },
+            {
+              "id": 4481,
+              "label": "Διπλός Κάδος",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 3878,
+              "label": "Με Οθόνη",
+              "value": "Ναι",
+              "group": null
+            },
+            {
+              "id": 5181,
+              "label": "Πολυμάγειρας",
+              "value": "Όχι",
+              "group": null
+            },
+            {
+              "id": 2610,
+              "label": "WiFi",
+              "value": "Όχι",
+              "group": "Δικτύωση"
+            }
+          ],
+          "offer_titles": ["HOCO HJD15A KITCHEN ELECTRIC AIR FRYER, 1000W, 4.5lt, ΜΠΕΖ"]
+        }
+      ],
+      "unavailable_product_ids": [],
+      "warnings": [],
+      "as_of": "2026-10-12T10:10:54.949Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2160412918",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2160412918",
+        "title": "Hoco HJD15A Air Fryer 4.5lt",
+        "brand": "Hoco",
+        "model": "Hoco HJD15A Air Fryer 4.5lt",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 36.31,
+      "quoted_lowest_item_price": 36.31,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_207417694",
+          "merchant_id": "bp_merchant_13378",
+          "merchant_name": "Repair4all",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoco HJD15A Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 36.31,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208105420",
+          "merchant_id": "bp_merchant_13137",
+          "merchant_name": "Jasper",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.63,
+          "merchant_rating_count": 19,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoco HJD15A Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 38.44,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2164176215",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2164176215",
+        "title": "Eldom FR45 Air Fryer 4.5lt Inox",
+        "brand": "Eldom",
+        "model": "Eldom FR45 Air Fryer 4.5lt Inox",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 47.83,
+      "quoted_lowest_item_price": 47.83,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_216162546",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "variant": null,
+          "item_price": 47.83,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_217855537",
+          "merchant_id": "bp_merchant_90",
+          "merchant_name": "e-Gate",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.72,
+          "merchant_rating_count": 18,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "variant": null,
+          "item_price": 48.77,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_216721067",
+          "merchant_id": "bp_merchant_3592",
+          "merchant_name": "UniMax",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "variant": null,
+          "item_price": 49,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225922754",
+          "merchant_id": "bp_merchant_17241",
+          "merchant_name": "Techstores",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "variant": null,
+          "item_price": 77.62,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "to_order",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Κατόπιν παραγγελίας",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2158725074",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2158725074",
+        "title": "Dsp KB2085 Air Fryer 4.5lt",
+        "brand": "Dsp",
+        "model": "Dsp KB2085 Air Fryer 4.5lt",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 92.4,
+      "quoted_lowest_item_price": 92.4,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_131959271",
+          "merchant_id": "bp_merchant_13363",
+          "merchant_name": "Smart eShop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 92.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_224662189",
+          "merchant_id": "bp_merchant_12985",
+          "merchant_name": "4eshop.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 2,
+          "merchant_rating_count": 3,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 94.8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_141359229",
+          "merchant_id": "bp_merchant_4864",
+          "merchant_name": "Houseshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.38,
+          "merchant_rating_count": 113,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 95.4,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_158995039",
+          "merchant_id": "bp_merchant_14616",
+          "merchant_name": "Ergo-4all",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 104.16,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_182997362",
+          "merchant_id": "bp_merchant_15810",
+          "merchant_name": "Desto",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 104.16,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_141391592",
+          "merchant_id": "bp_merchant_10765",
+          "merchant_name": "Marafeti.com.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.89,
+          "merchant_rating_count": 9,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 108,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_219623565",
+          "merchant_id": "bp_merchant_17117",
+          "merchant_name": "CareClub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 112.8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_185640956",
+          "merchant_id": "bp_merchant_6283",
+          "merchant_name": "3dMall",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.4,
+          "merchant_rating_count": 5,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 114.91,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_147582905",
+          "merchant_id": "bp_merchant_1005",
+          "merchant_name": "Lago",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 115.2,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_192839516",
+          "merchant_id": "bp_merchant_16232",
+          "merchant_name": "GadgetGiaOla",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Dsp KB2085 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 118.8,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2160057712",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2160057712",
+        "title": "Smarton FR450 Air Fryer 4.5lt",
+        "brand": "OEM",
+        "model": "Smarton FR450 Air Fryer 4.5lt",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 48.07,
+      "quoted_lowest_item_price": 48.07,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_212889895",
+          "merchant_id": "bp_merchant_16395",
+          "merchant_name": "Vagiou",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 48.07,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_163791025",
+          "merchant_id": "bp_merchant_11804",
+          "merchant_name": "Telephoneplus",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 51.99,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_164152693",
+          "merchant_id": "bp_merchant_9553",
+          "merchant_name": "eShop CitiTech",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 52.25,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208459072",
+          "merchant_id": "bp_merchant_14954",
+          "merchant_name": "Atrade",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 52.25,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_225588833",
+          "merchant_id": "bp_merchant_15810",
+          "merchant_name": "Desto",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 52.25,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_163833658",
+          "merchant_id": "bp_merchant_2954",
+          "merchant_name": "247home",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 52.62,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_163944131",
+          "merchant_id": "bp_merchant_4864",
+          "merchant_name": "Houseshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.38,
+          "merchant_rating_count": 113,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 55.35,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_221918767",
+          "merchant_id": "bp_merchant_791",
+          "merchant_name": "Plus3",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 55.82,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_195719161",
+          "merchant_id": "bp_merchant_12043",
+          "merchant_name": "TechSport",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 57.47,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_164139240",
+          "merchant_id": "bp_merchant_688",
+          "merchant_name": "CosmoMarket",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.32,
+          "merchant_rating_count": 41,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Smarton FR450 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 58.57,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα.",
+        "Πολλαπλές καταχωρίσεις του ίδιου καταστήματος ενοποιήθηκαν στην καλύτερη προσφορά του για το επιλεγμένο κριτήριο."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2159236827",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2159236827",
+        "title": "Unold 58695 Air Fryer 4.5lt",
+        "brand": "Unold",
+        "model": "Unold 58695 Air Fryer 4.5lt",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 60.48,
+      "quoted_lowest_item_price": 60.48,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_211666537",
+          "merchant_id": "bp_merchant_15392",
+          "merchant_name": "MobileHub",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.89,
+          "merchant_rating_count": 106,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Unold 58695 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 60.48,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_186622753",
+          "merchant_id": "bp_merchant_14355",
+          "merchant_name": "Buychoice",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.14,
+          "merchant_rating_count": 74,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Unold 58695 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 60.73,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_226352270",
+          "merchant_id": "bp_merchant_16333",
+          "merchant_name": "Dialexeto",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Unold 58695 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 60.74,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_186625120",
+          "merchant_id": "bp_merchant_14619",
+          "merchant_name": "G-app",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 93,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Unold 58695 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 60.77,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_216601118",
+          "merchant_id": "bp_merchant_90",
+          "merchant_name": "e-Gate",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.72,
+          "merchant_rating_count": 18,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Unold 58695 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 67.82,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_141341477",
+          "merchant_id": "bp_merchant_8447",
+          "merchant_name": "BeQ.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Unold 58695 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 73.52,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_145895344",
+          "merchant_id": "bp_merchant_3587",
+          "merchant_name": "Pinguin",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.66,
+          "merchant_rating_count": 173,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Unold 58695 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 76.99,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2158144367",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2158144367",
+        "title": "Izzy IZ-8206 Air Fryer 4.5lt",
+        "brand": "Izzy",
+        "model": "Izzy IZ-8206 Air Fryer 4.5lt",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 63,
+      "quoted_lowest_item_price": 63,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_109593167",
+          "merchant_id": "bp_merchant_396",
+          "merchant_name": "5050.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 63,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_138704651",
+          "merchant_id": "bp_merchant_4199",
+          "merchant_name": "Kountis",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 12,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 67,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_221714530",
+          "merchant_id": "bp_merchant_15811",
+          "merchant_name": "Alpha Electrics",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.86,
+          "merchant_rating_count": 14,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 69,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_139795394",
+          "merchant_id": "bp_merchant_8329",
+          "merchant_name": "Sunshine",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 73,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_135783775",
+          "merchant_id": "bp_merchant_1090",
+          "merchant_name": "Cheap to cheap",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 77.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_117206341",
+          "merchant_id": "bp_merchant_957",
+          "merchant_name": "Web-electric",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.38,
+          "merchant_rating_count": 13,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 79,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_119069208",
+          "merchant_id": "bp_merchant_619",
+          "merchant_name": "Toolsat",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 84.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_109855859",
+          "merchant_id": "bp_merchant_469",
+          "merchant_name": "Plus4u",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 84.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_112327769",
+          "merchant_id": "bp_merchant_7476",
+          "merchant_name": "allsmart.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3,
+          "merchant_rating_count": 21,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 89.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_152564993",
+          "merchant_id": "bp_merchant_3852",
+          "merchant_name": "Gklezakos",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Izzy IZ-8206 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 89.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2157818719",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2157818719",
+        "title": "Life 221-0292 Air Fryer 4.5lt",
+        "brand": "Life",
+        "model": "Life 221-0292 Air Fryer 4.5lt",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 55,
+      "quoted_lowest_item_price": 55,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_209456471",
+          "merchant_id": "bp_merchant_16838",
+          "merchant_name": "Fasois",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 55,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_100185471",
+          "merchant_id": "bp_merchant_7476",
+          "merchant_name": "allsmart.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3,
+          "merchant_rating_count": 21,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 55.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_7_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–7 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_138362039",
+          "merchant_id": "bp_merchant_2728",
+          "merchant_name": "Schinas-electric",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 3.67,
+          "merchant_rating_count": 6,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 58,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_149400780",
+          "merchant_id": "bp_merchant_619",
+          "merchant_name": "Toolsat",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.2,
+          "merchant_rating_count": 10,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 59.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_132901693",
+          "merchant_id": "bp_merchant_972",
+          "merchant_name": "Comelectric",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.77,
+          "merchant_rating_count": 13,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 66,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_167141254",
+          "merchant_id": "bp_merchant_13674",
+          "merchant_name": "Papaxaralabous",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 6,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 79,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_103065941",
+          "merchant_id": "bp_merchant_469",
+          "merchant_name": "Plus4u",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 5,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 79.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_120304437",
+          "merchant_id": "bp_merchant_4491",
+          "merchant_name": "Ilectrorama",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 79.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_161251045",
+          "merchant_id": "bp_merchant_3201",
+          "merchant_name": "KoukourakisMs",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 90,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_105061860",
+          "merchant_id": "bp_merchant_6283",
+          "merchant_name": "3dMall",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.4,
+          "merchant_rating_count": 5,
+          "verified_merchant": true,
+          "certification_level": "silver",
+          "offer_title": "Life 221-0292 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 94.28,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_4_10_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "4–10 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "compare_offers",
+    "input": {
+      "product_id": "bp_2157250295",
+      "objective": "lowest_item_price",
+      "in_stock_only": false,
+      "limit": 10
+    },
+    "result": {
+      "product": {
+        "product_id": "bp_2157250295",
+        "title": "Hoomei HM-5392 Air Fryer 4.5lt",
+        "brand": "Hoomei",
+        "model": "Hoomei HM-5392 Air Fryer 4.5lt",
+        "variant": null,
+        "decision_id": "[omitted]",
+        "product_url": "[omitted]"
+      },
+      "postal_code": null,
+      "objective": "lowest_item_price",
+      "catalog_price_from": 94.7,
+      "quoted_lowest_item_price": 94.7,
+      "quoted_lowest_total_price": null,
+      "catalog_min_unquoted_reason": null,
+      "offers": [
+        {
+          "offer_id": "bp_offer_195367114",
+          "merchant_id": "bp_merchant_15665",
+          "merchant_name": "Apolshop",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 94.7,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_167209403",
+          "merchant_id": "bp_merchant_6267",
+          "merchant_name": "Dealme",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 4.71,
+          "merchant_rating_count": 17,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 95.07,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_214175663",
+          "merchant_id": "bp_merchant_16967",
+          "merchant_name": "Telestore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 99,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_175878549",
+          "merchant_id": "bp_merchant_14944",
+          "merchant_name": "OnlineGadget",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 102.06,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_100343251",
+          "merchant_id": "bp_merchant_12307",
+          "merchant_name": "Market1",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 2,
+          "verified_merchant": true,
+          "certification_level": "gold",
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 102.1,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_165392447",
+          "merchant_id": "bp_merchant_11537",
+          "merchant_name": "e-seller.gr",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 104.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_208290901",
+          "merchant_id": "bp_merchant_16789",
+          "merchant_name": "ProfitStore",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 104.9,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_194379486",
+          "merchant_id": "bp_merchant_9539",
+          "merchant_name": "Klikit",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": 5,
+          "merchant_rating_count": 1,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 113.3,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        },
+        {
+          "offer_id": "bp_offer_199065569",
+          "merchant_id": "bp_merchant_15824",
+          "merchant_name": "GforGadget",
+          "merchant_logo_url": "[omitted]",
+          "merchant_rating": null,
+          "merchant_rating_count": null,
+          "verified_merchant": false,
+          "certification_level": null,
+          "offer_title": "Hoomei HM-5392 Air Fryer 4.5lt",
+          "variant": null,
+          "item_price": 113.5,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "shipping_unknown_cause": null,
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "ranking_reason": "ranked_by_lowest_item_price",
+          "price_checked_at": "2026-10-12T10:10:55.116Z",
+          "price_anomaly": null
+        }
+      ],
+      "warnings": [
+        "Για να συγκρίνεις τιμές δύο προϊόντων, χρησιμοποίησε την ίδια βάση: είτε τιμές καταλόγου «από» είτε ελεγμένες τιμές προσφορών, με τα μεταφορικά χωριστά.",
+        "Χωρίς ταχυδρομικό κώδικα συγκρίνονται μόνο οι τιμές προϊόντος· μεταφορικά και συνολικό κόστος παραμένουν άγνωστα."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_price_history",
+    "input": {
+      "product_id": "bp_2160412918",
+      "period_days": 180
+    },
+    "result": {
+      "product_id": "bp_2160412918",
+      "product_title": "Hoco HJD15A Air Fryer 4.5lt",
+      "product_url": "[omitted]",
+      "period_days": 180,
+      "current_price": 36.31,
+      "current_price_source": "live_offer_minimum",
+      "source_last_observed_at": "2026-10-12T10:10:55.116Z",
+      "window_stats": [
+        {
+          "days": 30,
+          "minimum_price": 34.4,
+          "median_price": 36.31,
+          "observations": 4,
+          "coverage_pct": 13.3,
+          "longest_gap_days": 14
+        },
+        {
+          "days": 90,
+          "minimum_price": 34.4,
+          "median_price": 35.4,
+          "observations": 18,
+          "coverage_pct": 20,
+          "longest_gap_days": 14
+        },
+        {
+          "days": 180,
+          "minimum_price": 34.13,
+          "median_price": 34.49,
+          "observations": 24,
+          "coverage_pct": 13.3,
+          "longest_gap_days": 37
+        }
+      ],
+      "price_delta_vs_180d_median_pct": 5.28,
+      "deal_classification": "insufficient_data",
+      "methodology_id": "bestprice_daily_min_v1",
+      "quality": {
+        "cluster_continuity": "same_cluster",
+        "outlier_status": "protected"
+      },
+      "data_gaps": {
+        "missing_days": 157,
+        "longest_gap_days": 37,
+        "stale_days": 15,
+        "coverage_note": "157 ημέρες δεν είχαν έγκυρη ημερήσια παρατήρηση."
+      },
+      "series": [
+        {
+          "date": "2026-04-29",
+          "price": 34.13,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-05-05",
+          "price": 34.49,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-05-11",
+          "price": 35.22,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-05-13",
+          "price": 34.49,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-05-26",
+          "price": 36.31,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-07-03",
+          "price": 34.49,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-07-22",
+          "price": 34.49,
+          "merchant_count": 3
+        },
+        {
+          "date": "2026-07-28",
+          "price": 34.49,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-07-30",
+          "price": 34.49,
+          "merchant_count": 3
+        },
+        {
+          "date": "2026-08-05",
+          "price": 34.49,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-08-06",
+          "price": 38.44,
+          "merchant_count": 1
+        },
+        {
+          "date": "2026-08-11",
+          "price": 38.44,
+          "merchant_count": 1
+        },
+        {
+          "date": "2026-08-22",
+          "price": 34.49,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-08-24",
+          "price": 34.49,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-08-25",
+          "price": 34.49,
+          "merchant_count": 3
+        },
+        {
+          "date": "2026-08-31",
+          "price": 34.49,
+          "merchant_count": 3
+        },
+        {
+          "date": "2026-09-01",
+          "price": 36.31,
+          "merchant_count": 3
+        },
+        {
+          "date": "2026-09-03",
+          "price": 36.31,
+          "merchant_count": 3
+        },
+        {
+          "date": "2026-09-05",
+          "price": 36.31,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-09-10",
+          "price": 36.31,
+          "merchant_count": 3
+        },
+        {
+          "date": "2026-09-15",
+          "price": 34.4,
+          "merchant_count": 3
+        },
+        {
+          "date": "2026-09-17",
+          "price": 36.31,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-09-27",
+          "price": 36.31,
+          "merchant_count": 2
+        },
+        {
+          "date": "2026-10-12",
+          "price": 36.31,
+          "merchant_count": 2
+        }
+      ],
+      "warnings": [
+        "Η κατάταξη τιμής συγκρίνει με το διάστημα 180 ημερών και χρειάζεται τουλάχιστον 30 παρατηρήσεις και 60% κάλυψη· εκεί υπάρχουν 24 παρατηρήσεις (13,3%)."
+      ],
+      "as_of": "2026-10-12T10:10:55.116Z",
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2160412918"
+    },
+    "result": {
+      "product_id": "bp_2160412918",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:55.117Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2158725074"
+    },
+    "result": {
+      "product_id": "bp_2158725074",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:55.117Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2164176215"
+    },
+    "result": {
+      "product_id": "bp_2164176215",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:55.117Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2157250295"
+    },
+    "result": {
+      "product_id": "bp_2157250295",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:55.117Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2160057712"
+    },
+    "result": {
+      "product_id": "bp_2160057712",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:55.117Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2157818719"
+    },
+    "result": {
+      "product_id": "bp_2157818719",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:55.117Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2159236827"
+    },
+    "result": {
+      "product_id": "bp_2159236827",
+      "review_count": 0,
+      "reviews": [],
+      "as_of": "2026-10-12T10:10:55.117Z"
+    }
+  },
+  {
+    "name": "get_product_reviews",
+    "input": {
+      "product_id": "bp_2158144367"
+    },
+    "result": {
+      "product_id": "bp_2158144367",
+      "review_count": 1,
+      "reviews": [
+        {
+          "rating": 4,
+          "excerpt": "Ό,τι πρέπει, χωρίς να χρειάζεται να δώσεις μια περιουσία!",
+          "helpfulness": 1,
+          "helpful_votes": 0,
+          "unhelpful_votes": 0,
+          "written_at": "2025-01-03T10:05:11.000Z"
+        }
+      ],
+      "as_of": "2026-10-12T10:10:55.117Z"
+    }
+  }
+]

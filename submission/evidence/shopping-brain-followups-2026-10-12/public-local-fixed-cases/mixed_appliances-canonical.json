@@ -1,0 +1,947 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:17:51.512Z",
+  "outcome": "basket",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "e1023c53-3e4d-4be9-84dc-da65b13ef944",
+    "revision": 2,
+    "fingerprint": "b21cb149e8ae099cba6f033c4e7e5d5ec2a3eaedb3050dcdd46bbc06905d5b5e",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "espresso",
+    "intent": "shop",
+    "query": "καφετιέρα espresso air fryer",
+    "constraints": {
+      "budgetEur": 300,
+      "statedBudgetEur": 300,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": {
+        "minimum": 4,
+        "maximum": 5,
+        "target": 4.5
+      },
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 300,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 300,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 81,
+            "end": 93,
+            "text": "έως 300 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [
+      {
+        "id": "exclude_espresso_capsules",
+        "label": "χωρίς κάψουλες"
+      }
+    ],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": ["από 4 έως 5 λίτρα"],
+    "nonPricePhrases": ["από 4 έως 5 λίτρα", "χωρίς κάψουλες"],
+    "source_turns": [],
+    "transition": "amend"
+  },
+  "actions": [],
+  "status": "ready",
+  "mission": {
+    "intent": "basket",
+    "summary_el": "Κοινό καλάθι · Μηχανή espresso · Συνολικό όριο 300 € · 4–5 λίτρα",
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": {
+        "minimum": 4,
+        "maximum": 5,
+        "target": 4.5
+      },
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 300,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 300,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 81,
+              "end": 93,
+              "text": "έως 300 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 300,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "espresso",
+          "label": "Μηχανή espresso",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "exclude_espresso_capsules",
+                "label": "χωρίς κάψουλες"
+              }
+            ]
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "air_fryer",
+          "label": "Air fryer",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": {
+                "minimum": 4,
+                "maximum": 5,
+                "target": 4.5
+              },
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ]
+    }
+  },
+  "primary": null,
+  "alternatives": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": {
+      "minimum": 4,
+      "maximum": 5,
+      "target": 4.5
+    },
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 300,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 300,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 81,
+            "end": 93,
+            "text": "έως 300 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 300,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "espresso",
+        "label": "Μηχανή espresso",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "exclude_espresso_capsules",
+              "label": "χωρίς κάψουλες"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "air_fryer",
+        "label": "Air fryer",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": {
+              "minimum": 4,
+              "maximum": 5,
+              "target": 4.5
+            },
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "catalog_requirements": ["χωρίς κάψουλες"]
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "price_history": null,
+  "candidate_summary": null,
+  "candidates": [
+    {
+      "product_id": "bp_2157732664",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2157732664:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2157732664:bp_2157732664",
+        "optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664",
+        "optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664",
+        "search_products:bp_2157732664:bp_2157732664"
+      ]
+    },
+    {
+      "product_id": "bp_2159767045",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159767045:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2159767045:bp_2159767045",
+        "optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045",
+        "optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"
+      ]
+    },
+    {
+      "product_id": "bp_2155079943",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155079943:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2155079943:bp_2155079943"
+      ]
+    },
+    {
+      "product_id": "bp_2160087320",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160087320:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2160087320:bp_2160087320"
+      ]
+    },
+    {
+      "product_id": "bp_2159033529",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159033529:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2159033529:bp_2159033529"
+      ]
+    },
+    {
+      "product_id": "bp_2158644887",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158644887:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2158644887:bp_2158644887"
+      ]
+    },
+    {
+      "product_id": "bp_2155056130",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155056130:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2155056130:bp_2155056130"
+      ]
+    },
+    {
+      "product_id": "bp_2155058806",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2155058806:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2155058806:bp_2155058806"
+      ]
+    },
+    {
+      "product_id": "bp_2160910317",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160910317:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2160910317:bp_2160910317"
+      ]
+    },
+    {
+      "product_id": "bp_2160290728",
+      "status": "disqualified",
+      "reason_codes": ["capacity_litres"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160290728:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2160290728:bp_2160290728",
+        "search_products:bp_2160290728:bp_2160290728"
+      ]
+    },
+    {
+      "product_id": "bp_2162867736",
+      "status": "disqualified",
+      "reason_codes": ["capacity_litres"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2162867736:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2162867736:bp_2162867736",
+        "search_products:bp_2162867736:bp_2162867736"
+      ]
+    },
+    {
+      "product_id": "bp_2159132561",
+      "status": "disqualified",
+      "reason_codes": ["capacity_litres"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159132561:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2159132561:bp_2159132561",
+        "search_products:bp_2159132561:bp_2159132561"
+      ]
+    },
+    {
+      "product_id": "bp_2159403370",
+      "status": "disqualified",
+      "reason_codes": ["capacity_litres"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159403370:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2159403370:bp_2159403370",
+        "search_products:bp_2159403370:bp_2159403370"
+      ]
+    },
+    {
+      "product_id": "bp_2158725071",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158725071:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2158725071:bp_2158725071",
+        "search_products:bp_2158725071:bp_2158725071"
+      ]
+    },
+    {
+      "product_id": "bp_2159260915",
+      "status": "disqualified",
+      "reason_codes": ["capacity_litres"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159260915:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2159260915:bp_2159260915",
+        "search_products:bp_2159260915:bp_2159260915"
+      ]
+    },
+    {
+      "product_id": "bp_2158150132",
+      "status": "disqualified",
+      "reason_codes": ["capacity_litres"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2158150132:bestprice_shopping_policy_v1:air_fryers",
+        "get_product_details:bp_2158150132:bp_2158150132",
+        "search_products:bp_2158150132:bp_2158150132"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 4,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:17:50.912Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 1173,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": 8535,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 165,30€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 134,70€ κάτω από το συνολικό όριο των 300€.",
+  "comparison": null,
+  "basket": {
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "fewer_merchants",
+        "merchant_count": 1,
+        "item_subtotal": 178.9,
+        "shipping_total": 7,
+        "shipping_status": "known",
+        "total_price": 185.9,
+        "reliability_score": 4.47,
+        "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_2728",
+            "merchant_name": "Schinas-electric",
+            "merchant_rating": 4.47,
+            "verified_merchant": true,
+            "item_subtotal": 178.9,
+            "shipping_price": 7,
+            "shipping_status": "known",
+            "total_price": 185.9,
+            "reason": "covers_basket_with_one_merchant",
+            "items": [
+              {
+                "product_id": "bp_2157732664",
+                "title": "Tefal EY501815 Air Fryer 4.2lt",
+                "quantity": 1,
+                "unit_price": 69.9,
+                "line_total": 69.9,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2159767045",
+                "title": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+                "quantity": 1,
+                "unit_price": 109,
+                "line_total": 109,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "plan_type": "balanced",
+        "merchant_count": 2,
+        "item_subtotal": 158.3,
+        "shipping_total": 7,
+        "shipping_status": "known",
+        "total_price": 165.3,
+        "reliability_score": 4.7,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_2728",
+            "merchant_name": "Schinas-electric",
+            "merchant_rating": 4.47,
+            "verified_merchant": true,
+            "item_subtotal": 69.9,
+            "shipping_price": 7,
+            "shipping_status": "known",
+            "total_price": 76.9,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2157732664",
+                "title": "Tefal EY501815 Air Fryer 4.2lt",
+                "quantity": 1,
+                "unit_price": 69.9,
+                "line_total": 69.9,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          },
+          {
+            "merchant_id": "bp_merchant_6501",
+            "merchant_name": "ClickInside",
+            "merchant_rating": 4.93,
+            "verified_merchant": true,
+            "item_subtotal": 88.4,
+            "shipping_price": 0,
+            "shipping_status": "known",
+            "total_price": 88.4,
+            "reason": "free_shipping",
+            "items": [
+              {
+                "product_id": "bp_2159767045",
+                "title": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+                "quantity": 1,
+                "unit_price": 88.4,
+                "line_total": 88.4,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": [],
+    "warnings": [
+      "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+    ],
+    "as_of": "2026-10-12T10:17:51.246Z",
+    "currency": "EUR",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "espresso",
+        "label": "Μηχανή espresso",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "exclude_espresso_capsules",
+              "label": "χωρίς κάψουλες"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "air_fryer",
+        "label": "Air fryer",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": {
+              "minimum": 4,
+              "maximum": 5,
+              "target": 4.5
+            },
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "espresso",
+        "label": "Μηχανή espresso",
+        "quantity": 1,
+        "product_id": "bp_2159767045",
+        "catalog_price_eur": 88,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "air_fryer",
+        "label": "Air fryer",
+        "quantity": 1,
+        "product_id": "bp_2157732664",
+        "catalog_price_eur": 67.09,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 300
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "espresso",
+        "label": "Μηχανή espresso",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "exclude_espresso_capsules",
+              "label": "χωρίς κάψουλες"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "air_fryer",
+        "label": "Air fryer",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": {
+              "minimum": 4,
+              "maximum": 5,
+              "target": 4.5
+            },
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "espresso",
+        "label": "Μηχανή espresso",
+        "quantity": 1,
+        "product_id": "bp_2159767045",
+        "catalog_price_eur": 88,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "air_fryer",
+        "label": "Air fryer",
+        "quantity": 1,
+        "product_id": "bp_2157732664",
+        "catalog_price_eur": 67.09,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 300
+  },
+  "execution": {
+    "tools_used": ["search_products", "get_product_details", "optimize_basket"],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 769,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 1,
+      "understanding_ms": 121,
+      "direct_recommendation": false,
+      "exact_route": false,
+      "catalog_search_calls": 4,
+      "search_products_calls": 2,
+      "search_products_failures": 0,
+      "search_products_invocations": 2,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 391,
+      "search_products_max_ms": 254,
+      "get_product_details_calls": 4,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 4,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 317,
+      "get_product_details_max_ms": 119,
+      "compare_offers_calls": 0,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 0,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 0,
+      "compare_offers_max_ms": 0,
+      "get_price_history_calls": 0,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 0,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 0,
+      "get_price_history_max_ms": 0,
+      "get_product_reviews_calls": 0,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 0,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 0,
+      "get_product_reviews_max_ms": 0,
+      "optimize_basket_calls": 1,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 1,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 266,
+      "optimize_basket_max_ms": 266,
+      "retrieval_page_candidates": 16,
+      "receipt_disqualified_candidates": 6,
+      "receipt_eligible_candidates": 10,
+      "receipt_review_requested": 0,
+      "receipt_review_available": 0,
+      "receipt_validation_ms": 6,
+      "brain_runtime_ms": 769,
+      "brain_finalization_ms": 17
+    }
+  },
+  "personalization": null
+}

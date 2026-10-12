@@ -1,0 +1,1491 @@
+{
+  "schema_version": "2.0",
+  "as_of": "2026-10-12T10:10:14.974Z",
+  "currency": "EUR",
+  "locale": "el-GR",
+  "warnings": [],
+  "brain": {
+    "projection_version": "bestprice_mcp_decision_v1",
+    "decision_version": "bestprice_decision_v1",
+    "decision_id": "[omitted]",
+    "evidence_fingerprint": "3de38878a4eeb8584810cd0955d0ca1695ee2c3811a1a3696bbb41b84132a159"
+  },
+  "outcome": "basket",
+  "status": "ready",
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 165,30€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 134,70€ κάτω από το συνολικό όριο των 300€.",
+  "reason": null,
+  "message": null,
+  "blocking_constraints": [],
+  "recommended_product_id": null,
+  "alternatives": [],
+  "products": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": {
+      "minimum": 4,
+      "maximum": 5,
+      "target": 4.5
+    },
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 300,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 300,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 81,
+            "end": 93,
+            "text": "έως 300 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 300,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "espresso",
+        "label": "Μηχανή espresso",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "exclude_espresso_capsules",
+              "label": "χωρίς κάψουλες"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "air_fryer",
+        "label": "Air fryer",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": {
+              "minimum": 4,
+              "maximum": 5,
+              "target": 4.5
+            },
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "catalog_requirements": ["χωρίς κάψουλες"]
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "comparison": null,
+  "basket": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T10:10:14.781Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [
+      "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+    ],
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "fewer_merchants",
+        "merchant_count": 1,
+        "item_subtotal": 178.9,
+        "shipping_total": 7,
+        "shipping_status": "known",
+        "total_price": 185.9,
+        "reliability_score": 4.47,
+        "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_2728",
+            "merchant_name": "Schinas-electric",
+            "merchant_rating": 4.47,
+            "verified_merchant": true,
+            "item_subtotal": 178.9,
+            "shipping_price": 7,
+            "shipping_status": "known",
+            "total_price": 185.9,
+            "reason": "covers_basket_with_one_merchant",
+            "items": [
+              {
+                "product_id": "bp_2157732664",
+                "title": "Tefal EY501815 Air Fryer 4.2lt",
+                "quantity": 1,
+                "unit_price": 69.9,
+                "line_total": 69.9,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2159767045",
+                "title": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+                "quantity": 1,
+                "unit_price": 109,
+                "line_total": 109,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "plan_type": "balanced",
+        "merchant_count": 2,
+        "item_subtotal": 158.3,
+        "shipping_total": 7,
+        "shipping_status": "known",
+        "total_price": 165.3,
+        "reliability_score": 4.7,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_2728",
+            "merchant_name": "Schinas-electric",
+            "merchant_rating": 4.47,
+            "verified_merchant": true,
+            "item_subtotal": 69.9,
+            "shipping_price": 7,
+            "shipping_status": "known",
+            "total_price": 76.9,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2157732664",
+                "title": "Tefal EY501815 Air Fryer 4.2lt",
+                "quantity": 1,
+                "unit_price": 69.9,
+                "line_total": 69.9,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          },
+          {
+            "merchant_id": "bp_merchant_6501",
+            "merchant_name": "ClickInside",
+            "merchant_rating": 4.93,
+            "verified_merchant": true,
+            "item_subtotal": 88.4,
+            "shipping_price": 0,
+            "shipping_status": "known",
+            "total_price": 88.4,
+            "reason": "free_shipping",
+            "items": [
+              {
+                "product_id": "bp_2159767045",
+                "title": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+                "quantity": 1,
+                "unit_price": 88.4,
+                "line_total": 88.4,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": []
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "espresso",
+        "label": "Μηχανή espresso",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "exclude_espresso_capsules",
+              "label": "χωρίς κάψουλες"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "air_fryer",
+        "label": "Air fryer",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": {
+              "minimum": 4,
+              "maximum": 5,
+              "target": 4.5
+            },
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "espresso",
+        "label": "Μηχανή espresso",
+        "quantity": 1,
+        "product_id": "bp_2159767045",
+        "catalog_price_eur": 88,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "air_fryer",
+        "label": "Air fryer",
+        "quantity": 1,
+        "product_id": "bp_2157732664",
+        "catalog_price_eur": 67.09,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 300
+  },
+  "clarifications": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "requires_user_action": true,
+    "bestprice_url": "[omitted]"
+  },
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 4,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:10:14.118Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 1173,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": 8535,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "shopping_context": {
+    "version": "bestprice_shopping_context_v32",
+    "products": [
+      {
+        "product_id": "bp_2157732664",
+        "family": "air_fryers",
+        "attributes": [
+          {
+            "key": "capacity_litres",
+            "unit": "L",
+            "status": "known",
+            "value": 4.2,
+            "claim_ids": ["claim_3bdcb8560ff542ae2a4d326b"],
+            "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"]
+          },
+          {
+            "key": "people_count",
+            "unit": null,
+            "status": "known",
+            "value": 2,
+            "claim_ids": ["claim_01e75fd50269e44d5c7bd77d"],
+            "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"]
+          },
+          {
+            "key": "dual_basket",
+            "unit": null,
+            "status": "known",
+            "value": false,
+            "claim_ids": ["claim_c4394c1284a528d689d41405"],
+            "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"]
+          }
+        ]
+      },
+      {
+        "product_id": "bp_2159767045",
+        "family": "espresso_machines",
+        "attributes": [
+          {
+            "key": "automatic",
+            "unit": null,
+            "status": "known",
+            "value": true,
+            "claim_ids": ["claim_d7a65560746e0a996e96787a"],
+            "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"]
+          },
+          {
+            "key": "milk_frother",
+            "unit": null,
+            "status": "known",
+            "value": true,
+            "claim_ids": ["claim_9c365f7a8271fe915beccef7"],
+            "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"]
+          },
+          {
+            "key": "cup_count",
+            "unit": null,
+            "status": "unknown",
+            "value": null,
+            "claim_ids": [],
+            "source_ids": []
+          }
+        ]
+      }
+    ],
+    "market": [
+      {
+        "product_id": "bp_2157732664",
+        "offers": {
+          "status": "not_checked",
+          "scope": "bounded_returned_offers",
+          "offer_count": 0,
+          "merchant_count": 0,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 0,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 0
+          },
+          "item_price": null,
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      },
+      {
+        "product_id": "bp_2159767045",
+        "offers": {
+          "status": "not_checked",
+          "scope": "bounded_returned_offers",
+          "offer_count": 0,
+          "merchant_count": 0,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 0,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 0
+          },
+          "item_price": null,
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      }
+    ]
+  },
+  "evidence": {
+    "scope": "returned_products",
+    "sources": [
+      {
+        "source_id": "deterministic_ranking:bp_2157732664:bestprice_shopping_policy_v1:air_fryers",
+        "kind": "decision_policy",
+        "record_id": "bestprice_shopping_policy_v1:air_fryers",
+        "product_id": "bp_2157732664",
+        "scope": "cluster",
+        "capability": "deterministic_ranking",
+        "checked_at": "2026-10-12T10:10:14.974Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "deterministic_ranking:bp_2159767045:bestprice_shopping_policy_v1:air_fryers",
+        "kind": "decision_policy",
+        "record_id": "bestprice_shopping_policy_v1:air_fryers",
+        "product_id": "bp_2159767045",
+        "scope": "cluster",
+        "capability": "deterministic_ranking",
+        "checked_at": "2026-10-12T10:10:14.974Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "get_product_details:bp_2157732664:bp_2157732664",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2157732664",
+        "product_id": "bp_2157732664",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:10:14.118Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "get_product_details:bp_2159767045:bp_2159767045",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2159767045",
+        "product_id": "bp_2159767045",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:10:14.108Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664",
+        "kind": "basket_quote",
+        "record_id": "balanced:bp_merchant_2728:bp_2157732664",
+        "product_id": "bp_2157732664",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:10:14.781Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664",
+        "kind": "basket_quote",
+        "record_id": "fewer_merchants:bp_merchant_2728:bp_2157732664",
+        "product_id": "bp_2157732664",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:10:14.781Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045",
+        "kind": "basket_quote",
+        "record_id": "balanced:bp_merchant_6501:bp_2159767045",
+        "product_id": "bp_2159767045",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:10:14.781Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045",
+        "kind": "basket_quote",
+        "record_id": "fewer_merchants:bp_merchant_2728:bp_2159767045",
+        "product_id": "bp_2159767045",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:10:14.781Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "search_products:bp_2157732664:bp_2157732664",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2157732664",
+        "product_id": "bp_2157732664",
+        "scope": "cluster",
+        "capability": "search_products",
+        "checked_at": "2026-10-12T10:10:14.118Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "claim_005d639818889bcb92ed4fa7",
+        "product_id": "bp_2159767045",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_01e75fd50269e44d5c7bd77d",
+        "product_id": "bp_2157732664",
+        "field": "attribute:people_count",
+        "value": 2,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_a216305c1ebfb998c36bee49"]
+      },
+      {
+        "claim_id": "claim_02e6af44e154081e1befee86",
+        "product_id": "bp_2157732664",
+        "field": "title",
+        "value": "Tefal EY501815 Air Fryer 4.2lt",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_03f27f2d668d9bb0b78701ac",
+        "product_id": "bp_2157732664",
+        "field": "feature:2610",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2610,
+          "label": "WiFi",
+          "group": "Δικτύωση"
+        }
+      },
+      {
+        "claim_id": "claim_05eba23a0d17f645099733bd",
+        "product_id": "bp_2159767045",
+        "field": "basket_plan_total",
+        "value": 165.3,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_0e4b65385989de431eb48ffe",
+        "product_id": "bp_2159767045",
+        "field": "category_id",
+        "value": 6627,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_0fb39aa3f09ac28b07b5283b",
+        "product_id": "bp_2157732664",
+        "field": "feature:3877",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3877,
+          "label": "Φίλτρο Κατά των Οσμών",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_15c1128b29b7e4a89ab76688",
+        "product_id": "bp_2157732664",
+        "field": "basket_merchant_name",
+        "value": "Schinas-electric",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_19f49131b8fd5ca72fd2aefc",
+        "product_id": "bp_2157732664",
+        "field": "category_title",
+        "value": "Air Fryers",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_1f9088f54e0346b698867711",
+        "product_id": "bp_2157732664",
+        "field": "feature:3878",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3878,
+          "label": "Με Οθόνη",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_25a66e04b55d7aadd5ae257c",
+        "product_id": "bp_2157732664",
+        "field": "feature:1994",
+        "value": "Μαύρο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1994,
+          "label": "Χρώμα",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_29db293c00c328256aec8241",
+        "product_id": "bp_2159767045",
+        "field": "price_from",
+        "value": 88,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2d2846093ea0f3fafb951a9a",
+        "product_id": "bp_2157732664",
+        "field": "people_count",
+        "value": 2,
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2157732664:bp_2157732664",
+          "get_product_details:bp_2157732664:bp_2157732664"
+        ],
+        "validation": "deterministic_catalog_extraction"
+      },
+      {
+        "claim_id": "claim_311d973c973e099432a01323",
+        "product_id": "bp_2157732664",
+        "field": "capacity_litres",
+        "value": 4.2,
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2157732664:bp_2157732664",
+          "get_product_details:bp_2157732664:bp_2157732664"
+        ],
+        "validation": "deterministic_catalog_extraction"
+      },
+      {
+        "claim_id": "claim_38246b3411e857aecaa4fbac",
+        "product_id": "bp_2159767045",
+        "field": "basket_unit_price",
+        "value": 88.4,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3a4f0e39a96af9d8e74dce93",
+        "product_id": "bp_2157732664",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3b683efd0779f6a82573aa88",
+        "product_id": "bp_2159767045",
+        "field": "basket_merchant_name",
+        "value": "ClickInside",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3bdcb8560ff542ae2a4d326b",
+        "product_id": "bp_2157732664",
+        "field": "attribute:capacity_litres",
+        "value": 4.2,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_ce10242be940b35a7ef945db"]
+      },
+      {
+        "claim_id": "claim_3c9d565ee020a7e54c3e91e9",
+        "product_id": "bp_2157732664",
+        "field": "title",
+        "value": "Tefal EY501815 Air Fryer 4.2lt",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3eab65c6573c0649ca7d3ea1",
+        "product_id": "bp_2159767045",
+        "field": "category_title",
+        "value": "Μηχανές Espresso",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_40f300922b44355c17699812",
+        "product_id": "bp_2159767045",
+        "field": "basket_merchant_shipping",
+        "value": 0,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_43a8e035b6b533f90c39e0d6",
+        "product_id": "bp_2157732664",
+        "field": "ranking:air_fryers:capacity_fit",
+        "value": 4.2,
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2157732664:bp_2157732664",
+          "get_product_details:bp_2157732664:bp_2157732664",
+          "deterministic_ranking:bp_2157732664:bestprice_shopping_policy_v1:air_fryers"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_498eb7fbe45d166152da75f5",
+        "product_id": "bp_2159767045",
+        "field": "feature:501",
+        "value": "1.5 lt",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 501,
+          "label": "Χωρητικότητα Δοχείου Νερού",
+          "group": "Χωρητικότητα"
+        }
+      },
+      {
+        "claim_id": "claim_4b3d27db50e419f45010b36e",
+        "product_id": "bp_2159767045",
+        "field": "feature:392",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 392,
+          "label": "Wi-Fi",
+          "group": "Δικτύωση"
+        }
+      },
+      {
+        "claim_id": "claim_4d14b6a7c8bcd0076e437629",
+        "product_id": "bp_2157732664",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4e98b398226189183332ce2d",
+        "product_id": "bp_2157732664",
+        "field": "basket_plan_total",
+        "value": 185.9,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_533480dfffc7d63ac4964259",
+        "product_id": "bp_2159767045",
+        "field": "offer_count",
+        "value": 48,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_545370f190a725455feffb4d",
+        "product_id": "bp_2159767045",
+        "field": "feature:3143",
+        "value": "Αλεσμένος",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3143,
+          "label": "Παροχή Καφέ",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_590f69c207da3e9d34fdf7c1",
+        "product_id": "bp_2159767045",
+        "field": "feature:408",
+        "value": "1350 W",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 408,
+          "label": "Κατανάλωση",
+          "group": "Κατανάλωση"
+        }
+      },
+      {
+        "claim_id": "claim_5a4e7984ec4fa2da8ab377ea",
+        "product_id": "bp_2157732664",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5d1f05e3896767f0a9ebe93d",
+        "product_id": "bp_2159767045",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5f4770eb2921824b2a997ddf",
+        "product_id": "bp_2159767045",
+        "field": "feature:519",
+        "value": "20 bar",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 519,
+          "label": "Πίεση Αντλίας",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_615f170f3b3fc5b52b71556c",
+        "product_id": "bp_2159767045",
+        "field": "basket_merchant_shipping",
+        "value": 7,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_629543d40b952c5595ce45da",
+        "product_id": "bp_2157732664",
+        "field": "price_from",
+        "value": 67.09,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6a8c390b62e2522863bf529f",
+        "product_id": "bp_2157732664",
+        "field": "offer_count",
+        "value": 25,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6a994f3fdf34eb16a11fc0c6",
+        "product_id": "bp_2157732664",
+        "field": "feature:5181",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 5181,
+          "label": "Πολυμάγειρας",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_6c6394baba42624c2d26d7e9",
+        "product_id": "bp_2157732664",
+        "field": "basket_line_total",
+        "value": 69.9,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_728d53b76dd522971378a148",
+        "product_id": "bp_2157732664",
+        "field": "feature:3879",
+        "value": "Ναι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3879,
+          "label": "Αντιθερμικά Τοιχώματα",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_7371f1d1bb477e4e9da8f637",
+        "product_id": "bp_2159767045",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7c189c7cb801b721671b8878",
+        "product_id": "bp_2157732664",
+        "field": "basket_merchant_shipping",
+        "value": 7,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_802620694afda252a7dadadb",
+        "product_id": "bp_2157732664",
+        "field": "feature:4481",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4481,
+          "label": "Διπλός Κάδος",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_81956434ff3e503e1c57b120",
+        "product_id": "bp_2159767045",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_81e7689c5e8b698359c8a147",
+        "product_id": "bp_2157732664",
+        "field": "catalog_family",
+        "value": "air_fryers",
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2157732664:bp_2157732664",
+          "get_product_details:bp_2157732664:bp_2157732664"
+        ],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_b84451bf8c2290c5a76c7934",
+          "claim_19f49131b8fd5ca72fd2aefc",
+          "claim_02e6af44e154081e1befee86"
+        ]
+      },
+      {
+        "claim_id": "claim_83b242c2b5e72ce91e224c96",
+        "product_id": "bp_2159767045",
+        "field": "title",
+        "value": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8665de7fffd12f71cc558fe4",
+        "product_id": "bp_2159767045",
+        "field": "basket_plan_total",
+        "value": 185.9,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_86f7cf77ed87c7cb8de5268c",
+        "product_id": "bp_2157732664",
+        "field": "title",
+        "value": "Tefal EY501815 Air Fryer 4.2lt",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_87f8b06a67db2ac34e5318b4",
+        "product_id": "bp_2157732664",
+        "field": "basket_unit_price",
+        "value": 69.9,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_88e7e95f0e115e1e2e27638d",
+        "product_id": "bp_2159767045",
+        "field": "basket_line_total",
+        "value": 109,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_8a2b56651444549025ecc876",
+        "product_id": "bp_2159767045",
+        "field": "rating_average",
+        "value": 4.58,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_8c9a6a59ab62fa00b9e8aee8",
+        "product_id": "bp_2159767045",
+        "field": "ranking:air_fryers:satisfaction",
+        "value": 4.4350000000000005,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2159767045:bp_2159767045",
+          "deterministic_ranking:bp_2159767045:bestprice_shopping_policy_v1:air_fryers"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_9186af174964268528844f91",
+        "product_id": "bp_2159767045",
+        "field": "title",
+        "value": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_92e125ae260e611db56189e8",
+        "product_id": "bp_2159767045",
+        "field": "catalog_family",
+        "value": "espresso_machines",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_0e4b65385989de431eb48ffe",
+          "claim_3eab65c6573c0649ca7d3ea1",
+          "claim_83b242c2b5e72ce91e224c96"
+        ]
+      },
+      {
+        "claim_id": "claim_950fc586aefaaefca7548832",
+        "product_id": "bp_2157732664",
+        "field": "feature:502",
+        "value": "1550 W",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 502,
+          "label": "Ισχύς",
+          "group": "Απόδοση"
+        }
+      },
+      {
+        "claim_id": "claim_95d20d2f067b45a03bd3af74",
+        "product_id": "bp_2159767045",
+        "field": "feature:3142",
+        "value": "Αυτόματη",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3142,
+          "label": "Τύπος",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_9c365f7a8271fe915beccef7",
+        "product_id": "bp_2159767045",
+        "field": "attribute:milk_frother",
+        "value": true,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_f38a949745c8a5a4870e62bd"]
+      },
+      {
+        "claim_id": "claim_9dc5f0c118b63fe6a6c28f41",
+        "product_id": "bp_2159767045",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a1637bee84b061c565646647",
+        "product_id": "bp_2157732664",
+        "field": "basket_merchant_name",
+        "value": "Schinas-electric",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a216305c1ebfb998c36bee49",
+        "product_id": "bp_2157732664",
+        "field": "feature:5416",
+        "value": "Για 2 Άτομα",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 5416,
+          "label": "Αριθμός Ατόμων",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_a52966a19e1271fc5c7cb918",
+        "product_id": "bp_2157732664",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b114e73c9e1dd1ad71d42ab8",
+        "product_id": "bp_2159767045",
+        "field": "basket_merchant_name",
+        "value": "Schinas-electric",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b160a1094f22725b520a8c88",
+        "product_id": "bp_2157732664",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b2f578f57c945a40e4e995fb",
+        "product_id": "bp_2159767045",
+        "field": "basket_line_total",
+        "value": 88.4,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_b57e2aaf8afc2e28d431f885",
+        "product_id": "bp_2157732664",
+        "field": "dual_basket",
+        "value": false,
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2157732664:bp_2157732664",
+          "get_product_details:bp_2157732664:bp_2157732664"
+        ],
+        "validation": "deterministic_catalog_extraction"
+      },
+      {
+        "claim_id": "claim_b6668a2610a7dc04fbff2e7c",
+        "product_id": "bp_2157732664",
+        "field": "basket_merchant_shipping",
+        "value": 7,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b84451bf8c2290c5a76c7934",
+        "product_id": "bp_2157732664",
+        "field": "category_id",
+        "value": 8535,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_bdd2bcda2b54da6917dcba9d",
+        "product_id": "bp_2159767045",
+        "field": "rating_count",
+        "value": 24,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c4394c1284a528d689d41405",
+        "product_id": "bp_2157732664",
+        "field": "attribute:dual_basket",
+        "value": false,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_802620694afda252a7dadadb"]
+      },
+      {
+        "claim_id": "claim_cc13c905931330b2a2497319",
+        "product_id": "bp_2159767045",
+        "field": "title",
+        "value": "Rohnson R-98015 Αυτόματη Μηχανή Espresso 1350W 20bar",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:balanced:bp_merchant_6501:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_cd27bdcb81b9b5001a900638",
+        "product_id": "bp_2157732664",
+        "field": "basket_unit_price",
+        "value": 69.9,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ce10242be940b35a7ef945db",
+        "product_id": "bp_2157732664",
+        "field": "feature:4472",
+        "value": "4.2 lt",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4472,
+          "label": "Χωρητικότητα Κάδου",
+          "group": "Χωρητικότητα"
+        }
+      },
+      {
+        "claim_id": "claim_d7a65560746e0a996e96787a",
+        "product_id": "bp_2159767045",
+        "field": "attribute:automatic",
+        "value": true,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_95d20d2f067b45a03bd3af74"]
+      },
+      {
+        "claim_id": "claim_e9d0b3b16b5223536efc8ab1",
+        "product_id": "bp_2157732664",
+        "field": "basket_line_total",
+        "value": 69.9,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_f09c5ee58c2005c78bc773cc",
+        "product_id": "bp_2159767045",
+        "field": "basket_unit_price",
+        "value": 109,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2159767045:fewer_merchants:bp_merchant_2728:bp_2159767045"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_f2073880946c77395c7b5349",
+        "product_id": "bp_2157732664",
+        "field": "basket_plan_total",
+        "value": 165.3,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_f30b8c8cf786ed213851f0b9",
+        "product_id": "bp_2159767045",
+        "field": "feature:5359",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 5359,
+          "label": "Εντοιχιζόμενες",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_f38a949745c8a5a4870e62bd",
+        "product_id": "bp_2159767045",
+        "field": "feature:4818",
+        "value": "Με Ακροφύσιο Ατμού",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4818,
+          "label": "Ακροφύσιο Ατμού",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_fc2a340ae19c154f3b2137bb",
+        "product_id": "bp_2159767045",
+        "field": "feature:1062",
+        "value": "Μαύρο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2159767045:bp_2159767045"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1062,
+          "label": "Χρώμα",
+          "group": ""
+        }
+      }
+    ]
+  },
+  "uncertainty": []
+}

@@ -1,0 +1,949 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:17:53.153Z",
+  "outcome": "basket",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "ad3ba0ae-3a06-4094-a241-c60e2ea20c9f",
+    "revision": 2,
+    "fingerprint": "b83ea7c81170cd27b231250fb8156d04d27439d7747a9da167e7b697b72e93af",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "headphones",
+    "intent": "shop",
+    "query": "ακουστικά",
+    "constraints": {
+      "budgetEur": 150,
+      "statedBudgetEur": 150,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 150,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 150,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 56,
+            "end": 68,
+            "text": "έως 150 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [
+      {
+        "id": "wireless",
+        "label": "ασύρματη σύνδεση",
+        "hint": "bluetooth"
+      }
+    ],
+    "preferences": [
+      {
+        "id": "unverified_request_detail",
+        "label": "κάτι από όσα ζήτησες",
+        "preference": true,
+        "clauses": ["ενσύρματο ποντίκι"]
+      }
+    ],
+    "unresolved": [
+      {
+        "quote": "ενσύρματο ποντίκι",
+        "strength": "nice",
+        "reason": "unsupported_property",
+        "source_turn": 0,
+        "parameters": {
+          "quote": "ενσύρματο ποντίκι",
+          "strength": "must"
+        }
+      }
+    ],
+    "unreadable": ["ενσύρματο ποντίκι"],
+    "quotes": ["ασύρματα ακουστικά"],
+    "nonPricePhrases": ["ασύρματα ακουστικά", "ενσύρματο ποντίκι"],
+    "source_turns": [
+      {
+        "role": "user",
+        "content": "ενσύρματο ποντίκι"
+      }
+    ],
+    "transition": "amend"
+  },
+  "actions": [],
+  "status": "ready",
+  "mission": {
+    "intent": "basket",
+    "summary_el": "Κοινό καλάθι · Ακουστικά · Συνολικό όριο 150 €",
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 150,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 150,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 56,
+              "end": 68,
+              "text": "έως 150 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 150,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "wired",
+                "label": "ενσύρματη σύνδεση",
+                "hint": "ενσύρματο"
+              }
+            ]
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "wireless",
+                "label": "ασύρματη σύνδεση",
+                "hint": "bluetooth"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "primary": null,
+  "alternatives": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 150,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 150,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 56,
+            "end": 68,
+            "text": "έως 150 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 150,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wired",
+              "label": "ενσύρματη σύνδεση",
+              "hint": "ενσύρματο"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wireless",
+              "label": "ασύρματη σύνδεση",
+              "hint": "bluetooth"
+            }
+          ]
+        }
+      }
+    ],
+    "catalog_requirements": ["ασύρματη σύνδεση"]
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "price_history": null,
+  "candidate_summary": null,
+  "candidates": [
+    {
+      "product_id": "bp_2160295107",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160295107:bestprice_shopping_policy_v1:headphones",
+        "get_product_details:bp_2160295107:bp_2160295107",
+        "optimize_basket:bp_2160295107:balanced:bp_merchant_3837:bp_2160295107",
+        "optimize_basket:bp_2160295107:fewer_merchants:bp_merchant_1435:bp_2160295107",
+        "search_products:bp_2160295107:bp_2160295107"
+      ]
+    },
+    {
+      "product_id": "bp_2157364893",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "get_product_details:bp_2157364893:bp_2157364893",
+        "optimize_basket:bp_2157364893:balanced:bp_merchant_128:bp_2157364893",
+        "optimize_basket:bp_2157364893:fewer_merchants:bp_merchant_1435:bp_2157364893"
+      ]
+    },
+    {
+      "product_id": "bp_2155808380",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2155808380:bp_2155808380"]
+    },
+    {
+      "product_id": "bp_2155625772",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2155625772:bp_2155625772"]
+    },
+    {
+      "product_id": "bp_2150726319",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2150726319:bp_2150726319"]
+    },
+    {
+      "product_id": "bp_2156608080",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2156608080:bp_2156608080"]
+    },
+    {
+      "product_id": "bp_2150726317",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2150726317:bp_2150726317"]
+    },
+    {
+      "product_id": "bp_2153547976",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2153547976:bp_2153547976"]
+    },
+    {
+      "product_id": "bp_2154730954",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": ["get_product_details:bp_2154730954:bp_2154730954"]
+    },
+    {
+      "product_id": "bp_2164481537",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164481537:bestprice_shopping_policy_v1:headphones",
+        "get_product_details:bp_2164481537:bp_2164481537",
+        "search_products:bp_2164481537:bp_2164481537"
+      ]
+    },
+    {
+      "product_id": "bp_2163698335",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2163698335:bestprice_shopping_policy_v1:headphones",
+        "get_product_details:bp_2163698335:bp_2163698335",
+        "search_products:bp_2163698335:bp_2163698335"
+      ]
+    },
+    {
+      "product_id": "bp_2162546866",
+      "status": "disqualified",
+      "reason_codes": ["catalog_requirement:wireless"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2162546866:bestprice_shopping_policy_v1:headphones",
+        "get_product_details:bp_2162546866:bp_2162546866",
+        "search_products:bp_2162546866:bp_2162546866"
+      ]
+    },
+    {
+      "product_id": "bp_2157190566",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2157190566:bestprice_shopping_policy_v1:headphones",
+        "get_product_details:bp_2157190566:bp_2157190566",
+        "search_products:bp_2157190566:bp_2157190566"
+      ]
+    },
+    {
+      "product_id": "bp_2157653812",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2157653812:bestprice_shopping_policy_v1:headphones",
+        "get_product_details:bp_2157653812:bp_2157653812",
+        "search_products:bp_2157653812:bp_2157653812"
+      ]
+    },
+    {
+      "product_id": "bp_2159575649",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2159575649:bestprice_shopping_policy_v1:headphones",
+        "get_product_details:bp_2159575649:bp_2159575649",
+        "search_products:bp_2159575649:bp_2159575649"
+      ]
+    },
+    {
+      "product_id": "bp_2160052781",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2160052781:bestprice_shopping_policy_v1:headphones",
+        "get_product_details:bp_2160052781:bp_2160052781",
+        "search_products:bp_2160052781:bp_2160052781"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 2,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:17:52.658Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 6344,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 40,87€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 109,13€ κάτω από το συνολικό όριο των 150€.",
+  "comparison": null,
+  "basket": {
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "fewer_merchants",
+        "merchant_count": 1,
+        "item_subtotal": 44.9,
+        "shipping_total": 0,
+        "shipping_status": "known",
+        "total_price": 44.9,
+        "reliability_score": 5,
+        "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_1435",
+            "merchant_name": "Mobiletrade",
+            "merchant_rating": 5,
+            "verified_merchant": false,
+            "item_subtotal": 44.9,
+            "shipping_price": 0,
+            "shipping_status": "known",
+            "total_price": 44.9,
+            "reason": "covers_basket_with_one_merchant",
+            "items": [
+              {
+                "product_id": "bp_2160295107",
+                "title": "Xiaomi Redmi Buds 6 Ακουστικά Bluetooth In Ear Ανθεκτικά στο Νερό Night Black",
+                "quantity": 1,
+                "unit_price": 39,
+                "line_total": 39,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              },
+              {
+                "product_id": "bp_2157364893",
+                "title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+                "quantity": 1,
+                "unit_price": 5.9,
+                "line_total": 5.9,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "plan_type": "balanced",
+        "merchant_count": 2,
+        "item_subtotal": 34.37,
+        "shipping_total": 6.5,
+        "shipping_status": "known",
+        "total_price": 40.87,
+        "reliability_score": 4.9,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_128",
+            "merchant_name": "Msystems",
+            "merchant_rating": 4.9,
+            "verified_merchant": false,
+            "item_subtotal": 4,
+            "shipping_price": 2.5,
+            "shipping_status": "known",
+            "total_price": 6.5,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2157364893",
+                "title": "Logitech M90 Ενσύρματο Ποντίκι Grey",
+                "quantity": 1,
+                "unit_price": 4,
+                "line_total": 4,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          },
+          {
+            "merchant_id": "bp_merchant_3837",
+            "merchant_name": "Drele",
+            "merchant_rating": 4.9,
+            "verified_merchant": true,
+            "item_subtotal": 30.37,
+            "shipping_price": 4,
+            "shipping_status": "known",
+            "total_price": 34.37,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2160295107",
+                "title": "Xiaomi Redmi Buds 6 Ακουστικά Bluetooth In Ear Ανθεκτικά στο Νερό Night Black",
+                "quantity": 1,
+                "unit_price": 30.37,
+                "line_total": 30.37,
+                "decision_id": "[omitted]",
+                "product_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": [],
+    "warnings": [
+      "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+    ],
+    "as_of": "2026-10-12T10:17:53.046Z",
+    "currency": "EUR",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wired",
+              "label": "ενσύρματη σύνδεση",
+              "hint": "ενσύρματο"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wireless",
+              "label": "ασύρματη σύνδεση",
+              "hint": "bluetooth"
+            }
+          ]
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2157364893",
+        "catalog_price_eur": 3.66,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "product_id": "bp_2160295107",
+        "catalog_price_eur": 29.4,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 150
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wired",
+              "label": "ενσύρματη σύνδεση",
+              "hint": "ενσύρματο"
+            }
+          ]
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": [
+            {
+              "id": "wireless",
+              "label": "ασύρματη σύνδεση",
+              "hint": "bluetooth"
+            }
+          ]
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "mouse",
+        "label": "Ποντίκι",
+        "quantity": 1,
+        "product_id": "bp_2157364893",
+        "catalog_price_eur": 3.66,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "headphones",
+        "label": "Ακουστικά",
+        "quantity": 1,
+        "product_id": "bp_2160295107",
+        "catalog_price_eur": 29.4,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 150
+  },
+  "execution": {
+    "tools_used": ["search_products", "get_product_details", "optimize_basket"],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 518,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 1,
+      "understanding_requirements": 1,
+      "understanding_ms": 12,
+      "direct_recommendation": false,
+      "exact_route": false,
+      "catalog_search_calls": 2,
+      "search_products_calls": 2,
+      "search_products_failures": 0,
+      "search_products_invocations": 2,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 365,
+      "search_products_max_ms": 205,
+      "get_product_details_calls": 4,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 4,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 667,
+      "get_product_details_max_ms": 179,
+      "compare_offers_calls": 0,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 0,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 0,
+      "compare_offers_max_ms": 0,
+      "get_price_history_calls": 0,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 0,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 0,
+      "get_price_history_max_ms": 0,
+      "get_product_reviews_calls": 0,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 0,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 0,
+      "get_product_reviews_max_ms": 0,
+      "optimize_basket_calls": 1,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 1,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 106,
+      "optimize_basket_max_ms": 106,
+      "retrieval_page_candidates": 16,
+      "receipt_disqualified_candidates": 1,
+      "receipt_eligible_candidates": 15,
+      "receipt_review_requested": 0,
+      "receipt_review_available": 0,
+      "receipt_validation_ms": 4,
+      "brain_runtime_ms": 518,
+      "brain_finalization_ms": 31
+    }
+  },
+  "personalization": null
+}

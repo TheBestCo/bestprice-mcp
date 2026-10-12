@@ -1,0 +1,733 @@
+{
+  "started_at": "2026-10-12T10:09:17.021Z",
+  "expected_revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+  "scope": "anonymous public get_shopping_decision only; no links opened or account/Ask writes",
+  "start_health": {
+    "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+    "header": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+    "version": "1.8.4"
+  },
+  "deployment_error": "Unexpected token '<', \"<html><bod\"... is not valid JSON",
+  "finished_at": "2026-10-12T10:10:35.336Z",
+  "passed_count": 12,
+  "case_count": 24,
+  "cases": [
+    {
+      "id": "ambiguous_generic",
+      "message": "Θέλω κάτι καλό έως 300 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_generic"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:17.089Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 7552,
+      "metrics": {
+        "claims": 0,
+        "sources": 0,
+        "structured_bytes": 2725,
+        "retrieval": {
+          "scope": "not_searched",
+          "candidate_count": 0,
+          "complete_catalog": false,
+          "search_calls": 0,
+          "receipt": null
+        }
+      },
+      "elapsed_ms": 2637,
+      "response_receipt": "baseline-cases/ambiguous_generic-response.json"
+    },
+    {
+      "id": "ambiguous_pronoun",
+      "message": "Θέλω το δεύτερο, αλλά φθηνότερα.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_pronoun"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:19.727Z",
+      "passed": false,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 53242,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'recommendation'\n- 'clarification'\n",
+      "elapsed_ms": 3118,
+      "response_receipt": "baseline-cases/ambiguous_pronoun-response.json"
+    },
+    {
+      "id": "ambiguous_or_family",
+      "message": "Θέλω laptop ή tablet για σπουδές έως 600 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_or_family"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:22.846Z",
+      "passed": false,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 43630,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'recommendation'\n- 'clarification'\n",
+      "elapsed_ms": 3507,
+      "response_receipt": "baseline-cases/ambiguous_or_family-response.json"
+    },
+    {
+      "id": "ambiguous_two_budgets",
+      "message": "Θέλω laptop έως 500 ή 800 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_two_budgets"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:26.354Z",
+      "passed": false,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 69136,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'recommendation'\n- 'clarification'\n",
+      "elapsed_ms": 2871,
+      "response_receipt": "baseline-cases/ambiguous_two_budgets-response.json"
+    },
+    {
+      "id": "ambiguous_units",
+      "message": "Θέλω οθόνη 27 έως 250 ευρώ.",
+      "expectation": {
+        "id": "ambiguous_units"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:29.226Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 55161,
+      "metrics": {
+        "claims": 48,
+        "sources": 13,
+        "structured_bytes": 37034,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 8,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:09:30.547Z",
+            "source_observed_at": "2026-10-12T10:02:03.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 68,
+            "candidate_count": 32,
+            "eligible_count": 27,
+            "returned_count": 8,
+            "category_id": 2621,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 4107,
+      "response_receipt": "baseline-cases/ambiguous_units-response.json"
+    },
+    {
+      "id": "ambiguous_quality",
+      "message": "Θέλω καλό κινητό για φωτογραφίες έως 300 ευρώ.",
+      "expectation": {
+        "id": "ambiguous_quality"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:33.335Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 52022,
+      "metrics": {
+        "claims": 37,
+        "sources": 14,
+        "structured_bytes": 33810,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 24,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:09:35.544Z",
+            "source_observed_at": "2026-10-12T10:02:03.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 748,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 7325,
+      "response_receipt": "baseline-cases/ambiguous_quality-response.json"
+    },
+    {
+      "id": "ambiguous_missing_basket_budget",
+      "message": "Θέλω ποντίκι και ακουστικά. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_missing_basket_budget"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:40.662Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 13400,
+      "metrics": {
+        "claims": 0,
+        "sources": 0,
+        "structured_bytes": 5537,
+        "retrieval": {
+          "scope": "not_searched",
+          "candidate_count": 0,
+          "complete_catalog": false,
+          "search_calls": 0,
+          "receipt": null
+        }
+      },
+      "elapsed_ms": 1357,
+      "response_receipt": "baseline-cases/ambiguous_missing_basket_budget-response.json"
+    },
+    {
+      "id": "ambiguous_location_only",
+      "message": "ΤΚ 11527.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_location_only"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:42.022Z",
+      "passed": false,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 7921,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'no_match'\n- 'clarification'\n",
+      "elapsed_ms": 4199,
+      "response_receipt": "baseline-cases/ambiguous_location_only-response.json"
+    },
+    {
+      "id": "correct_price_twice",
+      "message": "Θέλω laptop έως 800 ευρώ με 16GB RAM. Διόρθωση: έως 400 ευρώ. Τελικό όριο: έως 600 ευρώ.",
+      "expectation": {
+        "outcome": "recommendation",
+        "budget": 600,
+        "maxConstraint": 600,
+        "id": "correct_price_twice"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:46.223Z",
+      "passed": false,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 44594,
+      "error": "latest maximum price\n\n400 !== 600\n",
+      "elapsed_ms": 2392,
+      "response_receipt": "baseline-cases/correct_price_twice-response.json"
+    },
+    {
+      "id": "correct_feature_twice",
+      "message": "Θέλω ποντίκι ασύρματο. Διόρθωση: ενσύρματο. Τελικά ασύρματο έως 40 ευρώ.",
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["wireless"],
+        "budget": 40,
+        "id": "correct_feature_twice"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:48.621Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 48811,
+      "metrics": {
+        "claims": 7,
+        "sources": 12,
+        "structured_bytes": 21574,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:09:49.824Z",
+            "source_observed_at": "2026-10-12T10:09:33.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1803,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2569,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 3570,
+      "response_receipt": "baseline-cases/correct_feature_twice-response.json"
+    },
+    {
+      "id": "correct_brand_reallow",
+      "message": "Θέλω κινητό όχι Samsung έως 400 ευρώ. Διόρθωση: μόνο Samsung με NFC.",
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["nfc"],
+        "budget": 400,
+        "only": "samsung",
+        "id": "correct_brand_reallow"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:09:52.193Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 58130,
+      "metrics": {
+        "claims": 54,
+        "sources": 13,
+        "structured_bytes": 39550,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 47,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:09:54.622Z",
+            "source_observed_at": "2026-10-12T10:09:33.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 39,
+            "candidate_count": 39,
+            "eligible_count": 39,
+            "returned_count": 39,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 10175,
+      "response_receipt": "baseline-cases/correct_brand_reallow-response.json"
+    },
+    {
+      "id": "correct_quantity",
+      "message": "Θέλω 2 ποντίκια και ακουστικά συνολικά έως 150 ευρώ. Διόρθωση: 1 ποντίκι και 2 ακουστικά συνολικά έως 100 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 100,
+        "quantities": [1, 2],
+        "full": true,
+        "id": "correct_quantity"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:02.370Z",
+      "passed": false,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 20584,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'clarification'\n- 'basket'\n",
+      "elapsed_ms": 5603,
+      "response_receipt": "baseline-cases/correct_quantity-response.json"
+    },
+    {
+      "id": "mixed_three",
+      "message": "Θέλω ποντίκι, ακουστικά και router, συνολικά έως 200 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 200,
+        "slots": 3,
+        "full": true,
+        "id": "mixed_three"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:07.975Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 78855,
+      "metrics": {
+        "claims": 130,
+        "sources": 11,
+        "structured_bytes": 58961,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 24,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:10:09.414Z",
+            "source_observed_at": "2026-10-12T10:09:33.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 240,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2627,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 4223,
+      "response_receipt": "baseline-cases/mixed_three-response.json"
+    },
+    {
+      "id": "mixed_appliances",
+      "message": "Θέλω καφετιέρα espresso χωρίς κάψουλες και air fryer από 4 έως 5 λίτρα, συνολικά έως 300 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 300,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_appliances"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:12.200Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 53594,
+      "metrics": {
+        "claims": 77,
+        "sources": 9,
+        "structured_bytes": 37946,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 4,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:10:14.118Z",
+            "source_observed_at": "2026-10-12T10:09:33.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1173,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 8535,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 3075,
+      "response_receipt": "baseline-cases/mixed_appliances-response.json"
+    },
+    {
+      "id": "mixed_phone_monitor",
+      "message": "Θέλω κινητό με NFC και οθόνη 24 ιντσών, συνολικά έως 500 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 500,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_phone_monitor"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:15.289Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 70000,
+      "metrics": {
+        "claims": 125,
+        "sources": 9,
+        "structured_bytes": 54155,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:10:17.620Z",
+            "source_observed_at": "2026-10-12T10:09:33.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 2539,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 5516,
+      "response_receipt": "baseline-cases/mixed_phone_monitor-response.json"
+    },
+    {
+      "id": "mixed_wired_mouse_headphones",
+      "message": "Θέλω ενσύρματο ποντίκι και ασύρματα ακουστικά, συνολικά έως 150 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 150,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_wired_mouse_headphones"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:20.811Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 56154,
+      "metrics": {
+        "claims": 83,
+        "sources": 8,
+        "structured_bytes": 40072,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:10:22.985Z",
+            "source_observed_at": "2026-10-12T10:09:33.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 6344,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 4769,
+      "response_receipt": "baseline-cases/mixed_wired_mouse_headphones-response.json"
+    },
+    {
+      "id": "mixed_exclusion_scope",
+      "message": "Θέλω laptop όχι Lenovo και ποντίκι Logitech, συνολικά έως 700 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 700,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_exclusion_scope"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:25.585Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 64836,
+      "metrics": {
+        "claims": 96,
+        "sources": 11,
+        "structured_bytes": 46599,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:10:27.314Z",
+            "source_observed_at": "2026-10-12T10:09:33.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 2781,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 2845,
+      "response_receipt": "baseline-cases/mixed_exclusion_scope-response.json"
+    },
+    {
+      "id": "mixed_each_budget",
+      "message": "Θέλω ποντίκι έως 30 ευρώ, ακουστικά έως 60 ευρώ και router έως 80 ευρώ, συνολικά έως 150 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 150,
+        "slots": 3,
+        "full": true,
+        "id": "mixed_each_budget"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:28.436Z",
+      "passed": true,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 65926,
+      "metrics": {
+        "claims": 102,
+        "sources": 8,
+        "structured_bytes": 48117,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 24,
+          "complete_catalog": false,
+          "search_calls": 4,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T10:10:29.850Z",
+            "source_observed_at": "2026-10-12T10:09:33.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 89,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2627,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 2826,
+      "response_receipt": "baseline-cases/mixed_each_budget-response.json"
+    },
+    {
+      "id": "mixed_infeasible_floors",
+      "message": "Θέλω ποντίκι από 50 έως 70 ευρώ και ακουστικά από 60 έως 80 ευρώ, συνολικά έως 100 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "total": 100,
+        "id": "mixed_infeasible_floors"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:10:31.266Z",
+      "passed": false,
+      "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+      "transport_bytes": 642,
+      "error": "{\"schema_version\":\"2.0\",\"as_of\":\"2026-10-12T10:10:31.300Z\",\"currency\":\"EUR\",\"locale\":\"el-GR\",\"warnings\":[],\"error\":{\"code\":\"REQUEST_DEADLINE_EXCEEDED\",\"message\":\"The BestPrice request deadline was exceeded. Please retry.\",\"retryable\":true}}",
+      "elapsed_ms": 3937,
+      "response_receipt": "baseline-cases/mixed_infeasible_floors-response.json"
+    },
+    {
+      "id": "mixed_same_family",
+      "message": "Θέλω ένα ενσύρματο ποντίκι και ένα ασύρματο ποντίκι, συνολικά έως 80 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 80,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_same_family"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:35.207Z",
+      "passed": false,
+      "revision": null,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ null\n- '77b594bd8d526e004c8f38b4d30c15caee91ba4f'\n",
+      "elapsed_ms": 10
+    },
+    {
+      "id": "mixed_unknown_slot",
+      "message": "Θέλω ποντίκι και κάτι καλό για την κουζίνα, συνολικά έως 200 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "mixed_unknown_slot"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:10:35.221Z",
+      "passed": false,
+      "revision": null,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ null\n- '77b594bd8d526e004c8f38b4d30c15caee91ba4f'\n",
+      "elapsed_ms": 35
+    },
+    {
+      "id": "mixed_or_slot",
+      "message": "Θέλω laptop και ποντίκι ή ακουστικά, συνολικά έως 700 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "mixed_or_slot"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:10:35.259Z",
+      "passed": false,
+      "revision": null,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ null\n- '77b594bd8d526e004c8f38b4d30c15caee91ba4f'\n",
+      "elapsed_ms": 15
+    },
+    {
+      "id": "mixed_remove_slot",
+      "message": "Θέλω laptop, οθόνη και ποντίκι συνολικά έως 900 ευρώ. Διόρθωση: μόνο laptop και ποντίκι, συνολικά έως 650 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "basket",
+        "total": 650,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_remove_slot"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T10:10:35.278Z",
+      "passed": false,
+      "revision": null,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ null\n- '77b594bd8d526e004c8f38b4d30c15caee91ba4f'\n",
+      "elapsed_ms": 27
+    },
+    {
+      "id": "ambiguous_optional",
+      "message": "Θέλω ασύρματο ποντίκι έως 40 ευρώ, ενσύρματο μόνο αν δεν υπάρχει ασύρματο.",
+      "expectation": {
+        "id": "ambiguous_optional"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T10:10:35.317Z",
+      "passed": false,
+      "revision": null,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ null\n- '77b594bd8d526e004c8f38b4d30c15caee91ba4f'\n",
+      "elapsed_ms": 9
+    }
+  ]
+}

@@ -1,0 +1,1023 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:17:42.701Z",
+  "outcome": "recommendation",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "34f9b315-e320-4782-a0ec-961fd002ea56",
+    "revision": 1,
+    "fingerprint": "fc2a33ca5516b74a959514dbe4168ddc064a47d0f2d3fe16f26643547753057d",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "monitor",
+    "intent": "shop",
+    "query": "οθόνη 27\"",
+    "constraints": {
+      "budgetEur": 250,
+      "statedBudgetEur": 250,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 250,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 250,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 14,
+            "end": 26,
+            "text": "έως 250 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {
+      "screen_27_inch": ["οθόνη 27"]
+    },
+    "requirements": [
+      {
+        "id": "screen_27_inch",
+        "label": "οθόνη 27 ιντσών"
+      }
+    ],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": ["οθόνη 27"],
+    "nonPricePhrases": ["οθόνη 27"],
+    "source_turns": [
+      {
+        "role": "user",
+        "content": "οθόνη 27"
+      }
+    ],
+    "transition": "start"
+  },
+  "actions": [
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_0",
+      "type": "refine",
+      "message": "Βρες κάτι φθηνότερο από το Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "product_ids": []
+    },
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_1",
+      "type": "compare",
+      "message": "Σύγκρινε αναλυτικά το Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms με το Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms.",
+      "product_ids": ["bp_2163663957", "bp_2160331924", "bp_2163375863"]
+    }
+  ],
+  "status": "ready",
+  "mission": {
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Οθόνη υπολογιστή · Έως 250 €",
+    "constraints": {
+      "maximum_price_eur": 250,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 250,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 250,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 14,
+              "end": 26,
+              "text": "έως 250 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "primary": {
+    "product_id": "bp_2163663957",
+    "title": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+    "brand": "Dell",
+    "model": "Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms",
+    "variant": "210-BTSP",
+    "category_title": "Οθόνες Υπολογιστών",
+    "price_from": 109.88,
+    "rating": null,
+    "offer_count": 43,
+    "availability": "in_stock",
+    "product_url": "[omitted]",
+    "image_url": "[omitted]",
+    "ram_gb": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "dual_basket": null
+  },
+  "alternatives": [
+    {
+      "product": {
+        "product_id": "bp_2160331924",
+        "title": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+        "brand": "Samsung",
+        "model": "Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms",
+        "variant": "LS27D302GAUXEN",
+        "category_title": "Οθόνες Υπολογιστών",
+        "price_from": 89,
+        "rating": null,
+        "offer_count": 46,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "Εξοικονόμησε 20,88€",
+      "tradeoff": "Χαμηλότερος ρυθμός ανανέωσης",
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_221525467",
+          "merchant_id": "bp_merchant_6426",
+          "merchant_name": "Welcomestores",
+          "merchant_rating": 4,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 89,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "price_checked_at": "2026-10-12T10:17:42.627Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_221525467",
+          "merchant_id": "bp_merchant_6426",
+          "merchant_name": "Welcomestores",
+          "merchant_rating": 4,
+          "merchant_rating_count": 4,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 89,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "in_stock",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "Άμεσα διαθέσιμο",
+          "price_checked_at": "2026-10-12T10:17:42.627Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 250,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    },
+    {
+      "product": {
+        "product_id": "bp_2163375863",
+        "title": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+        "brand": "Xiaomi",
+        "model": "Xiaomi G27i 2026 IPS HDR Gaming Monitor 27\" 1920x1080 FHD 200Hz 1ms",
+        "variant": "ELA6370EU",
+        "category_title": "Οθόνες Υπολογιστών",
+        "price_from": 114.53,
+        "rating": null,
+        "offer_count": 25,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "4,65€ ακριβότερο",
+      "tradeoff": "Δεν συνέκρινα: βαθμολογία αγοραστών BestPrice",
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_206818893",
+          "merchant_id": "bp_merchant_3805",
+          "merchant_name": "Dexter",
+          "merchant_rating": 3.94,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 114.53,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:17:42.627Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_206818893",
+          "merchant_id": "bp_merchant_3805",
+          "merchant_name": "Dexter",
+          "merchant_rating": 3.94,
+          "merchant_rating_count": 18,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 114.53,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_8_14_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "8–14 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:17:42.627Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 250,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    }
+  ],
+  "constraints": {
+    "maximum_price_eur": 250,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "catalog_requirements": ["οθόνη 27 ιντσών"],
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 250,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 250,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 14,
+            "end": 26,
+            "text": "έως 250 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [
+    "Δίνει υψηλότερο ρυθμό ανανέωσης. Καλύπτει τα εξής κριτήρια: έως 250€ και οθόνη 27 ιντσών.",
+    "Η επόμενη, ακριβότερη επιλογή κοστίζει 4,65€ παραπάνω, χωρίς να προσφέρει κάτι επιπλέον σε όσα ζήτησες. Δεν συνέκρινα: βαθμολογία αγοραστών BestPrice.",
+    "Η σημερινή τιμή είναι χαμηλότερη από τη συνηθισμένη των 30, 90 και 180 ημερών, πριν τα μεταφορικά."
+  ],
+  "tradeoffs": [
+    "Κοστίζει 20,88€ παραπάνω από τη φθηνότερη επιλογή που καλύπτει όσα ζήτησες (Samsung Essential S3 S30GD, 89€).",
+    "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+    "MobileHub: βαθμολογία καταστήματος 3,89/5 από 106 αξιολογήσεις; δηλωμένη διαθεσιμότητα «4–10 εργάσιμες ημέρες» (εκτίμηση καταστήματος)."
+  ],
+  "offer_summary": {
+    "postal_code": null,
+    "price_basis": "item_price",
+    "affordability": "within_item_budget_delivery_unknown",
+    "offer_scope": "returned_sample",
+    "delivery_affordability_proven": false,
+    "recommended": {
+      "offer_id": "bp_offer_216155699",
+      "merchant_id": "bp_merchant_15392",
+      "merchant_name": "MobileHub",
+      "merchant_rating": 3.89,
+      "merchant_rating_count": 106,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 109.88,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_4_10_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "4–10 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:17:42.627Z"
+    },
+    "cheapest": {
+      "offer_id": "bp_offer_216155699",
+      "merchant_id": "bp_merchant_15392",
+      "merchant_name": "MobileHub",
+      "merchant_rating": 3.89,
+      "merchant_rating_count": 106,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 109.88,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_4_10_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "4–10 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:17:42.627Z"
+    },
+    "same_offer": true,
+    "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+    "budget_eur": 250,
+    "recommended_within_budget": true,
+    "cheapest_within_budget": true,
+    "compared_offer_count": 10,
+    "unknown_shipping_count": 10
+  },
+  "price_history": {
+    "current_price": 109.88,
+    "quote_consistency": "matched",
+    "current_price_source": "live_offer_minimum",
+    "source_last_observed_at": "2026-10-12T10:17:42.628Z",
+    "period_days": 180,
+    "window_stats": [
+      {
+        "days": 30,
+        "minimum_price": 109.88,
+        "median_price": 117,
+        "observations": 30,
+        "coverage_pct": 100
+      },
+      {
+        "days": 90,
+        "minimum_price": 109.88,
+        "median_price": 123.48,
+        "observations": 90,
+        "coverage_pct": 100
+      },
+      {
+        "days": 180,
+        "minimum_price": 109.88,
+        "median_price": 124,
+        "observations": 179,
+        "coverage_pct": 99.4
+      }
+    ],
+    "minimum_price": 109.88,
+    "median_price": 124,
+    "observations": 179,
+    "coverage_pct": 99.4,
+    "delta_vs_median_pct": -11.39,
+    "deal_classification": "excellent_price",
+    "methodology_id": "bestprice_daily_min_v1",
+    "data_gaps": {
+      "missing_days": 1,
+      "longest_gap_days": 1,
+      "stale_days": 0,
+      "coverage_note": "1 ημέρα δεν είχε έγκυρη ημερήσια παρατήρηση."
+    },
+    "warnings": [],
+    "series": [
+      {
+        "date": "2026-04-16",
+        "price": 128
+      },
+      {
+        "date": "2026-04-22",
+        "price": 128
+      },
+      {
+        "date": "2026-05-01",
+        "price": 128
+      },
+      {
+        "date": "2026-05-11",
+        "price": 128
+      },
+      {
+        "date": "2026-05-14",
+        "price": 138
+      },
+      {
+        "date": "2026-05-15",
+        "price": 124
+      },
+      {
+        "date": "2026-05-24",
+        "price": 124
+      },
+      {
+        "date": "2026-06-02",
+        "price": 128
+      },
+      {
+        "date": "2026-06-11",
+        "price": 123
+      },
+      {
+        "date": "2026-06-19",
+        "price": 123
+      },
+      {
+        "date": "2026-06-30",
+        "price": 134
+      },
+      {
+        "date": "2026-07-08",
+        "price": 124
+      },
+      {
+        "date": "2026-07-15",
+        "price": 124
+      },
+      {
+        "date": "2026-07-21",
+        "price": 124
+      },
+      {
+        "date": "2026-07-29",
+        "price": 114.95
+      },
+      {
+        "date": "2026-08-09",
+        "price": 123.48
+      },
+      {
+        "date": "2026-08-16",
+        "price": 123.48
+      },
+      {
+        "date": "2026-08-24",
+        "price": 124
+      },
+      {
+        "date": "2026-09-02",
+        "price": 124.9
+      },
+      {
+        "date": "2026-09-10",
+        "price": 117
+      },
+      {
+        "date": "2026-09-16",
+        "price": 117
+      },
+      {
+        "date": "2026-09-24",
+        "price": 117
+      },
+      {
+        "date": "2026-10-05",
+        "price": 117.65
+      },
+      {
+        "date": "2026-10-12",
+        "price": 109.88
+      }
+    ]
+  },
+  "candidate_summary": {
+    "scope": "returned_candidates",
+    "returned_count": 8,
+    "eligible_count": 8,
+    "rejected_count": 0,
+    "rejection_counts": {},
+    "search_fallback_applied": false,
+    "delivered_totals_checked": 8,
+    "delivered_totals_known": 0
+  },
+  "candidates": [
+    {
+      "product_id": "bp_2160331924",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2160331924:bp_offer_176421652",
+        "compare_offers:bp_2160331924:bp_offer_176559711",
+        "compare_offers:bp_2160331924:bp_offer_176599052",
+        "compare_offers:bp_2160331924:bp_offer_179694513",
+        "compare_offers:bp_2160331924:bp_offer_184692849",
+        "compare_offers:bp_2160331924:bp_offer_206954293",
+        "compare_offers:bp_2160331924:bp_offer_209039432",
+        "compare_offers:bp_2160331924:bp_offer_219318152",
+        "compare_offers:bp_2160331924:bp_offer_221525467",
+        "compare_offers:bp_2160331924:bp_offer_227266516",
+        "compare_offers:bp_2160331924:check",
+        "get_product_details:bp_2160331924:bp_2160331924",
+        "search_products:bp_2160331924:bp_2160331924"
+      ]
+    },
+    {
+      "product_id": "bp_2163663957",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2163663957:bp_offer_208030892",
+        "compare_offers:bp_2163663957:bp_offer_208498741",
+        "compare_offers:bp_2163663957:bp_offer_209390108",
+        "compare_offers:bp_2163663957:bp_offer_209434041",
+        "compare_offers:bp_2163663957:bp_offer_211823216",
+        "compare_offers:bp_2163663957:bp_offer_212097800",
+        "compare_offers:bp_2163663957:bp_offer_212497029",
+        "compare_offers:bp_2163663957:bp_offer_216155699",
+        "compare_offers:bp_2163663957:bp_offer_216806833",
+        "compare_offers:bp_2163663957:bp_offer_224388126",
+        "compare_offers:bp_2163663957:check",
+        "get_price_history:bp_2163663957:bp_2163663957",
+        "get_product_details:bp_2163663957:bp_2163663957",
+        "search_products:bp_2163663957:bp_2163663957"
+      ]
+    },
+    {
+      "product_id": "bp_2163375863",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2163375863:bp_offer_203391439",
+        "compare_offers:bp_2163375863:bp_offer_205495917",
+        "compare_offers:bp_2163375863:bp_offer_206151888",
+        "compare_offers:bp_2163375863:bp_offer_206818893",
+        "compare_offers:bp_2163375863:bp_offer_206824387",
+        "compare_offers:bp_2163375863:bp_offer_207144094",
+        "compare_offers:bp_2163375863:bp_offer_208051960",
+        "compare_offers:bp_2163375863:bp_offer_215277406",
+        "compare_offers:bp_2163375863:bp_offer_220476064",
+        "compare_offers:bp_2163375863:bp_offer_221919242",
+        "compare_offers:bp_2163375863:check",
+        "get_product_details:bp_2163375863:bp_2163375863",
+        "search_products:bp_2163375863:bp_2163375863"
+      ]
+    },
+    {
+      "product_id": "bp_2163493438",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2163493438:bp_offer_205718769",
+        "compare_offers:bp_2163493438:bp_offer_207127692",
+        "compare_offers:bp_2163493438:bp_offer_207254901",
+        "compare_offers:bp_2163493438:bp_offer_209521284",
+        "compare_offers:bp_2163493438:bp_offer_209709265",
+        "compare_offers:bp_2163493438:bp_offer_210406505",
+        "compare_offers:bp_2163493438:bp_offer_225919178",
+        "compare_offers:bp_2163493438:bp_offer_227038306",
+        "compare_offers:bp_2163493438:check",
+        "get_product_details:bp_2163493438:bp_2163493438",
+        "search_products:bp_2163493438:bp_2163493438"
+      ]
+    },
+    {
+      "product_id": "bp_2159511435",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2159511435:bp_offer_152352180",
+        "compare_offers:bp_2159511435:bp_offer_152468183",
+        "compare_offers:bp_2159511435:bp_offer_161886294",
+        "compare_offers:bp_2159511435:bp_offer_165016184",
+        "compare_offers:bp_2159511435:bp_offer_170233170",
+        "compare_offers:bp_2159511435:bp_offer_179696732",
+        "compare_offers:bp_2159511435:bp_offer_182614811",
+        "compare_offers:bp_2159511435:bp_offer_195149550",
+        "compare_offers:bp_2159511435:bp_offer_202307435",
+        "compare_offers:bp_2159511435:bp_offer_222354589",
+        "compare_offers:bp_2159511435:check",
+        "get_product_details:bp_2159511435:bp_2159511435",
+        "get_product_reviews:bp_2159511435:bp_2159511435",
+        "search_products:bp_2159511435:bp_2159511435"
+      ]
+    },
+    {
+      "product_id": "bp_2156190430",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2156190430:bp_offer_166906268",
+        "compare_offers:bp_2156190430:bp_offer_186121496",
+        "compare_offers:bp_2156190430:bp_offer_194605011",
+        "compare_offers:bp_2156190430:bp_offer_195827168",
+        "compare_offers:bp_2156190430:bp_offer_217187275",
+        "compare_offers:bp_2156190430:bp_offer_56415829",
+        "compare_offers:bp_2156190430:bp_offer_85053753",
+        "compare_offers:bp_2156190430:bp_offer_87596168",
+        "compare_offers:bp_2156190430:bp_offer_87719338",
+        "compare_offers:bp_2156190430:bp_offer_88399528",
+        "compare_offers:bp_2156190430:check",
+        "get_product_details:bp_2156190430:bp_2156190430",
+        "search_products:bp_2156190430:bp_2156190430"
+      ]
+    },
+    {
+      "product_id": "bp_2163092926",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2163092926:bp_offer_201108852",
+        "compare_offers:bp_2163092926:bp_offer_201195579",
+        "compare_offers:bp_2163092926:bp_offer_201694903",
+        "compare_offers:bp_2163092926:bp_offer_208568252",
+        "compare_offers:bp_2163092926:bp_offer_210718865",
+        "compare_offers:bp_2163092926:bp_offer_210740625",
+        "compare_offers:bp_2163092926:bp_offer_210901991",
+        "compare_offers:bp_2163092926:bp_offer_213052561",
+        "compare_offers:bp_2163092926:bp_offer_216063340",
+        "compare_offers:bp_2163092926:bp_offer_219318043",
+        "compare_offers:bp_2163092926:check",
+        "get_product_details:bp_2163092926:bp_2163092926",
+        "search_products:bp_2163092926:bp_2163092926"
+      ]
+    },
+    {
+      "product_id": "bp_2163092927",
+      "status": "eligible",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2163092927:bp_offer_202565738",
+        "compare_offers:bp_2163092927:bp_offer_203073985",
+        "compare_offers:bp_2163092927:bp_offer_207626492",
+        "compare_offers:bp_2163092927:bp_offer_210500945",
+        "compare_offers:bp_2163092927:bp_offer_210513362",
+        "compare_offers:bp_2163092927:bp_offer_210735974",
+        "compare_offers:bp_2163092927:bp_offer_210814187",
+        "compare_offers:bp_2163092927:bp_offer_211423746",
+        "compare_offers:bp_2163092927:bp_offer_213103546",
+        "compare_offers:bp_2163092927:bp_offer_219318010",
+        "compare_offers:bp_2163092927:check",
+        "get_product_details:bp_2163092927:bp_2163092927",
+        "search_products:bp_2163092927:bp_2163092927"
+      ]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 8,
+    "complete_catalog": false,
+    "search_calls": 1,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:17:41.976Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 68,
+      "candidate_count": 32,
+      "eligible_count": 27,
+      "returned_count": 8,
+      "category_id": 2621,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [
+    {
+      "code": "ranking_calibration",
+      "product_id": "bp_2163663957",
+      "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+    },
+    {
+      "code": "landed_cost_unknown",
+      "product_id": "bp_2163663957",
+      "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+    }
+  ],
+  "price_verdict": {
+    "verdict": "good",
+    "reason": "below_typical_across_usable_windows",
+    "source_ids": ["get_price_history:bp_2163663957:bp_2163663957"],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "",
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "execution": {
+    "tools_used": [
+      "search_products",
+      "get_product_details",
+      "compare_offers",
+      "get_price_history",
+      "get_product_reviews"
+    ],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 831,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 1,
+      "understanding_ms": 92,
+      "direct_recommendation": true,
+      "exact_route": false,
+      "catalog_search_calls": 1,
+      "search_products_calls": 1,
+      "search_products_failures": 0,
+      "search_products_invocations": 1,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 322,
+      "search_products_max_ms": 322,
+      "get_product_details_calls": 2,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 2,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 506,
+      "get_product_details_max_ms": 317,
+      "compare_offers_calls": 8,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 8,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 71,
+      "compare_offers_max_ms": 11,
+      "get_price_history_calls": 1,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 1,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 23,
+      "get_price_history_max_ms": 23,
+      "get_product_reviews_calls": 8,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 8,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 295,
+      "get_product_reviews_max_ms": 45,
+      "optimize_basket_calls": 0,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 0,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 0,
+      "optimize_basket_max_ms": 0,
+      "retrieval_page_candidates": 8,
+      "receipt_disqualified_candidates": 0,
+      "receipt_eligible_candidates": 8,
+      "receipt_review_requested": 8,
+      "receipt_review_available": 1,
+      "receipt_validation_ms": 13,
+      "brain_runtime_ms": 831,
+      "brain_finalization_ms": 33
+    }
+  },
+  "personalization": null,
+  "follow_ups": [
+    {
+      "id": "cheaper",
+      "label": "Κάτι φθηνότερο",
+      "message": "Βρες κάτι φθηνότερο από το Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms, κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_0"
+      }
+    },
+    {
+      "id": "compare",
+      "label": "Σύγκρινε τις επιλογές",
+      "message": "Σύγκρινε αναλυτικά το Dell SE2726HG IPS HDR Gaming Monitor 27\" 1920x1080 FHD 240Hz 5ms με το Samsung Essential S3 S30GD IPS HDR Monitor 27\" 1920x1080 FHD 100Hz 5ms.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_1"
+      }
+    }
+  ],
+  "coverage": {
+    "policy_version": "ask_beta_coverage_v1",
+    "family": "monitor",
+    "reason": "catalog_family_verified",
+    "supported": true
+  },
+  "spend_walk": {
+    "version": "ask_spend_walk_v1",
+    "category_schema": "monitors",
+    "comparison_status": "consistent",
+    "use_case": "general",
+    "price_basis": "item_price",
+    "ranking": null,
+    "budget_eur": 250,
+    "base": {
+      "product_id": "bp_2160331924",
+      "fit": 48.3,
+      "price_eur": 89
+    },
+    "winner": {
+      "product_id": "bp_2163663957",
+      "fit": 75,
+      "reason": "fit",
+      "price_eur": 109.88
+    },
+    "next": {
+      "product_id": "bp_2163375863",
+      "price_eur": 114.53,
+      "delta_fit": 0,
+      "delta_eur": 4.65,
+      "accepted": false
+    },
+    "steps": [
+      {
+        "product_id": "bp_2163663957",
+        "price_eur": 109.88,
+        "delta_fit": 20,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": ["refresh_rate_hz", "resolution", "panel_type"],
+        "delta_eur": 20.88,
+        "fit_per_eur": 0.958,
+        "threshold": 0.076,
+        "accepted": true,
+        "selected": true,
+        "selection_reason": "fit",
+        "premium_reference_eur": 89,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 20.88
+      },
+      {
+        "product_id": "bp_2163375863",
+        "price_eur": 114.53,
+        "delta_fit": 0,
+        "fit_relation": "equal_measured_fit",
+        "compared_attributes": ["refresh_rate_hz", "resolution", "panel_type"],
+        "delta_eur": 4.65,
+        "fit_per_eur": 0,
+        "threshold": 0.078,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 109.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 4.65
+      },
+      {
+        "product_id": "bp_2156190430",
+        "price_eur": 123,
+        "delta_fit": -26.2,
+        "fit_relation": "worse_supported_fit",
+        "compared_attributes": ["refresh_rate_hz", "resolution", "panel_type"],
+        "delta_eur": 13.12,
+        "fit_per_eur": -1.997,
+        "threshold": 0.08,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 109.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 13.12
+      },
+      {
+        "product_id": "bp_2163493438",
+        "price_eur": 138,
+        "delta_fit": -9,
+        "fit_relation": "worse_supported_fit",
+        "compared_attributes": ["refresh_rate_hz", "resolution", "panel_type"],
+        "delta_eur": 28.12,
+        "fit_per_eur": -0.32,
+        "threshold": 0.086,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 109.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 28.12
+      },
+      {
+        "product_id": "bp_2163092927",
+        "price_eur": 148.3,
+        "delta_fit": -30,
+        "fit_relation": "worse_supported_fit",
+        "compared_attributes": ["refresh_rate_hz", "resolution", "panel_type"],
+        "delta_eur": 38.42,
+        "fit_per_eur": -0.781,
+        "threshold": 0.09,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 109.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 38.42
+      },
+      {
+        "product_id": "bp_2163092926",
+        "price_eur": 148.5,
+        "delta_fit": -30,
+        "fit_relation": "worse_supported_fit",
+        "compared_attributes": ["refresh_rate_hz", "resolution", "panel_type"],
+        "delta_eur": 38.62,
+        "fit_per_eur": -0.777,
+        "threshold": 0.09,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 109.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 38.62
+      },
+      {
+        "product_id": "bp_2159511435",
+        "price_eur": 193,
+        "delta_fit": -20,
+        "fit_relation": "worse_supported_fit",
+        "compared_attributes": ["refresh_rate_hz", "resolution", "panel_type"],
+        "delta_eur": 83.12,
+        "fit_per_eur": -0.241,
+        "threshold": 0.11,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 109.88,
+        "premium_allowance_eur": 20,
+        "cumulative_premium_eur": 83.12
+      }
+    ]
+  }
+}

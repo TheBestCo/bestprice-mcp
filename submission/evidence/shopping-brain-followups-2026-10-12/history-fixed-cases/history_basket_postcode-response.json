@@ -1,0 +1,1432 @@
+{
+  "schema_version": "2.0",
+  "as_of": "2026-10-12T10:16:36.283Z",
+  "currency": "EUR",
+  "locale": "el-GR",
+  "warnings": [],
+  "brain": {
+    "projection_version": "bestprice_mcp_decision_v1",
+    "decision_version": "bestprice_decision_v1",
+    "decision_id": "[omitted]",
+    "evidence_fingerprint": "1960046fd88b56b294b6e6283e5bace7878b889b13c87e4cfe902ae79291da1b"
+  },
+  "outcome": "basket",
+  "status": "ready",
+  "answer": "Προτείνω το ισορροπημένο πλάνο: 571,49€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 228,51€ κάτω από το συνολικό όριο των 800€.",
+  "reason": null,
+  "message": null,
+  "blocking_constraints": [],
+  "recommended_product_id": null,
+  "alternatives": [],
+  "products": [],
+  "constraints": {
+    "maximum_price_eur": null,
+    "minimum_ram_gb": null,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "postal_code": "11527",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 800,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 800,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 41,
+            "end": 53,
+            "text": "έως 800 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "minimum_price_eur": null,
+    "total_budget_eur": 800,
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "catalog_requirements": []
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "comparison": null,
+  "basket": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T10:16:36.232Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "preferred_plan": "balanced",
+    "methodology_id": "bestprice_basket_bounded_v1",
+    "plans": [
+      {
+        "plan_type": "balanced",
+        "merchant_count": 2,
+        "item_subtotal": 553.49,
+        "shipping_total": 18,
+        "shipping_status": "known",
+        "total_price": 571.49,
+        "reliability_score": 5,
+        "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+        "merchants": [
+          {
+            "merchant_id": "bp_merchant_220",
+            "merchant_name": "Syncom",
+            "merchant_rating": 5,
+            "verified_merchant": false,
+            "item_subtotal": 123.5,
+            "shipping_price": 14.5,
+            "shipping_status": "known",
+            "total_price": 138,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2158096886",
+                "title": "AOC 25G3ZM VA Gaming Monitor 24.5\" 1920x1080 FHD 240Hz 1ms",
+                "quantity": 1,
+                "unit_price": 123.5,
+                "line_total": 123.5,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          },
+          {
+            "merchant_id": "bp_merchant_11804",
+            "merchant_name": "Telephoneplus",
+            "merchant_rating": 5,
+            "verified_merchant": false,
+            "item_subtotal": 429.99,
+            "shipping_price": 3.5,
+            "shipping_status": "known",
+            "total_price": 433.49,
+            "reason": "selected_by_basket_optimizer",
+            "items": [
+              {
+                "product_id": "bp_2164551997",
+                "title": "Energizer EnergyBook Φορητός Υπολογιστής Ροζ (6500Y/8GB/256GB SSD/Windows 11)",
+                "quantity": 1,
+                "unit_price": 429.99,
+                "line_total": 429.99,
+                "decision_id": "[omitted]",
+                "bestprice_url": "[omitted]"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "unavailable_items": []
+  },
+  "basket_request": {
+    "version": "bestprice_basket_request_v1",
+    "requested_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "requirements": {
+          "price_requirements": {
+            "version": "shopping_price_constraints_v1",
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "unsupported": [],
+            "clauses": [],
+            "conflicts": []
+          },
+          "constraints": {
+            "budgetEur": null,
+            "minimumRamGb": null,
+            "minimumRamAssumed": false,
+            "requiresWindows": false,
+            "peopleCount": null,
+            "capacityLitres": null,
+            "capacityAssumed": false,
+            "capacityInferred": false,
+            "differentCapacityFromLitres": null,
+            "requiresDualBasket": null,
+            "screenInches": null,
+            "roomSqm": null,
+            "statedCoolingBtu": null,
+            "schoolUse": false,
+            "designUse": false
+          },
+          "catalog_requirements": []
+        }
+      }
+    ],
+    "resolved_slots": [
+      {
+        "slot_id": "slot_1",
+        "family": "laptop",
+        "label": "Laptop",
+        "quantity": 1,
+        "product_id": "bp_2164551997",
+        "catalog_price_eur": 429.99,
+        "selection_reason": "calibrated_spend_walk"
+      },
+      {
+        "slot_id": "slot_2",
+        "family": "monitor",
+        "label": "Οθόνη υπολογιστή",
+        "quantity": 1,
+        "product_id": "bp_2158096886",
+        "catalog_price_eur": 88.75,
+        "selection_reason": "calibrated_spend_walk"
+      }
+    ],
+    "unresolved_slots": [],
+    "total_budget_eur": 800
+  },
+  "clarifications": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "requires_user_action": true,
+    "bestprice_url": "[omitted]"
+  },
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "basket_objective",
+    "commercial_signals_used": false
+  },
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 2,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:16:36.057Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 2539,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 8,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "shopping_context": {
+    "version": "bestprice_shopping_context_v32",
+    "products": [
+      {
+        "product_id": "bp_2158096886",
+        "family": "monitors",
+        "attributes": [
+          {
+            "key": "screen_diagonal_inches",
+            "unit": "inch",
+            "status": "known",
+            "value": 24.5,
+            "claim_ids": ["claim_8930ef294187ce6a09ff7c7e"],
+            "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"]
+          },
+          {
+            "key": "refresh_rate_hz",
+            "unit": "Hz",
+            "status": "known",
+            "value": 240,
+            "claim_ids": ["claim_288ae57dbd004adababe3f61"],
+            "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"]
+          },
+          {
+            "key": "resolution",
+            "unit": null,
+            "status": "known",
+            "value": "Full HD",
+            "claim_ids": ["claim_3e7cf6a3e7f9dc8bdebd90ff", "claim_bb79e9bcced82cca449314a0"],
+            "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"]
+          },
+          {
+            "key": "panel_type",
+            "unit": null,
+            "status": "known",
+            "value": "VA",
+            "claim_ids": ["claim_3567289f8911bf69ef1105df"],
+            "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"]
+          }
+        ]
+      },
+      {
+        "product_id": "bp_2164551997",
+        "family": "laptops",
+        "attributes": [
+          {
+            "key": "ram_gb",
+            "unit": "GB",
+            "status": "known",
+            "value": 8,
+            "claim_ids": ["claim_43890044cda6fb414d51319e"],
+            "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"]
+          },
+          {
+            "key": "storage_gb",
+            "unit": "GB",
+            "status": "known",
+            "value": 256,
+            "claim_ids": ["claim_53434c731811d6217b29183e", "claim_5dccb0e8e5a3530943c56d1f"],
+            "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"]
+          },
+          {
+            "key": "cpu_model",
+            "unit": null,
+            "status": "unknown",
+            "value": null,
+            "claim_ids": [],
+            "source_ids": []
+          },
+          {
+            "key": "operating_system",
+            "unit": null,
+            "status": "known",
+            "value": "Windows 11",
+            "claim_ids": ["claim_d64546a3224e38416e955f66"],
+            "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"]
+          },
+          {
+            "key": "dedicated_gpu",
+            "unit": null,
+            "status": "unknown",
+            "value": null,
+            "claim_ids": [],
+            "source_ids": []
+          }
+        ]
+      }
+    ],
+    "market": [
+      {
+        "product_id": "bp_2158096886",
+        "offers": {
+          "status": "not_checked",
+          "scope": "bounded_returned_offers",
+          "offer_count": 0,
+          "merchant_count": 0,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 0,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 0
+          },
+          "item_price": null,
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      },
+      {
+        "product_id": "bp_2164551997",
+        "offers": {
+          "status": "not_checked",
+          "scope": "bounded_returned_offers",
+          "offer_count": 0,
+          "merchant_count": 0,
+          "merchant_identity_unknown_count": 0,
+          "explicitly_in_stock_count": 0,
+          "shipping": {
+            "known": 0,
+            "estimated": 0,
+            "unknown": 0
+          },
+          "item_price": null,
+          "known_delivered_price": null,
+          "estimated_delivered_price": null,
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "history": {
+          "status": "not_checked",
+          "basis": "daily_item_minimum",
+          "windows": [],
+          "source_ids": [],
+          "claim_ids": []
+        },
+        "not_collected": [
+          "returns_policy",
+          "warranty",
+          "payment_fees",
+          "pickup",
+          "merchant_feed_updated_at",
+          "guaranteed_postcode_delivery"
+        ],
+        "compatibility": "not_assessed"
+      }
+    ]
+  },
+  "evidence": {
+    "scope": "returned_products",
+    "sources": [
+      {
+        "source_id": "deterministic_ranking:bp_2158096886:bestprice_shopping_policy_v1:laptops",
+        "kind": "decision_policy",
+        "record_id": "bestprice_shopping_policy_v1:laptops",
+        "product_id": "bp_2158096886",
+        "scope": "cluster",
+        "capability": "deterministic_ranking",
+        "checked_at": "2026-10-12T10:16:36.283Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "deterministic_ranking:bp_2164551997:bestprice_shopping_policy_v1:laptops",
+        "kind": "decision_policy",
+        "record_id": "bestprice_shopping_policy_v1:laptops",
+        "product_id": "bp_2164551997",
+        "scope": "cluster",
+        "capability": "deterministic_ranking",
+        "checked_at": "2026-10-12T10:16:36.283Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 86400
+      },
+      {
+        "source_id": "get_product_details:bp_2158096886:bp_2158096886",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2158096886",
+        "product_id": "bp_2158096886",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:16:36.057Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "get_product_details:bp_2164551997:bp_2164551997",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2164551997",
+        "product_id": "bp_2164551997",
+        "scope": "cluster",
+        "capability": "get_product_details",
+        "checked_at": "2026-10-12T10:16:36.055Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886",
+        "kind": "basket_quote",
+        "record_id": "balanced:bp_merchant_220:bp_2158096886",
+        "product_id": "bp_2158096886",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:16:36.232Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997",
+        "kind": "basket_quote",
+        "record_id": "balanced:bp_merchant_11804:bp_2164551997",
+        "product_id": "bp_2164551997",
+        "scope": "offer",
+        "capability": "optimize_basket",
+        "checked_at": "2026-10-12T10:16:36.232Z",
+        "source_observed_at": null,
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      },
+      {
+        "source_id": "search_products:bp_2158096886:bp_2158096886",
+        "kind": "catalog_snapshot",
+        "record_id": "bp_2158096886",
+        "product_id": "bp_2158096886",
+        "scope": "cluster",
+        "capability": "search_products",
+        "checked_at": "2026-10-12T10:16:36.057Z",
+        "source_observed_at": "2026-10-12T10:09:33.000Z",
+        "freshness": "fresh",
+        "max_age_seconds": 900
+      }
+    ],
+    "claims": [
+      {
+        "claim_id": "claim_03a736086444423d36fc8ab8",
+        "product_id": "bp_2164551997",
+        "field": "feature:2879",
+        "value": "SSD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2879,
+          "label": "Τύπος Σκληρού Δίσκου",
+          "group": "Αποθηκευτικός Χώρος"
+        }
+      },
+      {
+        "claim_id": "claim_047dd69b28280ed31fbc9e5e",
+        "product_id": "bp_2164551997",
+        "field": "catalog_family",
+        "value": "laptops",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_603c0769c9d654cf972db6da",
+          "claim_7da857f9d1bf7bd7d1a3f7a2",
+          "claim_3ac9761740a4e0de8439ec3e"
+        ]
+      },
+      {
+        "claim_id": "claim_0acc87686736952328231643",
+        "product_id": "bp_2158096886",
+        "field": "feature:1933",
+        "value": "100x100",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1933,
+          "label": "VESA Mount",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_15a1f8b5f30da1f4ea642407",
+        "product_id": "bp_2164551997",
+        "field": "basket_unit_price",
+        "value": 429.99,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_1d886b94d28125180e0185c1",
+        "product_id": "bp_2158096886",
+        "field": "feature:3202",
+        "value": "Gaming Monitor",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3202,
+          "label": "Είδος",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_1e8c0cc2aca140da0e92dcc3",
+        "product_id": "bp_2158096886",
+        "field": "title",
+        "value": "AOC 25G3ZM VA Gaming Monitor 24.5\" 1920x1080 FHD 240Hz 1ms",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2409cd831ed880701abd864b",
+        "product_id": "bp_2164551997",
+        "field": "price_from",
+        "value": 429.99,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_26676b82514134930d806a49",
+        "product_id": "bp_2164551997",
+        "field": "feature:2527",
+        "value": "256 GB",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2527,
+          "label": "Χωρητικότητα Σκληρού Δίσκου",
+          "group": "Αποθηκευτικός Χώρος"
+        }
+      },
+      {
+        "claim_id": "claim_272ae19841ea6b833c9f6d2f",
+        "product_id": "bp_2164551997",
+        "field": "feature:1447",
+        "value": "8192 MB",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1447,
+          "label": "RAM",
+          "group": "Μνήμη"
+        }
+      },
+      {
+        "claim_id": "claim_288ae57dbd004adababe3f61",
+        "product_id": "bp_2158096886",
+        "field": "attribute:refresh_rate_hz",
+        "value": 240,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_ba158d604f17045ff8adf48f"]
+      },
+      {
+        "claim_id": "claim_2e847d176187d3d3605c62cf",
+        "product_id": "bp_2158096886",
+        "field": "feature:1911",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1911,
+          "label": "Κυρτή",
+          "group": "Τύπος"
+        }
+      },
+      {
+        "claim_id": "claim_2f29e504b6e0c8735009ef66",
+        "product_id": "bp_2158096886",
+        "field": "title",
+        "value": "AOC 25G3ZM VA Gaming Monitor 24.5\" 1920x1080 FHD 240Hz 1ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_2febf4ca95cb9573d9f90a54",
+        "product_id": "bp_2158096886",
+        "field": "basket_unit_price",
+        "value": 123.5,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_33002839bd1c26d8ce9846a6",
+        "product_id": "bp_2158096886",
+        "field": "category_title",
+        "value": "Οθόνες Υπολογιστών",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3567289f8911bf69ef1105df",
+        "product_id": "bp_2158096886",
+        "field": "attribute:panel_type",
+        "value": "VA",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_96a556e0740cac6c39ab800e"]
+      },
+      {
+        "claim_id": "claim_374ef7b0f62b506c00525d0d",
+        "product_id": "bp_2164551997",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_37b418771affe405b9674c0d",
+        "product_id": "bp_2164551997",
+        "field": "title",
+        "value": "Energizer EnergyBook Φορητός Υπολογιστής Ροζ (6500Y/8GB/256GB SSD/Windows 11)",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3ac9761740a4e0de8439ec3e",
+        "product_id": "bp_2164551997",
+        "field": "title",
+        "value": "Energizer EnergyBook Φορητός Υπολογιστής Ροζ (6500Y/8GB/256GB SSD/Windows 11)",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3b49c301ef135f3d36924d33",
+        "product_id": "bp_2158096886",
+        "field": "feature:1999",
+        "value": "16:9",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1999,
+          "label": "Aspect Ratio",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_3db1c3d3f9dfe643de47a415",
+        "product_id": "bp_2158096886",
+        "field": "rating_average",
+        "value": 5,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_3e7cf6a3e7f9dc8bdebd90ff",
+        "product_id": "bp_2158096886",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_5159993dc618f29c199fa3ad"]
+      },
+      {
+        "claim_id": "claim_43890044cda6fb414d51319e",
+        "product_id": "bp_2164551997",
+        "field": "attribute:ram_gb",
+        "value": 8,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_272ae19841ea6b833c9f6d2f"]
+      },
+      {
+        "claim_id": "claim_4677e4ecb5f40fefb50c122d",
+        "product_id": "bp_2164551997",
+        "field": "ranking:laptops:storage",
+        "value": 256,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2164551997:bp_2164551997",
+          "deterministic_ranking:bp_2164551997:bestprice_shopping_policy_v1:laptops"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_47b26f24384603ccf1b95285",
+        "product_id": "bp_2158096886",
+        "field": "offer_count",
+        "value": 26,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_4e3d68c749304b02d76984c9",
+        "product_id": "bp_2164551997",
+        "field": "offer_count",
+        "value": 6,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_5159993dc618f29c199fa3ad",
+        "product_id": "bp_2158096886",
+        "field": "feature:43",
+        "value": "1920 x 1080 (FHD)",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 43,
+          "label": "Μέγιστη Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_53434c731811d6217b29183e",
+        "product_id": "bp_2164551997",
+        "field": "attribute:storage_gb",
+        "value": 256,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_acc10a93dd4ccbb7a5cce5e1"]
+      },
+      {
+        "claim_id": "claim_59663e03940cd928da31e511",
+        "product_id": "bp_2164551997",
+        "field": "ram_gb",
+        "value": 8,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "deterministic_catalog_extraction"
+      },
+      {
+        "claim_id": "claim_5a19e50d2e686353c6934ac5",
+        "product_id": "bp_2158096886",
+        "field": "feature:140",
+        "value": "3000:1",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 140,
+          "label": "Λόγος Αντίθεσης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_5dccb0e8e5a3530943c56d1f",
+        "product_id": "bp_2164551997",
+        "field": "attribute:storage_gb",
+        "value": 256,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_26676b82514134930d806a49"]
+      },
+      {
+        "claim_id": "claim_5dd27633c8499d909d9d2828",
+        "product_id": "bp_2158096886",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_603c0769c9d654cf972db6da",
+        "product_id": "bp_2164551997",
+        "field": "category_id",
+        "value": 2591,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_6d67643ec526c245d72e2d1c",
+        "product_id": "bp_2158096886",
+        "field": "feature:622",
+        "value": "1 ms",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 622,
+          "label": "Χρόνος Απόκρισης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_72cab8d95fd66574f4fe58b3",
+        "product_id": "bp_2158096886",
+        "field": "basket_line_total",
+        "value": 123.5,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_74e2bd3da0bc42eece242051",
+        "product_id": "bp_2158096886",
+        "field": "feature:4144",
+        "value": "E",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 4144,
+          "label": "Νέα Ενεργειακή Κλάση",
+          "group": "Νέα Ενεργειακή Ετικέτα"
+        }
+      },
+      {
+        "claim_id": "claim_75ac1d82b5f0c0e55f0f8516",
+        "product_id": "bp_2158096886",
+        "field": "feature:621",
+        "value": "300",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 621,
+          "label": "Φωτεινότητα Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_77fd457e125cd3865df38b4b",
+        "product_id": "bp_2164551997",
+        "field": "basket_merchant_name",
+        "value": "Telephoneplus",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7a83456327ef0553f321b81d",
+        "product_id": "bp_2158096886",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_7da857f9d1bf7bd7d1a3f7a2",
+        "product_id": "bp_2164551997",
+        "field": "category_title",
+        "value": "Laptops",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_80e7a994e0adc7bee97c684e",
+        "product_id": "bp_2164551997",
+        "field": "feature:396",
+        "value": "Windows 11",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 396,
+          "label": "Λειτουργικό Σύστημα",
+          "group": "Λογισμικό"
+        }
+      },
+      {
+        "claim_id": "claim_843f33a164dd14fd205bfd7a",
+        "product_id": "bp_2158096886",
+        "field": "basket_merchant_shipping",
+        "value": 14.5,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_859a74fe6a0446311d58ca43",
+        "product_id": "bp_2158096886",
+        "field": "catalog_family",
+        "value": "monitors",
+        "kind": "derived",
+        "source_ids": [
+          "search_products:bp_2158096886:bp_2158096886",
+          "get_product_details:bp_2158096886:bp_2158096886"
+        ],
+        "validation": "catalog_family_mapping_v1",
+        "supporting_claim_ids": [
+          "claim_c3804b6c8b77f3530a132f09",
+          "claim_33002839bd1c26d8ce9846a6",
+          "claim_2f29e504b6e0c8735009ef66"
+        ]
+      },
+      {
+        "claim_id": "claim_86944e7d888c6704ba21461d",
+        "product_id": "bp_2158096886",
+        "field": "feature:7484",
+        "value": "Ρύθμιση Κλίσης, Ρύθμιση Ύψους, Οριζόντια Περιστροφή, Κατακόρυφη Περιστροφή",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7484,
+          "label": "Εργονομία Βάσης",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_8930ef294187ce6a09ff7c7e",
+        "product_id": "bp_2158096886",
+        "field": "attribute:screen_diagonal_inches",
+        "value": 24.5,
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_d5bd41cb61a1ed4b3d7ae9b1"]
+      },
+      {
+        "claim_id": "claim_9013f960b13d092ad2098a9a",
+        "product_id": "bp_2158096886",
+        "field": "feature:3205",
+        "value": "HDMI, DisplayPort",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3205,
+          "label": "Συνδεσιμότητα",
+          "group": "Συνδεσιμότητα"
+        }
+      },
+      {
+        "claim_id": "claim_96a556e0740cac6c39ab800e",
+        "product_id": "bp_2158096886",
+        "field": "feature:3018",
+        "value": "VA",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3018,
+          "label": "Τύπος Panel",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_97fbcdb7d58170b38f6ef15d",
+        "product_id": "bp_2164551997",
+        "field": "basket_line_total",
+        "value": 429.99,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997"],
+        "validation": "quantity_times_unit_price"
+      },
+      {
+        "claim_id": "claim_9f6e8478f60669f4672c138c",
+        "product_id": "bp_2158096886",
+        "field": "feature:1101",
+        "value": "Full HD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1101,
+          "label": "Ανάλυση",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_a2e04dacc42b181954d5d420",
+        "product_id": "bp_2158096886",
+        "field": "basket_merchant_name",
+        "value": "Syncom",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a450fcf6ee2292496640de95",
+        "product_id": "bp_2158096886",
+        "field": "feature:3203",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3203,
+          "label": "HDR",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_a7a146e01e5d01b7f52c3718",
+        "product_id": "bp_2164551997",
+        "field": "basket_merchant_shipping",
+        "value": 3.5,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_a7aa23e47ffc1532ca4c0a8e",
+        "product_id": "bp_2164551997",
+        "field": "ranking:laptops:ram",
+        "value": 8,
+        "kind": "derived",
+        "source_ids": [
+          "get_product_details:bp_2164551997:bp_2164551997",
+          "deterministic_ranking:bp_2164551997:bestprice_shopping_policy_v1:laptops"
+        ],
+        "validation": "calibrated_policy_attribute_not_measurement"
+      },
+      {
+        "claim_id": "claim_a7f6b57f7a2ae63febd8c797",
+        "product_id": "bp_2158096886",
+        "field": "feature:1062",
+        "value": "Μαύρο",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 1062,
+          "label": "Χρώμα",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_a93cd864dc209fa2788b38b4",
+        "product_id": "bp_2164551997",
+        "field": "feature:2530",
+        "value": "SSD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2530,
+          "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+          "group": "Αποθηκευτικός Χώρος"
+        }
+      },
+      {
+        "claim_id": "claim_ac014e110551d42757bc38ed",
+        "product_id": "bp_2164551997",
+        "field": "feature:2526",
+        "value": "6500Y",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2526,
+          "label": "Μοντέλο Επεξεργαστή",
+          "group": "Επεξεργαστής"
+        }
+      },
+      {
+        "claim_id": "claim_acc10a93dd4ccbb7a5cce5e1",
+        "product_id": "bp_2164551997",
+        "field": "feature:2528",
+        "value": "256 GB",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2528,
+          "label": "Χωρητικότητα Δεύτερου Σκληρού Δίσκου",
+          "group": "Αποθηκευτικός Χώρος"
+        }
+      },
+      {
+        "claim_id": "claim_aebba05b9ca41808f1112af9",
+        "product_id": "bp_2164551997",
+        "field": "feature:38",
+        "value": "15.6 \"",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 38,
+          "label": "Μέγεθος Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_b0144bd70af2d3f749e2e099",
+        "product_id": "bp_2158096886",
+        "field": "price_from",
+        "value": 88.75,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_b07a1100b53803528cd7c966",
+        "product_id": "bp_2158096886",
+        "field": "feature:7485",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 7485,
+          "label": "Smart Monitor",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_ba158d604f17045ff8adf48f",
+        "product_id": "bp_2158096886",
+        "field": "feature:605",
+        "value": "240 Hz",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 605,
+          "label": "Συχνότητα Ανανέωσης Εικόνας",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_bb79e9bcced82cca449314a0",
+        "product_id": "bp_2158096886",
+        "field": "attribute:resolution",
+        "value": "Full HD",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_9f6e8478f60669f4672c138c"]
+      },
+      {
+        "claim_id": "claim_c3804b6c8b77f3530a132f09",
+        "product_id": "bp_2158096886",
+        "field": "category_id",
+        "value": 2621,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_c7598d1c1e03fd8e5d40c725",
+        "product_id": "bp_2158096886",
+        "field": "basket_plan_total",
+        "value": 571.49,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2158096886:balanced:bp_merchant_220:bp_2158096886"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_c95136afe4f121aeb655b10e",
+        "product_id": "bp_2158096886",
+        "field": "availability",
+        "value": "in_stock",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_d017a88b3cf3600c97635d41",
+        "product_id": "bp_2164551997",
+        "field": "feature:2531",
+        "value": "SSD",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 2531,
+          "label": "Τύπος Δεύτερου Σκληρού Δίσκου",
+          "group": "Αποθηκευτικός Χώρος"
+        }
+      },
+      {
+        "claim_id": "claim_d5bd41cb61a1ed4b3d7ae9b1",
+        "product_id": "bp_2158096886",
+        "field": "feature:38",
+        "value": "24.5 \"",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 38,
+          "label": "Μέγεθος Οθόνης",
+          "group": "Οθόνη"
+        }
+      },
+      {
+        "claim_id": "claim_d64546a3224e38416e955f66",
+        "product_id": "bp_2164551997",
+        "field": "attribute:operating_system",
+        "value": "Windows 11",
+        "kind": "derived",
+        "source_ids": ["get_product_details:bp_2164551997:bp_2164551997"],
+        "validation": "normalized_catalog_attribute_v32",
+        "supporting_claim_ids": ["claim_80e7a994e0adc7bee97c684e"]
+      },
+      {
+        "claim_id": "claim_da60122f79661f9056b1ec75",
+        "product_id": "bp_2164551997",
+        "field": "basket_plan_total",
+        "value": 571.49,
+        "kind": "derived",
+        "source_ids": ["optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997"],
+        "validation": "sum_of_merchant_totals_not_per_product_cost"
+      },
+      {
+        "claim_id": "claim_dbaaaabfac47e601f95946ac",
+        "product_id": "bp_2164551997",
+        "field": "basket_quantity",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_de1412cceec3d02e151b9d2f",
+        "product_id": "bp_2158096886",
+        "field": "feature:3201",
+        "value": "FreeSync",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3201,
+          "label": "Επιπλέον Δυνατότητες",
+          "group": ""
+        }
+      },
+      {
+        "claim_id": "claim_e14b6a72ef8b93c93df18edb",
+        "product_id": "bp_2164551997",
+        "field": "basket_plan_shipping_status",
+        "value": "known",
+        "kind": "observed",
+        "source_ids": ["optimize_basket:bp_2164551997:balanced:bp_merchant_11804:bp_2164551997"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_efc3cb33efcf67c386a6e388",
+        "product_id": "bp_2158096886",
+        "field": "rating_count",
+        "value": 1,
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field"
+      },
+      {
+        "claim_id": "claim_ff8bae2347236f858a9b52a9",
+        "product_id": "bp_2158096886",
+        "field": "feature:3204",
+        "value": "Όχι",
+        "kind": "observed",
+        "source_ids": ["get_product_details:bp_2158096886:bp_2158096886"],
+        "validation": "exact_tool_field",
+        "feature": {
+          "id": 3204,
+          "label": "Ultrawide",
+          "group": "Οθόνη"
+        }
+      }
+    ]
+  },
+  "uncertainty": []
+}

@@ -1,0 +1,407 @@
+{
+  "scope": "Local same-Brain user-history replay with live read-only catalog tools; no HTTP Ask and no persistence",
+  "cases": [
+    {
+      "id": "ambiguous_generic",
+      "message": "Θέλω κάτι καλό έως 300 ευρώ.",
+      "history": [],
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_generic"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_generic-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_generic-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_generic-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_generic-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_generic-calls.json"
+    },
+    {
+      "id": "ambiguous_pronoun",
+      "message": "Θέλω το δεύτερο, αλλά φθηνότερα.",
+      "history": [],
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_pronoun"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_pronoun-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_pronoun-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_pronoun-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_pronoun-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_pronoun-calls.json"
+    },
+    {
+      "id": "ambiguous_or_family",
+      "message": "Θέλω laptop ή tablet για σπουδές έως 600 ευρώ.",
+      "history": [],
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_or_family"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_or_family-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_or_family-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_or_family-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_or_family-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_or_family-calls.json"
+    },
+    {
+      "id": "ambiguous_two_budgets",
+      "message": "Θέλω laptop έως 500 ή 800 ευρώ.",
+      "history": [],
+      "expectation": {
+        "outcome": "recommendation",
+        "budget": 500,
+        "maxConstraint": 500,
+        "id": "ambiguous_two_budgets"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_two_budgets-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_two_budgets-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_two_budgets-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_two_budgets-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_two_budgets-calls.json"
+    },
+    {
+      "id": "ambiguous_units",
+      "message": "Θέλω οθόνη 27 έως 250 ευρώ.",
+      "history": [],
+      "expectation": {
+        "id": "ambiguous_units"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_units-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_units-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_units-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_units-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_units-calls.json"
+    },
+    {
+      "id": "ambiguous_quality",
+      "message": "Θέλω καλό κινητό για φωτογραφίες έως 300 ευρώ.",
+      "history": [],
+      "expectation": {
+        "id": "ambiguous_quality"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_quality-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_quality-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_quality-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_quality-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_quality-calls.json"
+    },
+    {
+      "id": "ambiguous_missing_basket_budget",
+      "message": "Θέλω ποντίκι και ακουστικά. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_missing_basket_budget"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_missing_basket_budget-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_missing_basket_budget-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_missing_basket_budget-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_missing_basket_budget-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_missing_basket_budget-calls.json"
+    },
+    {
+      "id": "ambiguous_location_only",
+      "message": "ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "ambiguous_location_only"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_location_only-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_location_only-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_location_only-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_location_only-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_location_only-calls.json"
+    },
+    {
+      "id": "correct_price_twice",
+      "message": "Θέλω laptop έως 800 ευρώ με 16GB RAM. Διόρθωση: έως 400 ευρώ. Τελικό όριο: έως 600 ευρώ.",
+      "history": [],
+      "expectation": {
+        "outcome": "recommendation",
+        "budget": 600,
+        "maxConstraint": 600,
+        "id": "correct_price_twice"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/correct_price_twice-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/correct_price_twice-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/correct_price_twice-canonical.json",
+      "response_receipt": "public-local-fixed-cases/correct_price_twice-response.json",
+      "calls_receipt": "public-local-fixed-cases/correct_price_twice-calls.json"
+    },
+    {
+      "id": "correct_feature_twice",
+      "message": "Θέλω ποντίκι ασύρματο. Διόρθωση: ενσύρματο. Τελικά ασύρματο έως 40 ευρώ.",
+      "history": [],
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["wireless"],
+        "budget": 40,
+        "id": "correct_feature_twice"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/correct_feature_twice-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/correct_feature_twice-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/correct_feature_twice-canonical.json",
+      "response_receipt": "public-local-fixed-cases/correct_feature_twice-response.json",
+      "calls_receipt": "public-local-fixed-cases/correct_feature_twice-calls.json"
+    },
+    {
+      "id": "correct_brand_reallow",
+      "message": "Θέλω κινητό όχι Samsung έως 400 ευρώ. Διόρθωση: μόνο Samsung με NFC.",
+      "history": [],
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["nfc"],
+        "budget": 400,
+        "only": "samsung",
+        "id": "correct_brand_reallow"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/correct_brand_reallow-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/correct_brand_reallow-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/correct_brand_reallow-canonical.json",
+      "response_receipt": "public-local-fixed-cases/correct_brand_reallow-response.json",
+      "calls_receipt": "public-local-fixed-cases/correct_brand_reallow-calls.json"
+    },
+    {
+      "id": "correct_quantity",
+      "message": "Θέλω 2 ποντίκια και ακουστικά συνολικά έως 150 ευρώ. Διόρθωση: 1 ποντίκι και 2 ακουστικά συνολικά έως 100 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 100,
+        "quantities": [1, 2],
+        "full": true,
+        "id": "correct_quantity"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/correct_quantity-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/correct_quantity-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/correct_quantity-canonical.json",
+      "response_receipt": "public-local-fixed-cases/correct_quantity-response.json",
+      "calls_receipt": "public-local-fixed-cases/correct_quantity-calls.json"
+    },
+    {
+      "id": "mixed_three",
+      "message": "Θέλω ποντίκι, ακουστικά και router, συνολικά έως 200 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 200,
+        "slots": 3,
+        "full": true,
+        "id": "mixed_three"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_three-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_three-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_three-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_three-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_three-calls.json"
+    },
+    {
+      "id": "mixed_appliances",
+      "message": "Θέλω καφετιέρα espresso χωρίς κάψουλες και air fryer από 4 έως 5 λίτρα, συνολικά έως 300 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 300,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_appliances"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_appliances-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_appliances-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_appliances-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_appliances-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_appliances-calls.json"
+    },
+    {
+      "id": "mixed_phone_monitor",
+      "message": "Θέλω κινητό με NFC και οθόνη 24 ιντσών, συνολικά έως 500 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 500,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_phone_monitor"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_phone_monitor-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_phone_monitor-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_phone_monitor-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_phone_monitor-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_phone_monitor-calls.json"
+    },
+    {
+      "id": "mixed_wired_mouse_headphones",
+      "message": "Θέλω ενσύρματο ποντίκι και ασύρματα ακουστικά, συνολικά έως 150 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 150,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_wired_mouse_headphones"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_wired_mouse_headphones-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_wired_mouse_headphones-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_wired_mouse_headphones-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_wired_mouse_headphones-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_wired_mouse_headphones-calls.json"
+    },
+    {
+      "id": "mixed_exclusion_scope",
+      "message": "Θέλω laptop όχι Lenovo και ποντίκι Logitech, συνολικά έως 700 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 700,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_exclusion_scope"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_exclusion_scope-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_exclusion_scope-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_exclusion_scope-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_exclusion_scope-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_exclusion_scope-calls.json"
+    },
+    {
+      "id": "mixed_each_budget",
+      "message": "Θέλω ποντίκι έως 30 ευρώ, ακουστικά έως 60 ευρώ και router έως 80 ευρώ, συνολικά έως 150 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 150,
+        "slots": 3,
+        "full": true,
+        "id": "mixed_each_budget"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_each_budget-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_each_budget-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_each_budget-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_each_budget-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_each_budget-calls.json"
+    },
+    {
+      "id": "mixed_infeasible_floors",
+      "message": "Θέλω ποντίκι από 50 έως 70 ευρώ και ακουστικά από 60 έως 80 ευρώ, συνολικά έως 100 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "total": 100,
+        "id": "mixed_infeasible_floors"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_infeasible_floors-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_infeasible_floors-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_infeasible_floors-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_infeasible_floors-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_infeasible_floors-calls.json"
+    },
+    {
+      "id": "mixed_same_family",
+      "message": "Θέλω ένα ενσύρματο ποντίκι και ένα ασύρματο ποντίκι, συνολικά έως 80 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 80,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_same_family"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_same_family-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_same_family-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_same_family-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_same_family-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_same_family-calls.json"
+    },
+    {
+      "id": "mixed_unknown_slot",
+      "message": "Θέλω ποντίκι και κάτι καλό για την κουζίνα, συνολικά έως 200 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "mixed_unknown_slot"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_unknown_slot-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_unknown_slot-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_unknown_slot-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_unknown_slot-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_unknown_slot-calls.json"
+    },
+    {
+      "id": "mixed_or_slot",
+      "message": "Θέλω laptop και ποντίκι ή ακουστικά, συνολικά έως 700 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "mixed_or_slot"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_or_slot-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_or_slot-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_or_slot-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_or_slot-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_or_slot-calls.json"
+    },
+    {
+      "id": "mixed_remove_slot",
+      "message": "Θέλω laptop, οθόνη και ποντίκι συνολικά έως 900 ευρώ. Διόρθωση: μόνο laptop και ποντίκι, συνολικά έως 650 ευρώ. ΤΚ 11527.",
+      "history": [],
+      "expectation": {
+        "outcome": "basket",
+        "total": 650,
+        "slots": 2,
+        "full": true,
+        "id": "mixed_remove_slot"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/mixed_remove_slot-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/mixed_remove_slot-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/mixed_remove_slot-canonical.json",
+      "response_receipt": "public-local-fixed-cases/mixed_remove_slot-response.json",
+      "calls_receipt": "public-local-fixed-cases/mixed_remove_slot-calls.json"
+    },
+    {
+      "id": "ambiguous_optional",
+      "message": "Θέλω ασύρματο ποντίκι έως 40 ευρώ, ενσύρματο μόνο αν δεν υπάρχει ασύρματο.",
+      "history": [],
+      "expectation": {
+        "id": "ambiguous_optional"
+      },
+      "passed": true,
+      "canonical_evidence_receipt": "public-local-fixed-cases/ambiguous_optional-canonical-evidence.json",
+      "canonical_shopping_context_receipt": "public-local-fixed-cases/ambiguous_optional-canonical-shopping_context.json",
+      "canonical_receipt": "public-local-fixed-cases/ambiguous_optional-canonical.json",
+      "response_receipt": "public-local-fixed-cases/ambiguous_optional-response.json",
+      "calls_receipt": "public-local-fixed-cases/ambiguous_optional-calls.json"
+    }
+  ]
+}

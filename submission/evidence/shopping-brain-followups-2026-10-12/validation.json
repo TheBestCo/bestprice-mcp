@@ -1,0 +1,42 @@
+{
+  "source_fix": "b91cfa5392f867e3c44828666389e566d20d84ef",
+  "affected_suite": {
+    "total": 6207,
+    "passed": 6204,
+    "skipped": 3,
+    "failed": 0,
+    "log": "suite-final.log"
+  },
+  "focused_suite": {
+    "passed": 27,
+    "failed": 0,
+    "log": "focused-final.log"
+  },
+  "normal_hooks": {
+    "bypassed": false,
+    "offline_module_contracts": 23,
+    "commit_log": "commit.log",
+    "push_log": "push.log",
+    "affected_test_files": 550,
+    "eligible_test_files": 5054
+  },
+  "source_blobs": {
+    "agent/clarification.js": "16ea3cfc524f80bca340187ffcc4e07c98a40c2d",
+    "agent/price-constraints.js": "37ec64b90b3b84c351dce4167c675d960e4fdaff",
+    "agent/run/basket-discovery.js": "07cbb83acc17cdbad1f74bb46db87a35bebabb3d",
+    "shopping-brain/runtime.js": "0d4ba89facbfa2e776d30198863e8f7f70c77119",
+    "shopping-brain/mission.js": "fa3ff0a5f89a3582411058f65e3e96a5864aa22c",
+    "shopping-brain/broad-probe.mjs": "346af7bdbe3690e65091ea19ada70f489c462106",
+    "shopping-brain/followup-probe.mjs": "47bb65521b080cb6df28e016232f040bb45f83d2",
+    "shopping-brain/followup-probe.test.js": "a54dd9f0dcc651966c5b74094138ccac2c657c3f",
+    "shopping-brain/followup-audit-regressions.test.js": "fb577f0fe6605982911bec128945c0faacef4a35",
+    "shopping-brain/basket-category-regressions.test.js": "db0e6562506307e522357e439e10f5984cad331c"
+  },
+  "intermediate_commit": "874a1d61eb3a",
+  "source_custody": "Concurrent default-branch work advanced the commit parent during this session. All ten changed source/test blobs were verified identical between 874a1d61eb3a and the pushed b91cfa5392f8. Other edits were preserved.",
+  "notes": [
+    "Suite and hook cohorts overlap; counts are not summed.",
+    "An initial broad suite had one failure in the newly added compatibility counterexample; the narrowed clarification rule passed the final suite.",
+    "Published local traces before final deployment preserve their in-progress source state and are not attributed to immutable release code."
+  ]
+}

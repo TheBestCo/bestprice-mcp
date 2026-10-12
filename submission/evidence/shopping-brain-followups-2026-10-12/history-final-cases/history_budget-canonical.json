@@ -1,0 +1,1000 @@
+{
+  "version": "bestprice_decision_v1",
+  "comparison_policy_version": "comparison_derivation_v2",
+  "offer_binding_version": "same_quote_receipt_v3",
+  "decision_id": "[omitted]",
+  "request_id": "[omitted]",
+  "channel": "mcp",
+  "created_at": "2026-10-12T10:26:22.770Z",
+  "outcome": "recommendation",
+  "request_understanding": {
+    "version": "shopping_request_v1",
+    "mission_id": "3e8d42e1-72a7-4379-89cc-c36af60f8653",
+    "revision": 1,
+    "fingerprint": "524d7823cd18418a93b13c5b70473f5dca8c4ceec11baad3a2e55229665d6453",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "laptop",
+    "intent": "shop",
+    "query": "laptop",
+    "constraints": {
+      "budgetEur": 600,
+      "statedBudgetEur": 600,
+      "minimumRamGb": 16,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 600,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 600,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 10,
+            "end": 22,
+            "text": "έως 600 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {},
+    "requirements": [],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": [],
+    "nonPricePhrases": [],
+    "source_turns": [],
+    "transition": "start"
+  },
+  "actions": [
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_0",
+      "type": "refine",
+      "message": "Βρες κάτι φθηνότερο από το Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos), κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "product_ids": []
+    },
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_1",
+      "type": "refine",
+      "message": "Βρες αντίστοιχη επιλογή με Windows αντί για το Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos).",
+      "product_ids": []
+    },
+    {
+      "parent_decision_id": "[omitted]",
+      "id": "action_2",
+      "type": "compare",
+      "message": "Σύγκρινε αναλυτικά το Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos) με το Lenovo V15 G4 AMN (Ryzen 5-7520U/16GB/512GB SSD/Radeon Graphics/FreeDos).",
+      "product_ids": ["bp_2159251800", "bp_2159215459", "bp_2159199764"]
+    }
+  ],
+  "status": "ready",
+  "mission": {
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Laptop · Έως 600 € · 16GB+ RAM",
+    "constraints": {
+      "maximum_price_eur": 600,
+      "minimum_ram_gb": 16,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 600,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 600,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 10,
+              "end": 22,
+              "text": "έως 600 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "primary": {
+    "product_id": "bp_2159251800",
+    "title": "Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos)",
+    "brand": "Lenovo",
+    "model": "Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos)",
+    "variant": "82YU0100GM | 262-94-LVPNV155DR",
+    "category_title": "Laptops",
+    "price_from": 458.05,
+    "rating": {
+      "average": 4,
+      "count": 9
+    },
+    "offer_count": 43,
+    "availability": "in_stock",
+    "product_url": "[omitted]",
+    "image_url": "[omitted]",
+    "ram_gb": 16,
+    "people_count": null,
+    "capacity_litres": null,
+    "dual_basket": null
+  },
+  "alternatives": [
+    {
+      "product": {
+        "product_id": "bp_2159215459",
+        "title": "Lenovo V15 G4 AMN (Ryzen 5-7520U/16GB/512GB SSD/Radeon Graphics/FreeDos)",
+        "brand": "Lenovo",
+        "model": "Lenovo V15 G4 AMN (Ryzen 5-7520U/16GB/512GB SSD/Radeon Graphics/FreeDos)",
+        "variant": "82YU00YQGM | 262-94-LVPNV155DQ",
+        "category_title": "Laptops",
+        "price_from": 508.77,
+        "rating": null,
+        "offer_count": 42,
+        "availability": "in_stock",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": 16,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "50,72€ ακριβότερο",
+      "tradeoff": "Δίνει υψηλότερη αναμενόμενη βαθμολογία (η άλλη επιλογή έχει 3,8/5 από αγοραστές)",
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_190491356",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 508.77,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:26:22.682Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_190491356",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 508.77,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:26:22.682Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 600,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    },
+    {
+      "product": {
+        "product_id": "bp_2159199764",
+        "title": "Lenovo V15 Gen 4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon Graphics/Windows 11)",
+        "brand": null,
+        "model": "Lenovo V15 Gen 4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon Graphics/Windows 11)",
+        "variant": "82YU00YTGM",
+        "category_title": "Laptops",
+        "price_from": 534.13,
+        "rating": null,
+        "offer_count": 39,
+        "availability": "available",
+        "product_url": "[omitted]",
+        "image_url": "[omitted]",
+        "ram_gb": 16,
+        "people_count": null,
+        "capacity_litres": null,
+        "dual_basket": null
+      },
+      "label": "Με Windows",
+      "tradeoff": null,
+      "offer_summary": {
+        "postal_code": null,
+        "price_basis": "item_price",
+        "affordability": "within_item_budget_delivery_unknown",
+        "offer_scope": "returned_sample",
+        "delivery_affordability_proven": false,
+        "recommended": {
+          "offer_id": "bp_offer_189840676",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 534.13,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:26:22.683Z"
+        },
+        "cheapest": {
+          "offer_id": "bp_offer_189840676",
+          "merchant_id": "bp_merchant_8529",
+          "merchant_name": "MytechBox",
+          "merchant_rating": 4.44,
+          "merchant_rating_count": 25,
+          "verified_merchant": false,
+          "certification_level": null,
+          "item_price": 534.13,
+          "shipping_price": null,
+          "shipping_status": "unknown",
+          "total_price": null,
+          "availability": "delivery_1_3_days",
+          "condition": "unknown",
+          "bundle_status": "unknown",
+          "delivery_estimate": "1–3 εργάσιμες ημέρες",
+          "price_checked_at": "2026-10-12T10:26:22.683Z"
+        },
+        "same_offer": true,
+        "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+        "budget_eur": 600,
+        "recommended_within_budget": true,
+        "cheapest_within_budget": true,
+        "compared_offer_count": 10,
+        "unknown_shipping_count": 10
+      },
+      "requires_constraint_change": false
+    }
+  ],
+  "constraints": {
+    "maximum_price_eur": 600,
+    "minimum_ram_gb": 16,
+    "minimum_ram_assumed": false,
+    "operating_system": null,
+    "people_count": null,
+    "capacity_litres": null,
+    "capacity_assumed": false,
+    "different_capacity_from_litres": null,
+    "dual_basket": null,
+    "screen_inches": null,
+    "room_sqm": null,
+    "catalog_requirements": [],
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 600,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 600,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 10,
+            "end": 22,
+            "text": "έως 600 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [
+    "Καλύπτει τα εξής κριτήρια: έως 600€ και 16GB+ RAM.",
+    "Η επόμενη επιλογή κοστίζει 50,72€ παραπάνω και δίνει υψηλότερη αναμενόμενη βαθμολογία (η άλλη επιλογή έχει 3,8/5 από αγοραστές). Συνέκρινα μόνο: πολυπύρηνη ισχύς επεξεργαστή, απόκριση επεξεργαστή, μνήμη RAM, αποθηκευτικός χώρος και νεότερη πλατφόρμα. Με βάση αυτά, δεν προτείνω να πληρώσεις τη διαφορά."
+  ],
+  "tradeoffs": [
+    "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+    "Δεν φαίνεται να περιλαμβάνει προεγκατεστημένα Windows.",
+    "MytechBox: βαθμολογία καταστήματος 4,44/5 από 25 αξιολογήσεις; δηλωμένη διαθεσιμότητα «1–3 εργάσιμες ημέρες» (εκτίμηση καταστήματος)."
+  ],
+  "offer_summary": {
+    "postal_code": null,
+    "price_basis": "item_price",
+    "affordability": "within_item_budget_delivery_unknown",
+    "offer_scope": "returned_sample",
+    "delivery_affordability_proven": false,
+    "recommended": {
+      "offer_id": "bp_offer_189943128",
+      "merchant_id": "bp_merchant_8529",
+      "merchant_name": "MytechBox",
+      "merchant_rating": 4.44,
+      "merchant_rating_count": 25,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 458.05,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_1_3_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "1–3 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:26:22.682Z"
+    },
+    "cheapest": {
+      "offer_id": "bp_offer_189943128",
+      "merchant_id": "bp_merchant_8529",
+      "merchant_name": "MytechBox",
+      "merchant_rating": 4.44,
+      "merchant_rating_count": 25,
+      "verified_merchant": false,
+      "certification_level": null,
+      "item_price": 458.05,
+      "shipping_price": null,
+      "shipping_status": "unknown",
+      "total_price": null,
+      "availability": "delivery_1_3_days",
+      "condition": "unknown",
+      "bundle_status": "unknown",
+      "delivery_estimate": "1–3 εργάσιμες ημέρες",
+      "price_checked_at": "2026-10-12T10:26:22.682Z"
+    },
+    "same_offer": true,
+    "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+    "budget_eur": 600,
+    "recommended_within_budget": true,
+    "cheapest_within_budget": true,
+    "compared_offer_count": 10,
+    "unknown_shipping_count": 10
+  },
+  "price_history": {
+    "current_price": 458.05,
+    "quote_consistency": "matched",
+    "current_price_source": "live_offer_minimum",
+    "source_last_observed_at": "2026-10-12T10:26:22.683Z",
+    "period_days": 180,
+    "window_stats": [
+      {
+        "days": 30,
+        "minimum_price": 418.58,
+        "median_price": 448,
+        "observations": 30,
+        "coverage_pct": 100
+      },
+      {
+        "days": 90,
+        "minimum_price": 356,
+        "median_price": 418.79,
+        "observations": 90,
+        "coverage_pct": 100
+      },
+      {
+        "days": 180,
+        "minimum_price": 356,
+        "median_price": 406.59,
+        "observations": 179,
+        "coverage_pct": 99.4
+      }
+    ],
+    "minimum_price": 356,
+    "median_price": 406.59,
+    "observations": 179,
+    "coverage_pct": 99.4,
+    "delta_vs_median_pct": 12.66,
+    "deal_classification": "above_typical",
+    "methodology_id": "bestprice_daily_min_v1",
+    "data_gaps": {
+      "missing_days": 1,
+      "longest_gap_days": 1,
+      "stale_days": 0,
+      "coverage_note": "1 ημέρα δεν είχε έγκυρη ημερήσια παρατήρηση."
+    },
+    "warnings": [],
+    "series": [
+      {
+        "date": "2026-04-16",
+        "price": 419
+      },
+      {
+        "date": "2026-04-22",
+        "price": 429
+      },
+      {
+        "date": "2026-05-01",
+        "price": 384.33
+      },
+      {
+        "date": "2026-05-09",
+        "price": 357.59
+      },
+      {
+        "date": "2026-05-18",
+        "price": 357.59
+      },
+      {
+        "date": "2026-05-27",
+        "price": 419
+      },
+      {
+        "date": "2026-06-06",
+        "price": 411.07
+      },
+      {
+        "date": "2026-06-14",
+        "price": 399
+      },
+      {
+        "date": "2026-06-22",
+        "price": 406.59
+      },
+      {
+        "date": "2026-07-03",
+        "price": 404
+      },
+      {
+        "date": "2026-07-09",
+        "price": 381.28
+      },
+      {
+        "date": "2026-07-20",
+        "price": 404
+      },
+      {
+        "date": "2026-07-26",
+        "price": 396
+      },
+      {
+        "date": "2026-08-06",
+        "price": 358.2
+      },
+      {
+        "date": "2026-08-10",
+        "price": 356
+      },
+      {
+        "date": "2026-08-14",
+        "price": 356
+      },
+      {
+        "date": "2026-08-21",
+        "price": 358.2
+      },
+      {
+        "date": "2026-09-01",
+        "price": 419
+      },
+      {
+        "date": "2026-09-07",
+        "price": 419.23
+      },
+      {
+        "date": "2026-09-17",
+        "price": 448
+      },
+      {
+        "date": "2026-09-24",
+        "price": 448
+      },
+      {
+        "date": "2026-10-05",
+        "price": 453
+      },
+      {
+        "date": "2026-10-07",
+        "price": 476.88
+      },
+      {
+        "date": "2026-10-12",
+        "price": 458.05
+      }
+    ]
+  },
+  "candidate_summary": {
+    "scope": "returned_candidates",
+    "returned_count": 3,
+    "eligible_count": 3,
+    "rejected_count": 0,
+    "rejection_counts": {},
+    "search_fallback_applied": false,
+    "delivered_totals_checked": 3,
+    "delivered_totals_known": 0
+  },
+  "candidates": [
+    {
+      "product_id": "bp_2159251800",
+      "status": "recommended",
+      "reason_codes": [],
+      "review_state": "available",
+      "source_ids": [
+        "compare_offers:bp_2159251800:bp_offer_146639457",
+        "compare_offers:bp_2159251800:bp_offer_147078600",
+        "compare_offers:bp_2159251800:bp_offer_147621074",
+        "compare_offers:bp_2159251800:bp_offer_149171612",
+        "compare_offers:bp_2159251800:bp_offer_157813886",
+        "compare_offers:bp_2159251800:bp_offer_169028670",
+        "compare_offers:bp_2159251800:bp_offer_172024358",
+        "compare_offers:bp_2159251800:bp_offer_189943128",
+        "compare_offers:bp_2159251800:bp_offer_207104237",
+        "compare_offers:bp_2159251800:bp_offer_226445700",
+        "compare_offers:bp_2159251800:check",
+        "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops",
+        "get_price_history:bp_2159251800:bp_2159251800",
+        "get_product_details:bp_2159251800:bp_2159251800",
+        "get_product_reviews:bp_2159251800:bp_2159251800",
+        "search_products:bp_2159251800:bp_2159251800"
+      ]
+    },
+    {
+      "product_id": "bp_2159215459",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2159215459:bp_offer_139185366",
+        "compare_offers:bp_2159215459:bp_offer_140143596",
+        "compare_offers:bp_2159215459:bp_offer_155621729",
+        "compare_offers:bp_2159215459:bp_offer_168453395",
+        "compare_offers:bp_2159215459:bp_offer_169359044",
+        "compare_offers:bp_2159215459:bp_offer_186840559",
+        "compare_offers:bp_2159215459:bp_offer_190491356",
+        "compare_offers:bp_2159215459:bp_offer_207104232",
+        "compare_offers:bp_2159215459:bp_offer_214115709",
+        "compare_offers:bp_2159215459:bp_offer_226445701",
+        "compare_offers:bp_2159215459:check",
+        "deterministic_ranking:bp_2159215459:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2159215459:bp_2159215459",
+        "search_products:bp_2159215459:bp_2159215459"
+      ]
+    },
+    {
+      "product_id": "bp_2159199764",
+      "status": "alternative",
+      "reason_codes": [],
+      "review_state": "absent",
+      "source_ids": [
+        "compare_offers:bp_2159199764:bp_offer_138702795",
+        "compare_offers:bp_2159199764:bp_offer_148601706",
+        "compare_offers:bp_2159199764:bp_offer_150482136",
+        "compare_offers:bp_2159199764:bp_offer_179701687",
+        "compare_offers:bp_2159199764:bp_offer_189840676",
+        "compare_offers:bp_2159199764:bp_offer_202249689",
+        "compare_offers:bp_2159199764:bp_offer_204758001",
+        "compare_offers:bp_2159199764:bp_offer_207104233",
+        "compare_offers:bp_2159199764:bp_offer_219131920",
+        "compare_offers:bp_2159199764:bp_offer_227108439",
+        "compare_offers:bp_2159199764:check",
+        "deterministic_ranking:bp_2159199764:bestprice_shopping_policy_v1:laptops",
+        "search_products:bp_2159199764:bp_2159199764"
+      ]
+    },
+    {
+      "product_id": "bp_2164551996",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164551996:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164551996:bp_2164551996",
+        "search_products:bp_2164551996:bp_2164551996"
+      ]
+    },
+    {
+      "product_id": "bp_2164551998",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164551998:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164551998:bp_2164551998",
+        "search_products:bp_2164551998:bp_2164551998"
+      ]
+    },
+    {
+      "product_id": "bp_2164551997",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164551997:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164551997:bp_2164551997",
+        "search_products:bp_2164551997:bp_2164551997"
+      ]
+    },
+    {
+      "product_id": "bp_2164347765",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164347765:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164347765:bp_2164347765",
+        "search_products:bp_2164347765:bp_2164347765"
+      ]
+    },
+    {
+      "product_id": "bp_2164159909",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164159909:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164159909:bp_2164159909",
+        "search_products:bp_2164159909:bp_2164159909"
+      ]
+    },
+    {
+      "product_id": "bp_2164354604",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": [
+        "deterministic_ranking:bp_2164354604:bestprice_shopping_policy_v1:laptops",
+        "get_product_details:bp_2164354604:bp_2164354604",
+        "search_products:bp_2164354604:bp_2164354604"
+      ]
+    },
+    {
+      "product_id": "bp_2164378119",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2164378119:bp_2164378119"]
+    },
+    {
+      "product_id": "bp_2164245128",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2164245128:bp_2164245128"]
+    },
+    {
+      "product_id": "bp_2164454689",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2164454689:bp_2164454689"]
+    },
+    {
+      "product_id": "bp_2164248072",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2164248072:bp_2164248072"]
+    },
+    {
+      "product_id": "bp_2164375479",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2164375479:bp_2164375479"]
+    },
+    {
+      "product_id": "bp_2164207177",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2164207177:bp_2164207177"]
+    },
+    {
+      "product_id": "bp_2164405485",
+      "status": "disqualified",
+      "reason_codes": ["minimum_ram_gb"],
+      "review_state": "not_requested",
+      "source_ids": ["search_products:bp_2164405485:bp_2164405485"]
+    }
+  ],
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 16,
+    "complete_catalog": false,
+    "search_calls": 1,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:26:21.520Z",
+      "source_observed_at": "2026-10-12T10:20:24.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 232,
+      "candidate_count": 48,
+      "eligible_count": 48,
+      "returned_count": 16,
+      "category_id": 2591,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "uncertainty": [
+    {
+      "code": "ranking_calibration",
+      "product_id": "bp_2159251800",
+      "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+    },
+    {
+      "code": "landed_cost_unknown",
+      "product_id": "bp_2159251800",
+      "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+    },
+    {
+      "code": "mixed_observed_price_windows",
+      "product_id": "bp_2159251800",
+      "message": "Η σημερινή τιμή είναι στη συνηθισμένη τιμή των 30 ημερών, αλλά πάνω από τη συνηθισμένη τιμή των 90 και 180 ημερών (180 ημέρες: διάμεσος 406,59€, 12,7% πάνω). Η σύγκριση δεν περιλαμβάνει μεταφορικά."
+    }
+  ],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "mixed_observed_price_windows",
+    "source_ids": ["get_price_history:bp_2159251800:bp_2159251800"],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "compare",
+    "reason": "review_current_offers",
+    "url": "[omitted]",
+    "requires_user_action": true
+  },
+  "clarifications": [],
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "answer": "",
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "execution": {
+    "tools_used": [
+      "search_products",
+      "get_product_details",
+      "compare_offers",
+      "get_price_history",
+      "get_product_reviews"
+    ],
+    "model": "gemini-3.8-flash",
+    "metrics": {
+      "agent_ms": 1710,
+      "grounding_calls": 0,
+      "grounding_ms": 0,
+      "grounding_cache_hits": 0,
+      "planner_calls": 0,
+      "planner_ms": 0,
+      "model_fallbacks": 0,
+      "understanding_used_model": true,
+      "understanding_shared_cache_checked": true,
+      "understanding_shared_cache_hit": true,
+      "understanding_cached": true,
+      "understanding_unreadable": 0,
+      "understanding_requirements": 0,
+      "understanding_ms": 176,
+      "direct_recommendation": true,
+      "exact_route": false,
+      "catalog_search_calls": 1,
+      "search_products_calls": 1,
+      "search_products_failures": 0,
+      "search_products_invocations": 1,
+      "search_products_cancellations": 0,
+      "search_products_total_ms": 405,
+      "search_products_max_ms": 405,
+      "get_product_details_calls": 2,
+      "get_product_details_failures": 0,
+      "get_product_details_invocations": 2,
+      "get_product_details_cancellations": 0,
+      "get_product_details_total_ms": 977,
+      "get_product_details_max_ms": 730,
+      "compare_offers_calls": 3,
+      "compare_offers_failures": 0,
+      "compare_offers_invocations": 3,
+      "compare_offers_cancellations": 0,
+      "compare_offers_total_ms": 95,
+      "compare_offers_max_ms": 71,
+      "get_price_history_calls": 1,
+      "get_price_history_failures": 0,
+      "get_price_history_invocations": 1,
+      "get_price_history_cancellations": 0,
+      "get_price_history_total_ms": 51,
+      "get_price_history_max_ms": 51,
+      "get_product_reviews_calls": 3,
+      "get_product_reviews_failures": 0,
+      "get_product_reviews_invocations": 3,
+      "get_product_reviews_cancellations": 0,
+      "get_product_reviews_total_ms": 151,
+      "get_product_reviews_max_ms": 53,
+      "optimize_basket_calls": 0,
+      "optimize_basket_failures": 0,
+      "optimize_basket_invocations": 0,
+      "optimize_basket_cancellations": 0,
+      "optimize_basket_total_ms": 0,
+      "optimize_basket_max_ms": 0,
+      "retrieval_page_candidates": 16,
+      "receipt_disqualified_candidates": 13,
+      "receipt_eligible_candidates": 3,
+      "receipt_review_requested": 3,
+      "receipt_review_available": 1,
+      "receipt_validation_ms": 15,
+      "brain_runtime_ms": 1711,
+      "brain_finalization_ms": 41
+    }
+  },
+  "personalization": null,
+  "follow_ups": [
+    {
+      "id": "cheaper",
+      "label": "Κάτι φθηνότερο",
+      "message": "Βρες κάτι φθηνότερο από το Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos), κρατώντας τις ίδιες βασικές απαιτήσεις.",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_0"
+      }
+    },
+    {
+      "id": "windows",
+      "label": "Με Windows",
+      "message": "Βρες αντίστοιχη επιλογή με Windows αντί για το Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos).",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_1"
+      }
+    },
+    {
+      "id": "compare",
+      "label": "Σύγκρινε τις επιλογές",
+      "message": "Σύγκρινε αναλυτικά το Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos) με το Lenovo V15 G4 AMN (Ryzen 5-7520U/16GB/512GB SSD/Radeon Graphics/FreeDos).",
+      "action": {
+        "parent_decision_id": "[omitted]",
+        "id": "action_2"
+      }
+    }
+  ],
+  "coverage": {
+    "policy_version": "ask_beta_coverage_v1",
+    "family": "laptop",
+    "reason": "catalog_family_verified",
+    "supported": true
+  },
+  "spend_walk": {
+    "version": "ask_spend_walk_v1",
+    "category_schema": "laptops",
+    "comparison_status": "consistent",
+    "use_case": "general",
+    "price_basis": "item_price",
+    "ranking": null,
+    "budget_eur": 600,
+    "base": {
+      "product_id": "bp_2159251800",
+      "fit": 53.5,
+      "price_eur": 458.05
+    },
+    "winner": {
+      "product_id": "bp_2159251800",
+      "fit": 53.5,
+      "reason": "base",
+      "price_eur": 458.05
+    },
+    "next": {
+      "product_id": "bp_2159215459",
+      "price_eur": 508.77,
+      "delta_fit": 2.6,
+      "delta_eur": 50.72,
+      "accepted": false
+    },
+    "steps": [
+      {
+        "product_id": "bp_2159215459",
+        "price_eur": 508.77,
+        "delta_fit": 2.6,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": ["cpu_mt", "cpu_st", "ram", "storage", "longevity", "satisfaction"],
+        "delta_eur": 50.72,
+        "fit_per_eur": 0.051,
+        "threshold": 0.09,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 458.05,
+        "premium_allowance_eur": 22.9,
+        "cumulative_premium_eur": 50.72
+      },
+      {
+        "product_id": "bp_2159199764",
+        "price_eur": 534.13,
+        "delta_fit": 1.5,
+        "fit_relation": "better_supported_fit",
+        "compared_attributes": ["cpu_mt", "cpu_st", "ram", "storage", "longevity", "satisfaction"],
+        "delta_eur": 76.08,
+        "fit_per_eur": 0.02,
+        "threshold": 0.095,
+        "accepted": false,
+        "selected": false,
+        "selection_reason": null,
+        "premium_reference_eur": 458.05,
+        "premium_allowance_eur": 22.9,
+        "cumulative_premium_eur": 76.08
+      }
+    ]
+  },
+  "review_evidence": {
+    "version": "ask_review_evidence_v1",
+    "review_count": 9,
+    "helpful_average": 3.7,
+    "highlights": [
+      {
+        "rating": 4,
+        "excerpt": "Μια χαρά για vfm. Αν εξαιρέσεις λίγο την οθόνη, το προτείνω.",
+        "helpfulness": 1,
+        "helpful_votes": 0,
+        "unhelpful_votes": 0,
+        "written_at": "2026-02-23T08:48:31.000Z"
+      },
+      {
+        "rating": 4,
+        "excerpt": "Πολύ φωτεινή οθόνη και καλός ήχος.",
+        "helpfulness": 1,
+        "helpful_votes": 0,
+        "unhelpful_votes": 0,
+        "written_at": "2026-08-27T13:08:07.000Z"
+      },
+      {
+        "rating": 3,
+        "excerpt": "Καλό, αλλά... για απλές δουλειές, έτσι για καθημερινή χρήση, κομπλέ. Για κάτι παραπάνω, όχι.",
+        "helpfulness": 1,
+        "helpful_votes": 0,
+        "unhelpful_votes": 0,
+        "written_at": "2024-10-06T05:44:15.000Z"
+      }
+    ],
+    "as_of": "2026-10-12T10:26:22.687Z"
+  }
+}

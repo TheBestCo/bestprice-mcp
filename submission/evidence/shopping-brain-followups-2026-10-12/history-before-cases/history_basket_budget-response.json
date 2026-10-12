@@ -1,0 +1,110 @@
+{
+  "schema_version": "2.0",
+  "as_of": "2026-10-12T10:11:12.665Z",
+  "currency": "EUR",
+  "locale": "el-GR",
+  "warnings": [],
+  "brain": {
+    "projection_version": "bestprice_mcp_decision_v1",
+    "decision_version": "bestprice_decision_v1",
+    "decision_id": "[omitted]",
+    "evidence_fingerprint": "3f6e606d4c2facde84534239fd2b4106eba83c6d96654313c490139c2fdcfc6b"
+  },
+  "outcome": "no_match",
+  "status": "no_match",
+  "answer": "",
+  "reason": "unsupported_beta_category",
+  "message": "Μέχρι 100€ ο κατάλογος δεν έδωσε ποντίκι — μόνο προϊόντα από άλλες κατηγορίες. Δοκίμασε μεγαλύτερο όριο τιμής.",
+  "blocking_constraints": ["catalog_family_mismatch"],
+  "recommended_product_id": null,
+  "alternatives": [],
+  "products": [],
+  "constraints": {
+    "maximum_price_eur": 100,
+    "catalog_requirements": [],
+    "beta_supported": true,
+    "coverage_family": "mouse",
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 100,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 100,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 19,
+            "end": 31,
+            "text": "έως 100 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    }
+  },
+  "reasons": [],
+  "tradeoffs": [],
+  "offer_summary": null,
+  "comparison": null,
+  "basket": null,
+  "basket_request": null,
+  "clarifications": [],
+  "price_verdict": {
+    "verdict": "insufficient_evidence",
+    "reason": "history_not_available",
+    "source_ids": [],
+    "predicts_future_price": false
+  },
+  "next_action": {
+    "type": "provide_context",
+    "reason": "unsupported_beta_category",
+    "requires_user_action": true,
+    "bestprice_url": "[omitted]"
+  },
+  "ranking_policy": {
+    "version": "bestprice_shopping_policy_v1",
+    "product": "hard_constraints_then_fit_and_marginal_value",
+    "merchant": "lowest_known_comparable_cost",
+    "commercial_signals_used": false
+  },
+  "retrieval": {
+    "scope": "returned_page",
+    "candidate_count": 8,
+    "complete_catalog": false,
+    "search_calls": 3,
+    "receipt": {
+      "version": "bestprice_retrieval_v1",
+      "policy": "single_catalog_page_v1",
+      "backend": "n.products.search",
+      "checked_at": "2026-10-12T10:11:10.669Z",
+      "source_observed_at": "2026-10-12T10:09:33.000Z",
+      "search_calls": 1,
+      "trinity_calls": 1,
+      "page": 1,
+      "page_size": 48,
+      "catalog_total": 47,
+      "candidate_count": 40,
+      "eligible_count": 40,
+      "returned_count": 8,
+      "category_id": null,
+      "protected_term_mismatch": false,
+      "ranking_scope": "returned_page"
+    }
+  },
+  "shopping_context": {
+    "version": "bestprice_shopping_context_v32",
+    "products": [],
+    "market": []
+  },
+  "evidence": {
+    "scope": "returned_products",
+    "sources": [],
+    "claims": []
+  },
+  "uncertainty": []
+}
