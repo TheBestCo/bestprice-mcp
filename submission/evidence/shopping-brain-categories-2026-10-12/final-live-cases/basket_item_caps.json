@@ -1,0 +1,1870 @@
+{
+  "id": "basket_item_caps",
+  "message": "Θέλω laptop έως 600 ευρώ και ακουστικά έως 100 ευρώ, συνολικά έως 650 ευρώ. ΤΚ 11527.",
+  "expectation": {
+    "full": true,
+    "id": "basket_item_caps",
+    "outcome": "basket",
+    "total": 650
+  },
+  "evidence_detail": "full",
+  "started_at": "2026-10-12T10:03:29.101Z",
+  "passed": true,
+  "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+  "transport_bytes": 62993,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T10:03:29.796Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "[omitted]",
+      "evidence_fingerprint": "1cb3fa66ea3f68606d0148032e83d2582d7a0699169d50ee5946b1aa153a2072"
+    },
+    "outcome": "basket",
+    "status": "ready",
+    "answer": "Προτείνω το ισορροπημένο πλάνο: 481,99€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 168,01€ κάτω από το συνολικό όριο των 650€.",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 650,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 650,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 62,
+              "end": 74,
+              "text": "έως 650 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 650,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "laptop",
+          "label": "Laptop",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": 600,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 600,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 7,
+                    "end": 19,
+                    "text": "έως 600 ευρώ"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 600,
+              "statedBudgetEur": 600,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": 100,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 100,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 10,
+                    "end": 22,
+                    "text": "έως 100 ευρώ"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 100,
+              "statedBudgetEur": 100,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ],
+      "catalog_requirements": []
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": {
+      "schema_version": "2.0",
+      "as_of": "2026-10-12T10:03:29.648Z",
+      "currency": "EUR",
+      "locale": "el-GR",
+      "warnings": [
+        "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+      ],
+      "preferred_plan": "balanced",
+      "methodology_id": "bestprice_basket_bounded_v1",
+      "plans": [
+        {
+          "plan_type": "fewer_merchants",
+          "merchant_count": 1,
+          "item_subtotal": 615.19,
+          "shipping_total": 3,
+          "shipping_status": "known",
+          "total_price": 618.19,
+          "reliability_score": 4.57,
+          "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+          "merchants": [
+            {
+              "merchant_id": "bp_merchant_688",
+              "merchant_name": "CosmoMarket",
+              "merchant_rating": 4.57,
+              "verified_merchant": true,
+              "item_subtotal": 615.19,
+              "shipping_price": 3,
+              "shipping_status": "known",
+              "total_price": 618.19,
+              "reason": "covers_basket_with_one_merchant",
+              "items": [
+                {
+                  "product_id": "bp_2159251800",
+                  "title": "Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos)",
+                  "quantity": 1,
+                  "unit_price": 596.09,
+                  "line_total": 596.09,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                },
+                {
+                  "product_id": "bp_2163048726",
+                  "title": "Hoco EQ27 Ακουστικά Bluetooth Earbud Black",
+                  "quantity": 1,
+                  "unit_price": 19.1,
+                  "line_total": 19.1,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "plan_type": "balanced",
+          "merchant_count": 2,
+          "item_subtotal": 475.99,
+          "shipping_total": 6,
+          "shipping_status": "known",
+          "total_price": 481.99,
+          "reliability_score": 4.98,
+          "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+          "merchants": [
+            {
+              "merchant_id": "bp_merchant_802",
+              "merchant_name": "Uninet",
+              "merchant_rating": 5,
+              "verified_merchant": false,
+              "item_subtotal": 16.99,
+              "shipping_price": 3,
+              "shipping_status": "known",
+              "total_price": 19.99,
+              "reason": "selected_by_basket_optimizer",
+              "items": [
+                {
+                  "product_id": "bp_2163048726",
+                  "title": "Hoco EQ27 Ακουστικά Bluetooth Earbud Black",
+                  "quantity": 1,
+                  "unit_price": 16.99,
+                  "line_total": 16.99,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                }
+              ]
+            },
+            {
+              "merchant_id": "bp_merchant_4115",
+              "merchant_name": "Electrocrete",
+              "merchant_rating": 4.97,
+              "verified_merchant": true,
+              "item_subtotal": 459,
+              "shipping_price": 3,
+              "shipping_status": "known",
+              "total_price": 462,
+              "reason": "selected_by_basket_optimizer",
+              "items": [
+                {
+                  "product_id": "bp_2159251800",
+                  "title": "Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos)",
+                  "quantity": 1,
+                  "unit_price": 459,
+                  "line_total": 459,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "unavailable_items": []
+    },
+    "basket_request": {
+      "version": "bestprice_basket_request_v1",
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "laptop",
+          "label": "Laptop",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": 600,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 600,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 7,
+                    "end": 19,
+                    "text": "έως 600 ευρώ"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 600,
+              "statedBudgetEur": 600,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": 100,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 100,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 10,
+                    "end": 22,
+                    "text": "έως 100 ευρώ"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 100,
+              "statedBudgetEur": 100,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ],
+      "resolved_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "laptop",
+          "label": "Laptop",
+          "quantity": 1,
+          "product_id": "bp_2159251800",
+          "catalog_price_eur": 458.05,
+          "selection_reason": "calibrated_spend_walk"
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "product_id": "bp_2163048726",
+          "catalog_price_eur": 12.7,
+          "selection_reason": "calibrated_spend_walk"
+        }
+      ],
+      "unresolved_slots": [],
+      "total_budget_eur": 650
+    },
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "compare",
+      "reason": "review_current_offers",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "basket_objective",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:03:29.181Z",
+        "source_observed_at": "2026-10-12T10:02:03.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 19443,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2159251800",
+          "family": "laptops",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 16,
+              "claim_ids": ["claim_0a447b982efe9240ab1732f0"],
+              "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 512,
+              "claim_ids": ["claim_83c61e67bcbe5e773661a8f5"],
+              "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"]
+            },
+            {
+              "key": "cpu_model",
+              "unit": null,
+              "status": "known",
+              "value": "AMD Ryzen 3 7320U",
+              "claim_ids": ["claim_f6c1b32825cbfef7ca2c0900"],
+              "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"]
+            },
+            {
+              "key": "operating_system",
+              "unit": null,
+              "status": "known",
+              "value": "No operating system",
+              "claim_ids": ["claim_89ae23cc06af975d83f5364f"],
+              "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"]
+            },
+            {
+              "key": "dedicated_gpu",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_8a778623778c6f3bf1091a89"],
+              "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163048726",
+          "family": "headphones",
+          "attributes": [
+            {
+              "key": "active_noise_cancellation",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_80b23b1cad3da8966988be1f"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "over_ear",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_0c3179131e652b799602955b"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_453f77cac7fe041d555e74a8", "claim_735ea42e5cddd52538984b10"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "battery_hours",
+              "unit": "hours",
+              "status": "known",
+              "value": 7,
+              "claim_ids": ["claim_099a5c958229056f0c13551b"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "battery_with_case_hours",
+              "unit": "hours",
+              "status": "known",
+              "value": 28,
+              "claim_ids": ["claim_7b6d06d46be49cfa0a38edcf"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "multipoint",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2159251800",
+          "offers": {
+            "status": "not_checked",
+            "scope": "bounded_returned_offers",
+            "offer_count": 0,
+            "merchant_count": 0,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 0
+            },
+            "item_price": null,
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2163048726",
+          "offers": {
+            "status": "not_checked",
+            "scope": "bounded_returned_offers",
+            "offer_count": 0,
+            "merchant_count": 0,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 0
+            },
+            "item_price": null,
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "sources": [
+        {
+          "source_id": "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops",
+          "kind": "decision_policy",
+          "record_id": "bestprice_shopping_policy_v1:laptops",
+          "product_id": "bp_2159251800",
+          "scope": "cluster",
+          "capability": "deterministic_ranking",
+          "checked_at": "2026-10-12T10:03:29.796Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "deterministic_ranking:bp_2163048726:bestprice_shopping_policy_v1:laptops",
+          "kind": "decision_policy",
+          "record_id": "bestprice_shopping_policy_v1:laptops",
+          "product_id": "bp_2163048726",
+          "scope": "cluster",
+          "capability": "deterministic_ranking",
+          "checked_at": "2026-10-12T10:03:29.796Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "get_product_details:bp_2159251800:bp_2159251800",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2159251800",
+          "product_id": "bp_2159251800",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:03:29.175Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2163048726:bp_2163048726",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163048726",
+          "product_id": "bp_2163048726",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:03:29.181Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800",
+          "kind": "basket_quote",
+          "record_id": "balanced:bp_merchant_4115:bp_2159251800",
+          "product_id": "bp_2159251800",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:29.648Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800",
+          "kind": "basket_quote",
+          "record_id": "fewer_merchants:bp_merchant_688:bp_2159251800",
+          "product_id": "bp_2159251800",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:29.648Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726",
+          "kind": "basket_quote",
+          "record_id": "balanced:bp_merchant_802:bp_2163048726",
+          "product_id": "bp_2163048726",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:29.648Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726",
+          "kind": "basket_quote",
+          "record_id": "fewer_merchants:bp_merchant_688:bp_2163048726",
+          "product_id": "bp_2163048726",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:29.648Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "search_products:bp_2163048726:bp_2163048726",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163048726",
+          "product_id": "bp_2163048726",
+          "scope": "cluster",
+          "capability": "search_products",
+          "checked_at": "2026-10-12T10:03:29.181Z",
+          "source_observed_at": "2026-10-12T10:02:03.000Z",
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_006c247e7e48310f03340a8d",
+          "product_id": "bp_2159251800",
+          "field": "availability",
+          "value": "in_stock",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_07a61022251874315fb0c7e8",
+          "product_id": "bp_2159251800",
+          "field": "basket_plan_total",
+          "value": 481.99,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_08ebea6e77f6e6cc46dc6a63",
+          "product_id": "bp_2159251800",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_099a5c958229056f0c13551b",
+          "product_id": "bp_2163048726",
+          "field": "attribute:battery_hours",
+          "value": 7,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_7f184f012d4644bd95e7ee27"]
+        },
+        {
+          "claim_id": "claim_0a447b982efe9240ab1732f0",
+          "product_id": "bp_2159251800",
+          "field": "attribute:ram_gb",
+          "value": 16,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_7bfe7f975a087b8e4d251098"]
+        },
+        {
+          "claim_id": "claim_0b757480668afe4ad4a6377f",
+          "product_id": "bp_2159251800",
+          "field": "feature:5145",
+          "value": "7ης Γενιάς",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5145,
+            "label": "Γενιά Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_0c3179131e652b799602955b",
+          "product_id": "bp_2163048726",
+          "field": "attribute:over_ear",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_5f551e4d401b1232002e6d2b"]
+        },
+        {
+          "claim_id": "claim_1126bd80232036ec179079bc",
+          "product_id": "bp_2159251800",
+          "field": "ranking:laptops:longevity",
+          "value": 2022,
+          "kind": "derived",
+          "source_ids": [
+            "get_product_details:bp_2159251800:bp_2159251800",
+            "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_13b1d2674a913c5d46093e59",
+          "product_id": "bp_2159251800",
+          "field": "ranking:laptops:cpu_mt",
+          "value": 0.32,
+          "kind": "derived",
+          "source_ids": [
+            "get_product_details:bp_2159251800:bp_2159251800",
+            "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_14b066d560554f4fbaa50c6d",
+          "product_id": "bp_2159251800",
+          "field": "price_from",
+          "value": 458.05,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_1749a1bfd74e9ed054d06bdd",
+          "product_id": "bp_2163048726",
+          "field": "basket_merchant_shipping",
+          "value": 3,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_1b6eeb272b799f43a0645b14",
+          "product_id": "bp_2163048726",
+          "field": "basket_line_total",
+          "value": 16.99,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_1d01a68620bcc8530ea6b148",
+          "product_id": "bp_2159251800",
+          "field": "category_title",
+          "value": "Laptops",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_230bb5f8f6f8ef8da1bea469",
+          "product_id": "bp_2159251800",
+          "field": "feature:2115",
+          "value": "HDMI, Wi-Fi, Ethernet, Bluetooth, USB Type-C, USB 3.2",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2115,
+            "label": "Συνδέσεις",
+            "group": "Συνδεσιμότητα"
+          }
+        },
+        {
+          "claim_id": "claim_2362011ccb5396ad647e7b57",
+          "product_id": "bp_2163048726",
+          "field": "availability",
+          "value": "in_stock",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_261a0dc022a8ce6dd5affa77",
+          "product_id": "bp_2159251800",
+          "field": "title",
+          "value": "Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos)",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_28e5babbc48ad2430f4d8302",
+          "product_id": "bp_2159251800",
+          "field": "ranking:laptops:satisfaction",
+          "value": 4,
+          "kind": "derived",
+          "source_ids": [
+            "get_product_details:bp_2159251800:bp_2159251800",
+            "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_294bda30de054bfcb5e39997",
+          "product_id": "bp_2163048726",
+          "field": "basket_merchant_name",
+          "value": "Uninet",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_29ad500d2e423a44094a8a7d",
+          "product_id": "bp_2163048726",
+          "field": "feature:3527",
+          "value": "Θήκη Φόρτισης, Μείωση Θορύβου Μικροφώνου, Active Noise Cancellation (ANC)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3527,
+            "label": "Δυνατότητες",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_2a0f7fa132a135fac37324f6",
+          "product_id": "bp_2159251800",
+          "field": "offer_count",
+          "value": 43,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_2e0953794da767e07f5589fe",
+          "product_id": "bp_2159251800",
+          "field": "basket_unit_price",
+          "value": 596.09,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_304c23d12ae4e8abaee2b46c",
+          "product_id": "bp_2159251800",
+          "field": "feature:141",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 141,
+            "label": "Ενσωματωμένος Card Reader",
+            "group": "Μέσα Ανάγνωσης"
+          }
+        },
+        {
+          "claim_id": "claim_32ccb398ab57444d7a40c23f",
+          "product_id": "bp_2159251800",
+          "field": "feature:1785",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1785,
+            "label": "Touch Screen",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_33ee96fe9da0c52a3e0c35f6",
+          "product_id": "bp_2163048726",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_3fa6fc8bf8d2d2e724f3adb8",
+          "product_id": "bp_2163048726",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_42a7f7eaa4a685b146a0f7e8",
+          "product_id": "bp_2159251800",
+          "field": "basket_unit_price",
+          "value": 459,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_42f4fd35ebc9cf6dc473ab50",
+          "product_id": "bp_2163048726",
+          "field": "basket_unit_price",
+          "value": 16.99,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_453f77cac7fe041d555e74a8",
+          "product_id": "bp_2163048726",
+          "field": "attribute:wireless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_94ded0993fb0edad17eea85e"]
+        },
+        {
+          "claim_id": "claim_4717646b4c0db1d081a80732",
+          "product_id": "bp_2159251800",
+          "field": "feature:1101",
+          "value": "Full HD",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1101,
+            "label": "Ανάλυση",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_49783934529a28383b6169f4",
+          "product_id": "bp_2159251800",
+          "field": "basket_plan_total",
+          "value": 618.19,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_4b0ed2e5de188dde4ecbd702",
+          "product_id": "bp_2159251800",
+          "field": "feature:43",
+          "value": "1920 x 1080 (FHD)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 43,
+            "label": "Μέγιστη Ανάλυση",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_4b1327d1a581f42e3881b593",
+          "product_id": "bp_2159251800",
+          "field": "basket_merchant_name",
+          "value": "Electrocrete",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_4b92920be8a254ce120f3355",
+          "product_id": "bp_2163048726",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_4bd2f03e5679d8fd0bee8399",
+          "product_id": "bp_2159251800",
+          "field": "rating_count",
+          "value": 9,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_5720d6058763f1381d446019",
+          "product_id": "bp_2159251800",
+          "field": "feature:48",
+          "value": "1 MB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 48,
+            "label": "Μέγεθος Μνήμης Γραφικών",
+            "group": "Κάρτα Γραφικών"
+          }
+        },
+        {
+          "claim_id": "claim_5f551e4d401b1232002e6d2b",
+          "product_id": "bp_2163048726",
+          "field": "feature:5739",
+          "value": "Earbud",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5739,
+            "label": "Είδος Ακουστικού",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_66ed13e8941d007ee80f2783",
+          "product_id": "bp_2163048726",
+          "field": "category_id",
+          "value": 813,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_691fe6f441076380126bcfef",
+          "product_id": "bp_2163048726",
+          "field": "feature:1062",
+          "value": "Μαύρο",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1062,
+            "label": "Χρώμα",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_735ea42e5cddd52538984b10",
+          "product_id": "bp_2163048726",
+          "field": "attribute:wireless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_bea863f242e84ca35d1546bf"]
+        },
+        {
+          "claim_id": "claim_75bd1e00169d105146b4becf",
+          "product_id": "bp_2163048726",
+          "field": "title",
+          "value": "Hoco EQ27 Ακουστικά Bluetooth Earbud Black",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_77f3efe45a7ac2caebb4e59d",
+          "product_id": "bp_2159251800",
+          "field": "ranking:laptops:cpu_st",
+          "value": 0.52,
+          "kind": "derived",
+          "source_ids": [
+            "get_product_details:bp_2159251800:bp_2159251800",
+            "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_784f280751c2e694e7e845ce",
+          "product_id": "bp_2159251800",
+          "field": "feature:1035",
+          "value": "2.4 GΗz",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1035,
+            "label": "Ταχύτητα Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_7b6d06d46be49cfa0a38edcf",
+          "product_id": "bp_2163048726",
+          "field": "attribute:battery_with_case_hours",
+          "value": 28,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_c494bdd0cbfb58df5b30148a"]
+        },
+        {
+          "claim_id": "claim_7bfe7f975a087b8e4d251098",
+          "product_id": "bp_2159251800",
+          "field": "feature:1447",
+          "value": "16384 MB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1447,
+            "label": "RAM",
+            "group": "Μνήμη"
+          }
+        },
+        {
+          "claim_id": "claim_7c44d29473bb0bfc4609b25a",
+          "product_id": "bp_2159251800",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_7ec1426f829de4d744ed532b",
+          "product_id": "bp_2159251800",
+          "field": "feature:1033",
+          "value": "LPDDR5",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1033,
+            "label": "Τύπος RAM",
+            "group": "Μνήμη"
+          }
+        },
+        {
+          "claim_id": "claim_7f184f012d4644bd95e7ee27",
+          "product_id": "bp_2163048726",
+          "field": "feature:3533",
+          "value": "7 ώρες",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3533,
+            "label": "Χρόνος Λειτουργίας",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_80b23b1cad3da8966988be1f",
+          "product_id": "bp_2163048726",
+          "field": "attribute:active_noise_cancellation",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_29ad500d2e423a44094a8a7d"]
+        },
+        {
+          "claim_id": "claim_83c61e67bcbe5e773661a8f5",
+          "product_id": "bp_2159251800",
+          "field": "attribute:storage_gb",
+          "value": 512,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_ab833df87019d7465f023239"]
+        },
+        {
+          "claim_id": "claim_855cbe47a26045571f51d12b",
+          "product_id": "bp_2159251800",
+          "field": "feature:2781",
+          "value": "Καθημερινή Χρήση, Φοιτητικό",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2781,
+            "label": "Τύπος Laptop",
+            "group": "Τύπος"
+          }
+        },
+        {
+          "claim_id": "claim_8808e2b172239e1febc88553",
+          "product_id": "bp_2159251800",
+          "field": "feature:2525",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2525,
+            "label": "IPS Panel",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_8830845a152ffe1ed3403f62",
+          "product_id": "bp_2159251800",
+          "field": "feature:396",
+          "value": "Χωρίς Λειτουργικό",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 396,
+            "label": "Λειτουργικό Σύστημα",
+            "group": "Λογισμικό"
+          }
+        },
+        {
+          "claim_id": "claim_89ae23cc06af975d83f5364f",
+          "product_id": "bp_2159251800",
+          "field": "attribute:operating_system",
+          "value": "No operating system",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_8830845a152ffe1ed3403f62"]
+        },
+        {
+          "claim_id": "claim_8a778623778c6f3bf1091a89",
+          "product_id": "bp_2159251800",
+          "field": "attribute:dedicated_gpu",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d0b13dcf1280b9e623f72daf"]
+        },
+        {
+          "claim_id": "claim_94ded0993fb0edad17eea85e",
+          "product_id": "bp_2163048726",
+          "field": "feature:2834",
+          "value": "Bluetooth 5.4",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2834,
+            "label": "Συμβατότητα Bluetooth",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_9540bec5d512dc12604fb8a0",
+          "product_id": "bp_2163048726",
+          "field": "catalog_family",
+          "value": "headphones",
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2163048726:bp_2163048726",
+            "get_product_details:bp_2163048726:bp_2163048726"
+          ],
+          "validation": "catalog_family_mapping_v1",
+          "supporting_claim_ids": [
+            "claim_66ed13e8941d007ee80f2783",
+            "claim_e5ac29056e050784efc7ed82",
+            "claim_75bd1e00169d105146b4becf"
+          ]
+        },
+        {
+          "claim_id": "claim_9541593cc422114e918702ba",
+          "product_id": "bp_2163048726",
+          "field": "feature:1625",
+          "value": "Διπλό",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1625,
+            "label": "Αριθμός Ακουστικών",
+            "group": "Τύπος"
+          }
+        },
+        {
+          "claim_id": "claim_967bfd0c357b4e21ecf0ca42",
+          "product_id": "bp_2159251800",
+          "field": "feature:2879",
+          "value": "SSD",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2879,
+            "label": "Τύπος Σκληρού Δίσκου",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_972e3adb7cbd80a564cdeee5",
+          "product_id": "bp_2159251800",
+          "field": "feature:1034",
+          "value": "AMD Ryzen 3",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1034,
+            "label": "Οικογένεια Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_974911212a62abf866873547",
+          "product_id": "bp_2159251800",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_985a23531afbbc48a26825e3",
+          "product_id": "bp_2159251800",
+          "field": "ram_gb",
+          "value": 16,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "deterministic_catalog_extraction"
+        },
+        {
+          "claim_id": "claim_9a23019d925bb5480981b416",
+          "product_id": "bp_2159251800",
+          "field": "rating_average",
+          "value": 4,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_9fa7931e54224ecd3d7371ee",
+          "product_id": "bp_2159251800",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_a9cbf5fd89a33e93232449c4",
+          "product_id": "bp_2163048726",
+          "field": "offer_count",
+          "value": 30,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_aabd7d3b4386db6a772aaeec",
+          "product_id": "bp_2163048726",
+          "field": "basket_merchant_shipping",
+          "value": 3,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_ab833df87019d7465f023239",
+          "product_id": "bp_2159251800",
+          "field": "feature:2527",
+          "value": "512 GB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2527,
+            "label": "Χωρητικότητα Σκληρού Δίσκου",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_ac0a933dd724d244d68dfb06",
+          "product_id": "bp_2159251800",
+          "field": "feature:2533",
+          "value": "Χωρίς Optical Drive",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2533,
+            "label": "Τύπος Optical Drive",
+            "group": "Μέσα Ανάγνωσης"
+          }
+        },
+        {
+          "claim_id": "claim_af0dd11ef10a96b58542ff4b",
+          "product_id": "bp_2159251800",
+          "field": "feature:2526",
+          "value": "7320U",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2526,
+            "label": "Μοντέλο Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_b3353a12444d1b0e4c58f37c",
+          "product_id": "bp_2163048726",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_b47701e045439bc99d5f3c23",
+          "product_id": "bp_2159251800",
+          "field": "ranking:laptops:storage",
+          "value": 512,
+          "kind": "derived",
+          "source_ids": [
+            "get_product_details:bp_2159251800:bp_2159251800",
+            "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_bafb65844117f3cd59b29da8",
+          "product_id": "bp_2159251800",
+          "field": "title",
+          "value": "Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos)",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_bb7350c3650257c3c8b10b20",
+          "product_id": "bp_2159251800",
+          "field": "basket_merchant_shipping",
+          "value": 3,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_bbd6485761578af95c47b71a",
+          "product_id": "bp_2159251800",
+          "field": "category_id",
+          "value": 2591,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_bea863f242e84ca35d1546bf",
+          "product_id": "bp_2163048726",
+          "field": "feature:5741",
+          "value": "Χωρίς Καλώδιo",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5741,
+            "label": "Καλώδιο",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_c3466bf6c6d473f07a697986",
+          "product_id": "bp_2159251800",
+          "field": "basket_line_total",
+          "value": 459,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_c494bdd0cbfb58df5b30148a",
+          "product_id": "bp_2163048726",
+          "field": "feature:3526",
+          "value": "28 ώρες",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3526,
+            "label": "Λειτουργία Με Θήκη Φόρτισης",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_c499533e83fcadab68bf4271",
+          "product_id": "bp_2159251800",
+          "field": "feature:38",
+          "value": "15.6 \"",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 38,
+            "label": "Μέγεθος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_c584bb48e0f68e4c23ede9a2",
+          "product_id": "bp_2159251800",
+          "field": "basket_merchant_shipping",
+          "value": 3,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:balanced:bp_merchant_4115:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_cac10de0ed93d5bc22ae3bec",
+          "product_id": "bp_2163048726",
+          "field": "title",
+          "value": "Hoco EQ27 Ακουστικά Bluetooth Earbud Black",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_cce3b61ab5cacd849052eaa0",
+          "product_id": "bp_2163048726",
+          "field": "basket_unit_price",
+          "value": 19.1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_ce22f435ce56131bfd3ed8e2",
+          "product_id": "bp_2163048726",
+          "field": "basket_merchant_name",
+          "value": "CosmoMarket",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d05ecf17aa20d51ca827404f",
+          "product_id": "bp_2159251800",
+          "field": "ranking:laptops:gpu",
+          "value": 0.05,
+          "kind": "derived",
+          "source_ids": [
+            "get_product_details:bp_2159251800:bp_2159251800",
+            "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_d0b13dcf1280b9e623f72daf",
+          "product_id": "bp_2159251800",
+          "field": "feature:1200",
+          "value": "AMD Radeon 610M",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1200,
+            "label": "Τύπος Κάρτας Γραφικών",
+            "group": "Κάρτα Γραφικών"
+          }
+        },
+        {
+          "claim_id": "claim_d0f1e1370cbb322b7beabb22",
+          "product_id": "bp_2163048726",
+          "field": "price_from",
+          "value": 12.7,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d1ccac5cea6df0a5cf11e9b9",
+          "product_id": "bp_2163048726",
+          "field": "basket_line_total",
+          "value": 19.1,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_d716508e17d2a1500db1bb11",
+          "product_id": "bp_2159251800",
+          "field": "title",
+          "value": "Lenovo V15 G4 AMN (Ryzen 3-7320U/16GB/512GB SSD/Radeon 610M Graphics/FreeDos)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d7c46c34de8c5b5b2553ab4c",
+          "product_id": "bp_2159251800",
+          "field": "ranking:laptops:ram",
+          "value": 16,
+          "kind": "derived",
+          "source_ids": [
+            "get_product_details:bp_2159251800:bp_2159251800",
+            "deterministic_ranking:bp_2159251800:bestprice_shopping_policy_v1:laptops"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_e0ba03e2027a7a01b04e698e",
+          "product_id": "bp_2163048726",
+          "field": "basket_plan_total",
+          "value": 618.19,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_e127e7033ec9908ff6dcfb9c",
+          "product_id": "bp_2159251800",
+          "field": "feature:2530",
+          "value": "SSD",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2530,
+            "label": "Τύπος Πρώτου Σκληρού Δίσκου",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_e214705d27e1fa53dff95d07",
+          "product_id": "bp_2163048726",
+          "field": "basket_plan_total",
+          "value": 481.99,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_802:bp_2163048726"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_e44f2399073e7e665dc44556",
+          "product_id": "bp_2159251800",
+          "field": "feature:659",
+          "value": "1.65 kg",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 659,
+            "label": "Βάρος",
+            "group": "Διαστάσεις"
+          }
+        },
+        {
+          "claim_id": "claim_e5ac29056e050784efc7ed82",
+          "product_id": "bp_2163048726",
+          "field": "category_title",
+          "value": "Bluetooth Handsfree",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_e695c1671877fbee207d0008",
+          "product_id": "bp_2159251800",
+          "field": "basket_merchant_name",
+          "value": "CosmoMarket",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_ea2a8d10b535dfd92cebc464",
+          "product_id": "bp_2163048726",
+          "field": "title",
+          "value": "Hoco EQ27 Ακουστικά Bluetooth Earbud Black",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:fewer_merchants:bp_merchant_688:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_ee647ad71e388af9a928d19e",
+          "product_id": "bp_2159251800",
+          "field": "feature:297",
+          "value": "5500 MHz",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 297,
+            "label": "Συχνότητα",
+            "group": "Μνήμη"
+          }
+        },
+        {
+          "claim_id": "claim_f6c1b32825cbfef7ca2c0900",
+          "product_id": "bp_2159251800",
+          "field": "attribute:cpu_model",
+          "value": "AMD Ryzen 3 7320U",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d716508e17d2a1500db1bb11"]
+        },
+        {
+          "claim_id": "claim_f6fbdaf456e061eeeb267f70",
+          "product_id": "bp_2159251800",
+          "field": "basket_line_total",
+          "value": 596.09,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2159251800:fewer_merchants:bp_merchant_688:bp_2159251800"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_f900259ca3ca2fc516c59a2f",
+          "product_id": "bp_2159251800",
+          "field": "catalog_family",
+          "value": "laptops",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159251800:bp_2159251800"],
+          "validation": "catalog_family_mapping_v1",
+          "supporting_claim_ids": [
+            "claim_bbd6485761578af95c47b71a",
+            "claim_1d01a68620bcc8530ea6b148",
+            "claim_d716508e17d2a1500db1bb11"
+          ]
+        }
+      ]
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 98,
+    "sources": 9,
+    "structured_bytes": 46498,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:03:29.181Z",
+        "source_observed_at": "2026-10-12T10:02:03.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 19443,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 925
+}

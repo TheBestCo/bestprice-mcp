@@ -1,0 +1,2079 @@
+{
+  "id": "basket_mixed_features",
+  "message": "Θέλω κινητό με NFC και air fryer από 4 έως 5 λίτρα, συνολικά έως 500 ευρώ. ΤΚ 11527.",
+  "expectation": {
+    "full": true,
+    "id": "basket_mixed_features",
+    "outcome": "basket",
+    "total": 500
+  },
+  "evidence_detail": "full",
+  "started_at": "2026-10-12T10:03:33.343Z",
+  "passed": true,
+  "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+  "transport_bytes": 66158,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T10:03:34.801Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "[omitted]",
+      "evidence_fingerprint": "b3b185d84cefb97a61faf58f755049f8876b3c015398b9b101431670b72fa6af"
+    },
+    "outcome": "basket",
+    "status": "ready",
+    "answer": "Προτείνω το ισορροπημένο πλάνο: 329,30€ από 2 καταστήματα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 170,70€ κάτω από το συνολικό όριο των 500€.",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": {
+        "minimum": 4,
+        "maximum": 5,
+        "target": 4.5
+      },
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 500,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 500,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 61,
+              "end": 73,
+              "text": "έως 500 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 500,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "phone",
+          "label": "Κινητό",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "nfc",
+                "label": "NFC"
+              }
+            ]
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "air_fryer",
+          "label": "Air fryer",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": {
+                "minimum": 4,
+                "maximum": 5,
+                "target": 4.5
+              },
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ],
+      "catalog_requirements": []
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": {
+      "schema_version": "2.0",
+      "as_of": "2026-10-12T10:03:34.633Z",
+      "currency": "EUR",
+      "locale": "el-GR",
+      "warnings": [
+        "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+      ],
+      "preferred_plan": "balanced",
+      "methodology_id": "bestprice_basket_bounded_v1",
+      "plans": [
+        {
+          "plan_type": "fewer_merchants",
+          "merchant_count": 1,
+          "item_subtotal": 478.9,
+          "shipping_total": 0,
+          "shipping_status": "known",
+          "total_price": 478.9,
+          "reliability_score": 5,
+          "ranking_reason": "Λιγότερα καταστήματα, με το πραγματικό κόστος των επιλεγμένων προσφορών.",
+          "merchants": [
+            {
+              "merchant_id": "bp_merchant_13674",
+              "merchant_name": "Papaxaralabous",
+              "merchant_rating": 5,
+              "verified_merchant": false,
+              "item_subtotal": 478.9,
+              "shipping_price": 0,
+              "shipping_status": "known",
+              "total_price": 478.9,
+              "reason": "covers_basket_with_one_merchant",
+              "items": [
+                {
+                  "product_id": "bp_2157732664",
+                  "title": "Tefal EY501815 Air Fryer 4.2lt",
+                  "quantity": 1,
+                  "unit_price": 79,
+                  "line_total": 79,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                },
+                {
+                  "product_id": "bp_2163461420",
+                  "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+                  "quantity": 1,
+                  "unit_price": 399.9,
+                  "line_total": 399.9,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "plan_type": "balanced",
+          "merchant_count": 2,
+          "item_subtotal": 318.8,
+          "shipping_total": 10.5,
+          "shipping_status": "known",
+          "total_price": 329.3,
+          "reliability_score": 4.67,
+          "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+          "merchants": [
+            {
+              "merchant_id": "bp_merchant_904",
+              "merchant_name": "MobileHellas",
+              "merchant_rating": 4.87,
+              "verified_merchant": false,
+              "item_subtotal": 248.9,
+              "shipping_price": 3.5,
+              "shipping_status": "known",
+              "total_price": 252.4,
+              "reason": "selected_by_basket_optimizer",
+              "items": [
+                {
+                  "product_id": "bp_2163461420",
+                  "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+                  "quantity": 1,
+                  "unit_price": 248.9,
+                  "line_total": 248.9,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                }
+              ]
+            },
+            {
+              "merchant_id": "bp_merchant_2728",
+              "merchant_name": "Schinas-electric",
+              "merchant_rating": 4.47,
+              "verified_merchant": true,
+              "item_subtotal": 69.9,
+              "shipping_price": 7,
+              "shipping_status": "known",
+              "total_price": 76.9,
+              "reason": "selected_by_basket_optimizer",
+              "items": [
+                {
+                  "product_id": "bp_2157732664",
+                  "title": "Tefal EY501815 Air Fryer 4.2lt",
+                  "quantity": 1,
+                  "unit_price": 69.9,
+                  "line_total": 69.9,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "unavailable_items": []
+    },
+    "basket_request": {
+      "version": "bestprice_basket_request_v1",
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "phone",
+          "label": "Κινητό",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "nfc",
+                "label": "NFC"
+              }
+            ]
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "air_fryer",
+          "label": "Air fryer",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": {
+                "minimum": 4,
+                "maximum": 5,
+                "target": 4.5
+              },
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ],
+      "resolved_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "phone",
+          "label": "Κινητό",
+          "quantity": 1,
+          "product_id": "bp_2163461420",
+          "catalog_price_eur": 248.9,
+          "selection_reason": "calibrated_spend_walk"
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "air_fryer",
+          "label": "Air fryer",
+          "quantity": 1,
+          "product_id": "bp_2157732664",
+          "catalog_price_eur": 67.09,
+          "selection_reason": "calibrated_spend_walk"
+        }
+      ],
+      "unresolved_slots": [],
+      "total_budget_eur": 500
+    },
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "compare",
+      "reason": "review_current_offers",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "basket_objective",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:03:33.830Z",
+        "source_observed_at": "2026-10-12T10:02:03.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 1173,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": 8535,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2157732664",
+          "family": "air_fryers",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.2,
+              "claim_ids": ["claim_3bdcb8560ff542ae2a4d326b"],
+              "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_01e75fd50269e44d5c7bd77d"],
+              "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_c4394c1284a528d689d41405"],
+              "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163461420",
+          "family": "phones",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 8,
+              "claim_ids": ["claim_fb00828fe4037f58b6f950a1"],
+              "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 512,
+              "claim_ids": ["claim_49395aa1eec3c873dc9e23c2"],
+              "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_5792d61bfc9f98966e1da6b7"],
+              "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_f1e05b13691d39c8296dba2e"],
+              "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"]
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "AMOLED",
+              "claim_ids": ["claim_2358530320e3699418a2a43f"],
+              "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_2e3326f06afea22594c725e9"],
+              "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"]
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2157732664",
+          "offers": {
+            "status": "not_checked",
+            "scope": "bounded_returned_offers",
+            "offer_count": 0,
+            "merchant_count": 0,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 0
+            },
+            "item_price": null,
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2163461420",
+          "offers": {
+            "status": "not_checked",
+            "scope": "bounded_returned_offers",
+            "offer_count": 0,
+            "merchant_count": 0,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 0
+            },
+            "item_price": null,
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "sources": [
+        {
+          "source_id": "deterministic_ranking:bp_2157732664:bestprice_shopping_policy_v1:air_fryers",
+          "kind": "decision_policy",
+          "record_id": "bestprice_shopping_policy_v1:air_fryers",
+          "product_id": "bp_2157732664",
+          "scope": "cluster",
+          "capability": "deterministic_ranking",
+          "checked_at": "2026-10-12T10:03:34.801Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "deterministic_ranking:bp_2163461420:bestprice_shopping_policy_v1:air_fryers",
+          "kind": "decision_policy",
+          "record_id": "bestprice_shopping_policy_v1:air_fryers",
+          "product_id": "bp_2163461420",
+          "scope": "cluster",
+          "capability": "deterministic_ranking",
+          "checked_at": "2026-10-12T10:03:34.801Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "get_product_details:bp_2157732664:bp_2157732664",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2157732664",
+          "product_id": "bp_2157732664",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:03:33.830Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2163461420:bp_2163461420",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163461420",
+          "product_id": "bp_2163461420",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:03:33.820Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664",
+          "kind": "basket_quote",
+          "record_id": "balanced:bp_merchant_2728:bp_2157732664",
+          "product_id": "bp_2157732664",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:34.633Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664",
+          "kind": "basket_quote",
+          "record_id": "fewer_merchants:bp_merchant_13674:bp_2157732664",
+          "product_id": "bp_2157732664",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:34.633Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420",
+          "kind": "basket_quote",
+          "record_id": "balanced:bp_merchant_904:bp_2163461420",
+          "product_id": "bp_2163461420",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:34.633Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420",
+          "kind": "basket_quote",
+          "record_id": "fewer_merchants:bp_merchant_13674:bp_2163461420",
+          "product_id": "bp_2163461420",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:34.633Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "search_products:bp_2157732664:bp_2157732664",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2157732664",
+          "product_id": "bp_2157732664",
+          "scope": "cluster",
+          "capability": "search_products",
+          "checked_at": "2026-10-12T10:03:33.830Z",
+          "source_observed_at": "2026-10-12T10:02:03.000Z",
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_01e75fd50269e44d5c7bd77d",
+          "product_id": "bp_2157732664",
+          "field": "attribute:people_count",
+          "value": 2,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_a216305c1ebfb998c36bee49"]
+        },
+        {
+          "claim_id": "claim_02e6af44e154081e1befee86",
+          "product_id": "bp_2157732664",
+          "field": "title",
+          "value": "Tefal EY501815 Air Fryer 4.2lt",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_03758e93e674eff5e4185bd0",
+          "product_id": "bp_2163461420",
+          "field": "feature:1992",
+          "value": "164 x 75.4 x 7.4",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1992,
+            "label": "Διαστάσεις",
+            "group": "Διαστάσεις"
+          }
+        },
+        {
+          "claim_id": "claim_03f27f2d668d9bb0b78701ac",
+          "product_id": "bp_2157732664",
+          "field": "feature:2610",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2610,
+            "label": "WiFi",
+            "group": "Δικτύωση"
+          }
+        },
+        {
+          "claim_id": "claim_091fdf9944962a0eb5884025",
+          "product_id": "bp_2163461420",
+          "field": "basket_merchant_name",
+          "value": "Papaxaralabous",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_0944c9886dd2315087b74bd5",
+          "product_id": "bp_2157732664",
+          "field": "basket_merchant_name",
+          "value": "Papaxaralabous",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_0bdc03242bc4e9157269394a",
+          "product_id": "bp_2163461420",
+          "field": "feature:2798",
+          "value": "1",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2798,
+            "label": "Αριθμός Selfie Καμερών",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_0eec17a3a72dd8cfa527ae6c",
+          "product_id": "bp_2157732664",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_0fb39aa3f09ac28b07b5283b",
+          "product_id": "bp_2157732664",
+          "field": "feature:3877",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3877,
+            "label": "Φίλτρο Κατά των Οσμών",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_11238103dfbbf669d81bd039",
+          "product_id": "bp_2163461420",
+          "field": "feature:1982",
+          "value": "1.8 GHz",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1982,
+            "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_11db8cbc0f198a37eb5b9f42",
+          "product_id": "bp_2163461420",
+          "field": "basket_merchant_shipping",
+          "value": 0,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_12e08209af6427178570c59c",
+          "product_id": "bp_2163461420",
+          "field": "feature:4641",
+          "value": "NFC, Bluetooth, WiFi, USB-C",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4641,
+            "label": "Συνδεσιμότητα",
+            "group": "Συνδεσιμότητα"
+          }
+        },
+        {
+          "claim_id": "claim_19cf1500b0bd7939df36597a",
+          "product_id": "bp_2163461420",
+          "field": "feature:1448",
+          "value": "2026",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1448,
+            "label": "Έτος Κυκλοφορίας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_19f49131b8fd5ca72fd2aefc",
+          "product_id": "bp_2157732664",
+          "field": "category_title",
+          "value": "Air Fryers",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_1d8df979337057f7e3e82542",
+          "product_id": "bp_2157732664",
+          "field": "basket_unit_price",
+          "value": 79,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_1ebe2b703bdcf8fce2164121",
+          "product_id": "bp_2163461420",
+          "field": "title",
+          "value": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_1f0d2d45de3e3f89563af4d5",
+          "product_id": "bp_2163461420",
+          "field": "basket_line_total",
+          "value": 399.9,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_1f9088f54e0346b698867711",
+          "product_id": "bp_2157732664",
+          "field": "feature:3878",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3878,
+            "label": "Με Οθόνη",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_21f79ac558b41bc5b6b2e53b",
+          "product_id": "bp_2157732664",
+          "field": "basket_plan_total",
+          "value": 329.3,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_220c1aac471599b5b6b90a2c",
+          "product_id": "bp_2163461420",
+          "field": "feature:60",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 60,
+            "label": "FM Radio",
+            "group": "Δέκτης"
+          }
+        },
+        {
+          "claim_id": "claim_2358530320e3699418a2a43f",
+          "product_id": "bp_2163461420",
+          "field": "attribute:panel_type",
+          "value": "AMOLED",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_5effea52e8ab3cc95058b8fe"]
+        },
+        {
+          "claim_id": "claim_25a66e04b55d7aadd5ae257c",
+          "product_id": "bp_2157732664",
+          "field": "feature:1994",
+          "value": "Μαύρο",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1994,
+            "label": "Χρώμα",
+            "group": "Τύπος"
+          }
+        },
+        {
+          "claim_id": "claim_2b7b7877cc0cf3b661fe3fb3",
+          "product_id": "bp_2163461420",
+          "field": "feature:1447",
+          "value": "8192 MB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1447,
+            "label": "RAM",
+            "group": "Μνήμη"
+          }
+        },
+        {
+          "claim_id": "claim_2cbbf4fc51db3d9fe91ff58c",
+          "product_id": "bp_2163461420",
+          "field": "feature:4639",
+          "value": "1080p 60fps, 1080p 30fps",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4639,
+            "label": "Ανάλυση Βίντεο Selfie",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_2d2846093ea0f3fafb951a9a",
+          "product_id": "bp_2157732664",
+          "field": "people_count",
+          "value": 2,
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2157732664:bp_2157732664",
+            "get_product_details:bp_2157732664:bp_2157732664"
+          ],
+          "validation": "deterministic_catalog_extraction"
+        },
+        {
+          "claim_id": "claim_2dec30767864a21ffafff51f",
+          "product_id": "bp_2163461420",
+          "field": "feature:4628",
+          "value": "45 W",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4628,
+            "label": "Ισχύς Φόρτισης",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_2e3326f06afea22594c725e9",
+          "product_id": "bp_2163461420",
+          "field": "attribute:dual_sim",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_6f50631ee510d31353ddd557"]
+        },
+        {
+          "claim_id": "claim_2f2c5731c2fc8d9b01689a25",
+          "product_id": "bp_2157732664",
+          "field": "basket_plan_total",
+          "value": 478.9,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_31023e5547ecb4b029ea010b",
+          "product_id": "bp_2157732664",
+          "field": "basket_merchant_shipping",
+          "value": 0,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_311d973c973e099432a01323",
+          "product_id": "bp_2157732664",
+          "field": "capacity_litres",
+          "value": 4.2,
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2157732664:bp_2157732664",
+            "get_product_details:bp_2157732664:bp_2157732664"
+          ],
+          "validation": "deterministic_catalog_extraction"
+        },
+        {
+          "claim_id": "claim_32283bb32e4930c2114e4e53",
+          "product_id": "bp_2163461420",
+          "field": "basket_plan_total",
+          "value": 329.3,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_370f2d85aed11cf1fd606b44",
+          "product_id": "bp_2163461420",
+          "field": "price_from",
+          "value": 248.9,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_3962c0d9d9a8e17ecc9d1bb1",
+          "product_id": "bp_2163461420",
+          "field": "feature:38",
+          "value": "6.77 \"",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 38,
+            "label": "Μέγεθος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_3a4f0e39a96af9d8e74dce93",
+          "product_id": "bp_2157732664",
+          "field": "availability",
+          "value": "in_stock",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_3bdcb8560ff542ae2a4d326b",
+          "product_id": "bp_2157732664",
+          "field": "attribute:capacity_litres",
+          "value": 4.2,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_ce10242be940b35a7ef945db"]
+        },
+        {
+          "claim_id": "claim_42f21ee4983ef5b46b1f7dad",
+          "product_id": "bp_2163461420",
+          "field": "feature:1991",
+          "value": "Smartphones",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1991,
+            "label": "Τύπος Κινητού",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_435fbd0c02bd00b618259623",
+          "product_id": "bp_2163461420",
+          "field": "category_id",
+          "value": 806,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_43a8e035b6b533f90c39e0d6",
+          "product_id": "bp_2157732664",
+          "field": "ranking:air_fryers:capacity_fit",
+          "value": 4.2,
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2157732664:bp_2157732664",
+            "get_product_details:bp_2157732664:bp_2157732664",
+            "deterministic_ranking:bp_2157732664:bestprice_shopping_policy_v1:air_fryers"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_47ef581061856814c8d742af",
+          "product_id": "bp_2163461420",
+          "field": "basket_plan_total",
+          "value": 478.9,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_486efcaae2d7b13a1a009a1b",
+          "product_id": "bp_2163461420",
+          "field": "ram_gb",
+          "value": 8,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "deterministic_catalog_extraction"
+        },
+        {
+          "claim_id": "claim_49395aa1eec3c873dc9e23c2",
+          "product_id": "bp_2163461420",
+          "field": "attribute:storage_gb",
+          "value": 512,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_b389274d9a4347351d319016"]
+        },
+        {
+          "claim_id": "claim_4cc70b73b7d9ef553c811afd",
+          "product_id": "bp_2163461420",
+          "field": "catalog_family",
+          "value": "phones",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "catalog_family_mapping_v1",
+          "supporting_claim_ids": [
+            "claim_435fbd0c02bd00b618259623",
+            "claim_87f91bcc08f43010d3e28a5a",
+            "claim_1ebe2b703bdcf8fce2164121"
+          ]
+        },
+        {
+          "claim_id": "claim_52ee89bc3dc15d1ebad1ce8e",
+          "product_id": "bp_2163461420",
+          "field": "rating_count",
+          "value": 3,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_530f9f772b238f3f73bef9df",
+          "product_id": "bp_2163461420",
+          "field": "feature:4629",
+          "value": "50 MP",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4629,
+            "label": "Ευρυγώνιος Φακός",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_5589b95454f76fea89c2d615",
+          "product_id": "bp_2163461420",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_5692731e001f9cf2d3131c24",
+          "product_id": "bp_2163461420",
+          "field": "feature:1983",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1983,
+            "label": "Υποδοχή Μνήμης",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_56bf2a7ad31736022eb1fe66",
+          "product_id": "bp_2163461420",
+          "field": "feature:4637",
+          "value": "1080p 60fps, 1080p 30fps, 4K 30fps",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4637,
+            "label": "Ανάλυση Βίντεο",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_5792d61bfc9f98966e1da6b7",
+          "product_id": "bp_2163461420",
+          "field": "attribute:network_5g",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_735ddff53d4ad7175a9d91d2"]
+        },
+        {
+          "claim_id": "claim_57ff94ecbfe33336aacff11c",
+          "product_id": "bp_2163461420",
+          "field": "basket_merchant_name",
+          "value": "MobileHellas",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_5aa3cb64bb49a6e1b7082438",
+          "product_id": "bp_2163461420",
+          "field": "feature:1974",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1974,
+            "label": "Αποσπώμενη Μπαταρία",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_5effea52e8ab3cc95058b8fe",
+          "product_id": "bp_2163461420",
+          "field": "feature:1978",
+          "value": "AMOLED",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1978,
+            "label": "Τύπος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_629543d40b952c5595ce45da",
+          "product_id": "bp_2157732664",
+          "field": "price_from",
+          "value": 67.09,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_62fe4b95b9806fa0052d56f9",
+          "product_id": "bp_2163461420",
+          "field": "feature:4638",
+          "value": "HDR, Panorama",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4638,
+            "label": "Δυνατότητες Selfie Κάμερας",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_6458b9bb1ac7e7d668e5e06a",
+          "product_id": "bp_2163461420",
+          "field": "feature:2804",
+          "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, Γυροσκόπιο, GPS, Virtual Proximity Sensing",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2804,
+            "label": "Αισθητήρες",
+            "group": "Αισθητήρες"
+          }
+        },
+        {
+          "claim_id": "claim_66d4c4ae5a9efe7892c568af",
+          "product_id": "bp_2163461420",
+          "field": "feature:1172",
+          "value": "Οθόνη Αφής",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1172,
+            "label": "Χειρισμός",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_67c473a52d2232bcad8a0ace",
+          "product_id": "bp_2163461420",
+          "field": "availability",
+          "value": "in_stock",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_6a8c390b62e2522863bf529f",
+          "product_id": "bp_2157732664",
+          "field": "offer_count",
+          "value": 25,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_6a994f3fdf34eb16a11fc0c6",
+          "product_id": "bp_2157732664",
+          "field": "feature:5181",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5181,
+            "label": "Πολυμάγειρας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_6d4b514ecd979cba216c391c",
+          "product_id": "bp_2163461420",
+          "field": "feature:630",
+          "value": "20 MP",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 630,
+            "label": "Ανάλυση Selfie Κάμερας",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_6dbc3bf32411adbe79fca6ea",
+          "product_id": "bp_2163461420",
+          "field": "feature:133",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 133,
+            "label": "Ενσωματωμένο Flash",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_6f50631ee510d31353ddd557",
+          "product_id": "bp_2163461420",
+          "field": "feature:1980",
+          "value": "Dual",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1980,
+            "label": "Τύπος SIM",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_71eccb9ca78542a537d10d48",
+          "product_id": "bp_2163461420",
+          "field": "title",
+          "value": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_728d53b76dd522971378a148",
+          "product_id": "bp_2157732664",
+          "field": "feature:3879",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3879,
+            "label": "Αντιθερμικά Τοιχώματα",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_72bccb1abcba2cf68476ab8e",
+          "product_id": "bp_2163461420",
+          "field": "ranking:air_fryers:satisfaction",
+          "value": 4.2727272727272725,
+          "kind": "derived",
+          "source_ids": [
+            "get_product_details:bp_2163461420:bp_2163461420",
+            "deterministic_ranking:bp_2163461420:bestprice_shopping_policy_v1:air_fryers"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_72de2513478c389303b6fffb",
+          "product_id": "bp_2163461420",
+          "field": "feature:4640",
+          "value": "Ανθεκτικά στο Νερό, Ανθεκτικά στη Σκόνη",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4640,
+            "label": "Προστασία",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_735ddff53d4ad7175a9d91d2",
+          "product_id": "bp_2163461420",
+          "field": "feature:1173",
+          "value": "5G",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1173,
+            "label": "Δίκτυο Σύνδεσης",
+            "group": "Δικτύωση"
+          }
+        },
+        {
+          "claim_id": "claim_75e0a97132b28a9b75357dd8",
+          "product_id": "bp_2163461420",
+          "field": "feature:440",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 440,
+            "label": "Selfie Κάμερα",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_7631c6bc626f85744eea8ad1",
+          "product_id": "bp_2157732664",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_7b67c8875066d900e175ea63",
+          "product_id": "bp_2163461420",
+          "field": "feature:2797",
+          "value": "2",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2797,
+            "label": "Αριθμός Πίσω Καμερών",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_7c189c7cb801b721671b8878",
+          "product_id": "bp_2157732664",
+          "field": "basket_merchant_shipping",
+          "value": 7,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_7f39f3d5dbb4f91daaff5450",
+          "product_id": "bp_2163461420",
+          "field": "feature:40",
+          "value": "50 MP",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 40,
+            "label": "Ανάλυση Κάμερας",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_802620694afda252a7dadadb",
+          "product_id": "bp_2157732664",
+          "field": "feature:4481",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4481,
+            "label": "Διπλός Κάδος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_81562bec9ac026cc1fa0f2ad",
+          "product_id": "bp_2163461420",
+          "field": "title",
+          "value": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_81e7689c5e8b698359c8a147",
+          "product_id": "bp_2157732664",
+          "field": "catalog_family",
+          "value": "air_fryers",
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2157732664:bp_2157732664",
+            "get_product_details:bp_2157732664:bp_2157732664"
+          ],
+          "validation": "catalog_family_mapping_v1",
+          "supporting_claim_ids": [
+            "claim_b84451bf8c2290c5a76c7934",
+            "claim_19f49131b8fd5ca72fd2aefc",
+            "claim_02e6af44e154081e1befee86"
+          ]
+        },
+        {
+          "claim_id": "claim_83a570fbd3bad3cddabb8d80",
+          "product_id": "bp_2163461420",
+          "field": "feature:4636",
+          "value": "HDR, Panorama",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4636,
+            "label": "Δυνατότητες Κάμερας",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_86f7cf77ed87c7cb8de5268c",
+          "product_id": "bp_2157732664",
+          "field": "title",
+          "value": "Tefal EY501815 Air Fryer 4.2lt",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_87f91bcc08f43010d3e28a5a",
+          "product_id": "bp_2163461420",
+          "field": "category_title",
+          "value": "Κινητά",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_883a1e767e8004d2b2b769ae",
+          "product_id": "bp_2163461420",
+          "field": "basket_line_total",
+          "value": 248.9,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_93dcf07ff84ac2467a4b3be2",
+          "product_id": "bp_2163461420",
+          "field": "feature:1989",
+          "value": "1080 x 2392",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1989,
+            "label": "Ανάλυση Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_950fc586aefaaefca7548832",
+          "product_id": "bp_2157732664",
+          "field": "feature:502",
+          "value": "1550 W",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 502,
+            "label": "Ισχύς",
+            "group": "Απόδοση"
+          }
+        },
+        {
+          "claim_id": "claim_979676626be7e98d61ffde4f",
+          "product_id": "bp_2157732664",
+          "field": "title",
+          "value": "Tefal EY501815 Air Fryer 4.2lt",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_a15a90c0ab54c610e3d605cf",
+          "product_id": "bp_2163461420",
+          "field": "feature:2627",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2627,
+            "label": "Ανθεκτικό στο Νερό",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_a1637bee84b061c565646647",
+          "product_id": "bp_2157732664",
+          "field": "basket_merchant_name",
+          "value": "Schinas-electric",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_a216305c1ebfb998c36bee49",
+          "product_id": "bp_2157732664",
+          "field": "feature:5416",
+          "value": "Για 2 Άτομα",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5416,
+            "label": "Αριθμός Ατόμων",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_a52966a19e1271fc5c7cb918",
+          "product_id": "bp_2157732664",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_abc57de39eaac62ea74dfb09",
+          "product_id": "bp_2157732664",
+          "field": "basket_line_total",
+          "value": 79,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2157732664:fewer_merchants:bp_merchant_13674:bp_2157732664"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_ad4396eed031a28ec2fa6674",
+          "product_id": "bp_2163461420",
+          "field": "feature:1981",
+          "value": "2.4 GΗz",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1981,
+            "label": "Ισχύς Βασικού Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_b04b8f19300e266bcecd4af8",
+          "product_id": "bp_2163461420",
+          "field": "feature:17",
+          "value": "Android",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 17,
+            "label": "Λειτουργικό Σύστημα",
+            "group": "Λογισμικό"
+          }
+        },
+        {
+          "claim_id": "claim_b160a1094f22725b520a8c88",
+          "product_id": "bp_2157732664",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_b389274d9a4347351d319016",
+          "product_id": "bp_2163461420",
+          "field": "feature:625",
+          "value": "512 GB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 625,
+            "label": "Χωρητικότητα",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_b57e2aaf8afc2e28d431f885",
+          "product_id": "bp_2157732664",
+          "field": "dual_basket",
+          "value": false,
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2157732664:bp_2157732664",
+            "get_product_details:bp_2157732664:bp_2157732664"
+          ],
+          "validation": "deterministic_catalog_extraction"
+        },
+        {
+          "claim_id": "claim_b84451bf8c2290c5a76c7934",
+          "product_id": "bp_2157732664",
+          "field": "category_id",
+          "value": 8535,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_b9775850f932078fa862c936",
+          "product_id": "bp_2163461420",
+          "field": "offer_count",
+          "value": 18,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_bfa26ec4e9c585fea3abde95",
+          "product_id": "bp_2163461420",
+          "field": "feature:50",
+          "value": "178 gr",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 50,
+            "label": "Βάρος",
+            "group": "Διαστάσεις"
+          }
+        },
+        {
+          "claim_id": "claim_c3cfce2be3fb2a2b49d6bde7",
+          "product_id": "bp_2163461420",
+          "field": "feature:389",
+          "value": "Qualcomm Snapdragon 6 Gen 3",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 389,
+            "label": "Τύπος Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_c412b7d86f03d604a3755b91",
+          "product_id": "bp_2163461420",
+          "field": "feature:431",
+          "value": "5520 mAh",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 431,
+            "label": "Χωρητικότητα Μπαταρίας",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_c4394c1284a528d689d41405",
+          "product_id": "bp_2157732664",
+          "field": "attribute:dual_basket",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_802620694afda252a7dadadb"]
+        },
+        {
+          "claim_id": "claim_cc253de79d400411067aa58c",
+          "product_id": "bp_2163461420",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_cd27bdcb81b9b5001a900638",
+          "product_id": "bp_2157732664",
+          "field": "basket_unit_price",
+          "value": 69.9,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_ce10242be940b35a7ef945db",
+          "product_id": "bp_2157732664",
+          "field": "feature:4472",
+          "value": "4.2 lt",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2157732664:bp_2157732664"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4472,
+            "label": "Χωρητικότητα Κάδου",
+            "group": "Χωρητικότητα"
+          }
+        },
+        {
+          "claim_id": "claim_d024253c395cac9aa95c81f7",
+          "product_id": "bp_2163461420",
+          "field": "basket_unit_price",
+          "value": 248.9,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d4db072a627c1cbbe184f429",
+          "product_id": "bp_2163461420",
+          "field": "feature:2794",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2794,
+            "label": "Ασύρματη Φόρτιση",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_d50b9a147cae3ee6dd68dc21",
+          "product_id": "bp_2163461420",
+          "field": "feature:2717",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2717,
+            "label": "Για Ηλικιωμένους",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_d832abc2c2f7d5c38426976f",
+          "product_id": "bp_2163461420",
+          "field": "rating_average",
+          "value": 5,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d838515e793ab5984628e3be",
+          "product_id": "bp_2163461420",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d8f41aa515cc41dd60dd00b8",
+          "product_id": "bp_2163461420",
+          "field": "feature:1885",
+          "value": "Οκταπύρηνος (4+4)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1885,
+            "label": "Επεξεργαστής",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_db909e0e9dcf061f6929d102",
+          "product_id": "bp_2163461420",
+          "field": "feature:1979",
+          "value": "15",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1979,
+            "label": "Έκδοση Λειτουργικού",
+            "group": "Λογισμικό"
+          }
+        },
+        {
+          "claim_id": "claim_e133fd5d38f93dfc0f5b87eb",
+          "product_id": "bp_2163461420",
+          "field": "feature:2793",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2793,
+            "label": "Γρήγορη Φόρτιση",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_e55687c35aa53397020ecbea",
+          "product_id": "bp_2163461420",
+          "field": "feature:2795",
+          "value": "IP65",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2795,
+            "label": "Πιστοποίηση Προστασίας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_e9d0b3b16b5223536efc8ab1",
+          "product_id": "bp_2157732664",
+          "field": "basket_line_total",
+          "value": 69.9,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2157732664:balanced:bp_merchant_2728:bp_2157732664"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_ed746f4137a68eedc63e4494",
+          "product_id": "bp_2163461420",
+          "field": "basket_unit_price",
+          "value": 399.9,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_f01b8e979c251ad95370c483",
+          "product_id": "bp_2163461420",
+          "field": "basket_merchant_shipping",
+          "value": 3.5,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:balanced:bp_merchant_904:bp_2163461420"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_f1e05b13691d39c8296dba2e",
+          "product_id": "bp_2163461420",
+          "field": "attribute:nfc",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_12e08209af6427178570c59c"]
+        },
+        {
+          "claim_id": "claim_fb00828fe4037f58b6f950a1",
+          "product_id": "bp_2163461420",
+          "field": "attribute:ram_gb",
+          "value": 8,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163461420:bp_2163461420"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_2b7b7877cc0cf3b661fe3fb3"]
+        },
+        {
+          "claim_id": "claim_fc2c7990eafcce8996bc0673",
+          "product_id": "bp_2163461420",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163461420:fewer_merchants:bp_merchant_13674:bp_2163461420"],
+          "validation": "exact_tool_field"
+        }
+      ]
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 115,
+    "sources": 9,
+    "structured_bytes": 50555,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:03:33.830Z",
+        "source_observed_at": "2026-10-12T10:02:03.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 1173,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": 8535,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 1897
+}

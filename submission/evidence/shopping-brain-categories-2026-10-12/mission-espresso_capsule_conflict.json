@@ -1,0 +1,138 @@
+{
+  "effectiveRequest": {
+    "version": "shopping_request_v1",
+    "mission_id": "57f9d572-1d55-408f-b6e6-d0675df8e842",
+    "revision": 1,
+    "fingerprint": "37f4a5cfcb2590670f99125ca0af954c2b0cf3cc2bf5a8c9bd611c30b648981d",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "espresso",
+    "intent": "shop",
+    "query": "espresso",
+    "constraints": {
+      "budgetEur": 200,
+      "statedBudgetEur": 200,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 200,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 200,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 58,
+            "end": 70,
+            "text": "έως 200 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {
+      "espresso_capsules": ["υποχρεωτικά με κάψουλες"]
+    },
+    "requirements": [
+      {
+        "id": "exclude_espresso_capsules",
+        "label": "χωρίς κάψουλες"
+      }
+    ],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": ["υποχρεωτικά με κάψουλες"],
+    "nonPricePhrases": ["υποχρεωτικά με κάψουλες", "χωρίς κάψουλες"],
+    "source_turns": [
+      {
+        "role": "user",
+        "content": "υποχρεωτικά με κάψουλες"
+      }
+    ],
+    "transition": "start"
+  },
+  "message": "Θέλω espresso υποχρεωτικά με κάψουλες και χωρίς κάψουλες, έως 200 ευρώ.",
+  "decisionMessage": "Θέλω espresso υποχρεωτικά με κάψουλες και χωρίς κάψουλες, έως 200 ευρώ.",
+  "requirementScope": "Θέλω espresso υποχρεωτικά με κάψουλες και χωρίς κάψουλες, έως 200 ευρώ.",
+  "history": [],
+  "need": {
+    "version": "ask_need_v1",
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Μηχανή espresso · Έως 200 €",
+    "chips": [
+      {
+        "id": "intent",
+        "label": "Πρόταση αγοράς",
+        "kind": "intent"
+      },
+      {
+        "id": "category",
+        "label": "Μηχανή espresso",
+        "kind": "category"
+      },
+      {
+        "id": "budget",
+        "label": "Έως 200 €",
+        "kind": "hard"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": 200,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 200,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 200,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 58,
+              "end": 70,
+              "text": "έως 200 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "clarification": null,
+  "unresolvedClarification": null
+}

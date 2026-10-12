@@ -1,0 +1,741 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-12T10:05:44.613313+00:00",
+  "source_fix": "94a2329220a231943fec3edca54a3c602d0a98d0",
+  "source_release": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+  "backend_ci": {
+    "state": "success",
+    "statuses": [
+      {
+        "description": "This commit looks good",
+        "state": "success",
+        "target_url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/30024/display/redirect"
+      }
+    ]
+  },
+  "live": {
+    "passed": 40,
+    "total": 40,
+    "started_at": "2026-10-12T10:02:27.105Z",
+    "finished_at": "2026-10-12T10:03:46.294Z",
+    "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+    "full_public_evidence_cases": 11,
+    "max_claims": 346,
+    "max_structured_bytes": 125965
+  },
+  "canary": {
+    "passed": 53,
+    "failed": 0,
+    "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
+    "checkoutTools": 0,
+    "merchantRedirectsFollowed": 0,
+    "rateLimitRetries": 0,
+    "requestsSent": 67,
+    "requestBudget": 90
+  },
+  "validation": {
+    "source_fix": "94a2329220a231943fec3edca54a3c602d0a98d0",
+    "source_release": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+    "affected_suite": {
+      "total": 6215,
+      "passed": 6212,
+      "skipped": 3,
+      "failed": 0,
+      "log": "suite-release.log"
+    },
+    "normal_push_hooks": {
+      "affected_test_files": 549,
+      "offline_module_contract_files": 23,
+      "bypassed": false,
+      "log": "push-merged.log"
+    },
+    "distribution_suite": {
+      "total": 1095,
+      "passed": 1095,
+      "failed": 0,
+      "test_concurrency": 4,
+      "log": "distribution-tests-bounded.log"
+    },
+    "distribution_initial_failure": {
+      "test": "a descendant that ignores SIGTERM is killed after the grace period",
+      "symptom": "200ms request timeout before rejection assertion attached under concurrent test load",
+      "isolated_recheck": {
+        "passed": 10,
+        "failed": 0
+      },
+      "source_changes": false
+    },
+    "notes": [
+      "Test cohorts overlap and are not added together.",
+      "All receipts originate from anonymous public tools or local read-only catalog replays. No merchant URL navigation or account mutation."
+    ]
+  },
+  "baseline": {
+    "cases": 36,
+    "final_acceptance_passed": 26,
+    "semantic_failures": 9,
+    "transient_timeouts": 1,
+    "semantic_repeat_failures": 9,
+    "semantic_repeat_cases": 9
+  },
+  "provenance": {
+    "baseline_public_revision": "979987837e73b3b364234855508974bdbd77746b",
+    "confirmed_before_public_revision": "979987837e73b3b364234855508974bdbd77746b",
+    "local_final_source": "94a2329220a231943fec3edca54a3c602d0a98d0",
+    "in_progress_local_traces": "local-first and local-basket-fixed preserve intermediate working states, not an immutable release.",
+    "publication": "Case artifacts equal the original captured JSON after URL/token/request_id/decision_id redaction. Original schema/transport checks precede redaction. This manifest hashes formatted publication bytes; it excludes itself."
+  },
+  "scope": "Anonymous public shopping tools and local read-only Brain/catalog replays. No staff Ask/history/account/order/alert/Events writes; no signed attribution/privacy actions; no merchant navigation.",
+  "files": [
+    {
+      "path": "backend-ci.json",
+      "bytes": 248,
+      "sha256": "cc6f7c8bd5b4c6f48e60e49423650476b805ecc20154ef11841969090dab75f3"
+    },
+    {
+      "path": "baseline-assessment.json",
+      "bytes": 3821,
+      "sha256": "84610fb9e8a67e1073eaafb4b1394038499f4d5123243ee97300ae1d09b1bffd"
+    },
+    {
+      "path": "baseline-cases/basket_conflict.json",
+      "bytes": 10135,
+      "sha256": "602c37da245cae398fabecb58aa1d8186d4b197668117133293c8697268653e1"
+    },
+    {
+      "path": "baseline-cases/basket_corrected.json",
+      "bytes": 66175,
+      "sha256": "ab3812079cc795f9b75114b9f7f15c356a4c43d489e2764ad045483f8c8d7fc9"
+    },
+    {
+      "path": "baseline-cases/basket_count_invalid.json",
+      "bytes": 4057,
+      "sha256": "7c3d2907abbbf93abb3eb3359c207ce042043e597c0e9fa065750e6d9c221e7f"
+    },
+    {
+      "path": "baseline-cases/basket_desk.json",
+      "bytes": 52302,
+      "sha256": "278c8faa292bc646900d21772154604926b3fa36ef53d014d8eab6d6f9567e72"
+    },
+    {
+      "path": "baseline-cases/basket_english.json",
+      "bytes": 47904,
+      "sha256": "6de16b9f1323d39afbdc8da179198a402b0f14a32046eb9abc0a8b520b4377d0"
+    },
+    {
+      "path": "baseline-cases/basket_impossible.json",
+      "bytes": 10665,
+      "sha256": "046816e4f0cf6f807b2a5d8785a2db51a37c033aaad7fa5c19983984d70adf0e"
+    },
+    {
+      "path": "baseline-cases/basket_item_caps.json",
+      "bytes": 67936,
+      "sha256": "270fcae639ee2ca01a7e1038a147dbd8a8acbdb1ca481994fea366fe4caaaf08"
+    },
+    {
+      "path": "baseline-cases/basket_item_floor.json",
+      "bytes": 13940,
+      "sha256": "ec08efb5b14b49e48ff99c9fba5f1e943980fe7085b98eff6bba4a3d9741f35b"
+    },
+    {
+      "path": "baseline-cases/basket_missing_postcode.json",
+      "bytes": 9678,
+      "sha256": "4d842ddfa81c88dc0be2669392883d4f0cc1e7a0117e54dc46a5e222802d15d6"
+    },
+    {
+      "path": "baseline-cases/basket_mixed_features.json",
+      "bytes": 10302,
+      "sha256": "b107089b74c74dfdb6cbd1fec1d70ac645b156394a9eca823887365279e79680"
+    },
+    {
+      "path": "baseline-cases/basket_slot_conflict.json",
+      "bytes": 12226,
+      "sha256": "87be2e1b7f97da53a1d8e46779e20b51c866e632275c2d69b2ff3b1ae9a3eb3b"
+    },
+    {
+      "path": "baseline-cases/basket_slot_exclusion.json",
+      "bytes": 50343,
+      "sha256": "a14d1af775b0899def91dcf5682e955dc7edccd10f5c44dffbc7f2bb20fa5139"
+    },
+    {
+      "path": "baseline-cases/basket_small.json",
+      "bytes": 66116,
+      "sha256": "66acd9bb460865a97898c437180938fcc81f658860a0a6f7ec810836a29b1c22"
+    },
+    {
+      "path": "baseline-cases/basket_total_floor.json",
+      "bytes": 10777,
+      "sha256": "3e529a1e1e5725e5b103efbc3bafc7f66b09063024ac03396d297514320c92bd"
+    },
+    {
+      "path": "baseline-cases/basket_units.json",
+      "bytes": 57121,
+      "sha256": "cdd82923acd325ffd643ff483f240cbbb4ad97da1376884575e1bf14e426a36b"
+    },
+    {
+      "path": "baseline-cases/basket_unsupported.json",
+      "bytes": 9579,
+      "sha256": "f5ce4955c0233ed97a9a88bf132a98d999b2aa03c9ca0a8bba38825ac0f1efdf"
+    },
+    {
+      "path": "baseline-cases/dishwasher_no_bosch.json",
+      "bytes": 42399,
+      "sha256": "1144c81ff8a966988bd5b4a50c861522a77120bff2bcca9b3a00a3ed4aab8f91"
+    },
+    {
+      "path": "baseline-cases/espresso_capsule_conflict.json",
+      "bytes": 32014,
+      "sha256": "3f0f546052fe673a3bac7828677b036c06c00b45c3ac9f87757edbcb91eb81c9"
+    },
+    {
+      "path": "baseline-cases/espresso_capsule_corrected.json",
+      "bytes": 32678,
+      "sha256": "dc25cfa0caf3884d93f3d0d19364d3ffa8bd8fedd0194fe8661645f3e201a26f"
+    },
+    {
+      "path": "baseline-cases/espresso_no_capsules.json",
+      "bytes": 997,
+      "sha256": "792dcbd040e004f83803d3fd65c9f685091ee3c0520be9e6824bfef8bbfc743c"
+    },
+    {
+      "path": "baseline-cases/espresso_no_nespresso.json",
+      "bytes": 43227,
+      "sha256": "b80794841ba97fa54d27bf62a15ee74d58870c820f7026fb7e0cdda2a51c613e"
+    },
+    {
+      "path": "baseline-cases/fridge_no_nofrost.json",
+      "bytes": 38331,
+      "sha256": "be60ca3415bc6dad5cf3cbde27b0603e47ba17adfc9769a66f3191bcc30fafe5"
+    },
+    {
+      "path": "baseline-cases/headphones_no_inear.json",
+      "bytes": 27634,
+      "sha256": "73d91c0a6e72138ed362eb2bbe32019b5d18a785b2aacb0f7542e511ea395ae6"
+    },
+    {
+      "path": "baseline-cases/mouse_wired.json",
+      "bytes": 35008,
+      "sha256": "027c3885dac631e3b267084250319fad0c4cda08d09ba15ecc4e7aed64fd5555"
+    },
+    {
+      "path": "baseline-cases/mouse_wireless_conflict.json",
+      "bytes": 5480,
+      "sha256": "5fc359fd6407ae05edfddc7ff94fe50b8b11e0c2aa327a1c52c9c0d49b3ddc8f"
+    },
+    {
+      "path": "baseline-cases/mouse_wireless_corrected.json",
+      "bytes": 37538,
+      "sha256": "80fbe69c3d74c40b30428cace151333960caec8179c6cc590a02ae557a2e7ccc"
+    },
+    {
+      "path": "baseline-cases/printer_no_hp.json",
+      "bytes": 47549,
+      "sha256": "6e7dee40581395b888f1ccd92b47f03a45cc581c09b5fe8725da31efbf18173d"
+    },
+    {
+      "path": "baseline-cases/ram_bounds_conflict.json",
+      "bytes": 4323,
+      "sha256": "29ae0f5cf83c346c0a9c6b556fb859f8417ac7ce8338b096d70ccd65ea484e20"
+    },
+    {
+      "path": "baseline-cases/router_no_tplink.json",
+      "bytes": 43198,
+      "sha256": "1fd6f83d8242a700a6cf7f2fee4a0c3d885781f3da834f20d81881f106a3c490"
+    },
+    {
+      "path": "baseline-cases/tablet_no_android.json",
+      "bytes": 36109,
+      "sha256": "74e7f48a0c786f454148cbb75056451247154c1ed1993908d728fae58109679e"
+    },
+    {
+      "path": "baseline-cases/tv_brand_conflict.json",
+      "bytes": 6759,
+      "sha256": "7cc35c35e17b32bd85fa4369f36f61473ac535444e24f3704bdc681dfd774433"
+    },
+    {
+      "path": "baseline-cases/tv_brand_corrected.json",
+      "bytes": 38696,
+      "sha256": "eac78eb11c631a23c25180903aad59cf823efde90de67f93d215a6c9bc9f191b"
+    },
+    {
+      "path": "baseline-cases/tv_no_samsung.json",
+      "bytes": 40035,
+      "sha256": "afca58c57d4eee3a0cb49407a13a6554187c61f2a47030c2ce5d0afe768947c1"
+    },
+    {
+      "path": "baseline-cases/tv_panel_conflict.json",
+      "bytes": 4647,
+      "sha256": "9a9003b1d59f1cdd87932ba67682a61801c2df02e0b97ca4803a343f6155656b"
+    },
+    {
+      "path": "baseline-cases/vacuum_no_dyson.json",
+      "bytes": 46708,
+      "sha256": "4929559ffae40293e9e151086294e20e18bd9f88d73e69c032da472c60850d60"
+    },
+    {
+      "path": "baseline-cases/washer_no_beko.json",
+      "bytes": 36164,
+      "sha256": "faa9a29db1734e53e8b430bb89da53290f40c788b79020d600e4f818297965a9"
+    },
+    {
+      "path": "baseline.json",
+      "bytes": 44908,
+      "sha256": "4e4e9c8d1cc588e7f979ba16643766d1e2a195e52ed871da8b64ce2d7803e0be"
+    },
+    {
+      "path": "canary-final.json",
+      "bytes": 6494,
+      "sha256": "5a7ea9a1133aad267f8ef955b98d2718ff4a4ae254b473d3bc7205f55a4560d8"
+    },
+    {
+      "path": "confirmed-before-cases/basket_item_floor.json",
+      "bytes": 13296,
+      "sha256": "b675f29a6a6e6021c98efb7d1605e0565df4124d156baff86ac4554e03924bd0"
+    },
+    {
+      "path": "confirmed-before-cases/basket_mixed_features.json",
+      "bytes": 10239,
+      "sha256": "f1abbcc172b31ebd56844eec2c74901596b5436e79376b78e5170e0cb6630ad3"
+    },
+    {
+      "path": "confirmed-before-cases/basket_slot_conflict.json",
+      "bytes": 12279,
+      "sha256": "93c91b799d3e18545cd5e4575cb043ab28d81c59f8053b5f6f5ee1e8225caf85"
+    },
+    {
+      "path": "confirmed-before-cases/espresso_capsule_conflict.json",
+      "bytes": 32053,
+      "sha256": "02a251747c74a3c8f378a94d18d583e5a9103a00b95d84b1f35eeae1daa65408"
+    },
+    {
+      "path": "confirmed-before-cases/mouse_wired.json",
+      "bytes": 35171,
+      "sha256": "4d9f245ff0013a5c211d992fb17b1a47fe7affc7a65211139ad01c0739e89c3c"
+    },
+    {
+      "path": "confirmed-before-cases/mouse_wireless_conflict.json",
+      "bytes": 5517,
+      "sha256": "1298a5994f8a072ea8a67173990e4a22171f53e786cfcd2fdf1060fd6352bb17"
+    },
+    {
+      "path": "confirmed-before-cases/mouse_wireless_corrected.json",
+      "bytes": 37714,
+      "sha256": "48baf4a08e6df9e63fca3eacb8b18f0846c7bac6e95329761062f54ca0567fc9"
+    },
+    {
+      "path": "confirmed-before-cases/tv_brand_conflict.json",
+      "bytes": 4686,
+      "sha256": "08a46e77b131657539d8149b894a3d057422b8a0ba46b9e87620e54cf0e34be6"
+    },
+    {
+      "path": "confirmed-before-cases/tv_panel_conflict.json",
+      "bytes": 4678,
+      "sha256": "eb100f1c405b532b9c4ce3cae33de3c9cc18261012f7aee716ee2c25b9259f20"
+    },
+    {
+      "path": "confirmed-before.json",
+      "bytes": 9046,
+      "sha256": "7cc8e3ec4cee136c7e78da0b2cea539fea851fefa8e9fc2d73d99d9de6bc0e53"
+    },
+    {
+      "path": "controls-cases/basket_unknown_feature.json",
+      "bytes": 12298,
+      "sha256": "5216d7b884294453b911e2914636832758ab538146a71ff568f6dcbd078e2d76"
+    },
+    {
+      "path": "controls-cases/capsule_conflict_corrected.json",
+      "bytes": 32779,
+      "sha256": "de62bc0bb779d8c31c56e76d2edf01e57f2ab61adaa7f69533a8775aa39b7a14"
+    },
+    {
+      "path": "controls-cases/mouse_positive_wired.json",
+      "bytes": 38157,
+      "sha256": "6990dfa9cb4c86a455a26be41cb8a494f3d8cfcfa30c5bff7b66ed9be15c70f3"
+    },
+    {
+      "path": "controls-cases/mouse_positive_wireless.json",
+      "bytes": 35072,
+      "sha256": "63cb58f0f43bc4448d77924c93181c777b1a2367a7347e34575b9bc192d5cca1"
+    },
+    {
+      "path": "controls.json",
+      "bytes": 6107,
+      "sha256": "ec6bd9e1ee650249e61a590ae05341384d91c900adefcc2496b89dd84df49255"
+    },
+    {
+      "path": "deployment.json",
+      "bytes": 2034,
+      "sha256": "0a90c3ac05b34092a1d5d587ec6ddbe0b47b98da58db688e48d6153cc2066eec"
+    },
+    {
+      "path": "final-live-cases/basket_conflict.json",
+      "bytes": 10182,
+      "sha256": "301bc255bd35b27e90a765c87f498451ba02be38c05ce88f1f27c1b5401981de"
+    },
+    {
+      "path": "final-live-cases/basket_corrected.json",
+      "bytes": 66248,
+      "sha256": "770ed3a4431774c2f8df51790dee25db94a057cc147454503c01287d967859e6"
+    },
+    {
+      "path": "final-live-cases/basket_count_invalid.json",
+      "bytes": 4091,
+      "sha256": "a2324df6f558d66899fa5d319383e40bb88a6cd3b925c6fd4103834dc56791c1"
+    },
+    {
+      "path": "final-live-cases/basket_desk.json",
+      "bytes": 52370,
+      "sha256": "f5d8d85918ba424c7cf5b7d933952786b76dd96fe4a8c18a0c76e4d79e9b3010"
+    },
+    {
+      "path": "final-live-cases/basket_english.json",
+      "bytes": 47973,
+      "sha256": "21ccf1eeb08f20ce9b27318106f5514e0aa8c91977af6c8d3e2ad5455bb78db4"
+    },
+    {
+      "path": "final-live-cases/basket_impossible.json",
+      "bytes": 10747,
+      "sha256": "63ba2f186a50387206548b83c45c968822b050f964b279db631442254322d306"
+    },
+    {
+      "path": "final-live-cases/basket_item_caps.json",
+      "bytes": 68008,
+      "sha256": "9bf8f7083efd028e8229ce576087946efef43c002a8db85b9f1209db30109dbe"
+    },
+    {
+      "path": "final-live-cases/basket_item_floor.json",
+      "bytes": 53713,
+      "sha256": "fa7119c44d490d2172ca9f088e041f46b0feb632b27c17a379b9bc136bc4e5cc"
+    },
+    {
+      "path": "final-live-cases/basket_missing_postcode.json",
+      "bytes": 9732,
+      "sha256": "07b2253dba9dc7a3eba074103a26c04a92999dd52fdcf2fef7075a3ab0cf0f5b"
+    },
+    {
+      "path": "final-live-cases/basket_mixed_features.json",
+      "bytes": 74201,
+      "sha256": "602ffb0b87de6d104a2894e655e2774df43ce7501ab3599c49ba41ed46709fa0"
+    },
+    {
+      "path": "final-live-cases/basket_slot_conflict.json",
+      "bytes": 11797,
+      "sha256": "339307a3b092d68b27aef500003926ed3064eb997be080354ab9abd329ad71ef"
+    },
+    {
+      "path": "final-live-cases/basket_slot_exclusion.json",
+      "bytes": 50420,
+      "sha256": "19901c51b9d42a8c1075d0eb1ba4d2bd18907b8349746a0dd2e132468e3f13b9"
+    },
+    {
+      "path": "final-live-cases/basket_small.json",
+      "bytes": 66185,
+      "sha256": "a5a5edd8215189d8bcc70692dd2235ba782e9ac92c6ab2909133ae1c6a090250"
+    },
+    {
+      "path": "final-live-cases/basket_total_floor.json",
+      "bytes": 10859,
+      "sha256": "a96309f824bb1da9e6b7e037cd99ce41c1d7c545e3cda3f6028dbd22c1130444"
+    },
+    {
+      "path": "final-live-cases/basket_units.json",
+      "bytes": 57190,
+      "sha256": "da6abeab1de1275a92264f6572aee0227c2b2a458d9759f8a0a4429feb368e6f"
+    },
+    {
+      "path": "final-live-cases/basket_unknown_feature.json",
+      "bytes": 12297,
+      "sha256": "9b7258737c1bd3d7db489c69f310574b57ecb78da4bca923919687d88720bfa3"
+    },
+    {
+      "path": "final-live-cases/basket_unsupported.json",
+      "bytes": 9628,
+      "sha256": "5de3b356134e3ef5885d1e17623c812afbe36362a39b8072afcd6424c8c14ebc"
+    },
+    {
+      "path": "final-live-cases/capsule_conflict_corrected.json",
+      "bytes": 32779,
+      "sha256": "ec20369cf64c7c303599c8a6b6c03f070784d8970440cacfee429860079c5e9e"
+    },
+    {
+      "path": "final-live-cases/dishwasher_no_bosch.json",
+      "bytes": 42465,
+      "sha256": "27211d4ae1cd80c44fa86b6955615b9864ff0ae6ee0292c159339263dc2d770a"
+    },
+    {
+      "path": "final-live-cases/espresso_capsule_conflict.json",
+      "bytes": 4351,
+      "sha256": "0fabc477eee8fb7f9528d56fa4a1216a8ebfdf29a5b9af61510f8808ba0a3470"
+    },
+    {
+      "path": "final-live-cases/espresso_capsule_corrected.json",
+      "bytes": 32775,
+      "sha256": "632fbf53511668a404c031a91546c890829fe069e0ddcbf72181e0949abb6029"
+    },
+    {
+      "path": "final-live-cases/espresso_no_capsules.json",
+      "bytes": 34211,
+      "sha256": "4deb42e8889348a57ef211b930c3d0ddea1bc7fdc88d32eda835ac06a52c7768"
+    },
+    {
+      "path": "final-live-cases/espresso_no_nespresso.json",
+      "bytes": 43295,
+      "sha256": "4c79355139ed695445e38d88a8acf6ddbad09cebb21db49680547e35d0aca35c"
+    },
+    {
+      "path": "final-live-cases/fridge_no_nofrost.json",
+      "bytes": 38395,
+      "sha256": "655e5e3985c161485f3a70c5c1b9c61e210bb2a9c69e244835551d336a291b04"
+    },
+    {
+      "path": "final-live-cases/headphones_no_inear.json",
+      "bytes": 27700,
+      "sha256": "93de5b8c0faf09bbe8e2364d1acf0f2b8cecccebdb07eca54557c8cac6c0678e"
+    },
+    {
+      "path": "final-live-cases/mouse_positive_wired.json",
+      "bytes": 35383,
+      "sha256": "73c409b9c5cf6312bcbf57a41f042907970d42ba7e63ea0616418a84a020e710"
+    },
+    {
+      "path": "final-live-cases/mouse_positive_wireless.json",
+      "bytes": 35072,
+      "sha256": "c9c3fa258f11ec2678c3b9b80042888c9ac0ec073f8457a4cfa48332f963bbee"
+    },
+    {
+      "path": "final-live-cases/mouse_wired.json",
+      "bytes": 35405,
+      "sha256": "6e702d58072a62624fc4346ee0263198937792b27322a10ba6388b37be2d3f82"
+    },
+    {
+      "path": "final-live-cases/mouse_wireless_conflict.json",
+      "bytes": 4436,
+      "sha256": "0a9cf0cb95c68c16fb692a68b33c4e80ee718220728fec11908328e790cfbfc2"
+    },
+    {
+      "path": "final-live-cases/mouse_wireless_corrected.json",
+      "bytes": 38205,
+      "sha256": "706d52bcb209b8aa798ce3800519dbffef0c563af82ab2f9fd22b0aa46e75f09"
+    },
+    {
+      "path": "final-live-cases/printer_no_hp.json",
+      "bytes": 47609,
+      "sha256": "b1d35103677db7cb61fb41ccda886a117e75ee2c865e2564a6cc22e6ae6f888d"
+    },
+    {
+      "path": "final-live-cases/ram_bounds_conflict.json",
+      "bytes": 4355,
+      "sha256": "53ac2095eb7d9da92f8893a3a5d05655213582e08fc0f8943ca5aed3147db6f0"
+    },
+    {
+      "path": "final-live-cases/router_no_tplink.json",
+      "bytes": 43269,
+      "sha256": "49da9b96c092cfc9cef7c5a3e6b1de2d61a0af8a69c3459de5d52b6dfce0a0a8"
+    },
+    {
+      "path": "final-live-cases/tablet_no_android.json",
+      "bytes": 36173,
+      "sha256": "76fc4944a9728e78a8220e99b6ad7356f86bb8805d3ccb7f4264104901c01620"
+    },
+    {
+      "path": "final-live-cases/tv_brand_conflict.json",
+      "bytes": 4311,
+      "sha256": "99dbaebabcfeee1e2dd056143c615d1e06a0d5fb2f3cec7d54612eda8edddc36"
+    },
+    {
+      "path": "final-live-cases/tv_brand_corrected.json",
+      "bytes": 38761,
+      "sha256": "fd0d923748c479022f32f4fc0915912be24feb59a0d8d4eef9c4a9050ee505c1"
+    },
+    {
+      "path": "final-live-cases/tv_no_samsung.json",
+      "bytes": 40095,
+      "sha256": "6756058e7cea0eb8374fa6c15bdd883ec99cbad824bdb5ded8cce3356c84a30d"
+    },
+    {
+      "path": "final-live-cases/tv_panel_conflict.json",
+      "bytes": 4272,
+      "sha256": "cbf2e195ab3ee1f825e8ed6f860a8574f3530071c6de4c00942d9829b7d78544"
+    },
+    {
+      "path": "final-live-cases/vacuum_no_dyson.json",
+      "bytes": 46770,
+      "sha256": "3737cac97e57031774ca86d73f74ce4f09c6821da84a6bd75a035929012a3f92"
+    },
+    {
+      "path": "final-live-cases/washer_no_beko.json",
+      "bytes": 178745,
+      "sha256": "dcd1630e9a42b6a8e95d60a3d4626a43b256bd612dab6a3a39c99d5d371d5c97"
+    },
+    {
+      "path": "final-live.json",
+      "bytes": 55380,
+      "sha256": "175278fe28d864de3179e31a779f07d76e689742d18c1b0a7209ff5856184507"
+    },
+    {
+      "path": "local-basket-fixed-cases/basket_item_floor.json",
+      "bytes": 354337,
+      "sha256": "075e6c062166fe78b085b2a8baf04548442d894b5999d03532f0e54d07ac51b8"
+    },
+    {
+      "path": "local-basket-fixed-cases/basket_mixed_features.json",
+      "bytes": 558014,
+      "sha256": "aff234dcb162c12c449d31c64169beb6a621c0362fbb412881b2a52cc561ab03"
+    },
+    {
+      "path": "local-basket-fixed.json",
+      "bytes": 598,
+      "sha256": "f1eb91565483cfc650c6b69cc9d87d40a02a5767d7f9ddefd2f4580708ab1a2a"
+    },
+    {
+      "path": "local-final-cases/basket_item_floor.json",
+      "bytes": 354333,
+      "sha256": "9fb83ac1b6092936bac466e5bde58784f7f6870d29e49cec60880ed126adbb1b"
+    },
+    {
+      "path": "local-final-cases/basket_mixed_features.json",
+      "bytes": 558008,
+      "sha256": "bcd643b213e169f25e5160f499ea1bf86b03c6c94087970ec951622acbe460f8"
+    },
+    {
+      "path": "local-final-cases/basket_slot_conflict.json",
+      "bytes": 20106,
+      "sha256": "73e518f218a0a4d8632d329283980e1d77d7132d233b765c1958dfeb85560fd9"
+    },
+    {
+      "path": "local-final-cases/espresso_capsule_conflict.json",
+      "bytes": 9424,
+      "sha256": "241692e7fbe8aab30fd5197fb8a5f4c1086b6e54af1f9991b271fc8ce14ef989"
+    },
+    {
+      "path": "local-final-cases/mouse_wired.json",
+      "bytes": 707449,
+      "sha256": "81551170f9fcff81e28aea31a58a84785909d32da7f478cec5766fdc86e1350d"
+    },
+    {
+      "path": "local-final-cases/mouse_wireless_corrected.json",
+      "bytes": 707550,
+      "sha256": "786f9bd113e4d7c727ceeb8fa7e9ef0054cdeb7b082ee610490d83f4a89cb3e6"
+    },
+    {
+      "path": "local-final-cases/tv_brand_conflict.json",
+      "bytes": 9557,
+      "sha256": "3dbda94ca790d781d76f4fbe7bde7867f435808eba393eaaafca595c4a6518e7"
+    },
+    {
+      "path": "local-final-cases/tv_panel_conflict.json",
+      "bytes": 9276,
+      "sha256": "a9c7aee8d6d2f34d6517a562793a9ebbe6b8f4ff8500908992d97dcdd033fb0d"
+    },
+    {
+      "path": "local-final.json",
+      "bytes": 2019,
+      "sha256": "2b243ab47e7160ea3bc48c1d139723787a549c8fa74ba1f2151270c79ebf3797"
+    },
+    {
+      "path": "local-first-cases/basket_item_floor.json",
+      "bytes": 321566,
+      "sha256": "f0d299ba34bf574e40fb27c1a66457ca2932c844086f0c3da3497c80824b34a2"
+    },
+    {
+      "path": "local-first-cases/basket_mixed_features.json",
+      "bytes": 18759,
+      "sha256": "b3b3300ca1b50db728dd521c9f48a9f33530dccc973f48dbd188d589104de9cc"
+    },
+    {
+      "path": "local-first-cases/basket_slot_conflict.json",
+      "bytes": 20107,
+      "sha256": "1c4af96f2220b2822b4f3c0b0c3de642da993898ea9c53822db590b86615f860"
+    },
+    {
+      "path": "local-first-cases/espresso_capsule_conflict.json",
+      "bytes": 9418,
+      "sha256": "780d2a07cf88327e06b80f300a41627642bb32216a02f0f589aee6450e3828c2"
+    },
+    {
+      "path": "local-first-cases/mouse_wired.json",
+      "bytes": 707455,
+      "sha256": "e05d0ae41686df5cabd30a94188bbbc0810602f16a2e2cd9c144f3b7d385b849"
+    },
+    {
+      "path": "local-first-cases/mouse_wireless_corrected.json",
+      "bytes": 707562,
+      "sha256": "9acfae44f1eaf9ad42c80afff33fabec3263b174e158cedcc920968fb71c1a96"
+    },
+    {
+      "path": "local-first-cases/tv_brand_conflict.json",
+      "bytes": 9565,
+      "sha256": "8208401e3971037c6ab45c3fe9633212252e07623d5e32f0ec2e3c6f3e1d8148"
+    },
+    {
+      "path": "local-first-cases/tv_panel_conflict.json",
+      "bytes": 9279,
+      "sha256": "7634ba6c9a12825239ce735b44d154eced635f20a2279e4c79cffa77cb57a473"
+    },
+    {
+      "path": "local-first.json",
+      "bytes": 2019,
+      "sha256": "9cb0f6f0d03378c06615bf89f80ccf31b7bd726c470cd4d77270391a3268c22d"
+    },
+    {
+      "path": "mission-espresso_capsule_conflict.json",
+      "bytes": 4106,
+      "sha256": "01c750bd62e94ab25ab4aa4629503eaaeaffd7c06d8f77519151dcf819cbec9a"
+    },
+    {
+      "path": "mission-mouse_wired.json",
+      "bytes": 3823,
+      "sha256": "ab29160995118bff7190a282b9c498d8189ace1a84063955a19ca1908e0c5ff4"
+    },
+    {
+      "path": "mission-mouse_wireless_corrected.json",
+      "bytes": 4599,
+      "sha256": "c54498804f53993659a8b76ff67df46d231ce83fe6af6588adf9aea5dc25d5cc"
+    },
+    {
+      "path": "mission-tv_brand_conflict.json",
+      "bytes": 4151,
+      "sha256": "4c8f3f420e1e5cf05d5f15043375eeb76bd6370c0403501589dc17434285e764"
+    },
+    {
+      "path": "mission-tv_panel_conflict.json",
+      "bytes": 3970,
+      "sha256": "bf3f337a5b78aa66f507d59f7553fa6a06d424dceec1b28c30f6784dfa901ce3"
+    },
+    {
+      "path": "repeats-cases/basket_mixed_features.json",
+      "bytes": 10301,
+      "sha256": "41eaa4c64c354ae706c5af8b52d3dc9c59f9606338ed5199827580874b038592"
+    },
+    {
+      "path": "repeats-cases/espresso_capsule_conflict.json",
+      "bytes": 32014,
+      "sha256": "e511fbbdda2546738b15d2549aacf5529fec29b8cdac747767b463dd4819a017"
+    },
+    {
+      "path": "repeats-cases/espresso_no_capsules.json",
+      "bytes": 34120,
+      "sha256": "ac4f0d7b9458bbfd93a1e8db26ae94f596acf8366006a8292364dd364a07da01"
+    },
+    {
+      "path": "repeats-cases/mouse_wired.json",
+      "bytes": 35008,
+      "sha256": "6af6591ee9df21f8e7d5437b415586dd41666b8777d01919d286806ccb3709a9"
+    },
+    {
+      "path": "repeats-cases/mouse_wireless_corrected.json",
+      "bytes": 37538,
+      "sha256": "718de1ee309c40d5f05095341f8c38faa3c93cd8c3c0191ad19dfaba23479180"
+    },
+    {
+      "path": "repeats.json",
+      "bytes": 6520,
+      "sha256": "1db0f6f2a566d9c96467dd2b3c21df1e73920a5340445a029751c0dee2f4df40"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 1112,
+      "sha256": "7931d535f59f0ef177af3dab40f177b97d77c13cbdd8ad11b4856f011df03e3f"
+    }
+  ]
+}

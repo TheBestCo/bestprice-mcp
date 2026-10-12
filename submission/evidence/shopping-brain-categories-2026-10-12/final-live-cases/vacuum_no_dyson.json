@@ -1,0 +1,1275 @@
+{
+  "id": "vacuum_no_dyson",
+  "message": "Θέλω ασύρματη σκούπα έως 250 ευρώ, όχι Dyson.",
+  "expectation": {
+    "exclude": "dyson",
+    "flags": ["cordless"],
+    "budget": 250,
+    "id": "vacuum_no_dyson",
+    "outcome": "recommendation"
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T10:02:40.907Z",
+  "passed": true,
+  "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+  "transport_bytes": 51685,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T10:02:42.778Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "[omitted]",
+      "evidence_fingerprint": "615ddbf549a7e3055406a3045d5cb2824aec2e420a1ef4f789841a9f4b30526c"
+    },
+    "outcome": "recommendation",
+    "status": "ready",
+    "answer": "",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": "bp_2159592008",
+    "alternatives": [
+      {
+        "product_id": "bp_2159569780",
+        "label": "57,06€ ακριβότερο",
+        "tradeoff": "Δίνει καλύτερη βαθμολογία από αγοραστές (4,7 έναντι 3,6)",
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_165330964",
+            "merchant_id": "bp_merchant_1076",
+            "merchant_name": "Ecomarkt",
+            "merchant_rating": 5,
+            "merchant_rating_count": 10,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 139,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "in_stock",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "Άμεσα διαθέσιμο",
+            "price_checked_at": "2026-10-12T10:02:42.398Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_165330964",
+            "merchant_id": "bp_merchant_1076",
+            "merchant_name": "Ecomarkt",
+            "merchant_rating": 5,
+            "merchant_rating_count": 10,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 139,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "in_stock",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "Άμεσα διαθέσιμο",
+            "price_checked_at": "2026-10-12T10:02:42.398Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 250,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 10,
+          "unknown_shipping_count": 10
+        }
+      },
+      {
+        "product_id": "bp_2163425847",
+        "label": "Δεύτερη διαθέσιμη επιλογή",
+        "tradeoff": null,
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_205836825",
+            "merchant_id": "bp_merchant_1375",
+            "merchant_name": "Save It",
+            "merchant_rating": 5,
+            "merchant_rating_count": 5,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 224.9,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "in_stock",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "Άμεσα διαθέσιμο",
+            "price_checked_at": "2026-10-12T10:02:42.399Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_205836825",
+            "merchant_id": "bp_merchant_1375",
+            "merchant_name": "Save It",
+            "merchant_rating": 5,
+            "merchant_rating_count": 5,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 224.9,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "in_stock",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "Άμεσα διαθέσιμο",
+            "price_checked_at": "2026-10-12T10:02:42.399Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 250,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 10,
+          "unknown_shipping_count": 10
+        }
+      }
+    ],
+    "products": [
+      {
+        "product_id": "bp_2159592008",
+        "title": "Xiaomi G20 Lite Επαναφορτιζόμενη Σκούπα Stick & Χειρός 22.5V",
+        "brand": "Xiaomi",
+        "category_title": "Σκούπες Stick",
+        "price_from": 81.94,
+        "decision_id": "[omitted]",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2159569780",
+        "title": "Rohnson Mamba Plus M2 Επαναφορτιζόμενη Σκούπα Stick & Χειρός 25.9V",
+        "brand": "Rohnson",
+        "category_title": "Σκούπες Stick",
+        "price_from": 139,
+        "decision_id": "[omitted]",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2163425847",
+        "title": "Rohnson Mamba M25 Επαναφορτιζόμενη Σκούπα Stick & Χειρός",
+        "brand": "Rohnson",
+        "category_title": "Σκούπες Stick",
+        "price_from": 224.9,
+        "decision_id": "[omitted]",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": 250,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "catalog_requirements": ["ασύρματη λειτουργία", "όχι Dyson"],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 250,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 250,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 21,
+              "end": 33,
+              "text": "έως 250 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    "reasons": [
+      "Καλύπτει τα εξής κριτήρια: έως 250€, ασύρματη λειτουργία και όχι Dyson.",
+      "Η επόμενη επιλογή κοστίζει 57,06€ παραπάνω και δίνει καλύτερη βαθμολογία από αγοραστές (4,7 έναντι 3,6). Συνέκρινα μόνο: ασύρματη λειτουργία και βαθμολογία αγοραστών BestPrice. Με βάση αυτά, δεν προτείνω να πληρώσεις τη διαφορά."
+    ],
+    "tradeoffs": [
+      "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+      "Quickshop: βαθμολογία καταστήματος 4,61/5 από 18 αξιολογήσεις; δηλωμένη διαθεσιμότητα «Άμεσα διαθέσιμο» (εκτίμηση καταστήματος)."
+    ],
+    "offer_summary": {
+      "postal_code": null,
+      "price_basis": "item_price",
+      "affordability": "within_item_budget_delivery_unknown",
+      "offer_scope": "returned_sample",
+      "delivery_affordability_proven": false,
+      "recommended": {
+        "offer_id": "bp_offer_178910203",
+        "merchant_id": "bp_merchant_3607",
+        "merchant_name": "Quickshop",
+        "merchant_rating": 4.61,
+        "merchant_rating_count": 18,
+        "verified_merchant": false,
+        "certification_level": null,
+        "item_price": 81.94,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "in_stock",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "Άμεσα διαθέσιμο",
+        "price_checked_at": "2026-10-12T10:02:42.397Z"
+      },
+      "cheapest": {
+        "offer_id": "bp_offer_178910203",
+        "merchant_id": "bp_merchant_3607",
+        "merchant_name": "Quickshop",
+        "merchant_rating": 4.61,
+        "merchant_rating_count": 18,
+        "verified_merchant": false,
+        "certification_level": null,
+        "item_price": 81.94,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "in_stock",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "Άμεσα διαθέσιμο",
+        "price_checked_at": "2026-10-12T10:02:42.397Z"
+      },
+      "same_offer": true,
+      "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+      "budget_eur": 250,
+      "recommended_within_budget": true,
+      "cheapest_within_budget": true,
+      "compared_offer_count": 10,
+      "unknown_shipping_count": 10
+    },
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "mixed_observed_price_windows",
+      "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "compare",
+      "reason": "review_current_offers",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 48,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:02:41.042Z",
+        "source_observed_at": "2026-10-12T10:02:03.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 593,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 48,
+        "category_id": 6846,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2159569780",
+          "family": "vacuums",
+          "attributes": [
+            {
+              "key": "cordless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_5e56d1b5ac15debb110781d7"],
+              "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"]
+            },
+            {
+              "key": "pet_hair_tool",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_7cff9e5ed72a6ef1673d918e"],
+              "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"]
+            },
+            {
+              "key": "mopping",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_20fabf00aea1c50a9be4ec73"],
+              "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"]
+            },
+            {
+              "key": "runtime_minutes",
+              "unit": "minutes",
+              "status": "known",
+              "value": 50,
+              "claim_ids": ["claim_3f5c148e1408117a709aacd4"],
+              "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2159592008",
+          "family": "vacuums",
+          "attributes": [
+            {
+              "key": "cordless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_16d7077b5789e9a01213fd19"],
+              "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"]
+            },
+            {
+              "key": "pet_hair_tool",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "mopping",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "runtime_minutes",
+              "unit": "minutes",
+              "status": "known",
+              "value": 40,
+              "claim_ids": ["claim_a1c8519c42afed453ef90249"],
+              "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163425847",
+          "family": "vacuums",
+          "attributes": [
+            {
+              "key": "cordless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_85dd044f52d957045b373346"],
+              "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"]
+            },
+            {
+              "key": "pet_hair_tool",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_2838961e627dff856a3e73af"],
+              "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"]
+            },
+            {
+              "key": "mopping",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_5e173aa6f51b5e3e3759c472"],
+              "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"]
+            },
+            {
+              "key": "runtime_minutes",
+              "unit": "minutes",
+              "status": "known",
+              "value": 45,
+              "claim_ids": ["claim_a66f3d55c3f17e1e3a718cb9"],
+              "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"]
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2159569780",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 8,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 139,
+              "median": 145,
+              "maximum": 153,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2159569780:bp_offer_165330964",
+              "compare_offers:bp_2159569780:bp_offer_191629655",
+              "compare_offers:bp_2159569780:bp_offer_209649744"
+            ],
+            "source_count": 11,
+            "claim_count": 89
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2159592008",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 8,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 81.94,
+              "median": 86.5,
+              "maximum": 90,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2159592008:bp_offer_178910203",
+              "compare_offers:bp_2159592008:bp_offer_154562732",
+              "compare_offers:bp_2159592008:bp_offer_161401301"
+            ],
+            "source_count": 11,
+            "claim_count": 87
+          },
+          "history": {
+            "status": "available",
+            "basis": "daily_item_minimum",
+            "windows": [
+              {
+                "days": 30,
+                "minimum_price": 79,
+                "median_price": 81.94,
+                "observations": 29,
+                "coverage_pct": 96.7,
+                "claim_ids": [
+                  "claim_11a667930f1adf6d57781350",
+                  "claim_721e148e3031c346f3158b1e",
+                  "claim_73d7be0a9cde83bcdf089eca",
+                  "claim_c972c53341c9b2419d778645"
+                ]
+              },
+              {
+                "days": 90,
+                "minimum_price": 60.04,
+                "median_price": 78.46,
+                "observations": 89,
+                "coverage_pct": 98.9,
+                "claim_ids": [
+                  "claim_4d42511f9f45dcdfa96aedf8",
+                  "claim_8ea60013ff7eac1b63695739",
+                  "claim_98f4b836023f3b441f80327a",
+                  "claim_b3fb29e6424846788140a862"
+                ]
+              },
+              {
+                "days": 180,
+                "minimum_price": 60.04,
+                "median_price": 76.96,
+                "observations": 179,
+                "coverage_pct": 99.4,
+                "claim_ids": [
+                  "claim_206ab8f1bc1d173adf78bc5f",
+                  "claim_46a2015a1bab7f96961e2766",
+                  "claim_ad4bb21cfcb0ec18507ba36d",
+                  "claim_f2a51b33c3e52761140235b5"
+                ]
+              }
+            ],
+            "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+            "claim_ids": [
+              "claim_11a667930f1adf6d57781350",
+              "claim_206ab8f1bc1d173adf78bc5f",
+              "claim_364bf335d0e0d174951a531a",
+              "claim_46a2015a1bab7f96961e2766",
+              "claim_4d42511f9f45dcdfa96aedf8",
+              "claim_721e148e3031c346f3158b1e",
+              "claim_73d7be0a9cde83bcdf089eca",
+              "claim_8ea60013ff7eac1b63695739",
+              "claim_98f4b836023f3b441f80327a",
+              "claim_ad4bb21cfcb0ec18507ba36d",
+              "claim_b3fb29e6424846788140a862",
+              "claim_c972c53341c9b2419d778645",
+              "claim_f0dfc834a053f61ac7469004",
+              "claim_f2a51b33c3e52761140235b5"
+            ]
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2163425847",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 7,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 224.9,
+              "median": 225.45,
+              "maximum": 227.9,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2163425847:bp_offer_205836825",
+              "compare_offers:bp_2163425847:bp_offer_207251160",
+              "compare_offers:bp_2163425847:bp_offer_206575703"
+            ],
+            "source_count": 11,
+            "claim_count": 89
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 358,
+      "omitted_source_count": 32,
+      "sources": [
+        {
+          "source_id": "compare_offers:bp_2159569780:bp_offer_165330964",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_165330964",
+          "product_id": "bp_2159569780",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.398Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2159569780:bp_offer_191629655",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_191629655",
+          "product_id": "bp_2159569780",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.398Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2159569780:bp_offer_209649744",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_209649744",
+          "product_id": "bp_2159569780",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.398Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2159592008:bp_offer_154562732",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_154562732",
+          "product_id": "bp_2159592008",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.397Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2159592008:bp_offer_161401301",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_161401301",
+          "product_id": "bp_2159592008",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.397Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2159592008:bp_offer_178910203",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_178910203",
+          "product_id": "bp_2159592008",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.397Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163425847:bp_offer_205836825",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_205836825",
+          "product_id": "bp_2163425847",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.399Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163425847:bp_offer_206575703",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_206575703",
+          "product_id": "bp_2163425847",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.399Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163425847:bp_offer_207251160",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_207251160",
+          "product_id": "bp_2163425847",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T10:02:42.399Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_price_history:bp_2159592008:bp_2159592008",
+          "kind": "price_history",
+          "record_id": "bp_2159592008",
+          "product_id": "bp_2159592008",
+          "scope": "cluster",
+          "capability": "get_price_history",
+          "checked_at": "2026-10-12T10:02:42.402Z",
+          "source_observed_at": "2026-10-12T10:02:42.402Z",
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "get_product_details:bp_2159569780:bp_2159569780",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2159569780",
+          "product_id": "bp_2159569780",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:02:42.196Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2159592008:bp_2159592008",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2159592008",
+          "product_id": "bp_2159592008",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:02:42.196Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2163425847:bp_2163425847",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163425847",
+          "product_id": "bp_2163425847",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:02:42.196Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_11a667930f1adf6d57781350",
+          "product_id": "bp_2159592008",
+          "field": "history_30d_minimum_price",
+          "value": 79,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_16d7077b5789e9a01213fd19",
+          "product_id": "bp_2159592008",
+          "field": "attribute:cordless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_7b82345a7bec943f5c4cffa7"]
+        },
+        {
+          "claim_id": "claim_19875018c265472d32bb64d6",
+          "product_id": "bp_2159592008",
+          "field": "feature:3181",
+          "value": "Stick (2 σε 1)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3181,
+            "label": "Είδος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_1f14eaf359e7866dd5e01edd",
+          "product_id": "bp_2159569780",
+          "field": "feature:3662",
+          "value": "Επαναφορτιζόμενες",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3662,
+            "label": "Τύπος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_206ab8f1bc1d173adf78bc5f",
+          "product_id": "bp_2159592008",
+          "field": "history_180d_observations",
+          "value": 179,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_20fabf00aea1c50a9be4ec73",
+          "product_id": "bp_2159569780",
+          "field": "attribute:mopping",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_ff2a3a3fb7342b5967c995e7"]
+        },
+        {
+          "claim_id": "claim_2838961e627dff856a3e73af",
+          "product_id": "bp_2163425847",
+          "field": "attribute:pet_hair_tool",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_f754ddbfa9f0b7a5d4fed2be"]
+        },
+        {
+          "claim_id": "claim_2917524f58cdfb1cebe591ab",
+          "product_id": "bp_2159592008",
+          "field": "feature:3659",
+          "value": "Πολυκλυκλωνικό",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3659,
+            "label": "Σύστημα Διαχωρισμού",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_364bf335d0e0d174951a531a",
+          "product_id": "bp_2159592008",
+          "field": "history_status",
+          "value": "available",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_3f5c148e1408117a709aacd4",
+          "product_id": "bp_2159569780",
+          "field": "attribute:runtime_minutes",
+          "value": 50,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_ab9755cf349b2da0d7a8dee0"]
+        },
+        {
+          "claim_id": "claim_46a2015a1bab7f96961e2766",
+          "product_id": "bp_2159592008",
+          "field": "history_180d_minimum_price",
+          "value": 60.04,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_4d42511f9f45dcdfa96aedf8",
+          "product_id": "bp_2159592008",
+          "field": "history_90d_minimum_price",
+          "value": 60.04,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_5e173aa6f51b5e3e3759c472",
+          "product_id": "bp_2163425847",
+          "field": "attribute:mopping",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_a111ea9f35eb0538876cacfb"]
+        },
+        {
+          "claim_id": "claim_5e56d1b5ac15debb110781d7",
+          "product_id": "bp_2159569780",
+          "field": "attribute:cordless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_1f14eaf359e7866dd5e01edd"]
+        },
+        {
+          "claim_id": "claim_719c6f1ec9b1d260fc050d33",
+          "product_id": "bp_2163425847",
+          "field": "feature:3662",
+          "value": "Επαναφορτιζόμενες",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3662,
+            "label": "Τύπος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_721e148e3031c346f3158b1e",
+          "product_id": "bp_2159592008",
+          "field": "history_30d_median_price",
+          "value": 81.94,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_73d7be0a9cde83bcdf089eca",
+          "product_id": "bp_2159592008",
+          "field": "history_30d_observations",
+          "value": 29,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_748fa938b3de983ecd928c6b",
+          "product_id": "bp_2159592008",
+          "field": "feature:365",
+          "value": "22.5 V",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 365,
+            "label": "Τάση Μπαταρίας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_7b82345a7bec943f5c4cffa7",
+          "product_id": "bp_2159592008",
+          "field": "feature:3662",
+          "value": "Επαναφορτιζόμενες",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3662,
+            "label": "Τύπος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_7cff9e5ed72a6ef1673d918e",
+          "product_id": "bp_2159569780",
+          "field": "attribute:pet_hair_tool",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d48dcb3af95f932b29ce7856"]
+        },
+        {
+          "claim_id": "claim_825462726310ee9c5ee5fe40",
+          "product_id": "bp_2159592008",
+          "field": "feature:3661",
+          "value": "40 min",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3661,
+            "label": "Αυτονομία Λειτουργίας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_8397437fa99c10f2881be413",
+          "product_id": "bp_2163425847",
+          "field": "feature:3661",
+          "value": "45 min",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3661,
+            "label": "Αυτονομία Λειτουργίας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_85dd044f52d957045b373346",
+          "product_id": "bp_2163425847",
+          "field": "attribute:cordless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_719c6f1ec9b1d260fc050d33"]
+        },
+        {
+          "claim_id": "claim_8ea60013ff7eac1b63695739",
+          "product_id": "bp_2159592008",
+          "field": "history_90d_observations",
+          "value": 89,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_98f4b836023f3b441f80327a",
+          "product_id": "bp_2159592008",
+          "field": "history_90d_median_price",
+          "value": 78.46,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_a111ea9f35eb0538876cacfb",
+          "product_id": "bp_2163425847",
+          "field": "feature:4947",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4947,
+            "label": "Υγρό Καθάρισμα",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_a1c8519c42afed453ef90249",
+          "product_id": "bp_2159592008",
+          "field": "attribute:runtime_minutes",
+          "value": 40,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_825462726310ee9c5ee5fe40"]
+        },
+        {
+          "claim_id": "claim_a66f3d55c3f17e1e3a718cb9",
+          "product_id": "bp_2163425847",
+          "field": "attribute:runtime_minutes",
+          "value": 45,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_8397437fa99c10f2881be413"]
+        },
+        {
+          "claim_id": "claim_ab9755cf349b2da0d7a8dee0",
+          "product_id": "bp_2159569780",
+          "field": "feature:3661",
+          "value": "50 min",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3661,
+            "label": "Αυτονομία Λειτουργίας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_ad4bb21cfcb0ec18507ba36d",
+          "product_id": "bp_2159592008",
+          "field": "history_180d_median_price",
+          "value": 76.96,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_ae454080d30680a130147d43",
+          "product_id": "bp_2159592008",
+          "field": "feature:594",
+          "value": "0.55 lt",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159592008:bp_2159592008"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 594,
+            "label": "Χωρητικότητα Δοχείου Σκόνης",
+            "group": "Χωρητικότητα"
+          }
+        },
+        {
+          "claim_id": "claim_b3fb29e6424846788140a862",
+          "product_id": "bp_2159592008",
+          "field": "history_90d_coverage_pct",
+          "value": 98.9,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_c972c53341c9b2419d778645",
+          "product_id": "bp_2159592008",
+          "field": "history_30d_coverage_pct",
+          "value": 96.7,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_d48dcb3af95f932b29ce7856",
+          "product_id": "bp_2159569780",
+          "field": "feature:3180",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3180,
+            "label": "Πέλμα Κατοικιδίων",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_f0dfc834a053f61ac7469004",
+          "product_id": "bp_2159592008",
+          "field": "current_price_source",
+          "value": "live_offer_minimum",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_f2a51b33c3e52761140235b5",
+          "product_id": "bp_2159592008",
+          "field": "history_180d_coverage_pct",
+          "value": 99.4,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2159592008:bp_2159592008"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_f754ddbfa9f0b7a5d4fed2be",
+          "product_id": "bp_2163425847",
+          "field": "feature:3180",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163425847:bp_2163425847"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3180,
+            "label": "Πέλμα Κατοικιδίων",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_ff2a3a3fb7342b5967c995e7",
+          "product_id": "bp_2159569780",
+          "field": "feature:4947",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2159569780:bp_2159569780"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4947,
+            "label": "Υγρό Καθάρισμα",
+            "group": ""
+          }
+        }
+      ]
+    },
+    "uncertainty": [
+      {
+        "code": "ranking_calibration",
+        "product_id": "bp_2159592008",
+        "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+      },
+      {
+        "code": "landed_cost_unknown",
+        "product_id": "bp_2159592008",
+        "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+      },
+      {
+        "code": "mixed_observed_price_windows",
+        "product_id": "bp_2159592008",
+        "message": "Η σημερινή τιμή είναι στη συνηθισμένη τιμή των 30 και 90 ημερών, αλλά πάνω από τη συνηθισμένη τιμή των 180 ημερών (180 ημέρες: διάμεσος 76,96€, 6,5% πάνω). Η σύγκριση δεν περιλαμβάνει μεταφορικά."
+      }
+    ]
+  },
+  "metrics": {
+    "claims": 38,
+    "sources": 13,
+    "structured_bytes": 33523,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 48,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:02:41.042Z",
+        "source_observed_at": "2026-10-12T10:02:03.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 593,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 48,
+        "category_id": 6846,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 2509
+}

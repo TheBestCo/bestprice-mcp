@@ -1,0 +1,182 @@
+{
+  "started_at": "2026-10-12T09:39:25.832Z",
+  "expected_revision": "979987837e73b3b364234855508974bdbd77746b",
+  "scope": "anonymous public get_shopping_decision only; no links opened or account/Ask writes",
+  "cases": [
+    {
+      "id": "mouse_positive_wireless",
+      "message": "Θέλω ασύρματο ποντίκι έως 40 ευρώ.",
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["wireless"],
+        "budget": 40
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:39:25.912Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 57549,
+      "metrics": {
+        "claims": 20,
+        "sources": 12,
+        "structured_bytes": 25798,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:39:28.193Z",
+            "source_observed_at": "2026-10-12T09:31:51.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1803,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2569,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 4012,
+      "response_receipt": "controls-cases/mouse_positive_wireless.json"
+    },
+    {
+      "id": "mouse_positive_wired",
+      "message": "Θέλω ενσύρματο ποντίκι έως 40 ευρώ.",
+      "expectation": {
+        "outcome": "recommendation",
+        "falseFlags": ["wireless"],
+        "budget": 40
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:39:29.925Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 61541,
+      "metrics": {
+        "claims": 26,
+        "sources": 13,
+        "structured_bytes": 27777,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 14,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:39:32.163Z",
+            "source_observed_at": "2026-10-12T09:31:51.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 2451,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 5192,
+      "response_receipt": "controls-cases/mouse_positive_wired.json"
+    },
+    {
+      "id": "capsule_conflict_corrected",
+      "message": "Θέλω espresso με κάψουλες και χωρίς κάψουλες. Διόρθωση: μόνο χωρίς κάψουλες έως 200 ευρώ.",
+      "expectation": {
+        "outcome": "recommendation",
+        "budget": 200,
+        "noCapsules": true
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:39:35.118Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 53355,
+      "metrics": {
+        "claims": 14,
+        "sources": 10,
+        "structured_bytes": 23671,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 48,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:39:37.046Z",
+            "source_observed_at": "2026-10-12T09:31:51.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 7261,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 48,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 3470,
+      "response_receipt": "controls-cases/capsule_conflict_corrected.json"
+    },
+    {
+      "id": "basket_unknown_feature",
+      "message": "Θέλω κινητό με NFC και quantum link και air fryer, συνολικά έως 500 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:39:38.589Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 17012,
+      "metrics": {
+        "claims": 0,
+        "sources": 0,
+        "structured_bytes": 7187,
+        "retrieval": {
+          "scope": "not_searched",
+          "candidate_count": 0,
+          "complete_catalog": false,
+          "search_calls": 0,
+          "receipt": null
+        }
+      },
+      "elapsed_ms": 2537,
+      "response_receipt": "controls-cases/basket_unknown_feature.json"
+    }
+  ],
+  "start_health": {
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "header": "979987837e73b3b364234855508974bdbd77746b",
+    "version": "1.8.4"
+  },
+  "end_health": {
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "header": "979987837e73b3b364234855508974bdbd77746b",
+    "version": "1.8.4"
+  },
+  "finished_at": "2026-10-12T09:39:41.140Z",
+  "passed_count": 4,
+  "case_count": 4
+}

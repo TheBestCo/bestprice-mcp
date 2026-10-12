@@ -1,0 +1,161 @@
+{
+  "note": "Acceptance recheck of sanitized baseline receipts: original transport/schema checks remain in baseline.json; URLs deliberately redacted so schema is not rerun on the redacted projection. Exploratory outcome and typed negative-feature checks were tightened after catalog controls. Washer capacity admission permits a single title quantity when no labeled capacity observation exists; title claim identity is checked.",
+  "passed": 26,
+  "total": 36,
+  "cases": [
+    {
+      "id": "tv_no_samsung",
+      "passed": true
+    },
+    {
+      "id": "tablet_no_android",
+      "passed": true
+    },
+    {
+      "id": "espresso_no_capsules",
+      "passed": false,
+      "error": "REQUEST_TIMEOUT"
+    },
+    {
+      "id": "espresso_no_nespresso",
+      "passed": true
+    },
+    {
+      "id": "vacuum_no_dyson",
+      "passed": true
+    },
+    {
+      "id": "washer_no_beko",
+      "passed": true
+    },
+    {
+      "id": "dishwasher_no_bosch",
+      "passed": true
+    },
+    {
+      "id": "mouse_wired",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "id": "printer_no_hp",
+      "passed": true
+    },
+    {
+      "id": "router_no_tplink",
+      "passed": true
+    },
+    {
+      "id": "headphones_no_inear",
+      "passed": true
+    },
+    {
+      "id": "fridge_no_nofrost",
+      "passed": true
+    },
+    {
+      "id": "tv_brand_conflict",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'no_match'\n- 'clarification'\n"
+    },
+    {
+      "id": "mouse_wireless_conflict",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n2 !== 0\n"
+    },
+    {
+      "id": "espresso_capsule_conflict",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'recommendation'\n- 'clarification'\n"
+    },
+    {
+      "id": "tv_panel_conflict",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'no_match'\n- 'clarification'\n"
+    },
+    {
+      "id": "ram_bounds_conflict",
+      "passed": true
+    },
+    {
+      "id": "tv_brand_corrected",
+      "passed": true
+    },
+    {
+      "id": "mouse_wireless_corrected",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "id": "espresso_capsule_corrected",
+      "passed": true
+    },
+    {
+      "id": "basket_missing_postcode",
+      "passed": true
+    },
+    {
+      "id": "basket_desk",
+      "passed": true
+    },
+    {
+      "id": "basket_small",
+      "passed": true
+    },
+    {
+      "id": "basket_impossible",
+      "passed": true
+    },
+    {
+      "id": "basket_units",
+      "passed": true
+    },
+    {
+      "id": "basket_item_caps",
+      "passed": true
+    },
+    {
+      "id": "basket_item_floor",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'clarification'\n- 'basket'\n"
+    },
+    {
+      "id": "basket_unsupported",
+      "passed": true
+    },
+    {
+      "id": "basket_conflict",
+      "passed": true
+    },
+    {
+      "id": "basket_corrected",
+      "passed": true
+    },
+    {
+      "id": "basket_slot_exclusion",
+      "passed": true
+    },
+    {
+      "id": "basket_mixed_features",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'clarification'\n- 'basket'\n"
+    },
+    {
+      "id": "basket_count_invalid",
+      "passed": true
+    },
+    {
+      "id": "basket_slot_conflict",
+      "passed": false,
+      "error": "Expected values to be strictly equal:\n\n2 !== 0\n"
+    },
+    {
+      "id": "basket_total_floor",
+      "passed": true
+    },
+    {
+      "id": "basket_english",
+      "passed": true
+    }
+  ]
+}

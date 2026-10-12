@@ -1,0 +1,137 @@
+{
+  "id": "ram_bounds_conflict",
+  "message": "Θέλω laptop με τουλάχιστον 32GB RAM και το πολύ 16GB RAM, έως 1200 ευρώ.",
+  "expectation": {
+    "outcome": "clarification",
+    "zeroSearch": true
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T09:26:35.652Z",
+  "passed": true,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 7668,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:26:37.791Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "[omitted]",
+      "evidence_fingerprint": "72b733e6d8e3b6c3fde620a8df281b300072f744fcc6ceb982e30f31d4474c44"
+    },
+    "outcome": "clarification",
+    "status": "needs_input",
+    "answer": "Τα όρια μνήμης που ανέφερες δεν σχηματίζουν έγκυρο εύρος. Ποιο ελάχιστο και μέγιστο RAM θέλεις;",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 1200,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 1200,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 58,
+              "end": 71,
+              "text": "έως 1200 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "catalog_requirements": []
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [
+      {
+        "question": "Τα όρια μνήμης που ανέφερες δεν σχηματίζουν έγκυρο εύρος. Ποιο ελάχιστο και μέγιστο RAM θέλεις;",
+        "reason": "missing_shopping_context"
+      }
+    ],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "missing_shopping_context",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 0,
+      "omitted_source_count": 0,
+      "sources": [],
+      "claims": []
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 0,
+    "sources": 0,
+    "structured_bytes": 2765,
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    }
+  },
+  "elapsed_ms": 2309
+}

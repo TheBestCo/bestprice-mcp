@@ -1,0 +1,37 @@
+{
+  "source_fix": "94a2329220a231943fec3edca54a3c602d0a98d0",
+  "source_release": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+  "affected_suite": {
+    "total": 6215,
+    "passed": 6212,
+    "skipped": 3,
+    "failed": 0,
+    "log": "suite-release.log"
+  },
+  "normal_push_hooks": {
+    "affected_test_files": 549,
+    "offline_module_contract_files": 23,
+    "bypassed": false,
+    "log": "push-merged.log"
+  },
+  "distribution_suite": {
+    "total": 1095,
+    "passed": 1095,
+    "failed": 0,
+    "test_concurrency": 4,
+    "log": "distribution-tests-bounded.log"
+  },
+  "distribution_initial_failure": {
+    "test": "a descendant that ignores SIGTERM is killed after the grace period",
+    "symptom": "200ms request timeout before rejection assertion attached under concurrent test load",
+    "isolated_recheck": {
+      "passed": 10,
+      "failed": 0
+    },
+    "source_changes": false
+  },
+  "notes": [
+    "Test cohorts overlap and are not added together.",
+    "All receipts originate from anonymous public tools or local read-only catalog replays. No merchant URL navigation or account mutation."
+  ]
+}

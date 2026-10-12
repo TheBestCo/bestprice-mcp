@@ -1,0 +1,289 @@
+{
+  "id": "espresso_capsule_conflict",
+  "message": "Θέλω espresso υποχρεωτικά με κάψουλες και χωρίς κάψουλες, έως 200 ευρώ.",
+  "response": {
+    "version": "bestprice_decision_v1",
+    "comparison_policy_version": "comparison_derivation_v2",
+    "offer_binding_version": "same_quote_receipt_v3",
+    "decision_id": "[omitted]",
+    "request_id": "[omitted]",
+    "channel": "mcp",
+    "created_at": "2026-10-12T09:44:20.374Z",
+    "outcome": "clarification",
+    "request_understanding": {
+      "version": "shopping_request_v1",
+      "mission_id": "86666408-2a3e-42c5-8f60-23be101d2969",
+      "revision": 1,
+      "fingerprint": "37f4a5cfcb2590670f99125ca0af954c2b0cf3cc2bf5a8c9bd611c30b648981d",
+      "source": "model",
+      "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+      "family": "espresso",
+      "intent": "shop",
+      "query": "espresso",
+      "constraints": {
+        "budgetEur": 200,
+        "statedBudgetEur": 200,
+        "minimumRamGb": null,
+        "minimumRamAssumed": false,
+        "requiresWindows": false,
+        "peopleCount": null,
+        "capacityLitres": null,
+        "capacityAssumed": false,
+        "capacityInferred": false,
+        "differentCapacityFromLitres": null,
+        "requiresDualBasket": null,
+        "screenInches": null,
+        "roomSqm": null,
+        "statedCoolingBtu": null,
+        "schoolUse": false,
+        "designUse": false
+      },
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 200,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 200,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 58,
+              "end": 70,
+              "text": "έως 200 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "criterion_sources": {
+        "espresso_capsules": ["υποχρεωτικά με κάψουλες"]
+      },
+      "requirements": [
+        {
+          "id": "exclude_espresso_capsules",
+          "label": "χωρίς κάψουλες"
+        }
+      ],
+      "preferences": [],
+      "unresolved": [],
+      "unreadable": [],
+      "quotes": ["υποχρεωτικά με κάψουλες"],
+      "nonPricePhrases": ["υποχρεωτικά με κάψουλες", "χωρίς κάψουλες"],
+      "source_turns": [
+        {
+          "role": "user",
+          "content": "υποχρεωτικά με κάψουλες"
+        }
+      ],
+      "transition": "start"
+    },
+    "actions": [],
+    "status": "needs_input",
+    "mission": {
+      "intent": "choose",
+      "summary_el": "Πρόταση αγοράς · Μηχανή espresso",
+      "constraints": {
+        "maximum_price_eur": null,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "postal_code": null,
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 200,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 200,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 58,
+                "end": 70,
+                "text": "έως 200 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      }
+    },
+    "primary": null,
+    "alternatives": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 200,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 200,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 58,
+              "end": 70,
+              "text": "έως 200 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "catalog_requirements": ["χωρίς κάψουλες"]
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "price_history": null,
+    "candidate_summary": null,
+    "candidates": [],
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    },
+    "evidence": {
+      "sources": [],
+      "claims": [],
+      "price_requirements_fingerprint": "9782fa6c3498691fdcd408812b737f405e66b7ab14d5963251b41d4512f33c97",
+      "fingerprint": "1bc938ba3e897f3aa1125b51aac587e0a7171da2dd3e9ea5732839b31ce37e9a"
+    },
+    "uncertainty": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "missing_shopping_context",
+      "url": "[omitted]",
+      "requires_user_action": true
+    },
+    "clarifications": [
+      {
+        "question": "Ζήτησες αντικρουόμενα κριτήρια: με και χωρίς κάψουλες. Ποιο θέλεις να κρατήσω;",
+        "reason": "missing_shopping_context"
+      }
+    ],
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "answer": "Ζήτησες αντικρουόμενα κριτήρια: με και χωρίς κάψουλες. Ποιο θέλεις να κρατήσω;",
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "execution": {
+      "tools_used": [],
+      "model": "gemini-3.8-flash",
+      "metrics": {
+        "agent_ms": 1762,
+        "grounding_calls": 0,
+        "grounding_ms": 0,
+        "grounding_cache_hits": 0,
+        "planner_calls": 0,
+        "planner_ms": 0,
+        "model_fallbacks": 0,
+        "understanding_used_model": true,
+        "understanding_shared_cache_checked": true,
+        "understanding_shared_cache_hit": false,
+        "understanding_cached": false,
+        "understanding_unreadable": 0,
+        "understanding_requirements": 1,
+        "understanding_ms": 1751,
+        "direct_recommendation": false,
+        "exact_route": false,
+        "catalog_search_calls": 0,
+        "search_products_calls": 0,
+        "search_products_failures": 0,
+        "search_products_invocations": 0,
+        "search_products_cancellations": 0,
+        "search_products_total_ms": 0,
+        "search_products_max_ms": 0,
+        "get_product_details_calls": 0,
+        "get_product_details_failures": 0,
+        "get_product_details_invocations": 0,
+        "get_product_details_cancellations": 0,
+        "get_product_details_total_ms": 0,
+        "get_product_details_max_ms": 0,
+        "compare_offers_calls": 0,
+        "compare_offers_failures": 0,
+        "compare_offers_invocations": 0,
+        "compare_offers_cancellations": 0,
+        "compare_offers_total_ms": 0,
+        "compare_offers_max_ms": 0,
+        "get_price_history_calls": 0,
+        "get_price_history_failures": 0,
+        "get_price_history_invocations": 0,
+        "get_price_history_cancellations": 0,
+        "get_price_history_total_ms": 0,
+        "get_price_history_max_ms": 0,
+        "get_product_reviews_calls": 0,
+        "get_product_reviews_failures": 0,
+        "get_product_reviews_invocations": 0,
+        "get_product_reviews_cancellations": 0,
+        "get_product_reviews_total_ms": 0,
+        "get_product_reviews_max_ms": 0,
+        "optimize_basket_calls": 0,
+        "optimize_basket_failures": 0,
+        "optimize_basket_invocations": 0,
+        "optimize_basket_cancellations": 0,
+        "optimize_basket_total_ms": 0,
+        "optimize_basket_max_ms": 0,
+        "retrieval_page_candidates": 0,
+        "receipt_disqualified_candidates": 0,
+        "receipt_eligible_candidates": 0,
+        "receipt_review_requested": 0,
+        "receipt_review_available": 0,
+        "receipt_validation_ms": 0,
+        "brain_runtime_ms": 1762,
+        "brain_finalization_ms": 1
+      }
+    },
+    "personalization": null,
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    }
+  },
+  "calls": []
+}

@@ -1,0 +1,198 @@
+{
+  "id": "tv_brand_conflict",
+  "message": "Θέλω τηλεόραση μόνο Samsung και όχι Samsung, έως 700 ευρώ.",
+  "expectation": {
+    "outcome": "clarification",
+    "zeroSearch": true
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T09:26:12.599Z",
+  "passed": false,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 18105,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:26:16.432Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "[omitted]",
+      "evidence_fingerprint": "6f8aa795ba0fa1e5318f4797d9e91a358e49c0d84c4bfd3e95d2d9419f695057"
+    },
+    "outcome": "no_match",
+    "status": "no_match",
+    "answer": "",
+    "reason": "hard_constraints_unmet",
+    "message": "Η αναζήτηση έμεινε μέσα στα 700€. Με «Χωρίς όριο τιμής» μπορώ να ξαναελέγξω, κρατώντας όχι Samsung ως απαίτηση.",
+    "blocking_constraints": ["exclude_brand"],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": 700,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "catalog_requirements": ["μάρκα Samsung", "όχι Samsung"],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 700,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 700,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 45,
+              "end": 57,
+              "text": "έως 700 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "hard_constraints_unmet",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 48,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:26:14.286Z",
+        "source_observed_at": "2026-10-12T09:26:04.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 95,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 48,
+        "category_id": 3048,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    },
+    "search_handoff": {
+      "url": "[omitted]",
+      "label": "Δες αποτελέσματα στο BestPrice"
+    },
+    "catalog_candidates": {
+      "basis": "catalog_search_unranked",
+      "note": "BestPrice catalog search results for this request, in catalog relevance order within its price bounds. The Shopping Brain did not rank them or check them against the request, so they are not a recommendation; products it checked and rejected are left out. price_from is the catalog minimum before shipping.",
+      "query": "τηλεόραση",
+      "price_min_eur": null,
+      "price_max_eur": 700,
+      "products": [
+        {
+          "product_id": "bp_2160624646",
+          "title": "TCL QD-Mini LED 55C6K Smart Τηλεόραση 55\" 4K UHD Mini LED HDR (2025)",
+          "brand": null,
+          "category_title": "Τηλεοράσεις",
+          "price_from": 499.9,
+          "availability": "available",
+          "offer_count": 24,
+          "rating": {
+            "average": 4.44,
+            "count": 9
+          },
+          "decision_id": "[omitted]",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160624654",
+          "title": "TCL 75P6K Smart Τηλεόραση 75\" 4K UHD DLED HDR (2025)",
+          "brand": null,
+          "category_title": "Τηλεοράσεις",
+          "price_from": 498,
+          "availability": "available",
+          "offer_count": 28,
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "decision_id": "[omitted]",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160624653",
+          "title": "TCL 65P6K Smart Τηλεόραση 65\" 4K UHD DLED HDR (2025)",
+          "brand": null,
+          "category_title": "Τηλεοράσεις",
+          "price_from": 389,
+          "availability": "available",
+          "offer_count": 21,
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "decision_id": "[omitted]",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 0,
+      "omitted_source_count": 0,
+      "sources": [],
+      "claims": []
+    },
+    "uncertainty": []
+  },
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'no_match'\n- 'clarification'\n",
+  "elapsed_ms": 4863
+}

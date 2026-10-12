@@ -1,0 +1,320 @@
+{
+  "id": "basket_mixed_features",
+  "message": "Θέλω κινητό με NFC και air fryer από 4 έως 5 λίτρα, συνολικά έως 500 ευρώ. ΤΚ 11527.",
+  "expectation": {
+    "full": true
+  },
+  "evidence_detail": "full",
+  "started_at": "2026-10-12T09:29:39.171Z",
+  "passed": true,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 15470,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:29:39.683Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "[omitted]",
+      "evidence_fingerprint": "84771d804456c6c4ba1efcc9220ba084e7ab5907848bf49b108005ebea9c9f29"
+    },
+    "outcome": "clarification",
+    "status": "needs_input",
+    "answer": "Κρατάω ως απαραίτητα: NFC. Δεν έχω ακόμη επαρκή στοιχεία για να τα ελέγξω και δεν έχω επιβεβαιωμένη πρόταση. Χρειάζομαι συγκεκριμένη προδιαγραφή ή τεκμηρίωση για αυτά τα χαρακτηριστικά· δεν χρειάζεται να ξαναδηλώσεις ότι είναι απαραίτητα. Το όριο τιμής μένει έως 500€.",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": {
+        "minimum": 4,
+        "maximum": 5,
+        "target": 4.5
+      },
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 500,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 500,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 61,
+              "end": 73,
+              "text": "έως 500 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 500,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "phone",
+          "label": "Κινητό",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "nfc",
+                "label": "NFC"
+              }
+            ]
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "air_fryer",
+          "label": "Air fryer",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": {
+                "minimum": 4,
+                "maximum": 5,
+                "target": 4.5
+              },
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ],
+      "catalog_requirements": []
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": null,
+    "basket_request": {
+      "version": "bestprice_basket_request_v1",
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "phone",
+          "label": "Κινητό",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": [
+              {
+                "id": "nfc",
+                "label": "NFC"
+              }
+            ]
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "air_fryer",
+          "label": "Air fryer",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": null,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": null,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": {
+                "minimum": 4,
+                "maximum": 5,
+                "target": 4.5
+              },
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ],
+      "resolved_slots": [],
+      "unresolved_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "phone",
+          "label": "Κινητό",
+          "quantity": 1,
+          "reason": "basket_incomplete"
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "air_fryer",
+          "label": "Air fryer",
+          "quantity": 1,
+          "reason": "basket_incomplete"
+        }
+      ],
+      "total_budget_eur": 500
+    },
+    "clarifications": [
+      {
+        "question": "Κρατάω ως απαραίτητα: NFC. Δεν έχω ακόμη επαρκή στοιχεία για να τα ελέγξω και δεν έχω επιβεβαιωμένη πρόταση. Χρειάζομαι συγκεκριμένη προδιαγραφή ή τεκμηρίωση για αυτά τα χαρακτηριστικά· δεν χρειάζεται να ξαναδηλώσεις ότι είναι απαραίτητα. Το όριο τιμής μένει έως 500€.",
+        "reason": "missing_shopping_context"
+      }
+    ],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "missing_shopping_context",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "sources": [],
+      "claims": []
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 0,
+    "sources": 0,
+    "structured_bytes": 6177,
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    }
+  },
+  "elapsed_ms": 557
+}

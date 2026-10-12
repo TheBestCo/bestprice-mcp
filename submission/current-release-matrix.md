@@ -1,6 +1,10 @@
 # BestPrice current release matrix
 
-Updated October 12, 2026. Latest: [broader anonymous Shopping Brain audit](shopping-brain-broad-audit-2026-10-12.md), released at `979987837e73b3b364234855508974bdbd77746b`: **36/36 live cases**, **53/53 read-only canary checks**, Jenkins green; correction precedence, quantity custody, named comparisons and mandatory-feature recall repaired. [Immutable-file receipt and hashes](evidence/shopping-brain-broad-2026-10-12/release-receipt.json) retain failures and controls. The [Shopping Brain release receipt](evidence/shopping-brain-release-2026-10-12.json) separates source, CI, deployed roles, live checks, and exclusions. Earlier October 2–3 observations below remain historical and do not establish today's portal or account state.
+Updated October 12, 2026. Latest: [category, exclusion and basket audit](shopping-brain-category-audit-2026-10-12.md), released at `77b594bd8d526e004c8f38b4d30c15caee91ba4f`: **40/40 anonymous live cases across 15 categories**, **53/53 read-only canary checks**, Jenkins green. Wired exclusions, explicit conflicts, basket item-price floors and slot-specific feature handling were repaired. [Immutable-file receipt and hashes](evidence/shopping-brain-categories-2026-10-12/release-receipt.json) retain all nine reproduced failures and the passing release responses. Earlier observations below remain historical and do not establish today's portal or account state.
+
+## Earlier October 12 broad audit
+
+The [broader anonymous Shopping Brain audit](shopping-brain-broad-audit-2026-10-12.md), released at `979987837e73b3b364234855508974bdbd77746b`, passed **36/36 live cases** and **53/53 read-only canary checks**, with Jenkins green. It repaired correction precedence, quantity custody, named comparisons and mandatory-feature recall. [Its release manifest](evidence/shopping-brain-broad-2026-10-12/release-receipt.json) retains those failures and controls.
 
 ## Earlier October 12 Shopping Brain release
 

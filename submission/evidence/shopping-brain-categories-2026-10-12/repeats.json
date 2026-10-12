@@ -1,0 +1,191 @@
+{
+  "started_at": "2026-10-12T09:29:30.783Z",
+  "expected_revision": "979987837e73b3b364234855508974bdbd77746b",
+  "scope": "anonymous public get_shopping_decision only; no links opened or account/Ask writes",
+  "cases": [
+    {
+      "id": "espresso_no_capsules",
+      "message": "Θέλω μηχανή espresso έως 200 ευρώ, χωρίς κάψουλες.",
+      "expectation": {
+        "budget": 200
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:29:30.829Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 55605,
+      "metrics": {
+        "claims": 16,
+        "sources": 11,
+        "structured_bytes": 24740,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 48,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:29:31.107Z",
+            "source_observed_at": "2026-10-12T09:26:04.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 401,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 48,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 2633,
+      "response_receipt": "repeats-cases/espresso_no_capsules.json"
+    },
+    {
+      "id": "mouse_wired",
+      "message": "Θέλω ποντίκι έως 40 ευρώ, όχι ασύρματο.",
+      "expectation": {
+        "budget": 40
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:29:33.462Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 57549,
+      "metrics": {
+        "claims": 20,
+        "sources": 12,
+        "structured_bytes": 25798,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:29:33.656Z",
+            "source_observed_at": "2026-10-12T09:26:04.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1803,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2569,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1121,
+      "response_receipt": "repeats-cases/mouse_wired.json"
+    },
+    {
+      "id": "espresso_capsule_conflict",
+      "message": "Θέλω espresso υποχρεωτικά με κάψουλες και χωρίς κάψουλες, έως 200 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:29:34.584Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 53355,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'recommendation'\n- 'clarification'\n",
+      "elapsed_ms": 1035,
+      "response_receipt": "repeats-cases/espresso_capsule_conflict.json"
+    },
+    {
+      "id": "mouse_wireless_corrected",
+      "message": "Θέλω ασύρματο ποντίκι έως 40 ευρώ. Διόρθωση: μόνο ενσύρματο.",
+      "expectation": {
+        "budget": 40
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:29:35.621Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 60709,
+      "metrics": {
+        "claims": 25,
+        "sources": 12,
+        "structured_bytes": 27311,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:29:36.048Z",
+            "source_observed_at": "2026-10-12T09:26:04.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1803,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2569,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 3549,
+      "response_receipt": "repeats-cases/mouse_wireless_corrected.json"
+    },
+    {
+      "id": "basket_mixed_features",
+      "message": "Θέλω κινητό με NFC και air fryer από 4 έως 5 λίτρα, συνολικά έως 500 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "full": true
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T09:29:39.171Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 15470,
+      "metrics": {
+        "claims": 0,
+        "sources": 0,
+        "structured_bytes": 6177,
+        "retrieval": {
+          "scope": "not_searched",
+          "candidate_count": 0,
+          "complete_catalog": false,
+          "search_calls": 0,
+          "receipt": null
+        }
+      },
+      "elapsed_ms": 557,
+      "response_receipt": "repeats-cases/basket_mixed_features.json"
+    }
+  ],
+  "start_health": {
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "header": "979987837e73b3b364234855508974bdbd77746b",
+    "version": "1.8.4"
+  },
+  "end_health": {
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "header": "979987837e73b3b364234855508974bdbd77746b",
+    "version": "1.8.4"
+  },
+  "finished_at": "2026-10-12T09:29:39.780Z",
+  "passed_count": 4,
+  "case_count": 5
+}

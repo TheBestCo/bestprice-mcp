@@ -1,0 +1,236 @@
+{
+  "started_at": "2026-10-12T09:47:52.927Z",
+  "expected_revision": "979987837e73b3b364234855508974bdbd77746b",
+  "scope": "anonymous public get_shopping_decision only; no links opened or account/Ask writes",
+  "cases": [
+    {
+      "id": "mouse_wired",
+      "message": "Θέλω ποντίκι έως 40 ευρώ, όχι ασύρματο.",
+      "expectation": {
+        "budget": 40,
+        "id": "mouse_wired",
+        "outcome": "recommendation",
+        "falseFlags": ["wireless"]
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:47:53.074Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 57549,
+      "metrics": {
+        "claims": 20,
+        "sources": 12,
+        "structured_bytes": 25798,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:47:53.448Z",
+            "source_observed_at": "2026-10-12T09:39:43.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1803,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2569,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "error": "Expected values to be strictly equal:\n\ntrue !== false\n",
+      "elapsed_ms": 1714,
+      "response_receipt": "confirmed-before-cases/mouse_wired.json"
+    },
+    {
+      "id": "tv_brand_conflict",
+      "message": "Θέλω τηλεόραση μόνο Samsung και όχι Samsung, έως 700 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "tv_brand_conflict"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:47:54.788Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 8828,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'no_match'\n- 'clarification'\n",
+      "elapsed_ms": 3698,
+      "response_receipt": "confirmed-before-cases/tv_brand_conflict.json"
+    },
+    {
+      "id": "mouse_wireless_conflict",
+      "message": "Θέλω ποντίκι υποχρεωτικά ασύρματο και υποχρεωτικά ενσύρματο, έως 50 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "mouse_wireless_conflict"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:47:58.487Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 10700,
+      "error": "Expected values to be strictly equal:\n\n2 !== 0\n",
+      "elapsed_ms": 2115,
+      "response_receipt": "confirmed-before-cases/mouse_wireless_conflict.json"
+    },
+    {
+      "id": "espresso_capsule_conflict",
+      "message": "Θέλω espresso υποχρεωτικά με κάψουλες και χωρίς κάψουλες, έως 200 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "espresso_capsule_conflict"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:48:00.603Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 53355,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'recommendation'\n- 'clarification'\n",
+      "elapsed_ms": 2413,
+      "response_receipt": "confirmed-before-cases/espresso_capsule_conflict.json"
+    },
+    {
+      "id": "tv_panel_conflict",
+      "message": "Θέλω τηλεόραση υποχρεωτικά OLED και όχι OLED, έως 1000 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "tv_panel_conflict"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:48:03.017Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 8779,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'no_match'\n- 'clarification'\n",
+      "elapsed_ms": 2620,
+      "response_receipt": "confirmed-before-cases/tv_panel_conflict.json"
+    },
+    {
+      "id": "mouse_wireless_corrected",
+      "message": "Θέλω ασύρματο ποντίκι έως 40 ευρώ. Διόρθωση: μόνο ενσύρματο.",
+      "expectation": {
+        "budget": 40,
+        "id": "mouse_wireless_corrected",
+        "outcome": "recommendation",
+        "falseFlags": ["wireless"]
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:48:05.638Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 60709,
+      "metrics": {
+        "claims": 25,
+        "sources": 12,
+        "structured_bytes": 27311,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:48:05.771Z",
+            "source_observed_at": "2026-10-12T09:39:43.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1803,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2569,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "error": "Expected values to be strictly equal:\n\ntrue !== false\n",
+      "elapsed_ms": 2662,
+      "response_receipt": "confirmed-before-cases/mouse_wireless_corrected.json"
+    },
+    {
+      "id": "basket_item_floor",
+      "message": "Θέλω ποντίκι από 20 έως 40 ευρώ και ακουστικά από 30 έως 60 ευρώ, συνολικά έως 90 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "full": true,
+        "id": "basket_item_floor",
+        "outcome": "basket",
+        "total": 90
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T09:48:08.301Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 17196,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'clarification'\n- 'basket'\n",
+      "elapsed_ms": 1127,
+      "response_receipt": "confirmed-before-cases/basket_item_floor.json"
+    },
+    {
+      "id": "basket_mixed_features",
+      "message": "Θέλω κινητό με NFC και air fryer από 4 έως 5 λίτρα, συνολικά έως 500 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "full": true,
+        "id": "basket_mixed_features",
+        "outcome": "basket",
+        "total": 500
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T09:48:09.430Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 15470,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'clarification'\n- 'basket'\n",
+      "elapsed_ms": 952,
+      "response_receipt": "confirmed-before-cases/basket_mixed_features.json"
+    },
+    {
+      "id": "basket_slot_conflict",
+      "message": "Θέλω laptop από 800 έως 500 ευρώ και οθόνη, συνολικά έως 1000 ευρώ. ΤΚ 11527.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true,
+        "id": "basket_slot_conflict",
+        "total": 1000
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:48:10.384Z",
+      "passed": false,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 16802,
+      "error": "Expected values to be strictly equal:\n\n2 !== 0\n",
+      "elapsed_ms": 1213,
+      "response_receipt": "confirmed-before-cases/basket_slot_conflict.json"
+    }
+  ],
+  "start_health": {
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "header": "979987837e73b3b364234855508974bdbd77746b",
+    "version": "1.8.4"
+  },
+  "end_health": {
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "header": "979987837e73b3b364234855508974bdbd77746b",
+    "version": "1.8.4"
+  },
+  "finished_at": "2026-10-12T09:48:11.611Z",
+  "passed_count": 0,
+  "case_count": 9
+}

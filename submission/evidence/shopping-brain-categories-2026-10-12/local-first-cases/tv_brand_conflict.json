@@ -1,0 +1,301 @@
+{
+  "id": "tv_brand_conflict",
+  "message": "Θέλω τηλεόραση μόνο Samsung και όχι Samsung, έως 700 ευρώ.",
+  "response": {
+    "version": "bestprice_decision_v1",
+    "comparison_policy_version": "comparison_derivation_v2",
+    "offer_binding_version": "same_quote_receipt_v3",
+    "decision_id": "[omitted]",
+    "request_id": "[omitted]",
+    "channel": "mcp",
+    "created_at": "2026-10-12T09:31:14.193Z",
+    "outcome": "clarification",
+    "request_understanding": {
+      "version": "shopping_request_v1",
+      "mission_id": "24743a17-49c4-44d0-a085-71d1cac4f469",
+      "revision": 1,
+      "fingerprint": "bb5cd09193a53359c88e03d8c969a4ab3dd244fea9060577af9dc5d6b7a506c0",
+      "source": "model",
+      "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+      "family": "tv",
+      "intent": "shop",
+      "query": "τηλεόραση Samsung",
+      "constraints": {
+        "budgetEur": 700,
+        "statedBudgetEur": 700,
+        "minimumRamGb": null,
+        "minimumRamAssumed": false,
+        "requiresWindows": false,
+        "peopleCount": null,
+        "capacityLitres": null,
+        "capacityAssumed": false,
+        "capacityInferred": false,
+        "differentCapacityFromLitres": null,
+        "requiresDualBasket": null,
+        "screenInches": null,
+        "roomSqm": null,
+        "statedCoolingBtu": null,
+        "schoolUse": false,
+        "designUse": false
+      },
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 700,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 700,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 45,
+              "end": 57,
+              "text": "έως 700 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "criterion_sources": {
+        "brand": ["μόνο Samsung"],
+        "exclude_brand": ["όχι Samsung"]
+      },
+      "requirements": [
+        {
+          "id": "brand",
+          "label": "μάρκα Samsung",
+          "brand": "Samsung",
+          "hint": "Samsung"
+        },
+        {
+          "id": "exclude_brand",
+          "label": "όχι Samsung",
+          "brands": ["Samsung"]
+        }
+      ],
+      "preferences": [],
+      "unresolved": [],
+      "unreadable": [],
+      "quotes": ["μόνο Samsung", "όχι Samsung"],
+      "nonPricePhrases": ["μόνο Samsung", "όχι Samsung"],
+      "source_turns": [
+        {
+          "role": "user",
+          "content": "μόνο Samsung"
+        },
+        {
+          "role": "user",
+          "content": "όχι Samsung"
+        }
+      ],
+      "transition": "start"
+    },
+    "actions": [],
+    "status": "needs_input",
+    "mission": {
+      "intent": "choose",
+      "summary_el": "Πρόταση αγοράς · Τηλεόραση",
+      "constraints": {
+        "maximum_price_eur": null,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "postal_code": null,
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 700,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 700,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 45,
+                "end": 57,
+                "text": "έως 700 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      }
+    },
+    "primary": null,
+    "alternatives": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 700,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 700,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 45,
+              "end": 57,
+              "text": "έως 700 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "catalog_requirements": ["μάρκα Samsung", "όχι Samsung"]
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "price_history": null,
+    "candidate_summary": null,
+    "candidates": [],
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    },
+    "evidence": {
+      "sources": [],
+      "claims": [],
+      "price_requirements_fingerprint": "f1c763390bb2086fd7c88920920baa557fca17fcb2eceaa65574e6c7cacad357",
+      "fingerprint": "543542f82e890916b6a87f18810966a4649d19aa92ab9a7917f222794f6eac2d"
+    },
+    "uncertainty": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "missing_shopping_context",
+      "url": "[omitted]",
+      "requires_user_action": true
+    },
+    "clarifications": [
+      {
+        "question": "Ζήτησες αντικρουόμενα κριτήρια: μόνο Samsung και όχι Samsung. Ποιο θέλεις να κρατήσω;",
+        "reason": "missing_shopping_context"
+      }
+    ],
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "answer": "Ζήτησες αντικρουόμενα κριτήρια: μόνο Samsung και όχι Samsung. Ποιο θέλεις να κρατήσω;",
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "execution": {
+      "tools_used": [],
+      "model": "gemini-3.8-flash",
+      "metrics": {
+        "agent_ms": 1411,
+        "grounding_calls": 0,
+        "grounding_ms": 0,
+        "grounding_cache_hits": 0,
+        "planner_calls": 0,
+        "planner_ms": 0,
+        "model_fallbacks": 0,
+        "understanding_used_model": true,
+        "understanding_shared_cache_checked": true,
+        "understanding_shared_cache_hit": false,
+        "understanding_cached": false,
+        "understanding_unreadable": 0,
+        "understanding_requirements": 2,
+        "understanding_ms": 1409,
+        "direct_recommendation": false,
+        "exact_route": false,
+        "catalog_search_calls": 0,
+        "search_products_calls": 0,
+        "search_products_failures": 0,
+        "search_products_invocations": 0,
+        "search_products_cancellations": 0,
+        "search_products_total_ms": 0,
+        "search_products_max_ms": 0,
+        "get_product_details_calls": 0,
+        "get_product_details_failures": 0,
+        "get_product_details_invocations": 0,
+        "get_product_details_cancellations": 0,
+        "get_product_details_total_ms": 0,
+        "get_product_details_max_ms": 0,
+        "compare_offers_calls": 0,
+        "compare_offers_failures": 0,
+        "compare_offers_invocations": 0,
+        "compare_offers_cancellations": 0,
+        "compare_offers_total_ms": 0,
+        "compare_offers_max_ms": 0,
+        "get_price_history_calls": 0,
+        "get_price_history_failures": 0,
+        "get_price_history_invocations": 0,
+        "get_price_history_cancellations": 0,
+        "get_price_history_total_ms": 0,
+        "get_price_history_max_ms": 0,
+        "get_product_reviews_calls": 0,
+        "get_product_reviews_failures": 0,
+        "get_product_reviews_invocations": 0,
+        "get_product_reviews_cancellations": 0,
+        "get_product_reviews_total_ms": 0,
+        "get_product_reviews_max_ms": 0,
+        "optimize_basket_calls": 0,
+        "optimize_basket_failures": 0,
+        "optimize_basket_invocations": 0,
+        "optimize_basket_cancellations": 0,
+        "optimize_basket_total_ms": 0,
+        "optimize_basket_max_ms": 0,
+        "retrieval_page_candidates": 0,
+        "receipt_disqualified_candidates": 0,
+        "receipt_eligible_candidates": 0,
+        "receipt_review_requested": 0,
+        "receipt_review_available": 0,
+        "receipt_validation_ms": 0,
+        "brain_runtime_ms": 1411,
+        "brain_finalization_ms": 1
+      }
+    },
+    "personalization": null,
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    }
+  },
+  "calls": []
+}

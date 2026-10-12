@@ -1,0 +1,1369 @@
+{
+  "id": "basket_english",
+  "message": "I need a mouse under 40 euros and headphones under 60 euros, total budget 90 euros. Postcode 11527.",
+  "expectation": {
+    "full": true,
+    "id": "basket_english",
+    "outcome": "basket",
+    "total": 90
+  },
+  "evidence_detail": "full",
+  "started_at": "2026-10-12T10:03:38.367Z",
+  "passed": true,
+  "revision": "77b594bd8d526e004c8f38b4d30c15caee91ba4f",
+  "transport_bytes": 69670,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T10:03:39.047Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "[omitted]",
+      "evidence_fingerprint": "6932b7ca4f5075452c8b646a9ec9dfb15bdcc9b482ee60d34e5a134405d1f447"
+    },
+    "outcome": "basket",
+    "status": "ready",
+    "answer": "Προτείνω το ισορροπημένο πλάνο: 23,21€ από 1 κατάστημα. Είναι το φθηνότερο διαθέσιμο πλάνο. Μένει 66,79€ κάτω από το συνολικό όριο των 90€.",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": "11527",
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 90,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 90,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 67,
+              "end": 82,
+              "text": "budget 90 euros"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "minimum_price_eur": null,
+      "total_budget_eur": 90,
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": 40,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 40,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 15,
+                    "end": 29,
+                    "text": "under 40 euros"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 40,
+              "statedBudgetEur": 40,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": 60,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 60,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 11,
+                    "end": 25,
+                    "text": "under 60 euros"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 60,
+              "statedBudgetEur": 60,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ],
+      "catalog_requirements": []
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": {
+      "schema_version": "2.0",
+      "as_of": "2026-10-12T10:03:38.901Z",
+      "currency": "EUR",
+      "locale": "el-GR",
+      "warnings": [
+        "Τα πλάνα υπολογίστηκαν με το δημοσιευμένο, φραγμένο σύνολο υποψήφιων προσφορών, όχι με κάθε προσφορά του καταλόγου."
+      ],
+      "preferred_plan": "balanced",
+      "methodology_id": "bestprice_basket_bounded_v1",
+      "plans": [
+        {
+          "plan_type": "balanced",
+          "merchant_count": 1,
+          "item_subtotal": 20.22,
+          "shipping_total": 2.99,
+          "shipping_status": "known",
+          "total_price": 23.21,
+          "reliability_score": 3.94,
+          "ranking_reason": "Ισορροπία κόστους, αξιολόγησης και πιστοποίησης καταστημάτων.",
+          "merchants": [
+            {
+              "merchant_id": "bp_merchant_4864",
+              "merchant_name": "Houseshop",
+              "merchant_rating": 3.94,
+              "verified_merchant": false,
+              "item_subtotal": 20.22,
+              "shipping_price": 2.99,
+              "shipping_status": "known",
+              "total_price": 23.21,
+              "reason": "covers_basket_with_one_merchant",
+              "items": [
+                {
+                  "product_id": "bp_2158694371",
+                  "title": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+                  "quantity": 1,
+                  "unit_price": 2.37,
+                  "line_total": 2.37,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                },
+                {
+                  "product_id": "bp_2163048726",
+                  "title": "Hoco EQ27 Ακουστικά Bluetooth Earbud Black",
+                  "quantity": 1,
+                  "unit_price": 17.85,
+                  "line_total": 17.85,
+                  "decision_id": "[omitted]",
+                  "bestprice_url": "[omitted]"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "unavailable_items": []
+    },
+    "basket_request": {
+      "version": "bestprice_basket_request_v1",
+      "requested_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": 40,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 40,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 15,
+                    "end": 29,
+                    "text": "under 40 euros"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 40,
+              "statedBudgetEur": 40,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "requirements": {
+            "price_requirements": {
+              "version": "shopping_price_constraints_v1",
+              "minimum_eur": null,
+              "maximum_eur": 60,
+              "explicitly_unbounded": false,
+              "unsupported": [],
+              "clauses": [
+                {
+                  "field": "item_price",
+                  "operator": "lte",
+                  "value": 60,
+                  "unit": "EUR",
+                  "source": {
+                    "turn_index": 0,
+                    "start": 11,
+                    "end": 25,
+                    "text": "under 60 euros"
+                  }
+                }
+              ],
+              "conflicts": []
+            },
+            "constraints": {
+              "budgetEur": 60,
+              "statedBudgetEur": 60,
+              "minimumRamGb": null,
+              "minimumRamAssumed": false,
+              "requiresWindows": false,
+              "peopleCount": null,
+              "capacityLitres": null,
+              "capacityAssumed": false,
+              "capacityInferred": false,
+              "differentCapacityFromLitres": null,
+              "requiresDualBasket": null,
+              "screenInches": null,
+              "roomSqm": null,
+              "statedCoolingBtu": null,
+              "schoolUse": false,
+              "designUse": false
+            },
+            "catalog_requirements": []
+          }
+        }
+      ],
+      "resolved_slots": [
+        {
+          "slot_id": "slot_1",
+          "family": "mouse",
+          "label": "Ποντίκι",
+          "quantity": 1,
+          "product_id": "bp_2158694371",
+          "catalog_price_eur": 1.94,
+          "selection_reason": "calibrated_spend_walk"
+        },
+        {
+          "slot_id": "slot_2",
+          "family": "headphones",
+          "label": "Ακουστικά",
+          "quantity": 1,
+          "product_id": "bp_2163048726",
+          "catalog_price_eur": 12.7,
+          "selection_reason": "calibrated_spend_walk"
+        }
+      ],
+      "unresolved_slots": [],
+      "total_budget_eur": 90
+    },
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "compare",
+      "reason": "review_current_offers",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "basket_objective",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 3,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:03:38.488Z",
+        "source_observed_at": "2026-10-12T10:02:03.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 18195,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2158694371",
+          "family": "mice",
+          "attributes": [
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_4f69ad5083ba344c503eb63b"],
+              "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163048726",
+          "family": "headphones",
+          "attributes": [
+            {
+              "key": "active_noise_cancellation",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_80b23b1cad3da8966988be1f"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "over_ear",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_0c3179131e652b799602955b"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_453f77cac7fe041d555e74a8", "claim_735ea42e5cddd52538984b10"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "battery_hours",
+              "unit": "hours",
+              "status": "known",
+              "value": 7,
+              "claim_ids": ["claim_099a5c958229056f0c13551b"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "battery_with_case_hours",
+              "unit": "hours",
+              "status": "known",
+              "value": 28,
+              "claim_ids": ["claim_7b6d06d46be49cfa0a38edcf"],
+              "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"]
+            },
+            {
+              "key": "multipoint",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2158694371",
+          "offers": {
+            "status": "not_checked",
+            "scope": "bounded_returned_offers",
+            "offer_count": 0,
+            "merchant_count": 0,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 0
+            },
+            "item_price": null,
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2163048726",
+          "offers": {
+            "status": "not_checked",
+            "scope": "bounded_returned_offers",
+            "offer_count": 0,
+            "merchant_count": 0,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 0
+            },
+            "item_price": null,
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "sources": [
+        {
+          "source_id": "deterministic_ranking:bp_2163048726:bestprice_shopping_policy_v1:headphones",
+          "kind": "decision_policy",
+          "record_id": "bestprice_shopping_policy_v1:headphones",
+          "product_id": "bp_2163048726",
+          "scope": "cluster",
+          "capability": "deterministic_ranking",
+          "checked_at": "2026-10-12T10:03:39.047Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "get_product_details:bp_2158694371:bp_2158694371",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2158694371",
+          "product_id": "bp_2158694371",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:03:38.483Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2163048726:bp_2163048726",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163048726",
+          "product_id": "bp_2163048726",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T10:03:38.488Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371",
+          "kind": "basket_quote",
+          "record_id": "balanced:bp_merchant_4864:bp_2158694371",
+          "product_id": "bp_2158694371",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:38.901Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726",
+          "kind": "basket_quote",
+          "record_id": "balanced:bp_merchant_4864:bp_2163048726",
+          "product_id": "bp_2163048726",
+          "scope": "offer",
+          "capability": "optimize_basket",
+          "checked_at": "2026-10-12T10:03:38.901Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "search_products:bp_2163048726:bp_2163048726",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163048726",
+          "product_id": "bp_2163048726",
+          "scope": "cluster",
+          "capability": "search_products",
+          "checked_at": "2026-10-12T10:03:38.488Z",
+          "source_observed_at": "2026-10-12T10:02:03.000Z",
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_0097a3b186fbc66479e19d89",
+          "product_id": "bp_2158694371",
+          "field": "offer_count",
+          "value": 41,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_099a5c958229056f0c13551b",
+          "product_id": "bp_2163048726",
+          "field": "attribute:battery_hours",
+          "value": 7,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_7f184f012d4644bd95e7ee27"]
+        },
+        {
+          "claim_id": "claim_0c3179131e652b799602955b",
+          "product_id": "bp_2163048726",
+          "field": "attribute:over_ear",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_5f551e4d401b1232002e6d2b"]
+        },
+        {
+          "claim_id": "claim_0f871625b51166b2edb181e3",
+          "product_id": "bp_2163048726",
+          "field": "basket_merchant_shipping",
+          "value": 2.99,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_1013c03816f010fe3c8f1f3d",
+          "product_id": "bp_2158694371",
+          "field": "feature:3264",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3264,
+            "label": "Ρύθμιση Βάρους",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_12d16819d91c8d1d31526efe",
+          "product_id": "bp_2158694371",
+          "field": "feature:4383",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4383,
+            "label": "Αθόρυβο",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_15c8e3cf1fc38cc0f608c692",
+          "product_id": "bp_2158694371",
+          "field": "feature:4380",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4380,
+            "label": "TrackBall",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_1668fe2afffd48ddee9f5e2b",
+          "product_id": "bp_2158694371",
+          "field": "basket_merchant_name",
+          "value": "Houseshop",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_16dfc6b0737609ad0065a78a",
+          "product_id": "bp_2158694371",
+          "field": "feature:1106",
+          "value": "3",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1106,
+            "label": "Αριθμός Πλήκτρων",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_189e1c29f5bce7ad5822a298",
+          "product_id": "bp_2158694371",
+          "field": "feature:5465",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5465,
+            "label": "Με Παιδικά Σχέδια",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_20a575cbf48c226e9adfd58a",
+          "product_id": "bp_2163048726",
+          "field": "title",
+          "value": "Hoco EQ27 Ακουστικά Bluetooth Earbud Black",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_226f455d08e606eda5ba7861",
+          "product_id": "bp_2158694371",
+          "field": "rating_count",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_2362011ccb5396ad647e7b57",
+          "product_id": "bp_2163048726",
+          "field": "availability",
+          "value": "in_stock",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_2367792b23c0247b0669fb3f",
+          "product_id": "bp_2158694371",
+          "field": "feature:4379",
+          "value": "Claw, Palm",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4379,
+            "label": "Σχεδιασμός",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_29ad500d2e423a44094a8a7d",
+          "product_id": "bp_2163048726",
+          "field": "feature:3527",
+          "value": "Θήκη Φόρτισης, Μείωση Θορύβου Μικροφώνου, Active Noise Cancellation (ANC)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3527,
+            "label": "Δυνατότητες",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_36a3ffae1263878bfe885e1e",
+          "product_id": "bp_2158694371",
+          "field": "availability",
+          "value": "in_stock",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_44794f21fc63c23128586d49",
+          "product_id": "bp_2158694371",
+          "field": "title",
+          "value": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_453f77cac7fe041d555e74a8",
+          "product_id": "bp_2163048726",
+          "field": "attribute:wireless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_94ded0993fb0edad17eea85e"]
+        },
+        {
+          "claim_id": "claim_4f69ad5083ba344c503eb63b",
+          "product_id": "bp_2158694371",
+          "field": "attribute:wireless",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_68180e410b6e88f9960993f8"]
+        },
+        {
+          "claim_id": "claim_558b3c8b923537799d1245f0",
+          "product_id": "bp_2163048726",
+          "field": "basket_plan_total",
+          "value": 23.21,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        },
+        {
+          "claim_id": "claim_5f551e4d401b1232002e6d2b",
+          "product_id": "bp_2163048726",
+          "field": "feature:5739",
+          "value": "Earbud",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5739,
+            "label": "Είδος Ακουστικού",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_642e3e7a66569d615729d210",
+          "product_id": "bp_2158694371",
+          "field": "basket_line_total",
+          "value": 2.37,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_66a7a3fc5da3f52aeeb27204",
+          "product_id": "bp_2158694371",
+          "field": "basket_merchant_shipping",
+          "value": 2.99,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_66ed13e8941d007ee80f2783",
+          "product_id": "bp_2163048726",
+          "field": "category_id",
+          "value": 813,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_68180e410b6e88f9960993f8",
+          "product_id": "bp_2158694371",
+          "field": "title",
+          "value": "Powertech PT-1077 Ενσύρματο Ποντίκι Black",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_691fe6f441076380126bcfef",
+          "product_id": "bp_2163048726",
+          "field": "feature:1062",
+          "value": "Μαύρο",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1062,
+            "label": "Χρώμα",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_692fdb89acff8f2177da88a6",
+          "product_id": "bp_2158694371",
+          "field": "feature:1062",
+          "value": "Μαύρο",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1062,
+            "label": "Χρώμα",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_6b1c177f100d2229494e456e",
+          "product_id": "bp_2158694371",
+          "field": "feature:1121",
+          "value": "Ενσύρματο",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1121,
+            "label": "Τύπος",
+            "group": "Τύπος"
+          }
+        },
+        {
+          "claim_id": "claim_6b8d4f5db4e8e49d9ec04349",
+          "product_id": "bp_2163048726",
+          "field": "basket_line_total",
+          "value": 17.85,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726"],
+          "validation": "quantity_times_unit_price"
+        },
+        {
+          "claim_id": "claim_72e7c0b3aeae67fe721774d0",
+          "product_id": "bp_2158694371",
+          "field": "feature:3263",
+          "value": "Και για τα Δύο Χέρια",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3263,
+            "label": "Προσανατολισμός Χεριού",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_735ea42e5cddd52538984b10",
+          "product_id": "bp_2163048726",
+          "field": "attribute:wireless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_bea863f242e84ca35d1546bf"]
+        },
+        {
+          "claim_id": "claim_75bd1e00169d105146b4becf",
+          "product_id": "bp_2163048726",
+          "field": "title",
+          "value": "Hoco EQ27 Ακουστικά Bluetooth Earbud Black",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_76ff884ea6185543235b09ae",
+          "product_id": "bp_2163048726",
+          "field": "basket_merchant_name",
+          "value": "Houseshop",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_785932168589609981b81877",
+          "product_id": "bp_2163048726",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_792e613547ff3d327b2c0065",
+          "product_id": "bp_2158694371",
+          "field": "price_from",
+          "value": 1.94,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_7b6d06d46be49cfa0a38edcf",
+          "product_id": "bp_2163048726",
+          "field": "attribute:battery_with_case_hours",
+          "value": 28,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_c494bdd0cbfb58df5b30148a"]
+        },
+        {
+          "claim_id": "claim_7f184f012d4644bd95e7ee27",
+          "product_id": "bp_2163048726",
+          "field": "feature:3533",
+          "value": "7 ώρες",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3533,
+            "label": "Χρόνος Λειτουργίας",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_80b23b1cad3da8966988be1f",
+          "product_id": "bp_2163048726",
+          "field": "attribute:active_noise_cancellation",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_29ad500d2e423a44094a8a7d"]
+        },
+        {
+          "claim_id": "claim_94ded0993fb0edad17eea85e",
+          "product_id": "bp_2163048726",
+          "field": "feature:2834",
+          "value": "Bluetooth 5.4",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2834,
+            "label": "Συμβατότητα Bluetooth",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_9540bec5d512dc12604fb8a0",
+          "product_id": "bp_2163048726",
+          "field": "catalog_family",
+          "value": "headphones",
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2163048726:bp_2163048726",
+            "get_product_details:bp_2163048726:bp_2163048726"
+          ],
+          "validation": "catalog_family_mapping_v1",
+          "supporting_claim_ids": [
+            "claim_66ed13e8941d007ee80f2783",
+            "claim_e5ac29056e050784efc7ed82",
+            "claim_75bd1e00169d105146b4becf"
+          ]
+        },
+        {
+          "claim_id": "claim_9541593cc422114e918702ba",
+          "product_id": "bp_2163048726",
+          "field": "feature:1625",
+          "value": "Διπλό",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1625,
+            "label": "Αριθμός Ακουστικών",
+            "group": "Τύπος"
+          }
+        },
+        {
+          "claim_id": "claim_99d44dc02e0102a867ff46ba",
+          "product_id": "bp_2158694371",
+          "field": "feature:1105",
+          "value": "Optical",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1105,
+            "label": "Τύπος Αισθητήρα",
+            "group": "Τύπος"
+          }
+        },
+        {
+          "claim_id": "claim_a02bc1f635d20ffdbcbc771d",
+          "product_id": "bp_2158694371",
+          "field": "category_title",
+          "value": "Ποντίκια",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_a9cbf5fd89a33e93232449c4",
+          "product_id": "bp_2163048726",
+          "field": "offer_count",
+          "value": 30,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_b469a5561fa90f27d433f1cd",
+          "product_id": "bp_2158694371",
+          "field": "feature:3239",
+          "value": "USB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3239,
+            "label": "Τύπος Σύνδεσης",
+            "group": "Συνδεσιμότητα"
+          }
+        },
+        {
+          "claim_id": "claim_b67bf5aacf61534433792900",
+          "product_id": "bp_2158694371",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_bdd732106c5200125e346f81",
+          "product_id": "bp_2163048726",
+          "field": "ranking:headphones:wireless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2163048726:bp_2163048726",
+            "get_product_details:bp_2163048726:bp_2163048726",
+            "deterministic_ranking:bp_2163048726:bestprice_shopping_policy_v1:headphones"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_bea863f242e84ca35d1546bf",
+          "product_id": "bp_2163048726",
+          "field": "feature:5741",
+          "value": "Χωρίς Καλώδιo",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5741,
+            "label": "Καλώδιο",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_c494bdd0cbfb58df5b30148a",
+          "product_id": "bp_2163048726",
+          "field": "feature:3526",
+          "value": "28 ώρες",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3526,
+            "label": "Λειτουργία Με Θήκη Φόρτισης",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_c98f24b59f4fcfc10e841303",
+          "product_id": "bp_2158694371",
+          "field": "feature:4381",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4381,
+            "label": "TouchPad",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_ce52b467cc49ecd316747f09",
+          "product_id": "bp_2158694371",
+          "field": "basket_unit_price",
+          "value": 2.37,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_ceb583e432d45fe6bcee0891",
+          "product_id": "bp_2158694371",
+          "field": "feature:1108",
+          "value": "1000 DPI",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1108,
+            "label": "Μέγιστη Ανάλυση Αισθητήρα",
+            "group": "Απόδοση"
+          }
+        },
+        {
+          "claim_id": "claim_d0f1e1370cbb322b7beabb22",
+          "product_id": "bp_2163048726",
+          "field": "price_from",
+          "value": 12.7,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d2ea3b6b26d425258dddd28a",
+          "product_id": "bp_2158694371",
+          "field": "basket_quantity",
+          "value": 1,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_ddafcfceb397f71869d81f17",
+          "product_id": "bp_2158694371",
+          "field": "feature:3262",
+          "value": "Standard",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3262,
+            "label": "Μέγεθος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_df6965f11977b79aea7e79c5",
+          "product_id": "bp_2158694371",
+          "field": "category_id",
+          "value": 2569,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_e59e913ff17e79e931a01c4f",
+          "product_id": "bp_2163048726",
+          "field": "basket_unit_price",
+          "value": 17.85,
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_e5ac29056e050784efc7ed82",
+          "product_id": "bp_2163048726",
+          "field": "category_title",
+          "value": "Bluetooth Handsfree",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163048726:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_eba20350d35b8329b799c522",
+          "product_id": "bp_2163048726",
+          "field": "ranking:headphones:active_noise_cancellation",
+          "value": true,
+          "kind": "derived",
+          "source_ids": [
+            "search_products:bp_2163048726:bp_2163048726",
+            "get_product_details:bp_2163048726:bp_2163048726",
+            "deterministic_ranking:bp_2163048726:bestprice_shopping_policy_v1:headphones"
+          ],
+          "validation": "calibrated_policy_attribute_not_measurement"
+        },
+        {
+          "claim_id": "claim_eec04f2d518fa3a22ebae699",
+          "product_id": "bp_2158694371",
+          "field": "catalog_family",
+          "value": "mice",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "catalog_family_mapping_v1",
+          "supporting_claim_ids": [
+            "claim_df6965f11977b79aea7e79c5",
+            "claim_a02bc1f635d20ffdbcbc771d",
+            "claim_68180e410b6e88f9960993f8"
+          ]
+        },
+        {
+          "claim_id": "claim_f0bc63b11788bacfdfa657c8",
+          "product_id": "bp_2163048726",
+          "field": "basket_plan_shipping_status",
+          "value": "known",
+          "kind": "observed",
+          "source_ids": ["optimize_basket:bp_2163048726:balanced:bp_merchant_4864:bp_2163048726"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_f3e5a563f30739cc1611a2b5",
+          "product_id": "bp_2158694371",
+          "field": "rating_average",
+          "value": 5,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158694371:bp_2158694371"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_f78c351115b33fe0cc78be15",
+          "product_id": "bp_2158694371",
+          "field": "basket_plan_total",
+          "value": 23.21,
+          "kind": "derived",
+          "source_ids": ["optimize_basket:bp_2158694371:balanced:bp_merchant_4864:bp_2158694371"],
+          "validation": "sum_of_merchant_totals_not_per_product_cost"
+        }
+      ]
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 63,
+    "sources": 6,
+    "structured_bytes": 31608,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 3,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T10:03:38.488Z",
+        "source_observed_at": "2026-10-12T10:02:03.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 18195,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 875
+}

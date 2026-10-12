@@ -1,0 +1,291 @@
+{
+  "id": "tv_panel_conflict",
+  "message": "Θέλω τηλεόραση υποχρεωτικά OLED και όχι OLED, έως 1000 ευρώ.",
+  "response": {
+    "version": "bestprice_decision_v1",
+    "comparison_policy_version": "comparison_derivation_v2",
+    "offer_binding_version": "same_quote_receipt_v3",
+    "decision_id": "[omitted]",
+    "request_id": "[omitted]",
+    "channel": "mcp",
+    "created_at": "2026-10-12T09:31:14.214Z",
+    "outcome": "clarification",
+    "request_understanding": {
+      "version": "shopping_request_v1",
+      "mission_id": "2820870e-6949-4ca7-8b8a-c04b2e527434",
+      "revision": 1,
+      "fingerprint": "9365633df4a2b6183ec49752fe4e65620b2540c3d0931fc5c6881ee8d8aecf39",
+      "source": "model",
+      "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+      "family": "tv",
+      "intent": "shop",
+      "query": "τηλεόραση OLED",
+      "constraints": {
+        "budgetEur": 1000,
+        "statedBudgetEur": 1000,
+        "minimumRamGb": null,
+        "minimumRamAssumed": false,
+        "requiresWindows": false,
+        "peopleCount": null,
+        "capacityLitres": null,
+        "capacityAssumed": false,
+        "capacityInferred": false,
+        "differentCapacityFromLitres": null,
+        "requiresDualBasket": null,
+        "screenInches": null,
+        "roomSqm": null,
+        "statedCoolingBtu": null,
+        "schoolUse": false,
+        "designUse": false
+      },
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 1000,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 1000,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 46,
+              "end": 59,
+              "text": "έως 1000 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "criterion_sources": {
+        "panel_type": ["υποχρεωτικά OLED"]
+      },
+      "requirements": [
+        {
+          "id": "panel_type",
+          "label": "οθόνη OLED",
+          "panel": "OLED",
+          "hint": "OLED"
+        }
+      ],
+      "preferences": [],
+      "unresolved": [],
+      "unreadable": [],
+      "quotes": ["υποχρεωτικά OLED"],
+      "nonPricePhrases": ["υποχρεωτικά OLED"],
+      "source_turns": [
+        {
+          "role": "user",
+          "content": "υποχρεωτικά OLED"
+        }
+      ],
+      "transition": "start"
+    },
+    "actions": [],
+    "status": "needs_input",
+    "mission": {
+      "intent": "choose",
+      "summary_el": "Πρόταση αγοράς · Τηλεόραση",
+      "constraints": {
+        "maximum_price_eur": null,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "postal_code": null,
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 1000,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 1000,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 46,
+                "end": 59,
+                "text": "έως 1000 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      }
+    },
+    "primary": null,
+    "alternatives": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 1000,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 1000,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 46,
+              "end": 59,
+              "text": "έως 1000 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "catalog_requirements": ["οθόνη OLED"]
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "price_history": null,
+    "candidate_summary": null,
+    "candidates": [],
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    },
+    "evidence": {
+      "sources": [],
+      "claims": [],
+      "price_requirements_fingerprint": "52847fc0265a771305d33485d39000344ea38f9ec83358b7f63f8692b00a6b30",
+      "fingerprint": "f3ddfe32af8387bfce2ee7ed637c73ad489011bafabae210f89c9121cb895228"
+    },
+    "uncertainty": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "missing_shopping_context",
+      "url": "[omitted]",
+      "requires_user_action": true
+    },
+    "clarifications": [
+      {
+        "question": "Ζήτησες αντικρουόμενα κριτήρια: OLED και όχι OLED. Ποιο θέλεις να κρατήσω;",
+        "reason": "missing_shopping_context"
+      }
+    ],
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "answer": "Ζήτησες αντικρουόμενα κριτήρια: OLED και όχι OLED. Ποιο θέλεις να κρατήσω;",
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "execution": {
+      "tools_used": [],
+      "model": "gemini-3.8-flash",
+      "metrics": {
+        "agent_ms": 15,
+        "grounding_calls": 0,
+        "grounding_ms": 0,
+        "grounding_cache_hits": 0,
+        "planner_calls": 0,
+        "planner_ms": 0,
+        "model_fallbacks": 0,
+        "understanding_used_model": true,
+        "understanding_shared_cache_checked": true,
+        "understanding_shared_cache_hit": true,
+        "understanding_cached": true,
+        "understanding_unreadable": 0,
+        "understanding_requirements": 1,
+        "understanding_ms": 14,
+        "direct_recommendation": false,
+        "exact_route": false,
+        "catalog_search_calls": 0,
+        "search_products_calls": 0,
+        "search_products_failures": 0,
+        "search_products_invocations": 0,
+        "search_products_cancellations": 0,
+        "search_products_total_ms": 0,
+        "search_products_max_ms": 0,
+        "get_product_details_calls": 0,
+        "get_product_details_failures": 0,
+        "get_product_details_invocations": 0,
+        "get_product_details_cancellations": 0,
+        "get_product_details_total_ms": 0,
+        "get_product_details_max_ms": 0,
+        "compare_offers_calls": 0,
+        "compare_offers_failures": 0,
+        "compare_offers_invocations": 0,
+        "compare_offers_cancellations": 0,
+        "compare_offers_total_ms": 0,
+        "compare_offers_max_ms": 0,
+        "get_price_history_calls": 0,
+        "get_price_history_failures": 0,
+        "get_price_history_invocations": 0,
+        "get_price_history_cancellations": 0,
+        "get_price_history_total_ms": 0,
+        "get_price_history_max_ms": 0,
+        "get_product_reviews_calls": 0,
+        "get_product_reviews_failures": 0,
+        "get_product_reviews_invocations": 0,
+        "get_product_reviews_cancellations": 0,
+        "get_product_reviews_total_ms": 0,
+        "get_product_reviews_max_ms": 0,
+        "optimize_basket_calls": 0,
+        "optimize_basket_failures": 0,
+        "optimize_basket_invocations": 0,
+        "optimize_basket_cancellations": 0,
+        "optimize_basket_total_ms": 0,
+        "optimize_basket_max_ms": 0,
+        "retrieval_page_candidates": 0,
+        "receipt_disqualified_candidates": 0,
+        "receipt_eligible_candidates": 0,
+        "receipt_review_requested": 0,
+        "receipt_review_available": 0,
+        "receipt_validation_ms": 0,
+        "brain_runtime_ms": 16,
+        "brain_finalization_ms": 1
+      }
+    },
+    "personalization": null,
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    }
+  },
+  "calls": []
+}

@@ -1,0 +1,140 @@
+{
+  "effectiveRequest": {
+    "version": "shopping_request_v1",
+    "mission_id": "89396ee4-bcb4-4761-bb0a-102a8efa47b1",
+    "revision": 1,
+    "fingerprint": "9365633df4a2b6183ec49752fe4e65620b2540c3d0931fc5c6881ee8d8aecf39",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "tv",
+    "intent": "shop",
+    "query": "τηλεόραση OLED",
+    "constraints": {
+      "budgetEur": 1000,
+      "statedBudgetEur": 1000,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 1000,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 1000,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 46,
+            "end": 59,
+            "text": "έως 1000 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {
+      "panel_type": ["υποχρεωτικά OLED"]
+    },
+    "requirements": [
+      {
+        "id": "panel_type",
+        "label": "οθόνη OLED",
+        "panel": "OLED",
+        "hint": "OLED"
+      }
+    ],
+    "preferences": [],
+    "unresolved": [],
+    "unreadable": [],
+    "quotes": ["υποχρεωτικά OLED"],
+    "nonPricePhrases": ["υποχρεωτικά OLED"],
+    "source_turns": [
+      {
+        "role": "user",
+        "content": "υποχρεωτικά OLED"
+      }
+    ],
+    "transition": "start"
+  },
+  "message": "Θέλω τηλεόραση υποχρεωτικά OLED και όχι OLED, έως 1000 ευρώ.",
+  "decisionMessage": "Θέλω τηλεόραση υποχρεωτικά OLED και όχι OLED, έως 1000 ευρώ.",
+  "requirementScope": "Θέλω τηλεόραση υποχρεωτικά OLED και όχι OLED, έως 1000 ευρώ.",
+  "history": [],
+  "need": {
+    "version": "ask_need_v1",
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Τηλεόραση · Έως 1000 €",
+    "chips": [
+      {
+        "id": "intent",
+        "label": "Πρόταση αγοράς",
+        "kind": "intent"
+      },
+      {
+        "id": "category",
+        "label": "Τηλεόραση",
+        "kind": "category"
+      },
+      {
+        "id": "budget",
+        "label": "Έως 1000 €",
+        "kind": "hard"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": 1000,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 1000,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 1000,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 46,
+              "end": 59,
+              "text": "έως 1000 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "clarification": null,
+  "unresolvedClarification": null
+}

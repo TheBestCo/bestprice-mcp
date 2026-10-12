@@ -1,0 +1,953 @@
+{
+  "id": "mouse_wired",
+  "message": "Θέλω ποντίκι έως 40 ευρώ, όχι ασύρματο.",
+  "expectation": {
+    "budget": 40,
+    "id": "mouse_wired",
+    "outcome": "recommendation",
+    "falseFlags": ["wireless"]
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T09:47:53.074Z",
+  "passed": false,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 57549,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:47:54.426Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "[omitted]",
+      "evidence_fingerprint": "f84ec21a6544c21fd6f2d174f1a4e4e649b104ad59379127e99cbe75b0d91ac1"
+    },
+    "outcome": "recommendation",
+    "status": "ready",
+    "answer": "",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": "bp_2154790139",
+    "alternatives": [
+      {
+        "product_id": "bp_2150727058",
+        "label": "Εξοικονόμησε 0,34€",
+        "tradeoff": "Χωρίς αρκετές αξιολογήσεις αγοραστών του BestPrice",
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_205802089",
+            "merchant_id": "bp_merchant_90",
+            "merchant_name": "e-Gate",
+            "merchant_rating": 4.72,
+            "merchant_rating_count": 18,
+            "verified_merchant": true,
+            "certification_level": "gold",
+            "item_price": 6.29,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_8_14_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "8–14 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:47:54.124Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_205802089",
+            "merchant_id": "bp_merchant_90",
+            "merchant_name": "e-Gate",
+            "merchant_rating": 4.72,
+            "merchant_rating_count": 18,
+            "verified_merchant": true,
+            "certification_level": "gold",
+            "item_price": 6.29,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_8_14_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "8–14 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:47:54.124Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 40,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 1,
+          "unknown_shipping_count": 1
+        }
+      },
+      {
+        "product_id": "bp_2157753266",
+        "label": "0,81€ ακριβότερο",
+        "tradeoff": null,
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_224429669",
+            "merchant_id": "bp_merchant_15392",
+            "merchant_name": "MobileHub",
+            "merchant_rating": 3.89,
+            "merchant_rating_count": 106,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 7.44,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_4_10_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "4–10 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:47:54.126Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_224429669",
+            "merchant_id": "bp_merchant_15392",
+            "merchant_name": "MobileHub",
+            "merchant_rating": 3.89,
+            "merchant_rating_count": 106,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 7.44,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_4_10_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "4–10 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:47:54.126Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 40,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 10,
+          "unknown_shipping_count": 10
+        }
+      }
+    ],
+    "products": [
+      {
+        "product_id": "bp_2154790139",
+        "title": "Logitech M170 Ασύρματο Mini Ποντίκι Grey",
+        "brand": null,
+        "category_title": "Ποντίκια",
+        "price_from": 6.63,
+        "decision_id": "[omitted]",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2150727058",
+        "title": "Verbatim Desktop Mouse Ασύρματο Ποντίκι Black",
+        "brand": "Verbatim",
+        "category_title": "Ποντίκια",
+        "price_from": 6.29,
+        "decision_id": "[omitted]",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2157753266",
+        "title": "Ugreen MU006 Ασύρματο Ποντίκι Black 90545",
+        "brand": null,
+        "category_title": "Ποντίκια",
+        "price_from": 7.44,
+        "decision_id": "[omitted]",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": 40,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "catalog_requirements": ["ασύρματη σύνδεση"],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 40,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 40,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 13,
+              "end": 24,
+              "text": "έως 40 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    "reasons": [
+      "Δίνει τεκμηριωμένη βαθμολογία από αγοραστές του BestPrice, ενώ η φθηνότερη δεν έχει ακόμη αρκετές αξιολογήσεις. Καλύπτει τα εξής κριτήρια: έως 40€ και ασύρματη σύνδεση.",
+      "Η προσφορά που προτείνω γράφει «4–10 εργάσιμες ημέρες», ενώ η φθηνότερη «8–14 εργάσιμες ημέρες». Η επόμενη, ακριβότερη επιλογή κοστίζει 0,81€ παραπάνω, χωρίς να προσφέρει κάτι επιπλέον σε όσα ζήτησες.",
+      "Αγοραστές στο BestPrice το βαθμολογούν 5/5 σε 7 αξιολογήσεις."
+    ],
+    "tradeoffs": [
+      "Κοστίζει 0,34€ παραπάνω από τη φθηνότερη επιλογή που καλύπτει όσα ζήτησες (Verbatim Desktop Mouse, 6,29€).",
+      "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+      "MobileHub: βαθμολογία καταστήματος 3,89/5 από 106 αξιολογήσεις; δηλωμένη διαθεσιμότητα «4–10 εργάσιμες ημέρες» (εκτίμηση καταστήματος)."
+    ],
+    "offer_summary": {
+      "postal_code": null,
+      "price_basis": "item_price",
+      "affordability": "within_item_budget_delivery_unknown",
+      "offer_scope": "returned_sample",
+      "delivery_affordability_proven": false,
+      "recommended": {
+        "offer_id": "bp_offer_193295442",
+        "merchant_id": "bp_merchant_15392",
+        "merchant_name": "MobileHub",
+        "merchant_rating": 3.89,
+        "merchant_rating_count": 106,
+        "verified_merchant": false,
+        "certification_level": null,
+        "item_price": 6.63,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "delivery_4_10_days",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "4–10 εργάσιμες ημέρες",
+        "price_checked_at": "2026-10-12T09:47:54.125Z"
+      },
+      "cheapest": {
+        "offer_id": "bp_offer_193295442",
+        "merchant_id": "bp_merchant_15392",
+        "merchant_name": "MobileHub",
+        "merchant_rating": 3.89,
+        "merchant_rating_count": 106,
+        "verified_merchant": false,
+        "certification_level": null,
+        "item_price": 6.63,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "delivery_4_10_days",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "4–10 εργάσιμες ημέρες",
+        "price_checked_at": "2026-10-12T09:47:54.125Z"
+      },
+      "same_offer": true,
+      "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+      "budget_eur": 40,
+      "recommended_within_budget": true,
+      "cheapest_within_budget": true,
+      "compared_offer_count": 10,
+      "unknown_shipping_count": 10
+    },
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "typical",
+      "reason": "typical_across_usable_windows",
+      "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "compare",
+      "reason": "review_current_offers",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:47:53.448Z",
+        "source_observed_at": "2026-10-12T09:39:43.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 1803,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": 2569,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2150727058",
+          "family": "mice",
+          "attributes": [
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_7923e5657ba282833084b4cc"],
+              "source_ids": ["get_product_details:bp_2150727058:bp_2150727058"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2154790139",
+          "family": "mice",
+          "attributes": [
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_1b7aa1897712ab94c809f069"],
+              "source_ids": ["search_products:bp_2154790139:bp_2154790139"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2157753266",
+          "family": "mice",
+          "attributes": [
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_4064bad13d006eb89b76d491"],
+              "source_ids": ["search_products:bp_2157753266:bp_2157753266"]
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2150727058",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 1,
+            "merchant_count": 1,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 1
+            },
+            "item_price": {
+              "minimum": 6.29,
+              "median": 6.29,
+              "maximum": 6.29,
+              "count": 1
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2150727058:bp_offer_205802089",
+              "compare_offers:bp_2150727058:check"
+            ],
+            "source_count": 2,
+            "claim_count": 10
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2154790139",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 2,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 6.63,
+              "median": 7.895,
+              "maximum": 8.5,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2154790139:bp_offer_193295442",
+              "compare_offers:bp_2154790139:bp_offer_156500667",
+              "compare_offers:bp_2154790139:bp_offer_54991005"
+            ],
+            "source_count": 11,
+            "claim_count": 87
+          },
+          "history": {
+            "status": "available",
+            "basis": "daily_item_minimum",
+            "windows": [
+              {
+                "days": 30,
+                "minimum_price": 6.63,
+                "median_price": 6.93,
+                "observations": 30,
+                "coverage_pct": 100,
+                "claim_ids": [
+                  "claim_5d67c13d5da36d183ace3fac",
+                  "claim_6e7e2ed5b317285cb845a851",
+                  "claim_ed44493d7f51fc5490eb14b0",
+                  "claim_f6984deb26330b0cd9fd4ea3"
+                ]
+              },
+              {
+                "days": 90,
+                "minimum_price": 6.21,
+                "median_price": 6.71,
+                "observations": 90,
+                "coverage_pct": 100,
+                "claim_ids": [
+                  "claim_2ab3da05f1d755de7414450f",
+                  "claim_44f2d5ffdea041a0185816c9",
+                  "claim_675d060b01476131176a0308",
+                  "claim_762d24843212dd520a168792"
+                ]
+              },
+              {
+                "days": 180,
+                "minimum_price": 6.21,
+                "median_price": 6.45,
+                "observations": 180,
+                "coverage_pct": 100,
+                "claim_ids": [
+                  "claim_1af9dec401a0fc0ca2a75cb3",
+                  "claim_82ac9cb009699387bc8847f5",
+                  "claim_a6d13c137237ea1d64a87282",
+                  "claim_bd4b6fd192f48373dd036948"
+                ]
+              }
+            ],
+            "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+            "claim_ids": [
+              "claim_1af9dec401a0fc0ca2a75cb3",
+              "claim_2ab3da05f1d755de7414450f",
+              "claim_44f2d5ffdea041a0185816c9",
+              "claim_5d67c13d5da36d183ace3fac",
+              "claim_675d060b01476131176a0308",
+              "claim_6e7e2ed5b317285cb845a851",
+              "claim_762d24843212dd520a168792",
+              "claim_7e79e46cda85c3aeff288f72",
+              "claim_82ac9cb009699387bc8847f5",
+              "claim_a6d13c137237ea1d64a87282",
+              "claim_bd4b6fd192f48373dd036948",
+              "claim_c37b54958f2933ec56c963dd",
+              "claim_ed44493d7f51fc5490eb14b0",
+              "claim_f6984deb26330b0cd9fd4ea3"
+            ]
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2157753266",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 7,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 7.44,
+              "median": 9.375,
+              "maximum": 10.9,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2157753266:bp_offer_224429669",
+              "compare_offers:bp_2157753266:bp_offer_173257840",
+              "compare_offers:bp_2157753266:bp_offer_112806332"
+            ],
+            "source_count": 11,
+            "claim_count": 83
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 259,
+      "omitted_source_count": 22,
+      "sources": [
+        {
+          "source_id": "compare_offers:bp_2150727058:bp_offer_205802089",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_205802089",
+          "product_id": "bp_2150727058",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:47:54.124Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2150727058:check",
+          "kind": "merchant_offer",
+          "record_id": "check",
+          "product_id": "bp_2150727058",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:47:54.124Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2154790139:bp_offer_156500667",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_156500667",
+          "product_id": "bp_2154790139",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:47:54.125Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2154790139:bp_offer_193295442",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_193295442",
+          "product_id": "bp_2154790139",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:47:54.125Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2154790139:bp_offer_54991005",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_54991005",
+          "product_id": "bp_2154790139",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:47:54.125Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2157753266:bp_offer_112806332",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_112806332",
+          "product_id": "bp_2157753266",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:47:54.126Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2157753266:bp_offer_173257840",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_173257840",
+          "product_id": "bp_2157753266",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:47:54.126Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2157753266:bp_offer_224429669",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_224429669",
+          "product_id": "bp_2157753266",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:47:54.126Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_price_history:bp_2154790139:bp_2154790139",
+          "kind": "price_history",
+          "record_id": "bp_2154790139",
+          "product_id": "bp_2154790139",
+          "scope": "cluster",
+          "capability": "get_price_history",
+          "checked_at": "2026-10-12T09:47:54.127Z",
+          "source_observed_at": "2026-10-12T09:47:54.127Z",
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "get_product_details:bp_2150727058:bp_2150727058",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2150727058",
+          "product_id": "bp_2150727058",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T09:47:53.987Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "search_products:bp_2154790139:bp_2154790139",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2154790139",
+          "product_id": "bp_2154790139",
+          "scope": "cluster",
+          "capability": "search_products",
+          "checked_at": "2026-10-12T09:47:53.448Z",
+          "source_observed_at": "2026-10-12T09:39:43.000Z",
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "search_products:bp_2157753266:bp_2157753266",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2157753266",
+          "product_id": "bp_2157753266",
+          "scope": "cluster",
+          "capability": "search_products",
+          "checked_at": "2026-10-12T09:47:53.448Z",
+          "source_observed_at": "2026-10-12T09:39:43.000Z",
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_14dc8921734d025931a2e39d",
+          "product_id": "bp_2157753266",
+          "field": "title",
+          "value": "Ugreen MU006 Ασύρματο Ποντίκι Black 90545",
+          "kind": "observed",
+          "source_ids": ["search_products:bp_2157753266:bp_2157753266"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_1af9dec401a0fc0ca2a75cb3",
+          "product_id": "bp_2154790139",
+          "field": "history_180d_observations",
+          "value": 180,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_1b7aa1897712ab94c809f069",
+          "product_id": "bp_2154790139",
+          "field": "attribute:wireless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2154790139:bp_2154790139"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d5c1a724831b89d730c1bd3a"]
+        },
+        {
+          "claim_id": "claim_2ab3da05f1d755de7414450f",
+          "product_id": "bp_2154790139",
+          "field": "history_90d_minimum_price",
+          "value": 6.21,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_4064bad13d006eb89b76d491",
+          "product_id": "bp_2157753266",
+          "field": "attribute:wireless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2157753266:bp_2157753266"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_14dc8921734d025931a2e39d"]
+        },
+        {
+          "claim_id": "claim_44f2d5ffdea041a0185816c9",
+          "product_id": "bp_2154790139",
+          "field": "history_90d_coverage_pct",
+          "value": 100,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_5d67c13d5da36d183ace3fac",
+          "product_id": "bp_2154790139",
+          "field": "history_30d_median_price",
+          "value": 6.93,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_675d060b01476131176a0308",
+          "product_id": "bp_2154790139",
+          "field": "history_90d_observations",
+          "value": 90,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_6e7e2ed5b317285cb845a851",
+          "product_id": "bp_2154790139",
+          "field": "history_30d_observations",
+          "value": 30,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_71b7e9b35e5b74068af43153",
+          "product_id": "bp_2150727058",
+          "field": "feature:1121",
+          "value": "Ασύρματο",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2150727058:bp_2150727058"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1121,
+            "label": "Τύπος",
+            "group": "Τύπος"
+          }
+        },
+        {
+          "claim_id": "claim_762d24843212dd520a168792",
+          "product_id": "bp_2154790139",
+          "field": "history_90d_median_price",
+          "value": 6.71,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_7923e5657ba282833084b4cc",
+          "product_id": "bp_2150727058",
+          "field": "attribute:wireless",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2150727058:bp_2150727058"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_71b7e9b35e5b74068af43153"]
+        },
+        {
+          "claim_id": "claim_7e79e46cda85c3aeff288f72",
+          "product_id": "bp_2154790139",
+          "field": "current_price_source",
+          "value": "live_offer_minimum",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_82ac9cb009699387bc8847f5",
+          "product_id": "bp_2154790139",
+          "field": "history_180d_median_price",
+          "value": 6.45,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_a6d13c137237ea1d64a87282",
+          "product_id": "bp_2154790139",
+          "field": "history_180d_minimum_price",
+          "value": 6.21,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_bd4b6fd192f48373dd036948",
+          "product_id": "bp_2154790139",
+          "field": "history_180d_coverage_pct",
+          "value": 100,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_c37b54958f2933ec56c963dd",
+          "product_id": "bp_2154790139",
+          "field": "history_status",
+          "value": "available",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d5c1a724831b89d730c1bd3a",
+          "product_id": "bp_2154790139",
+          "field": "title",
+          "value": "Logitech M170 Ασύρματο Mini Ποντίκι Grey",
+          "kind": "observed",
+          "source_ids": ["search_products:bp_2154790139:bp_2154790139"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_ed44493d7f51fc5490eb14b0",
+          "product_id": "bp_2154790139",
+          "field": "history_30d_coverage_pct",
+          "value": 100,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_f6984deb26330b0cd9fd4ea3",
+          "product_id": "bp_2154790139",
+          "field": "history_30d_minimum_price",
+          "value": 6.63,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2154790139:bp_2154790139"],
+          "validation": "deterministic_history_aggregation"
+        }
+      ]
+    },
+    "uncertainty": [
+      {
+        "code": "ranking_calibration",
+        "product_id": "bp_2154790139",
+        "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+      },
+      {
+        "code": "landed_cost_unknown",
+        "product_id": "bp_2154790139",
+        "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+      }
+    ]
+  },
+  "metrics": {
+    "claims": 20,
+    "sources": 12,
+    "structured_bytes": 25798,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:47:53.448Z",
+        "source_observed_at": "2026-10-12T09:39:43.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 1803,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": 2569,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "error": "Expected values to be strictly equal:\n\ntrue !== false\n",
+  "elapsed_ms": 1714
+}

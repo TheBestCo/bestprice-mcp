@@ -1,0 +1,26 @@
+{
+  "id": "espresso_no_capsules",
+  "message": "Θέλω μηχανή espresso έως 200 ευρώ, χωρίς κάψουλες.",
+  "expectation": {
+    "budget": 200
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T09:25:11.143Z",
+  "passed": false,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 654,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:25:11.176Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "error": {
+      "code": "REQUEST_TIMEOUT",
+      "message": "BestPrice could not complete this shopping decision in time. Please retry.",
+      "retryable": true
+    }
+  },
+  "error": "{\"schema_version\":\"2.0\",\"as_of\":\"2026-10-12T09:25:11.176Z\",\"currency\":\"EUR\",\"locale\":\"el-GR\",\"warnings\":[],\"error\":{\"code\":\"REQUEST_TIMEOUT\",\"message\":\"BestPrice could not complete this shopping decision in time. Please retry.\",\"retryable\":true}}",
+  "elapsed_ms": 10216
+}

@@ -1,0 +1,163 @@
+{
+  "effectiveRequest": {
+    "version": "shopping_request_v1",
+    "mission_id": "21df2ded-70b0-45a6-8c12-595c5c51399e",
+    "revision": 1,
+    "fingerprint": "277400c03faad85db711df952cfbbe37fa57a14547aa40aad04b55b5417723aa",
+    "source": "model",
+    "reader_identity": "configured:769d493c961f79b7f8a72b5f634a9979ebace8a087acbdedadf9d98432faa54b",
+    "family": "mouse",
+    "intent": "shop",
+    "query": "ποντίκι",
+    "constraints": {
+      "budgetEur": 40,
+      "statedBudgetEur": 40,
+      "minimumRamGb": null,
+      "minimumRamAssumed": false,
+      "requiresWindows": false,
+      "peopleCount": null,
+      "capacityLitres": null,
+      "capacityAssumed": false,
+      "capacityInferred": false,
+      "differentCapacityFromLitres": null,
+      "requiresDualBasket": null,
+      "screenInches": null,
+      "roomSqm": null,
+      "statedCoolingBtu": null,
+      "schoolUse": false,
+      "designUse": false
+    },
+    "price_requirements": {
+      "version": "shopping_price_constraints_v1",
+      "minimum_eur": null,
+      "maximum_eur": 40,
+      "explicitly_unbounded": false,
+      "unsupported": [],
+      "clauses": [
+        {
+          "field": "item_price",
+          "operator": "lte",
+          "value": 40,
+          "unit": "EUR",
+          "source": {
+            "turn_index": 0,
+            "start": 22,
+            "end": 33,
+            "text": "έως 40 ευρώ"
+          }
+        }
+      ],
+      "conflicts": []
+    },
+    "criterion_sources": {
+      "wireless": ["ασύρματο"]
+    },
+    "requirements": [
+      {
+        "id": "wireless",
+        "label": "ασύρματη σύνδεση",
+        "hint": "bluetooth"
+      }
+    ],
+    "preferences": [
+      {
+        "id": "unverified_request_detail",
+        "label": "κάτι από όσα ζήτησες",
+        "preference": true,
+        "clauses": ["μόνο ενσύρματο"]
+      }
+    ],
+    "unresolved": [
+      {
+        "quote": "μόνο ενσύρματο",
+        "strength": "nice",
+        "reason": "invalid_removal",
+        "source_turn": 0,
+        "parameters": {
+          "kind": "criterion",
+          "key": "wireless",
+          "quote": "μόνο ενσύρματο",
+          "strength": "unknown"
+        }
+      }
+    ],
+    "unreadable": ["μόνο ενσύρματο"],
+    "quotes": ["ασύρματο"],
+    "nonPricePhrases": ["ασύρματο", "μόνο ενσύρματο"],
+    "source_turns": [
+      {
+        "role": "user",
+        "content": "ασύρματο"
+      },
+      {
+        "role": "user",
+        "content": "μόνο ενσύρματο"
+      }
+    ],
+    "transition": "start"
+  },
+  "message": "Θέλω ασύρματο ποντίκι έως 40 ευρώ. Διόρθωση: μόνο ενσύρματο.",
+  "decisionMessage": "Θέλω ασύρματο ποντίκι έως 40 ευρώ. Διόρθωση: μόνο ενσύρματο.",
+  "requirementScope": "Θέλω ασύρματο ποντίκι έως 40 ευρώ. Διόρθωση: μόνο ενσύρματο.",
+  "history": [],
+  "need": {
+    "version": "ask_need_v1",
+    "intent": "choose",
+    "summary_el": "Πρόταση αγοράς · Ποντίκι · Έως 40 €",
+    "chips": [
+      {
+        "id": "intent",
+        "label": "Πρόταση αγοράς",
+        "kind": "intent"
+      },
+      {
+        "id": "category",
+        "label": "Ποντίκι",
+        "kind": "category"
+      },
+      {
+        "id": "budget",
+        "label": "Έως 40 €",
+        "kind": "hard"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": 40,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 40,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 40,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 22,
+              "end": 33,
+              "text": "έως 40 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    }
+  },
+  "clarification": null,
+  "unresolvedClarification": null
+}
