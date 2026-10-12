@@ -1,18 +1,32 @@
 # BestPrice current release matrix
 
-This is the current release record, updated October 3, 2026. MCP **1.8.4**, native workspace **v8**, distribution/WebMCP **2.8.0 / 2.8**, and submitted OpenAI plugin **1.2.0** identify different artifacts.
+Updated October 12, 2026. The [Shopping Brain release receipt](evidence/shopping-brain-release-2026-10-12.json) separates source, CI, deployed roles, live checks, and exclusions. Earlier October 2–3 observations below remain historical and do not establish today's portal or account state.
+
+## October 12 Shopping Brain release
+
+- Backend fixes: initial `48a64f7e95f9c9506d3be7f37763485318fdabb2`, final `8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a`; website `f56caf3fd8e30e06e617ae0e3da6b794e32e021c`; distribution implementation `abd1cdd14ef27e2b2a62fe99d44c0fc38b362f89`. Exact implementation CI passed in all three repositories.
+- [Final live behavior](evidence/shopping-brain-live-final-2026-10-12.json): **15/15 scenarios passed** on gateway `8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a`. Three repeated generic phone requests returned an eligible Galaxy A37 with typed, known-true 5G/NFC/OIS and resolving references. Mandatory NFC, final 4–5 L correction, genuine contradictions, unknown OIS, Apple exclusion, unsupported digital requests and prompt-injection controls passed.
+- [Read-only submission canary](evidence/shopping-brain-canary-final-2026-10-12.json): **53 checks passed**, 67 requests within a 90-request budget; all four public tools and discovery/resources qualified. [Origin checks](evidence/shopping-brain-origins-final-2026-10-12.json) passed for 13 selected allowed origins and one rejected origin. Gateway revision headers remained consistent. Runtime role evidence is recorded separately.
+- Local affected suite after the follow-up fix: **6,157 passed, 3 skipped, 0 failed**. Website: **41 passed**. Distribution: **1,095 passed**. Normal commit and push hooks remained active; overlapping cohorts are not added together.
+- Two later 14/15 runs exposed a reproducible dense-evidence overflow; those failed receipts and the causal repair are retained in the release receipt. The initial [14/15 live run](evidence/shopping-brain-live-first-2026-10-12.json) is retained: digital-only requests still performed two searches. The final repair rejects that explicit request before retrieval. The [fresh baseline failures](evidence/shopping-brain-baseline-2026-10-12.json) are retained too.
+- Sony's observed `record_low` and Brain's `typical` verdict use distinct comparisons: observed minimum versus each window's median band. Thresholds remain unchanged, with multi-window calibration tests.
+- The current dual-channel runner contains **31 scenarios**; it was **not run live**. Staff Ask, signed attribution/privacy checks, merchant navigation, account writes and Events writes were excluded. These anonymous MCP checks do not establish live Ask/MCP parity. Portal state and applied reviewer materials were not inspected; marketplace receiving updates are not inferred from the distribution push.
+
+## Historical October 3 release record
+
+This section records observations from October 3, 2026. MCP **1.8.4**, native workspace **v8**, distribution/WebMCP **2.8.0 / 2.8**, and submitted OpenAI plugin **1.2.0** identify different artifacts.
 
 The [October 3 live Events receipt](evidence/events-first-live-delivery-2026-10-03.json) closes the previously open genuine-crossing and callback-acceptance gate for the private OAuth qualification connection. It does not establish Events availability on the public associated app or a separate ChatGPT push notification.
 
 The [October 2 end-to-end receipt](evidence/end-to-end-qualification-2026-10-02.json) records fresh production, actual ChatGPT native UI, package, OAuth, Events and portal checks. The October 1 receipts remain historical evidence. Test cohorts overlap and are not added into a grand total.
 
-The current version picker still shows exactly **one active review: 1.2.0 In review**, alongside **1.0.1 Published**. Both frozen ZIPs still match the same seven source files and define one MCP server. On October 2 the inspected MCP picker exposed one BestPrice option, compared with two differently identified records on October 1; no record was removed and the cause of the UI change is unverified. No package upload, submission, cancellation, connection removal or publication change was made during this pass.
+The October 2–3 version picker showed exactly **one active review: 1.2.0 In review**, alongside **1.0.1 Published**. Both frozen ZIPs still match the same seven source files and define one MCP server. On October 2 the inspected MCP picker exposed one BestPrice option, compared with two differently identified records on October 1; no record was removed and the cause of the UI change is unverified. No package upload, submission, cancellation, connection removal or publication change was made during this pass.
 
 A newly visible **Reconnect** action opens a legacy multi-step form with older metadata and a **Category is required** error despite displaying Travel. It was closed without edits or saving. The owner-approved [October 2 follow-up](openai-support-followup-2026-10-02.md) was sent in the existing support conversation; it requests a supported migration preserving the queued review and confirmation of applied reviewer materials. No specialist resolution is visible yet.
 
 ## Release and qualification
 
-| Surface | Current state | Evidence and remaining limit |
+| Surface | October 2–3 state | Evidence and remaining limit |
 | --- | --- | --- |
 | Backend/source and runtime | The October 1 boundary hardening remains present. Other backend work advanced source and deployed revisions during this read-only pass. | No backend edits, commits, pushes or checkout changes were made by this audit. The fresh gateway canary independently observed `d9118ca51c8ba658f965895bdcb10d658a4c8b0a` across fifty stable responses. Separate OAuth and cron probes observed other revisions; there is no claim that every role shared one revision. |
 | Public MCP gateway | **1.8.4**, extensions enabled, all four public shopping tools available. | The October 2 canary passed **55 checks** at 13:23:27 UTC: 67 requests within a 90-request budget, no rate-limit retries, no checkout tools and no merchant redirects followed. TLS verification was enabled. This is bounded synthetic qualification, separate from the actual host test. |

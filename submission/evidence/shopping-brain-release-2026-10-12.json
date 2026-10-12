@@ -1,0 +1,363 @@
+{
+  "schema_version": "1.0",
+  "qualification": "October 12 Shopping Brain fix and release",
+  "source": {
+    "backend": {
+      "branch": "main",
+      "commit": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "initial_fix_commit": "48a64f7e95f9c9506d3be7f37763485318fdabb2",
+      "digital_fix_commit": "bcb05384dd9535fa1c02f748428ef4fd542fa993",
+      "evidence_fix_commit": "c847cafc6198393126f51f7a1f822179c8edab37",
+      "integration": "Normal merge preserved concurrent default-branch changes and restored unrelated local cron edits."
+    },
+    "website": {
+      "branch": "master",
+      "commit": "f56caf3fd8e30e06e617ae0e3da6b794e32e021c"
+    },
+    "distribution": {
+      "branch": "main",
+      "commit": "abd1cdd14ef27e2b2a62fe99d44c0fc38b362f89"
+    }
+  },
+  "changes": [
+    {
+      "finding": "mandatory-feature safety and eligible-product recall",
+      "cause": "Greek comparison intent matched ποιο από inside κάποιο από. NFC could independently pass from a product title while the typed attribute remained unknown.",
+      "repair": "Bound the comparison phrase to a word boundary; require a known-true typed phone NFC attribute. Empty eligible comparisons now carry no_match status and an honest explanation. Existing bounded recommendation retrieval recovered eligible phones in live-catalog local replays."
+    },
+    {
+      "finding": "capacity correction precedence",
+      "cause": "The deterministic correction vocabulary omitted διόρθωση.",
+      "repair": "Recognize the explicit correction marker, preserving genuine contradictory-bound clarification. Same-turn and category-continuous history paths covered for both Brain channels."
+    },
+    {
+      "finding": "price timing label difference",
+      "disposition": "Intentional distinct policies; thresholds unchanged.",
+      "detail": "record_low compares current price to the observed minimum with complete coverage. Brain compares price to the median in each usable window with a five-percent typical band. At 179.88 EUR, 30/90-day median 185.88 and 180-day median 188.68 are all inside that typical band; this can simultaneously be an observed record low. Multi-window boundary and mixed-window calibration tests added."
+    },
+    {
+      "finding": "distribution input schema drift",
+      "repair": "Removed transcript history from LobeHub, aligned search query maxLength to 400 and captured public input-schema parity fixtures. Nested native-launch discovery now derives the Zod input schema so defaulted evidence_detail stays optional. Website snapshot aligned."
+    },
+    {
+      "finding": "generic digital-only control still searched",
+      "evidence": "First exact-revision release run passed 14/15. The digital-subscription/gift-card request produced no_match with zero products but performed two searches.",
+      "repair": "A narrow whole-request digital-only check rejects explicit generic digital subscriptions and gift cards before reading or retrieval. Both channels, prior history, and physical-product/payment counterexamples are covered."
+    },
+    {
+      "finding": "dense NFC evidence overflow found during final qualification",
+      "repair": "Increase the canonical claim-count bound from 2048 to 4096 while preserving the 1 MiB receipt bound, 48 candidates, 256 sources, complete claim references, typed evidence checks and all ten checked offers. No retrieval or model limits changed.",
+      "causal_proof": "A synthetic dense receipt failed at the old claim cap and passed after the change. The same live-catalog local replay retained 2065 claims in 770448 bytes and returned a valid NFC recommendation."
+    }
+  ],
+  "local_validation": {
+    "backend": {
+      "total": 6150,
+      "passed": 6147,
+      "failed": 0,
+      "skipped": 3,
+      "scope": "Affected Brain, agent, Ask, gateway, contract/evidence, Decide and reader suites"
+    },
+    "website": {
+      "total": 41,
+      "passed": 41,
+      "failed": 0
+    },
+    "distribution": {
+      "total": 1095,
+      "passed": 1095,
+      "failed": 0
+    },
+    "hooks": {
+      "backend_precommit": "passed lint and related tests",
+      "backend_prepush": "passed 23 offline contracts and affected closure of 579 test files",
+      "website_precommit": "passed configured prettier/eslint hook",
+      "bypassed": false,
+      "backend_final_prepush": "Passed 23 offline contracts and affected closure of 435 test files on merged release revision",
+      "backend_followup_prepush": "Passed 23 offline contracts and affected closure of 487 test files on the final integrated revision"
+    },
+    "log_sha256": {
+      "affected-suites-final.log": "a1cfd01ab156f485ec84a1bc330c2d95979c4c4c44f5678f8628721fa466eafe",
+      "backend-commit.log": "e23ab9e24f2114a361e894d3a8d8bdaf419ef9eca25e77ecc869a62965d6779d",
+      "backend-push.log": "ff2fae39b554398ebeff4f117f4bb5e790e0aba46a1a64160d1f603e0c8be498",
+      "distribution-tests-final.log": "417e51de2493b33306cf76a8e901fe69d7af5b7346b423806a28efeff4ada699",
+      "website-tests.log": "7f968cadee6d588b092d0cb9e0e93d2c3f9f22d668a34abe0edf60cf0924ae39",
+      "affected-suites.log": "b949b6bf17bd40f8444410c0645e43f53abf7c83ba76e2186e53f9083716afba",
+      "distribution-tests.log": "70bad25cbf71b067bd8f249a0afe366864fb4806658ccf9bf19fb8a242d83423",
+      "affected-suites-digital-final.log": "fed117cb0f3cbab096bf6fa72a67920edb2af3945e46dc1d9ef6d7afb6161d77",
+      "digital-commit.log": "b1ba26ad2184b307ee61b2b64e4e3a943e3162da88f4040e0c8d8a41ec1edcec",
+      "digital-push.log": "47e65156e31d185be6452c46d93c43194eea5ac8a8342a371a9244de6ae06324",
+      "affected-suites-dense-final.log": "46cbf05bd4da5666d29bafd555682387ef25c46b695c6e5cb70362b84656889b",
+      "dense-commit.log": "bf8e3b17f515c1dc2faf027dd99d0256ae39849a97957efd8bfd9afe96b8c568",
+      "dense-push.log": "7e0f4fa243a183ee2c9de265d65e9cf23b57dbec5449b483e621d62bef74b1f9",
+      "dense-push-merged.log": "c1f5ee3ca64fbf187d2a01c4a588af822bce4b0983868610b8b25974f9095873",
+      "dense-red.log": "cea25ac144269350a17a80dc170f98d7f7037e6cf74acd94c443e10646952c30",
+      "dense-green.log": "861b7fbc9084cafedcb8b2365b27d40a0e3618f5c34121ddc7aaf97dae67929c"
+    },
+    "cohorts_overlap": true,
+    "counts_not_summed": true,
+    "backend_followup": {
+      "total": 6154,
+      "passed": 6151,
+      "failed": 0,
+      "skipped": 3,
+      "scope": "Same affected suite after the digital-only fix; before fast-forwarding the independently updated grounding cache changes. Normal commit/push hooks and exact-revision CI qualify the integrated commit."
+    },
+    "dense_evidence": {
+      "red": "Claim-count overflow reproduced in a deterministic dense catalog/ten-offer fixture",
+      "focused_passed": 18,
+      "live_catalog_local_replay": {
+        "outcome": "recommendation",
+        "claims": 2065,
+        "receipt_bytes": 770448,
+        "mandatory_requirements": ["NFC"]
+      }
+    },
+    "backend_final": {
+      "total": 6160,
+      "passed": 6157,
+      "failed": 0,
+      "skipped": 3,
+      "scope": "Affected Brain, agent, Ask, gateway, contract/evidence, Decide and reader suites on the final evidence-limit change."
+    },
+    "distribution_static_check": {
+      "scope": "All tracked JavaScript/JSON plus the new release receipts",
+      "passed": true,
+      "workspace_note": "The unrestricted workspace check also picked up pre-existing untracked scripts/audit_full.mjs and diagnostic-output files and failed on those. They were preserved and excluded from the committed release; clean-checkout CI is a separate gate."
+    }
+  },
+  "retained_failures": [
+    {
+      "scope": "fresh public baseline",
+      "receipt": "shopping-brain-baseline-2026-10-12.json"
+    },
+    {
+      "scope": "initial affected suite",
+      "total": 6145,
+      "passed": 6140,
+      "failed": 2,
+      "skipped": 3,
+      "resolution": "Updated stale title-only NFC positive fixtures to provide typed known-true evidence; final affected suite passed."
+    },
+    {
+      "scope": "initial distribution suite",
+      "total": 1095,
+      "passed": 1094,
+      "failed": 1,
+      "resolution": "Regenerated stale WebMCP storefront snapshot with the existing generator, then all 1095 tests passed."
+    },
+    {
+      "scope": "first live release probe",
+      "gateway_revision": "48a64f7e95f9c9506d3be7f37763485318fdabb2",
+      "receipt": "shopping-brain-live-first-2026-10-12.json",
+      "total": 15,
+      "passed": 14,
+      "failed": 1,
+      "failure": "digital_subscription performed two catalog searches; all main repair cases passed, including three repeated eligible phones."
+    },
+    {
+      "scope": "second live release probe",
+      "gateway_revision": "bcb05384dd9535fa1c02f748428ef4fd542fa993",
+      "receipt": "shopping-brain-live-second-2026-10-12.json",
+      "total": 15,
+      "passed": 14,
+      "failed": 1,
+      "failure": "mandatory_nfc_optional_features returned DECISION_UNAVAILABLE; zero unsafe recommendations. Live ShoppingBrainExecution recorded SHOPPING_DECISION_INVALID_RECEIPT at finalization. Local replay identified 2065 claims exceeding the 2048-claim ceiling."
+    },
+    {
+      "scope": "third live release probe",
+      "gateway_revision": "bcb05384dd9535fa1c02f748428ef4fd542fa993",
+      "receipt": "shopping-brain-live-third-2026-10-12.json",
+      "total": 15,
+      "passed": 14,
+      "failed": 1,
+      "failure": "mandatory_nfc_optional_features returned DECISION_UNAVAILABLE; zero unsafe recommendations. Live ShoppingBrainExecution recorded SHOPPING_DECISION_INVALID_RECEIPT at finalization. Local replay identified 2065 claims exceeding the 2048-claim ceiling."
+    }
+  ],
+  "versions": {
+    "distribution_package": "2.8.0",
+    "server_metadata": "1.8.4",
+    "submitted_openai_package": "1.2.0",
+    "public_output_schema": "2.0",
+    "shopping_context": "bestprice_shopping_context_v32",
+    "normalized_attributes": "normalized_catalog_attribute_v32"
+  },
+  "scope_limits": {
+    "staff_ask_live": "Not run: persists conversations and requires explicit authorization/test mode. Offline Ask projection tests passed; no current live Ask/MCP parity claim.",
+    "dual_channel_runner": {
+      "actual_scenario_count": 31,
+      "executed_live": false,
+      "note": "Current source enumerated 31 scenarios, replacing the historical handoff claim of 32. No 31/62 or 32/64 sweep is claimed."
+    },
+    "signed_attribution_privacy": "Not run. No signed landing or merchant link opened.",
+    "account_writes": "None requested or performed; no orders, alerts, Events writes, charged events or merchant clickouts.",
+    "portal": "Not inspected. Historical 1.2.0 In review / 1.0.1 Published state and applied reviewer materials remain unverified today.",
+    "marketplace_receiving_update": "Distribution source update does not establish receiving marketplace refresh.",
+    "privacy": "Sanitized receipt excludes signed URLs, cookies, merchant destinations, private account/conversation identifiers and credentials.",
+    "evidence_budget": {
+      "max_claims": 4096,
+      "max_receipt_bytes": 1048576,
+      "max_candidates": 48,
+      "max_sources": 256,
+      "required_proof_dropped": false
+    }
+  },
+  "ci": {
+    "backend": {
+      "status": "success",
+      "commit": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "checks": [
+        {
+          "context": "continuous-integration/jenkins/branch",
+          "state": "success",
+          "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/30015/display/redirect"
+        }
+      ]
+    },
+    "website": {
+      "status": "success",
+      "checks": [
+        {
+          "context": "continuous-integration/jenkins/branch",
+          "state": "success",
+          "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/BestPrice.gr/job/master/18382/display/redirect"
+        }
+      ]
+    },
+    "distribution": {
+      "checks": [
+        {
+          "name": "Check, test and validate",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/38218762270/job/114709647652"
+        },
+        {
+          "name": "Test on the current Node line",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/TheBestCo/bestprice-mcp/actions/runs/38218762270/job/114709647362"
+        }
+      ]
+    },
+    "initial_backend": {
+      "status": "success",
+      "build": 30007,
+      "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/30007/"
+    },
+    "digital_backend": {
+      "status": "success",
+      "commit": "bcb05384dd9535fa1c02f748428ef4fd542fa993",
+      "url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/30011/"
+    }
+  },
+  "gateway": {
+    "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+    "behavior_probe": {
+      "receipt": "shopping-brain-live-final-2026-10-12.json",
+      "scenario_count": 15,
+      "passed": 15,
+      "revision_responses": 19
+    },
+    "submission_canary": {
+      "receipt": "shopping-brain-canary-final-2026-10-12.json",
+      "passed": 53,
+      "requests": 67,
+      "budget": 90,
+      "stable_revision_responses": 50,
+      "read_only": true
+    },
+    "provider_origins": {
+      "receipt": "shopping-brain-origins-final-2026-10-12.json",
+      "passed": 14,
+      "allowed": 13,
+      "denied": 1
+    },
+    "input_schema_parity": {
+      "receipt": "shopping-brain-schema-parity-2026-10-12.json",
+      "tools": 4,
+      "lobehub_matches": true,
+      "website_matches": true
+    }
+  },
+  "generated_at": "2026-10-12T08:32:11.572Z",
+  "status": "qualified_with_explicit_exclusions",
+  "initial_gateway": {
+    "revision": "48a64f7e95f9c9506d3be7f37763485318fdabb2",
+    "submission_canary": {
+      "receipt": "shopping-brain-gateway-canary-2026-10-12.json",
+      "passed": 53,
+      "requests": 67,
+      "budget": 90,
+      "stable_revision_responses": 50,
+      "read_only": true
+    },
+    "provider_origins": {
+      "receipt": "shopping-brain-provider-origins-2026-10-12.json",
+      "passed": 14,
+      "allowed": 13,
+      "denied": 1
+    },
+    "note": "Gateway revision attests the gateway only. This canary preceded the new API rollout."
+  },
+  "runtime_roles": {
+    "observed_at": "2026-10-12T08:32:11.572Z",
+    "source": "Read-only n.servers aggregate, heartbeat within five minutes",
+    "rows": [
+      {
+        "is_cron": "0",
+        "hash": "8eb2c1d",
+        "instances": "5",
+        "oldest_start": "2026-10-12 11:28:53",
+        "newest_start": "2026-10-12 11:29:18",
+        "newest_heartbeat": "2026-10-12 11:29:18"
+      },
+      {
+        "is_cron": "0",
+        "hash": "ed9b341",
+        "instances": "3",
+        "oldest_start": "2026-10-12 11:17:17",
+        "newest_start": "2026-10-12 11:17:23",
+        "newest_heartbeat": "2026-10-12 11:27:23"
+      },
+      {
+        "is_cron": "1",
+        "hash": "754254f",
+        "instances": "2",
+        "oldest_start": "2026-10-12 10:49:49",
+        "newest_start": "2026-10-12 10:54:23",
+        "newest_heartbeat": "2026-10-12 11:29:49"
+      }
+    ],
+    "limits": "Stored hashes are short prefixes; rows can remain during drain. Non-cron includes API and other non-cron roles. Jenkins deployment admission and exact public behavior provide separate evidence; no claim that cron shares the gateway revision."
+  },
+  "live_results": {
+    "phone_repetitions": [
+      {
+        "id": "mandatory_phone_1",
+        "product": "bp_2163841269",
+        "price": 253,
+        "typed_5g_nfc_ois": true,
+        "resolving_references": true
+      },
+      {
+        "id": "mandatory_phone_2",
+        "product": "bp_2163841269",
+        "price": 253,
+        "typed_5g_nfc_ois": true,
+        "resolving_references": true
+      },
+      {
+        "id": "mandatory_phone_3",
+        "product": "bp_2163841269",
+        "price": 253,
+        "typed_5g_nfc_ois": true,
+        "resolving_references": true
+      }
+    ],
+    "nfc_optional_features": "Mandatory NFC retained; eSIM/wireless charging not promoted to mandatory requirements.",
+    "capacity": "Both corrected and ordinary range requests return only typed 4–5 L capacities within 120 EUR.",
+    "digital_only": "Zero searches, zero products on the final run.",
+    "limitations": "Selected bounded cases, not catalog-wide recall, all-exclusion coverage or a statistical quality estimate. Repeated phone responses may share catalog/reader caches."
+  }
+}

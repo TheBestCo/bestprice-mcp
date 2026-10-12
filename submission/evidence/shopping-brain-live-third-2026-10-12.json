@@ -1,0 +1,1936 @@
+{
+  "generated_at": "2026-10-12T08:12:37.746Z",
+  "deployment": {
+    "scope": "mcp_gateway",
+    "revision": "bcb05384dd9535fa1c02f748428ef4fd542fa993",
+    "responses": 19,
+    "stable": true
+  },
+  "server_version": "1.8.4",
+  "scenario_count": 15,
+  "passed": false,
+  "passed_count": 14,
+  "inventory": [
+    {
+      "name": "get_shopping_decision",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000,
+                "description": "A concise current shopping request with only relevant budget, required specifications and user corrections. No chat transcripts or unrelated personal data. Greek and English are accepted."
+              },
+              "postal_code": {
+                "description": "Optional Greek delivery postcode (five digits, 10000 to 85999) supplied by the user. It is required for basket plans; without it, shipping and delivered totals remain unknown.",
+                "type": "string",
+                "pattern": "^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$"
+              },
+              "evidence_detail": {
+                "default": "summary",
+                "description": "Optional evidence depth. 'summary' (default) returns only the claims this result cites by id (typed attributes, price history), the claims they are derived from and the sources they cite, and counts what it omits. 'full' returns every returned-product claim and source, including each offer's field receipts, complete spec sheets and ranking inputs; it is several times larger.",
+                "type": "string",
+                "enum": ["summary", "full"]
+              }
+            },
+            "required": ["message"],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "search_products",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 400,
+            "description": "Product name, model, barcode (GTIN/EAN), or category in Greek or English. A pasted merchant listing title is accepted; the search reduces it to the model it names. Use get_shopping_decision with the original request for recommendations based on needs, household size, or suitability; catalog search does not verify those requirements."
+          },
+          "locale": {
+            "default": "el-GR",
+            "description": "Response locale. The current service supports el-GR.",
+            "type": "string",
+            "const": "el-GR"
+          },
+          "country": {
+            "default": "GR",
+            "description": "Shopping market. The current service supports Greece (GR).",
+            "type": "string",
+            "const": "GR"
+          },
+          "price_min": {
+            "description": "Optional minimum product price in EUR, before shipping.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1000000
+          },
+          "price_max": {
+            "description": "Optional maximum product price in EUR, before shipping.",
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1000000
+          },
+          "required_features": {
+            "default": [],
+            "description": "Optional relevance hints such as OLED, Wi-Fi, or noise cancellation. They are not independently verified for every result; confirm them on the product page.",
+            "maxItems": 10,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 50
+            }
+          },
+          "sort": {
+            "default": "relevance",
+            "description": "Result order. Use relevance unless the user explicitly asks for cheapest or most expensive first.",
+            "type": "string",
+            "enum": ["relevance", "price_asc", "price_desc"]
+          },
+          "limit": {
+            "default": 8,
+            "description": "Maximum number of grouped products to return, from 1 to 8.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8
+          }
+        },
+        "required": ["query"],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "compare_offers",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "pattern": "^bp_[0-9]{10}$",
+            "description": "Exact grouped BestPrice product id returned by search_products, in bp_<id> form."
+          },
+          "postal_code": {
+            "description": "Greek delivery postcode (five digits, 10000 to 85999) used to calculate shipping and total cost. Required for lowest_total_cost; optional for lowest_item_price and merchant_rating.",
+            "type": "string",
+            "pattern": "^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$"
+          },
+          "objective": {
+            "description": "How to rank offers. When omitted: lowest_total_cost if postal_code is given, otherwise lowest_item_price. lowest_total_cost includes known shipping and requires postal_code.",
+            "type": "string",
+            "enum": ["lowest_total_cost", "lowest_item_price", "merchant_rating"]
+          },
+          "in_stock_only": {
+            "default": false,
+            "description": "false (default): every buyable offer, whatever its delivery estimate (availability unknown stays marked unknown). true: only offers available now or delivered in 1 to 3 days; slower ones are held back and named in a warning. Leave false unless the shopper explicitly asks for fast delivery: an offer that ships in 4 to 10 days is still available and buyable, and true hides it, which can hide the cheapest price. Out-of-stock offers are never returned.",
+            "type": "boolean"
+          },
+          "minimum_merchant_rating": {
+            "default": 0,
+            "description": "Optional minimum merchant rating on a 0 to 5 scale.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 5
+          },
+          "limit": {
+            "default": 10,
+            "description": "Maximum number of current merchant offers to return, from 1 to 10.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          }
+        },
+        "required": ["product_id"],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "get_price_history",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "pattern": "^bp_[0-9]{10}$",
+            "description": "Exact grouped BestPrice product id returned by search_products, in bp_<id> form."
+          },
+          "period_days": {
+            "default": 180,
+            "description": "Requested history window in days for series and data_gaps. deal_classification and price_delta_vs_180d_median_pct always compare with the 180-day median; window_stats always carries the 30-, 90- and 180-day statistics. Use 180 unless the user asks otherwise.",
+            "type": "number",
+            "enum": [30, 90, 180]
+          }
+        },
+        "required": ["product_id"],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "ui://bestprice/shopping-results-v1.html",
+      "mimeType": "text/html;profile=mcp-app"
+    },
+    {
+      "uri": "ui://bestprice/shopping-workspace-v8.html",
+      "mimeType": "text/html;profile=mcp-app"
+    },
+    {
+      "uri": "ui://bestprice/shopping-workspace-v7.html",
+      "mimeType": "text/html;profile=mcp-app"
+    },
+    {
+      "uri": "ui://bestprice/shopping-workspace-v5.html",
+      "mimeType": "text/html;profile=mcp-app"
+    },
+    {
+      "uri": "ui://bestprice/shopping-workspace-v6.html",
+      "mimeType": "text/html;profile=mcp-app"
+    },
+    {
+      "uri": "ui://bestprice/shopping-workspace-v1.html",
+      "mimeType": "text/html;profile=mcp-app"
+    },
+    {
+      "uri": "ui://bestprice/shopping-workspace-v4.html",
+      "mimeType": "text/html;profile=mcp-app"
+    },
+    {
+      "uri": "mcp://server-card.json",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "skill://bestprice-shopping/SKILL.md",
+      "mimeType": "text/markdown"
+    }
+  ],
+  "cases": [
+    {
+      "id": "mandatory_phone_1",
+      "passed": true,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2163841269",
+      "products": [
+        {
+          "product_id": "bp_2163841269",
+          "title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "price_from": 253
+        }
+      ],
+      "constraints": {
+        "maximum_price_eur": 500,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": ["5G", "NFC", "οπτική σταθεροποίηση εικόνας (OIS)"],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 500,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 500,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 12,
+                "end": 20,
+                "text": "έως 500€"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "mixed_observed_price_windows",
+        "source_ids": ["get_price_history:bp_2163841269:bp_2163841269"],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 38,
+        "complete_catalog": false,
+        "search_calls": 2,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:17.817Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 244,
+          "candidate_count": 48,
+          "eligible_count": 48,
+          "returned_count": 20,
+          "category_id": null,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [
+        {
+          "product_id": "bp_2163841269",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 6,
+              "claim_ids": ["claim_385db49cdb814389e0ef2285"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 128,
+              "claim_ids": ["claim_5f369b8988df1272e0199ad7"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_774ea25d07e19be00705aaac"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_25c6b8c63200e5c72c15b41b"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_316d2e9145eefd7128481972"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "AMOLED",
+              "claim_ids": ["claim_fdf9bdabe7ea867e7d5fa3d9"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_f6ba030be7d706395eb25227"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            }
+          ]
+        }
+      ],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "mandatory_phone_2",
+      "passed": true,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2163841269",
+      "products": [
+        {
+          "product_id": "bp_2163841269",
+          "title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "price_from": 253
+        }
+      ],
+      "constraints": {
+        "maximum_price_eur": 500,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": ["5G", "NFC", "οπτική σταθεροποίηση εικόνας (OIS)"],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 500,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 500,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 12,
+                "end": 20,
+                "text": "έως 500€"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "mixed_observed_price_windows",
+        "source_ids": ["get_price_history:bp_2163841269:bp_2163841269"],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 38,
+        "complete_catalog": false,
+        "search_calls": 2,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:19.904Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 244,
+          "candidate_count": 48,
+          "eligible_count": 48,
+          "returned_count": 20,
+          "category_id": null,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [
+        {
+          "product_id": "bp_2163841269",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 6,
+              "claim_ids": ["claim_385db49cdb814389e0ef2285"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 128,
+              "claim_ids": ["claim_5f369b8988df1272e0199ad7"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_774ea25d07e19be00705aaac"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_25c6b8c63200e5c72c15b41b"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_316d2e9145eefd7128481972"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "AMOLED",
+              "claim_ids": ["claim_fdf9bdabe7ea867e7d5fa3d9"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_f6ba030be7d706395eb25227"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            }
+          ]
+        }
+      ],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "mandatory_phone_3",
+      "passed": true,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2163841269",
+      "products": [
+        {
+          "product_id": "bp_2163841269",
+          "title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "price_from": 253
+        }
+      ],
+      "constraints": {
+        "maximum_price_eur": 500,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": ["5G", "NFC", "οπτική σταθεροποίηση εικόνας (OIS)"],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 500,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 500,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 12,
+                "end": 20,
+                "text": "έως 500€"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "mixed_observed_price_windows",
+        "source_ids": ["get_price_history:bp_2163841269:bp_2163841269"],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 38,
+        "complete_catalog": false,
+        "search_calls": 2,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:22.062Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 244,
+          "candidate_count": 48,
+          "eligible_count": 48,
+          "returned_count": 20,
+          "category_id": null,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [
+        {
+          "product_id": "bp_2163841269",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 6,
+              "claim_ids": ["claim_385db49cdb814389e0ef2285"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 128,
+              "claim_ids": ["claim_5f369b8988df1272e0199ad7"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_774ea25d07e19be00705aaac"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_25c6b8c63200e5c72c15b41b"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_316d2e9145eefd7128481972"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "AMOLED",
+              "claim_ids": ["claim_fdf9bdabe7ea867e7d5fa3d9"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_f6ba030be7d706395eb25227"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            }
+          ]
+        }
+      ],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "mandatory_nfc_optional_features",
+      "passed": false,
+      "error": "DECISION_UNAVAILABLE"
+    },
+    {
+      "id": "capacity_correction",
+      "passed": true,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2164176215",
+      "products": [
+        {
+          "product_id": "bp_2164176215",
+          "title": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "price_from": 48.77
+        },
+        {
+          "product_id": "bp_2160057712",
+          "title": "Smarton FR450 Air Fryer 4.5lt",
+          "price_from": 51.99
+        },
+        {
+          "product_id": "bp_2158725074",
+          "title": "Dsp KB2085 Air Fryer 4.5lt",
+          "price_from": 92.4
+        }
+      ],
+      "constraints": {
+        "maximum_price_eur": 120,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": {
+          "minimum": 4,
+          "maximum": 5,
+          "target": 4.5
+        },
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": [],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 120,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 120,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 15,
+                "end": 29,
+                "text": "μέχρι 120 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_coverage_insufficient",
+        "source_ids": ["get_price_history:bp_2164176215:bp_2164176215"],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 8,
+        "complete_catalog": false,
+        "search_calls": 1,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:29.877Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 36,
+          "candidate_count": 35,
+          "eligible_count": 35,
+          "returned_count": 8,
+          "category_id": 8535,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [
+        {
+          "product_id": "bp_2158725074",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_b07ef632238637c900d1d4f1"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_30912c62de71749dd6aa5610"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_d674ed099a8d3ed0064aacad"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2160057712",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_7f1aa59afd057eb322208a27"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_41100906aac1829203d007a7"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_267f48cd1cf8b97b063536f8"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2164176215",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_da0d4d833e19ca5c543f19c6"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_b8ae7017131c0f658986e80a"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_757e31c77e88b481fdaf324a"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            }
+          ]
+        }
+      ],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "capacity_bounds",
+      "passed": true,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2164176215",
+      "products": [
+        {
+          "product_id": "bp_2164176215",
+          "title": "Eldom FR45 Air Fryer 4.5lt Inox",
+          "price_from": 48.77
+        },
+        {
+          "product_id": "bp_2160057712",
+          "title": "Smarton FR450 Air Fryer 4.5lt",
+          "price_from": 51.99
+        },
+        {
+          "product_id": "bp_2158725074",
+          "title": "Dsp KB2085 Air Fryer 4.5lt",
+          "price_from": 92.4
+        }
+      ],
+      "constraints": {
+        "maximum_price_eur": 120,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": {
+          "minimum": 4,
+          "maximum": 5,
+          "target": 4.5
+        },
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": [],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 120,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 120,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 56,
+                "end": 68,
+                "text": "έως 120 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_coverage_insufficient",
+        "source_ids": ["get_price_history:bp_2164176215:bp_2164176215"],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 8,
+        "complete_catalog": false,
+        "search_calls": 1,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:30.891Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 36,
+          "candidate_count": 35,
+          "eligible_count": 35,
+          "returned_count": 8,
+          "category_id": 8535,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [
+        {
+          "product_id": "bp_2158725074",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_b07ef632238637c900d1d4f1"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_30912c62de71749dd6aa5610"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_d674ed099a8d3ed0064aacad"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2160057712",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_7f1aa59afd057eb322208a27"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_41100906aac1829203d007a7"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_267f48cd1cf8b97b063536f8"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2164176215",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_da0d4d833e19ca5c543f19c6"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_b8ae7017131c0f658986e80a"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_757e31c77e88b481fdaf324a"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            }
+          ]
+        }
+      ],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "unconfirmed_ois",
+      "passed": true,
+      "outcome": "no_match",
+      "status": "no_match",
+      "recommended_product_id": null,
+      "products": [],
+      "constraints": {
+        "maximum_price_eur": null,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": ["το ακριβές μοντέλο", "οπτική σταθεροποίηση εικόνας (OIS)"],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": null,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 1,
+        "complete_catalog": false,
+        "search_calls": 1,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:31.913Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 1,
+          "candidate_count": 1,
+          "eligible_count": 1,
+          "returned_count": 1,
+          "category_id": null,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "contradictory_budget",
+      "passed": true,
+      "outcome": "clarification",
+      "status": "needs_input",
+      "recommended_product_id": null,
+      "products": [],
+      "constraints": {
+        "maximum_price_eur": null,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "postal_code": null,
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": 800,
+          "maximum_eur": 500,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "gte",
+              "value": 800,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 12,
+                "end": 24,
+                "text": "από 800 ευρώ"
+              }
+            },
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 500,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 30,
+                "end": 46,
+                "text": "το πολύ 500 ευρώ"
+              }
+            }
+          ],
+          "conflicts": [
+            {
+              "code": "incompatible_price_bounds",
+              "minimum_eur": 800,
+              "maximum_eur": 500
+            }
+          ]
+        },
+        "catalog_requirements": []
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "not_searched",
+        "candidate_count": 0,
+        "complete_catalog": false,
+        "search_calls": 0,
+        "receipt": null
+      },
+      "attributes": [],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "contradictory_capacity",
+      "passed": true,
+      "outcome": "clarification",
+      "status": "needs_input",
+      "recommended_product_id": null,
+      "products": [],
+      "constraints": {
+        "maximum_price_eur": null,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "postal_code": null,
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 120,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 120,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 55,
+                "end": 67,
+                "text": "έως 120 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        },
+        "catalog_requirements": []
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "not_searched",
+        "candidate_count": 0,
+        "complete_catalog": false,
+        "search_calls": 0,
+        "receipt": null
+      },
+      "attributes": [],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "missing_room",
+      "passed": true,
+      "outcome": "clarification",
+      "status": "needs_input",
+      "recommended_product_id": null,
+      "products": [],
+      "constraints": {
+        "maximum_price_eur": 500,
+        "room_sqm": null,
+        "catalog_requirements": [],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 500,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 500,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 18,
+                "end": 32,
+                "text": "μέχρι 500 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "not_searched",
+        "candidate_count": 0,
+        "complete_catalog": false,
+        "search_calls": 0,
+        "receipt": null
+      },
+      "attributes": [],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "impossible_laptop",
+      "passed": true,
+      "outcome": "no_match",
+      "status": "no_match",
+      "recommended_product_id": null,
+      "products": [],
+      "constraints": {
+        "maximum_price_eur": 10,
+        "minimum_ram_gb": 16,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": [],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 10,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 10,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 12,
+                "end": 23,
+                "text": "έως 10 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 0,
+        "complete_catalog": false,
+        "search_calls": 2,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:33.357Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 0,
+          "candidate_count": 0,
+          "eligible_count": 0,
+          "returned_count": 0,
+          "category_id": 2591,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "apple_exclusion",
+      "passed": true,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2163712148",
+      "products": [
+        {
+          "product_id": "bp_2163712148",
+          "title": "Motorola Moto G77 5G 8GB 256GB",
+          "price_from": 213.48
+        },
+        {
+          "product_id": "bp_2163856012",
+          "title": "Xiaomi Redmi A7 Pro 4GB 64GB",
+          "price_from": 106.46
+        },
+        {
+          "product_id": "bp_2163584048",
+          "title": "Motorola Edge 60 Neo 5G 8GB 256GB",
+          "price_from": 266.27
+        }
+      ],
+      "constraints": {
+        "maximum_price_eur": 400,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": ["όχι Apple"],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": 400,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [
+            {
+              "field": "item_price",
+              "operator": "lte",
+              "value": 400,
+              "unit": "EUR",
+              "source": {
+                "turn_index": 0,
+                "start": 12,
+                "end": 24,
+                "text": "έως 400 ευρώ"
+              }
+            }
+          ],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "typical",
+        "reason": "typical_across_usable_windows",
+        "source_ids": ["get_price_history:bp_2163712148:bp_2163712148"],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 48,
+        "complete_catalog": false,
+        "search_calls": 3,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:33.954Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 861,
+          "candidate_count": 48,
+          "eligible_count": 48,
+          "returned_count": 48,
+          "category_id": null,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [
+        {
+          "product_id": "bp_2163584048",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 8,
+              "claim_ids": ["claim_6d04158387993391931ee745"],
+              "source_ids": ["search_products:bp_2163584048:bp_2163584048"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 256,
+              "claim_ids": ["claim_e822d209e8cb3c0ac7be97dd"],
+              "source_ids": ["search_products:bp_2163584048:bp_2163584048"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163712148",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 8,
+              "claim_ids": ["claim_ec1c84ee110957d79e966283"],
+              "source_ids": ["search_products:bp_2163712148:bp_2163712148"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 256,
+              "claim_ids": ["claim_8f041343f9439078cdd8d2ef"],
+              "source_ids": ["search_products:bp_2163712148:bp_2163712148"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163856012",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 4,
+              "claim_ids": ["claim_e3675dd172e9f2e8e4995d2d"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 64,
+              "claim_ids": ["claim_c72dc8edc45c9afe9b341fb9"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_7234ce3104b463b52d870d8d"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "IPS",
+              "claim_ids": ["claim_254880abb199b5a52bdc4353"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_a476496cd9857d85959b3b9e"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            }
+          ]
+        }
+      ],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "digital_subscription",
+      "passed": true,
+      "outcome": "clarification",
+      "status": "needs_input",
+      "recommended_product_id": null,
+      "products": [],
+      "constraints": {
+        "maximum_price_eur": 50,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "postal_code": null,
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": null,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "not_searched",
+        "candidate_count": 0,
+        "complete_catalog": false,
+        "search_calls": 0,
+        "receipt": null
+      },
+      "attributes": [],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "prompt_injection",
+      "passed": true,
+      "outcome": "clarification",
+      "status": "needs_input",
+      "recommended_product_id": null,
+      "products": [],
+      "constraints": {
+        "maximum_price_eur": null,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "postal_code": null,
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": null,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "not_searched",
+        "candidate_count": 0,
+        "complete_catalog": false,
+        "search_calls": 0,
+        "receipt": null
+      },
+      "attributes": [],
+      "evidence_references_checked": true
+    },
+    {
+      "id": "price_timing",
+      "passed": true,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2157591869",
+      "products": [
+        {
+          "product_id": "bp_2157591869",
+          "title": "Sony WH-1000XM5 Ενσύρματα & Ασύρματα Bluetooth Ακουστικά Over Ear με Noise Canceling Μαύρα",
+          "price_from": 179.88
+        },
+        {
+          "product_id": "bp_2157591868",
+          "title": "Sony WH-1000XM5 Ενσύρματα & Ασύρματα Bluetooth Ακουστικά Over Ear με Noise Cancelling Ασημί",
+          "price_from": 205.89
+        }
+      ],
+      "constraints": {
+        "maximum_price_eur": null,
+        "minimum_ram_gb": null,
+        "minimum_ram_assumed": false,
+        "operating_system": null,
+        "people_count": null,
+        "capacity_litres": null,
+        "capacity_assumed": false,
+        "different_capacity_from_litres": null,
+        "dual_basket": null,
+        "screen_inches": null,
+        "room_sqm": null,
+        "catalog_requirements": ["το ακριβές μοντέλο", "μάρκα Sony"],
+        "price_requirements": {
+          "version": "shopping_price_constraints_v1",
+          "minimum_eur": null,
+          "maximum_eur": null,
+          "explicitly_unbounded": false,
+          "unsupported": [],
+          "clauses": [],
+          "conflicts": []
+        }
+      },
+      "price_verdict": {
+        "verdict": "typical",
+        "reason": "typical_across_usable_windows",
+        "source_ids": ["get_price_history:bp_2157591869:bp_2157591869"],
+        "predicts_future_price": false
+      },
+      "retrieval": {
+        "scope": "returned_page",
+        "candidate_count": 5,
+        "complete_catalog": false,
+        "search_calls": 1,
+        "receipt": {
+          "version": "bestprice_retrieval_v1",
+          "policy": "single_catalog_page_v1",
+          "backend": "n.products.search",
+          "checked_at": "2026-10-12T08:12:37.264Z",
+          "source_observed_at": "2026-10-12T08:07:50.000Z",
+          "search_calls": 1,
+          "trinity_calls": 1,
+          "page": 1,
+          "page_size": 48,
+          "catalog_total": 5,
+          "candidate_count": 5,
+          "eligible_count": 5,
+          "returned_count": 5,
+          "category_id": null,
+          "protected_term_mismatch": false,
+          "ranking_scope": "returned_page"
+        }
+      },
+      "attributes": [
+        {
+          "product_id": "bp_2157591868",
+          "attributes": [
+            {
+              "key": "active_noise_cancellation",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_4028c2bd7245fe68f60a5025"],
+              "source_ids": ["get_product_details:bp_2157591868:bp_2157591868"]
+            },
+            {
+              "key": "over_ear",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_25b55c1b306b271b2b51b799"],
+              "source_ids": ["get_product_details:bp_2157591868:bp_2157591868"]
+            },
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_06c58647aaff16aa70d89808"],
+              "source_ids": ["get_product_details:bp_2157591868:bp_2157591868"]
+            },
+            {
+              "key": "battery_hours",
+              "unit": "hours",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "battery_with_case_hours",
+              "unit": "hours",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "multipoint",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2157591869",
+          "attributes": [
+            {
+              "key": "active_noise_cancellation",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_4c11ef92fd79ccf7fc4cdbf3"],
+              "source_ids": ["get_product_details:bp_2157591869:bp_2157591869"]
+            },
+            {
+              "key": "over_ear",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_b408f99fbfbf9a2b1866e526"],
+              "source_ids": ["get_product_details:bp_2157591869:bp_2157591869"]
+            },
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_d860a9b98876bf26f09f6a23"],
+              "source_ids": ["get_product_details:bp_2157591869:bp_2157591869"]
+            },
+            {
+              "key": "battery_hours",
+              "unit": "hours",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "battery_with_case_hours",
+              "unit": "hours",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "multipoint",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        }
+      ],
+      "evidence_references_checked": true
+    }
+  ],
+  "exclusions": [
+    "Staff Ask and conversation persistence",
+    "signed landing/attribution/privacy canary",
+    "merchant clickouts",
+    "account writes and Events"
+  ]
+}

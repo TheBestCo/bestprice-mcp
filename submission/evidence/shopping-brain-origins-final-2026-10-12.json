@@ -1,0 +1,106 @@
+{
+  "observed_at": "2026-10-12T08:28:33.404Z",
+  "expected_revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+  "scope": "Observed browser CORS acceptance; does not prove marketplace installation or provider usage",
+  "passed": true,
+  "cases": [
+    {
+      "origin": "https://chatgpt.com",
+      "status": 204,
+      "allowed_origin": "https://chatgpt.com",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://chat.openai.com",
+      "status": 204,
+      "allowed_origin": "https://chat.openai.com",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://platform.openai.com",
+      "status": 204,
+      "allowed_origin": "https://platform.openai.com",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://gemini.google.com",
+      "status": 204,
+      "allowed_origin": "https://gemini.google.com",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://aistudio.google.com",
+      "status": 204,
+      "allowed_origin": "https://aistudio.google.com",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://claude.ai",
+      "status": 204,
+      "allowed_origin": "https://claude.ai",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://perplexity.ai",
+      "status": 204,
+      "allowed_origin": "https://perplexity.ai",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://www.perplexity.ai",
+      "status": 204,
+      "allowed_origin": "https://www.perplexity.ai",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://enterprise.perplexity.ai",
+      "status": 204,
+      "allowed_origin": "https://enterprise.perplexity.ai",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://grok.com",
+      "status": 204,
+      "allowed_origin": "https://grok.com",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://smithery.ai",
+      "status": 204,
+      "allowed_origin": "https://smithery.ai",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://server.smithery.ai",
+      "status": 204,
+      "allowed_origin": "https://server.smithery.ai",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://www.bestprice.gr",
+      "status": 204,
+      "allowed_origin": "https://www.bestprice.gr",
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    },
+    {
+      "origin": "https://untrusted.invalid",
+      "status": 403,
+      "allowed_origin": null,
+      "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,530 @@
+{
+  "scope": "Fresh anonymous baseline; failures retained, signed URLs omitted",
+  "baseline": [
+    {
+      "case": "phone",
+      "at": "2026-10-12T07:24:53.112Z",
+      "gateway_revision": "e4880622deff9f90eb22de7d1f3061f93cd495b2",
+      "http_status": 200,
+      "outcome": "comparison",
+      "status": "ready",
+      "recommended_product_id": null,
+      "comparison_evaluation": "no_eligible_compared_product",
+      "blocking_constraints": [],
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "products": [
+        {
+          "product_id": "bp_2164551999",
+          "title": "Powertech Milly Small III χωρίς Κάμερα",
+          "price_from": 15.97
+        },
+        {
+          "product_id": "bp_2163856012",
+          "title": "Xiaomi Redmi A7 Pro 4GB 64GB",
+          "price_from": 106.46
+        }
+      ],
+      "attributes": [
+        {
+          "product_id": "bp_2163856012",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 4,
+              "claim_ids": ["claim_e3675dd172e9f2e8e4995d2d"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 64,
+              "claim_ids": ["claim_c72dc8edc45c9afe9b341fb9"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_7234ce3104b463b52d870d8d"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "IPS",
+              "claim_ids": ["claim_254880abb199b5a52bdc4353"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_a476496cd9857d85959b3b9e"],
+              "source_ids": ["get_product_details:bp_2163856012:bp_2163856012"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2164551999",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_a59be60320df7c5dba80bdc6"],
+              "source_ids": ["get_product_details:bp_2164551999:bp_2164551999"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "nfc",
+      "at": "2026-10-12T07:25:02.702Z",
+      "gateway_revision": "e4880622deff9f90eb22de7d1f3061f93cd495b2",
+      "http_status": 200,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2163461420",
+      "blocking_constraints": [],
+      "price_verdict": {
+        "verdict": "typical",
+        "reason": "typical_across_usable_windows",
+        "source_ids": ["get_price_history:bp_2163461420:bp_2163461420"],
+        "predicts_future_price": false
+      },
+      "products": [
+        {
+          "product_id": "bp_2163461420",
+          "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "price_from": 248.9
+        },
+        {
+          "product_id": "bp_2163979176",
+          "title": "Xiaomi Redmi A7 Pro NFC 4GB 64GB",
+          "price_from": 109
+        },
+        {
+          "product_id": "bp_2163499639",
+          "title": "Xiaomi Redmi Note 15 Pro 5G NFC 8GB 256GB",
+          "price_from": 306.88
+        }
+      ],
+      "attributes": [
+        {
+          "product_id": "bp_2163461420",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 8,
+              "claim_ids": ["claim_793fdbfcf8ab1982c090d3a8"],
+              "source_ids": ["search_products:bp_2163461420:bp_2163461420"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 512,
+              "claim_ids": ["claim_b304dfdfa53eb7b3f3afbb92"],
+              "source_ids": ["search_products:bp_2163461420:bp_2163461420"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163499639",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 8,
+              "claim_ids": ["claim_8126088dff94e8ff986e54fd"],
+              "source_ids": ["search_products:bp_2163499639:bp_2163499639"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 256,
+              "claim_ids": ["claim_60a4c51836b9659e7ee50441"],
+              "source_ids": ["search_products:bp_2163499639:bp_2163499639"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163979176",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 4,
+              "claim_ids": ["claim_965c26adad1de0beab8f0875"],
+              "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 64,
+              "claim_ids": ["claim_cc3973c6a478d2365957e9c4"],
+              "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_bca56af9eebc6009e418265e"],
+              "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_a2598bf43a3a3e00da9f72fc"],
+              "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "IPS",
+              "claim_ids": ["claim_9eb2c2f9d0d7cfd5e5e7476f"],
+              "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_b3fc7055e224461a0ced4405"],
+              "source_ids": ["get_product_details:bp_2163979176:bp_2163979176"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "capacity",
+      "at": "2026-10-12T07:25:03.441Z",
+      "gateway_revision": "e4880622deff9f90eb22de7d1f3061f93cd495b2",
+      "http_status": 200,
+      "outcome": "clarification",
+      "status": "needs_input",
+      "recommended_product_id": null,
+      "blocking_constraints": [],
+      "price_verdict": {
+        "verdict": "insufficient_evidence",
+        "reason": "history_not_available",
+        "source_ids": [],
+        "predicts_future_price": false
+      },
+      "products": [],
+      "attributes": []
+    },
+    {
+      "case": "price",
+      "at": "2026-10-12T07:25:05.665Z",
+      "gateway_revision": "e4880622deff9f90eb22de7d1f3061f93cd495b2",
+      "http_status": 200,
+      "outcome": "recommendation",
+      "status": "ready",
+      "recommended_product_id": "bp_2157591869",
+      "blocking_constraints": [],
+      "price_verdict": {
+        "verdict": "typical",
+        "reason": "typical_across_usable_windows",
+        "source_ids": ["get_price_history:bp_2157591869:bp_2157591869"],
+        "predicts_future_price": false
+      },
+      "products": [
+        {
+          "product_id": "bp_2157591869",
+          "title": "Sony WH-1000XM5 Ενσύρματα & Ασύρματα Bluetooth Ακουστικά Over Ear με Noise Canceling Μαύρα",
+          "price_from": 179.88
+        },
+        {
+          "product_id": "bp_2157591868",
+          "title": "Sony WH-1000XM5 Ενσύρματα & Ασύρματα Bluetooth Ακουστικά Over Ear με Noise Cancelling Ασημί",
+          "price_from": 205.89
+        }
+      ],
+      "attributes": [
+        {
+          "product_id": "bp_2157591868",
+          "attributes": [
+            {
+              "key": "active_noise_cancellation",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_4028c2bd7245fe68f60a5025"],
+              "source_ids": ["get_product_details:bp_2157591868:bp_2157591868"]
+            },
+            {
+              "key": "over_ear",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_25b55c1b306b271b2b51b799"],
+              "source_ids": ["get_product_details:bp_2157591868:bp_2157591868"]
+            },
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_06c58647aaff16aa70d89808"],
+              "source_ids": ["get_product_details:bp_2157591868:bp_2157591868"]
+            },
+            {
+              "key": "battery_hours",
+              "unit": "hours",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "battery_with_case_hours",
+              "unit": "hours",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "multipoint",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2157591869",
+          "attributes": [
+            {
+              "key": "active_noise_cancellation",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_4c11ef92fd79ccf7fc4cdbf3"],
+              "source_ids": ["get_product_details:bp_2157591869:bp_2157591869"]
+            },
+            {
+              "key": "over_ear",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_b408f99fbfbf9a2b1866e526"],
+              "source_ids": ["get_product_details:bp_2157591869:bp_2157591869"]
+            },
+            {
+              "key": "wireless",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_d860a9b98876bf26f09f6a23"],
+              "source_ids": ["get_product_details:bp_2157591869:bp_2157591869"]
+            },
+            {
+              "key": "battery_hours",
+              "unit": "hours",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "battery_with_case_hours",
+              "unit": "hours",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "multipoint",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
