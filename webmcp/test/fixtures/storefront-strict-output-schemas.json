@@ -1,9 +1,9 @@
 {
   "what": "The strict output contract of every BestPrice WebMCP tool (closed and bounded), which the published output schemas relax; the tests validate every demo result against it.",
   "sourceOfTruth": "bestprice.gr",
-  "sourceCommit": "66706011332b1410a327900c68bd75d401116904",
+  "sourceCommit": "b123187649b467d9dcb577a502488d5388aee732",
   "path": "js/modules/webmcp/output-schemas.js",
-  "sha256": "ee21505abd6124f80de122628954175f40e25447de6dda1807a4e5a55fd71465",
+  "sha256": "a7189599c1d985f5d4b3c00071dacfbaf1e7007752c5963adca898af94be78a6",
   "schemas": {
     "search_bestprice": {
       "type": "object",
@@ -206,6 +206,11 @@
               "type": "string",
               "pattern": "^[a-z0-9_]{1,64}$",
               "description": "When given, one of: invalid_argument, timeout, upstream_unavailable, cancelled, unexpected_error."
+            },
+            "retry_after_seconds": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 3600
             }
           },
           "required": ["ok", "error"],
