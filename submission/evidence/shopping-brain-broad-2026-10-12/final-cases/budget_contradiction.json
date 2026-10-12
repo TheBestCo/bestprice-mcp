@@ -1,0 +1,155 @@
+{
+  "id": "budget_contradiction",
+  "message": "Θέλω κινητό τουλάχιστον 600 ευρώ και το πολύ 400 ευρώ.",
+  "expectation": {
+    "outcome": "clarification",
+    "zeroSearch": true
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T09:13:31.005Z",
+  "passed": true,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 8212,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:13:31.144Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "10456f3d-01a2-4507-a4b3-67e2dbd20623",
+      "evidence_fingerprint": "b4a58ad16cf16ed215ed6b26939ced96a5b8953372ce8855eaf1138cd8f0a312"
+    },
+    "outcome": "clarification",
+    "status": "needs_input",
+    "answer": "Το ελάχιστο ποσό που ανέφερες είναι μεγαλύτερο από το μέγιστο. Ποιο εύρος τιμής θέλεις να κρατήσω;",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": 600,
+        "maximum_eur": 400,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "gte",
+            "value": 600,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 12,
+              "end": 32,
+              "text": "τουλάχιστον 600 ευρώ"
+            }
+          },
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 400,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 37,
+              "end": 53,
+              "text": "το πολύ 400 ευρώ"
+            }
+          }
+        ],
+        "conflicts": [
+          {
+            "code": "incompatible_price_bounds",
+            "minimum_eur": 600,
+            "maximum_eur": 400
+          }
+        ]
+      },
+      "catalog_requirements": []
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [
+      {
+        "question": "Το ελάχιστο ποσό που ανέφερες είναι μεγαλύτερο από το μέγιστο. Ποιο εύρος τιμής θέλεις να κρατήσω;",
+        "reason": "missing_shopping_context"
+      }
+    ],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "missing_shopping_context",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 0,
+      "omitted_source_count": 0,
+      "sources": [],
+      "claims": []
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 0,
+    "sources": 0,
+    "structured_bytes": 3012,
+    "retrieval": {
+      "scope": "not_searched",
+      "candidate_count": 0,
+      "complete_catalog": false,
+      "search_calls": 0,
+      "receipt": null
+    }
+  },
+  "elapsed_ms": 215
+}

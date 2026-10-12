@@ -1,0 +1,171 @@
+{
+  "id": "capacity_units",
+  "message": "Θέλω air fryer από 4.5L έως 5L μέχρι 120 ευρώ.",
+  "expectation": {
+    "capacity": [4.5, 5],
+    "budget": 120
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T08:46:59.019Z",
+  "passed": true,
+  "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+  "transport_bytes": 10530,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T08:47:03.121Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "2cd89fc6-05f8-4d5d-bcc4-df276796b6bf",
+      "evidence_fingerprint": "d2a229028ef2d1cebfb093f91225149de7494f3db33c8506338f0c18b0318e8d"
+    },
+    "outcome": "clarification",
+    "status": "needs_input",
+    "answer": "Κρατάω ως απαραίτητα: από 4.5L έως 5L. Δεν έχω ακόμη επαρκή στοιχεία για να τα ελέγξω και δεν έχω επιβεβαιωμένη πρόταση. Χρειάζομαι συγκεκριμένη προδιαγραφή ή τεκμηρίωση για αυτά τα χαρακτηριστικά· δεν χρειάζεται να ξαναδηλώσεις ότι είναι απαραίτητα. Το όριο τιμής μένει έως 120€.",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": 120,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 120,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 120,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 31,
+              "end": 45,
+              "text": "μέχρι 120 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "catalog_requirements": []
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [
+      {
+        "question": "Κρατάω ως απαραίτητα: από 4.5L έως 5L. Δεν έχω ακόμη επαρκή στοιχεία για να τα ελέγξω και δεν έχω επιβεβαιωμένη πρόταση. Χρειάζομαι συγκεκριμένη προδιαγραφή ή τεκμηρίωση για αυτά τα χαρακτηριστικά· δεν χρειάζεται να ξαναδηλώσεις ότι είναι απαραίτητα. Το όριο τιμής μένει έως 120€.",
+        "reason": "missing_shopping_context"
+      }
+    ],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "missing_shopping_context",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 8,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T08:47:00.343Z",
+        "source_observed_at": "2026-10-12T08:44:04.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 799,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": 8535,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 0,
+      "omitted_source_count": 0,
+      "sources": [],
+      "claims": []
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 0,
+    "sources": 0,
+    "structured_bytes": 3840,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 8,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T08:47:00.343Z",
+        "source_observed_at": "2026-10-12T08:44:04.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 799,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": 8535,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 4165
+}

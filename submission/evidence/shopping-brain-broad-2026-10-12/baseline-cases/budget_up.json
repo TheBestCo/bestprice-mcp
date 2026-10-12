@@ -1,0 +1,189 @@
+{
+  "id": "budget_up",
+  "message": "Θέλω κινητό έως 100 ευρώ. Διόρθωση: έως 400 ευρώ με υποχρεωτικό NFC.",
+  "expectation": {
+    "flags": ["nfc"],
+    "budget": 400,
+    "maxConstraint": 400
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T08:46:42.595Z",
+  "passed": false,
+  "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+  "transport_bytes": 14950,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T08:46:44.544Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "c71214e6-bc9a-4394-9642-1827afc95523",
+      "evidence_fingerprint": "c088e1dc4e47b6329d037ab8de198c81ac7cebda6711abaac863fad48cab106c"
+    },
+    "outcome": "no_match",
+    "status": "no_match",
+    "answer": "",
+    "reason": "hard_constraints_unmet",
+    "message": "Στα 21 αποτελέσματα που έλεγξα, δεν μπόρεσα να επιβεβαιώσω NFC από τα στοιχεία του καταλόγου. Χρειάζεται επιβεβαίωση των χαρακτηριστικών πριν την αγορά.",
+    "blocking_constraints": ["nfc"],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": 100,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "catalog_requirements": ["NFC"],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 100,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 100,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 12,
+              "end": 24,
+              "text": "έως 100 ευρώ"
+            }
+          },
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 400,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 36,
+              "end": 48,
+              "text": "έως 400 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "hard_constraints_unmet",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 21,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T08:46:44.159Z",
+        "source_observed_at": "2026-10-12T08:44:04.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 1,
+        "candidate_count": 1,
+        "eligible_count": 1,
+        "returned_count": 1,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    },
+    "search_handoff": {
+      "url": "[omitted]",
+      "label": "Δες αποτελέσματα στο BestPrice"
+    },
+    "catalog_candidates": {
+      "basis": "catalog_search_unranked",
+      "note": "BestPrice catalog search results for this request, in catalog relevance order within its price bounds. The Shopping Brain did not rank them or check them against the request, so they are not a recommendation; products it checked and rejected are left out. price_from is the catalog minimum before shipping.",
+      "query": "κινητό",
+      "price_min_eur": null,
+      "price_max_eur": 100,
+      "products": [
+        {
+          "product_id": "bp_2159196612",
+          "title": "AGM M8 Flip",
+          "brand": null,
+          "category_title": "Κινητά",
+          "price_from": 85.53,
+          "availability": "available",
+          "offer_count": 25,
+          "rating": null,
+          "decision_id": "d1.d562a31a18ebfe972dfc7584e395db8a.vfmShymZAG75VYRjiv8oP1108kbLS01BMbVJm4CGOWs",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2160563495",
+          "title": "HMD 2660 Flip",
+          "brand": null,
+          "category_title": "Κινητά",
+          "price_from": 59.56,
+          "availability": "available",
+          "offer_count": 23,
+          "rating": null,
+          "decision_id": "d1.326b9022651926577a5c9976ae280526.Tzz-uQ9yABjfjH3DePu2LitRWNOuwLhQRFAppIXe3-I",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 0,
+      "omitted_source_count": 0,
+      "sources": [],
+      "claims": []
+    },
+    "uncertainty": []
+  },
+  "error": "latest maximum price\n\n100 !== 400\n",
+  "elapsed_ms": 2311
+}

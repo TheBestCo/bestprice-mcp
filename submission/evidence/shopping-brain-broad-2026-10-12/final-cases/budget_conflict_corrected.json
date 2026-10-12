@@ -1,0 +1,1173 @@
+{
+  "id": "budget_conflict_corrected",
+  "message": "Θέλω laptop από 800 έως 500 ευρώ. Διόρθωση: από 500 έως 700 ευρώ.",
+  "expectation": {
+    "budget": 700,
+    "minConstraint": 500,
+    "maxConstraint": 700,
+    "outcome": "recommendation"
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T09:13:21.044Z",
+  "passed": true,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 69363,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:13:21.782Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "79a1b7b5-592f-483a-bbed-c822a1ea5e48",
+      "evidence_fingerprint": "6c639e38d2916b2956bd63c1764b2af9f31f9cb022ad419e9d7f8ace5327aded"
+    },
+    "outcome": "recommendation",
+    "status": "ready",
+    "answer": "",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": "bp_2164347766",
+    "alternatives": [
+      {
+        "product_id": "bp_2159215459",
+        "label": "Εξοικονόμησε 140,23€",
+        "tradeoff": "Λιγότερη μνήμη RAM",
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_190491356",
+            "merchant_id": "bp_merchant_8529",
+            "merchant_name": "MytechBox",
+            "merchant_rating": 4.44,
+            "merchant_rating_count": 25,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 508.77,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_1_3_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "1–3 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:13:21.539Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_190491356",
+            "merchant_id": "bp_merchant_8529",
+            "merchant_name": "MytechBox",
+            "merchant_rating": 4.44,
+            "merchant_rating_count": 25,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 508.77,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_1_3_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "1–3 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:13:21.539Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 700,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 10,
+          "unknown_shipping_count": 10
+        }
+      },
+      {
+        "product_id": "bp_2164182852",
+        "label": "47€ ακριβότερο",
+        "tradeoff": "Δεν συνέκρινα: πολυπύρηνη ισχύς επεξεργαστή, απόκριση επεξεργαστή και νεότερη πλατφόρμα",
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_218385907",
+            "merchant_id": "bp_merchant_8622",
+            "merchant_name": "Praxi",
+            "merchant_rating": 4.64,
+            "merchant_rating_count": 11,
+            "verified_merchant": true,
+            "certification_level": "gold",
+            "item_price": 696,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_1_3_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "1–3 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:13:21.541Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_218385907",
+            "merchant_id": "bp_merchant_8622",
+            "merchant_name": "Praxi",
+            "merchant_rating": 4.64,
+            "merchant_rating_count": 11,
+            "verified_merchant": true,
+            "certification_level": "gold",
+            "item_price": 696,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_1_3_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "1–3 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:13:21.541Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 700,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 10,
+          "unknown_shipping_count": 10
+        }
+      }
+    ],
+    "products": [
+      {
+        "product_id": "bp_2164347766",
+        "title": "Asus Vivobook 15 X1504MA-BQ173W (Core 5 320/16GB/512GB SSD/Intel Graphics/Windows 11)",
+        "brand": null,
+        "category_title": "Laptops",
+        "price_from": 649,
+        "decision_id": "d1.c3868efd1431d0aaf3d345686f6efd69.AmJPvt9VGrtShUs6fElZtWnKu2dIt2MNGVUpdtXNU-w",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2159215459",
+        "title": "Lenovo V15 G4 AMN (Ryzen 5-7520U/16GB/512GB SSD/Radeon Graphics/FreeDos)",
+        "brand": null,
+        "category_title": "Laptops",
+        "price_from": 508.77,
+        "decision_id": "d1.48e45b1f615520ac0ae7e75a22315e29.ZCuH2mX-RcS4ju5L6U_MigQFrxxUPPc-2W4ukWe7QHg",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2164182852",
+        "title": "MSI Modern 16S G3MG (Core 5 320/16GB/512GB SSD/Intel Graphics/Windows 11)",
+        "brand": null,
+        "category_title": "Laptops",
+        "price_from": 696,
+        "decision_id": "d1.fb1b1c86ba05803ab2b8277b0d0b6d36.dVxNgwBTwsZ-DijxkksapMaIkMUkN0DpCIkV81KwwFY",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": 700,
+      "minimum_price_eur": 500,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "catalog_requirements": [],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": 500,
+        "maximum_eur": 700,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "gte",
+            "value": 500,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 44,
+              "end": 64,
+              "text": "από 500 έως 700 ευρώ"
+            }
+          },
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 700,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 44,
+              "end": 64,
+              "text": "από 500 έως 700 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    "reasons": [
+      "Δίνει περισσότερη μνήμη RAM. Καλύπτει τα εξής κριτήρια: έως 700€.",
+      "Η επόμενη, ακριβότερη επιλογή κοστίζει 47€ παραπάνω, χωρίς να προσφέρει κάτι επιπλέον σε όσα ζήτησες. Δεν συνέκρινα: πολυπύρηνη ισχύς επεξεργαστή, απόκριση επεξεργαστή και νεότερη πλατφόρμα."
+    ],
+    "tradeoffs": [
+      "Κοστίζει 140,23€ παραπάνω από τη φθηνότερη επιλογή που καλύπτει όσα ζήτησες (Lenovo V15 G4 AMN, 508,77€).",
+      "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+      "Praxi: βαθμολογία καταστήματος 4,64/5 από 11 αξιολογήσεις; δηλωμένη διαθεσιμότητα «1–3 εργάσιμες ημέρες» (εκτίμηση καταστήματος)."
+    ],
+    "offer_summary": {
+      "postal_code": null,
+      "price_basis": "item_price",
+      "affordability": "within_item_budget_delivery_unknown",
+      "offer_scope": "returned_sample",
+      "delivery_affordability_proven": false,
+      "recommended": {
+        "offer_id": "bp_offer_222197092",
+        "merchant_id": "bp_merchant_8622",
+        "merchant_name": "Praxi",
+        "merchant_rating": 4.64,
+        "merchant_rating_count": 11,
+        "verified_merchant": true,
+        "certification_level": "gold",
+        "item_price": 649,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "delivery_1_3_days",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "1–3 εργάσιμες ημέρες",
+        "price_checked_at": "2026-10-12T09:13:21.540Z"
+      },
+      "cheapest": {
+        "offer_id": "bp_offer_222197092",
+        "merchant_id": "bp_merchant_8622",
+        "merchant_name": "Praxi",
+        "merchant_rating": 4.64,
+        "merchant_rating_count": 11,
+        "verified_merchant": true,
+        "certification_level": "gold",
+        "item_price": 649,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "delivery_1_3_days",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "1–3 εργάσιμες ημέρες",
+        "price_checked_at": "2026-10-12T09:13:21.540Z"
+      },
+      "same_offer": true,
+      "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+      "budget_eur": 700,
+      "recommended_within_budget": true,
+      "cheapest_within_budget": true,
+      "compared_offer_count": 10,
+      "unknown_shipping_count": 10
+    },
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_coverage_insufficient",
+      "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "compare",
+      "reason": "review_current_offers",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:13:21.133Z",
+        "source_observed_at": "2026-10-12T09:08:17.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 340,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 16,
+        "category_id": 2591,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2159215459",
+          "family": "laptops",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 16,
+              "claim_ids": ["claim_591604cdfc52d6f48e67765e"],
+              "source_ids": ["search_products:bp_2159215459:bp_2159215459"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 512,
+              "claim_ids": ["claim_488fd4d0f06ee1322a239cb2"],
+              "source_ids": ["search_products:bp_2159215459:bp_2159215459"]
+            },
+            {
+              "key": "cpu_model",
+              "unit": null,
+              "status": "known",
+              "value": "AMD Ryzen 5 7520U",
+              "claim_ids": ["claim_77e31c8ce3fddb5801bbfff8"],
+              "source_ids": ["search_products:bp_2159215459:bp_2159215459"]
+            },
+            {
+              "key": "operating_system",
+              "unit": null,
+              "status": "known",
+              "value": "FreeDOS",
+              "claim_ids": ["claim_b988a7d672a32ee2b2b3765c"],
+              "source_ids": ["search_products:bp_2159215459:bp_2159215459"]
+            },
+            {
+              "key": "dedicated_gpu",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_c539898eaebcd71848fb0705"],
+              "source_ids": ["search_products:bp_2159215459:bp_2159215459"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2164182852",
+          "family": "laptops",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 16,
+              "claim_ids": ["claim_68bfd1a3f9ed9217847f155a"],
+              "source_ids": ["search_products:bp_2164182852:bp_2164182852"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 512,
+              "claim_ids": ["claim_236377a4d19afe25e6c5795b"],
+              "source_ids": ["search_products:bp_2164182852:bp_2164182852"]
+            },
+            {
+              "key": "cpu_model",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "operating_system",
+              "unit": null,
+              "status": "known",
+              "value": "Windows 11",
+              "claim_ids": ["claim_455711d54eede7676a2c8c7e"],
+              "source_ids": ["search_products:bp_2164182852:bp_2164182852"]
+            },
+            {
+              "key": "dedicated_gpu",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_28338dc516bbb1ce536260f2"],
+              "source_ids": ["search_products:bp_2164182852:bp_2164182852"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2164347766",
+          "family": "laptops",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 16,
+              "claim_ids": ["claim_caefd7a93b0b701f620388b8"],
+              "source_ids": ["search_products:bp_2164347766:bp_2164347766"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 512,
+              "claim_ids": ["claim_dbf05a9f4732935672c05c40"],
+              "source_ids": ["search_products:bp_2164347766:bp_2164347766"]
+            },
+            {
+              "key": "cpu_model",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "operating_system",
+              "unit": null,
+              "status": "known",
+              "value": "Windows 11",
+              "claim_ids": ["claim_3d16f172e2a48b160226ccdd"],
+              "source_ids": ["search_products:bp_2164347766:bp_2164347766"]
+            },
+            {
+              "key": "dedicated_gpu",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_a180a77f5a8bb592fb7fa6bf"],
+              "source_ids": ["search_products:bp_2164347766:bp_2164347766"]
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2159215459",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 5,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 508.77,
+              "median": 529,
+              "maximum": 544.2,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2159215459:bp_offer_190491356",
+              "compare_offers:bp_2159215459:bp_offer_214115709",
+              "compare_offers:bp_2159215459:bp_offer_186840559"
+            ],
+            "source_count": 11,
+            "claim_count": 89
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2164182852",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 5,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 696,
+              "median": 737.5,
+              "maximum": 749,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2164182852:bp_offer_218385907",
+              "compare_offers:bp_2164182852:bp_offer_218680458",
+              "compare_offers:bp_2164182852:bp_offer_218421491"
+            ],
+            "source_count": 11,
+            "claim_count": 91
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2164347766",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 4,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 649,
+              "median": 682.915,
+              "maximum": 697.8,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2164347766:bp_offer_222197092",
+              "compare_offers:bp_2164347766:bp_offer_222206306",
+              "compare_offers:bp_2164347766:bp_offer_222202794"
+            ],
+            "source_count": 11,
+            "claim_count": 91
+          },
+          "history": {
+            "status": "available",
+            "basis": "daily_item_minimum",
+            "windows": [
+              {
+                "days": 30,
+                "minimum_price": 649,
+                "median_price": 649,
+                "observations": 27,
+                "coverage_pct": 90,
+                "claim_ids": [
+                  "claim_275aaf1185958d93eebec9c8",
+                  "claim_a55128874fd314c74f8bbe6e",
+                  "claim_c6eef4e45bab1674c0261127",
+                  "claim_caa6f1487366d7da8b4fcbe4"
+                ]
+              },
+              {
+                "days": 90,
+                "minimum_price": 649,
+                "median_price": 649,
+                "observations": 58,
+                "coverage_pct": 64.4,
+                "claim_ids": [
+                  "claim_5f14869c1bb4cd795b090fed",
+                  "claim_9ae62c291bd679f85e9c4132",
+                  "claim_da169abfa53a6134fb3c2593",
+                  "claim_fb9b3593b834bcb03443882f"
+                ]
+              },
+              {
+                "days": 180,
+                "minimum_price": 649,
+                "median_price": 649,
+                "observations": 58,
+                "coverage_pct": 32.2,
+                "claim_ids": [
+                  "claim_31378837912316691a6b5fdc",
+                  "claim_48bff3d6fc9a6d7f95d972cb",
+                  "claim_abc7e67b2ec5100c33d130d4",
+                  "claim_b2ab7521a15d7119204e0404"
+                ]
+              }
+            ],
+            "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+            "claim_ids": [
+              "claim_275aaf1185958d93eebec9c8",
+              "claim_31378837912316691a6b5fdc",
+              "claim_48bff3d6fc9a6d7f95d972cb",
+              "claim_5f14869c1bb4cd795b090fed",
+              "claim_9ae62c291bd679f85e9c4132",
+              "claim_a0db48f69dcf8ea095f104d4",
+              "claim_a55128874fd314c74f8bbe6e",
+              "claim_abc7e67b2ec5100c33d130d4",
+              "claim_b2ab7521a15d7119204e0404",
+              "claim_c6eef4e45bab1674c0261127",
+              "claim_caa6f1487366d7da8b4fcbe4",
+              "claim_d9e466f706892f938bf35228",
+              "claim_da169abfa53a6134fb3c2593",
+              "claim_fb9b3593b834bcb03443882f"
+            ]
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 339,
+      "omitted_source_count": 27,
+      "sources": [
+        {
+          "source_id": "compare_offers:bp_2159215459:bp_offer_186840559",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_186840559",
+          "product_id": "bp_2159215459",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.539Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2159215459:bp_offer_190491356",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_190491356",
+          "product_id": "bp_2159215459",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.539Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2159215459:bp_offer_214115709",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_214115709",
+          "product_id": "bp_2159215459",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.539Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164182852:bp_offer_218385907",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_218385907",
+          "product_id": "bp_2164182852",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.541Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164182852:bp_offer_218421491",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_218421491",
+          "product_id": "bp_2164182852",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.541Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164182852:bp_offer_218680458",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_218680458",
+          "product_id": "bp_2164182852",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.541Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164347766:bp_offer_222197092",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_222197092",
+          "product_id": "bp_2164347766",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.540Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164347766:bp_offer_222202794",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_222202794",
+          "product_id": "bp_2164347766",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.540Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164347766:bp_offer_222206306",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_222206306",
+          "product_id": "bp_2164347766",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:21.540Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_price_history:bp_2164347766:bp_2164347766",
+          "kind": "price_history",
+          "record_id": "bp_2164347766",
+          "product_id": "bp_2164347766",
+          "scope": "cluster",
+          "capability": "get_price_history",
+          "checked_at": "2026-10-12T09:13:21.543Z",
+          "source_observed_at": "2026-10-12T09:13:21.543Z",
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "search_products:bp_2159215459:bp_2159215459",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2159215459",
+          "product_id": "bp_2159215459",
+          "scope": "cluster",
+          "capability": "search_products",
+          "checked_at": "2026-10-12T09:13:21.133Z",
+          "source_observed_at": "2026-10-12T09:08:17.000Z",
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "search_products:bp_2164182852:bp_2164182852",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2164182852",
+          "product_id": "bp_2164182852",
+          "scope": "cluster",
+          "capability": "search_products",
+          "checked_at": "2026-10-12T09:13:21.133Z",
+          "source_observed_at": "2026-10-12T09:08:17.000Z",
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "search_products:bp_2164347766:bp_2164347766",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2164347766",
+          "product_id": "bp_2164347766",
+          "scope": "cluster",
+          "capability": "search_products",
+          "checked_at": "2026-10-12T09:13:21.133Z",
+          "source_observed_at": "2026-10-12T09:08:17.000Z",
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_236377a4d19afe25e6c5795b",
+          "product_id": "bp_2164182852",
+          "field": "attribute:storage_gb",
+          "value": 512,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2164182852:bp_2164182852"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_998e44eac9a8435c8fa3431f"]
+        },
+        {
+          "claim_id": "claim_275aaf1185958d93eebec9c8",
+          "product_id": "bp_2164347766",
+          "field": "history_30d_minimum_price",
+          "value": 649,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_28338dc516bbb1ce536260f2",
+          "product_id": "bp_2164182852",
+          "field": "attribute:dedicated_gpu",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2164182852:bp_2164182852"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_998e44eac9a8435c8fa3431f"]
+        },
+        {
+          "claim_id": "claim_31378837912316691a6b5fdc",
+          "product_id": "bp_2164347766",
+          "field": "history_180d_observations",
+          "value": 58,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_3d16f172e2a48b160226ccdd",
+          "product_id": "bp_2164347766",
+          "field": "attribute:operating_system",
+          "value": "Windows 11",
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2164347766:bp_2164347766"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_74015d452f56da0b7b825c8f"]
+        },
+        {
+          "claim_id": "claim_455711d54eede7676a2c8c7e",
+          "product_id": "bp_2164182852",
+          "field": "attribute:operating_system",
+          "value": "Windows 11",
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2164182852:bp_2164182852"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_998e44eac9a8435c8fa3431f"]
+        },
+        {
+          "claim_id": "claim_488fd4d0f06ee1322a239cb2",
+          "product_id": "bp_2159215459",
+          "field": "attribute:storage_gb",
+          "value": 512,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2159215459:bp_2159215459"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d1b0f9756ced0ec6c14d8821"]
+        },
+        {
+          "claim_id": "claim_48bff3d6fc9a6d7f95d972cb",
+          "product_id": "bp_2164347766",
+          "field": "history_180d_coverage_pct",
+          "value": 32.2,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_591604cdfc52d6f48e67765e",
+          "product_id": "bp_2159215459",
+          "field": "attribute:ram_gb",
+          "value": 16,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2159215459:bp_2159215459"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d1b0f9756ced0ec6c14d8821"]
+        },
+        {
+          "claim_id": "claim_5f14869c1bb4cd795b090fed",
+          "product_id": "bp_2164347766",
+          "field": "history_90d_median_price",
+          "value": 649,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_68bfd1a3f9ed9217847f155a",
+          "product_id": "bp_2164182852",
+          "field": "attribute:ram_gb",
+          "value": 16,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2164182852:bp_2164182852"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_998e44eac9a8435c8fa3431f"]
+        },
+        {
+          "claim_id": "claim_74015d452f56da0b7b825c8f",
+          "product_id": "bp_2164347766",
+          "field": "title",
+          "value": "Asus Vivobook 15 X1504MA-BQ173W (Core 5 320/16GB/512GB SSD/Intel Graphics/Windows 11)",
+          "kind": "observed",
+          "source_ids": ["search_products:bp_2164347766:bp_2164347766"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_77e31c8ce3fddb5801bbfff8",
+          "product_id": "bp_2159215459",
+          "field": "attribute:cpu_model",
+          "value": "AMD Ryzen 5 7520U",
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2159215459:bp_2159215459"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d1b0f9756ced0ec6c14d8821"]
+        },
+        {
+          "claim_id": "claim_998e44eac9a8435c8fa3431f",
+          "product_id": "bp_2164182852",
+          "field": "title",
+          "value": "MSI Modern 16S G3MG (Core 5 320/16GB/512GB SSD/Intel Graphics/Windows 11)",
+          "kind": "observed",
+          "source_ids": ["search_products:bp_2164182852:bp_2164182852"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_9ae62c291bd679f85e9c4132",
+          "product_id": "bp_2164347766",
+          "field": "history_90d_minimum_price",
+          "value": 649,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_a0db48f69dcf8ea095f104d4",
+          "product_id": "bp_2164347766",
+          "field": "current_price_source",
+          "value": "live_offer_minimum",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_a180a77f5a8bb592fb7fa6bf",
+          "product_id": "bp_2164347766",
+          "field": "attribute:dedicated_gpu",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2164347766:bp_2164347766"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_74015d452f56da0b7b825c8f"]
+        },
+        {
+          "claim_id": "claim_a55128874fd314c74f8bbe6e",
+          "product_id": "bp_2164347766",
+          "field": "history_30d_coverage_pct",
+          "value": 90,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_abc7e67b2ec5100c33d130d4",
+          "product_id": "bp_2164347766",
+          "field": "history_180d_minimum_price",
+          "value": 649,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_b2ab7521a15d7119204e0404",
+          "product_id": "bp_2164347766",
+          "field": "history_180d_median_price",
+          "value": 649,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_b988a7d672a32ee2b2b3765c",
+          "product_id": "bp_2159215459",
+          "field": "attribute:operating_system",
+          "value": "FreeDOS",
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2159215459:bp_2159215459"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d1b0f9756ced0ec6c14d8821"]
+        },
+        {
+          "claim_id": "claim_c539898eaebcd71848fb0705",
+          "product_id": "bp_2159215459",
+          "field": "attribute:dedicated_gpu",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2159215459:bp_2159215459"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d1b0f9756ced0ec6c14d8821"]
+        },
+        {
+          "claim_id": "claim_c6eef4e45bab1674c0261127",
+          "product_id": "bp_2164347766",
+          "field": "history_30d_observations",
+          "value": 27,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_caa6f1487366d7da8b4fcbe4",
+          "product_id": "bp_2164347766",
+          "field": "history_30d_median_price",
+          "value": 649,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_caefd7a93b0b701f620388b8",
+          "product_id": "bp_2164347766",
+          "field": "attribute:ram_gb",
+          "value": 16,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2164347766:bp_2164347766"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_74015d452f56da0b7b825c8f"]
+        },
+        {
+          "claim_id": "claim_d1b0f9756ced0ec6c14d8821",
+          "product_id": "bp_2159215459",
+          "field": "title",
+          "value": "Lenovo V15 G4 AMN (Ryzen 5-7520U/16GB/512GB SSD/Radeon Graphics/FreeDos)",
+          "kind": "observed",
+          "source_ids": ["search_products:bp_2159215459:bp_2159215459"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_d9e466f706892f938bf35228",
+          "product_id": "bp_2164347766",
+          "field": "history_status",
+          "value": "available",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_da169abfa53a6134fb3c2593",
+          "product_id": "bp_2164347766",
+          "field": "history_90d_observations",
+          "value": 58,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_dbf05a9f4732935672c05c40",
+          "product_id": "bp_2164347766",
+          "field": "attribute:storage_gb",
+          "value": 512,
+          "kind": "derived",
+          "source_ids": ["search_products:bp_2164347766:bp_2164347766"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_74015d452f56da0b7b825c8f"]
+        },
+        {
+          "claim_id": "claim_fb9b3593b834bcb03443882f",
+          "product_id": "bp_2164347766",
+          "field": "history_90d_coverage_pct",
+          "value": 64.4,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2164347766:bp_2164347766"],
+          "validation": "deterministic_history_aggregation"
+        }
+      ]
+    },
+    "uncertainty": [
+      {
+        "code": "ranking_calibration",
+        "product_id": "bp_2164347766",
+        "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+      },
+      {
+        "code": "landed_cost_unknown",
+        "product_id": "bp_2164347766",
+        "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+      },
+      {
+        "code": "history_coverage_insufficient",
+        "product_id": "bp_2164347766",
+        "message": "Οι διαθέσιμες καταγραφές δεν καλύπτουν αρκετές ημέρες για αξιόπιστη σύγκριση τιμής."
+      }
+    ]
+  },
+  "metrics": {
+    "claims": 30,
+    "sources": 13,
+    "structured_bytes": 31455,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 16,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:13:21.133Z",
+        "source_observed_at": "2026-10-12T09:08:17.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 340,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 16,
+        "category_id": 2591,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 1106
+}

@@ -1,0 +1,1593 @@
+{
+  "started_at": "2026-10-12T09:12:45.322Z",
+  "expected_revision": "979987837e73b3b364234855508974bdbd77746b",
+  "scope": "anonymous public get_shopping_decision only; no links opened or account/Ask writes",
+  "cases": [
+    {
+      "id": "phone_ois_relaxed400",
+      "message": "Θέλω κινητό έως 400 ευρώ με υποχρεωτικό OIS. Διόρθωση: το OIS είναι προαιρετικό, μόνο το NFC είναι υποχρεωτικό.",
+      "expectation": {
+        "outcome": "recommendation",
+        "flags": ["nfc"],
+        "budget": 400
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:12:45.364Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 55824,
+      "metrics": {
+        "claims": 50,
+        "sources": 13,
+        "structured_bytes": 38011,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 35,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:12:46.303Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 337,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 4111,
+      "response_receipt": "final-cases/phone_ois_relaxed400.json"
+    },
+    {
+      "id": "control_nfc150",
+      "message": "Θέλω κινητό έως 150 ευρώ με υποχρεωτικό NFC.",
+      "expectation": {
+        "flags": ["nfc"],
+        "budget": 150,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:12:49.479Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 61537,
+      "metrics": {
+        "claims": 64,
+        "sources": 14,
+        "structured_bytes": 43284,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 40,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:12:50.874Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 31,
+            "candidate_count": 31,
+            "eligible_count": 31,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 4284,
+      "response_receipt": "final-cases/control_nfc150.json"
+    },
+    {
+      "id": "control_capacity_units",
+      "message": "Θέλω air fryer από 4,5 έως 5 λίτρα μέχρι 120 ευρώ.",
+      "expectation": {
+        "capacity": [4.5, 5],
+        "budget": 120,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:12:53.764Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 50841,
+      "metrics": {
+        "claims": 27,
+        "sources": 7,
+        "structured_bytes": 22665,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 2,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:12:54.242Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 2,
+            "candidate_count": 2,
+            "eligible_count": 2,
+            "returned_count": 2,
+            "category_id": 8535,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1041,
+      "response_receipt": "final-cases/control_capacity_units.json"
+    },
+    {
+      "id": "control_ram",
+      "message": "Θέλω laptop έως 800 ευρώ με από 8 έως 16GB RAM.",
+      "expectation": {
+        "numeric": ["ram_gb", 8, 16],
+        "budget": 800,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:12:54.807Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 69497,
+      "metrics": {
+        "claims": 31,
+        "sources": 13,
+        "structured_bytes": 31507,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 48,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:12:55.141Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 455,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 48,
+            "category_id": 2591,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1899,
+      "response_receipt": "final-cases/control_ram.json"
+    },
+    {
+      "id": "control_storage",
+      "message": "Θέλω κινητό έως 400 ευρώ με τουλάχιστον 128GB αποθηκευτικό χώρο.",
+      "expectation": {
+        "numeric": ["storage_gb", 128, "unbounded"],
+        "budget": 400,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:12:56.708Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 56271,
+      "metrics": {
+        "claims": 50,
+        "sources": 13,
+        "structured_bytes": 37980,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 13,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:12:56.845Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 767,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 2079,
+      "response_receipt": "final-cases/control_storage.json"
+    },
+    {
+      "id": "control_optional",
+      "message": "Θέλω κινητό έως 150 ευρώ με υποχρεωτικό NFC. Το OIS είναι προαιρετικό.",
+      "expectation": {
+        "flags": ["nfc"],
+        "budget": 150,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:12:58.788Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 61549,
+      "metrics": {
+        "claims": 64,
+        "sources": 14,
+        "structured_bytes": 43288,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 40,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:12:58.917Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 31,
+            "candidate_count": 31,
+            "eligible_count": 31,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1769,
+      "response_receipt": "final-cases/control_optional.json"
+    },
+    {
+      "id": "phone_nfc",
+      "message": "Θέλω κινητό έως 400 ευρώ με υποχρεωτικό NFC.",
+      "expectation": {
+        "flags": ["nfc"],
+        "budget": 400,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:00.560Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 55818,
+      "metrics": {
+        "claims": 50,
+        "sources": 13,
+        "structured_bytes": 38009,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 35,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:00.642Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 337,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1591,
+      "response_receipt": "final-cases/phone_nfc.json"
+    },
+    {
+      "id": "phone_5g",
+      "message": "Θέλω κινητό έως 300 ευρώ με υποχρεωτικό 5G.",
+      "expectation": {
+        "flags": ["network_5g"],
+        "budget": 300,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:02.154Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 56258,
+      "metrics": {
+        "claims": 50,
+        "sources": 13,
+        "structured_bytes": 38220,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 15,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:02.982Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 149,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 3455,
+      "response_receipt": "final-cases/phone_5g.json"
+    },
+    {
+      "id": "phone_ois",
+      "message": "Θέλω κινητό έως 500 ευρώ με υποχρεωτικό OIS.",
+      "expectation": {
+        "flags": ["ois"],
+        "budget": 500,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:05.613Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 59022,
+      "metrics": {
+        "claims": 56,
+        "sources": 13,
+        "structured_bytes": 40571,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 30,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:05.883Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 953,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1730,
+      "response_receipt": "final-cases/phone_ois.json"
+    },
+    {
+      "id": "phone_triple",
+      "message": "Θέλω κινητό έως 500 ευρώ με υποχρεωτικά 5G, NFC και OIS.",
+      "expectation": {
+        "flags": ["network_5g", "nfc", "ois"],
+        "budget": 500,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:07.347Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 45861,
+      "metrics": {
+        "claims": 28,
+        "sources": 5,
+        "structured_bytes": 20046,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 34,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:07.445Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 247,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1686,
+      "response_receipt": "final-cases/phone_triple.json"
+    },
+    {
+      "id": "phone_optional",
+      "message": "Θέλω κινητό έως 400 ευρώ με υποχρεωτικό NFC. Το OIS και το 5G είναι προαιρετικά.",
+      "expectation": {
+        "flags": ["nfc"],
+        "budget": 400,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:09.035Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 55865,
+      "metrics": {
+        "claims": 50,
+        "sources": 13,
+        "structured_bytes": 38027,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 35,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:09.294Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 337,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1877,
+      "response_receipt": "final-cases/phone_optional.json"
+    },
+    {
+      "id": "phone_english",
+      "message": "I need a phone under 500 euros. NFC, 5G and OIS are mandatory and must be confirmed.",
+      "expectation": {
+        "flags": ["nfc", "network_5g", "ois"],
+        "budget": 500,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:10.917Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 59505,
+      "metrics": {
+        "claims": 56,
+        "sources": 13,
+        "structured_bytes": 40791,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 20,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:11.013Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 247,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1496,
+      "response_receipt": "final-cases/phone_english.json"
+    },
+    {
+      "id": "phone_unknown_exact",
+      "message": "Θέλω συγκεκριμένα Oukitel C26 μόνο με επιβεβαιωμένο NFC και OIS. Μην προτείνεις άλλο μοντέλο.",
+      "expectation": {
+        "outcome": "no_match"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:12.415Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 8544,
+      "metrics": {
+        "claims": 0,
+        "sources": 0,
+        "structured_bytes": 3112,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 1,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:12.558Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1,
+            "candidate_count": 1,
+            "eligible_count": 1,
+            "returned_count": 1,
+            "category_id": 806,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1501,
+      "response_receipt": "final-cases/phone_unknown_exact.json"
+    },
+    {
+      "id": "phone_ois_relaxed",
+      "message": "Θέλω κινητό έως 150 ευρώ με υποχρεωτικό OIS. Διόρθωση: το OIS είναι προαιρετικό, μόνο το NFC είναι υποχρεωτικό.",
+      "expectation": {
+        "flags": ["nfc"],
+        "budget": 150,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:13.920Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 61549,
+      "metrics": {
+        "claims": 64,
+        "sources": 14,
+        "structured_bytes": 43288,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 40,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:14.697Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 31,
+            "candidate_count": 31,
+            "eligible_count": 31,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 2883,
+      "response_receipt": "final-cases/phone_ois_relaxed.json"
+    },
+    {
+      "id": "budget_down",
+      "message": "Θέλω κινητό έως 500 ευρώ. Διόρθωση: έως 200 ευρώ.",
+      "expectation": {
+        "budget": 200,
+        "maxConstraint": 200,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:16.806Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 63270,
+      "metrics": {
+        "claims": 22,
+        "sources": 13,
+        "structured_bytes": 28392,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:16.892Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 570,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1371,
+      "response_receipt": "final-cases/budget_down.json"
+    },
+    {
+      "id": "budget_up",
+      "message": "Θέλω κινητό έως 100 ευρώ. Διόρθωση: έως 400 ευρώ με υποχρεωτικό NFC.",
+      "expectation": {
+        "flags": ["nfc"],
+        "budget": 400,
+        "maxConstraint": 400,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:18.188Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 55818,
+      "metrics": {
+        "claims": 50,
+        "sources": 13,
+        "structured_bytes": 38009,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 35,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:18.238Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 337,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1236,
+      "response_receipt": "final-cases/budget_up.json"
+    },
+    {
+      "id": "budget_multiple",
+      "message": "Θέλω κινητό έως 500 ευρώ. Διόρθωση: έως 300 ευρώ. Τελικά έως 200 ευρώ.",
+      "expectation": {
+        "budget": 200,
+        "maxConstraint": 200,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:19.428Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 63270,
+      "metrics": {
+        "claims": 22,
+        "sources": 13,
+        "structured_bytes": 28392,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:19.524Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 570,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1610,
+      "response_receipt": "final-cases/budget_multiple.json"
+    },
+    {
+      "id": "budget_conflict_corrected",
+      "message": "Θέλω laptop από 800 έως 500 ευρώ. Διόρθωση: από 500 έως 700 ευρώ.",
+      "expectation": {
+        "budget": 700,
+        "minConstraint": 500,
+        "maxConstraint": 700,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:21.044Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 69363,
+      "metrics": {
+        "claims": 30,
+        "sources": 13,
+        "structured_bytes": 31455,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 16,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:21.133Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 340,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 16,
+            "category_id": 2591,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1106,
+      "response_receipt": "final-cases/budget_conflict_corrected.json"
+    },
+    {
+      "id": "capacity_reverse",
+      "message": "Θέλω air fryer 4 λίτρα έως 120 ευρώ. Διόρθωση: μόνο από 6 έως 7 λίτρα.",
+      "expectation": {
+        "capacity": [6, 7],
+        "budget": 120,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:22.154Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 69989,
+      "metrics": {
+        "claims": 36,
+        "sources": 13,
+        "structured_bytes": 31628,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 8,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:22.374Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 39,
+            "candidate_count": 37,
+            "eligible_count": 37,
+            "returned_count": 8,
+            "category_id": 8535,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1584,
+      "response_receipt": "final-cases/capacity_reverse.json"
+    },
+    {
+      "id": "capacity_multiple",
+      "message": "Θέλω air fryer 6 λίτρα έως 120 ευρώ. Διόρθωση: 4 λίτρα. Τελικά από 4,5 έως 5 λίτρα.",
+      "expectation": {
+        "capacity": [4.5, 5],
+        "budget": 120,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:23.742Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 50833,
+      "metrics": {
+        "claims": 27,
+        "sources": 7,
+        "structured_bytes": 22661,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 2,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:23.902Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 2,
+            "candidate_count": 2,
+            "eligible_count": 2,
+            "returned_count": 2,
+            "category_id": 8535,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 445,
+      "response_receipt": "final-cases/capacity_multiple.json"
+    },
+    {
+      "id": "capacity_units",
+      "message": "Θέλω air fryer από 4.5L έως 5L μέχρι 120 ευρώ.",
+      "expectation": {
+        "capacity": [4.5, 5],
+        "budget": 120,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:24.199Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 50841,
+      "metrics": {
+        "claims": 27,
+        "sources": 7,
+        "structured_bytes": 22665,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 2,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:24.366Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 2,
+            "candidate_count": 2,
+            "eligible_count": 2,
+            "returned_count": 2,
+            "category_id": 8535,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 485,
+      "response_receipt": "final-cases/capacity_units.json"
+    },
+    {
+      "id": "capacity_conflict_corrected",
+      "message": "Θέλω air fryer τουλάχιστον 6 λίτρα και το πολύ 5 λίτρα. Διόρθωση: από 4 έως 5 λίτρα μέχρι 120 ευρώ.",
+      "expectation": {
+        "capacity": [4, 5],
+        "budget": 120,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:24.689Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 69889,
+      "metrics": {
+        "claims": 36,
+        "sources": 13,
+        "structured_bytes": 31581,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 8,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:24.816Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 36,
+            "candidate_count": 35,
+            "eligible_count": 35,
+            "returned_count": 8,
+            "category_id": 8535,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1186,
+      "response_receipt": "final-cases/capacity_conflict_corrected.json"
+    },
+    {
+      "id": "ram_correction",
+      "message": "Θέλω laptop έως 800 ευρώ με τουλάχιστον 32GB RAM. Διόρθωση: μόνο από 8 έως 16GB RAM.",
+      "expectation": {
+        "numeric": ["ram_gb", 8, 16],
+        "budget": 800,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:25.878Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 69497,
+      "metrics": {
+        "claims": 31,
+        "sources": 13,
+        "structured_bytes": 31507,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 48,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:26.186Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 455,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 48,
+            "category_id": 2591,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1483,
+      "response_receipt": "final-cases/ram_correction.json"
+    },
+    {
+      "id": "storage_correction",
+      "message": "Θέλω κινητό έως 400 ευρώ με τουλάχιστον 512GB αποθηκευτικό χώρο. Διόρθωση: τουλάχιστον 128GB αποθηκευτικό χώρο.",
+      "expectation": {
+        "numeric": ["storage_gb", 128, "unbounded"],
+        "budget": 400,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:27.366Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 56271,
+      "metrics": {
+        "claims": 50,
+        "sources": 13,
+        "structured_bytes": 37980,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 13,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:27.471Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 767,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1758,
+      "response_receipt": "final-cases/storage_correction.json"
+    },
+    {
+      "id": "brand_correction",
+      "message": "Θέλω κινητό Samsung έως 400 ευρώ. Διόρθωση: όχι Samsung, οποιαδήποτε άλλη μάρκα.",
+      "expectation": {
+        "exclude": "samsung",
+        "budget": 400,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:29.131Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 55683,
+      "metrics": {
+        "claims": 46,
+        "sources": 14,
+        "structured_bytes": 37122,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 48,
+          "complete_catalog": false,
+          "search_calls": 3,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:29.271Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 864,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 48,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1867,
+      "response_receipt": "final-cases/brand_correction.json"
+    },
+    {
+      "id": "budget_contradiction",
+      "message": "Θέλω κινητό τουλάχιστον 600 ευρώ και το πολύ 400 ευρώ.",
+      "expectation": {
+        "outcome": "clarification",
+        "zeroSearch": true
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:31.005Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 8212,
+      "metrics": {
+        "claims": 0,
+        "sources": 0,
+        "structured_bytes": 3012,
+        "retrieval": {
+          "scope": "not_searched",
+          "candidate_count": 0,
+          "complete_catalog": false,
+          "search_calls": 0,
+          "receipt": null
+        }
+      },
+      "elapsed_ms": 215,
+      "response_receipt": "final-cases/budget_contradiction.json"
+    },
+    {
+      "id": "headphone_anc",
+      "message": "Θέλω ακουστικά έως 150 ευρώ με υποχρεωτικό ANC.",
+      "expectation": {
+        "flags": ["active_noise_cancellation"],
+        "budget": 150,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:31.229Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 53948,
+      "metrics": {
+        "claims": 42,
+        "sources": 13,
+        "structured_bytes": 35555,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 8,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:31.357Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 659,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1661,
+      "response_receipt": "final-cases/headphone_anc.json"
+    },
+    {
+      "id": "fryer_dual",
+      "message": "Θέλω air fryer έως 150 ευρώ με υποχρεωτικά διπλό κάδο.",
+      "expectation": {
+        "flags": ["dual_basket"],
+        "budget": 150,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:32.893Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 69467,
+      "metrics": {
+        "claims": 36,
+        "sources": 13,
+        "structured_bytes": 31616,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 8,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:33.137Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 129,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1460,
+      "response_receipt": "final-cases/fryer_dual.json"
+    },
+    {
+      "id": "monitor_refresh",
+      "message": "Θέλω monitor έως 250 ευρώ με τουλάχιστον 144Hz.",
+      "expectation": {
+        "numeric": ["refresh_rate_hz", 144, "unbounded"],
+        "budget": 250,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:34.358Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 68807,
+      "metrics": {
+        "claims": 31,
+        "sources": 13,
+        "structured_bytes": 31028,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 48,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:34.429Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 117,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 48,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1321,
+      "response_receipt": "final-cases/monitor_refresh.json"
+    },
+    {
+      "id": "laptop_ram",
+      "message": "Θέλω laptop έως 700 ευρώ με τουλάχιστον 16GB RAM.",
+      "expectation": {
+        "numeric": ["ram_gb", 16, "unbounded"],
+        "budget": 700,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:35.684Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 51348,
+      "metrics": {
+        "claims": 35,
+        "sources": 13,
+        "structured_bytes": 33103,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 48,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:35.731Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 340,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 48,
+            "category_id": 2591,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1040,
+      "response_receipt": "final-cases/laptop_ram.json"
+    },
+    {
+      "id": "fridge_nofrost",
+      "message": "Θέλω ψυγείο έως 700 ευρώ με υποχρεωτικό No Frost.",
+      "expectation": {
+        "flags": ["no_frost"],
+        "budget": 700,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "summary",
+      "started_at": "2026-10-12T09:13:36.730Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 71490,
+      "metrics": {
+        "claims": 36,
+        "sources": 13,
+        "structured_bytes": 32296,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 8,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:36.891Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 1400,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 8,
+            "category_id": 2485,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1056,
+      "response_receipt": "final-cases/fridge_nofrost.json"
+    },
+    {
+      "id": "dense_phone_nfc",
+      "message": "Θέλω κινητό έως 400€ με υποχρεωτικό NFC και, προαιρετικά, eSIM ή ασύρματη φόρτιση.",
+      "expectation": {
+        "flags": ["nfc"],
+        "budget": 400,
+        "full": true,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T09:13:37.796Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 202803,
+      "metrics": {
+        "claims": 520,
+        "sources": 44,
+        "structured_bytes": 185362,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 35,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:37.926Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 337,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 4005,
+      "response_receipt": "final-cases/dense_phone_nfc.json"
+    },
+    {
+      "id": "dense_phone_triple",
+      "message": "Θέλω κινητό έως 500€ με υποχρεωτικά 5G, NFC και οπτική σταθεροποίηση εικόνας (OIS). Μην προτείνεις τίποτα αν κάποιο από αυτά δεν είναι επιβεβαιωμένο.",
+      "expectation": {
+        "flags": ["nfc", "network_5g", "ois"],
+        "budget": 500,
+        "full": true,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T09:13:41.807Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 84433,
+      "metrics": {
+        "claims": 193,
+        "sources": 16,
+        "structured_bytes": 72407,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 38,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:42.044Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 247,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 20,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1217,
+      "response_receipt": "final-cases/dense_phone_triple.json"
+    },
+    {
+      "id": "dense_laptop",
+      "message": "Θέλω laptop έως 900 ευρώ με 16GB RAM και Windows.",
+      "expectation": {
+        "numeric": ["ram_gb", 16, "unbounded"],
+        "budget": 900,
+        "full": true,
+        "outcome": "recommendation"
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T09:13:43.035Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 161642,
+      "metrics": {
+        "claims": 397,
+        "sources": 41,
+        "structured_bytes": 143530,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 48,
+          "complete_catalog": false,
+          "search_calls": 1,
+          "receipt": {
+            "version": "bestprice_retrieval_v1",
+            "policy": "single_catalog_page_v1",
+            "backend": "n.products.search",
+            "checked_at": "2026-10-12T09:13:43.291Z",
+            "source_observed_at": "2026-10-12T09:08:17.000Z",
+            "search_calls": 1,
+            "trinity_calls": 1,
+            "page": 1,
+            "page_size": 48,
+            "catalog_total": 479,
+            "candidate_count": 48,
+            "eligible_count": 48,
+            "returned_count": 48,
+            "category_id": null,
+            "protected_term_mismatch": false,
+            "ranking_scope": "returned_page"
+          }
+        }
+      },
+      "elapsed_ms": 1776,
+      "response_receipt": "final-cases/dense_laptop.json"
+    },
+    {
+      "id": "dense_comparison",
+      "message": "Σύγκρινε Samsung Galaxy A56 και Xiaomi Redmi Note 14 Pro με υποχρεωτικά NFC και OIS, έως 500 ευρώ.",
+      "expectation": {
+        "full": true,
+        "outcome": "comparison",
+        "names": ["Samsung Galaxy A56", "Xiaomi Redmi Note 14 Pro"]
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T09:13:44.818Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 117068,
+      "metrics": {
+        "claims": 263,
+        "sources": 17,
+        "structured_bytes": 100162,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 2,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": null
+        }
+      },
+      "elapsed_ms": 2425,
+      "response_receipt": "final-cases/dense_comparison.json"
+    },
+    {
+      "id": "comparison_impossible",
+      "message": "Σύγκρινε Oukitel C26 και Nokia 105. Θέλω οπωσδήποτε OIS και 5G, μόνο αν είναι επιβεβαιωμένα.",
+      "expectation": {
+        "outcome": "comparison",
+        "status": "no_match",
+        "noRecommendation": true,
+        "full": true
+      },
+      "evidence_detail": "full",
+      "started_at": "2026-10-12T09:13:47.253Z",
+      "passed": true,
+      "revision": "979987837e73b3b364234855508974bdbd77746b",
+      "transport_bytes": 47667,
+      "metrics": {
+        "claims": 84,
+        "sources": 2,
+        "structured_bytes": 36344,
+        "retrieval": {
+          "scope": "returned_page",
+          "candidate_count": 2,
+          "complete_catalog": false,
+          "search_calls": 2,
+          "receipt": null
+        }
+      },
+      "elapsed_ms": 3108,
+      "response_receipt": "final-cases/comparison_impossible.json"
+    }
+  ],
+  "start_health": {
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "header": "979987837e73b3b364234855508974bdbd77746b",
+    "version": "1.8.4"
+  },
+  "end_health": {
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "header": "979987837e73b3b364234855508974bdbd77746b",
+    "version": "1.8.4"
+  },
+  "finished_at": "2026-10-12T09:13:50.383Z",
+  "passed_count": 36,
+  "case_count": 36,
+  "storage_note": "Responses are split by case to keep every source file within the repository formatter limit; no response fields were discarded."
+}

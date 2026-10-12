@@ -1,0 +1,1647 @@
+{
+  "id": "comparison_impossible",
+  "message": "Σύγκρινε Oukitel C26 και Nokia 105. Θέλω οπωσδήποτε OIS και 5G, μόνο αν είναι επιβεβαιωμένα.",
+  "expectation": {
+    "outcome": "no_match",
+    "full": true
+  },
+  "evidence_detail": "full",
+  "started_at": "2026-10-12T08:47:56.968Z",
+  "passed": false,
+  "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+  "transport_bytes": 47667,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T08:48:02.519Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "3fb0febe-d6df-41e6-babf-423a5c57d7a5",
+      "evidence_fingerprint": "c8eb412230a3e002f6ddafb986cce6e496d6fe1b6b2e58b1c4d5c5211de75a54"
+    },
+    "outcome": "comparison",
+    "status": "no_match",
+    "answer": "Κανένα από τα συγκρινόμενα προϊόντα δεν έχει επιβεβαιωθεί ότι καλύπτει όλα τα υποχρεωτικά κριτήρια. Δεν προτείνω αγορά κάποιου από αυτά.",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [
+      {
+        "product_id": "bp_2164570012",
+        "title": "Oukitel C26 6GB 128GB",
+        "brand": "Oukitel",
+        "category_title": "Κινητά",
+        "price_from": 141.42,
+        "decision_id": "d1.b37a46991c6332376dc08d34ef76e7c2.k0QMfHyMNUz-n4B3aEXB_Cb55lRMHlp7VltjHNREZcg",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2160411933",
+        "title": "Nokia 105 2024 Dual",
+        "brand": "Nokia",
+        "category_title": "Κινητά",
+        "price_from": 22.8,
+        "decision_id": "d1.0cdc09fbd789f3dbaea1613fee0da04d.0BjItrGWYogHA0Um5-pCgSAiPBdhMws9HSHtjkPRzZw",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": null,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "catalog_requirements": ["οπτική σταθεροποίηση εικόνας (OIS)", "5G"],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": null,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [],
+        "conflicts": []
+      }
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": {
+      "comparison_type": "specifications",
+      "evaluation": "no_eligible_compared_product",
+      "products": [
+        {
+          "product_id": "bp_2164570012",
+          "badges": ["Διαθέσιμο"],
+          "delivered_offer": null
+        },
+        {
+          "product_id": "bp_2160411933",
+          "badges": ["Χαμηλότερη αρχική τιμή", "Διαθέσιμο"],
+          "delivered_offer": null
+        }
+      ],
+      "feature_rows": [
+        {
+          "id": 1991,
+          "label": "Τύπος Κινητού",
+          "group": "Κινητό",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "Smartphones"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "Απλής Χρήσης"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 1173,
+          "label": "Δίκτυο Σύνδεσης",
+          "group": "Δικτύωση",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "4G"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "2G"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 4641,
+          "label": "Συνδεσιμότητα",
+          "group": "Συνδεσιμότητα",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "Bluetooth, WiFi, USB-C, 3.5mm Jack"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "Bluetooth, Micro USB"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 38,
+          "label": "Μέγεθος Οθόνης",
+          "group": "Οθόνη",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "6.63 \""
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "2 \""
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 431,
+          "label": "Χωρητικότητα Μπαταρίας",
+          "group": "Μπαταρία",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "5150 mAh"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "1000 mAh"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 17,
+          "label": "Λειτουργικό Σύστημα",
+          "group": "Λογισμικό",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "Android"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "N / A"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 2797,
+          "label": "Αριθμός Πίσω Καμερών",
+          "group": "Κάμερα",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "1"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "Χωρίς Κάμερα"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 1172,
+          "label": "Χειρισμός",
+          "group": "Οθόνη",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "Οθόνη Αφής"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "Πληκτρολόγιο"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 440,
+          "label": "Selfie Κάμερα",
+          "group": "Selfie Κάμερα",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "Ναι"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "Όχι"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 2717,
+          "label": "Για Ηλικιωμένους",
+          "group": null,
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "Όχι"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "Ναι"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 2793,
+          "label": "Γρήγορη Φόρτιση",
+          "group": "Μπαταρία",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "Ναι"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "Όχι"
+            }
+          ],
+          "differs": true
+        },
+        {
+          "id": 1978,
+          "label": "Τύπος Οθόνης",
+          "group": "Οθόνη",
+          "values": [
+            {
+              "product_id": "bp_2164570012",
+              "value": "IPS LCD"
+            },
+            {
+              "product_id": "bp_2160411933",
+              "value": "TFT LCD"
+            }
+          ],
+          "differs": true
+        }
+      ],
+      "price_spread_eur": 118.62,
+      "postal_code": null,
+      "warnings": [],
+      "as_of": "2026-10-12T08:47:59.164Z"
+    },
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "no_eligible_compared_product",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 2,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": null
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2160411933",
+          "family": "phones",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "LCD",
+              "claim_ids": ["claim_6bf9ae2d8b4e238e98c357a7"],
+              "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_eff92fbb94ac80f5b4162a7f"],
+              "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2164570012",
+          "family": "phones",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 6,
+              "claim_ids": ["claim_0573692ea26bfc9ca54462fc"],
+              "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 128,
+              "claim_ids": ["claim_5ea3dc29218d81b610f573c6"],
+              "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_eadb5be82abd656196de4690"],
+              "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "unknown",
+              "value": null,
+              "claim_ids": [],
+              "source_ids": []
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "IPS",
+              "claim_ids": ["claim_52d2f8d804227af899f4c684"],
+              "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_550a41cf6cb7fde06dbd9bec"],
+              "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"]
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2160411933",
+          "offers": {
+            "status": "not_checked",
+            "scope": "bounded_returned_offers",
+            "offer_count": 0,
+            "merchant_count": 0,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 0
+            },
+            "item_price": null,
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2164570012",
+          "offers": {
+            "status": "not_checked",
+            "scope": "bounded_returned_offers",
+            "offer_count": 0,
+            "merchant_count": 0,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 0
+            },
+            "item_price": null,
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "sources": [
+        {
+          "source_id": "get_product_details:bp_2160411933:bp_2160411933",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2160411933",
+          "product_id": "bp_2160411933",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T08:47:59.164Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2164570012:bp_2164570012",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2164570012",
+          "product_id": "bp_2164570012",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T08:47:59.164Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_0327c05e7f5f6a51470cc74a",
+          "product_id": "bp_2160411933",
+          "field": "feature:431",
+          "value": "1000 mAh",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 431,
+            "label": "Χωρητικότητα Μπαταρίας",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_040142b8d756249ba4edea11",
+          "product_id": "bp_2164570012",
+          "field": "feature:440",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 440,
+            "label": "Selfie Κάμερα",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_0573692ea26bfc9ca54462fc",
+          "product_id": "bp_2164570012",
+          "field": "attribute:ram_gb",
+          "value": 6,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_b3d490db1aaea83462e75e3b"]
+        },
+        {
+          "claim_id": "claim_07ed5b915e935446ae80059d",
+          "product_id": "bp_2164570012",
+          "field": "feature:133",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 133,
+            "label": "Ενσωματωμένο Flash",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_0a2369b86aadda2778b882ae",
+          "product_id": "bp_2164570012",
+          "field": "feature:389",
+          "value": "Unisoc T615",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 389,
+            "label": "Τύπος Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_0ba93362fea6e312e24ff3bb",
+          "product_id": "bp_2160411933",
+          "field": "feature:38",
+          "value": "2 \"",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 38,
+            "label": "Μέγεθος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_0d6c3a0c0c2df39bfe6859e6",
+          "product_id": "bp_2160411933",
+          "field": "feature:1980",
+          "value": "Dual",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1980,
+            "label": "Τύπος SIM",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_10f133b123e8c5a0f8f8efd6",
+          "product_id": "bp_2164570012",
+          "field": "feature:630",
+          "value": "5 MP",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 630,
+            "label": "Ανάλυση Selfie Κάμερας",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_16ead23a7b1126585de273aa",
+          "product_id": "bp_2160411933",
+          "field": "feature:4641",
+          "value": "Bluetooth, Micro USB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4641,
+            "label": "Συνδεσιμότητα",
+            "group": "Συνδεσιμότητα"
+          }
+        },
+        {
+          "claim_id": "claim_187c596dbe9787a17a269ed5",
+          "product_id": "bp_2164570012",
+          "field": "feature:50",
+          "value": "185 gr",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 50,
+            "label": "Βάρος",
+            "group": "Διαστάσεις"
+          }
+        },
+        {
+          "claim_id": "claim_234e190639a461721fdb4e8e",
+          "product_id": "bp_2160411933",
+          "field": "price_from",
+          "value": 22.8,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_23ffd904732c4c3fa679bb3d",
+          "product_id": "bp_2164570012",
+          "field": "feature:2798",
+          "value": "1",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2798,
+            "label": "Αριθμός Selfie Καμερών",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_27054ebcb2f0445847911dde",
+          "product_id": "bp_2160411933",
+          "field": "feature:1172",
+          "value": "Πληκτρολόγιο",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1172,
+            "label": "Χειρισμός",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_28aabbe40662bb13a7165cd9",
+          "product_id": "bp_2160411933",
+          "field": "feature:1448",
+          "value": "2024",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1448,
+            "label": "Έτος Κυκλοφορίας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_29651923bdc87560ef4b43e6",
+          "product_id": "bp_2160411933",
+          "field": "feature:1978",
+          "value": "TFT LCD",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1978,
+            "label": "Τύπος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_2b7f457d5afff654ce0a2419",
+          "product_id": "bp_2164570012",
+          "field": "feature:1982",
+          "value": "1.6 GHz",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1982,
+            "label": "Ταχύτητα Δεύτερου Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_2beea57da09e0979f289fd54",
+          "product_id": "bp_2164570012",
+          "field": "feature:17",
+          "value": "Android",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 17,
+            "label": "Λειτουργικό Σύστημα",
+            "group": "Λογισμικό"
+          }
+        },
+        {
+          "claim_id": "claim_2ebf6e133133cf32bf4ff9fd",
+          "product_id": "bp_2160411933",
+          "field": "feature:17",
+          "value": "N / A",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 17,
+            "label": "Λειτουργικό Σύστημα",
+            "group": "Λογισμικό"
+          }
+        },
+        {
+          "claim_id": "claim_36a3d75ae69846949d1a1e2d",
+          "product_id": "bp_2160411933",
+          "field": "feature:4640",
+          "value": "Ανθεκτικά στο Νερό",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4640,
+            "label": "Προστασία",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_36cee63b39b02346787bff11",
+          "product_id": "bp_2164570012",
+          "field": "feature:1980",
+          "value": "Dual",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1980,
+            "label": "Τύπος SIM",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_388cbff8a6f0ffe6145a7758",
+          "product_id": "bp_2160411933",
+          "field": "feature:50",
+          "value": "77.5 gr",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 50,
+            "label": "Βάρος",
+            "group": "Διαστάσεις"
+          }
+        },
+        {
+          "claim_id": "claim_38d9b82f9f5c757563427aae",
+          "product_id": "bp_2160411933",
+          "field": "offer_count",
+          "value": 38,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_3cdf652df02772fb1f08a04a",
+          "product_id": "bp_2164570012",
+          "field": "feature:2804",
+          "value": "Δακτυλικό Αποτύπωμα, Πυξίδα, Accelerometer, Proximity, GPS",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2804,
+            "label": "Αισθητήρες",
+            "group": "Αισθητήρες"
+          }
+        },
+        {
+          "claim_id": "claim_3f4c63b634cfaef92f27e383",
+          "product_id": "bp_2164570012",
+          "field": "feature:4637",
+          "value": "1080p 30fps",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4637,
+            "label": "Ανάλυση Βίντεο",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_470f16b75bb4fbbdca24eb86",
+          "product_id": "bp_2164570012",
+          "field": "feature:4628",
+          "value": "10 W",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4628,
+            "label": "Ισχύς Φόρτισης",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_472c0b1ac8d6d0f4341a28a9",
+          "product_id": "bp_2160411933",
+          "field": "availability",
+          "value": "in_stock",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_49035a95113fbcb188e7ee98",
+          "product_id": "bp_2164570012",
+          "field": "feature:4639",
+          "value": "1080p 30fps",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4639,
+            "label": "Ανάλυση Βίντεο Selfie",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_4e60538832203a757f30ddfa",
+          "product_id": "bp_2164570012",
+          "field": "feature:1448",
+          "value": "2026",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1448,
+            "label": "Έτος Κυκλοφορίας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_5009eb13b558ca1d70997b0d",
+          "product_id": "bp_2160411933",
+          "field": "feature:440",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 440,
+            "label": "Selfie Κάμερα",
+            "group": "Selfie Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_52d2f8d804227af899f4c684",
+          "product_id": "bp_2164570012",
+          "field": "attribute:panel_type",
+          "value": "IPS",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_53862c9e01d4526f5070ae3a"]
+        },
+        {
+          "claim_id": "claim_53862c9e01d4526f5070ae3a",
+          "product_id": "bp_2164570012",
+          "field": "feature:1978",
+          "value": "IPS LCD",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1978,
+            "label": "Τύπος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_5455235c1b5f6d6259d69305",
+          "product_id": "bp_2160411933",
+          "field": "feature:2793",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2793,
+            "label": "Γρήγορη Φόρτιση",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_550a41cf6cb7fde06dbd9bec",
+          "product_id": "bp_2164570012",
+          "field": "attribute:dual_sim",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_36cee63b39b02346787bff11"]
+        },
+        {
+          "claim_id": "claim_5d58b9bf7f38a24a9612c4a9",
+          "product_id": "bp_2164570012",
+          "field": "feature:431",
+          "value": "5150 mAh",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 431,
+            "label": "Χωρητικότητα Μπαταρίας",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_5ea3dc29218d81b610f573c6",
+          "product_id": "bp_2164570012",
+          "field": "attribute:storage_gb",
+          "value": 128,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_7fb73bf9a47c1cbd66fe8b6f"]
+        },
+        {
+          "claim_id": "claim_5ef477ac448d0fb00a47adaa",
+          "product_id": "bp_2160411933",
+          "field": "feature:1173",
+          "value": "2G",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1173,
+            "label": "Δίκτυο Σύνδεσης",
+            "group": "Δικτύωση"
+          }
+        },
+        {
+          "claim_id": "claim_6561ee1da723015d0ef2cc20",
+          "product_id": "bp_2160411933",
+          "field": "feature:1989",
+          "value": "120 x 160",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1989,
+            "label": "Ανάλυση Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_6806f5bfb5267d1b8d7e1ea0",
+          "product_id": "bp_2164570012",
+          "field": "feature:1991",
+          "value": "Smartphones",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1991,
+            "label": "Τύπος Κινητού",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_690defe55cc3a23bae0c1d68",
+          "product_id": "bp_2164570012",
+          "field": "feature:7185",
+          "value": "400 nits",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 7185,
+            "label": "Φωτεινότητα Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_6bf9ae2d8b4e238e98c357a7",
+          "product_id": "bp_2160411933",
+          "field": "attribute:panel_type",
+          "value": "LCD",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_29651923bdc87560ef4b43e6"]
+        },
+        {
+          "claim_id": "claim_6e01246af8ce96175c786a4f",
+          "product_id": "bp_2160411933",
+          "field": "category_title",
+          "value": "Κινητά",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_7dc195113030844a26206ddf",
+          "product_id": "bp_2164570012",
+          "field": "feature:1992",
+          "value": "164.5 x 74.8 x 8.75",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1992,
+            "label": "Διαστάσεις",
+            "group": "Διαστάσεις"
+          }
+        },
+        {
+          "claim_id": "claim_7f1d82993bc9e8066aa7b74a",
+          "product_id": "bp_2164570012",
+          "field": "feature:7180",
+          "value": "90 Hz",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 7180,
+            "label": "Ρυθμός Ανανέωσης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_7fb73bf9a47c1cbd66fe8b6f",
+          "product_id": "bp_2164570012",
+          "field": "feature:625",
+          "value": "128 GB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 625,
+            "label": "Χωρητικότητα",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_81448c38a1121032f6882f94",
+          "product_id": "bp_2164570012",
+          "field": "feature:2797",
+          "value": "1",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2797,
+            "label": "Αριθμός Πίσω Καμερών",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_87546e9d863fe8b475e598f0",
+          "product_id": "bp_2160411933",
+          "field": "category_id",
+          "value": 806,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_898f557336bd5567db57d58e",
+          "product_id": "bp_2164570012",
+          "field": "feature:2794",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2794,
+            "label": "Ασύρματη Φόρτιση",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_8bb0fe57c85e14b6f33905e8",
+          "product_id": "bp_2160411933",
+          "field": "feature:2627",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2627,
+            "label": "Ανθεκτικό στο Νερό",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_94201b1c9d3f7b7a808fb9ad",
+          "product_id": "bp_2164570012",
+          "field": "feature:1983",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1983,
+            "label": "Υποδοχή Μνήμης",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_950e6de563d6cb3b2aa3fa51",
+          "product_id": "bp_2164570012",
+          "field": "category_id",
+          "value": 806,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_964f38e6964eeb5ed842350d",
+          "product_id": "bp_2164570012",
+          "field": "feature:2627",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2627,
+            "label": "Ανθεκτικό στο Νερό",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_9abe3fa2475d070fc84a6805",
+          "product_id": "bp_2160411933",
+          "field": "catalog_family",
+          "value": "phones",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "catalog_family_mapping_v1",
+          "supporting_claim_ids": [
+            "claim_87546e9d863fe8b475e598f0",
+            "claim_6e01246af8ce96175c786a4f",
+            "claim_ee8a8b13cc253703777599f1"
+          ]
+        },
+        {
+          "claim_id": "claim_9afb91a8fd1598f5825ad3d9",
+          "product_id": "bp_2164570012",
+          "field": "feature:4641",
+          "value": "Bluetooth, WiFi, USB-C, 3.5mm Jack",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4641,
+            "label": "Συνδεσιμότητα",
+            "group": "Συνδεσιμότητα"
+          }
+        },
+        {
+          "claim_id": "claim_a04489081904e083b6d124de",
+          "product_id": "bp_2160411933",
+          "field": "feature:2797",
+          "value": "Χωρίς Κάμερα",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2797,
+            "label": "Αριθμός Πίσω Καμερών",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_a49c9f737d948ae440d10e70",
+          "product_id": "bp_2164570012",
+          "field": "feature:4629",
+          "value": "13 MP",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4629,
+            "label": "Ευρυγώνιος Φακός",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_a6d8823bb80068f9223f0a2d",
+          "product_id": "bp_2164570012",
+          "field": "offer_count",
+          "value": 26,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_a9e554f304501d4ecca92f6b",
+          "product_id": "bp_2164570012",
+          "field": "feature:2717",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2717,
+            "label": "Για Ηλικιωμένους",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_b0a792722970e8de19f43e23",
+          "product_id": "bp_2164570012",
+          "field": "category_title",
+          "value": "Κινητά",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_b180f83d79bd48aeeabae90d",
+          "product_id": "bp_2164570012",
+          "field": "ram_gb",
+          "value": 6,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "deterministic_catalog_extraction"
+        },
+        {
+          "claim_id": "claim_b3cf101c978d868c6e113e5d",
+          "product_id": "bp_2164570012",
+          "field": "feature:1885",
+          "value": "Οκταπύρηνος (2+6)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1885,
+            "label": "Επεξεργαστής",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_b3d490db1aaea83462e75e3b",
+          "product_id": "bp_2164570012",
+          "field": "feature:1447",
+          "value": "6144 MB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1447,
+            "label": "RAM",
+            "group": "Μνήμη"
+          }
+        },
+        {
+          "claim_id": "claim_b433c574e7283407892c082f",
+          "product_id": "bp_2164570012",
+          "field": "feature:1173",
+          "value": "4G",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1173,
+            "label": "Δίκτυο Σύνδεσης",
+            "group": "Δικτύωση"
+          }
+        },
+        {
+          "claim_id": "claim_c1707ad716815aec39c23fa9",
+          "product_id": "bp_2164570012",
+          "field": "feature:40",
+          "value": "13 MP",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 40,
+            "label": "Ανάλυση Κάμερας",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_c3a65bbc2bc83539d1d94085",
+          "product_id": "bp_2164570012",
+          "field": "feature:1979",
+          "value": "16",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1979,
+            "label": "Έκδοση Λειτουργικού",
+            "group": "Λογισμικό"
+          }
+        },
+        {
+          "claim_id": "claim_c874ea1fae4d98aaa10749d9",
+          "product_id": "bp_2164570012",
+          "field": "feature:1974",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1974,
+            "label": "Αποσπώμενη Μπαταρία",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_c8a1a198245f439ae516c5dc",
+          "product_id": "bp_2164570012",
+          "field": "availability",
+          "value": "in_stock",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_cd2fe8345e088c7c76bb2f1f",
+          "product_id": "bp_2164570012",
+          "field": "feature:2793",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2793,
+            "label": "Γρήγορη Φόρτιση",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_d63028eb43888ad6a935a90d",
+          "product_id": "bp_2164570012",
+          "field": "feature:38",
+          "value": "6.63 \"",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 38,
+            "label": "Μέγεθος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_dcccbabb234d5a9a06cf0804",
+          "product_id": "bp_2164570012",
+          "field": "feature:1172",
+          "value": "Οθόνη Αφής",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1172,
+            "label": "Χειρισμός",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_dcdfdd10dd564b604e20430c",
+          "product_id": "bp_2164570012",
+          "field": "catalog_family",
+          "value": "phones",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "catalog_family_mapping_v1",
+          "supporting_claim_ids": [
+            "claim_950e6de563d6cb3b2aa3fa51",
+            "claim_b0a792722970e8de19f43e23",
+            "claim_e32ec093e0488e6fd3a427df"
+          ]
+        },
+        {
+          "claim_id": "claim_df8657fbae323f74517fe895",
+          "product_id": "bp_2160411933",
+          "field": "feature:1974",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1974,
+            "label": "Αποσπώμενη Μπαταρία",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_e32ec093e0488e6fd3a427df",
+          "product_id": "bp_2164570012",
+          "field": "title",
+          "value": "Oukitel C26 6GB 128GB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_e347766e27675a183577b00a",
+          "product_id": "bp_2164570012",
+          "field": "feature:1981",
+          "value": "1.8 GΗz",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1981,
+            "label": "Ισχύς Βασικού Επεξεργαστή",
+            "group": "Επεξεργαστής"
+          }
+        },
+        {
+          "claim_id": "claim_e3805bd80b0c8dd86350b5b3",
+          "product_id": "bp_2160411933",
+          "field": "feature:1991",
+          "value": "Απλής Χρήσης",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1991,
+            "label": "Τύπος Κινητού",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_e413a13722d854a1b7bdad34",
+          "product_id": "bp_2160411933",
+          "field": "feature:2717",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2717,
+            "label": "Για Ηλικιωμένους",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_e46fafa96be37fa16063a3a8",
+          "product_id": "bp_2160411933",
+          "field": "feature:2794",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 2794,
+            "label": "Ασύρματη Φόρτιση",
+            "group": "Μπαταρία"
+          }
+        },
+        {
+          "claim_id": "claim_e686b34aaa0529e5ac26289a",
+          "product_id": "bp_2164570012",
+          "field": "feature:1989",
+          "value": "576 x 1280",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1989,
+            "label": "Ανάλυση Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_e8ec59e3ceafbdf76bd7d5dc",
+          "product_id": "bp_2160411933",
+          "field": "feature:1992",
+          "value": "115.5 x 49.5 x 14",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1992,
+            "label": "Διαστάσεις",
+            "group": "Διαστάσεις"
+          }
+        },
+        {
+          "claim_id": "claim_eadb5be82abd656196de4690",
+          "product_id": "bp_2164570012",
+          "field": "attribute:network_5g",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_b433c574e7283407892c082f"]
+        },
+        {
+          "claim_id": "claim_ee8a8b13cc253703777599f1",
+          "product_id": "bp_2160411933",
+          "field": "title",
+          "value": "Nokia 105 2024 Dual",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_eff92fbb94ac80f5b4162a7f",
+          "product_id": "bp_2160411933",
+          "field": "attribute:dual_sim",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_0d6c3a0c0c2df39bfe6859e6"]
+        },
+        {
+          "claim_id": "claim_f361717ae695029b3380d1fd",
+          "product_id": "bp_2164570012",
+          "field": "price_from",
+          "value": 141.42,
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_f36de16740d919ef58c43a16",
+          "product_id": "bp_2160411933",
+          "field": "feature:1983",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160411933:bp_2160411933"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1983,
+            "label": "Υποδοχή Μνήμης",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_fc61648327e77edc2873804c",
+          "product_id": "bp_2164570012",
+          "field": "feature:1990",
+          "value": "Panda Glass",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164570012:bp_2164570012"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1990,
+            "label": "Προστασία Οθόνης",
+            "group": "Οθόνη"
+          }
+        }
+      ]
+    },
+    "uncertainty": []
+  },
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'comparison'\n- 'no_match'\n",
+  "elapsed_ms": 5759
+}

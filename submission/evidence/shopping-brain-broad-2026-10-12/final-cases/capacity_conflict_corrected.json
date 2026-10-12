@@ -1,0 +1,1225 @@
+{
+  "id": "capacity_conflict_corrected",
+  "message": "Θέλω air fryer τουλάχιστον 6 λίτρα και το πολύ 5 λίτρα. Διόρθωση: από 4 έως 5 λίτρα μέχρι 120 ευρώ.",
+  "expectation": {
+    "capacity": [4, 5],
+    "budget": 120,
+    "outcome": "recommendation"
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T09:13:24.689Z",
+  "passed": true,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 69889,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:13:25.409Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "0a8de474-7a51-4fc9-83ea-04a22dd83835",
+      "evidence_fingerprint": "48c789b9bba8072155dda13c00b73eff8de5aba5aed55e3892e5f27ce911eca0"
+    },
+    "outcome": "recommendation",
+    "status": "ready",
+    "answer": "",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": "bp_2160057712",
+    "alternatives": [
+      {
+        "product_id": "bp_2164176215",
+        "label": "0,70€ ακριβότερο",
+        "tradeoff": "Δεν συνέκρινα: βαθμολογία αγοραστών BestPrice",
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_217855537",
+            "merchant_id": "bp_merchant_90",
+            "merchant_name": "e-Gate",
+            "merchant_rating": 4.72,
+            "merchant_rating_count": 18,
+            "verified_merchant": true,
+            "certification_level": "gold",
+            "item_price": 48.77,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_8_14_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "8–14 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:13:25.214Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_217855537",
+            "merchant_id": "bp_merchant_90",
+            "merchant_name": "e-Gate",
+            "merchant_rating": 4.72,
+            "merchant_rating_count": 18,
+            "verified_merchant": true,
+            "certification_level": "gold",
+            "item_price": 48.77,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_8_14_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "8–14 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:13:25.214Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 120,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 4,
+          "unknown_shipping_count": 4
+        }
+      },
+      {
+        "product_id": "bp_2158725074",
+        "label": "Σε περισσότερα καταστήματα",
+        "tradeoff": null,
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_131959271",
+            "merchant_id": "bp_merchant_13363",
+            "merchant_name": "Smart eShop",
+            "merchant_rating": 4,
+            "merchant_rating_count": 2,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 92.4,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "in_stock",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "Άμεσα διαθέσιμο",
+            "price_checked_at": "2026-10-12T09:13:25.214Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_131959271",
+            "merchant_id": "bp_merchant_13363",
+            "merchant_name": "Smart eShop",
+            "merchant_rating": 4,
+            "merchant_rating_count": 2,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 92.4,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "in_stock",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "Άμεσα διαθέσιμο",
+            "price_checked_at": "2026-10-12T09:13:25.214Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 120,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 10,
+          "unknown_shipping_count": 10
+        }
+      }
+    ],
+    "products": [
+      {
+        "product_id": "bp_2160057712",
+        "title": "Smarton FR450 Air Fryer 4.5lt",
+        "brand": "OEM",
+        "category_title": "Air Fryers",
+        "price_from": 48.07,
+        "decision_id": "d1.4e322619d8c644c36292ffcbc349aa44.1c-14fOM1OgkOGZrdILMlYqXTyOt0yApLRATK76l524",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2164176215",
+        "title": "Eldom FR45 Air Fryer 4.5lt Inox",
+        "brand": "Eldom",
+        "category_title": "Air Fryers",
+        "price_from": 48.77,
+        "decision_id": "d1.0c588f8c7496993d4ae163c2c393ae03.fxN4-QBKDje5mG_5wOvSKzrrHw-zowSPXP521lrlVUg",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2158725074",
+        "title": "Dsp KB2085 Air Fryer 4.5lt",
+        "brand": "Dsp",
+        "category_title": "Air Fryers",
+        "price_from": 92.4,
+        "decision_id": "d1.14c1d754ce099c3b752022554cbdba60.xDFr9oDMFxwX-Hzm_s6y2OqJkKNTVV1jXCOC59Qkmx0",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": 120,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": {
+        "minimum": 4,
+        "maximum": 5,
+        "target": 4.5
+      },
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "catalog_requirements": [],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 120,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 120,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 84,
+              "end": 98,
+              "text": "μέχρι 120 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    "reasons": [
+      "Καλύπτει τα εξής κριτήρια: έως 120€.",
+      "Η επόμενη επιλογή κοστίζει 0,70€ παραπάνω χωρίς διαφορά στα εξής: χωρητικότητα για το νοικοκυριό. Δεν συνέκρινα: βαθμολογία αγοραστών BestPrice.",
+      "Η χωρητικότητα των 4,5 λίτρων είναι μέσα στο εύρος που ζήτησες."
+    ],
+    "tradeoffs": [
+      "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+      "Vagiou: βαθμολογία καταστήματος 3/5 από 1 αξιολόγηση; δηλωμένη διαθεσιμότητα «4–10 εργάσιμες ημέρες» (εκτίμηση καταστήματος)."
+    ],
+    "offer_summary": {
+      "postal_code": null,
+      "price_basis": "item_price",
+      "affordability": "within_item_budget_delivery_unknown",
+      "offer_scope": "returned_sample",
+      "delivery_affordability_proven": false,
+      "recommended": {
+        "offer_id": "bp_offer_212889895",
+        "merchant_id": "bp_merchant_16395",
+        "merchant_name": "Vagiou",
+        "merchant_rating": 3,
+        "merchant_rating_count": 1,
+        "verified_merchant": false,
+        "certification_level": null,
+        "item_price": 48.07,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "delivery_4_10_days",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "4–10 εργάσιμες ημέρες",
+        "price_checked_at": "2026-10-12T09:13:25.213Z"
+      },
+      "cheapest": {
+        "offer_id": "bp_offer_212889895",
+        "merchant_id": "bp_merchant_16395",
+        "merchant_name": "Vagiou",
+        "merchant_rating": 3,
+        "merchant_rating_count": 1,
+        "verified_merchant": false,
+        "certification_level": null,
+        "item_price": 48.07,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "delivery_4_10_days",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "4–10 εργάσιμες ημέρες",
+        "price_checked_at": "2026-10-12T09:13:25.213Z"
+      },
+      "same_offer": true,
+      "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+      "budget_eur": 120,
+      "recommended_within_budget": true,
+      "cheapest_within_budget": true,
+      "compared_offer_count": 10,
+      "unknown_shipping_count": 10
+    },
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "typical",
+      "reason": "typical_across_usable_windows",
+      "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "compare",
+      "reason": "review_current_offers",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 8,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:13:24.816Z",
+        "source_observed_at": "2026-10-12T09:08:17.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 36,
+        "candidate_count": 35,
+        "eligible_count": 35,
+        "returned_count": 8,
+        "category_id": 8535,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2158725074",
+          "family": "air_fryers",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_b07ef632238637c900d1d4f1"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_30912c62de71749dd6aa5610"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_d674ed099a8d3ed0064aacad"],
+              "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2160057712",
+          "family": "air_fryers",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_7f1aa59afd057eb322208a27"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_41100906aac1829203d007a7"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_267f48cd1cf8b97b063536f8"],
+              "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2164176215",
+          "family": "air_fryers",
+          "attributes": [
+            {
+              "key": "capacity_litres",
+              "unit": "L",
+              "status": "known",
+              "value": 4.5,
+              "claim_ids": ["claim_da0d4d833e19ca5c543f19c6"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            },
+            {
+              "key": "people_count",
+              "unit": null,
+              "status": "known",
+              "value": 2,
+              "claim_ids": ["claim_b8ae7017131c0f658986e80a"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            },
+            {
+              "key": "dual_basket",
+              "unit": null,
+              "status": "known",
+              "value": false,
+              "claim_ids": ["claim_757e31c77e88b481fdaf324a"],
+              "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"]
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2158725074",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 6,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 92.4,
+              "median": 106.08,
+              "maximum": 118.8,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2158725074:bp_offer_131959271",
+              "compare_offers:bp_2158725074:bp_offer_224662189",
+              "compare_offers:bp_2158725074:bp_offer_141359229"
+            ],
+            "source_count": 11,
+            "claim_count": 85
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2160057712",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 4,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 48.07,
+              "median": 52.435,
+              "maximum": 58.57,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2160057712:bp_offer_212889895",
+              "compare_offers:bp_2160057712:bp_offer_163791025",
+              "compare_offers:bp_2160057712:bp_offer_164152693"
+            ],
+            "source_count": 11,
+            "claim_count": 83
+          },
+          "history": {
+            "status": "available",
+            "basis": "daily_item_minimum",
+            "windows": [
+              {
+                "days": 30,
+                "minimum_price": 48.07,
+                "median_price": 48.07,
+                "observations": 19,
+                "coverage_pct": 63.3,
+                "claim_ids": [
+                  "claim_81f3ca6f939981d11535f28a",
+                  "claim_b38d4947f2e84240fc65fd3e",
+                  "claim_d47e9f0277f86b7bf6847d98",
+                  "claim_d96f01f6860675c2868080c0"
+                ]
+              },
+              {
+                "days": 90,
+                "minimum_price": 48.07,
+                "median_price": 48.07,
+                "observations": 68,
+                "coverage_pct": 75.6,
+                "claim_ids": [
+                  "claim_015803629457962c9782aa79",
+                  "claim_49e6e854107f8d1a63601783",
+                  "claim_982cb5d8c57850617f6876f1",
+                  "claim_a2f85bc951cf4756c6780736"
+                ]
+              },
+              {
+                "days": 180,
+                "minimum_price": 48.07,
+                "median_price": 48.07,
+                "observations": 135,
+                "coverage_pct": 75,
+                "claim_ids": [
+                  "claim_1880e4933a6d0bfb995ef473",
+                  "claim_2fefd526f633cb6cefc4cc55",
+                  "claim_5ad5fa347e6ab9bdf5fc2cdb",
+                  "claim_7b88e149b2837288ca66bb7c"
+                ]
+              }
+            ],
+            "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+            "claim_ids": [
+              "claim_015803629457962c9782aa79",
+              "claim_1880e4933a6d0bfb995ef473",
+              "claim_1dfaf0dd863822717a331093",
+              "claim_2fefd526f633cb6cefc4cc55",
+              "claim_35ceb86869e0296026e9c4a2",
+              "claim_49e6e854107f8d1a63601783",
+              "claim_5ad5fa347e6ab9bdf5fc2cdb",
+              "claim_7b88e149b2837288ca66bb7c",
+              "claim_81f3ca6f939981d11535f28a",
+              "claim_982cb5d8c57850617f6876f1",
+              "claim_a2f85bc951cf4756c6780736",
+              "claim_b38d4947f2e84240fc65fd3e",
+              "claim_d47e9f0277f86b7bf6847d98",
+              "claim_d96f01f6860675c2868080c0"
+            ]
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2164176215",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 4,
+            "merchant_count": 4,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 0,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 4
+            },
+            "item_price": {
+              "minimum": 48.77,
+              "median": 54.385000000000005,
+              "maximum": 77.62,
+              "count": 4
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2164176215:bp_offer_217855537",
+              "compare_offers:bp_2164176215:bp_offer_216721067",
+              "compare_offers:bp_2164176215:bp_offer_216162546"
+            ],
+            "source_count": 5,
+            "claim_count": 35
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 281,
+      "omitted_source_count": 24,
+      "sources": [
+        {
+          "source_id": "compare_offers:bp_2158725074:bp_offer_131959271",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_131959271",
+          "product_id": "bp_2158725074",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.214Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2158725074:bp_offer_141359229",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_141359229",
+          "product_id": "bp_2158725074",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.214Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2158725074:bp_offer_224662189",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_224662189",
+          "product_id": "bp_2158725074",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.214Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2160057712:bp_offer_163791025",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_163791025",
+          "product_id": "bp_2160057712",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.213Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2160057712:bp_offer_164152693",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_164152693",
+          "product_id": "bp_2160057712",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.213Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2160057712:bp_offer_212889895",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_212889895",
+          "product_id": "bp_2160057712",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.213Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164176215:bp_offer_216162546",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_216162546",
+          "product_id": "bp_2164176215",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.214Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164176215:bp_offer_216721067",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_216721067",
+          "product_id": "bp_2164176215",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.214Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2164176215:bp_offer_217855537",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_217855537",
+          "product_id": "bp_2164176215",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:25.214Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_price_history:bp_2160057712:bp_2160057712",
+          "kind": "price_history",
+          "record_id": "bp_2160057712",
+          "product_id": "bp_2160057712",
+          "scope": "cluster",
+          "capability": "get_price_history",
+          "checked_at": "2026-10-12T09:13:25.217Z",
+          "source_observed_at": "2026-10-12T09:13:25.217Z",
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "get_product_details:bp_2158725074:bp_2158725074",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2158725074",
+          "product_id": "bp_2158725074",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T09:13:25.075Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2160057712:bp_2160057712",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2160057712",
+          "product_id": "bp_2160057712",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T09:13:25.075Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2164176215:bp_2164176215",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2164176215",
+          "product_id": "bp_2164176215",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T09:13:25.075Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_015803629457962c9782aa79",
+          "product_id": "bp_2160057712",
+          "field": "history_90d_coverage_pct",
+          "value": 75.6,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_091467dbae2b8efdfa9f3805",
+          "product_id": "bp_2160057712",
+          "field": "feature:4481",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4481,
+            "label": "Διπλός Κάδος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_1880e4933a6d0bfb995ef473",
+          "product_id": "bp_2160057712",
+          "field": "history_180d_coverage_pct",
+          "value": 75,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_1dfaf0dd863822717a331093",
+          "product_id": "bp_2160057712",
+          "field": "history_status",
+          "value": "available",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_267f48cd1cf8b97b063536f8",
+          "product_id": "bp_2160057712",
+          "field": "attribute:dual_basket",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_091467dbae2b8efdfa9f3805"]
+        },
+        {
+          "claim_id": "claim_2fefd526f633cb6cefc4cc55",
+          "product_id": "bp_2160057712",
+          "field": "history_180d_minimum_price",
+          "value": 48.07,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_30912c62de71749dd6aa5610",
+          "product_id": "bp_2158725074",
+          "field": "attribute:people_count",
+          "value": 2,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_fb938f13f10f7bd4f5bb530c"]
+        },
+        {
+          "claim_id": "claim_35ceb86869e0296026e9c4a2",
+          "product_id": "bp_2160057712",
+          "field": "current_price_source",
+          "value": "live_offer_minimum",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_3aa08a483ceec58eedb2c6e2",
+          "product_id": "bp_2160057712",
+          "field": "feature:3878",
+          "value": "Ναι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3878,
+            "label": "Με Οθόνη",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_3e0fc442e3391fc56b6cbdb7",
+          "product_id": "bp_2160057712",
+          "field": "feature:3877",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 3877,
+            "label": "Φίλτρο Κατά των Οσμών",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_41100906aac1829203d007a7",
+          "product_id": "bp_2160057712",
+          "field": "attribute:people_count",
+          "value": 2,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_ce69f0ad1ddaf65308edd5b3"]
+        },
+        {
+          "claim_id": "claim_49e6e854107f8d1a63601783",
+          "product_id": "bp_2160057712",
+          "field": "history_90d_minimum_price",
+          "value": 48.07,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_4ed481e5fbb804ab95260104",
+          "product_id": "bp_2164176215",
+          "field": "feature:4472",
+          "value": "4.5 lt",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4472,
+            "label": "Χωρητικότητα Κάδου",
+            "group": "Χωρητικότητα"
+          }
+        },
+        {
+          "claim_id": "claim_5ad5fa347e6ab9bdf5fc2cdb",
+          "product_id": "bp_2160057712",
+          "field": "history_180d_observations",
+          "value": 135,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_6131d092d9082feb00129dbf",
+          "product_id": "bp_2160057712",
+          "field": "feature:502",
+          "value": "1350 W",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 502,
+            "label": "Ισχύς",
+            "group": "Απόδοση"
+          }
+        },
+        {
+          "claim_id": "claim_6a83054b3fb4b9a22b2c3734",
+          "product_id": "bp_2160057712",
+          "field": "feature:4472",
+          "value": "4.5 lt",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4472,
+            "label": "Χωρητικότητα Κάδου",
+            "group": "Χωρητικότητα"
+          }
+        },
+        {
+          "claim_id": "claim_757e31c77e88b481fdaf324a",
+          "product_id": "bp_2164176215",
+          "field": "attribute:dual_basket",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_f984c8b6e6417deb87962f53"]
+        },
+        {
+          "claim_id": "claim_7b88e149b2837288ca66bb7c",
+          "product_id": "bp_2160057712",
+          "field": "history_180d_median_price",
+          "value": 48.07,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_7f1aa59afd057eb322208a27",
+          "product_id": "bp_2160057712",
+          "field": "attribute:capacity_litres",
+          "value": 4.5,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_6a83054b3fb4b9a22b2c3734"]
+        },
+        {
+          "claim_id": "claim_81f3ca6f939981d11535f28a",
+          "product_id": "bp_2160057712",
+          "field": "history_30d_minimum_price",
+          "value": 48.07,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_8e698a191b649407254af901",
+          "product_id": "bp_2160057712",
+          "field": "feature:5181",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5181,
+            "label": "Πολυμάγειρας",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_982cb5d8c57850617f6876f1",
+          "product_id": "bp_2160057712",
+          "field": "history_90d_observations",
+          "value": 68,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_a2f85bc951cf4756c6780736",
+          "product_id": "bp_2160057712",
+          "field": "history_90d_median_price",
+          "value": 48.07,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_a6578f9058552680b97cf7a8",
+          "product_id": "bp_2158725074",
+          "field": "feature:4481",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4481,
+            "label": "Διπλός Κάδος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_b07ef632238637c900d1d4f1",
+          "product_id": "bp_2158725074",
+          "field": "attribute:capacity_litres",
+          "value": 4.5,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d97369a082ebe3051ed7fa86"]
+        },
+        {
+          "claim_id": "claim_b38d4947f2e84240fc65fd3e",
+          "product_id": "bp_2160057712",
+          "field": "history_30d_median_price",
+          "value": 48.07,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_b5d4dded284c6b341280abfe",
+          "product_id": "bp_2164176215",
+          "field": "feature:5416",
+          "value": "Για 2 Άτομα",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5416,
+            "label": "Αριθμός Ατόμων",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_b8ae7017131c0f658986e80a",
+          "product_id": "bp_2164176215",
+          "field": "attribute:people_count",
+          "value": 2,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_b5d4dded284c6b341280abfe"]
+        },
+        {
+          "claim_id": "claim_ce69f0ad1ddaf65308edd5b3",
+          "product_id": "bp_2160057712",
+          "field": "feature:5416",
+          "value": "Για 2 Άτομα",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2160057712:bp_2160057712"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5416,
+            "label": "Αριθμός Ατόμων",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_d47e9f0277f86b7bf6847d98",
+          "product_id": "bp_2160057712",
+          "field": "history_30d_coverage_pct",
+          "value": 63.3,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_d674ed099a8d3ed0064aacad",
+          "product_id": "bp_2158725074",
+          "field": "attribute:dual_basket",
+          "value": false,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_a6578f9058552680b97cf7a8"]
+        },
+        {
+          "claim_id": "claim_d96f01f6860675c2868080c0",
+          "product_id": "bp_2160057712",
+          "field": "history_30d_observations",
+          "value": 19,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2160057712:bp_2160057712"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_d97369a082ebe3051ed7fa86",
+          "product_id": "bp_2158725074",
+          "field": "feature:4472",
+          "value": "4.5 lt",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4472,
+            "label": "Χωρητικότητα Κάδου",
+            "group": "Χωρητικότητα"
+          }
+        },
+        {
+          "claim_id": "claim_da0d4d833e19ca5c543f19c6",
+          "product_id": "bp_2164176215",
+          "field": "attribute:capacity_litres",
+          "value": 4.5,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_4ed481e5fbb804ab95260104"]
+        },
+        {
+          "claim_id": "claim_f984c8b6e6417deb87962f53",
+          "product_id": "bp_2164176215",
+          "field": "feature:4481",
+          "value": "Όχι",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2164176215:bp_2164176215"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4481,
+            "label": "Διπλός Κάδος",
+            "group": ""
+          }
+        },
+        {
+          "claim_id": "claim_fb938f13f10f7bd4f5bb530c",
+          "product_id": "bp_2158725074",
+          "field": "feature:5416",
+          "value": "Για 2 Άτομα",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2158725074:bp_2158725074"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 5416,
+            "label": "Αριθμός Ατόμων",
+            "group": ""
+          }
+        }
+      ]
+    },
+    "uncertainty": [
+      {
+        "code": "ranking_calibration",
+        "product_id": "bp_2160057712",
+        "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+      },
+      {
+        "code": "landed_cost_unknown",
+        "product_id": "bp_2160057712",
+        "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+      }
+    ]
+  },
+  "metrics": {
+    "claims": 36,
+    "sources": 13,
+    "structured_bytes": 31581,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 8,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:13:24.816Z",
+        "source_observed_at": "2026-10-12T09:08:17.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 36,
+        "candidate_count": 35,
+        "eligible_count": 35,
+        "returned_count": 8,
+        "category_id": 8535,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 1186
+}

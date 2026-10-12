@@ -1,0 +1,1550 @@
+{
+  "id": "phone_ois",
+  "message": "Θέλω κινητό έως 500 ευρώ με υποχρεωτικό OIS.",
+  "expectation": {
+    "flags": ["ois"],
+    "budget": 500,
+    "outcome": "recommendation"
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T09:13:05.613Z",
+  "passed": true,
+  "revision": "979987837e73b3b364234855508974bdbd77746b",
+  "transport_bytes": 59022,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T09:13:06.814Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "9215960e-c96c-4d5c-9312-fa2b42567f4e",
+      "evidence_fingerprint": "1398f916a157ebb378ea07fba60fb7b46d97e904ace5fe80fc71c45a1ffc763c"
+    },
+    "outcome": "recommendation",
+    "status": "ready",
+    "answer": "",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": "bp_2163844358",
+    "alternatives": [
+      {
+        "product_id": "bp_2163841269",
+        "label": "Εξοικονόμησε 51€",
+        "tradeoff": "Χωρίς αρκετές αξιολογήσεις αγοραστών του BestPrice",
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_211297356",
+            "merchant_id": "bp_merchant_14077",
+            "merchant_name": "Hashtagtrade",
+            "merchant_rating": 4.8,
+            "merchant_rating_count": 108,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 253,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_4_10_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "4–10 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:13:06.586Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_211297356",
+            "merchant_id": "bp_merchant_14077",
+            "merchant_name": "Hashtagtrade",
+            "merchant_rating": 4.8,
+            "merchant_rating_count": 108,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 253,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "delivery_4_10_days",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "4–10 εργάσιμες ημέρες",
+            "price_checked_at": "2026-10-12T09:13:06.586Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 500,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 10,
+          "unknown_shipping_count": 10
+        }
+      },
+      {
+        "product_id": "bp_2163844359",
+        "label": "41,50€ ακριβότερο",
+        "tradeoff": "Δίνει μεγαλύτερο αποθηκευτικό χώρο",
+        "requires_constraint_change": false,
+        "offer_summary": {
+          "postal_code": null,
+          "price_basis": "item_price",
+          "affordability": "within_item_budget_delivery_unknown",
+          "offer_scope": "returned_sample",
+          "delivery_affordability_proven": false,
+          "recommended": {
+            "offer_id": "bp_offer_210604020",
+            "merchant_id": "bp_merchant_14077",
+            "merchant_name": "Hashtagtrade",
+            "merchant_rating": 4.8,
+            "merchant_rating_count": 108,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 345.5,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "in_stock",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "Άμεσα διαθέσιμο",
+            "price_checked_at": "2026-10-12T09:13:06.587Z"
+          },
+          "cheapest": {
+            "offer_id": "bp_offer_210604020",
+            "merchant_id": "bp_merchant_14077",
+            "merchant_name": "Hashtagtrade",
+            "merchant_rating": 4.8,
+            "merchant_rating_count": 108,
+            "verified_merchant": false,
+            "certification_level": null,
+            "item_price": 345.5,
+            "shipping_price": null,
+            "shipping_status": "unknown",
+            "total_price": null,
+            "availability": "in_stock",
+            "condition": "unknown",
+            "bundle_status": "unknown",
+            "delivery_estimate": "Άμεσα διαθέσιμο",
+            "price_checked_at": "2026-10-12T09:13:06.587Z"
+          },
+          "same_offer": true,
+          "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+          "budget_eur": 500,
+          "recommended_within_budget": true,
+          "cheapest_within_budget": true,
+          "compared_offer_count": 10,
+          "unknown_shipping_count": 10
+        }
+      }
+    ],
+    "products": [
+      {
+        "product_id": "bp_2163844358",
+        "title": "Samsung Galaxy A57 5G 8GB 128GB",
+        "brand": "Samsung",
+        "category_title": "Κινητά",
+        "price_from": 304,
+        "decision_id": "d1.ac85b07dadf0d17357a19e10146f5c79._cG0FDKyiJFOitv5h1snkn9KzoMDfq26s4afLyRuFTI",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2163841269",
+        "title": "Samsung Galaxy A37 5G 6GB 128GB",
+        "brand": "Samsung",
+        "category_title": "Κινητά",
+        "price_from": 253,
+        "decision_id": "d1.05d314b96c39fe268935855da33f3ea1.gyblttcWI0rgMqkPjlojEIEf8KsAwO11GOEz_kABT9w",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      },
+      {
+        "product_id": "bp_2163844359",
+        "title": "Samsung Galaxy A57 5G 8GB 256GB",
+        "brand": "Samsung",
+        "category_title": "Κινητά",
+        "price_from": 345.5,
+        "decision_id": "d1.5a4d70a919a785c03bf02dcf29d5c732.s-pI2LuKg5vNjSJDcY9mQPJu0JVfiwC-6IfDo7FsTP4",
+        "bestprice_url": "[omitted]",
+        "image_url": "[omitted]"
+      }
+    ],
+    "constraints": {
+      "maximum_price_eur": 500,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "catalog_requirements": ["οπτική σταθεροποίηση εικόνας (OIS)"],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 500,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 500,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 12,
+              "end": 24,
+              "text": "έως 500 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    "reasons": [
+      "Δίνει τεκμηριωμένη βαθμολογία από αγοραστές του BestPrice, ενώ η φθηνότερη δεν έχει ακόμη αρκετές αξιολογήσεις. Καλύπτει τα εξής κριτήρια: έως 500€ και οπτική σταθεροποίηση εικόνας (OIS).",
+      "Η προσφορά που προτείνω γράφει «Άμεσα διαθέσιμο», ενώ η φθηνότερη «4–10 εργάσιμες ημέρες». Η επόμενη, ακριβότερη επιλογή κοστίζει 41,50€ παραπάνω, χωρίς να προσφέρει κάτι επιπλέον σε όσα ζήτησες.",
+      "Αγοραστές στο BestPrice το βαθμολογούν 4,8/5 σε 21 αξιολογήσεις."
+    ],
+    "tradeoffs": [
+      "Κοστίζει 51€ παραπάνω από τη φθηνότερη επιλογή που καλύπτει όσα ζήτησες (Samsung Galaxy A37 5G, 253€).",
+      "Χωρίς ΤΚ δεν ξέρω τα μεταφορικά, οπότε σύγκρινα τις 10 προσφορές στην τιμή προϊόντος. Πες μου τον ΤΚ σου για το τελικό κόστος.",
+      "Hashtagtrade: βαθμολογία καταστήματος 4,8/5 από 108 αξιολογήσεις; δηλωμένη διαθεσιμότητα «Άμεσα διαθέσιμο» (εκτίμηση καταστήματος)."
+    ],
+    "offer_summary": {
+      "postal_code": null,
+      "price_basis": "item_price",
+      "affordability": "within_item_budget_delivery_unknown",
+      "offer_scope": "returned_sample",
+      "delivery_affordability_proven": false,
+      "recommended": {
+        "offer_id": "bp_offer_210606971",
+        "merchant_id": "bp_merchant_14077",
+        "merchant_name": "Hashtagtrade",
+        "merchant_rating": 4.8,
+        "merchant_rating_count": 108,
+        "verified_merchant": false,
+        "certification_level": null,
+        "item_price": 304,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "in_stock",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "Άμεσα διαθέσιμο",
+        "price_checked_at": "2026-10-12T09:13:06.587Z"
+      },
+      "cheapest": {
+        "offer_id": "bp_offer_210606971",
+        "merchant_id": "bp_merchant_14077",
+        "merchant_name": "Hashtagtrade",
+        "merchant_rating": 4.8,
+        "merchant_rating_count": 108,
+        "verified_merchant": false,
+        "certification_level": null,
+        "item_price": 304,
+        "shipping_price": null,
+        "shipping_status": "unknown",
+        "total_price": null,
+        "availability": "in_stock",
+        "condition": "unknown",
+        "bundle_status": "unknown",
+        "delivery_estimate": "Άμεσα διαθέσιμο",
+        "price_checked_at": "2026-10-12T09:13:06.587Z"
+      },
+      "same_offer": true,
+      "recommendation_reason": "Χαμηλότερη επιβεβαιωμένη τιμή προϊόντος",
+      "budget_eur": 500,
+      "recommended_within_budget": true,
+      "cheapest_within_budget": true,
+      "compared_offer_count": 10,
+      "unknown_shipping_count": 10
+    },
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "typical",
+      "reason": "typical_across_usable_windows",
+      "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "compare",
+      "reason": "review_current_offers",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 30,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:13:05.883Z",
+        "source_observed_at": "2026-10-12T09:08:17.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 953,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 20,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [
+        {
+          "product_id": "bp_2163841269",
+          "family": "phones",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 6,
+              "claim_ids": ["claim_385db49cdb814389e0ef2285"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 128,
+              "claim_ids": ["claim_5f369b8988df1272e0199ad7"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_774ea25d07e19be00705aaac"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_25c6b8c63200e5c72c15b41b"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_316d2e9145eefd7128481972"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "AMOLED",
+              "claim_ids": ["claim_fdf9bdabe7ea867e7d5fa3d9"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_f6ba030be7d706395eb25227"],
+              "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163844358",
+          "family": "phones",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 8,
+              "claim_ids": ["claim_dcb970be189c200f8a3575c3"],
+              "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 128,
+              "claim_ids": ["claim_9b643bbd5521385cff8bd25e"],
+              "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_67ca7009ff94c1a97030b2d8"],
+              "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_35b9332ea35ce8e59f70691b"],
+              "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"]
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_b1a5ed0369fca6943474fe85"],
+              "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"]
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "AMOLED",
+              "claim_ids": ["claim_d33958d74f2f870da268eb23"],
+              "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_87b7fdc2e018e4b34008f5e4"],
+              "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"]
+            }
+          ]
+        },
+        {
+          "product_id": "bp_2163844359",
+          "family": "phones",
+          "attributes": [
+            {
+              "key": "ram_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 8,
+              "claim_ids": ["claim_8ecdf0f3f7600843f0d960e6"],
+              "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"]
+            },
+            {
+              "key": "storage_gb",
+              "unit": "GB",
+              "status": "known",
+              "value": 256,
+              "claim_ids": ["claim_c666a822eecbb09b1853cf83"],
+              "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"]
+            },
+            {
+              "key": "network_5g",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_73858d22359f7c92271adbd5"],
+              "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"]
+            },
+            {
+              "key": "nfc",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_72ea0c1879b33a818e11ed50"],
+              "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"]
+            },
+            {
+              "key": "ois",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_d411db6dbdbc42d924f0fc71"],
+              "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"]
+            },
+            {
+              "key": "panel_type",
+              "unit": null,
+              "status": "known",
+              "value": "AMOLED",
+              "claim_ids": ["claim_f6bc4fa07b5d5bb28fffdeb4"],
+              "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"]
+            },
+            {
+              "key": "dual_sim",
+              "unit": null,
+              "status": "known",
+              "value": true,
+              "claim_ids": ["claim_302ca4a9177997db81d81489"],
+              "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"]
+            }
+          ]
+        }
+      ],
+      "market": [
+        {
+          "product_id": "bp_2163841269",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 7,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 253,
+              "median": 258,
+              "maximum": 267.9,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2163841269:bp_offer_211297356",
+              "compare_offers:bp_2163841269:bp_offer_213192703",
+              "compare_offers:bp_2163841269:bp_offer_211735614"
+            ],
+            "source_count": 11,
+            "claim_count": 91
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2163844358",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 7,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 304,
+              "median": 312.785,
+              "maximum": 332.9,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2163844358:bp_offer_210606971",
+              "compare_offers:bp_2163844358:bp_offer_211703635",
+              "compare_offers:bp_2163844358:bp_offer_211738195"
+            ],
+            "source_count": 11,
+            "claim_count": 91
+          },
+          "history": {
+            "status": "available",
+            "basis": "daily_item_minimum",
+            "windows": [
+              {
+                "days": 30,
+                "minimum_price": 300,
+                "median_price": 300,
+                "observations": 30,
+                "coverage_pct": 100,
+                "claim_ids": [
+                  "claim_14c1c9c73069cc5d66a3b242",
+                  "claim_7179c3694fc58ed20deabbd9",
+                  "claim_ac0b81aefc9bfa2159ed3004",
+                  "claim_f06beb7bbad2fa72a4bcb367"
+                ]
+              },
+              {
+                "days": 90,
+                "minimum_price": 279,
+                "median_price": 291.99,
+                "observations": 90,
+                "coverage_pct": 100,
+                "claim_ids": [
+                  "claim_07b3ef44ad973af8b9658866",
+                  "claim_0abac3220f326d8e480ca3b1",
+                  "claim_4a32462f7f965a5ab29d8801",
+                  "claim_e64011f840e21322e8831624"
+                ]
+              },
+              {
+                "days": 180,
+                "minimum_price": 269,
+                "median_price": 291.99,
+                "observations": 180,
+                "coverage_pct": 100,
+                "claim_ids": [
+                  "claim_3d149bbbf8852fa3601fbd83",
+                  "claim_40608ca49d7e81f518d71d69",
+                  "claim_a081b1bd2ffb2f2df2ea5b61",
+                  "claim_cddca3425fa1c36e0a2c0420"
+                ]
+              }
+            ],
+            "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+            "claim_ids": [
+              "claim_07b3ef44ad973af8b9658866",
+              "claim_0abac3220f326d8e480ca3b1",
+              "claim_14c1c9c73069cc5d66a3b242",
+              "claim_3bcc2f0c7b3ee0b26844adcb",
+              "claim_3d149bbbf8852fa3601fbd83",
+              "claim_40608ca49d7e81f518d71d69",
+              "claim_4a32462f7f965a5ab29d8801",
+              "claim_7179c3694fc58ed20deabbd9",
+              "claim_89023cf49298e0a3c5f54abe",
+              "claim_a081b1bd2ffb2f2df2ea5b61",
+              "claim_ac0b81aefc9bfa2159ed3004",
+              "claim_cddca3425fa1c36e0a2c0420",
+              "claim_e64011f840e21322e8831624",
+              "claim_f06beb7bbad2fa72a4bcb367"
+            ]
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        },
+        {
+          "product_id": "bp_2163844359",
+          "offers": {
+            "status": "available",
+            "scope": "bounded_returned_offers",
+            "offer_count": 10,
+            "merchant_count": 10,
+            "merchant_identity_unknown_count": 0,
+            "explicitly_in_stock_count": 6,
+            "shipping": {
+              "known": 0,
+              "estimated": 0,
+              "unknown": 10
+            },
+            "item_price": {
+              "minimum": 345.5,
+              "median": 358.99,
+              "maximum": 379.5,
+              "count": 10
+            },
+            "known_delivered_price": null,
+            "estimated_delivered_price": null,
+            "source_ids": [
+              "compare_offers:bp_2163844359:bp_offer_210604020",
+              "compare_offers:bp_2163844359:bp_offer_211201679",
+              "compare_offers:bp_2163844359:bp_offer_211763835"
+            ],
+            "source_count": 11,
+            "claim_count": 91
+          },
+          "history": {
+            "status": "not_checked",
+            "basis": "daily_item_minimum",
+            "windows": [],
+            "source_ids": [],
+            "claim_ids": []
+          },
+          "not_collected": [
+            "returns_policy",
+            "warranty",
+            "payment_fees",
+            "pickup",
+            "merchant_feed_updated_at",
+            "guaranteed_postcode_delivery"
+          ],
+          "compatibility": "not_assessed"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 504,
+      "omitted_source_count": 33,
+      "sources": [
+        {
+          "source_id": "compare_offers:bp_2163841269:bp_offer_211297356",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_211297356",
+          "product_id": "bp_2163841269",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.586Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163841269:bp_offer_211735614",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_211735614",
+          "product_id": "bp_2163841269",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.586Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163841269:bp_offer_213192703",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_213192703",
+          "product_id": "bp_2163841269",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.586Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163844358:bp_offer_210606971",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_210606971",
+          "product_id": "bp_2163844358",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.587Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163844358:bp_offer_211703635",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_211703635",
+          "product_id": "bp_2163844358",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.587Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163844358:bp_offer_211738195",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_211738195",
+          "product_id": "bp_2163844358",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.587Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163844359:bp_offer_210604020",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_210604020",
+          "product_id": "bp_2163844359",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.587Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163844359:bp_offer_211201679",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_211201679",
+          "product_id": "bp_2163844359",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.587Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "compare_offers:bp_2163844359:bp_offer_211763835",
+          "kind": "merchant_offer",
+          "record_id": "bp_offer_211763835",
+          "product_id": "bp_2163844359",
+          "scope": "offer",
+          "capability": "compare_offers",
+          "checked_at": "2026-10-12T09:13:06.587Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_price_history:bp_2163844358:bp_2163844358",
+          "kind": "price_history",
+          "record_id": "bp_2163844358",
+          "product_id": "bp_2163844358",
+          "scope": "cluster",
+          "capability": "get_price_history",
+          "checked_at": "2026-10-12T09:13:06.588Z",
+          "source_observed_at": "2026-10-12T09:13:06.588Z",
+          "freshness": "fresh",
+          "max_age_seconds": 86400
+        },
+        {
+          "source_id": "get_product_details:bp_2163841269:bp_2163841269",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163841269",
+          "product_id": "bp_2163841269",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T09:13:06.379Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2163844358:bp_2163844358",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163844358",
+          "product_id": "bp_2163844358",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T09:13:06.379Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        },
+        {
+          "source_id": "get_product_details:bp_2163844359:bp_2163844359",
+          "kind": "catalog_snapshot",
+          "record_id": "bp_2163844359",
+          "product_id": "bp_2163844359",
+          "scope": "cluster",
+          "capability": "get_product_details",
+          "checked_at": "2026-10-12T09:13:06.379Z",
+          "source_observed_at": null,
+          "freshness": "fresh",
+          "max_age_seconds": 900
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": "claim_03fe1cba38d88171c90a4920",
+          "product_id": "bp_2163844358",
+          "field": "feature:625",
+          "value": "128 GB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 625,
+            "label": "Χωρητικότητα",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_07b3ef44ad973af8b9658866",
+          "product_id": "bp_2163844358",
+          "field": "history_90d_median_price",
+          "value": 291.99,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_0abac3220f326d8e480ca3b1",
+          "product_id": "bp_2163844358",
+          "field": "history_90d_minimum_price",
+          "value": 279,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_14c1c9c73069cc5d66a3b242",
+          "product_id": "bp_2163844358",
+          "field": "history_30d_coverage_pct",
+          "value": 100,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_1601a5b95e6d581773f68d07",
+          "product_id": "bp_2163844358",
+          "field": "feature:4641",
+          "value": "NFC, Bluetooth, WiFi, USB-C",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4641,
+            "label": "Συνδεσιμότητα",
+            "group": "Συνδεσιμότητα"
+          }
+        },
+        {
+          "claim_id": "claim_25c6b8c63200e5c72c15b41b",
+          "product_id": "bp_2163841269",
+          "field": "attribute:nfc",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_8282e05d4cca567422ddf3ad"]
+        },
+        {
+          "claim_id": "claim_302ca4a9177997db81d81489",
+          "product_id": "bp_2163844359",
+          "field": "attribute:dual_sim",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_59c0ed7199547233c1bd7ab9"]
+        },
+        {
+          "claim_id": "claim_316d2e9145eefd7128481972",
+          "product_id": "bp_2163841269",
+          "field": "attribute:ois",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_b13e56ebb34f6a17d32bb811"]
+        },
+        {
+          "claim_id": "claim_35b9332ea35ce8e59f70691b",
+          "product_id": "bp_2163844358",
+          "field": "attribute:nfc",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_1601a5b95e6d581773f68d07"]
+        },
+        {
+          "claim_id": "claim_385db49cdb814389e0ef2285",
+          "product_id": "bp_2163841269",
+          "field": "attribute:ram_gb",
+          "value": 6,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_52428e4218a1bf98f22fbfe2"]
+        },
+        {
+          "claim_id": "claim_3bcc2f0c7b3ee0b26844adcb",
+          "product_id": "bp_2163844358",
+          "field": "current_price_source",
+          "value": "live_offer_minimum",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_3d149bbbf8852fa3601fbd83",
+          "product_id": "bp_2163844358",
+          "field": "history_180d_minimum_price",
+          "value": 269,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_40608ca49d7e81f518d71d69",
+          "product_id": "bp_2163844358",
+          "field": "history_180d_observations",
+          "value": 180,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_4a32462f7f965a5ab29d8801",
+          "product_id": "bp_2163844358",
+          "field": "history_90d_coverage_pct",
+          "value": 100,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_52428e4218a1bf98f22fbfe2",
+          "product_id": "bp_2163841269",
+          "field": "feature:1447",
+          "value": "6144 MB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1447,
+            "label": "RAM",
+            "group": "Μνήμη"
+          }
+        },
+        {
+          "claim_id": "claim_575a67cd7ca5512f4a411c84",
+          "product_id": "bp_2163844359",
+          "field": "feature:4636",
+          "value": "HDR, Panorama, OIS, Best Face, PDAF",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4636,
+            "label": "Δυνατότητες Κάμερας",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_59c0ed7199547233c1bd7ab9",
+          "product_id": "bp_2163844359",
+          "field": "feature:1980",
+          "value": "Dual (Με eSIM)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1980,
+            "label": "Τύπος SIM",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_5f369b8988df1272e0199ad7",
+          "product_id": "bp_2163841269",
+          "field": "attribute:storage_gb",
+          "value": 128,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_ea56d5b5d03f648defd3d211"]
+        },
+        {
+          "claim_id": "claim_6606d07b8a9d8064fc9fdc0c",
+          "product_id": "bp_2163844358",
+          "field": "feature:1980",
+          "value": "Dual (Με eSIM)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1980,
+            "label": "Τύπος SIM",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_67ca7009ff94c1a97030b2d8",
+          "product_id": "bp_2163844358",
+          "field": "attribute:network_5g",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_f66ff0ed163e1103199b32e6"]
+        },
+        {
+          "claim_id": "claim_7179c3694fc58ed20deabbd9",
+          "product_id": "bp_2163844358",
+          "field": "history_30d_median_price",
+          "value": 300,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_72ea0c1879b33a818e11ed50",
+          "product_id": "bp_2163844359",
+          "field": "attribute:nfc",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_cf2f376e2e0a212a73708442"]
+        },
+        {
+          "claim_id": "claim_73858d22359f7c92271adbd5",
+          "product_id": "bp_2163844359",
+          "field": "attribute:network_5g",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_c6652b3b9f0622fb3fa00b5d"]
+        },
+        {
+          "claim_id": "claim_774ea25d07e19be00705aaac",
+          "product_id": "bp_2163841269",
+          "field": "attribute:network_5g",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_a2bc43c9a818c49b4353b543"]
+        },
+        {
+          "claim_id": "claim_8282e05d4cca567422ddf3ad",
+          "product_id": "bp_2163841269",
+          "field": "feature:4641",
+          "value": "NFC, Bluetooth, WiFi, USB-C",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4641,
+            "label": "Συνδεσιμότητα",
+            "group": "Συνδεσιμότητα"
+          }
+        },
+        {
+          "claim_id": "claim_87b7fdc2e018e4b34008f5e4",
+          "product_id": "bp_2163844358",
+          "field": "attribute:dual_sim",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_6606d07b8a9d8064fc9fdc0c"]
+        },
+        {
+          "claim_id": "claim_87eac6aaca3362a1eac62bfa",
+          "product_id": "bp_2163844359",
+          "field": "feature:625",
+          "value": "256 GB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 625,
+            "label": "Χωρητικότητα",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_89023cf49298e0a3c5f54abe",
+          "product_id": "bp_2163844358",
+          "field": "history_status",
+          "value": "available",
+          "kind": "observed",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field"
+        },
+        {
+          "claim_id": "claim_8ecdf0f3f7600843f0d960e6",
+          "product_id": "bp_2163844359",
+          "field": "attribute:ram_gb",
+          "value": 8,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d5fffb81f73cb4f6cd6870d4"]
+        },
+        {
+          "claim_id": "claim_9b643bbd5521385cff8bd25e",
+          "product_id": "bp_2163844358",
+          "field": "attribute:storage_gb",
+          "value": 128,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_03fe1cba38d88171c90a4920"]
+        },
+        {
+          "claim_id": "claim_a081b1bd2ffb2f2df2ea5b61",
+          "product_id": "bp_2163844358",
+          "field": "history_180d_median_price",
+          "value": 291.99,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_a2bc43c9a818c49b4353b543",
+          "product_id": "bp_2163841269",
+          "field": "feature:1173",
+          "value": "5G",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1173,
+            "label": "Δίκτυο Σύνδεσης",
+            "group": "Δικτύωση"
+          }
+        },
+        {
+          "claim_id": "claim_ac0b81aefc9bfa2159ed3004",
+          "product_id": "bp_2163844358",
+          "field": "history_30d_observations",
+          "value": 30,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_b13e56ebb34f6a17d32bb811",
+          "product_id": "bp_2163841269",
+          "field": "feature:4636",
+          "value": "HDR, Panorama, OIS, PDAF",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4636,
+            "label": "Δυνατότητες Κάμερας",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_b1a5ed0369fca6943474fe85",
+          "product_id": "bp_2163844358",
+          "field": "attribute:ois",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_e2f4d23b659a786e80bfdf8d"]
+        },
+        {
+          "claim_id": "claim_c6652b3b9f0622fb3fa00b5d",
+          "product_id": "bp_2163844359",
+          "field": "feature:1173",
+          "value": "5G",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1173,
+            "label": "Δίκτυο Σύνδεσης",
+            "group": "Δικτύωση"
+          }
+        },
+        {
+          "claim_id": "claim_c666a822eecbb09b1853cf83",
+          "product_id": "bp_2163844359",
+          "field": "attribute:storage_gb",
+          "value": 256,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_87eac6aaca3362a1eac62bfa"]
+        },
+        {
+          "claim_id": "claim_cddca3425fa1c36e0a2c0420",
+          "product_id": "bp_2163844358",
+          "field": "history_180d_coverage_pct",
+          "value": 100,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_cf2f376e2e0a212a73708442",
+          "product_id": "bp_2163844359",
+          "field": "feature:4641",
+          "value": "NFC, Bluetooth, WiFi, USB-C",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4641,
+            "label": "Συνδεσιμότητα",
+            "group": "Συνδεσιμότητα"
+          }
+        },
+        {
+          "claim_id": "claim_d33958d74f2f870da268eb23",
+          "product_id": "bp_2163844358",
+          "field": "attribute:panel_type",
+          "value": "AMOLED",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_ee3cecfb05f50a4e06f182c1"]
+        },
+        {
+          "claim_id": "claim_d411db6dbdbc42d924f0fc71",
+          "product_id": "bp_2163844359",
+          "field": "attribute:ois",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_575a67cd7ca5512f4a411c84"]
+        },
+        {
+          "claim_id": "claim_d5fffb81f73cb4f6cd6870d4",
+          "product_id": "bp_2163844359",
+          "field": "feature:1447",
+          "value": "8192 MB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1447,
+            "label": "RAM",
+            "group": "Μνήμη"
+          }
+        },
+        {
+          "claim_id": "claim_d71faa3c2a793eb1222b663a",
+          "product_id": "bp_2163841269",
+          "field": "feature:1980",
+          "value": "Dual (Με eSIM)",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1980,
+            "label": "Τύπος SIM",
+            "group": "Κινητό"
+          }
+        },
+        {
+          "claim_id": "claim_d85e3b80347875cc42307c3b",
+          "product_id": "bp_2163844358",
+          "field": "feature:1447",
+          "value": "8192 MB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1447,
+            "label": "RAM",
+            "group": "Μνήμη"
+          }
+        },
+        {
+          "claim_id": "claim_dcb970be189c200f8a3575c3",
+          "product_id": "bp_2163844358",
+          "field": "attribute:ram_gb",
+          "value": 8,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d85e3b80347875cc42307c3b"]
+        },
+        {
+          "claim_id": "claim_e2f4d23b659a786e80bfdf8d",
+          "product_id": "bp_2163844358",
+          "field": "feature:4636",
+          "value": "HDR, Panorama, OIS, Best Face, PDAF",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 4636,
+            "label": "Δυνατότητες Κάμερας",
+            "group": "Κάμερα"
+          }
+        },
+        {
+          "claim_id": "claim_e64011f840e21322e8831624",
+          "product_id": "bp_2163844358",
+          "field": "history_90d_observations",
+          "value": 90,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_ea56d5b5d03f648defd3d211",
+          "product_id": "bp_2163841269",
+          "field": "feature:625",
+          "value": "128 GB",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 625,
+            "label": "Χωρητικότητα",
+            "group": "Αποθηκευτικός Χώρος"
+          }
+        },
+        {
+          "claim_id": "claim_ee3cecfb05f50a4e06f182c1",
+          "product_id": "bp_2163844358",
+          "field": "feature:1978",
+          "value": "Super AMOLED+",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1978,
+            "label": "Τύπος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_f06beb7bbad2fa72a4bcb367",
+          "product_id": "bp_2163844358",
+          "field": "history_30d_minimum_price",
+          "value": 300,
+          "kind": "derived",
+          "source_ids": ["get_price_history:bp_2163844358:bp_2163844358"],
+          "validation": "deterministic_history_aggregation"
+        },
+        {
+          "claim_id": "claim_f66ff0ed163e1103199b32e6",
+          "product_id": "bp_2163844358",
+          "field": "feature:1173",
+          "value": "5G",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844358:bp_2163844358"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1173,
+            "label": "Δίκτυο Σύνδεσης",
+            "group": "Δικτύωση"
+          }
+        },
+        {
+          "claim_id": "claim_f6ba030be7d706395eb25227",
+          "product_id": "bp_2163841269",
+          "field": "attribute:dual_sim",
+          "value": true,
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_d71faa3c2a793eb1222b663a"]
+        },
+        {
+          "claim_id": "claim_f6bc4fa07b5d5bb28fffdeb4",
+          "product_id": "bp_2163844359",
+          "field": "attribute:panel_type",
+          "value": "AMOLED",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_feccc5c7b331471b22919337"]
+        },
+        {
+          "claim_id": "claim_f7134684ca1b4ea5adc7194d",
+          "product_id": "bp_2163841269",
+          "field": "feature:1978",
+          "value": "Super AMOLED",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1978,
+            "label": "Τύπος Οθόνης",
+            "group": "Οθόνη"
+          }
+        },
+        {
+          "claim_id": "claim_fdf9bdabe7ea867e7d5fa3d9",
+          "product_id": "bp_2163841269",
+          "field": "attribute:panel_type",
+          "value": "AMOLED",
+          "kind": "derived",
+          "source_ids": ["get_product_details:bp_2163841269:bp_2163841269"],
+          "validation": "normalized_catalog_attribute_v32",
+          "supporting_claim_ids": ["claim_f7134684ca1b4ea5adc7194d"]
+        },
+        {
+          "claim_id": "claim_feccc5c7b331471b22919337",
+          "product_id": "bp_2163844359",
+          "field": "feature:1978",
+          "value": "Super AMOLED+",
+          "kind": "observed",
+          "source_ids": ["get_product_details:bp_2163844359:bp_2163844359"],
+          "validation": "exact_tool_field",
+          "feature": {
+            "id": 1978,
+            "label": "Τύπος Οθόνης",
+            "group": "Οθόνη"
+          }
+        }
+      ]
+    },
+    "uncertainty": [
+      {
+        "code": "ranking_calibration",
+        "product_id": "bp_2163844358",
+        "message": "Η κατάταξη χρησιμοποιεί κανόνες και εκτιμήσεις κατηγορίας· δεν αποτελεί εργαστηριακή μέτρηση ούτε πρόβλεψη ικανοποίησης."
+      },
+      {
+        "code": "landed_cost_unknown",
+        "product_id": "bp_2163844358",
+        "message": "Το τελικό κόστος με μεταφορικά δεν έχει επιβεβαιωθεί."
+      }
+    ]
+  },
+  "metrics": {
+    "claims": 56,
+    "sources": 13,
+    "structured_bytes": 40571,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 30,
+      "complete_catalog": false,
+      "search_calls": 2,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T09:13:05.883Z",
+        "source_observed_at": "2026-10-12T09:08:17.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 953,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 20,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 1730
+}

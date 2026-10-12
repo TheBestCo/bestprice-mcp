@@ -1,0 +1,58 @@
+{
+  "baseline_revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+  "baseline_cases": 30,
+  "initial_automated_passes": 26,
+  "initial_automated_failures": 4,
+  "confirmed_product_failure_cases": [
+    "budget_up",
+    "budget_conflict_corrected",
+    "capacity_units",
+    "ram_correction",
+    "storage_correction",
+    "dense_comparison",
+    "phone_ois_relaxed"
+  ],
+  "baseline_product_failure_count": 7,
+  "baseline_nonfailure_count": 23,
+  "scope_note": "Selected adversarial probes, not an estimate of production failure rate.",
+  "harness_corrections": [
+    {
+      "case": "headphone_anc",
+      "issue": "The typed attribute is active_noise_cancellation, not anc. The product met the requirement; corrected control passed."
+    },
+    {
+      "case": "comparison_impossible",
+      "issue": "A retained comparison has outcome comparison and status no_match, with no recommended product and evaluation no_eligible_compared_product. This is intentional."
+    },
+    {
+      "cases": ["capacity_units", "ram_correction", "storage_correction"],
+      "issue": "Initial assertions checked only returned products and therefore accepted empty responses. Positive controls established answerability; final runner requires recommendation."
+    },
+    {
+      "case": "dense_comparison",
+      "issue": "Initial schema check did not bind the requested model identities. Final runner requires both named products."
+    }
+  ],
+  "bounded_recall_observation": {
+    "cases": ["phone_ois_relaxed", "control_nfc150", "control_optional"],
+    "result": "Confirmed failure, not merely a bounded-page limitation: eligible NFC candidates were already present, but an unrestricted price-sorted companion put twenty basic phones ahead of them and exhausted the detail budget. Original failing trace and fixed replay are retained. Mandatory feature-targeted results now keep priority; generic price-only discovery keeps its existing ordering. Search/detail/offer limits did not increase."
+  },
+  "dense_local": {
+    "canonical_claims": 2095,
+    "canonical_bytes": 779994,
+    "offer_calls": 8,
+    "offers_per_call": 10,
+    "canonical_byte_limit": 1048576,
+    "claim_limit": 4096,
+    "public_full_evidence_is_returned_product_subset": true
+  },
+  "exclusions": [
+    "Staff Ask and persistent conversation history",
+    "signed landing and attribution navigation",
+    "merchant clickouts",
+    "account/order/alert writes",
+    "Events writes",
+    "portal and marketplace receiving state"
+  ],
+  "additional_failing_controls": ["control_nfc150", "control_optional"]
+}

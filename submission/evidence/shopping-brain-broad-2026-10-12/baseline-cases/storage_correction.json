@@ -1,0 +1,242 @@
+{
+  "id": "storage_correction",
+  "message": "Θέλω κινητό έως 400 ευρώ με τουλάχιστον 512GB αποθηκευτικό χώρο. Διόρθωση: τουλάχιστον 128GB αποθηκευτικό χώρο.",
+  "expectation": {
+    "numeric": ["storage_gb", 128, "unbounded"],
+    "budget": 400
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T08:47:12.185Z",
+  "passed": true,
+  "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+  "transport_bytes": 20354,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T08:47:18.169Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "6f8e7310-51e1-4ae6-affd-5560d40a8c86",
+      "evidence_fingerprint": "a150f8e71f9f1dcf0c2e02333931272bb65ef5b2c7972d0d746a9236cf13e829"
+    },
+    "outcome": "no_match",
+    "status": "no_match",
+    "answer": "",
+    "reason": "hard_constraints_unmet",
+    "message": "Η αναζήτηση έμεινε μέσα στα 400€. Με «Χωρίς όριο τιμής» μπορώ να ξαναελέγξω, κρατώντας αποθηκευτικός χώρος τουλάχιστον 128GB και Χωρητικότητα από 512 GB ως απαίτηση.",
+    "blocking_constraints": ["minimum_storage_gb", "catalog_row:fdbc75d535198c235e4278f914d7a61a:at_least"],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": 400,
+      "minimum_ram_gb": null,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "catalog_requirements": ["αποθηκευτικός χώρος τουλάχιστον 128GB", "Χωρητικότητα από 512 GB"],
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 400,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 400,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 12,
+              "end": 24,
+              "text": "έως 400 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      }
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "hard_constraints_unmet",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 13,
+      "complete_catalog": false,
+      "search_calls": 3,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T08:47:13.836Z",
+        "source_observed_at": "2026-10-12T08:44:04.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 767,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    },
+    "search_handoff": {
+      "url": "[omitted]",
+      "label": "Δες αποτελέσματα στο BestPrice"
+    },
+    "catalog_candidates": {
+      "basis": "catalog_search_unranked",
+      "note": "BestPrice catalog search results for this request, in catalog relevance order within its price bounds. The Shopping Brain did not rank them or check them against the request, so they are not a recommendation; products it checked and rejected are left out. price_from is the catalog minimum before shipping.",
+      "query": "κινητό",
+      "price_min_eur": null,
+      "price_max_eur": 400,
+      "products": [
+        {
+          "product_id": "bp_2163844359",
+          "title": "Samsung Galaxy A57 5G 8GB 256GB",
+          "brand": null,
+          "category_title": "Κινητά",
+          "price_from": 345.5,
+          "availability": "available",
+          "offer_count": 71,
+          "rating": {
+            "average": 4.78,
+            "count": 21
+          },
+          "decision_id": "d1.923e6216c958fe6815d18cdc1c584147.sVpsp4h8vPtiyPDL9cVnqkHqh782AToIOaFotBBWqGc",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163461420",
+          "title": "Xiaomi Poco M8 5G NFC 8GB 512GB",
+          "brand": null,
+          "category_title": "Κινητά",
+          "price_from": 248.9,
+          "availability": "available",
+          "offer_count": 18,
+          "rating": {
+            "average": 5,
+            "count": 3
+          },
+          "decision_id": "d1.a68e681fe84e8dd2c3b607784e27753f.4GEsyqX7ohH0l-pAw0qtNv65FUSBYbealRD4mwx6xgY",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163844357",
+          "title": "Samsung Galaxy A37 5G 8GB 256GB",
+          "brand": null,
+          "category_title": "Κινητά",
+          "price_from": 298.5,
+          "availability": "available",
+          "offer_count": 67,
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "decision_id": "d1.5d2471351ebf0107e4f17c99f8f300b7.Yxw1bG2d3nSwaK8kpAMsIMmai4nstbNMdiD-C11lBtk",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        },
+        {
+          "product_id": "bp_2163841269",
+          "title": "Samsung Galaxy A37 5G 6GB 128GB",
+          "brand": null,
+          "category_title": "Κινητά",
+          "price_from": 253,
+          "availability": "available",
+          "offer_count": 69,
+          "rating": {
+            "average": 5,
+            "count": 2
+          },
+          "decision_id": "d1.43d2ff7ec14e82660c5a9d6acd65e31f.V0ituJZ2sI4zrL8JPNqK-CIULSgg-gLFpVGoalksXmA",
+          "bestprice_url": "[omitted]",
+          "image_url": "[omitted]"
+        }
+      ]
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 0,
+      "omitted_source_count": 0,
+      "sources": [],
+      "claims": []
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 0,
+    "sources": 0,
+    "structured_bytes": 7565,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 13,
+      "complete_catalog": false,
+      "search_calls": 3,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T08:47:13.836Z",
+        "source_observed_at": "2026-10-12T08:44:04.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 767,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 8,
+        "category_id": null,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 6533
+}

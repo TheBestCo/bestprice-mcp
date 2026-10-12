@@ -1,8 +1,8 @@
 # BestPrice current release matrix
 
-Updated October 12, 2026. The [Shopping Brain release receipt](evidence/shopping-brain-release-2026-10-12.json) separates source, CI, deployed roles, live checks, and exclusions. Earlier October 2–3 observations below remain historical and do not establish today's portal or account state.
+Updated October 12, 2026. Latest: [broader anonymous Shopping Brain audit](shopping-brain-broad-audit-2026-10-12.md), released at `979987837e73b3b364234855508974bdbd77746b`: **36/36 live cases**, **53/53 read-only canary checks**, Jenkins green; correction precedence, quantity custody, named comparisons and mandatory-feature recall repaired. [Immutable-file receipt and hashes](evidence/shopping-brain-broad-2026-10-12/release-receipt.json) retain failures and controls. The [Shopping Brain release receipt](evidence/shopping-brain-release-2026-10-12.json) separates source, CI, deployed roles, live checks, and exclusions. Earlier October 2–3 observations below remain historical and do not establish today's portal or account state.
 
-## October 12 Shopping Brain release
+## Earlier October 12 Shopping Brain release
 
 - Backend fixes: initial `48a64f7e95f9c9506d3be7f37763485318fdabb2`, final `8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a`; website `f56caf3fd8e30e06e617ae0e3da6b794e32e021c`; distribution implementation `abd1cdd14ef27e2b2a62fe99d44c0fc38b362f89`. Exact implementation CI passed in all three repositories.
 - [Final live behavior](evidence/shopping-brain-live-final-2026-10-12.json): **15/15 scenarios passed** on gateway `8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a`. Three repeated generic phone requests returned an eligible Galaxy A37 with typed, known-true 5G/NFC/OIS and resolving references. Mandatory NFC, final 4–5 L correction, genuine contradictions, unknown OIS, Apple exclusion, unsupported digital requests and prompt-injection controls passed.

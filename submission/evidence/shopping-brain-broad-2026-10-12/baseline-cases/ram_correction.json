@@ -1,0 +1,172 @@
+{
+  "id": "ram_correction",
+  "message": "Θέλω laptop έως 800 ευρώ με τουλάχιστον 32GB RAM. Διόρθωση: μόνο από 8 έως 16GB RAM.",
+  "expectation": {
+    "numeric": ["ram_gb", 8, 16],
+    "budget": 800
+  },
+  "evidence_detail": "summary",
+  "started_at": "2026-10-12T08:47:06.096Z",
+  "passed": true,
+  "revision": "8eb2c1db66ccd1e3b70c28e39249bd1832d4d99a",
+  "transport_bytes": 9754,
+  "response": {
+    "schema_version": "2.0",
+    "as_of": "2026-10-12T08:47:11.768Z",
+    "currency": "EUR",
+    "locale": "el-GR",
+    "warnings": [],
+    "brain": {
+      "projection_version": "bestprice_mcp_decision_v1",
+      "decision_version": "bestprice_decision_v1",
+      "decision_id": "2a364b0a-f306-4953-880c-68af3e7f32a2",
+      "evidence_fingerprint": "29f011b6f7cf2b805f046b97b71b4e7335530338a1675152d82901befd6a45f4"
+    },
+    "outcome": "clarification",
+    "status": "needs_input",
+    "answer": "Δεν μπορώ να επιβεβαιώσω όλα τα απαραίτητα κριτήρια: μόνο από 8 έως 16GB RAM. Ποια πρέπει οπωσδήποτε να καλύπτονται; Δεν έχω ακόμη επιβεβαιωμένη πρόταση που να τα καλύπτει όλα. Το όριο τιμής μένει έως 800€.",
+    "reason": null,
+    "message": null,
+    "blocking_constraints": [],
+    "recommended_product_id": null,
+    "alternatives": [],
+    "products": [],
+    "constraints": {
+      "maximum_price_eur": 800,
+      "minimum_ram_gb": 8,
+      "maximum_ram_gb": 16,
+      "minimum_ram_assumed": false,
+      "operating_system": null,
+      "people_count": null,
+      "capacity_litres": null,
+      "capacity_assumed": false,
+      "different_capacity_from_litres": null,
+      "dual_basket": null,
+      "screen_inches": null,
+      "room_sqm": null,
+      "postal_code": null,
+      "price_requirements": {
+        "version": "shopping_price_constraints_v1",
+        "minimum_eur": null,
+        "maximum_eur": 800,
+        "explicitly_unbounded": false,
+        "unsupported": [],
+        "clauses": [
+          {
+            "field": "item_price",
+            "operator": "lte",
+            "value": 800,
+            "unit": "EUR",
+            "source": {
+              "turn_index": 0,
+              "start": 12,
+              "end": 24,
+              "text": "έως 800 ευρώ"
+            }
+          }
+        ],
+        "conflicts": []
+      },
+      "catalog_requirements": ["RAM από 32768 MB"]
+    },
+    "reasons": [],
+    "tradeoffs": [],
+    "offer_summary": null,
+    "comparison": null,
+    "basket": null,
+    "basket_request": null,
+    "clarifications": [
+      {
+        "question": "Δεν μπορώ να επιβεβαιώσω όλα τα απαραίτητα κριτήρια: μόνο από 8 έως 16GB RAM. Ποια πρέπει οπωσδήποτε να καλύπτονται; Δεν έχω ακόμη επιβεβαιωμένη πρόταση που να τα καλύπτει όλα. Το όριο τιμής μένει έως 800€.",
+        "reason": "missing_shopping_context"
+      }
+    ],
+    "price_verdict": {
+      "verdict": "insufficient_evidence",
+      "reason": "history_not_available",
+      "source_ids": [],
+      "predicts_future_price": false
+    },
+    "next_action": {
+      "type": "provide_context",
+      "reason": "missing_shopping_context",
+      "requires_user_action": true,
+      "bestprice_url": "[omitted]"
+    },
+    "ranking_policy": {
+      "version": "bestprice_shopping_policy_v1",
+      "product": "hard_constraints_then_fit_and_marginal_value",
+      "merchant": "lowest_known_comparable_cost",
+      "commercial_signals_used": false
+    },
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 48,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T08:47:09.734Z",
+        "source_observed_at": "2026-10-12T08:44:04.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 452,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 48,
+        "category_id": 2591,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    },
+    "shopping_context": {
+      "version": "bestprice_shopping_context_v32",
+      "products": [],
+      "market": []
+    },
+    "evidence": {
+      "scope": "returned_products",
+      "detail": "summary",
+      "note": "Summary evidence: only the claims this result cites by id, the claims they are derived from, and the sources they cite. evidence_detail \"full\" returns every returned-product claim and source, including offer field receipts, complete spec sheets and ranking inputs.",
+      "omitted_claim_count": 0,
+      "omitted_source_count": 0,
+      "sources": [],
+      "claims": []
+    },
+    "uncertainty": []
+  },
+  "metrics": {
+    "claims": 0,
+    "sources": 0,
+    "structured_bytes": 3592,
+    "retrieval": {
+      "scope": "returned_page",
+      "candidate_count": 48,
+      "complete_catalog": false,
+      "search_calls": 1,
+      "receipt": {
+        "version": "bestprice_retrieval_v1",
+        "policy": "single_catalog_page_v1",
+        "backend": "n.products.search",
+        "checked_at": "2026-10-12T08:47:09.734Z",
+        "source_observed_at": "2026-10-12T08:44:04.000Z",
+        "search_calls": 1,
+        "trinity_calls": 1,
+        "page": 1,
+        "page_size": 48,
+        "catalog_total": 452,
+        "candidate_count": 48,
+        "eligible_count": 48,
+        "returned_count": 48,
+        "category_id": 2591,
+        "protected_term_mismatch": false,
+        "ranking_scope": "returned_page"
+      }
+    }
+  },
+  "elapsed_ms": 6084
+}

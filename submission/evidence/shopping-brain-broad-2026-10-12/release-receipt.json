@@ -1,0 +1,455 @@
+{
+  "generated_at": "2026-10-12T09:15:55.857Z",
+  "scope": "Anonymous public read-only Shopping Brain audit; live catalog replay; no staff Ask or attribution navigation",
+  "source": {
+    "backend_release": "979987837e73b3b364234855508974bdbd77746b",
+    "fix_commits": ["1af59e34acc09f4b9a9505fd83c738ffce97a6ce", "f6bd51cee9ad01b5bebd2fbd081d8158bf3f001a"],
+    "default_branch": "main",
+    "normal_hooks": true,
+    "ci": {
+      "state": "success",
+      "statuses": [
+        {
+          "description": "This commit looks good",
+          "state": "success",
+          "target_url": "https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/30020/display/redirect"
+        }
+      ]
+    }
+  },
+  "live": {
+    "case_count": 36,
+    "passed": 36,
+    "failed": 0,
+    "revision": "979987837e73b3b364234855508974bdbd77746b",
+    "start": "2026-10-12T09:12:45.322Z",
+    "end": "2026-10-12T09:13:50.383Z",
+    "summary_cases": 31,
+    "full_evidence_cases": 5,
+    "max_public_claims": 520,
+    "max_public_structured_bytes": 185362,
+    "receipt": "final-live.json"
+  },
+  "interface_canary": {
+    "passed": 53,
+    "failed": 0,
+    "publishedTools": ["compare_offers", "get_price_history", "get_shopping_decision", "search_products"],
+    "checkoutTools": 0,
+    "merchantRedirectsFollowed": 0,
+    "rateLimitRetries": 0,
+    "requestsSent": 67,
+    "requestBudget": 90,
+    "read_only": true,
+    "receipt": "canary-final.json"
+  },
+  "local": {
+    "tests": 6171,
+    "passed": 6168,
+    "skipped": 3,
+    "failed": 0,
+    "pre_push_test_files": 547,
+    "offline_contract_files": 23,
+    "cohorts_overlap": true,
+    "canonical_dense_claims": 2095,
+    "canonical_dense_bytes": 779994,
+    "canonical_claim_limit": 4096,
+    "canonical_byte_limit": 1048576,
+    "offers_per_lookup": 10,
+    "offer_lookups": 8
+  },
+  "runtime_roles": {
+    "observed_rows": "is_cron\thash\tinstances\toldest_start\tnewest_start\tnewest_heartbeat\n0\t9799878\t5\t2026-10-12 12:11:22\t2026-10-12 12:11:40\t2026-10-12 12:11:40\n1\t8eb2c1d\t2\t2026-10-12 11:57:41\t2026-10-12 11:59:00\t2026-10-12 12:12:41\n",
+    "interpretation": "Five recent non-cron heartbeat rows report 9799878; non-cron includes roles besides the API and is not an API allocation count. Two cron rows still report 8eb2c1d. Backend API rollout is established separately by Jenkins success; gateway revision was checked on all final audit calls."
+  },
+  "assessment": "assessment.json",
+  "evidence_files": [
+    {
+      "path": "assessment.json",
+      "bytes": 2568,
+      "sha256": "d9109f7501497cc101eb6f9822f708c08a9f22a6259aebad15f8976e5df30d8c"
+    },
+    {
+      "path": "baseline.json",
+      "bytes": 41098,
+      "sha256": "22546256b1deb48543dc3a854a2442378f61d1c2e8040b22dd24d6d583ad5fc9"
+    },
+    {
+      "path": "bounded-recall-before.json",
+      "bytes": 10120,
+      "sha256": "346f5da1df02aaca6675f4843f21f7e2fd529f67769710a3f6289e812186da5e"
+    },
+    {
+      "path": "bounded-recall-fixed.json",
+      "bytes": 24699,
+      "sha256": "7c169149fb0527919297c98d8d373989b4450b786304d19ca7966313b4e4a510"
+    },
+    {
+      "path": "canary-final.json",
+      "bytes": 6498,
+      "sha256": "e76204cdb82d17315d8e96316dc701a62325920d5fcecb8d08c07e13a7443fc9"
+    },
+    {
+      "path": "confirmed-before.json",
+      "bytes": 170532,
+      "sha256": "b7717c93d2a9339d2f579e596638c64e188b154e0bc87847306d842fb7edbc05"
+    },
+    {
+      "path": "controls.json",
+      "bytes": 214122,
+      "sha256": "9548dea66a59301c37f079ba230d5516f3c879d1b2281b20fac077e7e7ea0055"
+    },
+    {
+      "path": "final-live.json",
+      "bytes": 54130,
+      "sha256": "9aaa43b54464d266a4ca6e75fc7fa6e34e93c73b532a58b0ee59a70952053cce"
+    },
+    {
+      "path": "local-dense-final.json",
+      "bytes": 136829,
+      "sha256": "20b13eac4d3cc7f4f4455ad726c08a2e56aa4ea95f2cc79c3cfc331e6cd72162"
+    },
+    {
+      "path": "local-fixed.json",
+      "bytes": 350918,
+      "sha256": "f868cd7fa3b89ed8a6ecb78c5dfff6c9c33d83f9c7d6b17e3a62757b753c890d"
+    },
+    {
+      "path": "baseline-cases/brand_correction.json",
+      "bytes": 52228,
+      "sha256": "4062dd528184aa2cba6feb9a367d1710a525600ce479b4df00b11c76613a22da"
+    },
+    {
+      "path": "baseline-cases/budget_conflict_corrected.json",
+      "bytes": 5296,
+      "sha256": "ed77f7f7d5eb70df5acacb820b4dd1e25633cf2bb13885681774f1d080983b8b"
+    },
+    {
+      "path": "baseline-cases/budget_contradiction.json",
+      "bytes": 4826,
+      "sha256": "6e7fb524bcea053ef8b05d25c52049c01954694a5c18ccaff253f0c3adfd3f65"
+    },
+    {
+      "path": "baseline-cases/budget_down.json",
+      "bytes": 40876,
+      "sha256": "88d6943879f836f185868ee5c7a6425e836601319b7cf335cd4ec9b981e37cf8"
+    },
+    {
+      "path": "baseline-cases/budget_multiple.json",
+      "bytes": 40605,
+      "sha256": "34717abc99495c31e8ec16536a3e977210b40ec245d0518c4bf9835b983208ed"
+    },
+    {
+      "path": "baseline-cases/budget_up.json",
+      "bytes": 6461,
+      "sha256": "df30e881683a6563004827b05d9a158b6e6b56ab0ad46cfe5579dcb226ada3d8"
+    },
+    {
+      "path": "baseline-cases/capacity_conflict_corrected.json",
+      "bytes": 44969,
+      "sha256": "89f756b5e013b7595fe711278297841df4ee4428e945699fec23cd98ef23b7bc"
+    },
+    {
+      "path": "baseline-cases/capacity_multiple.json",
+      "bytes": 32293,
+      "sha256": "f3a2a630e6f62c1ac69d17005077d601bd211b63da216e938cade8aa5930e0aa"
+    },
+    {
+      "path": "baseline-cases/capacity_reverse.json",
+      "bytes": 44659,
+      "sha256": "f405bd37ea57a30a83d0b05c47f82da8b166b0d4f9c08c47ed6271503291894a"
+    },
+    {
+      "path": "baseline-cases/capacity_units.json",
+      "bytes": 6111,
+      "sha256": "5161a861338fb3d9388e31039ec0520eaa06a85f0084a3fb0b949820a6dcd712"
+    },
+    {
+      "path": "baseline-cases/comparison_impossible.json",
+      "bytes": 55253,
+      "sha256": "11d6868ac1cb598ec048dc4d4fb5b737092fc27268cfcf1c61c472cdbe3f70e9"
+    },
+    {
+      "path": "baseline-cases/dense_comparison.json",
+      "bytes": 80080,
+      "sha256": "a067f5993c9eb7292eb035476c4d77474986b5494e4a7bb35587e8e2efbfbaca"
+    },
+    {
+      "path": "baseline-cases/dense_laptop.json",
+      "bytes": 203962,
+      "sha256": "89a8e12258004a211dff7a46bcd369919bc324d2554b32057cf49fb01bc3c839"
+    },
+    {
+      "path": "baseline-cases/dense_phone_nfc.json",
+      "bytes": 266108,
+      "sha256": "02f97fbecfee10766ce3ba934436e0d60914cf255de4cd36214d5805e29d17e5"
+    },
+    {
+      "path": "baseline-cases/dense_phone_triple.json",
+      "bytes": 103957,
+      "sha256": "27ae91f7a3d3aa225181e024f988f571d29b406a1fd048051b78abb943ec95eb"
+    },
+    {
+      "path": "baseline-cases/fridge_nofrost.json",
+      "bytes": 45299,
+      "sha256": "13ec68e363065b1b7762566b17e7a607c254d3f4178dea7035cda3ece8b43c2e"
+    },
+    {
+      "path": "baseline-cases/fryer_dual.json",
+      "bytes": 44428,
+      "sha256": "883ae732fb366164fc97bdaee0809f42ff3b5ee78a932c47db5c8a3db5c382f7"
+    },
+    {
+      "path": "baseline-cases/headphone_anc.json",
+      "bytes": 49349,
+      "sha256": "3ac8d54d485ae3e7247ad9b562f482202cb19500cb6ef6ccd2cfed80739f7685"
+    },
+    {
+      "path": "baseline-cases/laptop_ram.json",
+      "bytes": 46167,
+      "sha256": "6159008bd47ffcaf602a1e016b08da72edb42b72b0867444a041314ec6725a76"
+    },
+    {
+      "path": "baseline-cases/monitor_refresh.json",
+      "bytes": 43151,
+      "sha256": "36156050f4487a2992a9e3208020b35fea64f3997e2d5e01e0706060ee0a91a8"
+    },
+    {
+      "path": "baseline-cases/phone_5g.json",
+      "bytes": 61245,
+      "sha256": "efe8908e66913adb87c75d8eb2a75f7f9c83246483d01c038c59e8ce12ecbf75"
+    },
+    {
+      "path": "baseline-cases/phone_english.json",
+      "bytes": 57924,
+      "sha256": "5b2e0e89799055858a3bab6e2e31c3de508718d073e4d01ae94d7be1990b562e"
+    },
+    {
+      "path": "baseline-cases/phone_nfc.json",
+      "bytes": 54115,
+      "sha256": "9c8f6a7f23b4b082cd4c1c1c24e911a6fe71b7fa7256cd265e3407412cf47f03"
+    },
+    {
+      "path": "baseline-cases/phone_ois.json",
+      "bytes": 55181,
+      "sha256": "104cdadcc3a66e68a874a5b3a83270e6253b213897069760fb8471ac67464c36"
+    },
+    {
+      "path": "baseline-cases/phone_ois_relaxed.json",
+      "bytes": 6521,
+      "sha256": "a70d9930e53c8a90218c5d87bf6b39dac047e80743f47d2900d48645746c9282"
+    },
+    {
+      "path": "baseline-cases/phone_optional.json",
+      "bytes": 54112,
+      "sha256": "e929c122ff53baf078907a39c0486fab099b1ade5c32acfd1d8379887be7db49"
+    },
+    {
+      "path": "baseline-cases/phone_triple.json",
+      "bytes": 28479,
+      "sha256": "00983a8f67f4c0d28940c0ad8a0324a422f348def41107e1af557efa14b77228"
+    },
+    {
+      "path": "baseline-cases/phone_unknown_exact.json",
+      "bytes": 5217,
+      "sha256": "6fb59749214037def21501c18ab979c86eccc17106b04fec08eb02e55cf4a56e"
+    },
+    {
+      "path": "baseline-cases/ram_correction.json",
+      "bytes": 5941,
+      "sha256": "f5ea76a00475c20fdf8d6d099a6ca67254ea4302ce2b5e12df09c2b9ec790ccf"
+    },
+    {
+      "path": "baseline-cases/storage_correction.json",
+      "bytes": 8467,
+      "sha256": "5b4782af01a0ee55742196d394d9fd5f32788f1742bc3b95d94aa7743e9e9bce"
+    },
+    {
+      "path": "final-cases/brand_correction.json",
+      "bytes": 53272,
+      "sha256": "e243fe3a9adb7f6a735a8788d6e0119a70c0a3e835e143ed288db645fbdd0fb4"
+    },
+    {
+      "path": "final-cases/budget_conflict_corrected.json",
+      "bytes": 43959,
+      "sha256": "47c0b2be3a598b2fafdea6f1986463e74fa46fe5bfdea88e2b86db37e2822dd3"
+    },
+    {
+      "path": "final-cases/budget_contradiction.json",
+      "bytes": 4826,
+      "sha256": "74c7cb01609ece5ff8ad35b6e3dcf2b7a2f5f81cfa673215d87a216c955eb244"
+    },
+    {
+      "path": "final-cases/budget_down.json",
+      "bytes": 40600,
+      "sha256": "f4f9af8ddeebf75809663a08e88529a8ec927d61141ed4fb0a8913877c9532ed"
+    },
+    {
+      "path": "final-cases/budget_multiple.json",
+      "bytes": 40638,
+      "sha256": "10578192c9ce7775321480f09c35f43b06be51ee6b28b6dbcc21b87079e93afa"
+    },
+    {
+      "path": "final-cases/budget_up.json",
+      "bytes": 54341,
+      "sha256": "e7516beb9e351a21b9fa873e39940e5414a973de65dd77634c77fbb10696bbf2"
+    },
+    {
+      "path": "final-cases/capacity_conflict_corrected.json",
+      "bytes": 44710,
+      "sha256": "e46c0294d735844f507889f37b6a083778f0469351f8bee9307401fe39d8d003"
+    },
+    {
+      "path": "final-cases/capacity_multiple.json",
+      "bytes": 32325,
+      "sha256": "5fa423286f988c3104640468d5942230b70e47c0fa6cb886f3f623da005eec11"
+    },
+    {
+      "path": "final-cases/capacity_reverse.json",
+      "bytes": 44692,
+      "sha256": "0399916fa499d1c3e28df7eee4f4d3ca656b9eb487248e244baeaea81720e996"
+    },
+    {
+      "path": "final-cases/capacity_units.json",
+      "bytes": 32262,
+      "sha256": "7265ce19ba072f51eaf975bab81aeb9dba278f90fb18d6d2d19cab6f52de85c1"
+    },
+    {
+      "path": "final-cases/comparison_impossible.json",
+      "bytes": 55455,
+      "sha256": "cd216dae6605157a9764e6cc060e78b734cf6e86967f256389adcec9e4f32cfe"
+    },
+    {
+      "path": "final-cases/control_capacity_units.json",
+      "bytes": 32280,
+      "sha256": "88e9c052218fa93d5bd7c153218323bfa4c6e532315b638a2b208c019ea27a02"
+    },
+    {
+      "path": "final-cases/control_nfc150.json",
+      "bytes": 62083,
+      "sha256": "d0af1c18c6ff8e3808a0851b068e04502d49aea309d2a30159c86a6cee1cc4bc"
+    },
+    {
+      "path": "final-cases/control_optional.json",
+      "bytes": 62133,
+      "sha256": "085eff46f32a3175ca08fba1cf095e1ba1fd26c6a89a1a959ad86b64709d454a"
+    },
+    {
+      "path": "final-cases/control_ram.json",
+      "bytes": 43994,
+      "sha256": "40fcf51b2d278962825aa40b985cb897122196e663d01c55c5b8947cb866b378"
+    },
+    {
+      "path": "final-cases/control_storage.json",
+      "bytes": 54362,
+      "sha256": "41119a3ef1b0a7391dfb1ca0e9fa183af1ba82bc7eb743f3a5a1fa36b1adc343"
+    },
+    {
+      "path": "final-cases/dense_comparison.json",
+      "bytes": 145004,
+      "sha256": "c2da047a1d550b825cad06a06a9dd325d02b04aed928b3f1477a1445806ab21e"
+    },
+    {
+      "path": "final-cases/dense_laptop.json",
+      "bytes": 203990,
+      "sha256": "5a5995ac859e33d4ddb6ff3526454461f606e0739274a0180b680a6c94f43c6d"
+    },
+    {
+      "path": "final-cases/dense_phone_nfc.json",
+      "bytes": 267158,
+      "sha256": "4bd869032ea1998e2cc527b5032439fd1e99a28bb0dc321ec305f1a27dbb951a"
+    },
+    {
+      "path": "final-cases/dense_phone_triple.json",
+      "bytes": 104287,
+      "sha256": "9a5b026949f034209cf4a28817feaf92249125b3b1b09fa81c11bcd20dae1846"
+    },
+    {
+      "path": "final-cases/fridge_nofrost.json",
+      "bytes": 45332,
+      "sha256": "84c279c49d150b2618bf2503d5c1b6e88bf2ee8cc2d59e0559fd6e22d85eb615"
+    },
+    {
+      "path": "final-cases/fryer_dual.json",
+      "bytes": 44461,
+      "sha256": "bb99a31f6854e97b5b9daa3b13d87bf756009a45163da03d215016ad3b1d1b31"
+    },
+    {
+      "path": "final-cases/headphone_anc.json",
+      "bytes": 50133,
+      "sha256": "e4ee46cd41b04db44fbce2cbe0f441c8ac31c9bff3ca859ab943a2883786641c"
+    },
+    {
+      "path": "final-cases/laptop_ram.json",
+      "bytes": 46200,
+      "sha256": "a36b6e18ed541e519be47bf9bd983e5100e5c2f750e4de5ce0e0d94486110610"
+    },
+    {
+      "path": "final-cases/monitor_refresh.json",
+      "bytes": 43184,
+      "sha256": "aff2af4a269cac8eea3fc42bf5e28280410afc9a2bad85a28e156f2fb091e5a4"
+    },
+    {
+      "path": "final-cases/phone_5g.json",
+      "bytes": 54527,
+      "sha256": "3b8d0286813aa3183e3bdd60d1f6a5b34722e73ef3a6d623fffa71bcb96bcfa8"
+    },
+    {
+      "path": "final-cases/phone_english.json",
+      "bytes": 57955,
+      "sha256": "3c17a9926c7ddf7e1980d0f6a3d730c3feb186afddd5c6005bf788077622400c"
+    },
+    {
+      "path": "final-cases/phone_nfc.json",
+      "bytes": 54276,
+      "sha256": "58d4ef545ffcb92d9af7831e45e7bc3437e31aae31788efd763244e4945d5182"
+    },
+    {
+      "path": "final-cases/phone_ois.json",
+      "bytes": 57712,
+      "sha256": "7c62daed34209aaf9fa1c88ad65bf885c7e5789586e7784645f6d0ee2d8a7ddd"
+    },
+    {
+      "path": "final-cases/phone_ois_relaxed.json",
+      "bytes": 62205,
+      "sha256": "f5e27400bebd2168a92ca45137d3020352fce95d77a3f6250fc4bca63975984c"
+    },
+    {
+      "path": "final-cases/phone_ois_relaxed400.json",
+      "bytes": 54404,
+      "sha256": "1dfe15dc4e8eed79ca046fd633150d282b18dcedb14cee3365dad2125576cae0"
+    },
+    {
+      "path": "final-cases/phone_optional.json",
+      "bytes": 54357,
+      "sha256": "fc9d7173a32e9cc7c86c8395280fb92eaa15562c411623e29010fffd130de29e"
+    },
+    {
+      "path": "final-cases/phone_triple.json",
+      "bytes": 28619,
+      "sha256": "060a849474e162736600b12d6389b35a1533fa1868ba59ac54c42c0b80dd9558"
+    },
+    {
+      "path": "final-cases/phone_unknown_exact.json",
+      "bytes": 5217,
+      "sha256": "bdeacd5d4a2f2312ea2dcad4b84e67cdbe000d5c45cf6d111ed518ee23ce5a40"
+    },
+    {
+      "path": "final-cases/ram_correction.json",
+      "bytes": 44057,
+      "sha256": "e9e8e4d83123a68fc516566751d3eef3ec56fcaf5e3ae5339f323a03aec9135b"
+    },
+    {
+      "path": "final-cases/storage_correction.json",
+      "bytes": 54447,
+      "sha256": "68771aef1ea65b627e4b2b48db0def744f36c0f3a397bfb04a4347a355f5a340"
+    }
+  ],
+  "exclusions": [
+    "Staff Ask and persistent conversation history",
+    "signed landing and attribution navigation",
+    "merchant clickouts",
+    "account/order/alert writes",
+    "Events writes",
+    "portal and marketplace receiving state"
+  ]
+}
