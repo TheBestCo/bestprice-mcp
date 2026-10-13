@@ -41,7 +41,7 @@ jobs:
           npm test > outcomes-evidence/tests.log 2>&1
       - name: Six synthetic shopping requests and at most three machine-only landing routes
         run: node scripts/shopper-outcomes.mjs outcomes-evidence/outcomes.json --live
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: shopper-outcomes-${{ github.run_id }}-${{ github.run_attempt }}
