@@ -2,7 +2,7 @@
   "author": {
     "name": "BestPrice"
   },
-  "description": "Find physical products and compare prices from shops in Greece with BestPrice. Ask what to buy for your needs and budget, search for a specific model, compare current non-sponsored offers with shipping and availability, or check up to 180 days of price history. Shipping that cannot be verified is shown as unknown, not free. BestPrice links take you to product pages where you can review shops before choosing whether to buy. Shopping tools are read-only: they cannot place orders, add items to a cart, or complete checkout. No BestPrice account is required for shopping.",
+  "description": "Find the right product for your needs and budget with BestPrice in ChatGPT. Describe what matters to you, explore matching products and compare current offers from shops across Greece. See prices, availability and available shipping details together, then check up to 180 days of price history to put today’s price in context.",
   "interface": {
     "capabilities": [],
     "category": "Other",
@@ -13,9 +13,9 @@
     ],
     "developerName": "BestPrice",
     "displayName": "BestPrice",
-    "longDescription": "Find physical products and compare prices from shops in Greece with BestPrice. Ask what to buy for your needs and budget, search for a specific model, compare current non-sponsored offers with shipping and availability, or check up to 180 days of price history. Shipping that cannot be verified is shown as unknown, not free. BestPrice links take you to product pages where you can review shops before choosing whether to buy. Shopping tools are read-only: they cannot place orders, add items to a cart, or complete checkout. No BestPrice account is required for shopping. Open the native shopping workspace to search products, compare offers and view price history. Optional account linking is reserved for price-drop event subscriptions; it does not grant access to your account history or orders.",
+    "longDescription": "Find the right product for your needs and budget with BestPrice in ChatGPT. Describe what matters to you, explore matching products and compare current offers from shops across Greece. See prices, availability and available shipping details together, then check up to 180 days of price history to put today’s price in context.\n\nSearch products, compare offers and explore price history in the BestPrice shopping workspace, right inside your conversation. When you find what you want, open the product on BestPrice to review shops and choose where to buy.\n\nProduct research works without a BestPrice account. Link your account for optional price-drop alerts, with the products and target prices you choose.",
     "privacyPolicyURL": "https://www.bestprice.gr/policies/privacy",
-    "shortDescription": "Compare prices in Greece",
+    "shortDescription": "Find products and compare prices in Greece",
     "supportURL": "https://www.bestprice.gr/contact",
     "termsOfServiceURL": "https://www.bestprice.gr/policies/terms",
     "websiteURL": "https://www.bestprice.gr/mcp",
@@ -91,8 +91,8 @@
         "release_notes": "Version 1.2.0 adds the native BestPrice shopping workspace, preserves the four anonymous read-only shopping tools and existing cards, removes conversation-transcript inputs, and adds OAuth-bound price.dropped Events for explicitly selected products and thresholds. BestPrice is the established brand and verified business identity, not a ranking or a price guarantee. Orders, payments and account history remain outside the integration.",
         "translations": {
           "el-GR": {
-            "subtitle": "Σύγκρινε τιμές στην Ελλάδα",
-            "description": "Βρες προϊόντα και σύγκρινε τιμές από καταστήματα στην Ελλάδα με το BestPrice. Ζήτησε πρόταση με βάση τις ανάγκες και τον προϋπολογισμό σου, αναζήτησε συγκεκριμένο μοντέλο, σύγκρινε τρέχουσες προσφορές χωρίς χορηγούμενα αποτελέσματα ή δες έως 180 ημέρες ιστορικού τιμών. Όταν τα μεταφορικά δεν μπορούν να επαληθευτούν, εμφανίζονται ως άγνωστα. Οι σύνδεσμοι οδηγούν στο BestPrice για να εξετάσεις τα καταστήματα πριν επιλέξεις αν θα αγοράσεις. Η αναζήτηση και η σύγκριση δεν απαιτούν λογαριασμό και δεν πραγματοποιούν παραγγελίες ή πληρωμές. Η προαιρετική σύνδεση λογαριασμού αφορά μόνο ειδοποιήσεις πτώσης τιμής για προϊόντα και όρια τιμής που επιλέγεις εσύ. Δεν παρέχει πρόσβαση στο ιστορικό του λογαριασμού ή στις παραγγελίες σου."
+            "subtitle": "Βρες προϊόντα, σύγκρινε τιμές",
+            "description": "Βρες το προϊόν που ταιριάζει στις ανάγκες και τον προϋπολογισμό σου, με το BestPrice στο ChatGPT. Πες τι ψάχνεις, ανακάλυψε επιλογές και σύγκρινε τρέχουσες προσφορές από καταστήματα σε όλη την Ελλάδα. Δες συγκεντρωμένα τιμές, διαθεσιμότητα και διαθέσιμες πληροφορίες μεταφορικών, μαζί με ιστορικό τιμών έως 180 ημερών για να αξιολογήσεις τη σημερινή τιμή.\n\nΑναζήτησε προϊόντα, σύγκρινε προσφορές και εξερεύνησε το ιστορικό τιμών μέσα στη συνομιλία σου. Όταν βρεις αυτό που θέλεις, άνοιξε το προϊόν στο BestPrice για να δεις τα καταστήματα και να επιλέξεις από πού θα αγοράσεις.\n\nΗ αναζήτηση και η σύγκριση δεν απαιτούν λογαριασμό. Σύνδεσε προαιρετικά τον λογαριασμό σου για ειδοποιήσεις πτώσης τιμής, στα προϊόντα και στα όρια τιμής που επιλέγεις εσύ."
           }
         }
       }
