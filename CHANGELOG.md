@@ -7,6 +7,10 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+### Security
+
+- The stdio bridge image is built from Node.js 22.23.4 (the 21 October 2026 security release) instead of 22.23.2.
+
 ## [2.8.0] - 2026-09-26
 
 WebMCP contract 2.8 (bestprice.gr `1a601f6b16`, live on www): specification sections in English. The 22 tools and
