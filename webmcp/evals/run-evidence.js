@@ -1304,8 +1304,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
    * 1.9's 2026-09-25.12 revision (dataset-v12.js); 11.0.0 its 2026-09-25.7 revision (dataset-v11.js);
    * 10.0.0 graded 1.9 as first published (dataset-v10.js); 9.0.0 graded 1.8
    * (dataset-v9.js), after 3.0.0 was corrected five times (dataset-v4.js … dataset-v8.js).
-   * 3.0.0 and its 2,961 runs stay exactly as published, and are still audited with
-   * `--cases=…/natural-language-cases.v3.json --runs=…/runs.v3.json`. */
+   * 3.0.0 and its runs stay exactly as published in runs.v3.json. Their trace files are gitignored,
+   * so this command byte-checks only traces present on disk (the committed 2.0.0 store). The dataset
+   * tests still schema-check each later ledger without requiring those files. */
   let casesPath = fileURLToPath(new URL('./natural-language-cases.v16.json', import.meta.url));
   let runsPath = fileURLToPath(new URL('./runs.v16.json', import.meta.url));
   let artifactsDir = DEFAULT_ARTIFACT_ROOT;

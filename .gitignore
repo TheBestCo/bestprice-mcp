@@ -19,3 +19,14 @@ mcp-publisher
 .DS_Store
 .idea/
 .vscode/
+
+# Generated native-run traces. The directory's own .gitignore re-includes the
+# published 2.0.0 traces the test suite binds to by digest. A parent rule that
+# ignores the directory itself cannot re-include those files, so this ignores
+# the contents and the nested file names the exceptions.
+webmcp/evals/artifacts/*
+!webmcp/evals/artifacts/.gitignore
+
+# Generated diagnostic experiment traces and attempt journals. Outcome ledgers stay tracked.
+webmcp/evals/experiments/**/artifacts/
+webmcp/evals/experiments/**/*.attempts.jsonl

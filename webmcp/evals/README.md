@@ -164,8 +164,11 @@ on a real page. That is not a matter of opinion, so it is a required field and a
   Inspector`), and `model` the model that chose the tools. Placeholders such as `Test Driver` are
   rejected, and so is any `agent`/`model`/`browser` value that declares a deterministic execution.
 - Everything else in [How a record is checked](#how-a-record-is-checked) still has to hold: a real
-  commit and manifest fingerprint, the frozen case digest, a committed artifact whose bytes hash to
-  `evidenceDigest`, and an execution the artifact identifies separately.
+  commit and manifest fingerprint, the frozen case digest, an artifact under
+  `webmcp/evals/artifacts/` whose bytes hash to `evidenceDigest`, and an execution the artifact
+  identifies separately. The published 2.0.0 traces, including the two corrections, are committed
+  because the suite binds to those bytes. Every later trace is gitignored local output: the ledger
+  still records its digest, and a validator checks the bytes when the file is on disk.
 
 `driver.js --mode=demo` (and every other non-native mode) produces the opposite of that: a scripted
 adapter under Node with no browser and no model. Such runs are **quarantined**, never validated as
@@ -193,7 +196,7 @@ enforces all four, and `npm test` runs the same check on the checked-in ledger:
 | `caseDigest` | sha256 of the case's frozen definition in the referenced dataset (its empty `runs` excluded) |
 | `implementationRevision` / `implementationFingerprint` | the revision the run names, and the sha256 manifest of `webmcp/src/contracts.js` + `webmcp/src/storefront-catalog.js` + `webmcp/src/runtime.js` (the catalog since contract 1.8); a record naming the revision currently checked out must carry that revision's manifest |
 | `startedAt` / `date` | the instant of the execution (ISO-8601 UTC) and its calendar day |
-| `evidence` / `evidenceDigest` | a committed file under `webmcp/evals/artifacts/` and the sha256 of its exact bytes |
+| `evidence` / `evidenceDigest` | a file under `webmcp/evals/artifacts/` and the sha256 of its exact bytes. 2.0.0 traces stay committed; later traces are gitignored and checked when present |
 | `agent` / `model` / `browser` | the real tool/host, model and versioned browser engine that ran; `browser` must match `/^(Chromium\|Chrome\|Google Chrome\|Microsoft Edge\|Firefox\|Safari)\b.*\d/u` |
 | `runId` | unique in the ledger; a copy of a record is not a second run |
 | `language` | optional: the prompt language the run was observed in (`el`/`en`). A run in one language is not evidence about another, so it scopes the release cohort |
@@ -235,8 +238,9 @@ The ledger is append-only in the literal sense: existing records keep their orde
 A corrected result is a new record, never an edit. `git-baseline.js` reads the copy the merged branch
 already published at the merge base (`git show <merge-base>:<path>`), and both the ledger and the two
 frozen case files are compared against it — the working tree is never its own baseline, so deleting
-or rewriting published evidence fails CI. Artifacts are committed bytes and are excluded from
-formatting: rewriting them would break the recorded digest.
+or rewriting published evidence fails CI. Trace bytes are excluded from formatting, whether or not
+the file is committed: rewriting one would break the recorded digest. Generated traces are
+gitignored; see `webmcp/evals/artifacts/.gitignore`.
 
 ## Running a native case (real browser, real agent)
 

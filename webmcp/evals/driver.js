@@ -8,10 +8,11 @@
  * - Safety-negative boundary invariant tracking (neg-001 through neg-009).
  *
  * Where a run is written depends on what produced it. A native mode (a real agent in a real
- * browser) may append to `runs.v2.json` and commit artifacts under `artifacts/`. Every non-native
- * mode is deterministic by construction, so it declares `evidenceLayer: 'demo'` and is quarantined
- * under `webmcp/evals/demo/`, which is git-ignored: a `git add -A` cannot turn a simulation into
- * native evidence, and the validator rejects it anyway.
+ * browser) appends to the ledger and writes traces under `artifacts/`. Those traces are local:
+ * the directory is gitignored except the published 2.0.0 files the suite binds to by digest.
+ * Every non-native mode is deterministic by construction, so it declares `evidenceLayer: 'demo'`
+ * and is quarantined under `webmcp/evals/demo/`, which is git-ignored: a `git add -A` cannot turn
+ * a simulation into native evidence, and the validator rejects it anyway.
  */
 
 import { randomBytes } from 'node:crypto';
