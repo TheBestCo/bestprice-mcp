@@ -5,7 +5,7 @@ import { PUBLIC_TOOLS } from '../scripts/public-contracts.js';
 import { runPublicSmoke } from '../scripts/public-smoke.mjs';
 
 const REVISION = 'a'.repeat(40);
-const SECRET = 'synthetic-sensitive-value-never-in-report';
+const SENTINEL = 'synthetic-sensitive-value-never-in-report';
 const productId = 'bp_2147483650';
 const common = { currency: 'EUR', locale: 'el-GR' };
 const tools = () =>
@@ -22,7 +22,7 @@ const tools = () =>
   }));
 function result(name, args) {
   if (name === 'search_products')
-    return { ...common, products: [{ product_id: productId, title: SECRET, price_from: 200 }] };
+    return { ...common, products: [{ product_id: productId, title: SENTINEL, price_from: 200 }] };
   if (name === 'compare_offers')
     return {
       ...common,
@@ -51,7 +51,7 @@ function result(name, args) {
     outcome: 'recommendation',
     products: [{ product_id: productId, price_from: 500 }],
     recommended_product_id: productId,
-    evidence: { claims: [{ text: SECRET }] },
+    evidence: { claims: [{ text: SENTINEL }] },
     price_verdict: { predicts_future_price: false },
   };
 }
@@ -120,7 +120,7 @@ test('both transport lanes perform all four tools and emit no catalog or request
   assert.equal(report.requests.length, 18);
   assert.ok(mock.requests.every(request => !request.url.includes('/agent/')));
   const text = JSON.stringify(report);
-  assert.ok(!text.includes(SECRET) && !text.includes('Sony') && !text.includes(productId));
+  assert.ok(!text.includes(SENTINEL) && !text.includes('Sony') && !text.includes(productId));
   for (const request of mock.requests.filter(request => request.body?.method === 'tools/call')) {
     assert.equal(request.body.params._meta?.progressToken, undefined);
   }
@@ -283,12 +283,12 @@ for (const problem of ['missing-revision', 'rate-limit', 'server-error']) {
 
 test('untrusted revision headers are never copied into sanitized observations', async () => {
   const mock = fixture(state => {
-    state.headers['x-bestprice-revision'] = SECRET;
+    state.headers['x-bestprice-revision'] = SENTINEL;
   });
   const report = await runPublicSmoke(mock);
   assert.equal(report.passed, false);
   assert.equal(report.requests[0].revision, null);
-  assert.ok(!JSON.stringify(report).includes(SECRET));
+  assert.ok(!JSON.stringify(report).includes(SENTINEL));
 });
 
 test('per-request elapsed time is enforced even before the timer callback can run', async t => {
@@ -304,9 +304,9 @@ test('per-request elapsed time is enforced even before the timer callback can ru
 
 test('a raw server version cannot leak arbitrary remote text into reports', async () => {
   const mock = fixture(state => {
-    if (state.body?.method === 'initialize') state.output.result.serverInfo.version = SECRET;
+    if (state.body?.method === 'initialize') state.output.result.serverInfo.version = SENTINEL;
   });
   const report = await runPublicSmoke(mock);
   assert.equal(report.passed, false);
-  assert.ok(!JSON.stringify(report).includes(SECRET));
+  assert.ok(!JSON.stringify(report).includes(SENTINEL));
 });
