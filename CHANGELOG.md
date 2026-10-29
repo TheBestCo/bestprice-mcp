@@ -7,6 +7,10 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+### Added
+
+- An Antigravity plugin in `distribution/antigravity/bestprice-shopping/`, with the hosted keyless MCP server, the canonical shopping skill, and an always-on read-only pricing rule. It passes `agy plugin validate --strict`.
+
 ### Changed
 
 - Claude's plugin listing uses the name BestPrice, the square 1024×1024 icon, and the public privacy policy. Connecting still means the hosted HTTPS endpoint; the README no longer tells a host to clone the repository and run the stdio bridge.
