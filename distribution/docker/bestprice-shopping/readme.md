@@ -1,8 +1,8 @@
-# BestPrice Shopping
+# BestPrice
 
 Read-only shopping decisions, product search, live offers, delivered totals, and price history for Greece. No BestPrice account or API key.
 
-- Name: BestPrice Shopping (`bestprice-shopping`)
+- Name: BestPrice (`bestprice-shopping`)
 - Endpoint: https://mcp.bestprice.gr/mcp
 - Authentication: none
 - Transport: Streamable HTTP
