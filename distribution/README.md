@@ -34,7 +34,9 @@ omits shopping decisions, and no `tools.json`). Close #4900 and #4798 so review 
 `cline/bestprice-shopping/entry.json` matches the current PR-based `cline/marketplace` MCP schema.
 It is intended to be copied to `registry/mcps/bestprice-shopping/entry.json` in a fork of that
 repository. The install command resolves directly to the public zero-auth Streamable HTTP endpoint;
-`verified` and `featured` stay false because those are Cline review decisions.
+`verified` and `featured` stay false because those are Cline review decisions. Cline's tag
+vocabulary has no shopping id, so this entry uses their `business` and `research` tags. The
+description still names the four shopping tools.
 
 ## Registry mirrors
 

@@ -40,6 +40,8 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - name: Validate skill frontmatter and manifests
+        run: node scripts/validate-manifests.mjs
       - run: npm run check
       - run: npm test
       - name: Verify the isolated installed tarball

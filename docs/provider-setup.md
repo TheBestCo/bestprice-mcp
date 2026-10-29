@@ -20,6 +20,10 @@ https://mcp.bestprice.gr/mcp
   digital products, services, and prohibited or age-restricted categories are excluded
 - Price semantics: search prices exclude shipping; comparisons separate item,
   shipping, and delivered total
+- Homepage: https://www.bestprice.gr/mcp
+- Privacy: https://www.bestprice.gr/policies/privacy
+- Support: https://www.bestprice.gr/contact
+- License: Apache-2.0
 
 ## OpenAI
 

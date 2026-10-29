@@ -89,13 +89,25 @@ describe('package identity', () => {
   });
 
   it('shares one description and one server name across the plugin manifests', () => {
+    const identity = readJson('distribution/identity.json');
     const description = agentPlugin.description;
-    assert.ok(description.length <= 120 && description.startsWith('Read-only'));
+    assert.equal(description, identity.shortDescription);
+    assert.ok(description.length < 100 && description.startsWith('Read-only'));
+    assert.equal(identity.longDescription.length > description.length, true);
+    assert.deepEqual(identity.tools, EXPECTED_TOOLS);
+    assert.equal(identity.endpoint, ENDPOINT);
+    assert.equal(identity.license, 'Apache-2.0');
+    assert.equal(identity.privacy, 'https://www.bestprice.gr/policies/privacy');
+    assert.equal(identity.support, 'https://www.bestprice.gr/contact');
     for (const manifest of [claudePlugin, codexPlugin, cursorPlugin, geminiExtension, qwenExtension]) {
       assert.equal(manifest.description, description);
       assert.equal(manifest.name, SERVER_NAME);
     }
     assert.equal(agentPlugin.name, SERVER_NAME);
+    assert.equal(readJson('glama.json').description, description);
+    assert.equal(codexPlugin.interface.shortDescription, description);
+    assert.equal(codexPlugin.interface.longDescription, identity.longDescription);
+    for (const tag of identity.tags) assert.ok(agentPlugin.keywords.includes(tag), tag);
   });
 
   it('credits BestPrice, never an individual, in every manifest that names an author', () => {
@@ -274,7 +286,8 @@ describe('endpoint manifests', () => {
       'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json',
     );
     assert.equal(registry.name, 'gr.bestprice/mcp');
-    assert.equal(registry.title, 'BestPrice');
+    assert.equal(registry.title, 'BestPrice Shopping');
+    assert.equal(registry.description, readJson('distribution/identity.json').shortDescription);
     assert.match(registry.version, SEMVER);
     assert.deepEqual(registry.repository, { url: REPOSITORY, source: 'github' });
     assert.equal(registry.websiteUrl, HOMEPAGE);
@@ -290,7 +303,8 @@ describe('endpoint manifests', () => {
 
   it('ships a LobeHub manifest for the exact hosted public surface', () => {
     assert.equal(lobeHub.identifier, 'thebestco-bestprice-mcp');
-    assert.equal(lobeHub.name, 'BestPrice');
+    assert.equal(lobeHub.name, 'BestPrice Shopping');
+    assert.equal(lobeHub.description, readJson('distribution/identity.json').shortDescription);
     assert.equal(lobeHub.version, registry.version);
     assert.equal(lobeHub.author, 'BestPrice');
     assert.equal(lobeHub.authorUrl, 'https://www.bestprice.gr/');
