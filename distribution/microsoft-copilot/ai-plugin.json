@@ -65,38 +65,28 @@
               "description": "Provides read-only shopping recommendations, product comparisons, purchase-timing context, and basket plans for physical products sold in Greece. Accepts only a concise current shopping request with a budget, required specifications, and relevant corrections, excluding chat transcripts and unrelated personal data. Uses the same Shopping Brain as BestPrice Ask and returns selected products, reasons, tradeoffs, typed catalog attributes, checked offer and historical-price context, evidence references, and unknowns. Each product-family decision evaluates one bounded catalog page and returns at most four candidates per slot. Basket plans accept two to five supported product-family slots under one aggregate budget, or at least two exact grouped bp_<id> products, and require a five-digit Greek delivery postcode. Product prices exclude shipping; unknown delivery costs remain unknown. Unsupported or unidentified basket categories require clarification. Does not place orders, create alerts, access account history, or predict future prices.",
               "inputSchema": {
                 "type": "object",
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "message": {
-                        "type": "string",
-                        "minLength": 1,
-                        "maxLength": 2000,
-                        "description": "A concise current shopping request with only relevant budget, required specifications and user corrections. No chat transcripts or unrelated personal data. Greek and English are accepted."
-                      },
-                      "postal_code": {
-                        "description": "Optional Greek delivery postcode (five digits, 10000 to 85999) supplied by the user. It is required for basket plans; without it, shipping and delivered totals remain unknown.",
-                        "type": "string",
-                        "pattern": "^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$"
-                      },
-                      "evidence_detail": {
-                        "default": "summary",
-                        "description": "Optional evidence depth. 'summary' (default) returns only the claims this result cites by id (typed attributes, price history), the claims they are derived from and the sources they cite, and counts what it omits. 'full' returns every returned-product claim and source, including each offer's field receipts, complete spec sheets and ranking inputs; it is several times larger.",
-                        "type": "string",
-                        "enum": ["summary", "full"]
-                      }
-                    },
-                    "required": ["message"],
-                    "additionalProperties": false
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000,
+                    "description": "A concise current shopping request with only relevant budget, required specifications and user corrections. No chat transcripts or unrelated personal data. Greek and English are accepted."
                   },
-                  {
-                    "type": "object",
-                    "properties": {},
-                    "additionalProperties": false
+                  "postal_code": {
+                    "description": "Optional Greek delivery postcode (five digits, 10000 to 85999) supplied by the user. It is required for basket plans; without it, shipping and delivered totals remain unknown.",
+                    "type": "string",
+                    "pattern": "^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$"
+                  },
+                  "evidence_detail": {
+                    "default": "summary",
+                    "description": "Optional evidence depth. 'summary' (default) returns only the claims this result cites by id (typed attributes, price history), the claims they are derived from and the sources they cite, and counts what it omits. 'full' returns every returned-product claim and source, including each offer's field receipts, complete spec sheets and ranking inputs; it is several times larger.",
+                    "type": "string",
+                    "enum": ["summary", "full"]
                   }
-                ]
+                },
+                "required": ["message"],
+                "additionalProperties": false,
+                "$schema": "https://json-schema.org/draft/2020-12/schema"
               },
               "annotations": {
                 "title": "BestPrice",

@@ -60,8 +60,11 @@ describe('distribution status ledger', () => {
       assert.match(byId.get(id).evidence, /bounced/u);
       assert.match(byId.get(id).evidence, /2026-10-31/u);
     }
-    assert.equal(byId.get('grok-plugin-marketplace')?.state, 'prepared');
-    assert.equal(byId.get('grok-plugin-marketplace')?.source, undefined);
+    const grok = byId.get('grok-plugin-marketplace');
+    assert.ok(grok, 'grok-plugin-marketplace');
+    assert.equal(grok.state, 'prepared');
+    assert.match(grok.nextAction, /source\.sha/u);
+    assert.equal(Object.hasOwn(grok, 'source'), false);
     for (const id of [
       'official-mcp-registry',
       'openai',

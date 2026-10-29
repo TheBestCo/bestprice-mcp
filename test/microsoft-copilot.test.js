@@ -36,10 +36,20 @@ describe('Microsoft 365 Copilot package', () => {
     assert.equal(plugin.runtimes[0].spec.url, ENDPOINT);
     assert.deepEqual(plugin.runtimes[0].run_for_functions, identity.tools);
     const tools = plugin.runtimes[0].spec.mcp_tool_description.tools;
+    const snapshot = readJson('distribution/microsoft-copilot/tools.snapshot.json');
+    assert.deepEqual(tools, snapshot);
     assert.deepEqual(
       tools.map(tool => tool.name),
       identity.tools,
     );
+    for (const tool of tools) {
+      const branches = tool.inputSchema.anyOf ?? [];
+      assert.equal(
+        branches.some(branch => Object.keys(branch.properties ?? {}).length === 0),
+        false,
+        `${tool.name} still has an empty anyOf branch`,
+      );
+    }
     for (const tool of tools) {
       assert.equal(tool.annotations.readOnlyHint, true, tool.name);
       assert.equal(tool.annotations.destructiveHint, false, tool.name);

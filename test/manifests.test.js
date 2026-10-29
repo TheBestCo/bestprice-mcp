@@ -183,6 +183,32 @@ describe('endpoint manifests', () => {
     assert.equal(cursorPlugin.mcpServers, 'mcp.json');
     assert.equal(cursorPlugin.displayName, 'BestPrice Shopping');
     assert.equal(cursorPlugin.publisher, 'BestPrice');
+    const cursorSchemaKeys = new Set([
+      'name',
+      'displayName',
+      'description',
+      'version',
+      'minClientVersions',
+      'author',
+      'publisher',
+      'homepage',
+      'repository',
+      'license',
+      'logo',
+      'keywords',
+      'category',
+      'tags',
+      'commands',
+      'agents',
+      'skills',
+      'rules',
+      'hooks',
+      'variables',
+      'mcpServers',
+    ]);
+    for (const key of Object.keys(cursorPlugin)) {
+      assert.ok(cursorSchemaKeys.has(key), `Cursor schema rejects ${key}`);
+    }
     assert.deepEqual(Object.keys(cursorPlugin.author).sort(), ['email', 'name']);
     assert.equal(cursorPlugin.license, 'Apache-2.0');
     assert.equal(cursorPlugin.repository, REPOSITORY);
@@ -247,7 +273,7 @@ describe('endpoint manifests', () => {
     assert.equal(claudePlugin.repository, REPOSITORY);
     assert.equal(claudePlugin.homepage, HOMEPAGE);
     assert.equal(claudePlugin.license, 'Apache-2.0');
-    assert.equal(claudePlugin.mcpServers, '.mcp.json');
+    assert.equal(claudePlugin.mcpServers, './.mcp.json');
     assert.ok(existsSync(new URL('skills/bestprice-shopping/SKILL.md', root)));
     assert.match(canonicalSkill, /^---\nname: bestprice-shopping\ndescription: /u);
     const description = canonicalSkill.match(/^description: (.+)$/mu)?.[1];
@@ -300,6 +326,10 @@ describe('endpoint manifests', () => {
     assert.deepEqual(registry.icons[0].sizes, ['1024x1024']);
     assert.ok(registry.description.length <= 100);
     assert.match(readme, new RegExp(`Server version: \`${registry.version.replaceAll('.', '\\.')}\``, 'u'));
+    const queryMax = readJson('test/fixtures/public-tool-inputs.json').tools.find(
+      tool => tool.name === 'search_products',
+    ).inputSchema.properties.query.maxLength;
+    assert.ok(readme.includes(`\`query\` (2–${queryMax} characters`));
   });
 
   it('ships a LobeHub manifest for the exact hosted public surface', () => {

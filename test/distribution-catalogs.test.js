@@ -119,6 +119,7 @@ describe('external catalog contribution payloads', () => {
     const smithery = read('smithery.yaml');
     assert.match(smithery, /type: http/u);
     assert.match(smithery, new RegExp(ENDPOINT.replaceAll('.', '\\.'), 'u'));
+    assert.doesNotMatch(smithery, /^upstream:/mu);
     assert.doesNotMatch(smithery, /stdio/u);
   });
 });

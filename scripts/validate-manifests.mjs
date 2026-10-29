@@ -75,10 +75,11 @@ export function parseStrict(text, label) {
 
 /** @param {string} text @param {string} label */
 export function parseSkillFrontmatter(text, label) {
-  if (!text.startsWith('---\n')) throw new Error(`${label}: missing opening frontmatter`);
-  const end = text.indexOf('\n---\n', 4);
+  const normalized = text.replace(/\r\n/gu, '\n').replace(/\r/gu, '\n');
+  if (!normalized.startsWith('---\n')) throw new Error(`${label}: missing opening frontmatter`);
+  const end = normalized.indexOf('\n---\n', 4);
   if (end === -1) throw new Error(`${label}: missing closing frontmatter`);
-  const raw = text.slice(4, end);
+  const raw = normalized.slice(4, end);
   const data = parseStrict(raw, label);
   if (!data || typeof data !== 'object' || Array.isArray(data)) {
     throw new Error(`${label}: frontmatter must be a mapping`);

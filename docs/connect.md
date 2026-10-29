@@ -117,15 +117,9 @@ Microsoft 365 Copilot does not take this URL in a settings box. The declarative-
 
 ## Grok Bot
 
-In Grok, open **Connectors > New connector > Custom** and paste:
+Add a custom MCP connector with URL `https://mcp.bestprice.gr/mcp` and no authentication. Grok reads the tool list from the server.
 
-```text
-https://mcp.bestprice.gr/mcp
-```
-
-Leave authentication empty. Grok reads the tool list from the server.
-
-For a project that already uses MCP config files, the same block as Claude's `.mcp.json` above is enough. The Grok Bot marketplace reviews the repository through [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish); that is a listing step, not required to connect.
+For a project that already uses MCP config files, the same block as Claude's `.mcp.json` above is enough.
 
 ## Cursor
 

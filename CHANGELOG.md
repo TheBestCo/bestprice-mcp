@@ -19,7 +19,8 @@ in `server.json`; see the Versioning section of the README.
 - Registry and Docker icons use the square 1024×1024 PNG. The README matches the public guide: the ChatGPT plugin is temporarily unavailable, and this package is not on npm.
 - One-click install links for VS Code Insiders and Kiro. CI smoke-tests the live endpoint and rejects invalid skill frontmatter.
 - Directory descriptions share one short line and one long line. Skill frontmatter quotes the description so YAML parsers accept the colon in "BestPrice:".
-- Claude's plugin manifest points `mcpServers` at `.mcp.json`, so catalogs that read `plugin.json` see the remote MCP server. A Microsoft 365 Copilot app package and `docs/connect.md` use the same keyless URL.
+- Claude's plugin manifest points `mcpServers` at `./.mcp.json`, so catalogs that read `plugin.json` see the remote MCP server. A Microsoft 365 Copilot app package and `docs/connect.md` use the same keyless URL.
+- The required CI job smoke-tests the live endpoint and fails when its version differs from `server.json`. The Copilot package drops the empty `get_shopping_decision` argument branch and is regenerated from `tools/list`.
 
 ## [2.8.0] - 2026-09-26
 

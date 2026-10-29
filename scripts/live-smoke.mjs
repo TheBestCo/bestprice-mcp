@@ -8,10 +8,12 @@ const ENDPOINT = 'https://mcp.bestprice.gr/mcp';
 const HEALTH = 'https://mcp.bestprice.gr/healthz';
 const TOOLS = ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'];
 const server = JSON.parse(readFileSync(new URL('../server.json', import.meta.url), 'utf8'));
+const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+const USER_AGENT = `bestprice-mcp-live-smoke/${pkg.version}`;
 
 const fail = message => {
   console.error(`live-smoke: ${message}`);
-  process.exitCode = 1;
+  process.exit(1);
 };
 
 async function post(body, accept = 'application/json') {
@@ -20,7 +22,7 @@ async function post(body, accept = 'application/json') {
     headers: {
       'content-type': 'application/json',
       accept,
-      'user-agent': 'bestprice-mcp-live-smoke/2.8.0',
+      'user-agent': USER_AGENT,
     },
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(20_000),
@@ -38,12 +40,15 @@ async function post(body, accept = 'application/json') {
 let health;
 try {
   const response = await fetch(HEALTH, {
-    headers: { accept: 'application/json', 'user-agent': 'bestprice-mcp-live-smoke/2.8.0' },
+    headers: { accept: 'application/json', 'user-agent': USER_AGENT },
     signal: AbortSignal.timeout(15_000),
   });
   health = await response.json();
-  if (!response.ok || health.ok !== true || health.version !== server.version) {
-    fail(`healthz version ${health?.version ?? response.status} did not match server.json ${server.version}`);
+  if (!response.ok || health.ok !== true) {
+    fail(`healthz HTTP ${response.status} ok=${health?.ok}`);
+  }
+  if (health.version !== server.version) {
+    fail(`healthz version ${health.version} did not match server.json ${server.version}`);
   }
 } catch (error) {
   fail(`healthz request failed: ${error.message}`);
@@ -62,13 +67,17 @@ const init = await post({
   },
 });
 const info = init.json?.result?.serverInfo;
-if (init.status !== 200 || info?.version !== server.version || info?.name !== 'bestprice-agent-commerce') {
-  fail(`initialize status ${init.status} server ${info?.name ?? '?'} ${info?.version ?? '?'}`);
+if (init.status !== 200 || info?.name !== 'bestprice-agent-commerce') {
+  fail(`initialize status ${init.status} server ${info?.name ?? '?'}`);
+}
+if (info?.version !== server.version) {
+  fail(`initialize version ${info?.version ?? '?'} did not match server.json ${server.version}`);
 }
 
 const listed = await post({ jsonrpc: '2.0', id: 2, method: 'tools/list', params: {} });
 const names = (listed.json?.result?.tools ?? []).map(tool => tool.name);
-if (listed.status !== 200 || names.join(',') !== TOOLS.join(',')) {
+const sameTools = [...names].sort().join(',') === [...TOOLS].sort().join(',');
+if (listed.status !== 200 || !sameTools) {
   fail(`tools/list status ${listed.status} names ${names.join(',') || '(none)'}`);
 }
 for (const tool of listed.json?.result?.tools ?? []) {
