@@ -258,7 +258,7 @@ describe('endpoint manifests', () => {
     assert.equal(entry.source, '.');
     assert.equal(entry.homepage, HOMEPAGE);
     assert.equal(entry.license, 'Apache-2.0');
-    assert.equal(entry.displayName, 'BestPrice Shopping');
+    assert.equal(entry.displayName, 'BestPrice');
     assert.ok(entry.keywords.includes('shopping'));
     assert.ok(entry.keywords.includes('greece'));
   });
@@ -275,7 +275,7 @@ describe('endpoint manifests', () => {
     assert.equal(claudePlugin.homepage, HOMEPAGE);
     assert.equal(claudePlugin.license, 'Apache-2.0');
     assert.equal(claudePlugin.mcpServers, './.mcp.json');
-    assert.equal(claudePlugin.displayName, 'BestPrice Shopping');
+    assert.equal(claudePlugin.displayName, 'BestPrice');
     assert.equal(claudePlugin.icon, './assets/bestprice-mcp-logo-1024.png');
     assert.equal(claudePlugin.icon.includes('..'), false);
     assert.ok(existsSync(new URL(claudePlugin.icon.slice(2), root)), claudePlugin.icon);
