@@ -174,8 +174,20 @@ BestPrice needs none.
 
 ### Any other MCP client
 
-Add a Streamable HTTP server at `https://mcp.bestprice.gr/mcp`. If the host only supports
-stdio servers, use the bridge in this repository:
+Add a Streamable HTTP server at `https://mcp.bestprice.gr/mcp`. Hosts that read an
+`mcpServers` JSON configuration accept:
+
+```json
+{
+  "mcpServers": {
+    "bestprice-shopping": {
+      "url": "https://mcp.bestprice.gr/mcp"
+    }
+  }
+}
+```
+
+If the host only supports stdio servers, use the bridge in this repository:
 
 ```sh
 git clone https://github.com/TheBestCo/bestprice-mcp.git && cd bestprice-mcp
