@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.6/schema.json",
   "version": "v1.6",
-  "name": "BestPrice Shopping",
+  "name": "BestPrice",
   "description": "Read-only shopping decisions, product search, offers, and price history for Greece.",
   "instructions": "Use BestPrice for physical products sold in Greece. get_shopping_decision answers what to buy, comparisons, and read-only basket plans. search_products finds a canonical product id. compare_offers needs that id and a Greek postcode for a delivered total. get_price_history classifies today's item price against the 180-day median. All four tools are read-only. Do not invent a product id, a shipping cost, or a merchant URL. Unknown shipping is unknown. Do not use BestPrice for travel, services, digital goods, checkout, or payment.",
   "conversation_starters": [

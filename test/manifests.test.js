@@ -181,7 +181,7 @@ describe('endpoint manifests', () => {
     assert.equal(cursorPlugin.logo, 'assets/bestprice-mcp-logo-1024.png');
     assert.equal(cursorPlugin.skills, 'skills/bestprice-shopping');
     assert.equal(cursorPlugin.mcpServers, 'mcp.json');
-    assert.equal(cursorPlugin.displayName, 'BestPrice Shopping');
+    assert.equal(cursorPlugin.displayName, 'BestPrice');
     assert.equal(cursorPlugin.publisher, 'BestPrice');
     const cursorSchemaKeys = new Set([
       'name',
@@ -319,7 +319,7 @@ describe('endpoint manifests', () => {
       'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json',
     );
     assert.equal(registry.name, 'gr.bestprice/mcp');
-    assert.equal(registry.title, 'BestPrice Shopping');
+    assert.equal(registry.title, 'BestPrice');
     assert.equal(registry.description, readJson('distribution/identity.json').shortDescription);
     assert.match(registry.version, SEMVER);
     assert.deepEqual(registry.repository, { url: REPOSITORY, source: 'github' });
@@ -340,7 +340,7 @@ describe('endpoint manifests', () => {
 
   it('ships a LobeHub manifest for the exact hosted public surface', () => {
     assert.equal(lobeHub.identifier, 'thebestco-bestprice-mcp');
-    assert.equal(lobeHub.name, 'BestPrice Shopping');
+    assert.equal(lobeHub.name, 'BestPrice');
     assert.equal(lobeHub.description, readJson('distribution/identity.json').shortDescription);
     assert.equal(lobeHub.version, registry.version);
     assert.equal(lobeHub.author, 'BestPrice');

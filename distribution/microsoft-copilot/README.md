@@ -1,4 +1,4 @@
-# BestPrice Shopping for Microsoft 365 Copilot
+# BestPrice for Microsoft 365 Copilot
 
 This folder is an app package for a declarative agent. It does not run a server. The agent calls the public, keyless MCP endpoint:
 

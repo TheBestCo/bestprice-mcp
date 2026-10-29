@@ -1,4 +1,4 @@
-# Connect BestPrice Shopping
+# Connect BestPrice
 
 The [ChatGPT plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981) is temporarily unavailable while the updated version is under review.
 [Open the prefilled Claude connector form](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
@@ -135,7 +135,7 @@ Official references: [Claude custom connectors](https://support.claude.com/en/ar
 Open **Account Settings > Connectors**, choose **+ Custom connector**, then
 select **Remote**. Enter:
 
-- Name: `BestPrice Shopping`
+- Name: `BestPrice`
 - MCP server URL: `https://mcp.bestprice.gr/mcp`
 - Authentication: `None`
 - Transport: `Streamable HTTP`
@@ -312,15 +312,15 @@ server definitions can create ambiguous project configuration. A standalone VS C
 does not use this repository can add the equivalent server through the one-click installer below.
 
 One-click install:
-[Add BestPrice Shopping to VS Code](vscode:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
+[Add BestPrice to VS Code](vscode:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
 
-[Add BestPrice Shopping to VS Code Insiders](vscode-insiders:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
+[Add BestPrice to VS Code Insiders](vscode-insiders:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
 
 VS Code displays the decoded server configuration for review before adding it.
 
 ## Kiro
 
-[Add BestPrice Shopping to Kiro](https://kiro.dev/launch/mcp/add?name=bestprice-shopping&config=%7B%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%2C%22disabled%22%3Afalse%2C%22autoApprove%22%3A%5B%5D%7D)
+[Add BestPrice to Kiro](https://kiro.dev/launch/mcp/add?name=bestprice-shopping&config=%7B%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%2C%22disabled%22%3Afalse%2C%22autoApprove%22%3A%5B%5D%7D)
 
 Kiro opens a confirmation dialog and lists the remote URL before writing user or workspace MCP
 configuration. The same URL can be added by hand as an HTTP server named `bestprice-shopping`.
@@ -330,7 +330,7 @@ Kiro's web app does not connect to remote MCP servers; use the IDE or CLI.
 
 Use the reviewable one-click installer:
 
-[Add BestPrice Shopping to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
+[Add BestPrice to Cursor](https://cursor.com/install-mcp?name=bestprice-shopping&config=eyJ1cmwiOiJodHRwczovL21jcC5iZXN0cHJpY2UuZ3IvbWNwIn0%3D)
 
 Cursor displays the decoded remote-server configuration before adding it. The
 same endpoint can be entered manually under **Settings > Tools & MCP**. Verify
@@ -352,7 +352,7 @@ Copilot Studio supports existing Streamable HTTP MCP servers through its MCP
 onboarding wizard. On the agent's **Tools** page, choose **Add a tool > New tool
 > Model Context Protocol**, then enter:
 
-- Server name: `BestPrice Shopping`
+- Server name: `BestPrice`
 - Server description: `Read-only shopping decisions, product search, offers, and price history for Greece.`
 - Server URL: `https://mcp.bestprice.gr/mcp`
 - Authentication: `None`

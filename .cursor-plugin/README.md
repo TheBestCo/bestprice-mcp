@@ -1,6 +1,6 @@
-# BestPrice Shopping - Cursor Plugin
+# BestPrice - Cursor Plugin
 
-This directory contains the Cursor Marketplace plugin manifest for BestPrice Shopping.
+This directory contains the Cursor Marketplace plugin manifest for BestPrice.
 The same manifest is what the Grok Bot marketplace reads, because that review goes through
 [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish).
 
