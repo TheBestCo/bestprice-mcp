@@ -44,6 +44,13 @@ MCP Harbor mirrors the official MCP Registry every six hours. Because `gr.bestpr
 published there, Harbor rejects a duplicate local submission as `name is already published`. Keep
 the official registry record current instead of maintaining a second Harbor payload.
 
+## Microsoft 365 Copilot
+
+`microsoft-copilot/` is a declarative-agent app package for the public keyless endpoint.
+`ai-plugin.json` uses plugin manifest 2.4, runtime `RemoteMCPServer`, and `auth.type: None`.
+The sideload and Partner Center steps are in that folder's README. The package is not a claim
+that Partner Center has accepted the offer.
+
 ## Grok Build plugin marketplace
 
 `grok/marketplace-entry.json` is the object to append to `.grok-plugin/marketplace.json` in

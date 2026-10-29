@@ -95,9 +95,10 @@ Measured against the live endpoint on 24 September 2026.
 
 ## Developer quick start
 
-Every client below connects to the same endpoint. Detailed, provider-specific
-instructions including OpenAI, Grok, GitHub Copilot, and Microsoft Copilot Studio are in
-[`docs/provider-setup.md`](docs/provider-setup.md).
+Every client below connects to the same endpoint. Copy-paste connector setup for Perplexity,
+Claude, ChatGPT developer mode, Gemini CLI, Copilot, Grok Bot, and Cursor is in
+[`docs/connect.md`](docs/connect.md). Longer provider notes, including OpenAI and Microsoft
+Copilot Studio, are in [`docs/provider-setup.md`](docs/provider-setup.md).
 
 ### Claude
 

@@ -155,6 +155,10 @@ These were checked on the same revision and behaved as the README describes.
   next to `ui://bestprice/shopping-results-v1.html`. Worth retiring if those UIs are no longer current.
 - `initialize` advertises `capabilities.events` as `{}`. This pass did not call `events/subscribe`.
   Shopping calls succeeded with no token.
+- Rechecked 29 October 2026: `tools/list` already sets `readOnlyHint: true`, `destructiveHint: false`,
+  `idempotentHint: true`, and `openWorldHint: true` on all four tools. Microsoft 365 Copilot can
+  treat a tool as destructive when those hints are missing. No gateway change is required for that
+  check. The title and empty `anyOf` branch in defects 1 and 2 are separate.
 
 ## What this repository changed without a gateway deploy
 

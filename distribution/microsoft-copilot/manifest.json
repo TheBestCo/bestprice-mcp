@@ -1,0 +1,34 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "2.8.1",
+  "id": "8484c9ac-b5d2-52d2-8fe5-7f87fb484e22",
+  "developer": {
+    "name": "BestPrice",
+    "websiteUrl": "https://www.bestprice.gr/mcp",
+    "privacyUrl": "https://www.bestprice.gr/policies/privacy",
+    "termsOfUseUrl": "https://www.bestprice.gr/policies/terms"
+  },
+  "name": {
+    "short": "BestPrice Shopping",
+    "full": "BestPrice Shopping"
+  },
+  "description": {
+    "short": "Read-only shopping decisions, offers, and prices in Greece.",
+    "full": "Read-only shopping decisions, product search, live offers, delivered totals, and price history for Greece. No BestPrice account or API key."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#E10600",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "bestpriceShopping",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "validDomains": ["mcp.bestprice.gr", "www.bestprice.gr", "bestprice.gr"]
+}

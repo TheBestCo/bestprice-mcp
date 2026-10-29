@@ -247,6 +247,7 @@ describe('endpoint manifests', () => {
     assert.equal(claudePlugin.repository, REPOSITORY);
     assert.equal(claudePlugin.homepage, HOMEPAGE);
     assert.equal(claudePlugin.license, 'Apache-2.0');
+    assert.equal(claudePlugin.mcpServers, '.mcp.json');
     assert.ok(existsSync(new URL('skills/bestprice-shopping/SKILL.md', root)));
     assert.match(canonicalSkill, /^---\nname: bestprice-shopping\ndescription: /u);
     const description = canonicalSkill.match(/^description: (.+)$/mu)?.[1];
@@ -348,6 +349,7 @@ describe('public documents', () => {
       assert.match(providerSetup, new RegExp(tool, 'u'));
     }
     assert.match(readme, /docs\/provider-setup\.md/u);
+    assert.match(readme, /docs\/connect\.md/u);
     assert.match(providerSetup, /temporarily unavailable/u);
     assert.doesNotMatch(providerSetup, /add the published plugin|published BestPrice Shopping plugin/u);
     assert.match(readme, /skills\/bestprice-shopping\/SKILL\.md/u);
