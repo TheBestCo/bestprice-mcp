@@ -59,6 +59,18 @@ that catalog rejects anything other than the full lowercase commit that reviewer
 commit that contains this marketplace-ready tree does not exist until it is on the default branch.
 Add the SHA, then open the external pull request. Do not pin a branch name.
 
+## Antigravity Plugin Marketplace
+
+`antigravity/bestprice-shopping/` is a self-contained Antigravity plugin: `plugin.json`, the
+remote keyless MCP server in `mcp_config.json` (the file name native Antigravity plugins load),
+the canonical shopping skill, an always-on read-only rule in `rules/AGENTS.md`, the square logo,
+and a README for the Marketplace detail view. It lives in its own folder because the repository
+root also carries `GEMINI.md`, `.mcp.json` and an Agent Plugins `mcp.json`, which Antigravity's
+strict validator reports as never loaded. Check it with
+`agy plugin validate --strict distribution/antigravity/bestprice-shopping`.
+The Marketplace is curated: partners submit through Google's Antigravity Plugin Interest Form
+(https://forms.gle/2EX5RFYPoJe1UgxR9). This folder is not a claim that Google has accepted it.
+
 ## Other directories
 
 Smithery's connection proxy, CLI, and `server.smithery.ai` / `run.tools` hosts shut down on

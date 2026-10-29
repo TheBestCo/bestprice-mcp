@@ -79,7 +79,17 @@ const tools = [{
 }];
 ```
 
-Official references: [Gemini Antigravity MCP servers](https://ai.google.dev/gemini-api/docs/antigravity-agent),
+Antigravity (App, CLI and IDE) can also install the BestPrice plugin bundle, which adds the
+canonical skill and a read-only pricing rule to the same remote server:
+
+```sh
+git clone https://github.com/TheBestCo/bestprice-mcp
+agy plugin install ./bestprice-mcp/distribution/antigravity/bestprice-shopping
+agy plugin list
+```
+
+Official references: [Antigravity plugins](https://antigravity.google/docs/plugins),
+[Gemini Antigravity MCP servers](https://ai.google.dev/gemini-api/docs/antigravity-agent),
 [Gemini Agents API](https://ai.google.dev/api/agents),
 [Gemini CLI MCP servers](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md).
 

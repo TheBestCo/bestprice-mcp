@@ -84,6 +84,9 @@ describe('package identity', () => {
       'qwen-extension.json': qwenExtension.version,
       '.github/plugin/marketplace.json': copilotMarketplace.metadata.version,
       '.claude-plugin/marketplace.json': claudeMarketplace.plugins[0].version,
+      'distribution/antigravity/bestprice-shopping/plugin.json': readJson(
+        'distribution/antigravity/bestprice-shopping/plugin.json',
+      ).version,
     };
     for (const [file, version] of Object.entries(versions)) assert.equal(version, pkg.version, file);
   });

@@ -53,6 +53,7 @@ change. These files must carry the same number, and the test suite enforces it:
 - `.cursor-plugin/plugin.json`
 - `gemini-extension.json`
 - `qwen-extension.json`
+- `distribution/antigravity/bestprice-shopping/plugin.json`
 
 **Server version** (`server.json`). This is the version the hosted service reports. Update
 it, and the "Server version" line in `README.md`, only when the hosted service releases.
@@ -61,7 +62,7 @@ It is published to the official MCP Registry by the manual
 
 ## Releasing the package
 
-1. Bump the package version in the six files above and move the **Unreleased** section of
+1. Bump the package version in the files above and move the **Unreleased** section of
    `CHANGELOG.md` under the new version with today's date. The test suite fails if the
    changelog section is missing.
 2. Open a pull request; CI must be green.
