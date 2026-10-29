@@ -1,6 +1,6 @@
-# Install BestPrice Shopping MCP
+# Install BestPrice MCP
 
-BestPrice Shopping is a hosted, read-only MCP server. Do not clone, build, or run a local process.
+BestPrice is a hosted, read-only MCP server. Do not clone, build, or run a local process.
 
 ## Endpoint
 

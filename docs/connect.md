@@ -21,7 +21,7 @@ Perplexity Pro, Max, and Enterprise can add a custom remote connector.
 
 | Field | Value |
 | --- | --- |
-| Name | `BestPrice Shopping` |
+| Name | `BestPrice` |
 | MCP server URL | `https://mcp.bestprice.gr/mcp` |
 | Authentication | `None` |
 | Transport | `Streamable HTTP` |
@@ -64,7 +64,7 @@ The published ChatGPT plugin is temporarily unavailable while the updated versio
 
 1. Open ChatGPT **Settings > Connectors > Advanced > Developer mode**.
 2. Create a custom connector.
-3. Name it `BestPrice Shopping` and paste `https://mcp.bestprice.gr/mcp`.
+3. Name it `BestPrice` and paste `https://mcp.bestprice.gr/mcp`.
 4. Leave authentication empty. Confirm the four read-only tools appear.
 
 For the Responses API, the same URL is a remote MCP tool with no approval required for these read-only tools:
