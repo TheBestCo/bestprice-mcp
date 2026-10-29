@@ -315,7 +315,7 @@ test('a current page quote may legitimately be outside the historical extrema', 
   verifyHistory(payload);
 });
 test('diagnostic receipts never retain catalog, URL, query, identity or unknown fields', () => {
-  const secret = 'synthetic-private-content';
+  const sentinel = 'synthetic-private-content';
   const receipt = makeNativeReadReceipt({
     name: 'compare_page_offers',
     page: 'product',
@@ -324,12 +324,12 @@ test('diagnostic receipts never retain catalog, URL, query, identity or unknown 
       ok: true,
       bytes: 100,
       productIdentityMatches: true,
-      payload: { merchant: secret },
-      productCandidates: [{ bestprice_url: secret }],
-      documentBefore: { url: secret },
-      error: secret,
-      arbitrary: secret,
-      arrays: { offers: 2, [secret]: 20, products: secret },
+      payload: { merchant: sentinel },
+      productCandidates: [{ bestprice_url: sentinel }],
+      documentBefore: { url: sentinel },
+      error: sentinel,
+      arbitrary: sentinel,
+      arrays: { offers: 2, [sentinel]: 20, products: sentinel },
     },
   });
   assert.deepEqual(receipt, {
@@ -342,7 +342,7 @@ test('diagnostic receipts never retain catalog, URL, query, identity or unknown 
     durationMs: 10,
     productIdentityMatches: true,
   });
-  assert.ok(!JSON.stringify(receipt).includes(secret));
+  assert.ok(!JSON.stringify(receipt).includes(sentinel));
 });
 test('receipt numeric fields cannot coerce unavailable or oversized values', () => {
   const receipt = makeNativeReadReceipt({

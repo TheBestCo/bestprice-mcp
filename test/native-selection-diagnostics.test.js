@@ -4,17 +4,17 @@ import { test } from 'node:test';
 import { inspectBrowsingProductLinks, selectBrowsingProductUrl } from '../scripts/native-read-policy.js';
 
 const safe = 'https://www.bestprice.gr/item/2147483650/control.html';
-const secret = 'sensitive-never-in-diagnostic';
+const sentinel = 'sensitive-never-in-diagnostic';
 for (const [value, reason] of [
   [null, 'non_string'],
   ['x'.repeat(2049), 'too_long'],
-  [secret, 'invalid_url'],
-  [`https://other.invalid/${secret}`, 'different_origin'],
-  [`https://${secret}@www.bestprice.gr/item/2147483650/control.html`, 'credentials'],
-  [`https://www.bestprice.gr/to/${secret}`, 'non_product_path'],
-  [`${safe}?${secret}`, 'query_or_fragment'],
-  [`${safe}#${secret}`, 'query_or_fragment'],
-  [`https://www.bestprice.gr/item/1234/${secret}`, 'non_grouped_product_path'],
+  [sentinel, 'invalid_url'],
+  [`https://other.invalid/${sentinel}`, 'different_origin'],
+  [`https://${sentinel}@www.bestprice.gr/item/2147483650/control.html`, 'credentials'],
+  [`https://www.bestprice.gr/to/${sentinel}`, 'non_product_path'],
+  [`${safe}?${sentinel}`, 'query_or_fragment'],
+  [`${safe}#${sentinel}`, 'query_or_fragment'],
+  [`https://www.bestprice.gr/item/1234/${sentinel}`, 'non_grouped_product_path'],
 ]) {
   test(`selection rejects ${reason} without retaining the candidate`, () => {
     const { selected, diagnostics } = inspectBrowsingProductLinks([value]);
@@ -25,7 +25,7 @@ for (const [value, reason] of [
       approved: 0,
       rejected: { [reason]: 1 },
     });
-    assert.ok(!JSON.stringify(diagnostics).includes(secret));
+    assert.ok(!JSON.stringify(diagnostics).includes(sentinel));
   });
 }
 
