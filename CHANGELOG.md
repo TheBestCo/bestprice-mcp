@@ -7,6 +7,10 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+### Changed
+
+- Claude's plugin listing uses the name BestPrice Shopping, the square 1024×1024 icon, and the public privacy policy. Connecting still means the hosted HTTPS endpoint; the README no longer tells a host to clone the repository and run the stdio bridge.
+
 ## [2.8.1] - 2026-10-29
 
 ### Security

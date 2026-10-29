@@ -175,8 +175,13 @@ BestPrice needs none.
 
 ### Any other MCP client
 
-Add a Streamable HTTP server at `https://mcp.bestprice.gr/mcp`. Hosts that read an
-`mcpServers` JSON configuration accept:
+Add the hosted Streamable HTTP endpoint. That is the install path:
+
+```text
+https://mcp.bestprice.gr/mcp
+```
+
+Hosts that read an `mcpServers` JSON configuration accept:
 
 ```json
 {
@@ -188,18 +193,13 @@ Add a Streamable HTTP server at `https://mcp.bestprice.gr/mcp`. Hosts that read 
 }
 ```
 
-If the host only supports stdio servers, use the bridge in this repository:
-
-```sh
-git clone https://github.com/TheBestCo/bestprice-mcp.git && cd bestprice-mcp
-npm ci
-node stdio.mjs
-```
-
-The bridge forwards everything to the public endpoint and accepts two environment
-variables: `BESTPRICE_MCP_URL` (default: the public endpoint) and
-`BESTPRICE_MCP_TIMEOUT_MS` (default: 60000). A `Dockerfile` builds the same bridge for
-[Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp) and similar hosts.
+A checkout of this repository includes `stdio.mjs`, a local forwarder to that same
+endpoint for a host that cannot speak HTTP. From a checkout you already have for
+development, run `node stdio.mjs`. It accepts two environment variables:
+`BESTPRICE_MCP_URL` (default: the public endpoint) and `BESTPRICE_MCP_TIMEOUT_MS`
+(default: 60000). A `Dockerfile` builds the same forwarder for
+[Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp) and similar hosts. It is
+not an install command and it does not download or execute a remote package.
 
 This package is private. It is not published to npm under `bestprice-mcp` or any scoped name.
 There is no registry package to install or to run with npx. A directory that shows an npm

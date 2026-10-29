@@ -258,6 +258,7 @@ describe('endpoint manifests', () => {
     assert.equal(entry.source, '.');
     assert.equal(entry.homepage, HOMEPAGE);
     assert.equal(entry.license, 'Apache-2.0');
+    assert.equal(entry.displayName, 'BestPrice Shopping');
     assert.ok(entry.keywords.includes('shopping'));
     assert.ok(entry.keywords.includes('greece'));
   });
@@ -274,6 +275,11 @@ describe('endpoint manifests', () => {
     assert.equal(claudePlugin.homepage, HOMEPAGE);
     assert.equal(claudePlugin.license, 'Apache-2.0');
     assert.equal(claudePlugin.mcpServers, './.mcp.json');
+    assert.equal(claudePlugin.displayName, 'BestPrice Shopping');
+    assert.equal(claudePlugin.icon, './assets/bestprice-mcp-logo-1024.png');
+    assert.equal(claudePlugin.icon.includes('..'), false);
+    assert.ok(existsSync(new URL(claudePlugin.icon.slice(2), root)), claudePlugin.icon);
+    assert.equal(claudePlugin.privacyPolicyUrl, 'https://www.bestprice.gr/policies/privacy');
     assert.ok(existsSync(new URL('skills/bestprice-shopping/SKILL.md', root)));
     assert.match(canonicalSkill, /^---\nname: bestprice-shopping\ndescription: /u);
     const description = canonicalSkill.match(/^description: (.+)$/mu)?.[1];
@@ -414,6 +420,11 @@ describe('public documents', () => {
     assert.doesNotMatch(readme, /add the published plugin/u);
     assert.match(readme, /not published to npm/u);
     assert.doesNotMatch(readme, /npm install bestprice-mcp/u);
+    assert.doesNotMatch(
+      readme,
+      /git clone https:\/\/github\.com\/TheBestCo\/bestprice-mcp\.git && cd bestprice-mcp/u,
+      'the install path is the hosted endpoint, not a clone-and-run command',
+    );
 
     const insiders = readme.match(/vscode-insiders:mcp\/install\?([^)]+)/u)?.[1];
     assert.ok(insiders, 'VS Code Insiders install link');
