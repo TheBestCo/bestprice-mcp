@@ -34,5 +34,6 @@ neg-001 and neg-008 and neg-009 at 0/10 — is untouched: those fail by *choosin
 (prose instead of the required call), not by stopping early. That needs a different mechanism.
 
 **Storage:** `runs-guard-{before,after}.json` (deepseek-chat) and `runs-guard-claude-{before,after}.json`
-(claude-sonnet-4-5), all `purpose=diagnostic`, artifacts in `artifacts/`. They cannot enter a release
+(claude-sonnet-4-5), all `purpose=diagnostic`. Per-run traces in `artifacts/` and the
+`.attempts.jsonl` journals are generated locally and gitignored. They cannot enter a release
 fraction.

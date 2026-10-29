@@ -34,9 +34,10 @@
  *     --agent-name 'Model Context Tool Inspector' --agent-model 'gpt-5.2' \
  *     [--language el] [--max-steps 8] [--cases home-001,multi-001] [--dry-run]
  *
- * A real run appends to runs.v16.json (runs.v<N>.json with --dataset=v<N>) and writes artifacts/, so
- * `node webmcp/evals/run-evidence.js --strict` validates it like any other
- * release evidence. `--dry-run` judges and prints without writing anything.
+ * A real run appends to runs.v16.json (runs.v<N>.json with --dataset=v<N>) and writes the trace
+ * under artifacts/. That directory is gitignored except the published 2.0.0 traces, so a new trace
+ * stays on disk for `node webmcp/evals/run-evidence.js --strict` and is not part of the repository.
+ * `--dry-run` judges and prints without writing anything.
  */
 import { spawn } from 'node:child_process';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';

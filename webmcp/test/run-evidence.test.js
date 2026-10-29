@@ -413,6 +413,36 @@ describe('native evidence modality', () => {
     assert.match(ignoreRules, /^\*$/mu, 'the demo store must ignore every byte it holds');
     assert.match(ignoreRules, /^!\.gitignore$/mu, 'the directory itself must survive the ignore');
 
+    /* Generated native traces are ignored the same way, except the published 2.0.0 bytes this
+     * suite hashes. A fresh clone must still contain every file runs.v2.json cites. */
+    const artifactIgnore = readFileSync(join(DEFAULT_ARTIFACT_ROOT, '.gitignore'), 'utf8');
+    const artifactRules = new Set(artifactIgnore.split('\n').filter(line => line.startsWith('!')));
+    assert.equal(artifactIgnore.split('\n').includes('*'), true, 'generated traces must be ignored');
+    assert.equal(artifactRules.has('!.gitignore'), true);
+    const publishedLedger = JSON.parse(
+      readFileSync(new URL('../evals/runs.v2.json', import.meta.url), 'utf8'),
+    );
+    const publishedTraces = new Set(publishedLedger.runs.map(run => run.evidence.slice('artifacts/'.length)));
+    for (const correction of publishedLedger.corrections ?? []) {
+      publishedTraces.add(correction.artifact.slice('artifacts/'.length));
+      publishedTraces.add(correction.originalArtifact.slice('artifacts/'.length));
+    }
+    for (const name of publishedTraces) {
+      assert.equal(artifactRules.has(`!${name}`), true, `${name} must stay trackable`);
+      assert.equal(existsSync(join(DEFAULT_ARTIFACT_ROOT, name)), true, `${name} must be in the tree`);
+    }
+    assert.equal(artifactRules.has('!run-not-published.json'), false);
+    const rootIgnore = readFileSync(new URL('../../.gitignore', import.meta.url), 'utf8');
+    assert.equal(rootIgnore.includes('webmcp/evals/artifacts/*'), true);
+    assert.equal(rootIgnore.includes('webmcp/evals/experiments/**/artifacts/'), true);
+    assert.equal(rootIgnore.includes('webmcp/evals/experiments/**/*.attempts.jsonl'), true);
+    const experimentIgnore = readFileSync(
+      new URL('../evals/experiments/.gitignore', import.meta.url),
+      'utf8',
+    );
+    assert.equal(experimentIgnore.includes('**/artifacts/'), true);
+    assert.equal(experimentIgnore.includes('**/*.attempts.jsonl'), true);
+
     /* No deterministic bytes in the native store, whatever ran before. Native runs are
      * named `run-*` as well, so the check compares the two stores by name instead of
      * assuming the native one is empty. */
