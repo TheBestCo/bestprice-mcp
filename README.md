@@ -13,7 +13,7 @@ and price history. No account or API key is needed.
 
 ## Start shopping
 
-- [Open BestPrice in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981) and add the published plugin.
+- The [ChatGPT plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981) is temporarily unavailable while the updated version is under review. Developer integrations can still call the public endpoint below.
 - [Connect BestPrice to Claude](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp) using the prefilled connector form.
 - See the [shopping guide](https://www.bestprice.gr/en/mcp) for examples and other assistants.
 
@@ -41,7 +41,7 @@ live gateway, UI, OAuth/Events, plugin review and separate ACP qualification.
 | Tool | What it does | Key arguments |
 | --- | --- | --- |
 | `get_shopping_decision` | Runs the BestPrice Shopping Brain: an evidence-backed recommendation, need-based comparison, or read-only basket plan with reasons, tradeoffs, and unknowns. | `message` (the need in Greek or English, including any budget), optional `postal_code` (required for a completed basket plan), optional `evidence_detail` (`summary`, the default: only the evidence the answer cites; `full`: every claim and source) |
-| `search_products` | Finds canonical products in the catalog. Returns product IDs and the catalog minimum price before shipping. | `query` (2–200 characters: a name, model, category, or a bare GTIN/EAN barcode), optional `price_min`, `price_max`, `required_features`, `sort` (`relevance`, `price_asc`, `price_desc`), `limit` (1–8) |
+| `search_products` | Finds canonical products in the catalog. Returns product IDs and the catalog minimum price before shipping. | `query` (2–400 characters: a name, model, category, or a bare GTIN/EAN barcode), optional `price_min`, `price_max`, `required_features`, `sort` (`relevance`, `price_asc`, `price_desc`), `limit` (1–8) |
 | `compare_offers` | Compares current merchant offers for one exact product, separating item price, shipping, and delivered total. | `product_id` from a previous result, optional `postal_code` (a Greek postcode, 10000–85999, for delivered totals), `objective`, `in_stock_only`, `minimum_merchant_rating`, `limit` (1–10) |
 | `get_price_history` | Summarises how a product's price moved over time, against its 180-day median. | `product_id`, optional `period_days` (30, 90 or 180) |
 
@@ -62,8 +62,10 @@ Measured against the live endpoint on 24 September 2026.
   every request's `_meta`. A request that names the revision without that envelope is refused
   with `-32602`.
 - **Stateless.** No `MCP-Session-Id` is issued and none is required; `DELETE` answers `405`.
-  A `GET` with `Accept: text/event-stream` opens a keep-alive stream, but the server never sends
-  requests or notifications on it, so a client loses nothing by not opening it.
+  A `GET` with `Accept: text/event-stream` answers immediately with the SSE comment `: connected`
+  and `retry: 300000`, then holds the connection open. It does not send JSON-RPC requests or
+  notifications on that stream. Rechecked 29 October 2026. A client loses nothing by not opening it,
+  and must not wait for the stream to end.
 - **Capabilities.** `tools` and `resources` are available to compatible clients. The
   resource surface contains the optional MCP Apps UI at `ui://bestprice/shopping-results-v1.html`,
   the server card at `mcp://server-card.json`, and the canonical
@@ -93,9 +95,10 @@ Measured against the live endpoint on 24 September 2026.
 
 ## Developer quick start
 
-Every client below connects to the same endpoint. Detailed, provider-specific
-instructions including OpenAI, Grok, GitHub Copilot, and Microsoft Copilot Studio are in
-[`docs/provider-setup.md`](docs/provider-setup.md).
+Every client below connects to the same endpoint. Copy-paste connector setup for Perplexity,
+Claude, ChatGPT developer mode, Gemini CLI, Copilot, Grok Bot, and Cursor is in
+[`docs/connect.md`](docs/connect.md). Longer provider notes, including OpenAI and Microsoft
+Copilot Studio, are in [`docs/provider-setup.md`](docs/provider-setup.md).
 
 ### Claude
 
@@ -114,9 +117,16 @@ The bundled [`.mcp.json`](.mcp.json) is the equivalent project-scoped configurat
 shows the decoded configuration before adding it. The [`.cursor-plugin/`](.cursor-plugin/)
 directory holds the marketplace plugin and an agent skill.
 
-### VS Code
+### VS Code and VS Code Insiders
 
 [Add BestPrice to VS Code](vscode:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
+
+[Add BestPrice to VS Code Insiders](vscode-insiders:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
+
+### Kiro
+
+[Add BestPrice to Kiro](https://kiro.dev/launch/mcp/add?name=bestprice-shopping&config=%7B%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%2C%22disabled%22%3Afalse%2C%22autoApprove%22%3A%5B%5D%7D)
+opens Kiro's confirmation dialog with the remote URL. Kiro shows the configuration before writing it.
 
 ### Gemini CLI and Qwen Code
 
@@ -165,8 +175,20 @@ BestPrice needs none.
 
 ### Any other MCP client
 
-Add a Streamable HTTP server at `https://mcp.bestprice.gr/mcp`. If the host only supports
-stdio servers, use the bridge in this repository:
+Add a Streamable HTTP server at `https://mcp.bestprice.gr/mcp`. Hosts that read an
+`mcpServers` JSON configuration accept:
+
+```json
+{
+  "mcpServers": {
+    "bestprice-shopping": {
+      "url": "https://mcp.bestprice.gr/mcp"
+    }
+  }
+}
+```
+
+If the host only supports stdio servers, use the bridge in this repository:
 
 ```sh
 git clone https://github.com/TheBestCo/bestprice-mcp.git && cd bestprice-mcp
@@ -178,6 +200,11 @@ The bridge forwards everything to the public endpoint and accepts two environmen
 variables: `BESTPRICE_MCP_URL` (default: the public endpoint) and
 `BESTPRICE_MCP_TIMEOUT_MS` (default: 60000). A `Dockerfile` builds the same bridge for
 [Glama](https://glama.ai/mcp/servers/TheBestCo/bestprice-mcp) and similar hosts.
+
+This package is private. It is not published to npm under `bestprice-mcp` or any scoped name.
+There is no registry package to install or to run with npx. A directory that shows an npm
+install for version 1.2.7 is repeating a stale crawler inference; that version is not in the
+npm registry.
 
 ## A safe first conversation
 

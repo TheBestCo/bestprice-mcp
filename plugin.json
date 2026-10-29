@@ -1,16 +1,18 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "bestprice-shopping",
-  "version": "2.8.0",
-  "description": "Read-only shopping for Greece: recommendations, product search, live offers, delivered totals, and price history.",
+  "version": "2.8.1",
+  "description": "Read-only shopping decisions, product search, offers, and price history for Greece.",
   "author": {
     "name": "BestPrice",
     "url": "https://www.bestprice.gr/"
   },
   "homepage": "https://www.bestprice.gr/mcp",
   "repository": "https://github.com/TheBestCo/bestprice-mcp",
+  "license": "Apache-2.0",
   "keywords": [
     "shopping",
+    "e-commerce",
     "shopping-decisions",
     "product-recommendations",
     "product-search",
@@ -23,8 +25,8 @@
     "com.openai": {
       "interface": {
         "displayName": "BestPrice",
-        "shortDescription": "Get a shopping decision, then compare products, offers, and price history.",
-        "longDescription": "Use the same bounded Shopping Brain as BestPrice Ask for an evidence-backed product decision, or search canonical products, compare current offers and shipping semantics, and inspect compact price history. Results are read-only and link back to BestPrice, never directly to a merchant.",
+        "shortDescription": "Read-only shopping decisions, product search, offers, and price history for Greece.",
+        "longDescription": "Read-only shopping decisions, product search, live offers, delivered totals, and price history for Greece. No BestPrice account or API key.",
         "developerName": "BestPrice",
         "category": "Shopping",
         "capabilities": ["Read"],

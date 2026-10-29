@@ -89,13 +89,25 @@ describe('package identity', () => {
   });
 
   it('shares one description and one server name across the plugin manifests', () => {
+    const identity = readJson('distribution/identity.json');
     const description = agentPlugin.description;
-    assert.ok(description.length <= 120 && description.startsWith('Read-only'));
+    assert.equal(description, identity.shortDescription);
+    assert.ok(description.length < 100 && description.startsWith('Read-only'));
+    assert.equal(identity.longDescription.length > description.length, true);
+    assert.deepEqual(identity.tools, EXPECTED_TOOLS);
+    assert.equal(identity.endpoint, ENDPOINT);
+    assert.equal(identity.license, 'Apache-2.0');
+    assert.equal(identity.privacy, 'https://www.bestprice.gr/policies/privacy');
+    assert.equal(identity.support, 'https://www.bestprice.gr/contact');
     for (const manifest of [claudePlugin, codexPlugin, cursorPlugin, geminiExtension, qwenExtension]) {
       assert.equal(manifest.description, description);
       assert.equal(manifest.name, SERVER_NAME);
     }
     assert.equal(agentPlugin.name, SERVER_NAME);
+    assert.equal(readJson('glama.json').description, description);
+    assert.equal(codexPlugin.interface.shortDescription, description);
+    assert.equal(codexPlugin.interface.longDescription, identity.longDescription);
+    for (const tag of identity.tags) assert.ok(agentPlugin.keywords.includes(tag), tag);
   });
 
   it('credits BestPrice, never an individual, in every manifest that names an author', () => {
@@ -161,13 +173,43 @@ describe('endpoint manifests', () => {
     for (const prompt of prompts) assert.ok(prompt.length <= 128, prompt);
   });
 
-  it('ships a Cursor plugin whose relative paths resolve', () => {
-    const base = new URL('.cursor-plugin/', root);
-    assert.ok(existsSync(new URL(cursorPlugin.logo, base)), `logo missing: ${cursorPlugin.logo}`);
-    assert.ok(
-      existsSync(new URL(cursorPlugin.mcpServers, base)),
-      `mcpServers missing: ${cursorPlugin.mcpServers}`,
-    );
+  it('ships a Cursor plugin whose repository-root paths resolve', () => {
+    for (const path of [cursorPlugin.logo, cursorPlugin.skills, cursorPlugin.mcpServers]) {
+      assert.equal(path.includes('..'), false, path);
+      assert.ok(existsSync(new URL(path, root)), `missing from repository root: ${path}`);
+    }
+    assert.equal(cursorPlugin.logo, 'assets/bestprice-mcp-logo-1024.png');
+    assert.equal(cursorPlugin.skills, 'skills/bestprice-shopping');
+    assert.equal(cursorPlugin.mcpServers, 'mcp.json');
+    assert.equal(cursorPlugin.displayName, 'BestPrice Shopping');
+    assert.equal(cursorPlugin.publisher, 'BestPrice');
+    const cursorSchemaKeys = new Set([
+      'name',
+      'displayName',
+      'description',
+      'version',
+      'minClientVersions',
+      'author',
+      'publisher',
+      'homepage',
+      'repository',
+      'license',
+      'logo',
+      'keywords',
+      'category',
+      'tags',
+      'commands',
+      'agents',
+      'skills',
+      'rules',
+      'hooks',
+      'variables',
+      'mcpServers',
+    ]);
+    for (const key of Object.keys(cursorPlugin)) {
+      assert.ok(cursorSchemaKeys.has(key), `Cursor schema rejects ${key}`);
+    }
+    assert.deepEqual(Object.keys(cursorPlugin.author).sort(), ['email', 'name']);
     assert.equal(cursorPlugin.license, 'Apache-2.0');
     assert.equal(cursorPlugin.repository, REPOSITORY);
     assert.ok(existsSync(new URL('.cursor-plugin/skills/SKILL.md', root)));
@@ -187,6 +229,7 @@ describe('endpoint manifests', () => {
     assert.equal(agentPlugin.$schema, 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json');
     assert.equal(agentPlugin.repository, REPOSITORY);
     assert.equal(agentPlugin.homepage, HOMEPAGE);
+    assert.equal(agentPlugin.license, 'Apache-2.0');
   });
 
   it('makes the repository directly addable as a Copilot CLI marketplace', () => {
@@ -230,6 +273,7 @@ describe('endpoint manifests', () => {
     assert.equal(claudePlugin.repository, REPOSITORY);
     assert.equal(claudePlugin.homepage, HOMEPAGE);
     assert.equal(claudePlugin.license, 'Apache-2.0');
+    assert.equal(claudePlugin.mcpServers, './.mcp.json');
     assert.ok(existsSync(new URL('skills/bestprice-shopping/SKILL.md', root)));
     assert.match(canonicalSkill, /^---\nname: bestprice-shopping\ndescription: /u);
     const description = canonicalSkill.match(/^description: (.+)$/mu)?.[1];
@@ -269,18 +313,29 @@ describe('endpoint manifests', () => {
       'https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json',
     );
     assert.equal(registry.name, 'gr.bestprice/mcp');
-    assert.equal(registry.title, 'BestPrice');
+    assert.equal(registry.title, 'BestPrice Shopping');
+    assert.equal(registry.description, readJson('distribution/identity.json').shortDescription);
     assert.match(registry.version, SEMVER);
     assert.deepEqual(registry.repository, { url: REPOSITORY, source: 'github' });
     assert.equal(registry.websiteUrl, HOMEPAGE);
-    assert.equal(registry.icons[0].src, 'https://www.bestprice.gr/images/logo.svg');
+    assert.equal(
+      registry.icons[0].src,
+      'https://raw.githubusercontent.com/TheBestCo/bestprice-mcp/main/assets/bestprice-mcp-logo-1024.png',
+    );
+    assert.equal(registry.icons[0].mimeType, 'image/png');
+    assert.deepEqual(registry.icons[0].sizes, ['1024x1024']);
     assert.ok(registry.description.length <= 100);
     assert.match(readme, new RegExp(`Server version: \`${registry.version.replaceAll('.', '\\.')}\``, 'u'));
+    const queryMax = readJson('test/fixtures/public-tool-inputs.json').tools.find(
+      tool => tool.name === 'search_products',
+    ).inputSchema.properties.query.maxLength;
+    assert.ok(readme.includes(`\`query\` (2–${queryMax} characters`));
   });
 
   it('ships a LobeHub manifest for the exact hosted public surface', () => {
     assert.equal(lobeHub.identifier, 'thebestco-bestprice-mcp');
-    assert.equal(lobeHub.name, 'BestPrice');
+    assert.equal(lobeHub.name, 'BestPrice Shopping');
+    assert.equal(lobeHub.description, readJson('distribution/identity.json').shortDescription);
     assert.equal(lobeHub.version, registry.version);
     assert.equal(lobeHub.author, 'BestPrice');
     assert.equal(lobeHub.authorUrl, 'https://www.bestprice.gr/');
@@ -324,6 +379,9 @@ describe('public documents', () => {
       assert.match(providerSetup, new RegExp(tool, 'u'));
     }
     assert.match(readme, /docs\/provider-setup\.md/u);
+    assert.match(readme, /docs\/connect\.md/u);
+    assert.match(providerSetup, /temporarily unavailable/u);
+    assert.doesNotMatch(providerSetup, /add the published plugin|published BestPrice Shopping plugin/u);
     assert.match(readme, /skills\/bestprice-shopping\/SKILL\.md/u);
     assert.match(readme, /\.agents\/skills\/bestprice-shopping\/SKILL\.md/u);
     assert.match(providerSetupCompat, /docs\/provider-setup\.md/u);
@@ -352,6 +410,26 @@ describe('public documents', () => {
 
     assert.match(readme, /https:\/\/claude\.ai\/customize\/connectors\?/u);
     assert.match(readme, /connectorUrl=https%3A%2F%2Fmcp\.bestprice\.gr%2Fmcp/u);
+    assert.match(readme, /temporarily unavailable/u);
+    assert.doesNotMatch(readme, /add the published plugin/u);
+    assert.match(readme, /not published to npm/u);
+    assert.doesNotMatch(readme, /npm install bestprice-mcp/u);
+
+    const insiders = readme.match(/vscode-insiders:mcp\/install\?([^)]+)/u)?.[1];
+    assert.ok(insiders, 'VS Code Insiders install link');
+    assert.deepEqual(JSON.parse(decodeURIComponent(insiders)), {
+      name: SERVER_NAME,
+      type: 'http',
+      url: ENDPOINT,
+    });
+
+    const kiro = new URL(readme.match(/https:\/\/kiro\.dev\/launch\/mcp\/add\?[^)]+/u)?.[0]);
+    assert.equal(kiro.searchParams.get('name'), SERVER_NAME);
+    assert.deepEqual(JSON.parse(kiro.searchParams.get('config')), {
+      url: ENDPOINT,
+      disabled: false,
+      autoApprove: [],
+    });
   });
 
   it('documents the same bounded connection for every supported provider', () => {
@@ -365,6 +443,7 @@ describe('public documents', () => {
       'DeepSeek',
       'Z.ai and GLM',
       'GitHub Copilot and VS Code',
+      'Kiro',
       'Cursor',
       'Microsoft Copilot Studio',
     ]) {

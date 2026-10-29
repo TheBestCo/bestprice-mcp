@@ -1,7 +1,8 @@
 # Connect BestPrice Shopping
 
-For shoppers, [open the published BestPrice Shopping plugin in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981)
-or [open the prefilled Claude connector form](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp).
+The [ChatGPT plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981) is temporarily unavailable while the updated version is under review.
+[Open the prefilled Claude connector form](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
+for Claude.
 The instructions below cover developer and manual connections.
 
 BestPrice exposes one public, read-only MCP server for every compatible provider:
@@ -19,6 +20,10 @@ https://mcp.bestprice.gr/mcp
   digital products, services, and prohibited or age-restricted categories are excluded
 - Price semantics: search prices exclude shipping; comparisons separate item,
   shipping, and delivered total
+- Homepage: https://www.bestprice.gr/mcp
+- Privacy: https://www.bestprice.gr/policies/privacy
+- Support: https://www.bestprice.gr/contact
+- License: Apache-2.0
 
 ## OpenAI
 
@@ -41,9 +46,9 @@ const response = await client.responses.create({
 });
 ```
 
-For ordinary ChatGPT use, open the [published BestPrice Shopping plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981)
-and add it there. Developer mode can also use this endpoint as a custom
-connector on accounts that support custom connectors; that is a separate setup path.
+The ChatGPT plugin is temporarily unavailable while the updated version is under review.
+The public shopping guide says the same thing. Developer mode can still use this endpoint as a
+custom connector on accounts that support custom connectors; that is a separate setup path.
 
 The live server also publishes the canonical BestPrice Shopping Skill through the final MCP Skills
 extension (`io.modelcontextprotocol/skills`) on protocol `2026-07-28`. A Skills-aware scanner can
@@ -309,7 +314,17 @@ does not use this repository can add the equivalent server through the one-click
 One-click install:
 [Add BestPrice Shopping to VS Code](vscode:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
 
+[Add BestPrice Shopping to VS Code Insiders](vscode-insiders:mcp/install?%7B%22name%22%3A%22bestprice-shopping%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%7D)
+
 VS Code displays the decoded server configuration for review before adding it.
+
+## Kiro
+
+[Add BestPrice Shopping to Kiro](https://kiro.dev/launch/mcp/add?name=bestprice-shopping&config=%7B%22url%22%3A%22https%3A%2F%2Fmcp.bestprice.gr%2Fmcp%22%2C%22disabled%22%3Afalse%2C%22autoApprove%22%3A%5B%5D%7D)
+
+Kiro opens a confirmation dialog and lists the remote URL before writing user or workspace MCP
+configuration. The same URL can be added by hand as an HTTP server named `bestprice-shopping`.
+Kiro's web app does not connect to remote MCP servers; use the IDE or CLI.
 
 ## Cursor
 
@@ -321,6 +336,15 @@ Cursor displays the decoded remote-server configuration before adding it. The
 same endpoint can be entered manually under **Settings > Tools & MCP**. Verify
 that Cursor discovers the four reviewed read-only tools before relying on the
 connection.
+
+The marketplace plugin manifest is [`.cursor-plugin/plugin.json`](../.cursor-plugin/plugin.json).
+Paths in that file are relative to the repository root. Submitting it at
+[cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) also covers the Grok Bot
+marketplace, which reviews through the same form, and requires accepting the
+[Cursor Marketplace Publisher Terms](https://cursor.com/marketplace-publisher-terms). The publisher
+of record is The Best Company S.A. (BestPrice). Claude Desktop should use the remote connector
+URL above; this repository does not ship a `.mcpb` bundle, because that bundle would only wrap the
+local stdio bridge for a server that is already remote HTTP.
 
 ## Microsoft Copilot Studio
 

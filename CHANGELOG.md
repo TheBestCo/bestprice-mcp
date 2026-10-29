@@ -7,9 +7,20 @@ in `server.json`; see the Versioning section of the README.
 
 ## [Unreleased]
 
+## [2.8.1] - 2026-10-29
+
 ### Security
 
 - The stdio bridge image is built from Node.js 22.23.4 (the 21 October 2026 security release) instead of 22.23.2.
+
+### Changed
+
+- The Cursor Marketplace manifest uses repository-root paths for its logo, skill, and MCP config, and the root Agent Plugin manifest declares `Apache-2.0`.
+- Registry and Docker icons use the square 1024×1024 PNG. The README matches the public guide: the ChatGPT plugin is temporarily unavailable, and this package is not on npm.
+- One-click install links for VS Code Insiders and Kiro. CI smoke-tests the live endpoint and rejects invalid skill frontmatter.
+- Directory descriptions share one short line and one long line. Skill frontmatter quotes the description so YAML parsers accept the colon in "BestPrice:".
+- Claude's plugin manifest points `mcpServers` at `./.mcp.json`, so catalogs that read `plugin.json` see the remote MCP server. A Microsoft 365 Copilot app package and `docs/connect.md` use the same keyless URL.
+- The required CI job smoke-tests the live endpoint and fails when its version differs from `server.json`. The Copilot package drops the empty `get_shopping_decision` argument branch and is regenerated from `tools/list`.
 
 ## [2.8.0] - 2026-09-26
 
@@ -638,7 +649,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.8.0...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.8.1...HEAD
+[2.8.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.8.0...v2.8.1
 [2.8.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.6.0...v2.8.0
 [2.6.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.2.0...v2.6.0
 [2.2.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.1.0...v2.2.0

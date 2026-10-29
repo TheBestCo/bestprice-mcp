@@ -9,6 +9,10 @@ BestPrice Shopping is a hosted, read-only MCP server. Do not clone, build, or ru
 - URL: `https://mcp.bestprice.gr/mcp`
 - Authentication: none
 - Environment variables: none
+- Homepage: https://www.bestprice.gr/mcp
+- Privacy: https://www.bestprice.gr/policies/privacy
+- Support: https://www.bestprice.gr/contact
+- License: Apache-2.0
 
 ## Cline configuration
 

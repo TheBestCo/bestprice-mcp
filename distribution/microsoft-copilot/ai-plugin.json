@@ -1,0 +1,263 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.4/schema.json",
+  "schema_version": "v2.4",
+  "name_for_human": "BestPrice Shopping",
+  "namespace": "BestPrice",
+  "description_for_human": "Read-only shopping decisions, product search, offers, and price history for Greece.",
+  "description_for_model": "Read-only shopping decisions, product search, live offers, delivered totals, and price history for Greece. No BestPrice account or API key. Call these tools only for physical products sold in Greece. Do not invent a product id, a delivered price, or a merchant URL.",
+  "functions": [
+    {
+      "name": "get_shopping_decision",
+      "description": "Provides read-only shopping recommendations, product comparisons, purchase-timing context, and basket plans for physical products sold in Greece. Accepts only a concise current shopping request with a budget, required specifications, and relevant corrections, excluding chat transcripts and unrelated personal data. Uses the same Shopping Brain as BestPrice Ask and returns selected products, reasons, tradeoffs, typed catalog attributes, checked offer and historical-price context, evidence references, and unknowns. Each product-family decision evaluates one bounded catalog page and returns at most four candidates per slot. Basket plans accept two to five supported product-family slots under one aggregate budget, or at least two exact grouped bp_<id> products, and require a five-digit Greek delivery postcode. Product prices exclude shipping; unknown delivery costs remain unknown. Unsupported or unidentified basket categories require clarification. Does not place orders, create alerts, access account history, or predict future prices.",
+      "capabilities": {
+        "security_info": {
+          "data_handling": ["GetPublicData"]
+        }
+      }
+    },
+    {
+      "name": "search_products",
+      "description": "Searches physical products sold in Greece by product name, model, category, or barcode and returns up to eight grouped products with canonical product IDs, catalog prices, relevance warnings, and BestPrice links. Price bounds apply before shipping; feature hints are not independently verified. A valid GTIN with one unambiguous catalog match is supported. Broadened-category results are related products rather than exact matches. Categories containing only ungrouped listings return an empty product list and a category handoff. Catalog minimum prices are indicative, may include filtered offers, and are not buyable quotes. Prohibited, age-restricted, digital, service, and unverified catalog branches are excluded. No checkout or direct merchant links are provided.",
+      "capabilities": {
+        "security_info": {
+          "data_handling": ["GetPublicData"]
+        }
+      }
+    },
+    {
+      "name": "compare_offers",
+      "description": "Compares current Greek merchant offers for one exact grouped BestPrice product ID. Returns public store names, item prices, shipping information, calculable delivered totals, ranking reasons, and BestPrice links. Without objective it ranks by lowest_total_cost when postal_code is given and by lowest_item_price otherwise, keeping shipping and total cost unknown; an explicit lowest_total_cost requires a Greek postcode (five digits, 10000 to 85999). Other ranking options include merchant rating. Catalog minimum prices and the lowest returned quoted prices have separate fields, with a reason when the catalog minimum is absent from the returned offers. Results exclude sponsored offers and merchant destination URLs. The operation is read-only and creates no CPC click.",
+      "capabilities": {
+        "security_info": {
+          "data_handling": ["GetPublicData"]
+        }
+      }
+    },
+    {
+      "name": "get_price_history",
+      "description": "Returns historical prices and a deterministic deal classification for one exact grouped BestPrice product ID. Includes minimum and median statistics, a compact daily price series, coverage gaps, and methodology. period_days selects the daily series and coverage gaps only: deal_classification and price_delta_vs_180d_median_pct always compare the current price with the 180-day median, and window_stats always carries the 30-, 90- and 180-day statistics. Historical observations do not guarantee future prices.",
+      "capabilities": {
+        "security_info": {
+          "data_handling": ["GetPublicData"]
+        }
+      }
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "RemoteMCPServer",
+      "auth": {
+        "type": "None"
+      },
+      "run_for_functions": [
+        "get_shopping_decision",
+        "search_products",
+        "compare_offers",
+        "get_price_history"
+      ],
+      "spec": {
+        "url": "https://mcp.bestprice.gr/mcp",
+        "mcp_tool_description": {
+          "tools": [
+            {
+              "name": "get_shopping_decision",
+              "title": "BestPrice",
+              "description": "Provides read-only shopping recommendations, product comparisons, purchase-timing context, and basket plans for physical products sold in Greece. Accepts only a concise current shopping request with a budget, required specifications, and relevant corrections, excluding chat transcripts and unrelated personal data. Uses the same Shopping Brain as BestPrice Ask and returns selected products, reasons, tradeoffs, typed catalog attributes, checked offer and historical-price context, evidence references, and unknowns. Each product-family decision evaluates one bounded catalog page and returns at most four candidates per slot. Basket plans accept two to five supported product-family slots under one aggregate budget, or at least two exact grouped bp_<id> products, and require a five-digit Greek delivery postcode. Product prices exclude shipping; unknown delivery costs remain unknown. Unsupported or unidentified basket categories require clarification. Does not place orders, create alerts, access account history, or predict future prices.",
+              "inputSchema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000,
+                    "description": "A concise current shopping request with only relevant budget, required specifications and user corrections. No chat transcripts or unrelated personal data. Greek and English are accepted."
+                  },
+                  "postal_code": {
+                    "description": "Optional Greek delivery postcode (five digits, 10000 to 85999) supplied by the user. It is required for basket plans; without it, shipping and delivered totals remain unknown.",
+                    "type": "string",
+                    "pattern": "^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$"
+                  },
+                  "evidence_detail": {
+                    "default": "summary",
+                    "description": "Optional evidence depth. 'summary' (default) returns only the claims this result cites by id (typed attributes, price history), the claims they are derived from and the sources they cite, and counts what it omits. 'full' returns every returned-product claim and source, including each offer's field receipts, complete spec sheets and ranking inputs; it is several times larger.",
+                    "type": "string",
+                    "enum": ["summary", "full"]
+                  }
+                },
+                "required": ["message"],
+                "additionalProperties": false,
+                "$schema": "https://json-schema.org/draft/2020-12/schema"
+              },
+              "annotations": {
+                "title": "BestPrice",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": true
+              }
+            },
+            {
+              "name": "search_products",
+              "title": "Search BestPrice products",
+              "description": "Searches physical products sold in Greece by product name, model, category, or barcode and returns up to eight grouped products with canonical product IDs, catalog prices, relevance warnings, and BestPrice links. Price bounds apply before shipping; feature hints are not independently verified. A valid GTIN with one unambiguous catalog match is supported. Broadened-category results are related products rather than exact matches. Categories containing only ungrouped listings return an empty product list and a category handoff. Catalog minimum prices are indicative, may include filtered offers, and are not buyable quotes. Prohibited, age-restricted, digital, service, and unverified catalog branches are excluded. No checkout or direct merchant links are provided.",
+              "inputSchema": {
+                "type": "object",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "properties": {
+                  "query": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 400,
+                    "description": "Product name, model, barcode (GTIN/EAN), or category in Greek or English. A pasted merchant listing title is accepted; the search reduces it to the model it names. Catalog search does not verify requirements based on needs, household size, or suitability."
+                  },
+                  "locale": {
+                    "default": "el-GR",
+                    "description": "Response locale. The current service supports el-GR.",
+                    "type": "string",
+                    "const": "el-GR"
+                  },
+                  "country": {
+                    "default": "GR",
+                    "description": "Shopping market. The current service supports Greece (GR).",
+                    "type": "string",
+                    "const": "GR"
+                  },
+                  "price_min": {
+                    "description": "Optional minimum product price in EUR, before shipping.",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1000000
+                  },
+                  "price_max": {
+                    "description": "Optional maximum product price in EUR, before shipping.",
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 1000000
+                  },
+                  "required_features": {
+                    "default": [],
+                    "description": "Optional relevance hints such as OLED, Wi-Fi, or noise cancellation. They are not independently verified for every result.",
+                    "maxItems": 10,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 50
+                    }
+                  },
+                  "sort": {
+                    "default": "relevance",
+                    "description": "Result order: catalog relevance (default), lowest catalog price first, or highest catalog price first.",
+                    "type": "string",
+                    "enum": ["relevance", "price_asc", "price_desc"]
+                  },
+                  "limit": {
+                    "default": 8,
+                    "description": "Maximum number of grouped products to return, from 1 to 8.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 8
+                  }
+                },
+                "required": ["query"],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "title": "Search BestPrice products",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": true
+              }
+            },
+            {
+              "name": "compare_offers",
+              "title": "Compare BestPrice offers",
+              "description": "Compares current Greek merchant offers for one exact grouped BestPrice product ID. Returns public store names, item prices, shipping information, calculable delivered totals, ranking reasons, and BestPrice links. Without objective it ranks by lowest_total_cost when postal_code is given and by lowest_item_price otherwise, keeping shipping and total cost unknown; an explicit lowest_total_cost requires a Greek postcode (five digits, 10000 to 85999). Other ranking options include merchant rating. Catalog minimum prices and the lowest returned quoted prices have separate fields, with a reason when the catalog minimum is absent from the returned offers. Results exclude sponsored offers and merchant destination URLs. The operation is read-only and creates no CPC click.",
+              "inputSchema": {
+                "type": "object",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "properties": {
+                  "product_id": {
+                    "type": "string",
+                    "pattern": "^bp_[0-9]{10}$",
+                    "description": "Exact grouped BestPrice product id returned by search_products, in bp_<id> form."
+                  },
+                  "postal_code": {
+                    "description": "Greek delivery postcode (five digits, 10000 to 85999) used to calculate shipping and total cost. Required for lowest_total_cost; optional for lowest_item_price and merchant_rating.",
+                    "type": "string",
+                    "pattern": "^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$"
+                  },
+                  "objective": {
+                    "description": "How to rank offers. When omitted: lowest_total_cost if postal_code is given, otherwise lowest_item_price. lowest_total_cost includes known shipping and requires postal_code.",
+                    "type": "string",
+                    "enum": ["lowest_total_cost", "lowest_item_price", "merchant_rating"]
+                  },
+                  "in_stock_only": {
+                    "default": false,
+                    "description": "false (default): every buyable offer, whatever its delivery estimate (availability unknown stays marked unknown). true: only offers available now or delivered in 1 to 3 days; slower ones are held back and named in a warning. Offers shipping in 4 to 10 days are still buyable; true excludes them and can exclude the cheapest price. Out-of-stock offers are never returned.",
+                    "type": "boolean"
+                  },
+                  "minimum_merchant_rating": {
+                    "default": 0,
+                    "description": "Optional minimum merchant rating on a 0 to 5 scale.",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 5
+                  },
+                  "limit": {
+                    "default": 10,
+                    "description": "Maximum number of current merchant offers to return, from 1 to 10.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 10
+                  }
+                },
+                "required": ["product_id"],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "title": "Compare BestPrice offers",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": true
+              }
+            },
+            {
+              "name": "get_price_history",
+              "title": "Inspect BestPrice price history",
+              "description": "Returns historical prices and a deterministic deal classification for one exact grouped BestPrice product ID. Includes minimum and median statistics, a compact daily price series, coverage gaps, and methodology. period_days selects the daily series and coverage gaps only: deal_classification and price_delta_vs_180d_median_pct always compare the current price with the 180-day median, and window_stats always carries the 30-, 90- and 180-day statistics. Historical observations do not guarantee future prices.",
+              "inputSchema": {
+                "type": "object",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "properties": {
+                  "product_id": {
+                    "type": "string",
+                    "pattern": "^bp_[0-9]{10}$",
+                    "description": "Exact grouped BestPrice product id returned by search_products, in bp_<id> form."
+                  },
+                  "period_days": {
+                    "default": 180,
+                    "description": "Requested history window in days for series and data_gaps. deal_classification and price_delta_vs_180d_median_pct always compare with the 180-day median; window_stats always carries the 30-, 90- and 180-day statistics. Defaults to 180 days.",
+                    "type": "number",
+                    "enum": [30, 90, 180]
+                  }
+                },
+                "required": ["product_id"],
+                "additionalProperties": false
+              },
+              "annotations": {
+                "title": "Inspect BestPrice price history",
+                "readOnlyHint": true,
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": true
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

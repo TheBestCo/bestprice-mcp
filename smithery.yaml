@@ -1,0 +1,13 @@
+# Direct listing for the Smithery directory. Smithery's config schema has no
+# upstream key; publishing the URL is a separate step from this file.
+# URL: https://mcp.bestprice.gr/mcp
+# Do not publish through server.smithery.ai or *.run.tools. Those proxies, and
+# the Smithery CLI, shut down on 2026-10-31. Do not build the Dockerfile here.
+# There is no API key. An empty config means the directory must not ask for one.
+startCommand:
+  type: http
+  configSchema:
+    type: object
+    additionalProperties: false
+    properties: {}
+  exampleConfig: {}
