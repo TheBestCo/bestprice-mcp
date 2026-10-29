@@ -57,7 +57,11 @@ describe('distribution status ledger', () => {
     const byId = new Map(status.surfaces.map(surface => [surface.id, surface]));
     for (const id of ['smithery']) {
       assert.equal(byId.get(id)?.state, 'external-gate', id);
+      assert.match(byId.get(id).evidence, /bounced/u);
+      assert.match(byId.get(id).evidence, /2026-10-31/u);
     }
+    assert.equal(byId.get('grok-plugin-marketplace')?.state, 'prepared');
+    assert.equal(byId.get('grok-plugin-marketplace')?.source, undefined);
     for (const id of [
       'official-mcp-registry',
       'openai',

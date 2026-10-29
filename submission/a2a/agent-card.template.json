@@ -1,0 +1,50 @@
+{
+  "name": "BestPrice Shopping",
+  "description": "Read-only shopping decisions, product search, current Greek merchant offers, and price history for physical products sold in Greece. Not an ordering or payment agent.",
+  "version": "1.8.4",
+  "documentationUrl": "https://www.bestprice.gr/mcp",
+  "iconUrl": "https://raw.githubusercontent.com/TheBestCo/bestprice-mcp/main/assets/bestprice-mcp-logo-1024.png",
+  "provider": {
+    "organization": "The Best Company S.A.",
+    "url": "https://www.bestprice.gr/"
+  },
+  "supportedInterfaces": [
+    {
+      "url": "https://mcp.bestprice.gr/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "get-shopping-decision",
+      "name": "Get a shopping decision",
+      "description": "Recommend, compare, or plan a read-only basket for a physical product need in Greece.",
+      "tags": ["shopping", "recommendation", "greece"]
+    },
+    {
+      "id": "search-products",
+      "name": "Search products",
+      "description": "Find a canonical BestPrice product by name, model, category, or barcode.",
+      "tags": ["shopping", "search", "greece"]
+    },
+    {
+      "id": "compare-offers",
+      "name": "Compare offers",
+      "description": "Compare current Greek merchant offers and delivered totals for one exact product.",
+      "tags": ["shopping", "offers", "greece"]
+    },
+    {
+      "id": "get-price-history",
+      "name": "Inspect price history",
+      "description": "Classify today's item price against the product's 180-day median.",
+      "tags": ["shopping", "price-history", "greece"]
+    }
+  ]
+}

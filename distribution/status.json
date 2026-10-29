@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "asOf": "2026-10-01",
+  "asOf": "2026-10-29",
   "canonical": {
     "registryId": "gr.bestprice/mcp",
     "serverVersion": "1.8.4",
@@ -53,11 +53,11 @@
       "state": "submitted",
       "freshness": "current",
       "url": "https://github.com/docker/mcp-registry/pull/5228",
-      "verifiedAt": "2026-09-25",
-      "evidence": "PR #5228 opened 2026-09-24T17:26Z from phaistonian:main (a912573): OPEN, REVIEW_REQUIRED, mergeStateStatus BLOCKED, no reviews or comments. Its two fork workflow runs (ci.yaml, Security Review Trigger) are action_required, i.e. waiting for a maintainer to approve them. The three PR files are byte-identical to distribution/docker/bestprice-shopping/.",
-      "note": "Payload is current; the blocker is upstream workflow approval and review.",
-      "nextAction": "Docker maintainers approve the fork workflows and review; respond to feedback when posted.",
-      "nextActionBy": "upstream"
+      "verifiedAt": "2026-10-29",
+      "evidence": "Three open pull requests remain: #5228 (servers/bestprice-shopping, the canonical name), #4900 (same directory name, no tools.json, a favicon, category productivity), and #4798 (servers/bestprice, a description that omits shopping decisions, no tools.json). #5228 matched this directory until the icon moved to the square PNG. Confirmed open via the GitHub API on 2026-10-29.",
+      "note": "distribution/docker/bestprice-shopping/ is the canonical payload. #5228 is the pull request to keep; its icon is now behind this file.",
+      "nextAction": "Update #5228 to the square PNG icon in server.yaml here, and close duplicate pull requests #4900 and #4798.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "toolsdk",
@@ -353,10 +353,10 @@
       "state": "external-gate",
       "freshness": "n/a",
       "url": "https://smithery.ai/servers/bestprice/shopping",
-      "verifiedAt": "2026-09-25",
-      "evidence": "The owner republished https://mcp.bestprice.gr/mcp?via=smithery into bestprice/shopping on 2026-09-25; the scan still fails with \"Initialization failed with status 500\". New Relic shows SmitheryBot initialize answered 200 (text/event-stream, 20 ms) and no follow-up request; the official TS SDK 1.30 and /.well-known/mcp/server-card.json both work.",
-      "note": "The failure is inside the Smithery gateway. Support was emailed at contact@smithery.ai on 2026-09-25.",
-      "nextAction": "Wait for Smithery support, then republish and confirm the scan lists four tools.",
+      "verifiedAt": "2026-10-29",
+      "evidence": "The 2026-09-25 email to contact@smithery.ai is recorded as bounced; this repository has no mail-delivery receipt. On 2026-10-29 https://smithery.ai/future says the MCP proxy, managed identity, API, accounts, CLI, and SDKs shut down on 2026-10-31 and that smithery.ai remains a curated non-proxied directory of direct MCP URLs. The public bestprice/shopping page showed no deployment. A direct initialize with User-Agent SmitheryBot/1.0 returned HTTP 200 text/event-stream from https://mcp.bestprice.gr/mcp, not HTTP 500.",
+      "note": "Do not republish through server.smithery.ai or run.tools. After 2026-10-31 the useful listing is the upstream URL in smithery.yaml.",
+      "nextAction": "Ask the curated Smithery directory to list https://mcp.bestprice.gr/mcp directly, with four tools and no proxy URL.",
       "nextActionBy": "upstream"
     },
     {
@@ -365,10 +365,10 @@
       "state": "published",
       "freshness": "listing-current-inferred-artifacts-stale",
       "url": "https://lobehub.com/mcp/thebestco-bestprice-mcp",
-      "verifiedAt": "2026-10-01",
-      "evidence": "The authenticated owner update moved the listing from 1.8.1 to 1.8.4. Public receiving API at 2026-10-01T04:02:56Z returned validated BestPrice 1.8.4, four public tools with readOnlyHint/idempotentHint/openWorldHint true and destructiveHint false, and three portable resources.",
-      "note": "The portable three-resource subset is valid. The inferred npm artifact still advertises bestprice-mcp 1.2.7 although this private repository package is 2.8.0; declared installations use the current Git checkout or hosted HTTP. Repeat publication of the same owned repository was accepted for enrichment; its completed processing status is unverified.",
-      "nextAction": "Verify refreshed repository enrichment and correct the inferred npm artifact if it remains stale.",
+      "verifiedAt": "2026-10-29",
+      "evidence": "The authenticated owner update moved the listing from 1.8.1 to 1.8.4. Public receiving API at 2026-10-01T04:02:56Z returned validated BestPrice 1.8.4, four public tools with readOnlyHint/idempotentHint/openWorldHint true and destructiveHint false, and three portable resources. On 2026-10-29 the npm registry returned 404 for bestprice-mcp, @bestprice/mcp, and @thebestco/bestprice-mcp. There is no npm package to correct in this repository.",
+      "note": "The portable three-resource subset is valid. LobeHub's npm 1.2.7 install is a stale crawler inference. package.json is private and is not an install path.",
+      "nextAction": "Ask LobeHub to drop the inferred npm install and keep the hosted HTTP endpoint.",
       "nextActionBy": "upstream"
     },
     {
@@ -382,6 +382,18 @@
       "note": "Listed by Google's crawler; first confirmed 2026-09-24.",
       "nextAction": "None; the crawler follows new tagged releases.",
       "nextActionBy": "none"
+    },
+    {
+      "id": "grok-plugin-marketplace",
+      "name": "Grok Build plugin marketplace",
+      "state": "prepared",
+      "freshness": "entry-ready-sha-unpinned",
+      "url": "https://github.com/xai-org/plugin-marketplace",
+      "verifiedAt": "2026-10-29",
+      "evidence": "xai-org/plugin-marketplace lists third-party plugins as remote sources in .grok-plugin/marketplace.json and requires a full 40-character lowercase commit SHA. distribution/grok/marketplace-entry.json is the object to append. No pull request from this repository is open.",
+      "note": "source.sha is omitted until the marketplace-ready commit is on the default branch. Pinning an older commit would publish the plugin manifest that used parent-directory paths.",
+      "nextAction": "After this tree is on main, set source.sha to that commit and open a pull request on xai-org/plugin-marketplace.",
+      "nextActionBy": "us-here"
     }
   ]
 }

@@ -11,6 +11,12 @@ in `server.json`; see the Versioning section of the README.
 
 - The stdio bridge image is built from Node.js 22.23.4 (the 21 October 2026 security release) instead of 22.23.2.
 
+### Changed
+
+- The Cursor Marketplace manifest uses repository-root paths for its logo, skill, and MCP config, and the root Agent Plugin manifest declares `Apache-2.0`.
+- Registry and Docker icons use the square 1024×1024 PNG. The README matches the public guide: the ChatGPT plugin is temporarily unavailable, and this package is not on npm.
+- One-click install links for VS Code Insiders and Kiro. CI smoke-tests the live endpoint after the offline suite.
+
 ## [2.8.0] - 2026-09-26
 
 WebMCP contract 2.8 (bestprice.gr `1a601f6b16`, live on www): specification sections in English. The 22 tools and

@@ -161,13 +161,17 @@ describe('endpoint manifests', () => {
     for (const prompt of prompts) assert.ok(prompt.length <= 128, prompt);
   });
 
-  it('ships a Cursor plugin whose relative paths resolve', () => {
-    const base = new URL('.cursor-plugin/', root);
-    assert.ok(existsSync(new URL(cursorPlugin.logo, base)), `logo missing: ${cursorPlugin.logo}`);
-    assert.ok(
-      existsSync(new URL(cursorPlugin.mcpServers, base)),
-      `mcpServers missing: ${cursorPlugin.mcpServers}`,
-    );
+  it('ships a Cursor plugin whose repository-root paths resolve', () => {
+    for (const path of [cursorPlugin.logo, cursorPlugin.skills, cursorPlugin.mcpServers]) {
+      assert.equal(path.includes('..'), false, path);
+      assert.ok(existsSync(new URL(path, root)), `missing from repository root: ${path}`);
+    }
+    assert.equal(cursorPlugin.logo, 'assets/bestprice-mcp-logo-1024.png');
+    assert.equal(cursorPlugin.skills, 'skills/bestprice-shopping');
+    assert.equal(cursorPlugin.mcpServers, 'mcp.json');
+    assert.equal(cursorPlugin.displayName, 'BestPrice Shopping');
+    assert.equal(cursorPlugin.publisher, 'BestPrice');
+    assert.deepEqual(Object.keys(cursorPlugin.author).sort(), ['email', 'name']);
     assert.equal(cursorPlugin.license, 'Apache-2.0');
     assert.equal(cursorPlugin.repository, REPOSITORY);
     assert.ok(existsSync(new URL('.cursor-plugin/skills/SKILL.md', root)));
@@ -187,6 +191,7 @@ describe('endpoint manifests', () => {
     assert.equal(agentPlugin.$schema, 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json');
     assert.equal(agentPlugin.repository, REPOSITORY);
     assert.equal(agentPlugin.homepage, HOMEPAGE);
+    assert.equal(agentPlugin.license, 'Apache-2.0');
   });
 
   it('makes the repository directly addable as a Copilot CLI marketplace', () => {
@@ -273,7 +278,12 @@ describe('endpoint manifests', () => {
     assert.match(registry.version, SEMVER);
     assert.deepEqual(registry.repository, { url: REPOSITORY, source: 'github' });
     assert.equal(registry.websiteUrl, HOMEPAGE);
-    assert.equal(registry.icons[0].src, 'https://www.bestprice.gr/images/logo.svg');
+    assert.equal(
+      registry.icons[0].src,
+      'https://raw.githubusercontent.com/TheBestCo/bestprice-mcp/main/assets/bestprice-mcp-logo-1024.png',
+    );
+    assert.equal(registry.icons[0].mimeType, 'image/png');
+    assert.deepEqual(registry.icons[0].sizes, ['1024x1024']);
     assert.ok(registry.description.length <= 100);
     assert.match(readme, new RegExp(`Server version: \`${registry.version.replaceAll('.', '\\.')}\``, 'u'));
   });
@@ -324,6 +334,8 @@ describe('public documents', () => {
       assert.match(providerSetup, new RegExp(tool, 'u'));
     }
     assert.match(readme, /docs\/provider-setup\.md/u);
+    assert.match(providerSetup, /temporarily unavailable/u);
+    assert.doesNotMatch(providerSetup, /add the published plugin|published BestPrice Shopping plugin/u);
     assert.match(readme, /skills\/bestprice-shopping\/SKILL\.md/u);
     assert.match(readme, /\.agents\/skills\/bestprice-shopping\/SKILL\.md/u);
     assert.match(providerSetupCompat, /docs\/provider-setup\.md/u);
@@ -352,6 +364,26 @@ describe('public documents', () => {
 
     assert.match(readme, /https:\/\/claude\.ai\/customize\/connectors\?/u);
     assert.match(readme, /connectorUrl=https%3A%2F%2Fmcp\.bestprice\.gr%2Fmcp/u);
+    assert.match(readme, /temporarily unavailable/u);
+    assert.doesNotMatch(readme, /add the published plugin/u);
+    assert.match(readme, /not published to npm/u);
+    assert.doesNotMatch(readme, /npm install bestprice-mcp/u);
+
+    const insiders = readme.match(/vscode-insiders:mcp\/install\?([^)]+)/u)?.[1];
+    assert.ok(insiders, 'VS Code Insiders install link');
+    assert.deepEqual(JSON.parse(decodeURIComponent(insiders)), {
+      name: SERVER_NAME,
+      type: 'http',
+      url: ENDPOINT,
+    });
+
+    const kiro = new URL(readme.match(/https:\/\/kiro\.dev\/launch\/mcp\/add\?[^)]+/u)?.[0]);
+    assert.equal(kiro.searchParams.get('name'), SERVER_NAME);
+    assert.deepEqual(JSON.parse(kiro.searchParams.get('config')), {
+      url: ENDPOINT,
+      disabled: false,
+      autoApprove: [],
+    });
   });
 
   it('documents the same bounded connection for every supported provider', () => {
@@ -365,6 +397,7 @@ describe('public documents', () => {
       'DeepSeek',
       'Z.ai and GLM',
       'GitHub Copilot and VS Code',
+      'Kiro',
       'Cursor',
       'Microsoft Copilot Studio',
     ]) {

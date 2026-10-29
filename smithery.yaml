@@ -1,0 +1,15 @@
+# Direct Streamable HTTP listing for the Smithery directory.
+# Do not publish this server through server.smithery.ai or *.run.tools.
+# Those proxies, and the Smithery CLI, shut down on 2026-10-31.
+# The directory that remains should show the upstream URL below.
+# There is no API key. Do not build the Dockerfile in this repository.
+startCommand:
+  type: http
+  configSchema:
+    type: object
+    additionalProperties: false
+    properties: {}
+  exampleConfig: {}
+upstream:
+  type: streamable-http
+  url: https://mcp.bestprice.gr/mcp

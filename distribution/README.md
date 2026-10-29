@@ -21,6 +21,13 @@ is already published separately as `gr.bestprice/mcp` in the official MCP Regist
 `docker/bestprice-shopping/` contains the three files Docker requires for a remote server:
 `server.yaml`, `tools.json`, and `readme.md`. The server is unauthenticated Streamable HTTP,
 so the Docker payload deliberately contains no OAuth configuration and no copied tool inventory.
+This directory is the canonical metadata. Three pull requests are open on `docker/mcp-registry`:
+[#5228](https://github.com/docker/mcp-registry/pull/5228) (`bestprice-shopping`, the one to keep;
+update its icon to the square PNG in `server.yaml` here),
+[#4900](https://github.com/docker/mcp-registry/pull/4900) (same directory name, no `tools.json`,
+a favicon, and `category: productivity`), and
+[#4798](https://github.com/docker/mcp-registry/pull/4798) (`servers/bestprice`, a description that
+omits shopping decisions, and no `tools.json`). Close #4900 and #4798 so review has one entry.
 
 ## Cline Marketplace
 
@@ -35,10 +42,21 @@ MCP Harbor mirrors the official MCP Registry every six hours. Because `gr.bestpr
 published there, Harbor rejects a duplicate local submission as `name is already published`. Keep
 the official registry record current instead of maintaining a second Harbor payload.
 
+## Grok Build plugin marketplace
+
+`grok/marketplace-entry.json` is the object to append to `.grok-plugin/marketplace.json` in
+`xai-org/plugin-marketplace`. It is a remote `source.url` entry. `source.sha` is omitted on purpose:
+that catalog rejects anything other than the full lowercase commit that reviewers will clone, and the
+commit that contains this marketplace-ready tree does not exist until it is on the default branch.
+Add the SHA, then open the external pull request. Do not pin a branch name.
+
 ## Other directories
 
-Smithery currently requires an authenticated publisher namespace/API key for explicit publication; the
-reserved `bestprice/shopping` entry is empty until the namespace owner publishes the remote URL into it.
+Smithery's connection proxy, CLI, and `server.smithery.ai` / `run.tools` hosts shut down on
+2026-10-31. What remains is a curated public directory of direct MCP URLs. The root `smithery.yaml`
+records the upstream URL and an empty config so a listing does not ask for an API key and does not
+build this repository's stdio image. The public `bestprice/shopping` page had no deployment on
+2026-10-29. Do not republish through the proxy.
 Glama already has source metadata in `glama.json`; any stale public Glama snapshot is crawler/claim
 state rather than a second BestPrice contract. Do not fork the canonical tool descriptions into
 directory-specific files unless the directory requires them.

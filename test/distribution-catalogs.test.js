@@ -56,6 +56,11 @@ describe('external catalog contribution payloads', () => {
     assert.match(yaml, /^ {2}category: ecommerce$/mu);
     assert.match(yaml, /^ {2}transport_type: streamable-http$/mu);
     assert.match(yaml, new RegExp(`^ {2}url: ${ENDPOINT.replaceAll('.', '\\.')}$`, 'mu'));
+    assert.match(
+      yaml,
+      /^ {2}icon: https:\/\/raw\.githubusercontent\.com\/TheBestCo\/bestprice-mcp\/main\/assets\/bestprice-mcp-logo-1024\.png$/mu,
+    );
+    assert.doesNotMatch(yaml, /logo\.svg/u);
     assert.doesNotMatch(yaml, /^oauth:/mu);
     assert.doesNotMatch(yaml, /^dynamic:/mu);
     assert.deepEqual(JSON.parse(read('distribution/docker/bestprice-shopping/tools.json')), []);
@@ -79,6 +84,39 @@ describe('external catalog contribution payloads', () => {
     assert.match(guide, /does \*\*not\*\* mean the external catalog has accepted or published/u);
     assert.match(guide, /fork \+ pull request/u);
     assert.match(guide, /Smithery/u);
+    assert.match(guide, /2026-10-31/u);
     assert.match(guide, /Glama/u);
+    assert.match(guide, /#5228/u);
+    assert.match(guide, /#4900/u);
+    assert.match(guide, /#4798/u);
+  });
+
+  it('prepares a Grok Build catalog entry without pinning a commit that predates this tree', () => {
+    const entry = JSON.parse(read('distribution/grok/marketplace-entry.json'));
+    assert.equal(entry.name, 'bestprice-shopping');
+    assert.equal(entry.license, 'Apache-2.0');
+    assert.equal(entry.homepage, 'https://www.bestprice.gr/mcp');
+    assert.deepEqual(entry.domains, ['www.bestprice.gr', 'mcp.bestprice.gr']);
+    assert.equal(entry.source.source, 'url');
+    assert.equal(entry.source.url, 'https://github.com/TheBestCo/bestprice-mcp.git');
+    assert.equal(entry.source.sha, undefined);
+    assert.match(read('distribution/README.md'), /source\.sha/u);
+    const card = JSON.parse(read('submission/site/mcp-server-card.template.json'));
+    assert.equal(
+      card.iconUrl,
+      'https://raw.githubusercontent.com/TheBestCo/bestprice-mcp/main/assets/bestprice-mcp-logo-1024.png',
+    );
+    assert.equal(card.icons[0].mimeType, 'image/png');
+    assert.doesNotMatch(JSON.stringify(card), /logo\.svg/u);
+    const agentCard = JSON.parse(read('submission/a2a/agent-card.template.json'));
+    assert.deepEqual(
+      agentCard.skills.map(skill => skill.id),
+      ['get-shopping-decision', 'search-products', 'compare-offers', 'get-price-history'],
+    );
+    assert.match(read('submission/a2a/README.md'), /404/u);
+    const smithery = read('smithery.yaml');
+    assert.match(smithery, /type: http/u);
+    assert.match(smithery, new RegExp(ENDPOINT.replaceAll('.', '\\.'), 'u'));
+    assert.doesNotMatch(smithery, /stdio/u);
   });
 });

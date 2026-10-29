@@ -1,12 +1,13 @@
 {
   "name": "bestprice-shopping",
+  "displayName": "BestPrice Shopping",
   "version": "2.8.0",
   "description": "Read-only shopping for Greece: recommendations, product search, live offers, delivered totals, and price history.",
   "author": {
     "name": "BestPrice",
-    "email": "feedback@bestprice.gr",
-    "url": "https://www.bestprice.gr/"
+    "email": "feedback@bestprice.gr"
   },
+  "publisher": "BestPrice",
   "homepage": "https://www.bestprice.gr/mcp",
   "repository": "https://github.com/TheBestCo/bestprice-mcp",
   "license": "Apache-2.0",
@@ -22,6 +23,7 @@
     "product-search",
     "mcp"
   ],
-  "logo": "../assets/bestprice-mcp-logo-1024.png",
-  "mcpServers": "../mcp.json"
+  "logo": "assets/bestprice-mcp-logo-1024.png",
+  "skills": "skills/bestprice-shopping",
+  "mcpServers": "mcp.json"
 }
