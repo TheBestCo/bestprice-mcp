@@ -6,7 +6,7 @@
  */
 
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { describe, it } from 'node:test';
 
 const root = new URL('../', import.meta.url);
@@ -78,6 +78,8 @@ describe('package identity', () => {
     const versions = {
       'plugin.json': agentPlugin.version,
       '.claude-plugin/plugin.json': claudePlugin.version,
+      'claude-plugin/.claude-plugin/plugin.json': readJson('claude-plugin/.claude-plugin/plugin.json')
+        .version,
       '.codex-plugin/plugin.json': codexPlugin.version,
       '.cursor-plugin/plugin.json': cursorPlugin.version,
       'gemini-extension.json': geminiExtension.version,
@@ -226,6 +228,32 @@ describe('endpoint manifests', () => {
       canonicalSkill,
       'Agent-compatible hosts must ship the canonical skill',
     );
+  });
+
+  it('ships a slim Claude directory plugin folder that mirrors the root plugin', () => {
+    const dir = 'claude-plugin/';
+    const listFiles = (rel = '') =>
+      readdirSync(new URL(dir + rel, root), { withFileTypes: true }).flatMap(entry =>
+        entry.isDirectory() ? listFiles(`${rel}${entry.name}/`) : [`${rel}${entry.name}`],
+      );
+    assert.deepEqual(listFiles().sort(), [
+      '.claude-plugin/plugin.json',
+      '.mcp.json',
+      'LICENSE',
+      'README.md',
+      'assets/bestprice-mcp-logo-1024.png',
+      'skills/bestprice-shopping/SKILL.md',
+    ]);
+    assert.deepEqual(readJson(`${dir}.claude-plugin/plugin.json`), claudePlugin);
+    assert.deepEqual(readJson(`${dir}.mcp.json`), claudeMcp);
+    assert.equal(read(`${dir}skills/bestprice-shopping/SKILL.md`), canonicalSkill);
+    assert.equal(read(`${dir}LICENSE`), read('LICENSE'));
+    for (const file of listFiles()) {
+      if (file.endsWith('.png')) continue;
+      assert.ok(statSync(new URL(dir + file, root)).size < 256 * 1024, `${file} stays under 256 KiB`);
+    }
+    const prose = read(`${dir}README.md`).replace(/```[\s\S]*?```/gu, '');
+    assert.ok(prose.split(/\s+/u).filter(Boolean).length >= 40, 'README has at least 40 words outside code');
   });
 
   it('ships a provider-neutral Agent Plugin', () => {

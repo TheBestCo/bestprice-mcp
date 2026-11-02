@@ -155,6 +155,7 @@ Agent-compatible hosts that discover repository-local skills under `.agents/skil
 same canonical workflow at [`.agents/skills/bestprice-shopping/SKILL.md`](.agents/skills/bestprice-shopping/SKILL.md). [`.codex-plugin/`](.codex-plugin/) remains the
 Codex compatibility manifest. [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) plus the
 same root Skill and [`.mcp.json`](.mcp.json) also make this repository a Claude plugin package.
+[`claude-plugin/`](claude-plugin/) is a slim copy of that Claude plugin, with no build files, for the Claude plugin directory.
 
 
 ### Self-hosted plugin marketplaces

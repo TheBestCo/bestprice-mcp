@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - .claude-plugin/**
+      - claude-plugin/**
       - .mcp.json
       - skills/**
       - .github/workflows/claude-plugin-validation.yml
@@ -24,3 +25,5 @@ jobs:
           node-version: 22
       - name: Validate with Claude Code
         run: npx --yes @anthropic-ai/claude-code@latest plugin validate .
+      - name: Validate the Claude directory plugin folder
+        run: npx --yes @anthropic-ai/claude-code@latest plugin validate ./claude-plugin
