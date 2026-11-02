@@ -46,7 +46,8 @@ the official registry record current instead of maintaining a second Harbor payl
 
 ## Microsoft 365 Copilot
 
-`microsoft-copilot/` is a declarative-agent app package for the public keyless endpoint.
+`microsoft-copilot/` is a Microsoft 365 app package (manifest 1.30) for the public keyless endpoint: a
+declarative agent plus an agent connector for Cowork, in English and Greek.
 `ai-plugin.json` uses plugin manifest 2.4, runtime `RemoteMCPServer`, and `auth.type: None`.
 The sideload and Partner Center steps are in that folder's README. The package is not a claim
 that Partner Center has accepted the offer.

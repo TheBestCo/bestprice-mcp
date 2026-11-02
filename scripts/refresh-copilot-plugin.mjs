@@ -1,6 +1,6 @@
 /**
- * Rebuild distribution/microsoft-copilot/ai-plugin.json and tools.snapshot.json
- * from the live tools/list. Drops the empty anyOf branch on get_shopping_decision
+ * Rebuild distribution/microsoft-copilot/ai-plugin.json, mcptools.json and
+ * tools.snapshot.json from the live tools/list. Drops the empty anyOf branch on get_shopping_decision
  * so the store package does not copy that gateway defect.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -9,6 +9,7 @@ import { pathToFileURL } from 'node:url';
 const ENDPOINT = 'https://mcp.bestprice.gr/mcp';
 const pluginPath = new URL('../distribution/microsoft-copilot/ai-plugin.json', import.meta.url);
 const snapshotPath = new URL('../distribution/microsoft-copilot/tools.snapshot.json', import.meta.url);
+const connectorToolsPath = new URL('../distribution/microsoft-copilot/mcptools.json', import.meta.url);
 
 export function withoutEmptyObjectBranch(schema) {
   if (!schema || !Array.isArray(schema.anyOf)) return schema;
@@ -77,6 +78,7 @@ async function main() {
   plugin.runtimes[0].spec.mcp_tool_description.tools = packed;
   writeFileSync(pluginPath, `${JSON.stringify(plugin, null, 2)}\n`);
   writeFileSync(snapshotPath, `${JSON.stringify(packed, null, 2)}\n`);
+  writeFileSync(connectorToolsPath, `${JSON.stringify({ tools: packed }, null, 2)}\n`);
   console.log(`refreshed ${packed.length} tools`);
 }
 
