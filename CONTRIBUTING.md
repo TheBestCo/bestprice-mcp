@@ -50,6 +50,7 @@ change. These files must carry the same number, and the test suite enforces it:
 - `package.json`
 - `plugin.json`
 - `.codex-plugin/plugin.json`
+- `claude-plugin/.claude-plugin/plugin.json`
 - `.cursor-plugin/plugin.json`
 - `gemini-extension.json`
 - `qwen-extension.json`

@@ -9,6 +9,7 @@ in `server.json`; see the Versioning section of the README.
 
 ### Added
 
+- A slim Claude plugin folder in `claude-plugin/` for the Claude plugin directory. It holds only the manifest, the remote `.mcp.json`, the canonical skill, the icon, a README, and the license, so the directory scan no longer holds versions for oversized or binary files, the 512-file limit, or a root lockfile.
 - An Antigravity plugin in `distribution/antigravity/bestprice-shopping/`, with the hosted keyless MCP server, the canonical shopping skill, and an always-on read-only pricing rule. It passes `agy plugin validate --strict`.
 
 ### Changed
