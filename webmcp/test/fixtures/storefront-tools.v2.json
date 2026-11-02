@@ -2,12 +2,12 @@
   "fixtureVersion": 2,
   "what": "The WebMCP tool surface the BestPrice.gr storefront registers, read from the source of truth in the bestprice.gr repository.",
   "sourceOfTruth": "bestprice.gr",
-  "sourceCommit": "b123187649b467d9dcb577a502488d5388aee732",
+  "sourceCommit": "0262f8c643edb68ed9cedad6dc35737d0c4102db",
   "contractVersion": "2.8",
   "extractedFrom": [
     {
       "path": "extra/mcpDiscovery/webmcp-tools.json",
-      "sha256": "5a81b276f7f2f8693757bb97820c919abb3fe2a8f6f22f7a9507a0b0009ccecf"
+      "sha256": "ff977acaad83133dd1a7c79dd456e86343e38bcc4c2b2cbe8e541d690b0e7ddc"
     },
     {
       "path": "pages/item/webmcp/tools.js",
@@ -27,7 +27,7 @@
     },
     {
       "path": "js/modules/webmcp/shopping-decision-tool.js",
-      "sha256": "31c2e68aa06aca68ea584a861ce3d1ef3cf887ff9bd1f0e61c45f747c3fa9e39"
+      "sha256": "2105670e1fa9a9e942854e8952d5c7373b2da522a0f370e482c7ede05ef2f6e7"
     },
     {
       "path": "js/modules/webmcp/open-product-tool.js",
@@ -35,7 +35,7 @@
     },
     {
       "path": "js/modules/webmcp/shopping-list-tool.js",
-      "sha256": "a35c395c34bc8c3247eec5370b9e9087e7777330b46fae50fb200fb99a506128"
+      "sha256": "3e34a3faef0bd8527be3d264b011159c23457674aca164836bba58af1d51470e"
     },
     {
       "path": "js/modules/webmcp/search-constraints.js",
@@ -47,7 +47,7 @@
     },
     {
       "path": "js/modules/webmcp/annotations.js",
-      "sha256": "0695915e530ff08d45249d040b72fdcd120b8dd590ad0e7e24a824910f18662a"
+      "sha256": "ba9e77b214156d94d73f33735cf365dc973fc93058e7ee56d7394f0d09f44ced"
     },
     {
       "path": "js/modules/webmcp/output-schemas.js",
@@ -56,7 +56,7 @@
   ],
   "extraction": "webmcp/src/contract-parity.js readStorefrontSurface: title, description and output schema from extra/mcpDiscovery/webmcp-tools.json; input schema and annotations from the object literals the page modules register, with module and imported constants resolved",
   "pagesFrom": "tools/scripts/mcp_discovery_json.php webmcp.pages: the manifest the site serves, which the storefront checks against the tools each page registers",
-  "definitionsDigest": "780d98ece3786584c9ce292c1f28f0679be7d0941a5a3ed3a89235f16ef8a87d",
+  "definitionsDigest": "6f0250eeff3caebeb84a7f80b50005e3b702ef5f068fa7116a1e6f1ba061a6f1",
   "tools": [
     "search_bestprice",
     "open_search_results",
@@ -157,7 +157,7 @@
   },
   "surface": {
     "search_bestprice": {
-      "title": "Search BestPrice products",
+      "title": "Αναζήτηση προϊόντων",
       "description": "Finds products by name, brand, model or category in BestPrice’s catalog; changes nothing.",
       "inputSchema": {
         "type": "object",
@@ -387,7 +387,7 @@
       "pageDescriptions": null
     },
     "open_search_results": {
-      "title": "Open search results",
+      "title": "Άνοιγμα αποτελεσμάτων",
       "description": "Opens a search’s results_url in this tab, so the shopper sees those results.",
       "inputSchema": {
         "type": "object",
@@ -482,7 +482,7 @@
       "pageDescriptions": null
     },
     "get_visible_products": {
-      "title": "Products on this page",
+      "title": "Προϊόντα στη σελίδα",
       "description": "Lists the product cards shown on this page; changes nothing.",
       "inputSchema": {
         "type": "object",
@@ -620,7 +620,7 @@
       "pageDescriptions": null
     },
     "load_more_products": {
-      "title": "Load more products",
+      "title": "Περισσότερα προϊόντα",
       "description": "Loads the next page of results into this listing, as scrolling does.",
       "inputSchema": {
         "type": "object",
@@ -698,7 +698,7 @@
       "pageDescriptions": null
     },
     "open_product": {
-      "title": "Open a product",
+      "title": "Άνοιγμα προϊόντος",
       "description": "Opens a product’s BestPrice page in this tab by product_id.",
       "inputSchema": {
         "type": "object",
@@ -789,7 +789,7 @@
       "pageDescriptions": null
     },
     "get_listing_filters": {
-      "title": "Filters and sort options",
+      "title": "Φίλτρα και ταξινόμηση",
       "description": "Lists this listing’s filters, their values and its sort options; changes nothing.",
       "inputSchema": {
         "type": "object",
@@ -949,7 +949,7 @@
       "pageDescriptions": null
     },
     "apply_listing_filter": {
-      "title": "Apply a filter",
+      "title": "Εφαρμογή φίλτρου",
       "description": "Applies one filter value to this listing and reloads it.",
       "inputSchema": {
         "type": "object",
@@ -1100,7 +1100,7 @@
       "pageDescriptions": null
     },
     "clear_listing_filters": {
-      "title": "Remove filters",
+      "title": "Καθαρισμός φίλτρων",
       "description": "Removes one filter value, one filter or every filter from this listing.",
       "inputSchema": {
         "type": "object",
@@ -1250,7 +1250,7 @@
       "pageDescriptions": null
     },
     "apply_listing_sort": {
-      "title": "Sort this listing",
+      "title": "Ταξινόμηση λίστας",
       "description": "Sorts this listing by a sort key or option label.",
       "inputSchema": {
         "type": "object",
@@ -1392,7 +1392,7 @@
       "pageDescriptions": null
     },
     "get_page_product": {
-      "title": "Product on this page",
+      "title": "Το προϊόν της σελίδας",
       "description": "Reads the product on this page: id, title, lowest price, store count and rating; changes nothing.",
       "inputSchema": {
         "type": "object",
@@ -1480,7 +1480,7 @@
       "pageDescriptions": null
     },
     "compare_page_offers": {
-      "title": "Compare store offers",
+      "title": "Σύγκριση προσφορών",
       "description": "Ranks this product’s store offers by delivered price, item plus shipping; changes nothing.",
       "inputSchema": {
         "type": "object",
@@ -1721,7 +1721,7 @@
       "pageDescriptions": null
     },
     "get_product_specifications": {
-      "title": "Product specifications",
+      "title": "Χαρακτηριστικά προϊόντος",
       "description": "Reads this product’s specifications, all or by section or fact; changes nothing.",
       "inputSchema": {
         "type": "object",
@@ -1888,7 +1888,7 @@
       "pageDescriptions": null
     },
     "summarize_price_history": {
-      "title": "Price history",
+      "title": "Ιστορικό τιμής",
       "description": "Summarizes this product’s price history and trend; show_chart also shows the chart.",
       "inputSchema": {
         "type": "object",
@@ -2029,7 +2029,7 @@
       "pageDescriptions": null
     },
     "show_offer": {
-      "title": "Show a store offer",
+      "title": "Εμφάνιση προσφοράς",
       "description": "Scrolls to one store offer on this page and highlights it; opens no store site.",
       "inputSchema": {
         "type": "object",
@@ -2147,7 +2147,7 @@
       "pageDescriptions": null
     },
     "get_shopping_list": {
-      "title": "Shopping list",
+      "title": "Λίστα αγορών",
       "description": "Lists the products in the shopper’s shopping list; changes nothing.",
       "inputSchema": {
         "type": "object",
@@ -2274,7 +2274,7 @@
       "pageDescriptions": null
     },
     "add_to_shopping_list": {
-      "title": "Add to shopping list",
+      "title": "Προσθήκη στη λίστα",
       "description": "Adds this page’s product to the shopper’s shopping list; never removes one.",
       "inputSchema": {
         "type": "object",
@@ -2292,7 +2292,7 @@
         "destructiveHint": false,
         "idempotentHint": true,
         "openWorldHint": false,
-        "consequentialHint": false,
+        "consequentialHint": true,
         "untrustedContentHint": false
       },
       "outputSchema": {
@@ -2350,7 +2350,7 @@
       "pageDescriptions": null
     },
     "remove_from_shopping_list": {
-      "title": "Remove from shopping list",
+      "title": "Αφαίρεση από τη λίστα",
       "description": "Removes this page’s product from the shopper’s shopping list; never adds one.",
       "inputSchema": {
         "type": "object",
@@ -2368,7 +2368,7 @@
         "destructiveHint": true,
         "idempotentHint": true,
         "openWorldHint": false,
-        "consequentialHint": false,
+        "consequentialHint": true,
         "untrustedContentHint": false
       },
       "outputSchema": {
@@ -2423,7 +2423,7 @@
       "pageDescriptions": null
     },
     "get_comparison": {
-      "title": "Product comparisons",
+      "title": "Συγκρίσεις προϊόντων",
       "description": "Lists the products in the shopper’s comparisons, per category; changes nothing.",
       "inputSchema": {
         "type": "object",
@@ -2553,7 +2553,7 @@
       "pageDescriptions": null
     },
     "add_to_comparison": {
-      "title": "Add to comparison",
+      "title": "Προσθήκη στη σύγκριση",
       "description": "Adds this page’s product to the shopper’s side-by-side comparison for its category; never removes one.",
       "inputSchema": {
         "type": "object",
@@ -2571,7 +2571,7 @@
         "destructiveHint": false,
         "idempotentHint": true,
         "openWorldHint": false,
-        "consequentialHint": false,
+        "consequentialHint": true,
         "untrustedContentHint": false
       },
       "outputSchema": {
@@ -2640,7 +2640,7 @@
       "pageDescriptions": null
     },
     "remove_from_comparison": {
-      "title": "Remove from comparison",
+      "title": "Αφαίρεση από τη σύγκριση",
       "description": "Removes this page’s product from the shopper’s side-by-side comparison for its category; never adds one.",
       "inputSchema": {
         "type": "object",
@@ -2658,7 +2658,7 @@
         "destructiveHint": true,
         "idempotentHint": true,
         "openWorldHint": false,
-        "consequentialHint": false,
+        "consequentialHint": true,
         "untrustedContentHint": false
       },
       "outputSchema": {
@@ -2716,7 +2716,7 @@
       "pageDescriptions": null
     },
     "open_price_alert": {
-      "title": "Open a price-drop alert",
+      "title": "Ειδοποίηση πτώσης τιμής",
       "description": "Opens this product’s price-drop alert dialog; the shopper sets and saves the alert there.",
       "inputSchema": {
         "type": "object",
@@ -2734,7 +2734,7 @@
         "destructiveHint": false,
         "idempotentHint": true,
         "openWorldHint": false,
-        "consequentialHint": false,
+        "consequentialHint": true,
         "untrustedContentHint": false
       },
       "outputSchema": {
@@ -2786,7 +2786,7 @@
       "pageDescriptions": null
     },
     "get_shopping_decision": {
-      "title": "Get a shopping decision",
+      "title": "Πρόταση αγοράς",
       "description": "Recommends what to buy for a described need or budget, with alternatives and reasons; changes nothing.",
       "inputSchema": {
         "type": "object",

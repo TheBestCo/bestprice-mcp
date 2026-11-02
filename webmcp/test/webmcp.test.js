@@ -153,13 +153,13 @@ describe('contracts', () => {
           tool.annotations.readOnlyHint === true,
           `${tool.name} says whether it reads`,
         );
-        /* Every tool says it is not consequential, and whether its results carry page or catalog text:
+        /* Shopper actions are conservatively consequential; page and catalog reads are not. Content trust hints:
          * all do but the shopper actions (contract 2.3), whose receipts are ids, counts and BestPrice's
          * own wording. A tool that changes the page stays on BestPrice, and destroys nothing but a
          * removal from a list the shopper keeps (2.4). */
         const shopperAction = /^(?:add_to|remove_from)_|^open_price_alert$/u.test(tool.name);
         assert.equal(typeof tool.annotations.readOnlyHint, 'boolean', tool.name);
-        assert.equal(tool.annotations.consequentialHint, false, tool.name);
+        assert.equal(tool.annotations.consequentialHint, shopperAction, tool.name);
         assert.equal(tool.annotations.untrustedContentHint, !shopperAction, tool.name);
         if (!tool.annotations.readOnlyHint) {
           assert.equal(tool.annotations.destructiveHint, tool.name.startsWith('remove_from_'), tool.name);

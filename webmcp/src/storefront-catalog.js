@@ -3,7 +3,7 @@
  *
  * The title, description (and any page type's own wording), input schema and output schema of every
  * BestPrice WebMCP tool, as the storefront registers them: bestprice.gr `extra/mcpDiscovery/webmcp-tools.json` (its generated copy of
- * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at b123187649, WebMCP
+ * `js/modules/webmcp/tool-catalog.js`, `input-schemas.js` and `output-schemas.js`) at 0262f8c643, WebMCP
  * contract 2.8. `contracts.js` publishes them as they are, and
  * `webmcp/test/contract-parity.test.js` compares every published definition with the snapshot.
  */
@@ -12,7 +12,7 @@ export const WEBMCP_CONTRACT_VERSION = '2.8';
 
 export const STOREFRONT_CATALOG = {
   search_bestprice: {
-    title: 'Search BestPrice products',
+    title: 'Αναζήτηση προϊόντων',
     description: 'Finds products by name, brand, model or category in BestPrice’s catalog; changes nothing.',
     inputSchema: {
       type: 'object',
@@ -232,7 +232,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   open_search_results: {
-    title: 'Open search results',
+    title: 'Άνοιγμα αποτελεσμάτων',
     description: 'Opens a search’s results_url in this tab, so the shopper sees those results.',
     inputSchema: {
       type: 'object',
@@ -320,7 +320,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   get_visible_products: {
-    title: 'Products on this page',
+    title: 'Προϊόντα στη σελίδα',
     description: 'Lists the product cards shown on this page; changes nothing.',
     inputSchema: {
       type: 'object',
@@ -452,7 +452,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   load_more_products: {
-    title: 'Load more products',
+    title: 'Περισσότερα προϊόντα',
     description: 'Loads the next page of results into this listing, as scrolling does.',
     inputSchema: {
       type: 'object',
@@ -522,7 +522,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   open_product: {
-    title: 'Open a product',
+    title: 'Άνοιγμα προϊόντος',
     description: 'Opens a product’s BestPrice page in this tab by product_id.',
     inputSchema: {
       type: 'object',
@@ -605,7 +605,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   get_listing_filters: {
-    title: 'Filters and sort options',
+    title: 'Φίλτρα και ταξινόμηση',
     description: 'Lists this listing’s filters, their values and its sort options; changes nothing.',
     inputSchema: {
       type: 'object',
@@ -761,7 +761,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   apply_listing_filter: {
-    title: 'Apply a filter',
+    title: 'Εφαρμογή φίλτρου',
     description: 'Applies one filter value to this listing and reloads it.',
     inputSchema: {
       type: 'object',
@@ -906,7 +906,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   clear_listing_filters: {
-    title: 'Remove filters',
+    title: 'Καθαρισμός φίλτρων',
     description: 'Removes one filter value, one filter or every filter from this listing.',
     inputSchema: {
       type: 'object',
@@ -1051,7 +1051,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   apply_listing_sort: {
-    title: 'Sort this listing',
+    title: 'Ταξινόμηση λίστας',
     description: 'Sorts this listing by a sort key or option label.',
     inputSchema: {
       type: 'object',
@@ -1187,7 +1187,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   get_page_product: {
-    title: 'Product on this page',
+    title: 'Το προϊόν της σελίδας',
     description:
       'Reads the product on this page: id, title, lowest price, store count and rating; changes nothing.',
     inputSchema: {
@@ -1270,7 +1270,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   compare_page_offers: {
-    title: 'Compare store offers',
+    title: 'Σύγκριση προσφορών',
     description: 'Ranks this product’s store offers by delivered price, item plus shipping; changes nothing.',
     inputSchema: {
       type: 'object',
@@ -1507,7 +1507,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   get_product_specifications: {
-    title: 'Product specifications',
+    title: 'Χαρακτηριστικά προϊόντος',
     description: 'Reads this product’s specifications, all or by section or fact; changes nothing.',
     inputSchema: {
       type: 'object',
@@ -1671,7 +1671,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   summarize_price_history: {
-    title: 'Price history',
+    title: 'Ιστορικό τιμής',
     description: 'Summarizes this product’s price history and trend; show_chart also shows the chart.',
     inputSchema: {
       type: 'object',
@@ -1805,7 +1805,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   show_offer: {
-    title: 'Show a store offer',
+    title: 'Εμφάνιση προσφοράς',
     description: 'Scrolls to one store offer on this page and highlights it; opens no store site.',
     inputSchema: {
       type: 'object',
@@ -1917,7 +1917,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   get_shopping_list: {
-    title: 'Shopping list',
+    title: 'Λίστα αγορών',
     description: 'Lists the products in the shopper’s shopping list; changes nothing.',
     inputSchema: {
       type: 'object',
@@ -2038,7 +2038,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   add_to_shopping_list: {
-    title: 'Add to shopping list',
+    title: 'Προσθήκη στη λίστα',
     description: 'Adds this page’s product to the shopper’s shopping list; never removes one.',
     inputSchema: {
       type: 'object',
@@ -2106,7 +2106,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   remove_from_shopping_list: {
-    title: 'Remove from shopping list',
+    title: 'Αφαίρεση από τη λίστα',
     description: 'Removes this page’s product from the shopper’s shopping list; never adds one.',
     inputSchema: {
       type: 'object',
@@ -2171,7 +2171,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   get_comparison: {
-    title: 'Product comparisons',
+    title: 'Συγκρίσεις προϊόντων',
     description: 'Lists the products in the shopper’s comparisons, per category; changes nothing.',
     inputSchema: {
       type: 'object',
@@ -2295,7 +2295,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   add_to_comparison: {
-    title: 'Add to comparison',
+    title: 'Προσθήκη στη σύγκριση',
     description:
       'Adds this page’s product to the shopper’s side-by-side comparison for its category; never removes one.',
     inputSchema: {
@@ -2367,7 +2367,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   remove_from_comparison: {
-    title: 'Remove from comparison',
+    title: 'Αφαίρεση από τη σύγκριση',
     description:
       'Removes this page’s product from the shopper’s side-by-side comparison for its category; never adds one.',
     inputSchema: {
@@ -2436,7 +2436,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   open_price_alert: {
-    title: 'Open a price-drop alert',
+    title: 'Ειδοποίηση πτώσης τιμής',
     description: 'Opens this product’s price-drop alert dialog; the shopper sets and saves the alert there.',
     inputSchema: {
       type: 'object',
@@ -2498,7 +2498,7 @@ export const STOREFRONT_CATALOG = {
     },
   },
   get_shopping_decision: {
-    title: 'Get a shopping decision',
+    title: 'Πρόταση αγοράς',
     description:
       'Recommends what to buy for a described need or budget, with alternatives and reasons; changes nothing.',
     inputSchema: {

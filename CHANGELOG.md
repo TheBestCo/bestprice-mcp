@@ -15,6 +15,18 @@ in `server.json`; see the Versioning section of the README.
 
 - Claude's plugin listing uses the name BestPrice, the square 1024×1024 icon, and the public privacy policy. Connecting still means the hosted HTTPS endpoint; the README no longer tells a host to clone the repository and run the stdio bridge.
 
+## [2.9.0] - 2026-11-02
+
+### Added
+
+- Document the shared Shopping Brain’s optional opening clarification, returned choices and explicit `skip_clarification` continuation.
+- Document the boundary between read-only connector decisions and shopper-confirmed alerts and saved lists on BestPrice Ask.
+
+### Changed
+
+- Keep package and plugin manifests on version 2.9.0. The hosted transport keeps its separate server version.
+- Refresh the browser-native contract snapshot from the current storefront, including Greek tool titles and conservative consequential annotations for shopper actions. The four hosted connector tools remain read-only.
+
 ## [2.8.1] - 2026-10-29
 
 ### Security
@@ -657,7 +669,8 @@ WebMCP contract 1.8, as the BestPrice.gr storefront registers it (bestprice.gr `
   manifests, official MCP Registry metadata, provider setup guide, and the WebMCP contracts,
   runtime, and evaluator.
 
-[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.8.1...HEAD
+[Unreleased]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.9.0...HEAD
+[2.9.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.8.1...v2.9.0
 [2.8.1]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.8.0...v2.8.1
 [2.8.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.6.0...v2.8.0
 [2.6.0]: https://github.com/TheBestCo/bestprice-mcp/compare/v2.2.0...v2.6.0

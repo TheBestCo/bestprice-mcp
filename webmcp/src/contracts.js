@@ -21,9 +21,8 @@ export { WEBMCP_CONTRACT_VERSION };
 /*
  * Annotations, as the storefront registers them. `consequentialHint` (Chrome 154 ToolAnnotations) marks
  * a tool whose execution is high-stakes, irreversible or real-world — booking, paying, deleting — so an
- * agent stops and asks first. No BestPrice tool is: each reads the page or BestPrice's own server, or
- * moves the shopper's own tab, so every one says `false` explicitly rather than leaving an agent to
- * assume the worst. Every result carries catalog or page text, so every one is untrusted content.
+ * agent stops and asks first. Reads and navigation carry false; shopper list edits and the
+ * price-alert dialog carry true, matching the storefront's current annotation policy.
  */
 
 /*
@@ -57,7 +56,7 @@ const SHOPPER_ACTION = {
   destructiveHint: false,
   idempotentHint: true,
   openWorldHint: false,
-  consequentialHint: false,
+  consequentialHint: true,
   untrustedContentHint: false,
 };
 
