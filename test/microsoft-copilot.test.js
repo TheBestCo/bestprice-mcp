@@ -56,6 +56,44 @@ describe('Microsoft 365 Copilot package', () => {
       assert.equal(tool.annotations.openWorldHint, true, tool.name);
       assert.equal(tool.inputSchema.type, 'object', tool.name);
     }
+    assert.equal(app.manifestVersion, '1.30');
+    assert.equal(agent.version, 'v1.9');
+    assert.equal(agent.name, app.name.short);
+    assert.equal(plugin.name_for_human, app.name.short);
+    assert.ok(agent.conversation_starters.length >= 3);
+    const [connector] = app.agentConnectors;
+    assert.equal(app.agentConnectors.length, 1);
+    assert.equal(connector.id, identity.id);
+    assert.equal(connector.displayName, app.name.short);
+    assert.equal(connector.toolSource.remoteMcpServer.mcpServerUrl, ENDPOINT);
+    assert.deepEqual(connector.toolSource.remoteMcpServer.authorization, { type: 'None' });
+    const connectorTools = readJson(
+      `distribution/microsoft-copilot/${connector.toolSource.remoteMcpServer.mcpToolDescription.file}`,
+    );
+    assert.deepEqual(connectorTools.tools, snapshot);
+    for (const file of ['manifest.json', 'ai-plugin.json', 'mcptools.json']) {
+      const text = read(`distribution/microsoft-copilot/${file}`);
+      assert.ok(
+        [...text].every(char => char.charCodeAt(0) < 128),
+        `${file} is not ASCII`,
+      );
+    }
+    const keys = [
+      agent.description,
+      ...agent.conversation_starters.flatMap(starter => [starter.title, starter.text]),
+    ].map(value => value.match(/^\[\[([A-Za-z_][A-Za-z0-9_]*)\]\]$/u)?.[1]);
+    assert.equal(keys.includes(undefined), false);
+    const languages = [
+      app.localizationInfo.defaultLanguageFile,
+      ...app.localizationInfo.additionalLanguages.map(language => language.file),
+    ];
+    assert.deepEqual(languages, ['en.json', 'el.json']);
+    for (const file of languages) {
+      const strings = readJson(`distribution/microsoft-copilot/${file}`);
+      assert.equal(strings['name.short'], app.name.short, file);
+      assert.ok(strings['description.short'].length <= 80, file);
+      assert.deepEqual(Object.keys(strings.localizationKeys).sort(), [...keys].sort(), file);
+    }
     assert.deepEqual(pngSize('distribution/microsoft-copilot/color.png'), [192, 192]);
     assert.deepEqual(pngSize('distribution/microsoft-copilot/outline.png'), [32, 32]);
     const guide = read('distribution/microsoft-copilot/README.md');

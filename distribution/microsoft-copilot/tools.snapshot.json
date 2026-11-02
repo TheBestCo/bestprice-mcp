@@ -1,7 +1,7 @@
 [
   {
     "name": "get_shopping_decision",
-    "title": "BestPrice",
+    "title": "Get a BestPrice shopping decision",
     "description": "Provides read-only shopping recommendations, product comparisons, purchase-timing context, and basket plans for physical products sold in Greece. Accepts only a concise current shopping request with a budget, required specifications, and relevant corrections, excluding chat transcripts and unrelated personal data. Uses the same Shopping Brain as BestPrice Ask and returns selected products, reasons, tradeoffs, typed catalog attributes, checked offer and historical-price context, evidence references, and unknowns. Each product-family decision evaluates one bounded catalog page and returns at most four candidates per slot. Basket plans accept two to five supported product-family slots under one aggregate budget, or at least two exact grouped bp_<id> products, and require a five-digit Greek delivery postcode. Product prices exclude shipping; unknown delivery costs remain unknown. Unsupported or unidentified basket categories require clarification. Does not place orders, create alerts, access account history, or predict future prices.",
     "inputSchema": {
       "type": "object",
@@ -17,6 +17,10 @@
           "type": "string",
           "pattern": "^(?:[1-7][0-9]{4}|8[0-5][0-9]{3})$"
         },
+        "skip_clarification": {
+          "description": "Set true only when the shopper chooses Skip on an opening clarification. Mandatory criteria are still enforced.",
+          "type": "boolean"
+        },
         "evidence_detail": {
           "default": "summary",
           "description": "Optional evidence depth. 'summary' (default) returns only the claims this result cites by id (typed attributes, price history), the claims they are derived from and the sources they cite, and counts what it omits. 'full' returns every returned-product claim and source, including each offer's field receipts, complete spec sheets and ranking inputs; it is several times larger.",
@@ -25,11 +29,10 @@
         }
       },
       "required": ["message"],
-      "additionalProperties": false,
-      "$schema": "https://json-schema.org/draft/2020-12/schema"
+      "additionalProperties": false
     },
     "annotations": {
-      "title": "BestPrice",
+      "title": "Get a BestPrice shopping decision",
       "readOnlyHint": true,
       "destructiveHint": false,
       "idempotentHint": true,
@@ -42,7 +45,6 @@
     "description": "Searches physical products sold in Greece by product name, model, category, or barcode and returns up to eight grouped products with canonical product IDs, catalog prices, relevance warnings, and BestPrice links. Price bounds apply before shipping; feature hints are not independently verified. A valid GTIN with one unambiguous catalog match is supported. Broadened-category results are related products rather than exact matches. Categories containing only ungrouped listings return an empty product list and a category handoff. Catalog minimum prices are indicative, may include filtered offers, and are not buyable quotes. Prohibited, age-restricted, digital, service, and unverified catalog branches are excluded. No checkout or direct merchant links are provided.",
     "inputSchema": {
       "type": "object",
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
       "properties": {
         "query": {
           "type": "string",
@@ -53,14 +55,12 @@
         "locale": {
           "default": "el-GR",
           "description": "Response locale. The current service supports el-GR.",
-          "type": "string",
-          "const": "el-GR"
+          "type": "string"
         },
         "country": {
           "default": "GR",
           "description": "Shopping market. The current service supports Greece (GR).",
-          "type": "string",
-          "const": "GR"
+          "type": "string"
         },
         "price_min": {
           "description": "Optional minimum product price in EUR, before shipping.",
@@ -71,7 +71,6 @@
         "price_max": {
           "description": "Optional maximum product price in EUR, before shipping.",
           "type": "number",
-          "exclusiveMinimum": 0,
           "maximum": 1000000
         },
         "required_features": {
@@ -116,7 +115,6 @@
     "description": "Compares current Greek merchant offers for one exact grouped BestPrice product ID. Returns public store names, item prices, shipping information, calculable delivered totals, ranking reasons, and BestPrice links. Without objective it ranks by lowest_total_cost when postal_code is given and by lowest_item_price otherwise, keeping shipping and total cost unknown; an explicit lowest_total_cost requires a Greek postcode (five digits, 10000 to 85999). Other ranking options include merchant rating. Catalog minimum prices and the lowest returned quoted prices have separate fields, with a reason when the catalog minimum is absent from the returned offers. Results exclude sponsored offers and merchant destination URLs. The operation is read-only and creates no CPC click.",
     "inputSchema": {
       "type": "object",
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
       "properties": {
         "product_id": {
           "type": "string",
@@ -170,7 +168,6 @@
     "description": "Returns historical prices and a deterministic deal classification for one exact grouped BestPrice product ID. Includes minimum and median statistics, a compact daily price series, coverage gaps, and methodology. period_days selects the daily series and coverage gaps only: deal_classification and price_delta_vs_180d_median_pct always compare the current price with the 180-day median, and window_stats always carries the 30-, 90- and 180-day statistics. Historical observations do not guarantee future prices.",
     "inputSchema": {
       "type": "object",
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
       "properties": {
         "product_id": {
           "type": "string",
@@ -180,8 +177,9 @@
         "period_days": {
           "default": 180,
           "description": "Requested history window in days for series and data_gaps. deal_classification and price_delta_vs_180d_median_pct always compare with the 180-day median; window_stats always carries the 30-, 90- and 180-day statistics. Defaults to 180 days.",
-          "type": "number",
-          "enum": [30, 90, 180]
+          "type": "integer",
+          "minimum": 30,
+          "maximum": 180
         }
       },
       "required": ["product_id"],
