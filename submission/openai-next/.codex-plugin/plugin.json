@@ -1,0 +1,119 @@
+{
+  "author": {
+    "name": "BestPrice"
+  },
+  "description": "Check a deal, save a comparison and watch selected products with BestPrice in Greece.",
+  "interface": {
+    "capabilities": [],
+    "category": "Other",
+    "defaultPrompt": [
+      "Έλεγξε αν αξίζει αυτή η προσφορά.",
+      "Αποθήκευσε αυτές τις επιλογές για να τις ελέγξω ξανά.",
+      "Άνοιξε τις αποθηκευμένες συγκρίσεις μου."
+    ],
+    "developerName": "BestPrice",
+    "displayName": "BestPrice",
+    "longDescription": "Check a retailer offer or identifiable model from a screenshot against current BestPrice offers and market price history. Compare exact variants and known delivery costs, edit basket quantities, and keep unresolved details visible.\n\nWith separate account consent, save selected products and your requirements, reopen the same comparison in ChatGPT or on BestPrice, recheck prices and see what changed. Saved checks are historical observations, not a guarantee of current stock, size or final checkout cost.\n\nOn supported ChatGPT Work/Cloud or dot surfaces, request price or known-delivered-budget watches for exact products. A watch is active only after confirmation. No orders or payments.",
+    "privacyPolicyURL": "https://www.bestprice.gr/policies/privacy",
+    "shortDescription": "Check deals, keep your shortlist",
+    "supportURL": "https://www.bestprice.gr/contact",
+    "termsOfServiceURL": "https://www.bestprice.gr/policies/terms",
+    "websiteURL": "https://www.bestprice.gr/mcp",
+    "logo": "./assets/bestprice-logo.png",
+    "composerIcon": "./assets/bestprice-logo.png",
+    "screenshots": ["./assets/native-home.jpg", "./assets/native-offers.jpg", "./assets/native-history.png"],
+    "brandColor": "#DA201E",
+    "brandColorDark": "#DA201E",
+    "logoDark": "./assets/bestprice-logo.png",
+    "composerIconDark": "./assets/bestprice-logo.png"
+  },
+  "name": "app-6ad82ceb86108191ac9cd6b08197aabd",
+  "skills": "./skills",
+  "version": "1.3.0",
+  "mcpServers": "./.mcp.json",
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Need-based recommendation",
+              "prompt": "Ποιο κινητό να πάρω μέχρι 500€ με NFC και 5G;",
+              "tools_triggered": "get_shopping_decision",
+              "expected_behavior": "Return the bounded decision or an honest clarification. Use only current-task preferences. Do not invent prices or call extra shopping tools for a completed decision."
+            },
+            {
+              "description": "Search current catalog",
+              "prompt": "Βρες Sony WH-1000XM5 κάτω από 300€ στο BestPrice.",
+              "tools_triggered": "search_products",
+              "expected_behavior": "Return matching catalog products with item prices excluding shipping and exact returned product IDs. The native home is available from the global/thread entrypoint and the results card uses only returned catalog data."
+            },
+            {
+              "description": "Delivered offers",
+              "prompt": "Σύγκρινε προσφορές για bp_2157591869 στον ΤΚ 11527.",
+              "tools_triggered": "compare_offers",
+              "expected_behavior": "Show ad-free offers with shipping status and delivered totals where verified; unknown shipping is not free. Link to BestPrice."
+            },
+            {
+              "description": "Observed price history",
+              "prompt": "Δείξε ιστορικό τιμής 180 ημερών για bp_2157591869.",
+              "tools_triggered": "get_price_history",
+              "expected_behavior": "Show observed minimum-price history with coverage and current price. Do not predict future prices."
+            },
+            {
+              "description": "Explicit price-drop subscription and cancellation",
+              "prompt": "Ειδοποίησέ με αν το Sony WH-1000XM5 μαύρο πέσει στα 170€ ή χαμηλότερα, χωρίς μεταφορικά. Μετά ακύρωσε την ειδοποίηση όταν το ζητήσω.",
+              "tools_triggered": "search_products (only if the canonical product is not already known)",
+              "expected_behavior": "After explicit BestPrice account linking, use advertised MCP Events price.dropped with the exact returned product_id, threshold 17000 integer cents and currency EUR. Never invent a target price or use a shopping tool to create alerts. Report success only after events/subscribe succeeds, and use events/unsubscribe on an explicit cancellation request. If Events is unavailable or authorization fails, clearly report that no alert was created."
+            },
+            {
+              "description": "Deal identity and price basis",
+              "prompt": "Έλεγξε αυτή την προσφορά από έναν σύνδεσμο BestPrice.",
+              "tools_triggered": "check_deal",
+              "expected_behavior": "Resolve exact identity or retain ambiguity, compare eligible current offers, and keep item prices separate from delivered totals and advertised former prices."
+            },
+            {
+              "description": "Save and reopen comparison",
+              "prompt": "Κράτησε αυτές τις δύο παραλλαγές για κλήσεις έως 150 ευρώ.",
+              "tools_triggered": "save_shopping_comparison",
+              "expected_behavior": "Use only exact product IDs explicitly selected by the user. Request comparisons:manage consent. Fetch and store checked snapshots; do not claim unresolved requirements were confirmed. Reopen on the same account and recheck with the returned version."
+            },
+            {
+              "description": "Delete saved comparison",
+              "prompt": "Διάγραψε αυτή την αποθηκευμένη σύγκριση.",
+              "tools_triggered": "update_saved_comparison",
+              "expected_behavior": "Use the exact saved comparison ID and returned version. Delete only the requested record; confirm only after success."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated request",
+              "prompt": "What is the weather in Athens tomorrow?"
+            },
+            {
+              "description": "Unsupported checkout",
+              "prompt": "Buy the cheapest headphones and pay for them."
+            },
+            {
+              "description": "Prohibited nicotine product",
+              "prompt": "Find a vape or electronic cigarette."
+            }
+          ]
+        },
+        "commerce": true,
+        "commerce_description": "Product research and read-only basket calculation with BestPrice links; explicit account-owned comparison saves and updates, plus authorized MCP Events. No checkout, payment, ordering or direct merchant transaction.",
+        "demo_recording_url": "https://github.com/TheBestCo/bestprice-mcp/blob/main/submission/evidence/native-workspace-demo-2026-09-30.mp4"
+      },
+      "publication": {
+        "countries": ["GR"],
+        "release_notes": "1.3.0 adds deal checking, editable exact-product baskets and separately authorized saved comparisons with manual recheck, immutable baselines, lifecycle and deletion. Linked data is encrypted and expires after 180 days. Fixed-product price and known-delivered-budget watches use MCP Events on supported hosts. No purchase, payment or browsing/order-history access.",
+        "translations": {
+          "el-GR": {
+            "subtitle": "Έλεγξε προσφορές, κράτα επιλογές",
+            "description": "Έλεγξε μια προσφορά, σύγκρινε ακριβείς παραλλαγές και γνωστά μεταφορικά και κράτησε τις επιλογές σου. Με ξεχωριστή σύνδεση λογαριασμού, αποθήκευσε συγκρίσεις για έως 180 ημέρες, άνοιξέ τις ξανά στο ChatGPT ή στο BestPrice και δες τι άλλαξε μετά από νέο έλεγχο. Άγνωστο μέγεθος, χαρακτηριστικά και μεταφορικά παραμένουν άγνωστα. Η παρακολούθηση επιλεγμένων προϊόντων απαιτεί υποστηριζόμενη επιφάνεια ChatGPT και επιτυχή επιβεβαίωση. Δεν γίνονται αγορές ή πληρωμές."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "BestPrice": {
+      "url": "https://mcp.bestprice.gr/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "mixed",
+            "client": {
+              "mode": "cimd"
+            },
+            "baseScopes": ["events:subscribe"]
+          }
+        }
+      }
+    }
+  }
+}
