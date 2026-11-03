@@ -14,6 +14,7 @@ in `server.json`; see the Versioning section of the README.
 
 ### Changed
 
+- The BestPrice app for ChatGPT is available at <https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd>. Display name BestPrice. The previous directory app was removed.
 - Claude's plugin listing uses the name BestPrice, the square 1024×1024 icon, and the public privacy policy. Connecting still means the hosted HTTPS endpoint; the README no longer tells a host to clone the repository and run the stdio bridge.
 
 ## [2.9.0] - 2026-11-02

@@ -60,7 +60,7 @@ Project config, from [`.mcp.json`](../.mcp.json):
 
 ## ChatGPT developer mode
 
-The published ChatGPT plugin is temporarily unavailable while the updated version is under review. Developer mode can still add the endpoint as a custom connector on accounts that support custom connectors.
+The [BestPrice app for ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd) is available. Developer mode can still add the endpoint as a custom connector on accounts that support custom connectors.
 
 1. Open ChatGPT **Settings > Connectors > Advanced > Developer mode**.
 2. Create a custom connector.

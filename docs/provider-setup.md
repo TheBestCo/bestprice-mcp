@@ -1,6 +1,6 @@
 # Connect BestPrice
 
-The [ChatGPT plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981) is temporarily unavailable while the updated version is under review.
+The [BestPrice app for ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd) is available.
 [Open the prefilled Claude connector form](https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=BestPrice&connectorUrl=https%3A%2F%2Fmcp.bestprice.gr%2Fmcp)
 for Claude.
 The instructions below cover developer and manual connections.
@@ -46,9 +46,9 @@ const response = await client.responses.create({
 });
 ```
 
-The ChatGPT plugin is temporarily unavailable while the updated version is under review.
-The public shopping guide says the same thing. Developer mode can still use this endpoint as a
-custom connector on accounts that support custom connectors; that is a separate setup path.
+The [BestPrice app for ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd) is available.
+Developer mode can still use this endpoint as a custom connector on accounts that support custom
+connectors; that is a separate setup path.
 
 The live server also publishes the canonical BestPrice Shopping Skill through the final MCP Skills
 extension (`io.modelcontextprotocol/skills`) on protocol `2026-07-28`. A Skills-aware scanner can

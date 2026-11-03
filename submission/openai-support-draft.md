@@ -1,5 +1,7 @@
 # Existing-plugin upgrade: review metadata and OAuth setup
 
+Historical record of a message about the deleted app `asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981`. The published BestPrice app is <https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd>. The message below is unchanged.
+
 Please help us complete an update to the existing BestPrice plugin without changing its public identity or interrupting its four anonymous shopping tools.
 
 Plugin ID: `plugin_asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981`

@@ -36,8 +36,10 @@ const copilotMarketplace = readJson('.github/plugin/marketplace.json');
 const claudeMarketplace = readJson('.claude-plugin/marketplace.json');
 const cases = readJson('test/fixtures/test-cases.json');
 
+const CHATGPT_DIRECTORY = 'https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd';
 const readme = read('README.md');
 const providerSetup = read('docs/provider-setup.md');
+const connect = read('docs/connect.md');
 const providerSetupCompat = read('PROVIDER_SETUP.md');
 const canonicalSkill = read('skills/bestprice-shopping/SKILL.md');
 const security = read('SECURITY.md');
@@ -47,7 +49,7 @@ const changelog = read('CHANGELOG.md');
 describe('OpenAI review package', () => {
   it('declares review and publication in the importer namespace while preserving the assigned identity', () => {
     const release = readJson('submission/openai/.codex-plugin/plugin.json');
-    assert.equal(release.name, 'app-6a8d8ed6e2bc8191b3caaf7214f3c981');
+    assert.equal(release.name, 'app-6ad82ceb86108191ac9cd6b08197aabd');
     assert.equal(release.interface.displayName, 'BestPrice');
     assert.equal(release.review, undefined, 'root review fields are not imported');
     assert.equal(release.publication, undefined, 'root publication fields are not imported');
@@ -417,7 +419,10 @@ describe('public documents', () => {
     }
     assert.match(readme, /docs\/provider-setup\.md/u);
     assert.match(readme, /docs\/connect\.md/u);
-    assert.match(providerSetup, /temporarily unavailable/u);
+    assert.match(providerSetup, /BestPrice app for ChatGPT/u);
+    assert.match(providerSetup, new RegExp(CHATGPT_DIRECTORY.replaceAll('.', '\\.'), 'u'));
+    assert.match(providerSetup, /is available/u);
+    assert.doesNotMatch(providerSetup, /temporarily unavailable|6a8d8ed6|in review/iu);
     assert.doesNotMatch(providerSetup, /add the published plugin|published BestPrice Shopping plugin/u);
     assert.match(readme, /skills\/bestprice-shopping\/SKILL\.md/u);
     assert.match(readme, /\.agents\/skills\/bestprice-shopping\/SKILL\.md/u);
@@ -447,7 +452,14 @@ describe('public documents', () => {
 
     assert.match(readme, /https:\/\/claude\.ai\/customize\/connectors\?/u);
     assert.match(readme, /connectorUrl=https%3A%2F%2Fmcp\.bestprice\.gr%2Fmcp/u);
-    assert.match(readme, /temporarily unavailable/u);
+    assert.match(readme, /BestPrice app for ChatGPT/u);
+    assert.match(readme, new RegExp(CHATGPT_DIRECTORY.replaceAll('.', '\\.'), 'u'));
+    assert.match(readme, /is available/u);
+    assert.match(connect, /BestPrice app for ChatGPT/u);
+    assert.match(connect, new RegExp(CHATGPT_DIRECTORY.replaceAll('.', '\\.'), 'u'));
+    assert.match(connect, /is available/u);
+    assert.doesNotMatch(readme, /temporarily unavailable|6a8d8ed6/u);
+    assert.doesNotMatch(connect, /temporarily unavailable|6a8d8ed6|in review/iu);
     assert.doesNotMatch(readme, /add the published plugin/u);
     assert.match(readme, /not published to npm/u);
     assert.doesNotMatch(readme, /npm install bestprice-mcp/u);
