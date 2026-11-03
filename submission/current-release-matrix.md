@@ -1,8 +1,33 @@
 # BestPrice current release matrix
 
+## 3 November 2026 implementation and actual-host qualification
+
+The published 1.2.0 app now completes the Events-only OAuth callback and opens
+its native workspace. The actual ordinary ChatGPT UGG replay retained unknown
+size 38 and linked only to BestPrice in this run. New search returned to the
+empty native home without a visible composer attachment. The official consent
+logo is deployed and verified after website build 18715. See the bounded
+[host receipt](evidence/published-host-qualification-2026-11-03.json).
+
+Backend commits `a72b34a8465` and `689f112662d` are pushed with normal hooks;
+the required 6,065-file push qualification passed. Server 1.9.0 is deployed after Jenkins build 32700. All six research operations passed a bounded live transport check on revision `689f112662deb3c3e14bf356ab6c27a22bf9dd11`, including selected identity, exact-product basket quantity 2 and a Shopping Brain recommendation. Website discovery parity and automated OpenAI acceptance remain separate checks. Private comparison tools remain
+held pending their separate scope, privacy and host qualification.
+
+The 1.3.0 review candidate in `openai-next/` is uploaded as an unsubmitted draft. Its skill checks passed; the receiving download matches all seven files byte for byte. See the [draft receipt](evidence/openai-1.3-draft-2026-11-03.json). Downloading the live
+1.2.0 release verified that its package name remains the original
+`app-6a8d8ed6e2bc8191b3caaf7214f3c981`, despite the newer public listing ID.
+The candidate preserves that [downloaded identity](evidence/published-package-identity-2026-11-03.json).
+Upload, validation, submission, approval and publication are distinct states.
+
+The fresh Work web composer kept Send disabled for the prepared authorized
+watch test, so no new test watch or callback is claimed. A new comparison grant
+has not been created. Dedicated reviewer credentials and corporate notice
+alignment remain open dependencies; historical private-connection delivery
+proof below does not substitute for the published-app test.
+
 ## ChatGPT directory (2 November 2026)
 
-**BestPrice 1.2.0 is approved and published.** The app is available at <https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd> under app id `asdk_app_6ad82ceb86108191ac9cd6b08197aabd` (package identity `app-6ad82ceb86108191ac9cd6b08197aabd`). The display name is **BestPrice**. The previous app `asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981`, listed as BestPrice Shopping 1.0.1, was deleted, so older directory links do not resolve. Clean-account discovery of this listing is still to be verified.
+**BestPrice 1.2.0 is approved and published.** The app is available at <https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd> under app id `asdk_app_6ad82ceb86108191ac9cd6b08197aabd` (package identity `app-6a8d8ed6e2bc8191b3caaf7214f3c981`). The display name is **BestPrice**. The previous app `asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981`, listed as BestPrice Shopping 1.0.1, was deleted, so older directory links do not resolve. Clean-account discovery of this listing is still to be verified.
 
 October observations below that describe 1.2.0 as in review, or 1.0.1 as the public release, are the portal state from those dates.
 
@@ -94,7 +119,7 @@ Each minute, the bounded producer checks at most twenty eligible products while 
 
 ## Release gates still open
 
-1. Supported public-app OAuth migration on the published app, and confirmation of the applied 1.2.0 reviewer materials. The private qualification connection has demonstrated a real accepted event and matching ChatGPT response; a separate push notification remains unverified.
+1. Published-app OAuth linking was verified on November 3; actual supported-host Events creation/delivery and confirmation of applied reviewer materials remain separate. The private qualification connection has demonstrated a real accepted event and matching ChatGPT response; a separate push notification remains unverified.
 2. A dedicated sample reviewer account, clean password-login qualification and confirmed private credentials. The owner agreed to provide the account; credentials stay outside chat, the ZIP and public repository.
 3. Corporate privacy notice and account-deletion/retention alignment for linked Events, using the prepared [implementation facts](events-privacy-review.md). The public FAQ now documents implementation facts; its update is not a certification of the database-managed legal policy or every deletion path.
 4. Clean-account discovery of the published BestPrice listing. Approval and publication completed on 2 November 2026 at <https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd>.

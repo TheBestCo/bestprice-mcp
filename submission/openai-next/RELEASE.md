@@ -30,3 +30,15 @@ Build the review archive with `node scripts/package-openai-next.mjs`. The comman
 writes the ZIP and a SHA-256/source-file receipt to `/tmp`; credentials and this
 release note are excluded. OpenAI submission and publication are receiving
 states to verify separately.
+
+The November 3 portal download verified that the current listing uses package
+name `app-6a8d8ed6e2bc8191b3caaf7214f3c981`, despite its newer listing ID.
+The candidate preserves that downloaded package identity. See the exact
+[identity receipt](../evidence/published-package-identity-2026-11-03.json).
+
+The candidate was uploaded to the existing plugin as draft
+`appsub_6aea2de53a088191a4df87d30b438621`. Its skill checks passed; no
+blocking metadata finding remained. A receiving download matches all seven
+source files byte for byte. The non-blocking brand-name finding is retained
+in the [draft receipt](../evidence/openai-1.3-draft-2026-11-03.json). No new
+policy attestations were accepted and the draft has not been submitted.

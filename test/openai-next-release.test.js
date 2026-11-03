@@ -13,7 +13,10 @@ test('the next OpenAI package keeps the published identity and declares scoped m
   const next = json('openai-next/.codex-plugin/plugin.json');
   assert.equal(current.version, '1.2.0');
   assert.equal(next.version, '1.3.0');
+  assert.ok([...next.interface.shortDescription].length <= 30);
+  assert.ok([...next.extensions['com.openai'].publication.translations['el-GR'].subtitle].length <= 30);
   assert.equal(next.name, current.name);
+  assert.equal(next.name, 'app-6a8d8ed6e2bc8191b3caaf7214f3c981');
   const servers = json('openai-next/.mcp.json').mcpServers;
   assert.equal(Object.keys(servers).length, 1);
   const [server] = Object.values(servers);

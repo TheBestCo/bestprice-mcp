@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-11-03T18:53:16.115277+00:00",
+  "source": "OpenAI portal > published BestPrice 1.2.0 > Download release ZIP",
+  "app_id": "asdk_app_6ad82ceb86108191ac9cd6b08197aabd",
+  "package_name": "app-6a8d8ed6e2bc8191b3caaf7214f3c981",
+  "version": "1.2.0",
+  "archive_sha256": "7c9e48c4cc20749e8845b2a247513f099b86080307f927f2490be9a9254c7f8f",
+  "downloaded_files": {
+    ".mcp.json": "3786714273c247168790f51c14b74472b3b837754f8d8d43469701ca63c5987e",
+    ".codex-plugin/plugin.json": "a4885b08fe9419af753d8278f3fcb343d795dcf86c01b7ddefa3f729f5ead1e6",
+    "assets/bestprice-logo.png": "d32cea7796e566e15b99626f3267f364bc63e39cfe37649dfc5b490b61d92826",
+    "assets/native-history.png": "084dad7ef58aae9ea7eae84f7d237daad19fabd59155792a13cc32b0e115ca91",
+    "assets/native-home.jpg": "9ddb667d180283669cde011dfa767ee03aa4202cc8b822709730bf4999782beb",
+    "assets/native-offers.jpg": "a530e83163b26c7772586145de0e1a778474d9880d7306a241babedd0480f55e",
+    "skills/bestprice-shopping/SKILL.md": "135500b0324cfe6ca5a718429b773a01f475ec5a26d9a87c57c78dd17db3a363"
+  },
+  "source_difference": "The repository manifest had incorrectly changed the package name to the new listing ID. Other manifest fields match semantically. The repository skill quotes its YAML description; the downloaded release did not. Assets and MCP configuration match byte for byte.",
+  "conclusion": "Preserve the original package name when updating the new listing; listing IDs and package names are distinct."
+}

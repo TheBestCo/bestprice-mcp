@@ -7,7 +7,7 @@ implementation and submission history.
 **BestPrice 1.2.0 is approved and published** (2 November 2026). The app is available at
 <https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd>
 (app id `asdk_app_6ad82ceb86108191ac9cd6b08197aabd`, package identity
-`app-6ad82ceb86108191ac9cd6b08197aabd`). The display name is **BestPrice**. The previous app
+`app-6a8d8ed6e2bc8191b3caaf7214f3c981`). The display name is **BestPrice**. The previous app
 `asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981` (listing name BestPrice Shopping, release 1.0.1)
 was deleted, so links to it no longer resolve. Clean-account discovery of this listing is still
 to be verified.
@@ -36,7 +36,7 @@ approval and partner provisioning. See the
 [ACP onboarding record](acp-onboarding.md).
 
 `openai/` is the ZIP source for the published BestPrice app. Its package identity is
-`app-6ad82ceb86108191ac9cd6b08197aabd` and its public MCP URL is unchanged. Its version is
+`app-6a8d8ed6e2bc8191b3caaf7214f3c981` and its public MCP URL is unchanged. Its version is
 independent of the distribution/WebMCP package version. The display name stays **BestPrice**.
 
 The package uses **BestPrice** throughout, the official square BestPrice logo for light and dark themes, Greek listing text, and three genuine native-workspace screenshots matched to the three starter prompts. Screenshots are JPEG/PNG files, each 706 pixels wide and 400–860 pixels high. The review contains five positive and three negative cases. Additional cases are retained in the evidence directory outside the ZIP.

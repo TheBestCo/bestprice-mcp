@@ -15,7 +15,7 @@
     "displayName": "BestPrice",
     "longDescription": "Check a retailer offer or identifiable model from a screenshot against current BestPrice offers and market price history. Compare exact variants and known delivery costs, edit basket quantities, and keep unresolved details visible.\n\nWith separate account consent, save selected products and your requirements, reopen the same comparison in ChatGPT or on BestPrice, recheck prices and see what changed. Saved checks are historical observations, not a guarantee of current stock, size or final checkout cost.\n\nOn supported ChatGPT Work/Cloud or dot surfaces, request price or known-delivered-budget watches for exact products. A watch is active only after confirmation. No orders or payments.",
     "privacyPolicyURL": "https://www.bestprice.gr/policies/privacy",
-    "shortDescription": "Check deals, keep your shortlist",
+    "shortDescription": "Check deals, save comparisons",
     "supportURL": "https://www.bestprice.gr/contact",
     "termsOfServiceURL": "https://www.bestprice.gr/policies/terms",
     "websiteURL": "https://www.bestprice.gr/mcp",
@@ -27,7 +27,7 @@
     "logoDark": "./assets/bestprice-logo.png",
     "composerIconDark": "./assets/bestprice-logo.png"
   },
-  "name": "app-6ad82ceb86108191ac9cd6b08197aabd",
+  "name": "app-6a8d8ed6e2bc8191b3caaf7214f3c981",
   "skills": "./skills",
   "version": "1.3.0",
   "mcpServers": "./.mcp.json",
@@ -109,7 +109,7 @@
         "release_notes": "1.3.0 adds deal checking, editable exact-product baskets and separately authorized saved comparisons with manual recheck, immutable baselines, lifecycle and deletion. Linked data is encrypted and expires after 180 days. Fixed-product price and known-delivered-budget watches use MCP Events on supported hosts. No purchase, payment or browsing/order-history access.",
         "translations": {
           "el-GR": {
-            "subtitle": "Έλεγξε προσφορές, κράτα επιλογές",
+            "subtitle": "Έλεγξε προσφορές, κράτα λίστα",
             "description": "Έλεγξε μια προσφορά, σύγκρινε ακριβείς παραλλαγές και γνωστά μεταφορικά και κράτησε τις επιλογές σου. Με ξεχωριστή σύνδεση λογαριασμού, αποθήκευσε συγκρίσεις για έως 180 ημέρες, άνοιξέ τις ξανά στο ChatGPT ή στο BestPrice και δες τι άλλαξε μετά από νέο έλεγχο. Άγνωστο μέγεθος, χαρακτηριστικά και μεταφορικά παραμένουν άγνωστα. Η παρακολούθηση επιλεγμένων προϊόντων απαιτεί υποστηριζόμενη επιφάνεια ChatGPT και επιτυχή επιβεβαίωση. Δεν γίνονται αγορές ή πληρωμές."
           }
         }

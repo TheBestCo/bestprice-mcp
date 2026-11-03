@@ -49,7 +49,7 @@ const changelog = read('CHANGELOG.md');
 describe('OpenAI review package', () => {
   it('declares review and publication in the importer namespace while preserving the assigned identity', () => {
     const release = readJson('submission/openai/.codex-plugin/plugin.json');
-    assert.equal(release.name, 'app-6ad82ceb86108191ac9cd6b08197aabd');
+    assert.equal(release.name, 'app-6a8d8ed6e2bc8191b3caaf7214f3c981');
     assert.equal(release.interface.displayName, 'BestPrice');
     assert.equal(release.review, undefined, 'root review fields are not imported');
     assert.equal(release.publication, undefined, 'root publication fields are not imported');
