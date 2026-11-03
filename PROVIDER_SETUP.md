@@ -11,4 +11,7 @@ Current read-only tools:
 - `compare_offers` — current Greek merchant offers, shipping, and delivered totals
 - `get_price_history` — historical pricing and “is this price good?” questions
 
+- `check_deal` — offer identity and checked price context
+- `optimize_basket` — exact selected products, quantities and supplied destination
+
 The provider-neutral shopping skill is [`skills/bestprice-shopping/SKILL.md`](skills/bestprice-shopping/SKILL.md).

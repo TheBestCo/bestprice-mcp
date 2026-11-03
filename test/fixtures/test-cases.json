@@ -110,6 +110,24 @@
         "Only usable complete price windows support a high or low verdict.",
         "A high verdict permits conditional waiting and a user-created alert, never a guaranteed future drop or an automatic purchase."
       ]
+    },
+    {
+      "id": "selected-product-deal-check",
+      "prompt": "Check the offer for the exact selected product bp_2157591869, with delivery to 11527.",
+      "expected_tools": ["check_deal"],
+      "assertions": [
+        "Preserve the selected product identity; selection does not prove an external retailer variant.",
+        "Keep item prices, delivered totals and unknown shipping separate."
+      ]
+    },
+    {
+      "id": "exact-quantity-basket",
+      "prompt": "Calculate a read-only basket plan for two units of bp_2157591869 delivered to 11527.",
+      "expected_tools": ["optimize_basket"],
+      "assertions": [
+        "Preserve the exact selected product and quantity 2.",
+        "Never create an order or treat unknown combined shipping as zero."
+      ]
     }
   ],
   "negative": [

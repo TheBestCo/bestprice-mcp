@@ -28,7 +28,14 @@ export function buildInteractionsPayload(input = DEFAULT_PROMPT) {
         allowed_tools: [
           {
             mode: 'auto',
-            tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'],
+            tools: [
+              'get_shopping_decision',
+              'search_products',
+              'compare_offers',
+              'get_price_history',
+              'optimize_basket',
+              'check_deal',
+            ],
           },
         ],
       },
@@ -48,7 +55,14 @@ export function validatePayloadEnvelope(payload) {
     throw new Error('Tools must declare remote mcp_server pointing to https://mcp.bestprice.gr/mcp');
   }
   const allowed = tool.allowed_tools?.[0]?.tools;
-  const expected = ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'];
+  const expected = [
+    'get_shopping_decision',
+    'search_products',
+    'compare_offers',
+    'get_price_history',
+    'optimize_basket',
+    'check_deal',
+  ];
   if (
     !Array.isArray(allowed) ||
     allowed.length !== expected.length ||

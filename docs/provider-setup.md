@@ -41,7 +41,7 @@ const response = await client.responses.create({
     server_description: 'Read-only shopping decisions, product search, offers, and price history for Greece.',
     server_url: 'https://mcp.bestprice.gr/mcp',
     require_approval: 'never',
-    allowed_tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'],
+    allowed_tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history', 'optimize_basket', 'check_deal'],
   }],
 });
 ```
@@ -75,7 +75,7 @@ const tools = [{
   type: 'mcp_server',
   name: 'bestprice',
   url: 'https://mcp.bestprice.gr/mcp',
-  allowed_tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'],
+  allowed_tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history', 'optimize_basket', 'check_deal'],
 }];
 ```
 
@@ -220,7 +220,7 @@ Harness provides the MCP bridge instead. Add one plugin instance to `cordis.yml`
     failOnStartupError: true
 ```
 
-The bridge discovers the same four tools and exposes them to the model under
+The bridge discovers the same six research tools and exposes them to the model under
 the `mcp__bestprice__*` namespace. This connects DeepSeek-powered Harness agents;
 it does not imply that the consumer chat at deepseek.com imports public MCPs.
 
@@ -259,7 +259,7 @@ response = client.chat.completions.create(
             "server_label": "bestprice",
             "server_url": "https://mcp.bestprice.gr/mcp",
             "transport_type": "streamable-http",
-            "allowed_tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
+            "allowed_tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history", "optimize_basket", "check_deal"],
             "headers": {"X-MCP-Client-Name": "Z.AI GLM"},
         },
     }],
@@ -311,7 +311,7 @@ Copilot CLI can add the reviewed remote surface directly:
 
 ```sh
 copilot mcp add --transport http \
-  --tools get_shopping_decision,search_products,compare_offers,get_price_history \
+  --tools get_shopping_decision,search_products,compare_offers,get_price_history,optimize_basket,check_deal \
   bestprice-shopping https://mcp.bestprice.gr/mcp
 ```
 
@@ -372,3 +372,5 @@ and verify the discovered inventory before publishing the agent. Connecting an
 external server does not imply Microsoft review or endorsement.
 
 Official reference: [connect an existing MCP server](https://learn.microsoft.com/en-us/microsoft-copilot-studio/mcp-add-existing-server-to-agent).
+
+The hosted research surface also includes `check_deal` for offer identity and price context, and `optimize_basket` for exact selected products, quantities and a supplied postcode. Both are read-only; unknown variants and shipping remain unknown.

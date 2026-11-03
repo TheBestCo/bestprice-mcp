@@ -3,10 +3,17 @@
   "asOf": "2026-11-03",
   "canonical": {
     "registryId": "gr.bestprice/mcp",
-    "serverVersion": "1.8.5",
+    "serverVersion": "1.9.0",
     "packageVersion": "2.9.0",
     "endpoint": "https://mcp.bestprice.gr/mcp",
-    "tools": ["get_shopping_decision", "search_products", "compare_offers", "get_price_history"],
+    "tools": [
+      "get_shopping_decision",
+      "search_products",
+      "compare_offers",
+      "get_price_history",
+      "optimize_basket",
+      "check_deal"
+    ],
     "skill": "https://github.com/TheBestCo/bestprice-mcp/blob/main/skills/bestprice-shopping/SKILL.md",
     "webmcpContractToolCount": 22
   },
@@ -29,9 +36,9 @@
       "state": "published",
       "freshness": "approved-published-2026-11-02",
       "url": "https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd",
-      "verifiedAt": "2026-11-02",
-      "evidence": "Approved and published on 2026-11-02. Directory listing https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd. App id asdk_app_6ad82ceb86108191ac9cd6b08197aabd. Package identity app-6ad82ceb86108191ac9cd6b08197aabd. Display name BestPrice. Version 1.2.0.",
-      "note": "The previous app asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981 (BestPrice Shopping 1.0.1) was deleted, so its directory links no longer resolve. Clean-account discovery of this listing is still unverified.",
+      "verifiedAt": "2026-11-03",
+      "evidence": "Approved and published on 2026-11-02. Directory listing https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd. App id asdk_app_6ad82ceb86108191ac9cd6b08197aabd. Downloaded package identity app-6a8d8ed6e2bc8191b3caaf7214f3c981. Display name BestPrice. Version 1.2.0.",
+      "note": "The previous app asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981 (BestPrice Shopping 1.0.1) was deleted, so its directory links no longer resolve. Clean-account discovery of this listing is still unverified. Events-only account linking completed on the published app on November 3. The 1.3.0 package is an unsubmitted draft; private comparison qualification and review remain separate.",
       "nextAction": "Verify clean-account discovery of the published BestPrice listing.",
       "nextActionBy": "us-external-login"
     },

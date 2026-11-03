@@ -75,7 +75,7 @@ tools: [{
   server_label: 'bestprice',
   server_url: 'https://mcp.bestprice.gr/mcp',
   require_approval: 'never',
-  allowed_tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'],
+  allowed_tools: ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history', 'optimize_basket', 'check_deal'],
 }]
 ```
 
@@ -97,7 +97,7 @@ Or add the server directly:
 }
 ```
 
-The extension's `includeTools` list is the same four tools. Gemini CLI does not need a BestPrice key.
+The extension's `includeTools` list is the same six research tools. Gemini CLI does not need a BestPrice key.
 
 ## Copilot
 
@@ -105,7 +105,7 @@ GitHub Copilot CLI:
 
 ```sh
 copilot mcp add --transport http \
-  --tools get_shopping_decision,search_products,compare_offers,get_price_history \
+  --tools get_shopping_decision,search_products,compare_offers,get_price_history,optimize_basket,check_deal \
   bestprice-shopping https://mcp.bestprice.gr/mcp
 ```
 
@@ -132,3 +132,5 @@ Or under **Settings > Tools & MCP** add an HTTP server named `bestprice-shopping
   "url": "https://mcp.bestprice.gr/mcp"
 }
 ```
+
+The hosted research surface also includes `check_deal` for offer identity and price context, and `optimize_basket` for exact selected products, quantities and a supplied postcode. Both are read-only; unknown variants and shipping remain unknown.

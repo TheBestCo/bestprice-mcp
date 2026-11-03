@@ -17,7 +17,14 @@ const ENDPOINT = 'https://mcp.bestprice.gr/mcp';
 const HOMEPAGE = 'https://www.bestprice.gr/mcp';
 const REPOSITORY = 'https://github.com/TheBestCo/bestprice-mcp';
 const SERVER_NAME = 'bestprice-shopping';
-const EXPECTED_TOOLS = ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'];
+const EXPECTED_TOOLS = [
+  'get_shopping_decision',
+  'search_products',
+  'compare_offers',
+  'get_price_history',
+  'optimize_basket',
+  'check_deal',
+];
 const SEMVER = /^\d+\.\d+\.\d+$/u;
 
 const pkg = readJson('package.json');
@@ -332,7 +339,7 @@ describe('endpoint manifests', () => {
     }
   });
 
-  it('restricts Gemini and Qwen extensions to the four published tools', () => {
+  it('restricts Gemini and Qwen extensions to the six research tools', () => {
     const expectedServer = clientName => ({
       httpUrl: ENDPOINT,
       headers: { 'X-MCP-Client-Name': clientName },

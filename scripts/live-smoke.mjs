@@ -6,7 +6,14 @@ import { readFileSync } from 'node:fs';
 
 const ENDPOINT = 'https://mcp.bestprice.gr/mcp';
 const HEALTH = 'https://mcp.bestprice.gr/healthz';
-const TOOLS = ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'];
+const TOOLS = [
+  'get_shopping_decision',
+  'search_products',
+  'compare_offers',
+  'get_price_history',
+  'optimize_basket',
+  'check_deal',
+];
 const server = JSON.parse(readFileSync(new URL('../server.json', import.meta.url), 'utf8'));
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
 const USER_AGENT = `bestprice-mcp-live-smoke/${pkg.version}`;

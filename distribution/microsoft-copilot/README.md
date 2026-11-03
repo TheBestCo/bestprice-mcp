@@ -6,7 +6,7 @@ This folder is a Microsoft 365 app package. It does not run a server. Every surf
 https://mcp.bestprice.gr/mcp
 ```
 
-The package carries two entry points to the same four read-only tools (`get_shopping_decision`, `search_products`, `compare_offers`, `get_price_history`):
+The package carries two entry points to the same six read-only research tools (`get_shopping_decision`, `search_products`, `compare_offers`, `get_price_history`, `optimize_basket`, `check_deal`):
 
 - A declarative agent (`declarativeAgent.json`) for Microsoft 365 Copilot Chat, Teams, and Copilot in Word. Its action is `ai-plugin.json`, plugin manifest 2.4, runtime `RemoteMCPServer`, auth `None`.
 - An agent connector (`agentConnectors[0]`, id `bestprice-shopping`) for Copilot Cowork and the standalone MCP catalog. Its `remoteMcpServer.authorization.type` is `None`, so no `referenceId`.

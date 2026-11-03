@@ -3,6 +3,8 @@ const PUBLIC_TOOLS = new Set([
   'search_products',
   'compare_offers',
   'get_price_history',
+  'check_deal',
+  'optimize_basket',
 ]);
 
 function ratio(passed, total) {

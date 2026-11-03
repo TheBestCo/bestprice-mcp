@@ -11,7 +11,14 @@ const pkg = readJson('package.json');
 const registry = readJson('server.json');
 const status = readJson('distribution/status.json');
 
-const EXPECTED_TOOLS = ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history'];
+const EXPECTED_TOOLS = [
+  'get_shopping_decision',
+  'search_products',
+  'compare_offers',
+  'get_price_history',
+  'optimize_basket',
+  'check_deal',
+];
 const SKILL_URL = 'https://github.com/TheBestCo/bestprice-mcp/blob/main/skills/bestprice-shopping/SKILL.md';
 const STATES = new Set(['published', 'submitted', 'prepared', 'missing', 'external-gate']);
 const NEXT_ACTION_BY = new Set(['us-here', 'us-external-login', 'upstream', 'none']);
@@ -77,7 +84,7 @@ describe('distribution status ledger', () => {
     }
     const chatgpt = byId.get('openai');
     assert.equal(chatgpt.url, 'https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd');
-    assert.equal(chatgpt.verifiedAt, '2026-11-02');
+    assert.equal(chatgpt.verifiedAt, '2026-11-03');
     assert.match(chatgpt.evidence, /approved and published/iu);
     assert.match(chatgpt.evidence, /asdk_app_6ad82ceb86108191ac9cd6b08197aabd/u);
     assert.match(chatgpt.evidence, /Display name BestPrice/u);

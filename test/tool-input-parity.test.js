@@ -13,10 +13,10 @@ test('LobeHub inputs match the captured public gateway contract, including neste
     reviewed.tools,
   );
   const decision = manifest.tools.find(t => t.name === 'get_shopping_decision').inputSchema;
-  assert.deepEqual(decision.anyOf[0].required, ['message']);
-  assert.equal(decision.anyOf[0].properties.history, undefined);
-  assert.equal(decision.anyOf[0].additionalProperties, false);
-  assert.deepEqual(decision.anyOf[1].properties, {});
+  assert.deepEqual(decision.required, ['message']);
+  assert.equal(decision.properties.history, undefined);
+  assert.equal(decision.additionalProperties, false);
+  assert.equal(decision.anyOf, undefined);
   assert.equal(
     manifest.tools.find(t => t.name === 'search_products').inputSchema.properties.query.maxLength,
     400,
