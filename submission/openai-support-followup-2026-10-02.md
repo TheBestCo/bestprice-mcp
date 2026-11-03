@@ -1,5 +1,7 @@
 # October 2 follow-up for the existing OpenAI support case
 
+Historical record of a message about the deleted app `asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981`. The published BestPrice app is <https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd>. The message below is unchanged.
+
 Status: sent on October 2, 2026, at approximately 14:02 UTC after explicit owner approval, in the existing September 30 support conversation. The message appeared as a new user message and the composer cleared. No new case or package was submitted. No specialist resolution was visible after sending.
 
 ## Message

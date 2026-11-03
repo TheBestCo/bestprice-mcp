@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "asOf": "2026-10-29",
+  "asOf": "2026-11-03",
   "canonical": {
     "registryId": "gr.bestprice/mcp",
     "serverVersion": "1.8.5",
@@ -27,13 +27,13 @@
       "id": "openai",
       "name": "OpenAI Plugins Directory",
       "state": "published",
-      "freshness": "published-v1.0.1-v1.2-review",
-      "url": "https://developers.openai.com/plugins/deploy/submission",
-      "verifiedAt": "2026-10-01",
-      "evidence": "Portal: BestPrice 1.2.0 In review; released 1.0.1. Fresh scan completed October 1 at 04:35:25 UTC: zero issues, all four tools and server instructions Live. get_shopping_decision independently shows 0 issues and Live definition; prior held update and conversation-history finding are absent. A fresh private-connector native card history follow-up returned the correct minimum and median without another visible tool call.",
-      "note": "The portal still shows No authentication. Installed released 1.0.1 independently shows Authorization supported/used: None and no account-linking control. Existing support conversation remains escalated without a human resolution. Public OAuth migration, applied reviewer materials, approval/publication and clean-account discovery remain open.",
-      "nextAction": "Resolve the associated-app OAuth migration, verify applied reviewer materials, and qualify clean-account discovery and the released BestPrice listing after approval/publication.",
-      "nextActionBy": "upstream"
+      "freshness": "approved-published-2026-11-02",
+      "url": "https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd",
+      "verifiedAt": "2026-11-02",
+      "evidence": "Approved and published on 2026-11-02. Directory listing https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd. App id asdk_app_6ad82ceb86108191ac9cd6b08197aabd. Package identity app-6ad82ceb86108191ac9cd6b08197aabd. Display name BestPrice. Version 1.2.0.",
+      "note": "The previous app asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981 (BestPrice Shopping 1.0.1) was deleted, so its directory links no longer resolve. Clean-account discovery of this listing is still unverified.",
+      "nextAction": "Verify clean-account discovery of the published BestPrice listing.",
+      "nextActionBy": "us-external-login"
     },
     {
       "id": "claude",

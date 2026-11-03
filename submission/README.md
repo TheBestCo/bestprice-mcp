@@ -4,13 +4,22 @@ Use the [current release matrix](current-release-matrix.md) for deployed revisio
 live gates and host qualification. The sections below retain the timestamped
 implementation and submission history.
 
-The latest [submission identity audit](evidence/submission-identity-audit-2026-10-01.json)
-confirms one visible plugin and one active review: **1.2.0 In review**, alongside
-**1.0.1 Published**. Both ZIPs preserve the assigned identity and define one MCP
-server. The two portal MCP entries are the package-server and associated-app
+**BestPrice 1.2.0 is approved and published** (2 November 2026). The app is available at
+<https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd>
+(app id `asdk_app_6ad82ceb86108191ac9cd6b08197aabd`, package identity
+`app-6ad82ceb86108191ac9cd6b08197aabd`). The display name is **BestPrice**. The previous app
+`asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981` (listing name BestPrice Shopping, release 1.0.1)
+was deleted, so links to it no longer resolve. Clean-account discovery of this listing is still
+to be verified.
+
+The [1 October identity audit](evidence/submission-identity-audit-2026-10-01.json)
+recorded one visible plugin and one active review on that previous app: **1.2.0 In review**,
+alongside **1.0.1 Published**. Both ZIPs from that audit preserved the identity assigned then
+and defined one MCP server. The two portal MCP entries were the package-server and associated-app
 records, with the same endpoint. The overview's **1.1.0 Not submitted** badge
-disagrees with the detail page; do not resubmit or remove records to reconcile
-that display. No submission or connection mutation was made during this audit.
+disagreed with the detail page; that display was left as found. No submission or connection
+mutation was made during that audit. Dated evidence files and the support drafts still name the
+deleted app because they record what was inspected and sent.
 
 At the latest October 1 follow-up, a fresh portal scan reports **zero issues**, all
 four tools and server instructions **Live**. A fresh ChatGPT native card and its
@@ -18,14 +27,17 @@ UI-only history follow-up passed: the model returned minimum €184.90 and media
 €188.68 from the attached card without another visible tool call. A separate real
 €185.87 monitor is active and the scheduled worker has repeatedly sampled
 €185.88 in that earlier window. The [October 3 receipt](evidence/events-first-live-delivery-2026-10-03.json) now confirms a real threshold crossing, accepted callback and matching ChatGPT response through the private qualification connection.
-Public-app OAuth migration and package approval remain with OpenAI. The separate
+Package 1.2.0 was later approved and published on 2 November 2026 under the new app id above.
+Public-app OAuth migration on that published app was not re-checked in this update. The separate
 ACP application is submitted with OpenAI's receipt confirmed; the validated
 100-item sample remains local pending explicit Greece/EUR comparison-platform
 approval and partner provisioning. See the
 [follow-up receipt](evidence/end-to-end-gates-2026-10-01.json) and
 [ACP onboarding record](acp-onboarding.md).
 
-`openai/` is the replacement ZIP source for the existing BestPrice plugin. It preserves the assigned package identity and public MCP URL. Its version is independent of the distribution/WebMCP package version.
+`openai/` is the ZIP source for the published BestPrice app. Its package identity is
+`app-6ad82ceb86108191ac9cd6b08197aabd` and its public MCP URL is unchanged. Its version is
+independent of the distribution/WebMCP package version. The display name stays **BestPrice**.
 
 The package uses **BestPrice** throughout, the official square BestPrice logo for light and dark themes, Greek listing text, and three genuine native-workspace screenshots matched to the three starter prompts. Screenshots are JPEG/PNG files, each 706 pixels wide and 400–860 pixels high. The review contains five positive and three negative cases. Additional cases are retained in the evidence directory outside the ZIP.
 
@@ -52,12 +64,12 @@ The deeper Events qualification passed all 72 lifecycle, callback, protocol and 
 
 ## Review status and remaining release gates
 
-- **1.2.0 is submitted and In review**, confirmed in the portal after the owner approved all six policy declarations. Package ID: `appsub_6abd16a16bb4819193e6e6bdc6337af1`. Downloading the uploaded draft confirmed all seven files match the source, including the new notes and review cases in `extensions.com.openai`. Before submission, the legacy Review information drawer showed saved 1.1.0 materials; the submitted-version controls do not expose that drawer. Final application of the reviewer materials remains unverified. Published 1.0.1 remains live.
-- Complete optional OAuth configuration on the public associated app. On October 2 the portal still displays **No authentication**. A newly visible Reconnect action opens a legacy multi-step form with older metadata and a category validation error; it was closed without edits or saving. Real OAuth and native Events qualification currently belongs to the separate test connector. The original [support request](openai-support-draft.md) was escalated to a specialist on September 30. The approved [October 2 follow-up](openai-support-followup-2026-10-02.md) was sent in that same case; public migration and applied reviewer materials remain unresolved.
+- **1.2.0 is approved and published** (2 November 2026) at <https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd>. Display name **BestPrice**. In October the portal showed package `appsub_6abd16a16bb4819193e6e6bdc6337af1` in review on the previous app after the owner approved all six policy declarations. Downloading the uploaded draft then confirmed all seven files matched the source, including the notes and review cases in `extensions.com.openai`. The legacy Review information drawer had shown saved 1.1.0 materials before submission. BestPrice Shopping 1.0.1 on `asdk_app_6a8d8ed6e2bc8191b3caaf7214f3c981` was later deleted.
+- Optional OAuth on the published app was not re-checked after publication. On October 2 the previous app's portal displayed **No authentication**. A Reconnect action opened a legacy multi-step form with older metadata and a category validation error; it was closed without edits or saving. Real OAuth and native Events qualification belonged to the separate test connector. The original [support request](openai-support-draft.md) was escalated to a specialist on September 30. The approved [October 2 follow-up](openai-support-followup-2026-10-02.md) was sent in that same case.
 - Deployed sampler admission, native subscription, signed verification, Resume, periodic real-price observations and actual-host cancellation are confirmed. A real €185.88-to-€179.88 crossing of the €185.87 threshold produced one accepted callback and matching event text in ChatGPT on October 2. Synthetic observations were confined to disposable qualification tables; no real ChatGPT callback received a fabricated event. This proof is for the private qualification plugin, while public-app OAuth migration remains unresolved.
 - Provide a dedicated sample account, as required by the current [OpenAI submission guide](https://developers.openai.com/plugins/deploy/submission), and verify its clean password-login flow and applied private reviewer details. The owner agreed on October 2 to provide this account. Credentials must remain outside chat, the ZIP and public repository.
-- The superseded **1.1.0 review is canceled**. The October 2 version picker confirms exactly **one active review: 1.2.0**. The latest completed MCP scan visible in the portal remains October 1 at **18:08:16 UTC**, with **zero issues** and all four tools/server instructions **Live**. The October 2 rescan request did not expose a newer completed timestamp. The historical brand-name finding and final review outcome remain for OpenAI to resolve.
-- After approval and publication, verify the released host and the **BestPrice** listing name. The released 1.0.1 connection still reflects its older cached metadata.
+- The superseded **1.1.0 review was canceled**. On October 2 the version picker showed exactly **one active review: 1.2.0**, later approved and published. The latest completed MCP scan visible then was October 1 at **18:08:16 UTC**, with **zero issues** and all four tools and server instructions **Live**. The October 2 rescan request did not expose a newer completed timestamp.
+- Verify clean-account discovery of the published listing and that the released name is **BestPrice**. The deleted 1.0.1 connection used older cached metadata.
 
 ## Separate ACP deliverable
 

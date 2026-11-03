@@ -75,6 +75,14 @@ describe('distribution status ledger', () => {
     ]) {
       assert.equal(byId.get(id)?.state, 'published', id);
     }
+    const chatgpt = byId.get('openai');
+    assert.equal(chatgpt.url, 'https://chatgpt.com/plugins/plugin_asdk_app_6ad82ceb86108191ac9cd6b08197aabd');
+    assert.equal(chatgpt.verifiedAt, '2026-11-02');
+    assert.match(chatgpt.evidence, /approved and published/iu);
+    assert.match(chatgpt.evidence, /asdk_app_6ad82ceb86108191ac9cd6b08197aabd/u);
+    assert.match(chatgpt.evidence, /Display name BestPrice/u);
+    assert.match(chatgpt.nextAction, /clean-account discovery/u);
+    assert.doesNotMatch(chatgpt.evidence, /In review|temporarily unavailable|endors/iu);
     for (const id of ['claude', 'docker', 'agentfinder', 'kilo', 'cline']) {
       assert.equal(byId.get(id)?.state, 'submitted', id);
     }
