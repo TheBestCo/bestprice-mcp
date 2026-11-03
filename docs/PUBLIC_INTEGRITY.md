@@ -19,7 +19,7 @@ searches a known model, compares a returned product's offers with a postcode, re
 and asks for a laptop under a 600 EUR **item-price** budget. The SDK owns protocol/SSE parsing.
 The diagnostic's finite response buffering is not a streaming-latency measurement.
 
-The verdict requires the exact four-tool inventory, published input and output schemas,
+The verdict requires the four core tools and accepts the reviewed deal and basket additions, with published input and output schemas,
 transport descriptor parity, a consistent text/structured mirror, product/window/postcode
 identity, unique results, cent arithmetic, null unknown shipping, and approved HTTPS landing/CDN
 URL shapes. URL shape validation is **not** cryptographic signature verification. Positive

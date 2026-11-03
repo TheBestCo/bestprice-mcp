@@ -8,6 +8,7 @@ export const PUBLIC_TOOLS = Object.freeze([
   'get_shopping_decision',
   'search_products',
 ]);
+const REVIEWED_RESEARCH_TOOLS = new Set([...PUBLIC_TOOLS, 'check_deal', 'optimize_basket']);
 const MIRROR = '\nStructured result (JSON):\n';
 const COMPACT_MIRROR =
   '\n\nStructured result (compact JSON; structuredContent carries the complete result, including evidence):\n';
@@ -116,7 +117,11 @@ export function verifyPublicLinks(output) {
           (key === 'merchant_logo_url' &&
             url.hostname === 'orig-bpcdn.pstatic.gr' &&
             !url.search &&
-            /^\/bpmerchants\/[0-9]+\.svg$/u.test(url.pathname));
+            /^\/bpmerchants\/[0-9]+\.svg$/u.test(url.pathname)) ||
+          (key === 'merchant_logo_raster_url' &&
+            url.hostname === 'orig-bpcdn.pstatic.gr' &&
+            !url.search &&
+            /^\/bpmerchants\/logo_[0-9]+\.png$/u.test(url.pathname));
         check(allowed, 'UNAPPROVED_PUBLIC_URL');
       } else visit(child);
     }
@@ -138,7 +143,13 @@ export function verifyOfferMoney(offer) {
 /** Compile the live published schemas. Never replace them with weaker hand-written schemas. */
 export function createToolVerifier(tools) {
   check(Array.isArray(tools), 'MISSING_TOOL_INVENTORY');
-  check(isDeepStrictEqual(tools.map(tool => tool.name).sort(), [...PUBLIC_TOOLS]), 'TOOL_INVENTORY_DRIFT');
+  const names = tools.map(tool => tool.name);
+  check(
+    new Set(names).size === names.length &&
+      PUBLIC_TOOLS.every(name => names.includes(name)) &&
+      names.every(name => REVIEWED_RESEARCH_TOOLS.has(name)),
+    'TOOL_INVENTORY_DRIFT',
+  );
   const validators = new Map();
   for (const tool of tools) {
     check(record(tool.inputSchema) && record(tool.outputSchema), 'MISSING_TOOL_SCHEMA');

@@ -38,6 +38,15 @@ live gateway, UI, OAuth/Events, the ChatGPT directory listing and separate ACP q
 
 ## Tools
 
+The hosted 1.9.0 service now also advertises `check_deal` and `optimize_basket`.
+Both passed a live check on 3 November 2026. `check_deal` accepts exactly one
+product URL, visible model/barcode text or selected product ID; image bytes are
+not ingested. `optimize_basket` calculates read-only plans for exact products,
+quantities and a supplied postcode. Neither places an order. The compatibility
+manifests below retain the earlier four-tool baseline; OpenAI's acceptance of
+the new server definitions and the 1.3.0 package are tracked in the
+[release matrix](submission/current-release-matrix.md).
+
 | Tool | What it does | Key arguments |
 | --- | --- | --- |
 | `get_shopping_decision` | Runs the BestPrice Shopping Brain: an evidence-backed recommendation, need-based comparison, or read-only basket plan with reasons, tradeoffs, and unknowns. | `message` (the need in Greek or English, including any budget), optional `postal_code` (required for a completed basket plan), optional `evidence_detail` (`summary`, the default: only the evidence the answer cites; `full`: every claim and source) |
@@ -45,7 +54,7 @@ live gateway, UI, OAuth/Events, the ChatGPT directory listing and separate ACP q
 | `compare_offers` | Compares current merchant offers for one exact product, separating item price, shipping, and delivered total. | `product_id` from a previous result, optional `postal_code` (a Greek postcode, 10000–85999, for delivered totals), `objective`, `in_stock_only`, `minimum_merchant_rating`, `limit` (1–10) |
 | `get_price_history` | Summarises how a product's price moved over time, against its 180-day median. | `product_id`, optional `period_days` (30, 90 or 180) |
 
-All four tools are read-only. They never place orders, create alerts, or read account
+Public research tools are read-only. They never place orders, create alerts, or read account
 data. Results link to a BestPrice product page, never directly to a merchant. Unknown
 shipping is reported as unknown, not as free. Search covers safe physical products;
 digital goods, services, and age-restricted categories are excluded.

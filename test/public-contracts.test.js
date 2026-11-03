@@ -73,6 +73,27 @@ test('tool inventory rejects duplicates, missing schemas and unsafe annotations'
   fails(() => createToolVerifier(unsafe), 'UNSAFE_TOOL_ANNOTATIONS');
 });
 
+test('the core smoke accepts the reviewed six-tool inventory while rejecting unknown additions', () => {
+  const tools = inventory();
+  tools.push(...['check_deal', 'optimize_basket'].map(name => ({ ...structuredClone(tools[0]), name })));
+  assert.doesNotThrow(() => createToolVerifier(tools));
+  tools.push({ ...structuredClone(tools[0]), name: 'place_order' });
+  fails(() => createToolVerifier(tools), 'TOOL_INVENTORY_DRIFT');
+});
+
+test('the published raster merchant-logo fallback is restricted to its first-party CDN path', () => {
+  assert.doesNotThrow(() =>
+    verifyPublicLinks({ merchant_logo_raster_url: 'https://orig-bpcdn.pstatic.gr/bpmerchants/logo_123.png' }),
+  );
+  for (const url of [
+    'https://merchant.example/bpmerchants/logo_123.png',
+    'https://orig-bpcdn.pstatic.gr/other/logo_123.png',
+    'https://orig-bpcdn.pstatic.gr/bpmerchants/logo_123.png?redirect=elsewhere',
+  ]) {
+    fails(() => verifyPublicLinks({ merchant_logo_raster_url: url }), 'UNAPPROVED_PUBLIC_URL');
+  }
+});
+
 test('mirror comparison is structural, supports Greek, and rejects contradictory text', () => {
   const output = { a: 'Ελληνικά', b: 2 };
   const result = envelope(output);
