@@ -9,8 +9,9 @@
 - Search `price_from` is an item-price minimum before shipping. Call a delivered total only what
   `compare_offers` returns as a delivered total, and say when shipping or postcode is unknown.
 - Use only `product_id` values returned by BestPrice tools. Never guess one.
-- Keep explicit unknowns. Unknown shipping is unknown, never free or zero. Do not invent savings,
-  price predictions, specifications, stock, ratings or delivery costs.
+- Keep explicit unknowns. Unknown shipping is unknown, never free or zero. BestPrice does not
+  provide forecasts or target prices; price history is historical only. Savings, specifications,
+  stock, ratings and delivery costs are whatever the BestPrice result states.
 - Link the exact BestPrice URL the tool returned so the shopper can check the price before
   buying. Never construct or expose a direct merchant URL.
 - Coverage is the Greek market. Do not present BestPrice results as prices for other countries,
