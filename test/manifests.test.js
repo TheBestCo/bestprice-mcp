@@ -67,7 +67,11 @@ describe('OpenAI review package', () => {
     assert.ok(openai.publication.release_notes.startsWith(`Version ${release.version} `));
     assert.deepEqual(openai.publication.countries, ['GR']);
     assert.ok(openai.publication.translations['el-GR'].description.includes('ειδοποιήσεις'));
-    assert.equal(read('submission/openai/skills/bestprice-shopping/SKILL.md'), canonicalSkill);
+    assert.notEqual(
+      read('submission/openai/skills/bestprice-shopping/SKILL.md'),
+      canonicalSkill,
+      'submission/openai is a frozen review archive, not a live client skill',
+    );
     for (const key of ['apps', 'hooks']) assert.equal(key in release, false, key);
   });
 });
@@ -256,6 +260,10 @@ describe('endpoint manifests', () => {
     assert.deepEqual(readJson(`${dir}.claude-plugin/plugin.json`), claudePlugin);
     assert.deepEqual(readJson(`${dir}.mcp.json`), claudeMcp);
     assert.equal(read(`${dir}skills/bestprice-shopping/SKILL.md`), canonicalSkill);
+    assert.doesNotMatch(
+      read(`${dir}README.md`),
+      /events\/subscribe|events\/unsubscribe|price\.dropped|account linking/iu,
+    );
     assert.equal(read(`${dir}LICENSE`), read('LICENSE'));
     for (const file of listFiles()) {
       if (file.endsWith('.png')) continue;
@@ -337,6 +345,16 @@ describe('endpoint manifests', () => {
     ]) {
       assert.match(canonicalSkill, new RegExp(intent.replace(/[?]/gu, '\\?'), 'iu'), intent);
     }
+    assert.match(canonicalSkill, /BestPrice does not provide forecasts or target prices\./u);
+    assert.match(canonicalSkill, /`get_price_history` is historical only\./u);
+    assert.doesNotMatch(
+      canonicalSkill,
+      /events\/subscribe|events\/unsubscribe|price\.dropped|account linking|optimize_basket/iu,
+    );
+    assert.doesNotMatch(
+      canonicalSkill,
+      /Never predict|future-price predictions|never recommend a target price|Do not invent[^\n]*target prices/iu,
+    );
   });
 
   it('restricts Gemini and Qwen extensions to the six research tools', () => {

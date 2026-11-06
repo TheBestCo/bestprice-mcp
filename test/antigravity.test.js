@@ -68,6 +68,8 @@ describe('Antigravity plugin bundle', () => {
     assert.match(rule, /read-only/u);
     assert.match(rule, /price_from/u);
     assert.match(rule, /Never guess one/u);
+    assert.match(rule, /does not\s+provide forecasts or target prices/u);
+    assert.doesNotMatch(rule, /price predictions|events\/subscribe|optimize_basket/iu);
     const readme = read(`${bundle}README.md`);
     assert.match(readme, /https:\/\/www\.bestprice\.gr\/policies\/privacy/u);
     for (const tool of ['get_shopping_decision', 'search_products', 'compare_offers', 'get_price_history']) {

@@ -26,7 +26,7 @@ The server is read-only and needs no account, API key, or sign-in. It exposes fo
 - `compare_offers`: current Greek merchant offers, shipping, and delivered totals
 - `get_price_history`: historical prices for a product
 
-On hosts that support authenticated MCP Events, the skill can also create a price-drop alert, but only when you ask for one explicitly and after you link a BestPrice account. Nothing is subscribed automatically.
+`get_price_history` is historical only. BestPrice does not provide forecasts or target prices. The tools do not place orders or create price alerts.
 
 ## Data and privacy
 
