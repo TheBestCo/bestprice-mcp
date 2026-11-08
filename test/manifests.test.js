@@ -117,10 +117,15 @@ describe('package identity', () => {
     assert.equal(identity.license, 'Apache-2.0');
     assert.equal(identity.privacy, 'https://www.bestprice.gr/policies/privacy');
     assert.equal(identity.support, 'https://www.bestprice.gr/contact');
-    for (const manifest of [claudePlugin, codexPlugin, cursorPlugin, geminiExtension, qwenExtension]) {
+    for (const manifest of [claudePlugin, codexPlugin, cursorPlugin, qwenExtension]) {
       assert.equal(manifest.description, description);
       assert.equal(manifest.name, SERVER_NAME);
     }
+    // Gemini CLI has no display-name field. The gallery card title is `name`,
+    // which allows letters, so the card can read BestPrice while the MCP server
+    // id stays bestprice-shopping.
+    assert.equal(geminiExtension.description, description);
+    assert.equal(geminiExtension.name, 'BestPrice');
     assert.equal(agentPlugin.name, SERVER_NAME);
     assert.equal(readJson('glama.json').description, description);
     assert.equal(codexPlugin.interface.shortDescription, description);
