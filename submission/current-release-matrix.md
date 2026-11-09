@@ -43,7 +43,7 @@ section below still names `689f1126` and is historical.
 
 Both are fixed on backend branch `fix/mcp-audit-20261109` (commits
 `d95aa71f8f07` and `0595208d09d2`, tested on both channels; the offline
-closure is 5,511 passed, 1 skipped, 0 failed). They are **not deployed**; the
+closure is 5,525 tests: 5,524 passed, 1 skipped, 0 failed). They are **not deployed**; the
 behaviour above is the deployed behaviour.
 
 ### Release-evidence gaps that remain
