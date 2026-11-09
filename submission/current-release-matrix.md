@@ -20,13 +20,13 @@ to a merchant ([receipt](evidence/shopping-brain-live-2026-11-09.json)). The
 same sweep re-run after the deploy passed **41/41** again on `7185135`
 ([receipt](evidence/shopping-brain-live-postfix-2026-11-09.json)). It is one
 channel: live Ask, staff authorization and conversation-history continuity
-remain untested, so this does not establish Ask–MCP parity. The runner behind
-that receipt now contains 41 cases; it is not the 31-scenario dual-channel
-suite, which was not run.
+remain untested, so this does not establish Ask–MCP parity. The runner behind that receipt now contains 41 cases, not the 31 the audit
+named; its paced dual-channel run is reported below.
 
-Backend `main` advanced during this work, to `fc98da522fc6` by 09:05 UTC.
-Production served `7185135810112b07aed1a2f3f8c5ff0cc72ea550`, the newest
-completed build, two commits behind main. Jenkins build
+Backend `main` advanced during this work (`a21cb9d27601` by 09:45 UTC).
+Production served `7185135…` from 08:59 and `f994ec0dc76b…` from 09:29, the
+revision that carries the WebMCP 2.9 refresh and where the canary receipt below
+was taken. Jenkins build
 [#33492](https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/33492/display/redirect)
 is the green build for the earlier `0275d78`; the deployment sentence in the
 3 November section below still names `689f1126` and is historical.
@@ -54,18 +54,50 @@ probes after the rollout still reproduced the old behaviour because outgoing
 allocations answered them; every retained response carries the new revision
 header. [Fix receipt](evidence/mcp-audit-fixes-2026-11-09.json).
 
+### Submission canary passed
+
+On `f994ec0dc76b…` the canary passed **59/59 checks with 0 skipped**: 66
+requests inside its 90-request budget, 0 rate-limit retries, 0 merchant
+redirects and 0 checkout tools, across 49 responses on one stable revision
+([receipt](evidence/submission-canary-2026-11-09.json)). It includes the signed
+BestPrice landing (303, attribution cookie set, never followed to a merchant)
+and the landing-telemetry check (landing observed in New Relic, 0 charged
+events) — the leg earlier retained evidence had skipped.
+
+The run needs `--expect-plugin-extensions`: the hosted service serves
+`ui://bestprice/shopping-workspace-v8.html`, not the portable results resource.
+The checker also had to accept `merchant_logo_raster_url`, which `compare_offers`
+serves under the same CDN authority rule as the SVG logo.
+
+### WebMCP contract 2.9
+
+The website republished `/webmcp.json` and `/.well-known/webmcp.json` as
+contract 2.9 on 29 October. The Node mirror was still 2.8, which is why the
+canary aborted at its WebMCP check before the landing and telemetry legs. The
+mirror was refreshed with the `curl` command the module documents, and the
+strict registry projection moved to the 2.9 shape (tool `kind`, `auth`,
+`pricing`, no scanner-page hint). Both hosts now serve the same documents apart
+from their publish stamps.
+
+### Dual-channel Ask–MCP sweep
+
+A paced run of the 41-case dual-channel runner on `f994ec0d` completed
+**40/41** with 80 channel observations
+([receipt](evidence/dual-channel-2026-11-09.json)). The MCP channel passed all
+41. The one failure was the Ask side of `phone_nfc_plus_esim` — a safety check,
+not a transport error — in two burst runs; three isolated repeats returned
+`no_match` with the NFC and eSIM requirements from both channels. Earlier
+back-to-back runs also hit HTTP/2 `GOAWAY` on the anonymous Ask endpoint, which
+is why the runner now paces scenarios.
+
 ### Release-evidence gaps that remain
 
-- **The submission canary clears the AI-catalog contract and still does not
-  complete.** On `7185135` it advances past that check and aborts at `WebMCP
-  repository contract drifted across hosts`: the backend mirror in
-  `services/agent-commerce/discovery.js` is the 2.8.0 inventory, while the
-  website publishes 2.9.0 (Greek titles, `icons`, `scanPages`). No passing
-  canary receipt exists, and the signed-attribution leg after that check was
-  not reached. Regenerating that mirror is data work, not part of these fixes.
-- The 31-scenario/62-response dual-channel runner was not run.
-- Staff Ask, conversation-history continuity, merchant navigation and account
-  writes remain outside anonymous reach.
+- Authenticated staff Ask and conversation-history continuity remain untested;
+  the probe exercises the anonymous Ask endpoint.
+- Ask and MCP copy are only comparable in Greek: Ask answers in Greek, the MCP
+  projection matches the request language. The runner compares the pick and the
+  reason count for every case, and the prose only for Greek requests.
+- Merchant navigation and account writes remain outside anonymous reach.
 
 ### Distribution checks
 
