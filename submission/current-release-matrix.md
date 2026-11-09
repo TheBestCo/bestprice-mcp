@@ -3,7 +3,7 @@
 ## 9 November 2026 — production truth and open release gates
 
 The live gateway is **1.9.0**. At 08:16 UTC it served revision
-`0275d78a976d9de67c0b4e898175069041d6264e`; by 10:24 UTC it served
+`0275d78a976d9de67c0b4e898175069041d6264e`; by 08:24 UTC it served
 `7bb4d63ce1f2b9827a37476d9726986f88862738`, the revision the morning audit
 still recorded as pending CI. Both readings come from `/healthz` and the
 `x-bestprice-revision` header. The 1.9.0 registry entry is
@@ -16,18 +16,20 @@ The deployed inventory is six tools (`check_deal`, `compare_offers`,
 
 A fresh sweep against `7bb4d63` passed **41/41 MCP cases** with 44 stable
 responses; the one signed landing it opened returned 303 and was not followed
-to a merchant ([receipt](evidence/shopping-brain-live-2026-11-09.json)). It is
-one channel: live Ask, staff authorization and conversation-history continuity
+to a merchant ([receipt](evidence/shopping-brain-live-2026-11-09.json)). The
+same sweep re-run after the deploy passed **41/41** again on `7185135`
+([receipt](evidence/shopping-brain-live-postfix-2026-11-09.json)). It is one
+channel: live Ask, staff authorization and conversation-history continuity
 remain untested, so this does not establish Ask–MCP parity. The runner behind
 that receipt now contains 41 cases; it is not the 31-scenario dual-channel
 suite, which was not run.
 
-Current backend `main` was `3e7da6334dd6` at 10:22 UTC, five commits past the
-deployed revision, so production was already behind main when this was written.
-Jenkins build
+Backend `main` advanced during this work, to `fc98da522fc6` by 09:05 UTC.
+Production served `7185135810112b07aed1a2f3f8c5ff0cc72ea550`, the newest
+completed build, two commits behind main. Jenkins build
 [#33492](https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/33492/display/redirect)
-is the green build for `0275d78`; the deployment sentence in the 3 November
-section below still names `689f1126` and is historical.
+is the green build for the earlier `0275d78`; the deployment sentence in the
+3 November section below still names `689f1126` and is historical.
 
 ### Two production defects, reproduced on both revisions
 
@@ -41,22 +43,26 @@ section below still names `689f1126` and is historical.
    κάλυψε το ακριβές μοντέλο»), discarding the price history the Buy/Wait
    question was asked for.
 
-Both are fixed on backend branch `fix/mcp-audit-20261109` (commits
-`d95aa71f8f07` and `0595208d09d2`, tested on both channels; the offline
-closure is 5,525 tests: 5,524 passed, 1 skipped, 0 failed). They are **not deployed**; the
-behaviour above is the deployed behaviour.
+All three fixes were deployed at 08:59 UTC in
+`7185135810112b07aed1a2f3f8c5ff0cc72ea550` (commits `d95aa71f8f07`,
+`0595208d09d2` and `3f5f45bf9867`; the offline closure is 5,525 tests: 5,524
+passed, 1 skipped, 0 failed). On that revision, repeated MCP calls returned
+clarification with `search_calls: 0` for the three digital phrasings, and the
+Eldom FR45 Buy/Wait question — Greek and English — recommended
+`bp_2164176215` with `price_verdict: typical` and one history source. The first
+probes after the rollout still reproduced the old behaviour because outgoing
+allocations answered them; every retained response carries the new revision
+header. [Fix receipt](evidence/mcp-audit-fixes-2026-11-09.json).
 
 ### Release-evidence gaps that remain
 
-- **The submission canary does not complete against the deployed revision.**
-  It aborts at `AI Catalog repository contract drifted across hosts`: the
-  website publishes `"displayName": "BestPrice"` with `updatedAt` 2026-10-29,
-  while the backend constant and the host's stamped copy publish
-  `"BestPrice.gr"` with 2026-09-24. No passing canary receipt exists for
-  `0275d78` or `7bb4d63`, and the signed-attribution leg after that check was
-  never reached. Commit `3f5f45bf9867` aligns the discovery identity and treats
-  publish dates as dates, so the check can pass after that deploy; this is not
-  claimed as done.
+- **The submission canary clears the AI-catalog contract and still does not
+  complete.** On `7185135` it advances past that check and aborts at `WebMCP
+  repository contract drifted across hosts`: the backend mirror in
+  `services/agent-commerce/discovery.js` is the 2.8.0 inventory, while the
+  website publishes 2.9.0 (Greek titles, `icons`, `scanPages`). No passing
+  canary receipt exists, and the signed-attribution leg after that check was
+  not reached. Regenerating that mirror is data work, not part of these fixes.
 - The 31-scenario/62-response dual-channel runner was not run.
 - Staff Ask, conversation-history continuity, merchant navigation and account
   writes remain outside anonymous reach.

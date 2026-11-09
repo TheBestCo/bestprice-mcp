@@ -1,0 +1,75 @@
+{
+  "schema": "bestprice.mcp.audit.fix-receipt.v1",
+  "observed_at": "2026-11-09T09:00:00Z",
+  "endpoint": "https://mcp.bestprice.gr/mcp",
+  "server_version": "1.9.0",
+  "revision": "7185135810112b07aed1a2f3f8c5ff0cc72ea550",
+  "backend_commits": ["d95aa71f8f07", "0595208d09d2", "3f5f45bf9867"],
+  "checks": [
+    {
+      "id": "digital_only_english",
+      "message": "Netflix/gift card; do not search",
+      "runs": 3,
+      "outcome": "clarification",
+      "search_calls": 0,
+      "scope_answer": true
+    },
+    {
+      "id": "digital_only_english_alt",
+      "message": "I want a Netflix gift card, do not search",
+      "runs": 1,
+      "outcome": "clarification",
+      "search_calls": 0,
+      "scope_answer": true
+    },
+    {
+      "id": "digital_only_greek",
+      "message": "Θέλω δωροκάρτα Netflix, μην ψάξεις",
+      "runs": 1,
+      "outcome": "clarification",
+      "search_calls": 0,
+      "scope_answer": true
+    },
+    {
+      "id": "named_model_buy_wait_greek",
+      "message": "Eldom FR45 — να το αγοράσω τώρα ή να περιμένω;",
+      "runs": 3,
+      "outcome": "recommendation",
+      "primary_product_id": "bp_2164176215",
+      "primary_title": "Eldom FR45 Air Fryer 4.5lt Inox",
+      "price_verdict": "typical",
+      "history_sources": 1,
+      "predicts_future_price": false
+    },
+    {
+      "id": "named_model_buy_wait_english",
+      "message": "Should I buy the Eldom FR45 now or wait?",
+      "runs": 1,
+      "outcome": "recommendation",
+      "primary_product_id": "bp_2164176215",
+      "price_verdict": "typical",
+      "history_sources": 1,
+      "predicts_future_price": false
+    }
+  ],
+  "mcp_sweep": {
+    "cases": 41,
+    "passed": 41,
+    "responses": 44,
+    "stable_revision": true,
+    "channels": ["mcp"],
+    "receipt": "shopping-brain-live-postfix-2026-11-09.json"
+  },
+  "submission_canary": {
+    "result": "blocked",
+    "ai_catalog_contract": "passed",
+    "blocker": "WebMCP repository contract drifted across hosts",
+    "webmcp_repository_version": "2.8.0",
+    "webmcp_website_version": "2.9.0",
+    "signed_attribution_reached": false
+  },
+  "notes": [
+    "The first probes issued while the rollout was in flight were answered by outgoing allocations and reproduced the old behaviour; every retained response carries the new revision header.",
+    "This receipt covers the MCP channel only. Live Ask and staff conversation history were not tested."
+  ]
+}
