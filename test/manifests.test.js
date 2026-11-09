@@ -376,6 +376,21 @@ describe('endpoint manifests', () => {
     assert.equal(read('GEMINI.md'), read('QWEN.md'), 'GEMINI.md and QWEN.md must stay identical');
   });
 
+  it('documents the same six-tool inventory that the manifests import', () => {
+    /* The README advertised six tools and then told Gemini/Qwen readers the
+     * extensions import «the four listed above» (release audit, 9 Nov). The
+     * prose is the only place that inventory is restated, so it is checked. */
+    const readme = read('README.md');
+    const documented = [...readme.matchAll(/^\| `([a-z_]+)` \|/gmu)].map(match => match[1]).sort();
+    assert.deepEqual(
+      documented,
+      [...EXPECTED_TOOLS].sort(),
+      'README tool table must list every research tool',
+    );
+    assert.match(readme, /restrict the imported tools to the six listed above\./u);
+    assert.doesNotMatch(readme, /to the four (?:research )?tools listed above/iu);
+  });
+
   it('describes the hosted server for the official MCP Registry', () => {
     assert.equal(
       registry.$schema,

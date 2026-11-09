@@ -1,0 +1,2000 @@
+{
+  "version": "bestprice_brain_http_probe_v1",
+  "generated_at": "2026-11-09T08:25:55.059Z",
+  "endpoints": {
+    "mcp": "https://mcp.bestprice.gr/mcp"
+  },
+  "channels": [
+    "mcp"
+  ],
+  "server_version": "1.9.0",
+  "deployment": {
+    "scope": "mcp_gateway",
+    "revision": "7bb4d63ce1f2b9827a37476d9726986f88862738",
+    "responses": 44,
+    "stable": true
+  },
+  "discovery": {
+    "url": "https://www.bestprice.gr/.well-known/mcp.json",
+    "version": "1.9.0",
+    "endpoint": "https://mcp.bestprice.gr/mcp",
+    "tools_source": "mcp://server-card.json",
+    "tools": 6,
+    "capabilities_checked": 4,
+    "matches_runtime": true
+  },
+  "passed": true,
+  "cases": [
+    {
+      "id": "coffee_cups_greeklish",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 7524,
+          "outcome": "recommendation",
+          "decision_id": "4d8633ff-94a6-46bf-842c-9937ff8299c7",
+          "evidence_fingerprint": "a42a57c52adfef525868e407f542ba36214f9fef54f27dae94f5ef23b7073332",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2155870246",
+          "family": "espresso_machines",
+          "attributes": {
+            "cup_count": 10
+          },
+          "evidence_sources": 43,
+          "evidence_claims": 371,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "typical",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "άμεσα διαθέσιμη προσφορά σε απόθεμα",
+              "Χωρητικότητα σε Φλυτζάνια από 8 Φλυτζάνια"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 132227
+        }
+      ]
+    },
+    {
+      "id": "coffee_cups_greek",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1313,
+          "outcome": "recommendation",
+          "decision_id": "0b72bfb4-a0ca-4d0d-8d8a-5fd3addb8373",
+          "evidence_fingerprint": "87ab4569be6541b63f6f187e046f2a7e82f41de0c9ce79a51ce3528027c2ea50",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2155870246",
+          "family": "espresso_machines",
+          "attributes": {
+            "cup_count": 10
+          },
+          "evidence_sources": 43,
+          "evidence_claims": 371,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "typical",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "άμεσα διαθέσιμη προσφορά σε απόθεμα",
+              "Χωρητικότητα σε Φλυτζάνια από 8 Φλυτζάνια"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 132227
+        }
+      ]
+    },
+    {
+      "id": "coffee_cups_english",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1991,
+          "outcome": "recommendation",
+          "decision_id": "3a950f30-bf5f-45c6-9a07-9afcecdd0585",
+          "evidence_fingerprint": "feb541a79b3db833145ef8d63118376d1af543b1f17aacc57ff2847588e0313f",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2155104502",
+          "family": "espresso_machines",
+          "attributes": {
+            "automatic": true,
+            "cup_count": 15
+          },
+          "evidence_sources": 45,
+          "evidence_claims": 396,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "άμεσα διαθέσιμη προσφορά σε απόθεμα",
+              "Χωρητικότητα σε Φλυτζάνια από 8 Φλυτζάνια"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 141140
+        }
+      ]
+    },
+    {
+      "id": "fridge_colour_alternatives_greek",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2053,
+          "outcome": "recommendation",
+          "decision_id": "26bbc4b2-db22-4ba2-8504-6ea934dc5931",
+          "evidence_fingerprint": "ab47c4404435cef2d116c248d3daf7f4be89f3e7ea87a2a15e0e2afbad91ab5d",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2158765287",
+          "family": "refrigerators",
+          "attributes": {
+            "capacity_litres": 41,
+            "width_cm": 44,
+            "energy_class": "E"
+          },
+          "evidence_sources": 43,
+          "evidence_claims": 415,
+          "returned_scope": "returned_page",
+          "search_calls": 2,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "typical",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "Χρώμα: Μαύρο ή γκρι"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 200,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 147356
+        }
+      ]
+    },
+    {
+      "id": "fridge_colour_alternatives_english",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1765,
+          "outcome": "recommendation",
+          "decision_id": "626a3190-90fb-42e1-b5da-d611cd68cb10",
+          "evidence_fingerprint": "c9f1727251cec6771d16392bc1456792dd471e558e49c7ad7dabbb14d0eceef6",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160857982",
+          "family": "refrigerators",
+          "attributes": {
+            "capacity_litres": 41,
+            "width_cm": 47.2,
+            "energy_class": "E"
+          },
+          "evidence_sources": 43,
+          "evidence_claims": 415,
+          "returned_scope": "returned_page",
+          "search_calls": 2,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "typical",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "Χρώμα: Μαύρο ή grey"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 200,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 146550
+        }
+      ]
+    },
+    {
+      "id": "phone_ram_without_gb",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2524,
+          "outcome": "recommendation",
+          "decision_id": "9263fcab-ee5c-476d-a83c-b820d16965b0",
+          "evidence_fingerprint": "e89ddd2d140f1881c00a9b87e09eeda6e95d010857a41cbcb151f617267ebee5",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2158350194",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "network_5g": false,
+            "panel_type": "IPS",
+            "dual_sim": true
+          },
+          "evidence_sources": 17,
+          "evidence_claims": 232,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": 6,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 93396
+        }
+      ]
+    },
+    {
+      "id": "phone_ram_budget_150",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1650,
+          "outcome": "recommendation",
+          "decision_id": "14bf91a4-bdf4-4ae5-9de7-f976fb97e8a7",
+          "evidence_fingerprint": "3c3a2d98865ced1f92bcdf429c24fc5f531410430fe651a386fd224e0729b1e1",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160879253",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "network_5g": false,
+            "nfc": true,
+            "panel_type": "IPS",
+            "dual_sim": true
+          },
+          "evidence_sources": 19,
+          "evidence_claims": 242,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": 8,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 150,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 96475
+        }
+      ]
+    },
+    {
+      "id": "laptop_600_ram16",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1100,
+          "outcome": "recommendation",
+          "decision_id": "b5db25fc-ef48-4e6e-8fc3-6224679ff92d",
+          "evidence_fingerprint": "f619d29225caa4bda3961220edbc2b7f0d47324b5c7d59922933991fcdf9d7bc",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2164008180",
+          "family": "laptops",
+          "attributes": {
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "operating_system": "FreeDOS",
+            "dedicated_gpu": false
+          },
+          "evidence_sources": 16,
+          "evidence_claims": 145,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": 16,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 600,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 63459
+        }
+      ]
+    },
+    {
+      "id": "laptop_delivered",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1861,
+          "outcome": "recommendation",
+          "decision_id": "710626a2-2d1f-4b45-99fa-f3267e6d8b27",
+          "evidence_fingerprint": "9f1081ef0a510f5ea454d2dbac9669b2cabd2a13866672dd4f9150ecb89a8a6c",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2159543182",
+          "family": "laptops",
+          "attributes": {
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "operating_system": "Windows 11",
+            "dedicated_gpu": false
+          },
+          "evidence_sources": 29,
+          "evidence_claims": 319,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": 16,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 600,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "known",
+          "delivered_total": 589,
+          "receipt_bytes": 117406
+        }
+      ]
+    },
+    {
+      "id": "phone_300",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1799,
+          "outcome": "recommendation",
+          "decision_id": "a3879321-71ea-4025-a977-35d0a5152200",
+          "evidence_fingerprint": "4eb0badfc2834a03f58c483646c4a1fac624b14183fa15b98ff6096d470b5ffb",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2163712148",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "network_5g": true,
+            "nfc": true,
+            "panel_type": "AMOLED",
+            "dual_sim": true
+          },
+          "evidence_sources": 46,
+          "evidence_claims": 541,
+          "returned_scope": "returned_page",
+          "search_calls": 3,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 191931
+        }
+      ]
+    },
+    {
+      "id": "tv_55_500",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 980,
+          "outcome": "recommendation",
+          "decision_id": "832e8b38-6c1e-4d4f-8b56-4c388445a346",
+          "evidence_fingerprint": "76b6759057abd8bc9d5b717039e97e0c258ee748b12ce7939f8986f445f40f64",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160624651",
+          "family": "televisions",
+          "attributes": {
+            "screen_diagonal_inches": 55,
+            "panel_technology": "DLED",
+            "release_year": 2025
+          },
+          "evidence_sources": 44,
+          "evidence_claims": 467,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "typical",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "οθόνη 55 ιντσών"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 500,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 164903
+        }
+      ]
+    },
+    {
+      "id": "ac_20sqm_500",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1632,
+          "outcome": "recommendation",
+          "decision_id": "6811dc54-d72f-4302-8aad-4bf7ca71030b",
+          "evidence_fingerprint": "310408aaf0d9c1f4c24427dd6caf4cd667c217c9c0c7d73c15073a913e462c0d",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2159736789",
+          "family": "air_conditioners",
+          "attributes": {
+            "cooling_btu": 12000,
+            "inverter": true,
+            "cooling_energy_class": "A+++",
+            "heating_energy_class": "A+++"
+          },
+          "evidence_sources": 44,
+          "evidence_claims": 423,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 500,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 152262
+        }
+      ]
+    },
+    {
+      "id": "air_fryer_capacity",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2323,
+          "outcome": "recommendation",
+          "decision_id": "feeda25c-532e-4ffa-b86c-ee9dd90c69f8",
+          "evidence_fingerprint": "c0b1c9202476e9e5e78281a91c28124ca08ea9895343a677b46c195801c1b3a3",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2155986893",
+          "family": "air_fryers",
+          "attributes": {
+            "capacity_litres": 3.5,
+            "people_count": 2,
+            "dual_basket": false
+          },
+          "evidence_sources": 43,
+          "evidence_claims": 376,
+          "returned_scope": "returned_page",
+          "search_calls": 4,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": {
+              "minimum": 3.5,
+              "maximum": 5.5,
+              "target": 4.5
+            },
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 100,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 134292
+        }
+      ]
+    },
+    {
+      "id": "hard_budget_no_match",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2129,
+          "outcome": "no_match",
+          "decision_id": "5af335b5-4bb5-40f2-8583-bd787d06a9d1",
+          "evidence_fingerprint": "bf882bf8d5dca0eaa4c42a1dea0c701a2171e37989115b6b182ae16c5f286576",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": 16,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 10,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 2968
+        }
+      ]
+    },
+    {
+      "id": "room_clarification",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 364,
+          "outcome": "clarification",
+          "decision_id": "2df00fb2-92e7-4940-804f-8cbcff1c5072",
+          "evidence_fingerprint": "c36d50bdc38d1af5dfee3c96c494a0119a62c4214c123591c9307021fe6c1d4d",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "not_searched",
+          "search_calls": 0,
+          "retained_page_search_calls": 0,
+          "trinity_calls": null,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": [
+              "room_area_required"
+            ]
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 500,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 3196
+        }
+      ]
+    },
+    {
+      "id": "current_budget_correction",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 798,
+          "outcome": "recommendation",
+          "decision_id": "a0fe0c3b-b14e-40ee-81cc-8c6ba7d65acc",
+          "evidence_fingerprint": "3e22e9c8f5447efe09903d347a2a44f27819e456ceff1d0cecfd9919bf4cc23f",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160535738",
+          "family": "laptops",
+          "attributes": {
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "operating_system": "Windows 11",
+            "dedicated_gpu": false
+          },
+          "evidence_sources": 19,
+          "evidence_claims": 198,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": 16,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 450,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 81655
+        }
+      ]
+    },
+    {
+      "id": "contradictory_price_bounds",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 110,
+          "outcome": "clarification",
+          "decision_id": "f738e4b2-ca6c-4310-b0e5-90c536bed99a",
+          "evidence_fingerprint": "9911419922bcd2d1698d5bebac3fcbc24d9615240fbf706b1e917e99296cb461",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "not_searched",
+          "search_calls": 0,
+          "retained_page_search_calls": 0,
+          "trinity_calls": null,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": [
+              "missing_shopping_context"
+            ]
+          },
+          "price_constraints": {
+            "minimum_eur": 800,
+            "maximum_eur": 500,
+            "explicitly_unbounded": false,
+            "conflict_codes": [
+              "incompatible_price_bounds"
+            ],
+            "unsupported_codes": []
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 2652
+        }
+      ]
+    },
+    {
+      "id": "phone_300_5g_nfc_ois",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1895,
+          "outcome": "recommendation",
+          "decision_id": "1bee676d-40b4-46c7-adff-75acb9113d91",
+          "evidence_fingerprint": "bb704d571ee0dffa0977a58db5137ea0e347788899da3b48f6a28737002a39aa",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2163841269",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "network_5g": true,
+            "nfc": true,
+            "ois": true,
+            "panel_type": "AMOLED",
+            "dual_sim": true
+          },
+          "evidence_sources": 16,
+          "evidence_claims": 194,
+          "returned_scope": "returned_page",
+          "search_calls": 2,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "NFC",
+              "5G",
+              "οπτική σταθεροποίηση εικόνας (OIS)"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 71321
+        }
+      ]
+    },
+    {
+      "id": "current_ceiling_after_unlimited",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2461,
+          "outcome": "recommendation",
+          "decision_id": "d1d60f7a-2fcf-4923-9569-db6ac3efeafb",
+          "evidence_fingerprint": "1e8535692158582bc34c23f683da68789d5a5ab27fef725bd4464634d35e88ea",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2163355612",
+          "family": "laptops",
+          "attributes": {
+            "ram_gb": 4,
+            "storage_gb": 64,
+            "operating_system": "ChromeOS",
+            "dedicated_gpu": false
+          },
+          "evidence_sources": 13,
+          "evidence_claims": 106,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 50074
+        }
+      ]
+    },
+    {
+      "id": "foreign_currency_clarification",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 285,
+          "outcome": "clarification",
+          "decision_id": "21f6446d-2aa6-463f-8d57-ea9769210aa1",
+          "evidence_fingerprint": "ba065ea30d0040aff0ad78d0972a4bf959ca6e74bc41658068467633aa7baefd",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "not_searched",
+          "search_calls": 0,
+          "retained_page_search_calls": 0,
+          "trinity_calls": null,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": [
+              "missing_shopping_context"
+            ]
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": [
+              "unsupported_currency"
+            ]
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 2466
+        }
+      ]
+    },
+    {
+      "id": "alphabetic_currency_range",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2946,
+          "outcome": "recommendation",
+          "decision_id": "e228c5dc-182d-4d7a-b98b-f49f968f4088",
+          "evidence_fingerprint": "1ae516bcf32391e6a04202e3bb0bab2af57def46879523baf1244846c1a53e19",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2163728026",
+          "family": "laptops",
+          "attributes": {
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "operating_system": "Windows 11",
+            "dedicated_gpu": false
+          },
+          "evidence_sources": 40,
+          "evidence_claims": 366,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": 800,
+            "maximum_eur": 1000,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 131251
+        }
+      ]
+    },
+    {
+      "id": "attached_foreign_currency_range",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 167,
+          "outcome": "clarification",
+          "decision_id": "d397db78-79a7-4f0c-a14b-e3f0d020d978",
+          "evidence_fingerprint": "74c49f79041ab006056579cb520cdd1611e8d4dcaa200bc8cc5d206dd2554b0d",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "not_searched",
+          "search_calls": 0,
+          "retained_page_search_calls": 0,
+          "trinity_calls": null,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": [
+              "missing_shopping_context"
+            ]
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": [
+              "unsupported_currency"
+            ]
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 2466
+        }
+      ]
+    },
+    {
+      "id": "malformed_currency_range",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 375,
+          "outcome": "clarification",
+          "decision_id": "c204f61d-ed89-4154-b706-d9f1971a82ef",
+          "evidence_fingerprint": "3ade916fdafeb9dcd8eb04ff2a9ff72e627abab831e6dff8a7d27ab31f2c9cdb",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "not_searched",
+          "search_calls": 0,
+          "retained_page_search_calls": 0,
+          "trinity_calls": null,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": [
+              "missing_shopping_context"
+            ]
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": null,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": [
+              "invalid_price_amount"
+            ]
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 2339
+        }
+      ]
+    },
+    {
+      "id": "mixed_budget_correction",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 616,
+          "outcome": "recommendation",
+          "decision_id": "6b5e6463-0ac0-4196-8ea7-7e2bc05592f2",
+          "evidence_fingerprint": "8109935cc1e4609ff78bc1be1f0f7dc256967c57305274cb861ef28c3cbe0706",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2163451457",
+          "family": "laptops",
+          "attributes": {
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "cpu_model": "Intel N150",
+            "operating_system": "Windows 11",
+            "dedicated_gpu": false
+          },
+          "evidence_sources": 33,
+          "evidence_claims": 329,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 400,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 121599
+        }
+      ]
+    },
+    {
+      "id": "english_contradictory_price_bounds",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 167,
+          "outcome": "clarification",
+          "decision_id": "7b1db847-be97-4985-965a-dbdd9a31016a",
+          "evidence_fingerprint": "f2104c621b88bb08e3e1d0d38affc496290d9633df5ed89d83a9010376798e7d",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "not_searched",
+          "search_calls": 0,
+          "retained_page_search_calls": 0,
+          "trinity_calls": null,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": [
+              "missing_shopping_context"
+            ]
+          },
+          "price_constraints": {
+            "minimum_eur": 800,
+            "maximum_eur": 500,
+            "explicitly_unbounded": false,
+            "conflict_codes": [
+              "incompatible_price_bounds"
+            ],
+            "unsupported_codes": []
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 2642
+        }
+      ]
+    },
+    {
+      "id": "phone_300_ois_greek_words",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1582,
+          "outcome": "recommendation",
+          "decision_id": "8d192820-a93c-4034-b3db-2a4265ed3c8f",
+          "evidence_fingerprint": "42cbf8f7d8da751b218f41a334d95f6bdee293ab088de8ad54b7548f95a3e281",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2163841269",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "network_5g": true,
+            "nfc": true,
+            "ois": true,
+            "panel_type": "AMOLED",
+            "dual_sim": true
+          },
+          "evidence_sources": 16,
+          "evidence_claims": 194,
+          "returned_scope": "returned_page",
+          "search_calls": 2,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "NFC",
+              "5G",
+              "οπτική σταθεροποίηση εικόνας (OIS)"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 71320
+        }
+      ]
+    },
+    {
+      "id": "phone_300_ois_english_words",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1667,
+          "outcome": "recommendation",
+          "decision_id": "eaa18aee-422f-486f-9c16-69ee32231765",
+          "evidence_fingerprint": "bfef79ad030066fcda4c32af96e1a8e505985cdb7b817d38288e25206b0cd2bb",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2163841269",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "network_5g": true,
+            "nfc": true,
+            "ois": true,
+            "panel_type": "AMOLED",
+            "dual_sim": true
+          },
+          "evidence_sources": 16,
+          "evidence_claims": 194,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "NFC",
+              "5G",
+              "οπτική σταθεροποίηση εικόνας (OIS)"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 70699
+        }
+      ]
+    },
+    {
+      "id": "ram_intersection",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2312,
+          "outcome": "recommendation",
+          "decision_id": "47d8566e-8b2a-46f2-83ca-a56de93a573d",
+          "evidence_fingerprint": "4fa2e116324c716b0daa84250ac739ea8607873bd56f62f2b39acacd8764e54a",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160878439",
+          "family": "laptops",
+          "attributes": {
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "cpu_model": "Intel N150",
+            "operating_system": "Windows 11",
+            "dedicated_gpu": false
+          },
+          "evidence_sources": 26,
+          "evidence_claims": 231,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": 8,
+            "maximum_ram_gb": 16,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 600,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 89970
+        }
+      ]
+    },
+    {
+      "id": "ram_conflict",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 108,
+          "outcome": "clarification",
+          "decision_id": "599f0867-b3a6-49f7-bc18-d04150852ab4",
+          "evidence_fingerprint": "2a5ee62382ab0de805b1713b8e0738100ec72fb00c40e1653329bc849879b2b6",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "not_searched",
+          "search_calls": 0,
+          "retained_page_search_calls": 0,
+          "trinity_calls": null,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": [
+              "missing_shopping_context"
+            ]
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 600,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 2422
+        }
+      ]
+    },
+    {
+      "id": "capacity_intersection",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2112,
+          "outcome": "recommendation",
+          "decision_id": "8906155f-cce1-4ae9-8f30-39988371c30b",
+          "evidence_fingerprint": "44b4f6c6997045508e4cc775aafe44a7319db296f8f2991d860197e98a457782",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2157732664",
+          "family": "air_fryers",
+          "attributes": {
+            "capacity_litres": 4.2,
+            "people_count": 2,
+            "dual_basket": false
+          },
+          "evidence_sources": 43,
+          "evidence_claims": 374,
+          "returned_scope": "returned_page",
+          "search_calls": 3,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "typical",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": {
+              "minimum": 4,
+              "maximum": 5,
+              "target": 4.5
+            },
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 100,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 133502
+        }
+      ]
+    },
+    {
+      "id": "capacity_between_greek",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2019,
+          "outcome": "recommendation",
+          "decision_id": "97c49722-b6b9-4e15-b6eb-12617451a9bb",
+          "evidence_fingerprint": "f651c67c8c6bcf171c9540e5a0d7a4ab3ebc9948e8b2d72040e2a4a38e5e2d84",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2157732664",
+          "family": "air_fryers",
+          "attributes": {
+            "capacity_litres": 4.2,
+            "people_count": 2,
+            "dual_basket": false
+          },
+          "evidence_sources": 43,
+          "evidence_claims": 374,
+          "returned_scope": "returned_page",
+          "search_calls": 3,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "typical",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": {
+              "minimum": 4,
+              "maximum": 5,
+              "target": 4.5
+            },
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 100,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 133502
+        }
+      ]
+    },
+    {
+      "id": "capacity_conflict",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 141,
+          "outcome": "clarification",
+          "decision_id": "fcafbb9f-8183-48f6-952d-f30b633f38b9",
+          "evidence_fingerprint": "22a7ed86bb956b7fcb43e3fd282ad2ce414d40819e159209d1fe5afcee3f2e10",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "not_searched",
+          "search_calls": 0,
+          "retained_page_search_calls": 0,
+          "trinity_calls": null,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": [
+              "missing_shopping_context"
+            ]
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 100,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 2524
+        }
+      ]
+    },
+    {
+      "id": "english_contracted_negation",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 834,
+          "outcome": "recommendation",
+          "decision_id": "49a8d39c-af1e-456c-ac75-d47bb239cfee",
+          "evidence_fingerprint": "9eb25fde1950e182c946c10b921196cc3be9ae145854b238324e4c52087712aa",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160536827",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "network_5g": false,
+            "nfc": false,
+            "panel_type": "IPS",
+            "dual_sim": true
+          },
+          "evidence_sources": 28,
+          "evidence_claims": 304,
+          "returned_scope": "returned_page",
+          "search_calls": 2,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "χωρίς NFC"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 112070
+        }
+      ]
+    },
+    {
+      "id": "greek_negated_possession",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 715,
+          "outcome": "recommendation",
+          "decision_id": "ac960c37-13e2-41e3-8e7f-d865297fec51",
+          "evidence_fingerprint": "a0ec4fbd1a7dbafd42fe896a716b4e9e17635b1dba37e29c99c8d9d40e6ccb8b",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160536827",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "network_5g": false,
+            "nfc": false,
+            "panel_type": "IPS",
+            "dual_sim": true
+          },
+          "evidence_sources": 28,
+          "evidence_claims": 304,
+          "returned_scope": "returned_page",
+          "search_calls": 2,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "χωρίς NFC"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 112831
+        }
+      ]
+    },
+    {
+      "id": "phone_negative_feature_list",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 589,
+          "outcome": "recommendation",
+          "decision_id": "7581e26d-660e-4bb6-a936-de49be3dcf6d",
+          "evidence_fingerprint": "b76b2a31bf33ed354264abfc1cb2a13ea6d97320c1764abfa222318e5a7900f1",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160536827",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "network_5g": false,
+            "nfc": false,
+            "panel_type": "IPS",
+            "dual_sim": true
+          },
+          "evidence_sources": 28,
+          "evidence_claims": 304,
+          "returned_scope": "returned_page",
+          "search_calls": 2,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "χωρίς NFC",
+              "χωρίς 5G"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 112862
+        }
+      ]
+    },
+    {
+      "id": "phone_negative_feature_brand",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1268,
+          "outcome": "recommendation",
+          "decision_id": "a5528349-a731-4d9e-93e9-d698310925c9",
+          "evidence_fingerprint": "4e93dfb1fb0a2a69ca5f214823ac7582b69a8d5d64ff1932bcb12cab51f2feb1",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160536827",
+          "family": "phones",
+          "attributes": {
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "network_5g": false,
+            "nfc": false,
+            "panel_type": "IPS",
+            "dual_sim": true
+          },
+          "evidence_sources": 28,
+          "evidence_claims": 304,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "χωρίς NFC",
+              "όχι Samsung"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 112864
+        }
+      ]
+    },
+    {
+      "id": "phone_negative_feature_excluded_model_brand",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 2493,
+          "outcome": "no_match",
+          "decision_id": "3e70a43c-3c68-451c-99d6-af7cf6a6eaeb",
+          "evidence_fingerprint": "25799d470182152680c2481eb05b315ad644ef35ba88aeaab37ee456ae881fbc",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "returned_page",
+          "search_calls": 2,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "χωρίς NFC",
+              "όχι Xiaomi"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 3084
+        }
+      ]
+    },
+    {
+      "id": "phone_nfc_plus_esim",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 6472,
+          "outcome": "no_match",
+          "decision_id": "a3b84bce-8d1e-485b-9837-971b73f2843f",
+          "evidence_fingerprint": "ff250a02e27974efd7f2dde6ff20ea2655510f3d6f3c363c0be63b1a06f2ba5a",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": null,
+          "family": null,
+          "attributes": {},
+          "evidence_sources": 0,
+          "evidence_claims": 0,
+          "returned_scope": "returned_page",
+          "search_calls": 3,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "NFC",
+              "Τύπος SIM: eSIM"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 300,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": null,
+          "delivered_total": null,
+          "receipt_bytes": 3086
+        }
+      ]
+    },
+    {
+      "id": "additive_ram_followup",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1240,
+          "outcome": "recommendation",
+          "decision_id": "47239418-a917-46e4-b106-47545b86d5ab",
+          "evidence_fingerprint": "f70ce5cbeac00902dc553dd5007da0fddf6bedfe346d34c4c7dfdca79b5e21d0",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2164354604",
+          "family": "laptops",
+          "attributes": {
+            "ram_gb": 8,
+            "storage_gb": 512,
+            "cpu_model": "AMD Ryzen 7 7840HS",
+            "operating_system": "Windows 11",
+            "dedicated_gpu": false
+          },
+          "evidence_sources": 45,
+          "evidence_claims": 472,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "insufficient_evidence",
+          "compiled_requirements": {
+            "minimum_ram_gb": 8,
+            "maximum_ram_gb": 16,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 600,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 168528
+        }
+      ]
+    },
+    {
+      "id": "air_fryer_household_preference",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 917,
+          "outcome": "recommendation",
+          "decision_id": "a2bc4ed8-a386-483d-b641-34e571007612",
+          "evidence_fingerprint": "568c63558e85dc301a3db17290d8bdeb5bdf75b1c0090387ef4b85bab73c49be",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2159028783",
+          "family": "air_fryers",
+          "attributes": {
+            "capacity_litres": 7,
+            "people_count": 3,
+            "dual_basket": false
+          },
+          "evidence_sources": 44,
+          "evidence_claims": 394,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "good",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": 2,
+            "catalog_requirements": [],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 120,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 139621
+        }
+      ]
+    },
+    {
+      "id": "tv_native_refresh",
+      "passed": true,
+      "observations": [
+        {
+          "channel": "mcp",
+          "elapsed_ms": 1063,
+          "outcome": "recommendation",
+          "decision_id": "b1d41514-66a6-42d5-a6f6-75c2e8b46eef",
+          "evidence_fingerprint": "c423d8d3c6d7fc0bd8c0ae904786c4e6798f7cbe50a6e469276acb97f15a15c7",
+          "shopping_context_version": "bestprice_shopping_context_v36",
+          "product_id": "bp_2160624646",
+          "family": "televisions",
+          "attributes": {
+            "screen_diagonal_inches": 55,
+            "panel_technology": "Mini-LED",
+            "release_year": 2025
+          },
+          "evidence_sources": 16,
+          "evidence_claims": 179,
+          "returned_scope": "returned_page",
+          "search_calls": 1,
+          "retained_page_search_calls": 1,
+          "trinity_calls": 1,
+          "price_verdict": "typical",
+          "compiled_requirements": {
+            "minimum_ram_gb": null,
+            "maximum_ram_gb": null,
+            "capacity_litres": null,
+            "people_count": null,
+            "catalog_requirements": [
+              "τουλάχιστον 120Hz"
+            ],
+            "clarification_reasons": []
+          },
+          "price_constraints": {
+            "minimum_eur": null,
+            "maximum_eur": 1000,
+            "explicitly_unbounded": false,
+            "conflict_codes": [],
+            "unsupported_codes": []
+          },
+          "shipping_status": "unknown",
+          "delivered_total": null,
+          "receipt_bytes": 64904
+        }
+      ]
+    }
+  ],
+  "landing": {
+    "status": 303,
+    "signed_tool_verified": true,
+    "protected_cookie": true,
+    "merchant_redirect_followed": false
+  },
+  "limits": "Synthetic stateless HTTP checks, not a quality study, latency benchmark, or uptime guarantee. Live Ask requires staff access and authorization for any conversation persistence. No merchant clickouts."
+}

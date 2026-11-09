@@ -1,6 +1,89 @@
 # BestPrice current release matrix
 
+## 9 November 2026 — production truth and open release gates
+
+The live gateway is **1.9.0**. At 08:16 UTC it served revision
+`0275d78a976d9de67c0b4e898175069041d6264e`; by 10:24 UTC it served
+`7bb4d63ce1f2b9827a37476d9726986f88862738`, the revision the morning audit
+still recorded as pending CI. Both readings come from `/healthz` and the
+`x-bestprice-revision` header. The 1.9.0 registry entry is
+[active and latest](https://registry.modelcontextprotocol.io/v0.1/servers/gr.bestprice%2Fmcp/versions/1.9.0).
+The deployed inventory is six tools (`check_deal`, `compare_offers`,
+`get_price_history`, `get_shopping_decision`, `optimize_basket`,
+`search_products`) and four resources (`mcp://server-card.json`,
+`skill://bestprice-shopping/SKILL.md`, `ui://bestprice/shopping-results-v1.html`,
+`ui://bestprice/shopping-workspace-v8.html`), read from the live server.
+
+A fresh sweep against `7bb4d63` passed **41/41 MCP cases** with 44 stable
+responses; the one signed landing it opened returned 303 and was not followed
+to a merchant ([receipt](evidence/shopping-brain-live-2026-11-09.json)). It is
+one channel: live Ask, staff authorization and conversation-history continuity
+remain untested, so this does not establish Ask–MCP parity. The runner behind
+that receipt now contains 41 cases; it is not the 31-scenario dual-channel
+suite, which was not run.
+
+Current backend `main` was `3e7da6334dd6` at 10:22 UTC, five commits past the
+deployed revision, so production was already behind main when this was written.
+Jenkins build
+[#33492](https://jenkins.bestprice.gr/job/TheBestCo/job/bp-backend-node/job/main/33492/display/redirect)
+is the green build for `0275d78`; the deployment sentence in the 3 November
+section below still names `689f1126` and is historical.
+
+### Two production defects, reproduced on both revisions
+
+1. **A digital-only request still retrieves.** «Netflix/gift card; do not
+   search» made one catalog search and answered `unsupported_beta_category`
+   instead of refusing before retrieval. The same request made two searches on
+   the first attempt. `search_calls` must be 0.
+2. **A named model whose category word is a model tier is a false no-match.**
+   «Eldom FR45» returned its two colour variants and then
+   `hard_constraints_unmet`/`exact_model` («Κανένα από τα 2 αποτελέσματα δεν
+   κάλυψε το ακριβές μοντέλο»), discarding the price history the Buy/Wait
+   question was asked for.
+
+Both are fixed on backend branch `fix/mcp-audit-20261109` (commits
+`d95aa71f8f07` and `0595208d09d2`, tested on both channels; the offline
+closure is 5,511 passed, 1 skipped, 0 failed). They are **not deployed**; the
+behaviour above is the deployed behaviour.
+
+### Release-evidence gaps that remain
+
+- **The submission canary does not complete against the deployed revision.**
+  It aborts at `AI Catalog repository contract drifted across hosts`: the
+  website publishes `"displayName": "BestPrice"` with `updatedAt` 2026-10-29,
+  while the backend constant and the host's stamped copy publish
+  `"BestPrice.gr"` with 2026-09-24. No passing canary receipt exists for
+  `0275d78` or `7bb4d63`, and the signed-attribution leg after that check was
+  never reached. Commit `3f5f45bf9867` aligns the discovery identity and treats
+  publish dates as dates, so the check can pass after that deploy; this is not
+  claimed as done.
+- The 31-scenario/62-response dual-channel runner was not run.
+- Staff Ask, conversation-history continuity, merchant navigation and account
+  writes remain outside anonymous reach.
+
+### Distribution checks
+
+The morning audit read the legacy commit-status API, found it empty, and
+concluded the distribution head had no checks. GitHub Actions did run on
+`1e6644b72234bc4528b1e0ae753dee777459f87b`: five check-runs (`Check, test and
+validate`, `Test on the current Node line`, `validate`, `Analyze
+(javascript-typescript)`, `Tag and GitHub Release`) completed successfully on
+8 November. CI now also fails when the README's tool table or the Gemini/Qwen
+`includeTools` lists drift from the six-tool inventory.
+
+The published ChatGPT app (1.2.0) still exposes the four legacy research tools.
+The six-tool 1.3.0 package in `submission/openai-next/` is an uploaded but
+unsubmitted draft, so ChatGPT users do not see `check_deal` or
+`optimize_basket` yet. Submission needs the OpenAI portal, accepted policy
+attestations and the dedicated reviewer account, none of which this repository
+can supply.
+
+
 ## 3 November 2026 implementation and actual-host qualification
+
+> Superseded for deployment identity on 9 November 2026: production has served
+> later revisions since this record. See the top section for the current
+> gateway revision and its evidence.
 
 The published 1.2.0 app now completes the Events-only OAuth callback and opens
 its native workspace. The actual ordinary ChatGPT UGG replay retained unknown
