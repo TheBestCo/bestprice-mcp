@@ -60,6 +60,11 @@ change. These files must carry the same number, and the test suite enforces it:
 it, and the "Server version" line in `README.md`, only when the hosted service releases.
 It is published to the official MCP Registry by the manual
 `publish-mcp-registry` workflow, which requires approval on the `mcp-registry` environment.
+Older published versions stay listed as active until the manual `deprecate-mcp-registry`
+workflow marks them deprecated. That workflow uses the same environment and DNS login.
+Leave its version list empty to select every version the registry currently reports as
+active except the one with `isLatest` set, review a dry run, then run it again with dry
+run turned off.
 
 ## Releasing the package
 
